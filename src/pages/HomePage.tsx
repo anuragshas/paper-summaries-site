@@ -29,19 +29,30 @@ export function HomePage() {
 
   return (
     <main className="shell">
-      <section className="hero">
-        <p className="eyebrow">GitHub Pages archive</p>
-        <h1>Research summaries, published daily</h1>
-        <p className="hero-copy">
-          This static site is built from saved summarizer outputs and deployed automatically.
-        </p>
-        <input
-          className="search"
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search by title, author, or tag"
-        />
+      <section className="hero hero-catppuccin">
+        <div className="hero-grid">
+          <div>
+            <p className="eyebrow">GitHub Pages archive</p>
+            <h1>Research summaries, published daily</h1>
+            <p className="hero-copy">
+              The same paper-summarizer output, published as a static Catppuccin-themed site.
+            </p>
+          </div>
+          <div className="hero-stat-card">
+            <div className="hero-stat-label">Currently published</div>
+            <div className="hero-stat-value">{papers.length}</div>
+            <div className="hero-stat-subtitle">summaries synced from saved artifacts</div>
+          </div>
+        </div>
+        <div className="search-wrap">
+          <input
+            className="search"
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search by title, author, or tag"
+          />
+        </div>
       </section>
 
       {error ? <div className="card error-card">{error}</div> : null}
