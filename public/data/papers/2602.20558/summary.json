@@ -1,0 +1,359 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 154,
+      "xmin": 126,
+      "ymax": 360,
+      "xmax": 891
+    },
+    "caption": "Two-stage training pipeline for the Data-Centric Recommendation Agent.",
+    "figureNumber": 1,
+    "pageIndex": 3
+  },
+  "authors": "Yucheng Shi, Ying Li, Yu Wang, Yesu Feng, Arjun Rao, Rein Houthooft, Shradha Sehgal, Jin Wang, Hao Zhen, Ninghao Liu, Linas Baltrunas",
+  "breakthroughAssessment": {
+    "score": 8,
+    "justification": "The paper addresses a fundamental and underexplored problem of verbalization in LLM-based recommendation. By framing verbalization as a learnable component and optimizing it end-to-end with reinforcement learning, it introduces a highly novel and impactful approach. The significant performance gains (up to 92.9% relative improvement) on an industrial dataset, coupled with insightful qualitative analysis of emergent verbalization strategies, demonstrate a strong contribution to the field. It shifts the paradigm from fixed prompt engineering to learned context construction, which is a key step towards more robust and effective LLM-powered recommendation systems."
+  },
+  "coreProblem": {
+    "statement": "The core problem is the suboptimal verbalization of structured user interaction logs into natural language inputs for LLM-based recommendation systems. Existing methods rely on rigid templates that simply concatenate fields, yielding poor representations and hindering LLM reasoning.",
+    "whyItMatters": [
+      "Rigid template-based verbalization creates suboptimal representations for recommendation.",
+      "Heterogeneous features in raw logs introduce parsing overhead and consume LLM model capacity.",
+      "Not all interactions carry equally important predictive signals, leading to irrelevant information being processed by LLMs.",
+      "The absence of semantic context in raw logs forces LLMs to reason purely from behavioral patterns, harming recommendation quality, especially for cold-start items."
+    ],
+    "concreteExample": "A typical user interaction log containing timestamps, device, item IDs, engagement types, and viewing durations, when presented verbatim to an LLM, introduces parsing overhead, lacks semantic context, and leads to suboptimal recommendations."
+  },
+  "evaluationHighlights": [
+    "The proposed framework achieved up to 93% relative improvement in novel item recommendation accuracy over template-based baselines on an industrial-scale streaming dataset.",
+    "Learned verbalization strategies, such as syntax normalization, noise filtering, and preference summarization, were qualitatively observed to be critical for effective LLM-based recommendation.",
+    "The two-stage training pipeline successfully optimized both the Verbalizer and Reasoner components, demonstrating a powerful synergy that significantly boosted performance."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Industrial-scale streaming dataset (proprietary, from a major streaming platform)"
+      ],
+      "metrics": [
+        "Recall@1 for Discovery"
+      ],
+      "setting": "Reranking task: predicting the next item a user will engage with from 10 candidate items, given up to 100 recent interactions."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 405,
+          "xmin": 520,
+          "ymax": 529,
+          "xmax": 878
+        },
+        "caption": "Length reward function design.",
+        "figureNumber": 2,
+        "pageIndex": 3
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "--",
+            "benchmark": "Template Baseline (8B)",
+            "delta": "N/A",
+            "isPositive": false,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "--"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Zero-Shot Verbalizer",
+            "delta": "+5.3%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+5.3%"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Action-Based Verbalizer",
+            "delta": "+10.7%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+10.7%"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Rewrite Verbalizer",
+            "delta": "+12.5%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+12.5%"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Rewrite + Trained Reasoner",
+            "delta": "+92.9%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+92.9%"
+          }
+        ],
+        "title": "Main Results: Relative Improvement over Template Baseline"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "--",
+            "benchmark": "Full Pipeline",
+            "delta": "+92.9%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+92.9%"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Action-Based only (Verbalizer Variants)",
+            "delta": "+10.7%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+10.7%"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Rewrite Verbalizer (Verbalizer Variants)",
+            "delta": "+12.5%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+12.5%"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Raw Interactions (Reasoner Training Data)",
+            "delta": "+42.8%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+42.8%"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Verbalized Interactions (Reasoner Training Data)",
+            "delta": "+92.9%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+92.9%"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Accuracy Reward (Reward Function)",
+            "delta": "+12.5%",
+            "isPositive": true,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "+12.5%"
+          },
+          {
+            "baseline": "--",
+            "benchmark": "Ranking Loss (Reward Function)",
+            "delta": "0.0",
+            "isPositive": false,
+            "metric": "Recall@1 \\Delta %",
+            "thisPaper": "0.0"
+          }
+        ],
+        "title": "Ablation Study: Relative Improvement over Template Baseline"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "--",
+        "benchmark": "Zero-Shot Verbalizer",
+        "delta": "+5.3%",
+        "isPositive": true,
+        "metric": "Recall@1 \\Delta %",
+        "thisPaper": "+5.3%"
+      },
+      {
+        "baseline": "--",
+        "benchmark": "Action-Based Verbalizer",
+        "delta": "+10.7%",
+        "isPositive": true,
+        "metric": "Recall@1 \\Delta %",
+        "thisPaper": "+10.7%"
+      },
+      {
+        "baseline": "--",
+        "benchmark": "Rewrite Verbalizer",
+        "delta": "+12.5%",
+        "isPositive": true,
+        "metric": "Recall@1 \\Delta %",
+        "thisPaper": "+12.5%"
+      },
+      {
+        "baseline": "--",
+        "benchmark": "Rewrite + Trained Reasoner",
+        "delta": "+92.9%",
+        "isPositive": true,
+        "metric": "Recall@1 \\Delta %",
+        "thisPaper": "+92.9%"
+      },
+      {
+        "baseline": "--",
+        "benchmark": "Reasoner trained on Raw Interactions",
+        "delta": "+42.8%",
+        "isPositive": true,
+        "metric": "Recall@1 \\Delta %",
+        "thisPaper": "+42.8%"
+      },
+      {
+        "baseline": "--",
+        "benchmark": "Reasoner trained on Verbalized Interactions",
+        "delta": "+92.9%",
+        "isPositive": true,
+        "metric": "Recall@1 \\Delta %",
+        "thisPaper": "+92.9%"
+      }
+    ],
+    "mainTakeaways": [
+      "Learning verbalization substantially improves recommendation accuracy, achieving up to 92.9% relative improvement over template-based approaches.",
+      "The rewrite-based Verbalizer consistently outperforms the action-based variant by enabling richer transformations like aggregation and summarization.",
+      "The full two-stage pipeline, combining the learned Verbalizer and a trained Reasoner, demonstrates powerful synergy and achieves the best performance.",
+      "The Verbalizer's learned transformations are crucial; training the Reasoner on raw interactions yields significantly lower improvements (42.8% vs. 92.9% with verbalized inputs), indicating verbalization creates a more learnable data distribution.",
+      "Qualitative analysis reveals emergent verbalization strategies such as syntax normalization, noise filtering, metadata abstraction, and preference summarization, confirming the value of learned context construction."
+    ]
+  },
+  "institutions": "University of Georgia, Netflix, Capital One, Hong Kong Polytechnic University",
+  "keyNovelty": {
+    "main": "Learning optimal verbalization for LLM-based recommendation using a data-centric, reinforcement learning framework, instead of relying on fixed templates or manual prompt engineering.",
+    "explanation": [
+      "The paper introduces a novel data-centric framework that treats verbalization (converting structured logs into natural language) as a learnable component for LLM-based recommendation, moving beyond fixed templates or heuristic-based prompting.",
+      "It proposes a two-component architecture, the Verbalizer and the Reasoner, decoupling context optimization from preference reasoning.",
+      "A two-stage Group Relative Policy Optimization (GRPO)-based training framework is developed, enabling end-to-end optimization of both components without requiring explicit verbalization labels.",
+      "The framework integrates a length-based reward component to balance informativeness and conciseness, preventing degraded solutions from over-compression or verbosity."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "The process of converting structured user behavioral data (e.g., interaction logs) into natural language text that large language models (LLMs) can process effectively.",
+        "term": "Verbalization"
+      },
+      {
+        "definition": "A generative language model component in the proposed framework that takes raw user interaction history as input and produces an optimized textual representation, learning to filter noise, incorporate metadata, and restructure information.",
+        "term": "Verbalizer"
+      },
+      {
+        "definition": "A causal language model component in the proposed framework that receives the verbalized context from the Verbalizer and candidate items, then performs the actual recommendation task by predicting user preferences.",
+        "term": "Reasoner"
+      },
+      {
+        "definition": "A reinforcement learning algorithm adapted in this paper for training both the Verbalizer and Reasoner components, which estimates advantages from group-level reward statistics to update policies efficiently.",
+        "term": "Group Relative Policy Optimization (GRPO)"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of Large Language Models (LLMs) and their applications.",
+      "Familiarity with Recommendation Systems concepts, including sequential recommendation.",
+      "Basic knowledge of Reinforcement Learning (RL) and policy optimization algorithms."
+    ]
+  },
+  "subTopics": [
+    "Recommendation Systems",
+    "Large Language Models (LLMs)",
+    "Reinforcement Learning",
+    "Prompt Engineering",
+    "Data-Centric AI",
+    "Natural Language Generation"
+  ],
+  "tags": [
+    {
+      "name": "LLM-based Recommendation",
+      "type": "primary"
+    },
+    {
+      "name": "Verbalization",
+      "type": "primary"
+    },
+    {
+      "name": "Reinforcement Learning",
+      "type": "primary"
+    },
+    {
+      "name": "Data-Centric AI",
+      "type": "topic"
+    },
+    {
+      "name": "Prompt Optimization",
+      "type": "topic"
+    },
+    {
+      "name": "Sequential Recommendation",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Existing methods for LLM-based recommendation predominantly rely on rigid, template-based verbalization or heuristic-driven prompt engineering, which is treated as a fixed preprocessing step. This paper treats verbalization as a learnable component, optimizing it end-to-end.",
+      "Prior work on prompt optimization typically focuses on task-level optimization with fixed input-output mappings, whereas this work extends it to learn instance-specific verbalizations that directly maximize recommendation accuracy.",
+      "The training methodology builds on RL-based LLM alignment, specifically adapting Group Relative Policy Optimization (GRPO) as an efficient alternative to PPO, which typically requires a learned value function."
+    ],
+    "limitations": [
+      "The two-stage pipeline introduces additional training cost, though this can be mitigated through distillation, caching, and decoupled training schedules for the Verbalizer and Reasoner.",
+      "The use of a proprietary industrial-scale dataset for experiments limits full external reproducibility.",
+      "Deployment in sensitive domains (e.g., healthcare) would require additional safeguards to prevent the Verbalizer from potentially filtering or distorting critical information during the rewriting process."
+    ],
+    "modeling": [
+      {
+        "label": "Verbalizer ($\\pi_V^{\\theta}$)",
+        "list": [
+          "Generative language model that transforms raw interaction history into an optimized textual representation.",
+          "Two architectural variants: Action-Based (outputs discrete decisions like filter/add metadata for each interaction) and Rewrite-Based (generates a complete textual rewrite for aggregation, summarization, and restructuring). Rewrite-Based is preferred for its flexibility and performance."
+        ],
+        "value": "Learns to produce optimized natural language verbalizations $\\phi_{\\theta}(\\mathcal{H}_u)$ from user interaction history $\\mathcal{H}_u$."
+      },
+      {
+        "label": "Reasoner ($\\pi_R^{\\psi}$)",
+        "list": [
+          "Causal language model that takes the verbalized context $x = \\phi_{\\theta}(\\mathcal{H}_u)$ and a candidate set $\\mathcal{C}$ as input.",
+          "Outputs a prediction over candidates through standard autoregressive decoding, with the predicted item extracted from the generated text."
+        ],
+        "value": "Performs the actual recommendation task, predicting user preferences based on the verbalized context."
+      }
+    ],
+    "pipelineFlow": [
+      "The framework consists of two components: Verbalizer and Reasoner, trained through a two-stage pipeline using variants of Group Relative Policy Optimization (GRPO).",
+      "Stage 1: Verbalizer Optimization via GRPO. An Oracle Reasoner (a powerful closed-source LLM) provides reward signals based on recommendation accuracy. For each user, a group of verbalizations is sampled from the Verbalizer's policy, evaluated by the Oracle Reasoner, and rewards are normalized to compute advantages. The Verbalizer's policy is updated by maximizing a GRPO objective, which also includes a length-based reward component to control output compression.",
+      "Stage 2: Reasoner Optimization via GRPO. After Verbalizer training converges, the Verbalizer is frozen. The Reasoner is then trained on the verbalized data distribution produced by the trained Verbalizer. For each training instance, the frozen Verbalizer generates a single verbalization, and the Reasoner samples predictions, receiving rewards based on ground-truth engagement labels, which are used to update its policy via GRPO."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Goal",
+        "value": "To learn a parameterized verbalization function $\\phi_{\\theta}: \\mathcal{H}_u \\rightarrow \\mathcal{X}$ that produces optimized natural language descriptions from user interaction histories $\\mathcal{H}_u$ to maximize downstream recommendation accuracy."
+      },
+      {
+        "label": "Objective Function",
+        "value": "$\\max_{\\theta} \\mathbb{E}_{u, \\mathcal{C}, y^*} [ \\mathbb{1} [ \\text{Reasoner}(\\phi_{\\theta}(\\mathcal{H}_u), \\mathcal{C}) = y^* ] ]$, where $\\mathbb{1}$ is the indicator function, $\\mathcal{H}_u$ is user history, $\\mathcal{C}$ is candidate set, and $y^*$ is the ground-truth next item. The Reasoner is the prediction model, and $\\phi_{\\theta}(\\mathcal{H}_u)$ is the verbalized context."
+      }
+    ],
+    "reproducibility": "The paper uses a proprietary industrial-scale dataset and mentions using models from the Qwen-3 family. While the methodology is described, the specific dataset and certain model details are not publicly available, limiting full reproducibility.",
+    "systemModules": [
+      {
+        "details": "A generative language model (8B or 32B parameters, Qwen-3 family) that transforms raw user interaction sequences into optimized natural language descriptions. It learns to filter noise, incorporate relevant metadata, and restructure information. It can be action-based (discrete decisions) or rewrite-based (full textual rewrite), with the latter providing greater flexibility.",
+        "name": "Verbalizer ($\\pi_V^{\\theta}$)",
+        "role": "Context Optimizer"
+      },
+      {
+        "details": "A causal language model that receives the verbalized context from the Verbalizer and a set of candidate items. It performs the actual recommendation task by generating a prediction over the candidates using standard autoregressive decoding.",
+        "name": "Reasoner ($\\pi_R^{\\psi}$)",
+        "role": "Preference Reasoner"
+      },
+      {
+        "details": "A powerful closed-source LLM used to provide stable and high-quality reward signals during the Verbalizer's training phase. Its superior reasoning capabilities help the Verbalizer learn robust verbalizations without exploiting weaknesses of a weaker Reasoner.",
+        "name": "Oracle Reasoner",
+        "role": "Reward Provider for Verbalizer"
+      }
+    ]
+  },
+  "thesis": "Verbalization for LLM-based recommendation should be a learnable component, optimized end-to-end for recommendation accuracy through a data-centric, two-stage reinforcement learning framework that decouples context generation from preference reasoning, leading to significant performance gains and emergent effective verbalization strategies.",
+  "title": "From Logs to Language: Learning Optimal Verbalization for LLM-Based Recommendation in Production",
+  "url": "https://arxiv.org/abs/arXiv:2602.20558",
+  "venue": "N/A",
+  "year": "2026"
+}

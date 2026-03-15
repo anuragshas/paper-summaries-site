@@ -1,0 +1,21 @@
+{
+  "paperId": "2602.18734",
+  "title": "Rethinking Retrieval-Augmented Generation as a Cooperative Decision-Making Problem",
+  "authors": "Lichang Song, Ting Long, Yi Chang",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "Retrieval-Augmented Generation",
+    "Multi-Agent Systems",
+    "Reinforcement Learning",
+    "Large Language Models",
+    "Question Answering",
+    "Natural Language Processing"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2602.18734",
+  "pagePath": "/paper-summaries-site/papers/2602.18734",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.18734/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

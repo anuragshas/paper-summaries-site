@@ -1,0 +1,357 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 105,
+      "xmin": 126,
+      "ymax": 290,
+      "xmax": 610
+    },
+    "caption": "(Left) Ordinary speculative decoding (SD) requires the verifier to wait idly for the draft to speculate. (Center) In our algorithm, speculation runs on a separate device (1 \\times H100) in parallel with verification; the draft precomputes speculations for many possible verification outcomes and returns the speculated tokens immediately if one occurs. (Right) End-to-end performance of SSD, SD, and autoregressive (AR) decoding averaged over four datasets spanning math, code and chat, for Llama-3.1-70B on TP=4 H100s, batch size 1, greedy decoding, Llama-3.2-1B draft model.",
+    "figureNumber": 1,
+    "pageIndex": 1
+  },
+  "authors": "Tanishq Kumar, Tri Dao, Avner May",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "The paper introduces Speculative Speculative Decoding (SSD), a novel framework that directly addresses the sequential bottleneck within existing speculative decoding by parallelizing speculation and verification. The Saguaro algorithm, an optimized instantiation of SSD, provides principled solutions for cache construction, sampling, and fallback strategies. It demonstrates substantial practical speedups (up to 2x over optimized speculative decoding and 5x over autoregressive generation), pushes the throughput-latency Pareto frontier, and is theoretically well-grounded. This represents a strong advancement in LLM inference efficiency."
+  },
+  "coreProblem": {
+    "statement": "Autoregressive decoding is inherently bottlenecked by its sequential nature, and even speculative decoding, while faster, retains a sequential dependence between the speculation phase and the verification phase.",
+    "whyItMatters": [
+      "Modern AI applications demand fast inference, but sequential decoding cannot fully leverage parallel computation hardware.",
+      "Reducing inference latency is crucial for improving user experience and enabling real-time applications of large language models."
+    ],
+    "concreteExample": "In standard speculative decoding (SD), the draft model must wait for the target model's verification pass to complete before it can begin speculating for the next round, leading to idle time."
+  },
+  "evaluationHighlights": [
+    "Saguaro (optimized SSD) achieved an average speedup of 4.7x over autoregressive decoding on Llama-3.1-Instruct 70B across four diverse datasets (Alpaca, GSM8k, UltraFeedback, HumanEval).",
+    "Saguaro demonstrated an average speedup of 1.88x (up to 2x) compared to optimized speculative decoding baselines.",
+    "The method successfully pushed the throughput-latency Pareto frontier, indicating improved compute efficiency, especially at lower batch sizes.",
+    "Empirical evaluation confirmed the benefits of the geometric fan-out strategy for cache hit rates and decoding speed, particularly at higher temperatures.",
+    "Saguaro's adaptive fallback strategy, which dynamically selects the backup speculator based on batch size, was shown to be optimal and significantly improved performance at larger batch sizes."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Alpaca",
+        "GSM8k",
+        "UltraFeedback",
+        "HumanEval"
+      ],
+      "metrics": [
+        "Decoding Speed (tokens/sec)",
+        "Speedup (relative to AR)",
+        "Throughput (tok/s/GPU)",
+        "Latency (tok/s per sequence)",
+        "Cache Hit Rate",
+        "Acceptance Rate"
+      ],
+      "setting": "Llama-3.1-Instruct 70B target model, Llama-3.2-1B draft model, batch size 1 (unless specified), greedy decoding, target on 4xH100 GPUs, SSD draft on a separate 1xH100 GPU. Comparisons against autoregressive decoding (AR) and ordinary speculative decoding (SD) using SGLang as the main baseline."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 180,
+          "xmin": 102,
+          "ymax": 725,
+          "xmax": 878
+        },
+        "caption": "Scaling of cache hit rates with fan out. (Left, middle) The rejection rates (1 - $p_{\\text{hit},*}(F)$) conditioned on the prior speculation coming from the primary vs backup speculator, respectively. Rejection rates (cache misses) fall as a power law in the draft-fan out, demonstrating that cache hit rates increase with cache size. (Right) The overall cache hit rate $p_{\\text{hit}}(F)$.",
+        "figureNumber": 3,
+        "pageIndex": 7
+      },
+      {
+        "boundingBox": {
+          "ymin": 89,
+          "xmin": 137,
+          "ymax": 280,
+          "xmax": 848
+        },
+        "caption": "Advantage of geometric fan out strategy increases at higher temperatures, improving both speculation cache hit rate (right) and thus end-to-end speed (left). Results averaged over four datasets. At all temperatures, SSD with either fan out strategy outperforms ordinary speculative decoding.",
+        "figureNumber": 4,
+        "pageIndex": 8
+      },
+      {
+        "boundingBox": {
+          "ymin": 205,
+          "xmin": 114,
+          "ymax": 690,
+          "xmax": 882
+        },
+        "caption": "We introduce Saguaro sampling, a novel sampling scheme designed specifically for SSD. (Left) It interpolates between high cache hit rate and high speculative acceptance rate. (Right) Illustrative schematic for how Saguaro sampling increases residual probability mass on the top draft tokens, encouraging the sampled bonus token to lie in the speculation cache by construction.",
+        "figureNumber": 5,
+        "pageIndex": 9
+      },
+      {
+        "boundingBox": {
+          "ymin": 150,
+          "xmin": 126,
+          "ymax": 400,
+          "xmax": 880
+        },
+        "caption": "(Left) Optimal backup speculator (fast vs neural) depends on batch size, as Theorem 17 predicts (temperature 0). (Right) We forecast how decoding speed improves with draft compute (and thus, fan-out) for batch size 16 with the fast backup speculator. At large batch sizes we become compute bound, speedups more GPUs to drafting.",
+        "figureNumber": 6,
+        "pageIndex": 10
+      },
+      {
+        "boundingBox": {
+          "ymin": 330,
+          "xmin": 100,
+          "ymax": 520,
+          "xmax": 880
+        },
+        "caption": "(Left) End-to-end decoding speed comparison of SSD compared to SD and standard autoregressive decoding on Llama-3.1-Instruct 70B across four datasets. (Right) SSD improves the throughput-latency Pareto frontier.",
+        "figureNumber": 7,
+        "pageIndex": 11
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "3.0x",
+            "benchmark": "HumanEval",
+            "delta": "+2.2x",
+            "isPositive": true,
+            "metric": "Speedup over AR",
+            "thisPaper": "5.2x"
+          },
+          {
+            "baseline": "2.5x",
+            "benchmark": "UltraFB",
+            "delta": "+1.4x",
+            "isPositive": true,
+            "metric": "Speedup over AR",
+            "thisPaper": "3.9x"
+          },
+          {
+            "baseline": "2.4x",
+            "benchmark": "Alpaca",
+            "delta": "+1.7x",
+            "isPositive": true,
+            "metric": "Speedup over AR",
+            "thisPaper": "4.1x"
+          },
+          {
+            "baseline": "2.8x",
+            "benchmark": "GSM8k",
+            "delta": "+2.7x",
+            "isPositive": true,
+            "metric": "Speedup over AR",
+            "thisPaper": "5.5x"
+          },
+          {
+            "baseline": "2.5x",
+            "benchmark": "Average",
+            "delta": "+2.2x",
+            "isPositive": true,
+            "metric": "Speedup over AR",
+            "thisPaper": "4.7x"
+          }
+        ],
+        "title": "End-to-End Speedup of SSD (Ours) vs. SD (Ours) on Llama-3.1-Instruct 70B"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "3.0x",
+        "benchmark": "HumanEval",
+        "delta": "+2.2x",
+        "isPositive": true,
+        "metric": "Speedup over AR",
+        "thisPaper": "5.2x"
+      },
+      {
+        "baseline": "2.5x",
+        "benchmark": "UltraFB",
+        "delta": "+1.4x",
+        "isPositive": true,
+        "metric": "Speedup over AR",
+        "thisPaper": "3.9x"
+      },
+      {
+        "baseline": "2.4x",
+        "benchmark": "Alpaca",
+        "delta": "+1.7x",
+        "isPositive": true,
+        "metric": "Speedup over AR",
+        "thisPaper": "4.1x"
+      },
+      {
+        "baseline": "2.8x",
+        "benchmark": "GSM8k",
+        "delta": "+2.7x",
+        "isPositive": true,
+        "metric": "Speedup over AR",
+        "thisPaper": "5.5x"
+      },
+      {
+        "baseline": "2.5x",
+        "benchmark": "Average",
+        "delta": "+2.2x",
+        "isPositive": true,
+        "metric": "Speedup over AR",
+        "thisPaper": "4.7x"
+      }
+    ],
+    "mainTakeaways": [
+      "The Saguaro algorithm (optimized SSD) consistently achieves significant speedups compared to both autoregressive decoding (up to 5x) and optimized speculative decoding (up to 2x).",
+      "SSD effectively pushes the latency-throughput Pareto frontier, particularly benefiting lower batch sizes, by allowing more compute-efficient generation per device.",
+      "The proposed geometric fan-out strategy improves cache hit rates and overall decoding speed, especially in scenarios with higher sampling temperatures.",
+      "Saguaro sampling allows for a controlled trade-off between cache hit rate and acceptance rate, enabling higher hit rates by biasing the residual distribution.",
+      "The optimal fallback strategy for cache misses is dependent on batch size, with fast, low-latency speculators being preferred for larger batch sizes where misses are more frequent."
+    ]
+  },
+  "institutions": "Department of Computer Science, Stanford University; Department of Computer Science, Princeton University; Together AI",
+  "keyNovelty": {
+    "main": "A novel framework, Speculative Speculative Decoding (SSD), that parallelizes the sequential speculation and verification steps inherent in existing speculative decoding methods for large language models.",
+    "explanation": [
+      "The core idea of Speculative Speculative Decoding (SSD) is to parallelize the speculation and verification steps of speculative decoding. While the verifier is processing a batch of tokens, the draft model proactively predicts multiple likely verification outcomes and pre-computes corresponding speculative token sequences, storing them in a 'speculation cache'.",
+      "If the actual verification outcome matches one of the pre-speculated outcomes in the cache (a 'cache hit'), the pre-computed tokens are immediately returned, eliminating the latency overhead typically associated with drafting. If it's a 'cache miss', the system falls back to a synchronous speculative decoding mechanism.",
+      "The paper introduces Saguaro, an optimized SSD algorithm that addresses three key challenges: predicting verification outcomes efficiently (Saguaro cache construction), balancing cache hit rate and acceptance rate (Saguaro sampling), and handling cache misses effectively (Saguaro fallback).",
+      "SSD ensures losslessness by falling back to ordinary speculative decoding when pre-speculated outcomes are not matched, and it allows the draft model to run on separate hardware, enabling true asynchronous operation."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A technique to accelerate LLM inference by using a fast 'draft model' to predict a sequence of upcoming tokens, which are then verified in parallel by a slower, more accurate 'target model'. If accepted, these tokens are added; otherwise, a 'bonus token' is sampled.",
+        "term": "Speculative Decoding (SD)"
+      },
+      {
+        "definition": "The probability of accepting a given token in the speculation, conditioned on accepting all prior tokens. It reflects how well the draft distribution approximates the target distribution.",
+        "term": "Acceptance Rate"
+      },
+      {
+        "definition": "The modified probability distribution $r(\\cdot) \\propto \\max(p_{\\text{target}}(\\cdot) - p_{\\text{draft}}(\\cdot), 0)$ from which a 'bonus token' is sampled when drafted tokens are rejected, ensuring the resulting sequence matches the target distribution.",
+        "term": "Residual Distribution"
+      },
+      {
+        "definition": "A dictionary mapping likely verification outcomes to precomputed speculative token sequences. When an actual verification outcome matches one in the cache, the corresponding tokens can be returned immediately.",
+        "term": "Speculation Cache"
+      },
+      {
+        "definition": "The number of bonus token guesses included in the speculation cache at each lookahead position $k$, which can be optimized to maximize the chance of a cache hit under a computational budget.",
+        "term": "Fan-out"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of large language model (LLM) inference mechanisms.",
+      "Familiarity with autoregressive decoding and its computational bottlenecks.",
+      "Basic knowledge of speculative decoding principles (draft model, target model, verification process)."
+    ]
+  },
+  "subTopics": [
+    "Large Language Models (LLMs)",
+    "Inference Optimization",
+    "Speculative Decoding",
+    "Parallel Computing",
+    "Algorithm Design",
+    "Sampling Strategies"
+  ],
+  "tags": [
+    {
+      "name": "Large Language Models",
+      "type": "primary"
+    },
+    {
+      "name": "Inference Optimization",
+      "type": "primary"
+    },
+    {
+      "name": "Speculative Decoding",
+      "type": "topic"
+    },
+    {
+      "name": "Parallel Computing",
+      "type": "topic"
+    },
+    {
+      "name": "Algorithm",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Existing parallel speculative decoding methods (e.g., AMUSD, PEARL) typically only prepare for the specific verification outcome where all drafted tokens are accepted. SSD, in contrast, pre-speculates for many possible verification outcomes, covering a broader range of scenarios.",
+      "Tree-based speculative decoding methods (e.g., SwiftSpec, SpecBranch) also aim for increased accepted tokens but remain sequential in their speculate-then-verify process and introduce significant verifier compute overhead due to verifying entire token trees. SSD parallelizes speculation itself and does not add additional verifier compute.",
+      "SSD is designed as a unifying framework and can be combined with existing advancements in draft model architectures (e.g., EAGLE, diffusion LLMs) and tree-based approaches for further performance gains."
+    ],
+    "limitations": [
+      "Speculative decoding, including SSD, is generally less effective for throughput-bound workloads (e.g., large-scale Reinforcement Learning, offline data generation) as it adds verification overhead to an already compute-bound process.",
+      "The combined design space and tradeoffs when composing SSD with other advanced techniques like EAGLE or token-tree speculation remain largely unexplored.",
+      "While latency can be further reduced by scaling the number of draft devices, the returns eventually diminish.",
+      "Sharing speculation endpoints across multiple target model deployments at the cluster level (similar to prefill-decode disaggregation) is identified as a natural future direction that needs further research."
+    ],
+    "modeling": [
+      {
+        "label": "SSD Speedup Equation (Theorem 7)",
+        "value": "$\\text{speedup}_{\\text{SSD}} = \\frac{p_{\\text{hit}} \\cdot E_{\\text{hit}} + (1 - p_{\\text{hit}}) \\cdot E_{\\text{miss}}}{p_{\\text{hit}} \\cdot \\max(1, T_p) + (1 - p_{\\text{hit}}) \\cdot (1 + T_b)}$ where $p_{\\text{hit}}$ is the cache hit rate, $E_{\\text{hit}}$ and $E_{\\text{miss}}$ are the expected number of generated tokens in case of a cache hit or miss, respectively. $T_p$ and $T_b$ are the time taken by the primary and backup speculators, respectively, relative to the verifier's time."
+      },
+      {
+        "label": "Saguaro Cache Shape (Theorem 12)",
+        "value": "The optimal fan-out $F_k$ (number of bonus token guesses) for each lookahead position $k \\in [0, K]$ under a total budget $B$ follows a capped geometric series: $F_k = F_0 \\cdot a_p^{k/(1+r)}$ for $k < K$ and $F_K = F_0 \\cdot a_p^{K/(1+r)} \\cdot (1 - a_p)^{-1/(1+r)}$, where $a_p$ is the acceptance rate, and $r$ is the power-law cache hit rate exponent. This allocates compute proportionally to the likelihood of verifying tokens at each position."
+      },
+      {
+        "label": "Saguaro Sampling (Definition 14)",
+        "value": "A sampling scheme $\\sigma_{F,C}(z)$ defined as $\\sigma_{F,C}(z) \\propto C \\cdot \\exp(z_t)$ if $t \\in \\text{top}_F(z)$ and $\\exp(z_t)$ otherwise, for draft logits $z$, fan-out $F$, and downweighting constant $C \\in [0, 1]$. By decreasing $C$, this scheme deliberately suppresses draft probabilities on the top $F$ cached tokens, pushing residual probability mass onto these tokens, thereby increasing the chance of a cache hit."
+      },
+      {
+        "label": "Saguaro Fallback Strategy (Theorem 17)",
+        "value": "The optimal strategy for cache misses: for batch sizes $b < b^*$, use the slow, accurate primary speculator as the backup. For batch sizes $b > b^*$, switch to a fast, low-latency speculator. This adapts to the increasing frequency of cache misses at larger batch sizes, which would otherwise stall the entire batch on the primary speculator's latency."
+      }
+    ],
+    "pipelineFlow": [
+      "The SSD framework operates with a speculator and a verifier running in parallel on separate hardware.",
+      "While the verifier is verifying a batch of drafted tokens from round T, the speculator concurrently begins speculating for round T+1.",
+      "The speculator predicts likely verification outcomes for round T+1, pre-computes speculative token sequences for these outcomes, and stores them in a 'speculation cache'.",
+      "Upon completion of round T, the verifier sends its actual verification outcome to the speculator.",
+      "If the actual outcome is found in the speculation cache (a 'cache hit'), the corresponding pre-computed tokens are immediately retrieved by the speculator and sent to the verifier, eliminating drafting overhead.",
+      "If the outcome is not in the cache (a 'cache miss'), the speculator falls back to a synchronous speculative decoding strategy, employing either a primary (slow, accurate) or a backup (fast, low-latency) speculator depending on the batch size.",
+      "This process ensures that SSD is lossless (guarantees the same output as the target model) while maximizing parallelization."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Speculation at round T",
+        "value": "$s^T := (s^T_1, \\ldots, s^T_K)$ as the sequence of $K$ tokens proposed autoregressively by the draft model."
+      },
+      {
+        "label": "Verification outcome at round T",
+        "value": "$v^T := (k, t^* ) \\in \\mathcal{V}^T$, where $(s^T_{1}, \\ldots, s^T_{k})$ are the accepted draft tokens from round $T$, and $t^*$ is the bonus token sampled from the residual distribution (or target distribution if all tokens are accepted)."
+      }
+    ],
+    "reproducibility": "The authors provide code for Saguaro, their optimized SSD algorithm, at https://github.com/tanishqkumar/ssd. Experiments were conducted using Llama-3.1-Instruct 70B and Llama-3.2-1B models on H100 GPUs, with specific datasets (Alpaca, GSM8k, UltraFeedback, HumanEval) detailed, indicating a high degree of reproducibility.",
+    "systemModules": [
+      {
+        "details": "Runs asynchronously on separate hardware, predicts likely verification outcomes, pre-computes speculative token sequences for these outcomes, stores them in a 'speculation cache', and sends tokens to the verifier. It also manages fallback strategies for cache misses.",
+        "name": "Speculator",
+        "role": "Orchestrator of parallel speculation"
+      },
+      {
+        "details": "Receives speculated tokens, performs a parallel forward pass with the target model to verify them, determines the actual verification outcome (accepted tokens and bonus token), and sends this outcome back to the speculator.",
+        "name": "Verifier",
+        "role": "Executor of verification using the target model"
+      },
+      {
+        "details": "The primary model used for generating speculative tokens. It is typically a high-quality (slower) model. In the fallback strategy, it acts as the backup for small batch sizes.",
+        "name": "Primary Speculator",
+        "role": "Main token generator and fallback for small batches"
+      },
+      {
+        "details": "A fast, low-latency model used for generating tokens during cache misses, particularly beneficial at large batch sizes where the cost of waiting for a slower speculator becomes prohibitive.",
+        "name": "Backup Speculator",
+        "role": "Fast fallback token generator for large batches"
+      },
+      {
+        "details": "A dictionary that maps predicted verification outcomes to their corresponding pre-computed speculative token sequences. It enables instant retrieval of tokens upon a cache hit.",
+        "name": "Speculation Cache",
+        "role": "Storage for pre-computed speculative outputs"
+      }
+    ]
+  },
+  "thesis": "We introduce Speculative Speculative Decoding (SSD), a novel framework that parallelizes the previously sequential speculation and verification phases of speculative decoding, thereby significantly accelerating autoregressive inference for large language models.",
+  "title": "Speculative Speculative Decoding",
+  "url": "https://arxiv.org/abs/2603.03251",
+  "venue": "N/A",
+  "year": "2026"
+}

@@ -1,0 +1,542 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 159,
+      "xmin": 137,
+      "ymax": 287,
+      "xmax": 461
+    },
+    "caption": "CoRAG overview. The reranker and generator cooperate to generate responses. The task-oriented reward derived from response guides GRPO-aligned training of the reranker and GRPO optimization of the generator.",
+    "figureNumber": 2,
+    "pageIndex": 2
+  },
+  "authors": "Lichang Song, Ting Long, Yi Chang",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "The paper presents a strong contribution by reframing Retrieval-Augmented Generation (RAG) as a cooperative multi-agent decision-making problem, moving beyond the traditional asymmetric dependency. The proposed Cooperative RAG (CoRAG) framework, with its novel joint optimization strategy using a shared task-oriented reward, significantly improves generation stability and generalization. The experimental results consistently demonstrate state-of-the-art performance across multiple benchmarks, even when trained on limited data, and show improved robustness. While not a field-shifting paradigm, it offers a principled and effective solution to a critical issue in RAG system design."
+  },
+  "coreProblem": {
+    "statement": "Many existing Retrieval-Augmented Generation (RAG) systems operate under a ranking-centric, asymmetric dependency where the generator's quality is highly sensitive to the reranker's output. This creates a mismatch: precisely ranking documents is difficult, yet the generator heavily relies on fine-grained ranking, leading to instability and poor generalization.",
+    "whyItMatters": [
+      "The generator is highly sensitive to fine-grained ranking results from the reranker.",
+      "Learning an exact total order over multiple highly relevant documents is inherently harder than learning a relaxed ordering for the reranker.",
+      "This discrepancy between reranking optimization difficulty and generator sensitivity poses significant challenges for the stability and generalization of RAG frameworks in practice."
+    ],
+    "concreteExample": "If a suboptimal reranker misranks a less relevant document at the top, the generator may produce an incorrect response, even though the optimal document is still present within the top-N set (as illustrated in Figure 1a)."
+  },
+  "evaluationHighlights": [
+    "CoRAG achieved state-of-the-art results on four core QA benchmarks: PopQA, TriviaQA, NQ, and 2WikiMultiHopQA.",
+    "Demonstrated strong generalization ability, outperforming baselines on datasets it was not trained on (trained only on PopQA).",
+    "Showed robustness to varying numbers of retrieved documents (top-K analysis), unlike some baselines whose performance declined with more documents.",
+    "Maintained competitive performance on cross-domain tasks like code generation (HumanEval, HumanEval+) and table question answering (WTQ).",
+    "Consistently preferred by LLM-as-a-judge evaluators across multiple LLM judges, indicating robust and high-quality generation."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "PopQA",
+        "TriviaQA",
+        "Natural Questions (NQ)",
+        "2WikiMultiHopQA",
+        "ASQA",
+        "HumanEval",
+        "HumanEval+",
+        "WikiTable Questions (WTQ)"
+      ],
+      "metrics": [
+        "Accuracy (acc)",
+        "Exact Match (EM)",
+        "Citation Precision (pre)",
+        "Citation Recall (rec)",
+        "pass@1",
+        "pass@10",
+        "LLM-as-a-judge scores (Pattern-based, Llama, GPT, DeepSeek, Qwen)"
+      ],
+      "setting": "The primary evaluation setting involved training CoRAG solely on the PopQA dataset and then evaluating its generalization ability on other datasets without further training. Comparisons were made against various RAG baselines including those without training (in-context learning, few-shot), and those with training (supervised fine-tuning, Self-RAG, RetRobust, InstructRAG-FT, InstructRAG)."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 308,
+          "xmin": 142,
+          "ymax": 477,
+          "xmax": 467
+        },
+        "caption": "Cross-validation results with different reranker and generator combinations (Top-3 setting).",
+        "figureNumber": 3,
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 150,
+          "xmin": 143,
+          "ymax": 303,
+          "xmax": 463
+        },
+        "caption": "Impact of the document number.",
+        "figureNumber": 4,
+        "pageIndex": 7
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "64.2",
+            "benchmark": "PopQA",
+            "delta": "+7.0",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "71.2"
+          },
+          {
+            "baseline": "76.8",
+            "benchmark": "TriviaQA",
+            "delta": "+4.2",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "81.0"
+          },
+          {
+            "baseline": "62.1",
+            "benchmark": "NQ",
+            "delta": "+10.3",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "72.4"
+          },
+          {
+            "baseline": "50.4",
+            "benchmark": "2WikiMultiHopQA",
+            "delta": "+7.8",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "58.2"
+          },
+          {
+            "baseline": "44.7",
+            "benchmark": "ASQA",
+            "delta": "+1.1",
+            "isPositive": true,
+            "metric": "em",
+            "thisPaper": "45.8"
+          },
+          {
+            "baseline": "70.9",
+            "benchmark": "ASQA",
+            "delta": "-16.0",
+            "isPositive": false,
+            "metric": "pre",
+            "thisPaper": "54.9"
+          },
+          {
+            "baseline": "74.1",
+            "benchmark": "ASQA",
+            "delta": "-25.2",
+            "isPositive": false,
+            "metric": "rec",
+            "thisPaper": "48.9"
+          }
+        ],
+        "title": "Main Results on QA Benchmarks (Table 2)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "66.19",
+            "benchmark": "PopQA",
+            "delta": "+5.07",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "71.26"
+          },
+          {
+            "baseline": "66.54",
+            "benchmark": "PopQA",
+            "delta": "+4.72",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "71.26"
+          },
+          {
+            "baseline": "65.83",
+            "benchmark": "PopQA",
+            "delta": "+5.43",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "71.26"
+          },
+          {
+            "baseline": "66.26",
+            "benchmark": "PopQA",
+            "delta": "+5.00",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "71.26"
+          },
+          {
+            "baseline": "62.71",
+            "benchmark": "NQ",
+            "delta": "+9.78",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "72.49"
+          },
+          {
+            "baseline": "63.37",
+            "benchmark": "NQ",
+            "delta": "+9.12",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "72.49"
+          },
+          {
+            "baseline": "63.21",
+            "benchmark": "NQ",
+            "delta": "+9.28",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "72.49"
+          },
+          {
+            "baseline": "62.46",
+            "benchmark": "NQ",
+            "delta": "+10.03",
+            "isPositive": true,
+            "metric": "acc",
+            "thisPaper": "72.49"
+          }
+        ],
+        "title": "Ablation Study (Table 3)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "64.45",
+            "benchmark": "HumanEval",
+            "delta": "-0.49",
+            "isPositive": false,
+            "metric": "pass@1",
+            "thisPaper": "63.96"
+          },
+          {
+            "baseline": "83.53",
+            "benchmark": "HumanEval",
+            "delta": "+2.44",
+            "isPositive": true,
+            "metric": "pass@10",
+            "thisPaper": "85.97"
+          },
+          {
+            "baseline": "49.26",
+            "benchmark": "HumanEval+",
+            "delta": "+8.17",
+            "isPositive": true,
+            "metric": "pass@1",
+            "thisPaper": "57.43"
+          },
+          {
+            "baseline": "70.12",
+            "benchmark": "HumanEval+",
+            "delta": "+9.14",
+            "isPositive": true,
+            "metric": "pass@10",
+            "thisPaper": "79.26"
+          },
+          {
+            "baseline": "68.57",
+            "benchmark": "WTQ",
+            "delta": "-0.46",
+            "isPositive": false,
+            "metric": "accuracy",
+            "thisPaper": "68.11"
+          }
+        ],
+        "title": "Cross-Task Evaluation (Table 4)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "64.60",
+            "benchmark": "PopQA",
+            "delta": "+6.75",
+            "isPositive": true,
+            "metric": "Average",
+            "thisPaper": "71.35"
+          },
+          {
+            "baseline": "66.19",
+            "benchmark": "PopQA",
+            "delta": "+5.07",
+            "isPositive": true,
+            "metric": "Pattern-based",
+            "thisPaper": "71.26"
+          },
+          {
+            "baseline": "75.63",
+            "benchmark": "PopQA",
+            "delta": "+13.58",
+            "isPositive": true,
+            "metric": "Llama",
+            "thisPaper": "89.21"
+          },
+          {
+            "baseline": "60.83",
+            "benchmark": "PopQA",
+            "delta": "+5.07",
+            "isPositive": true,
+            "metric": "GPT",
+            "thisPaper": "65.90"
+          },
+          {
+            "baseline": "59.69",
+            "benchmark": "PopQA",
+            "delta": "+4.57",
+            "isPositive": true,
+            "metric": "DeepSeek",
+            "thisPaper": "64.26"
+          },
+          {
+            "baseline": "60.69",
+            "benchmark": "PopQA",
+            "delta": "+5.43",
+            "isPositive": true,
+            "metric": "Qwen",
+            "thisPaper": "66.12"
+          }
+        ],
+        "title": "Evaluation with LLM-as-a-judge (Table 5)"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "64.2",
+        "benchmark": "PopQA",
+        "delta": "+7.0",
+        "isPositive": true,
+        "metric": "acc",
+        "thisPaper": "71.2"
+      },
+      {
+        "baseline": "76.8",
+        "benchmark": "TriviaQA",
+        "delta": "+4.2",
+        "isPositive": true,
+        "metric": "acc",
+        "thisPaper": "81.0"
+      },
+      {
+        "baseline": "62.1",
+        "benchmark": "NQ",
+        "delta": "+10.3",
+        "isPositive": true,
+        "metric": "acc",
+        "thisPaper": "72.4"
+      },
+      {
+        "baseline": "50.4",
+        "benchmark": "2WikiMultiHopQA",
+        "delta": "+7.8",
+        "isPositive": true,
+        "metric": "acc",
+        "thisPaper": "58.2"
+      },
+      {
+        "baseline": "44.7",
+        "benchmark": "ASQA",
+        "delta": "+1.1",
+        "isPositive": true,
+        "metric": "em",
+        "thisPaper": "45.8"
+      },
+      {
+        "baseline": "66.19",
+        "benchmark": "PopQA",
+        "delta": "+5.07",
+        "isPositive": true,
+        "metric": "acc",
+        "thisPaper": "71.26"
+      },
+      {
+        "baseline": "62.71",
+        "benchmark": "NQ",
+        "delta": "+9.78",
+        "isPositive": true,
+        "metric": "acc",
+        "thisPaper": "72.49"
+      },
+      {
+        "baseline": "49.26",
+        "benchmark": "HumanEval+",
+        "delta": "+8.17",
+        "isPositive": true,
+        "metric": "pass@1",
+        "thisPaper": "57.43"
+      },
+      {
+        "baseline": "64.60",
+        "benchmark": "PopQA",
+        "delta": "+6.75",
+        "isPositive": true,
+        "metric": "Average (LLM-as-a-judge)",
+        "thisPaper": "71.35"
+      },
+      {
+        "baseline": "75.63",
+        "benchmark": "PopQA",
+        "delta": "+13.58",
+        "isPositive": true,
+        "metric": "Llama (LLM-as-a-judge)",
+        "thisPaper": "89.21"
+      }
+    ],
+    "mainTakeaways": [
+      "CoRAG significantly outperforms existing RAG methods on key knowledge-intensive QA benchmarks, demonstrating improved performance and generalization.",
+      "The joint optimization of the reranker and generator is crucial for CoRAG's effectiveness, as evidenced by ablation studies where individually optimized components performed worse.",
+      "CoRAG effectively utilizes retrieved documents regardless of their quantity, exhibiting robustness and stable performance even with increasing document numbers, unlike some baselines that degrade.",
+      "The CoRAG generator generalizes well to diverse tasks beyond QA, including code generation and table-based reasoning, indicating strong cross-domain capability.",
+      "Evaluations using LLMs as judges consistently show CoRAG's generated responses to be of higher quality and preferred over baselines, affirming its robust generation capabilities."
+    ]
+  },
+  "institutions": "Jilin University",
+  "keyNovelty": {
+    "main": "Reformulating Retrieval-Augmented Generation (RAG) as a cooperative multi-agent decision-making problem with joint optimization under a shared task-oriented reward.",
+    "explanation": [
+      "CoRAG reformulates RAG as a cooperative multi-agent decision-making problem, treating the reranker and generator as peer agents rather than being connected through an asymmetric dependency pipeline.",
+      "It proposes a joint optimization scheme where both the reranker and generator are optimized towards a shared, task-oriented reward, encouraging cooperation and mitigating the generator's reliance on overly strict document ordering.",
+      "To optimize the reranker, task-oriented rewards are transformed into document-level stochastic preference signals, which are then used with a GRPO-aligned framework and a margin-based pairwise ranking surrogate to provide stable and efficient optimization."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A framework that enhances large language models by retrieving relevant information from an external knowledge source and incorporating it into the generation process to improve factuality and reduce hallucinations.",
+        "term": "Retrieval-Augmented Generation (RAG)"
+      },
+      {
+        "definition": "A component in RAG systems responsible for reordering an initial set of retrieved documents to improve their relevance or usefulness for the generator.",
+        "term": "Reranker"
+      },
+      {
+        "definition": "A component in RAG systems (typically a large language model) that generates a final response based on a query and a set of retrieved/reranked documents.",
+        "term": "Generator"
+      },
+      {
+        "definition": "A policy optimization algorithm used in reinforcement learning, often for preference learning tasks, that aims to align policies with group-relative advantages.",
+        "term": "Group-Relative Policy Optimization (GRPO)"
+      }
+    ],
+    "prerequisites": [
+      "Familiarity with Large Language Models (LLMs) and their architectures (e.g., Transformers).",
+      "Basic understanding of Reinforcement Learning (RL) concepts, including rewards, policies, and policy optimization.",
+      "Knowledge of common metrics and benchmarks for question answering and text generation.",
+      "Understanding of document retrieval and ranking systems."
+    ]
+  },
+  "subTopics": [
+    "Retrieval-Augmented Generation (RAG)",
+    "Multi-Agent Systems",
+    "Reinforcement Learning",
+    "Question Answering",
+    "Large Language Models",
+    "Information Retrieval"
+  ],
+  "tags": [
+    {
+      "name": "Retrieval-Augmented Generation",
+      "type": "primary"
+    },
+    {
+      "name": "Multi-Agent Systems",
+      "type": "primary"
+    },
+    {
+      "name": "Reinforcement Learning",
+      "type": "primary"
+    },
+    {
+      "name": "Large Language Models",
+      "type": "topic"
+    },
+    {
+      "name": "Question Answering",
+      "type": "topic"
+    },
+    {
+      "name": "Natural Language Processing",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Conventional RAG frameworks typically employ a ranking-centric, asymmetric dependency where the generator's performance heavily relies on the reranker's fixed output. This tight coupling makes the generator highly sensitive to reranking quality and suboptimal reranking decisions.",
+      "CoRAG, in contrast, models the reranker and generator as two cooperative peer agents, jointly optimizing them toward a shared task-oriented reward. This alleviates the generator's asymmetric dependency and reliance on strict document ordering.",
+      "Unlike many existing agentic RAG methods that treat retriever (reranker) and generator as separate, modular agents requiring intricate prompting or handcrafted coordination, CoRAG frames them within a unified policy, promoting adaptive specialization in a task-aware manner without explicit coordination mechanisms."
+    ],
+    "limitations": [
+      "Modeling RAG as a cooperative multi-agent framework, while improving robustness, might attenuate the impact of further reranker improvements on generation quality, indicating an inherent tension between reranking effectiveness and generation sensitivity under joint optimization.",
+      "CoRAG underperformed on the ASQA dataset, which involves synthesizing answers from multiple sources and handling ambiguous questions, suggesting current optimization may not generalize effectively to complex, multi-answer tasks when trained predominantly on factoid QA."
+    ],
+    "modeling": [
+      {
+        "label": "Overall Learning Objective",
+        "value": "The learning objective is defined as: $\\max_{\\theta,\\phi} \\mathbb{E}_{D' \\sim S_{\\theta}(\\cdot|q,D), \\hat{a} \\sim G_{\\phi}(\\cdot|q,D')} [R(a^*, \\hat{a})]$, where $\\theta$ and $\\phi$ are parameters of the reranker and generator, respectively, and $R(a^*, \\hat{a})$ is a task-oriented reward (1 if $\\hat{a}$ contains $a^*$, 0 otherwise)."
+      },
+      {
+        "label": "Reranker Optimization (GRPO-aligned)",
+        "list": [
+          "Delayed task-level rewards are transformed into document-level stochastic preference signals $l^{(t)}(q, d_i) \\in \\{0, 1\\}$ for each document $d_i$, indicating task success when $d_i$ was included.",
+          "Expected task success $\\bar{l}(q, d_i) = \\frac{1}{T} \\sum_{t=1}^{T} l^{(t)}(q, d_i)$ is estimated from historical iterations.",
+          "A smoothed Bernoulli parameter $p(q, d_i) = \\alpha + (1-2\\alpha) \\cdot \\bar{l}(q, d_i)$ is used to sample stochastic preference labels $p_i \\sim \\text{Bernoulli}(p(q, d_i))$.",
+          "The reranker (as a deterministic scoring function $S_{\\theta}$) is optimized using a group-relative preference framework aligned with GRPO to maximize the objective $L_{r}^{\\text{GRPO}} = - \\mathbb{E}_{d_i \\sim \\pi_{\\theta}} \\left[ \\hat{A}(q, d_i) \\log \\pi_{\\theta}(d_i | q, D) \\right]$."
+        ],
+        "value": "The reranker is optimized using a GRPO-aligned objective that transforms task-oriented rewards into document-level stochastic preference signals, enabling credit assignment without explicit supervision."
+      },
+      {
+        "label": "Reranker Optimization (Pairwise Ranking Surrogate)",
+        "list": [
+          "To mitigate high variance from noisy credit estimates, the group-relative advantages are reinterpreted as inducing pairwise preferences.",
+          "Positive $D^+$ (documents with $p_i=1$) and negative $D^-$ (documents with $p_i=0$) sets are constructed from sampled labels.",
+          "A margin-based pairwise ranking surrogate loss is adopted: $L_{\\text{rank}} = \\sum_{d_i^+ \\in D^+} \\sum_{d_j^- \\in D^-} \\max \\left( 0, s_{\\theta}(q, d_j^-) - s_{\\theta}(q, d_i^+) + \\gamma \\right)$, where $\\gamma$ is the margin hyperparameter."
+        ],
+        "value": "To stabilize reranker optimization, a deterministic learning-to-rank approach is used, formulating a margin-based pairwise ranking surrogate loss from the stochastic preference labels."
+      },
+      {
+        "label": "Generator Optimization",
+        "value": "The generator, defining a conditional generation policy $\\pi_{\\phi}(\\hat{a} | q, D')$, is optimized using standard GRPO for conditional text generation: $L_{\\text{gen}} = - \\mathbb{E}_{\\hat{a} \\sim \\pi_{\\phi}} \\left[ \\hat{A}(\\hat{a}) \\log \\pi_{\\phi}(\\hat{a} | q, D') \\right]$, where $\\hat{A}(\\hat{a})$ is the group-relative advantage computed from the task-oriented reward $r$ using a baseline."
+      }
+    ],
+    "pipelineFlow": [
+      "Given a query $q$ and a candidate document set $D$, the reranker $S_{\\theta}$ computes a relevance score $s_i$ for each document $d_i$.",
+      "A subset of top-K documents $D'$ is selected based on these scores and fed to the generator.",
+      "The generator $G_{\\phi}$ produces the final response $\\hat{a}$ conditioned on the query $q$ and the selected documents $D'$.",
+      "A shared task-oriented reward $R(a^*, \\hat{a})$ is calculated based on the generated response.",
+      "Both the reranker and generator are jointly optimized using this shared reward signal: the reranker is updated via GRPO-aligned methods (including a pairwise ranking surrogate) and the generator via standard GRPO for conditional text generation."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Input",
+        "value": "A query $q$ and a candidate document set $D = \\{d_1, d_2, ..., d_N\\}$."
+      },
+      {
+        "label": "Reranker Output",
+        "value": "A selected set of top-K documents $D' \\subseteq D$."
+      },
+      {
+        "label": "Generator Output",
+        "value": "A generated response $\\hat{a}$ conditioned on $q$ and $D'$."
+      },
+      {
+        "label": "Objective",
+        "value": "Maximize a shared task-oriented reward $R(a^*, \\hat{a})$, where $a^*$ is the ground-truth response, by jointly optimizing the reranker parameters $\\theta$ and generator parameters $\\phi$."
+      }
+    ],
+    "reproducibility": "The authors state that the model code is released at \"https://anonymous.4open.science/r/CoRAG-D63F\". They provide details on implementation choices, including using BGE-reranker-v2-m3 and Llama-3-Instruct-8B, LoRA fine-tuning strategy, learning rates (5e-5 for reranker, 1e-5 for generator), margin hyperparameter $\\gamma=1$, top-K values for inference (K=3 for PopQA, TriviaQA, NQ, ASQA; K=7 for 2WikiMultiHopQA), and generator temperature (0.7). The training data (PopQA) and evaluation datasets are also specified.",
+    "systemModules": []
+  },
+  "thesis": "By reformulating Retrieval-Augmented Generation (RAG) as a cooperative multi-agent decision-making problem and jointly optimizing the reranker and generator under a shared task-oriented reward, CoRAG mitigates the generator's asymmetric dependency on reranking results, leading to improved generation stability and generalization.",
+  "title": "Rethinking Retrieval-Augmented Generation as a Cooperative Decision-Making Problem",
+  "url": "https://arxiv.org/abs/arXiv:2602.18734",
+  "venue": "arXiv preprint",
+  "year": "2026"
+}

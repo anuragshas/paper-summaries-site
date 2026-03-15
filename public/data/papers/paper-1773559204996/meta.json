@@ -1,0 +1,18 @@
+{
+  "paperId": "paper-1773559204996",
+  "title": "Think before Recommendation: Autonomous Reasoning-enhanced Recommender",
+  "authors": "Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang",
+  "publishedDate": null,
+  "tags": [
+    "RL",
+    "Rec",
+    "Reasoning"
+  ],
+  "sourceUrl": "https://openreview.net/pdf?id=fVs2BCjCqC",
+  "pagePath": "/paper-summaries-site/papers/paper-1773559204996",
+  "summaryPath": "/paper-summaries-site/data/papers/paper-1773559204996/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

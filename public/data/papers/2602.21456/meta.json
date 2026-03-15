@@ -1,0 +1,18 @@
+{
+  "paperId": "2602.21456",
+  "title": "Revisiting Text Ranking in Deep Research",
+  "authors": "Chuan Meng, Litu Ou, Sean MacAvaney, Jeff Dalton",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "RAG",
+    "QA",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2602.21456",
+  "pagePath": "/paper-summaries-site/papers/2602.21456",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.21456/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -1,0 +1,333 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 312,
+      "xmin": 517,
+      "ymax": 482,
+      "xmax": 903
+    },
+    "caption": "Example few-shot prompt for query (query_target) and returned app (app_target).",
+    "figureNumber": 1,
+    "pageIndex": 1
+  },
+  "authors": "Evangelia Christakopoulou, Vivekkumar Patel, Hemanth Velaga, Sandip Gaikwad",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "This paper presents a strong industrial-scale validation of using fine-tuned LLMs as offline label generators to augment search ranking systems. It demonstrates significant and measurable improvements in both offline and online metrics, notably a +0.24% conversion rate increase in a worldwide App Store A/B test, especially for challenging tail queries. While the 'LLM-as-a-Judge' concept exists, its deployment at this scale, the systematic evaluation of LLM configurations, and the clear demonstration of shifting the Pareto frontier for multi-objective ranking make this a substantial practical and empirical contribution."
+  },
+  "coreProblem": {
+    "statement": "The core problem is the scarcity of high-quality, expert-provided textual relevance labels, which are crucial for effective search ranking systems that optimize for both textual and behavioral relevance. This scarcity leads to a scalability bottleneck and under-powers the textual relevance objective in multi-objective training.",
+    "whyItMatters": [
+      "It creates a fundamental scalability bottleneck for large-scale commercial search systems.",
+      "It leaves the textual relevance objective under-powered in multi-objective learning-to-rank frameworks.",
+      "It limits the effectiveness of search ranking systems in helping users discover and engage with relevant applications, particularly for tail queries where behavioral data is sparse."
+    ],
+    "concreteExample": "An App Store search system needs to rank apps, balancing semantic fit (textual relevance) and likelihood of download/click (behavioral relevance). Obtaining sufficient expert human judgments for textual relevance for millions of query-app pairs is impractical and creates a scalability bottleneck."
+  },
+  "evaluationHighlights": [
+    "A fine-tuned 3B LLM (FT-3B) significantly outperformed pretrained models (PT-3B, PT-30B) in textual relevance label generation, achieving an F1 score of 0.800 compared to 0.382 for the best pretrained model (PT-30B).",
+    "Augmenting the production ranker with LLM-generated labels led to a simultaneous improvement in both textual and behavioral NDCG, demonstrating a true Pareto improvement (e.g., Textual NDCG@1 increased from 0.867 to 0.868, Behavioral NDCG@1 from 0.646 to 0.652).",
+    "A worldwide A/B test on the App Store ranker showed a statistically significant +0.24% increase in conversion rate for the LLM-augmented model.",
+    "The most substantial online gains in conversion rate were observed for tail queries, where LLM-generated textual labels provided a robust and accurate signal in the absence of reliable behavioral data."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Human judgment validation set (for LLM judge quality)",
+        "Aggregated App Store search logs (for ranker offline evaluation)",
+        "Worldwide App Store traffic (for online A/B testing)"
+      ],
+      "metrics": [
+        "Precision",
+        "Recall",
+        "F1",
+        "NDCG@1",
+        "NDCG@3",
+        "NDCG@7",
+        "Conversion rate"
+      ],
+      "setting": "Offline evaluation of LLM configurations and ranker performance on held-out validation sets, followed by online A/B testing on a worldwide App Store production environment."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 261,
+          "xmin": 89,
+          "ymax": 439,
+          "xmax": 477
+        },
+        "caption": "Conversion rate absolute difference of llm-augmented vs prod model vs query frequency bucket. The lower-numbered buckets correspond to lower frequency - more tail queries, while the higher-numbered buckets correspond to higher frequency-more head queries.",
+        "figureNumber": 2,
+        "pageIndex": 3
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "0.424",
+            "benchmark": "Human Judgments Validation Set",
+            "delta": "+0.378",
+            "isPositive": true,
+            "metric": "Precision",
+            "thisPaper": "0.802"
+          },
+          {
+            "baseline": "0.402",
+            "benchmark": "Human Judgments Validation Set",
+            "delta": "+0.396",
+            "isPositive": true,
+            "metric": "Recall",
+            "thisPaper": "0.798"
+          },
+          {
+            "baseline": "0.382",
+            "benchmark": "Human Judgments Validation Set",
+            "delta": "+0.418",
+            "isPositive": true,
+            "metric": "F1",
+            "thisPaper": "0.800"
+          }
+        ],
+        "title": "LLM Judge Configuration Evaluation"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.867",
+            "benchmark": "Aggregated App Store Logs",
+            "delta": "+0.001",
+            "isPositive": true,
+            "metric": "Textual NDCG@1",
+            "thisPaper": "0.868"
+          },
+          {
+            "baseline": "0.803",
+            "benchmark": "Aggregated App Store Logs",
+            "delta": "+0.002",
+            "isPositive": true,
+            "metric": "Textual NDCG@3",
+            "thisPaper": "0.805"
+          },
+          {
+            "baseline": "0.760",
+            "benchmark": "Aggregated App Store Logs",
+            "delta": "+0.001",
+            "isPositive": true,
+            "metric": "Textual NDCG@7",
+            "thisPaper": "0.761"
+          },
+          {
+            "baseline": "0.646",
+            "benchmark": "Aggregated App Store Logs",
+            "delta": "+0.006",
+            "isPositive": true,
+            "metric": "Behavioral NDCG@1",
+            "thisPaper": "0.652"
+          },
+          {
+            "baseline": "0.479",
+            "benchmark": "Aggregated App Store Logs",
+            "delta": "+0.005",
+            "isPositive": true,
+            "metric": "Behavioral NDCG@3",
+            "thisPaper": "0.484"
+          },
+          {
+            "baseline": "0.403",
+            "benchmark": "Aggregated App Store Logs",
+            "delta": "+0.004",
+            "isPositive": true,
+            "metric": "Behavioral NDCG@7",
+            "thisPaper": "0.407"
+          }
+        ],
+        "title": "Offline Ranker Performance (NDCG)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "N/A",
+            "benchmark": "Worldwide App Store Traffic",
+            "delta": "+0.24%",
+            "isPositive": true,
+            "metric": "Conversion rate",
+            "thisPaper": "+0.24%"
+          }
+        ],
+        "title": "Online A/B Test Results"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "0.382",
+        "benchmark": "Human Judgments Validation Set",
+        "delta": "+0.418",
+        "isPositive": true,
+        "metric": "F1",
+        "thisPaper": "0.800"
+      },
+      {
+        "baseline": "0.867",
+        "benchmark": "Aggregated App Store Logs",
+        "delta": "+0.001",
+        "isPositive": true,
+        "metric": "Textual NDCG@1",
+        "thisPaper": "0.868"
+      },
+      {
+        "baseline": "0.646",
+        "benchmark": "Aggregated App Store Logs",
+        "delta": "+0.006",
+        "isPositive": true,
+        "metric": "Behavioral NDCG@1",
+        "thisPaper": "0.652"
+      },
+      {
+        "baseline": "N/A",
+        "benchmark": "Worldwide App Store Traffic",
+        "delta": "+0.24%",
+        "isPositive": true,
+        "metric": "Conversion rate",
+        "thisPaper": "+0.24%"
+      }
+    ],
+    "mainTakeaways": [
+      "A fine-tuned smaller LLM (FT-3B) significantly outperforms much larger pretrained LLMs (PT-30B) in generating high-quality textual relevance labels, indicating the critical value of fine-tuning for specific tasks.",
+      "Augmenting the production ranker's training data with millions of LLM-generated textual relevance labels leads to a simultaneous improvement in both textual and behavioral NDCG, demonstrating a true Pareto improvement across various rank cutoffs (k=1, 3, 7).",
+      "The LLM-augmented model achieved a statistically significant +0.24% increase in online conversion rate in a worldwide A/B test, confirming the practical effectiveness of the approach in a real-world commercial environment.",
+      "The most substantial online gains in conversion rate were observed for tail queries, where LLM-generated textual labels effectively compensated for sparse behavioral signals, thereby closing a crucial relevance gap."
+    ]
+  },
+  "institutions": "Apple",
+  "keyNovelty": {
+    "main": "A scalable industrial strategy for augmenting multi-objective search ranker training data using millions of high-quality textual relevance labels generated by a fine-tuned Large Language Model (LLM) acting as an offline judge, leading to significant improvements in both offline and online ranking performance, particularly for tail queries.",
+    "explanation": [
+      "The paper systematically evaluates various LLM configurations, including pretrained and fine-tuned models with different parameter counts (3B vs 30B), and prompt engineering techniques (zero-shot vs. few-shot, textual vs. numeric labels). This rigorous evaluation identifies an optimal fine-tuned, smaller LLM (FT-3B) that significantly outperforms much larger pretrained models for generating high-quality relevance labels.",
+      "Leveraging the optimal LLM configuration, the authors generate millions of pointwise textual relevance labels offline across multiple languages. This approach acts as a 'force multiplier' for human annotation, effectively overcoming data scarcity for textual relevance.",
+      "The LLM-generated labels are integrated into the training pipeline of a multi-objective production ranker. This augmentation leads to a significant outward shift of the behavioral-textual relevance Pareto frontier, meaning the ranker simultaneously improves both textual and behavioral NDCG metrics, strictly dominating previous production models.",
+      "The efficacy of the approach is validated through a comprehensive evaluation, including offline NDCG metrics and a large-scale online A/B test. The A/B test demonstrates a statistically significant +0.24% increase in conversion rate in a real-world commercial setting, with particular impact on tail queries where behavioral data is scarce."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "The semantic fit of a search result to a user query, typically judged by human experts.",
+        "term": "Textual Relevance"
+      },
+      {
+        "definition": "The likelihood of a user clicking or downloading a search result, derived from aggregated user interactions in search logs.",
+        "term": "Behavioral Relevance"
+      },
+      {
+        "definition": "A framework for training ranking models that simultaneously optimize for multiple, often conflicting, objectives (e.g., textual and behavioral relevance).",
+        "term": "Multi-Objective Learning to Rank (LTR)"
+      },
+      {
+        "definition": "In multi-objective optimization, the set of solutions for which no objective can be improved without simultaneously worsening at least one other objective. 'Shifting the Pareto frontier outwards' means achieving better performance across all objectives simultaneously.",
+        "term": "Pareto Frontier"
+      },
+      {
+        "definition": "A paradigm where Large Language Models are used to perform relevance judgments, often acting as scalable annotators.",
+        "term": "LLM-as-a-Judge"
+      },
+      {
+        "definition": "A common metric for evaluating the quality of ranked search results, which considers the position of relevant items and discounts relevance scores at lower ranks.",
+        "term": "NDCG (Normalized Discounted Cumulative Gain)"
+      },
+      {
+        "definition": "An online metric in commercial search systems, typically defined as the proportion of search sessions that lead to a desired user action, such as an app download.",
+        "term": "Conversion Rate"
+      },
+      {
+        "definition": "Search queries with low frequency or volume, often characterized by sparse behavioral data, making their relevance harder to assess.",
+        "term": "Tail Queries"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of search ranking systems and their objectives.",
+      "Familiarity with Large Language Models (LLMs) and their capabilities (e.g., fine-tuning, few-shot prompting).",
+      "Basic knowledge of machine learning evaluation metrics, especially for ranking (e.g., NDCG, Precision, Recall, F1).",
+      "Understanding of multi-objective optimization concepts."
+    ]
+  },
+  "subTopics": [
+    "Information Retrieval",
+    "Learning to Rank",
+    "Large Language Models",
+    "Multi-Objective Optimization",
+    "App Store Search",
+    "Relevance Labeling"
+  ],
+  "tags": [
+    {
+      "name": "Information Retrieval",
+      "type": "primary"
+    },
+    {
+      "name": "Large Language Models",
+      "type": "primary"
+    },
+    {
+      "name": "Search Ranking",
+      "type": "topic"
+    },
+    {
+      "name": "Multi-Objective Learning",
+      "type": "topic"
+    },
+    {
+      "name": "Data Augmentation",
+      "type": "topic"
+    },
+    {
+      "name": "App Store",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike prior work that primarily focuses on deploying LLMs as real-time rerankers, this work uses LLMs as an offline label generator to create large-scale training data for a production ranker.",
+      "While previous 'LLM-as-a-Judge' approaches mitigate label scarcity, this paper distinguishes itself by using a fine-tuned, in-domain LLM as a 'force multiplier' to generate millions of labels for training data, rather than solely for evaluation.",
+      "Different from methods like RRADistill that distill LLM semantic understanding into smaller models with architectural modifications, this work utilizes pointwise LLM-generated labels to directly augment training data for the production ranker without altering its internal architecture.",
+      "In the context of multi-objective Learning to Rank, this work strengthens an existing textual relevance objective by dramatically expanding its label coverage, rather than introducing a new objective or applying complex sigmoid transformations to LLM-generated labels as seen in some prior methods."
+    ],
+    "limitations": [
+      "The paper does not explicitly state limitations, but future work mentioned includes experimenting with additional fine-tuned models and exploring pairwise/listwise label generation, implying potential areas for improvement or expansion beyond the current pointwise approach."
+    ],
+    "modeling": [
+      {
+        "label": "LLM-as-a-Judge for Label Generation",
+        "list": [],
+        "value": "A fine-tuned 3-billion parameter in-house LLM (FT-3B) is identified as the optimal configuration for generating textual relevance labels. This LLM is fine-tuned on a smaller dataset of existing human judgments. It employs few-shot prompts with textual labels (as illustrated in Figure 1), designed to align its judgments with the specific human ranking rubric. The label generation process is performed offline to scale annotation efficiently."
+      },
+      {
+        "label": "Multi-Objective Ranker Training",
+        "list": [],
+        "value": "The production ranker operates within a Multi-Objective Optimization (MOO) framework. It uses scalarization, combining textual and behavioral objectives into a single objective function via a weighted mix of training data. The textual labels for training comprise both original human judgments and the newly generated LLM-based labels, while behavioral labels are derived from aggregated App Store search logs. The data mixing ratio is a tunable hyperparameter, allowing control over the relative influence of each objective."
+      }
+    ],
+    "pipelineFlow": [
+      "Collect a large-scale dataset of query-app pairs from historical App Store session logs, used to derive behavioral relevance signals.",
+      "Gather a smaller dataset of expert human textual relevance judgments on a subset of query-app pairs.",
+      "Fine-tune an in-house 3-billion parameter LLM on the human textual judgments to create an 'LLM Judge'.",
+      "Use the 'LLM Judge' with few-shot, textual prompts to perform inference on the large-scale aggregated query-app log data, generating millions of new pointwise textual relevance labels.",
+      "Construct the production ranker's training dataset by combining the historical aggregated behavioral logs, the original human textual judgments, and the newly generated LLM textual relevance labels.",
+      "Train the multi-objective production ranker using a scalarization approach, jointly optimizing for textual and behavioral relevance, with data mixing ratio as a hyperparameter.",
+      "Evaluate the trained ranker through rigorous offline evaluation (using NDCG@k metrics for both textual and behavioral relevance) and online A/B testing (measuring conversion rate in a real-world production environment)."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Objective Function",
+        "value": "The system optimizes for multi-objective relevance, combining textual relevance (semantic fit) and behavioral relevance (user engagement). This is achieved through scalarization, where objectives are weighted and combined into a single objective function, $L = \\alpha L_{\\text{textual}} + (1 - \\alpha) L_{\\text{behavioral}}$. The training data for these objectives are kept strictly separate during gradient computation."
+      }
+    ],
+    "reproducibility": "The paper provides a clear methodology and experimental setup descriptions, including model configurations and evaluation metrics. However, specific implementation details, hyperparameters, and dataset access (due to being an in-house industrial system) are not provided, which would be necessary for full reproducibility by external researchers.",
+    "systemModules": []
+  },
+  "thesis": "Large Language Models, when fine-tuned on human judgments and used as scalable offline label generators, can effectively overcome data scarcity for textual relevance. Integrating these LLM-generated labels into a multi-objective ranker's training pipeline fundamentally shifts the behavioral-textual relevance Pareto frontier outwards, leading to superior performance in both offline NDCG metrics and statistically significant online conversion rate improvements, particularly for tail queries in a real-world commercial setting like the App Store.",
+  "title": "Scaling Search Relevance: Augmenting App Store Ranking with LLM-Generated Judgments",
+  "url": "https://arxiv.org/pdf/2602.23234",
+  "venue": "N/A",
+  "year": "2026"
+}

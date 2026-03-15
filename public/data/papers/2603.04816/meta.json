@@ -1,0 +1,18 @@
+{
+  "paperId": "2603.04816",
+  "title": "Scaling Laws for Reranking in Information Retrieval",
+  "authors": "Rahul Seetharaman, Aman Bansal, Hamed Zamani, Kaustubh D. Dhole",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "RAG",
+    "Benchmark",
+    "QA"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2603.04816",
+  "pagePath": "/paper-summaries-site/papers/2603.04816",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.04816/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

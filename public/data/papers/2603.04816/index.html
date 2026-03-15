@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scaling Laws for Reranking in Information Retrieval</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Scaling Laws for Reranking in Information Retrieval</h1>
+      <p class="meta"><strong>Authors:</strong> Rahul Seetharaman, Aman Bansal, Hamed Zamani, Kaustubh D. Dhole</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2603.04816" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2603.04816</a></p>
+      <p class="muted">Generated summary artifact for 2603.04816</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Reranker performance follows predictable power laws with model and data scale, allowing accurate forecasting of large-model performance from smaller-scale training runs and providing a practical approach for efficient planning of expensive reranker training.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>While scaling laws are well-established for natural language generation and dense retrieval, they are largely underexplored for reranking systems. Reranking presents unique challenges due to operating on retriever-induced candidate sets, heterogeneous learning-to-rank objectives, and discontinuous top-k metrics like NDCG, making scaling behavior non-obvious.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>First systematic study characterizing scaling laws for rerankers in information retrieval, enabling accurate performance forecasting for large models from smaller-scale experiments across various learning-to-rank objectives.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Reranker performance follows predictable power laws with model size and data scale for metrics like NDCG@10, MAP, and MRR.</li><li>Accurate forecasting of large-model reranker performance (e.g., NDCG@10 for 1B-parameter models) is possible using only smaller-scale training runs.</li><li>Scaling behavior (fit quality and apparent exponents) differs across pointwise, pairwise, and listwise fine-tuning objectives.</li><li>Contrastive Entropy (CE) is less reliable for reranker forecasting compared to NDCG@10 due to sensitivity to score calibration and normalization.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Reranker performance follows predictable power laws with model and data scale for traditional metrics like NDCG@10.</li><li>Accurate forecasting of downstream ranking quality (e.g., NDCG@10) in the large-model regime is possible using only smaller-scale training runs.</li><li>This provides a practical approach for planning expensive reranker training by reducing the need for full-scale experiments.</li><li>Scaling behavior (fit quality and apparent exponents) differs across pointwise, pairwise, and listwise objectives, indicating that a single universal fit is unlikely to capture all paradigms equally well.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Contrastive Entropy (CE) is less reliable for reranker forecasting compared to NDCG@10, as it is sensitive to score calibration and normalization, which can cause fluctuations in trends.</li><li>Mean Reciprocal Rank (MRR) does not show predictable scaling on all evaluation datasets, particularly on TREC DL &#39;19.</li><li>A single universal power-law fit is unlikely to capture the scaling behavior equally well across all pointwise, pairwise, and listwise paradigms due to observed differences in fit quality and exponents.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {},
+  &quot;authors&quot;: &quot;Rahul Seetharaman, Aman Bansal, Hamed Zamani, Kaustubh D. Dhole&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper presents the first systematic study of scaling laws specifically for rerankers, a crucial but underexplored component of multi-stage information retrieval systems. It demonstrates that reranker performance, particularly NDCG@10, follows predictable power laws with model size and data, enabling accurate forecasting of large-model performance from smaller-scale training runs. This offers significant practical value by saving computational resources in training expensive large-scale rerankers. The work also highlights how scaling behavior differs across pointwise, pairwise, and listwise objectives, providing actionable insights for practitioners.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;The high cost of training large-scale reranking models makes it crucial to accurately forecast the performance of a 1B-parameter model using only smaller-scale training runs (e.g., up to 400M parameters) to save computational resources.&quot;,
+    &quot;statement&quot;: &quot;While scaling laws are well-established for natural language generation and dense retrieval, they are largely underexplored for reranking systems. Reranking presents unique challenges due to operating on retriever-induced candidate sets, heterogeneous learning-to-rank objectives, and discontinuous top-k metrics like NDCG, making scaling behavior non-obvious.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Enables accurate forecasting of large reranker performance from smaller-scale training runs.&quot;,
+      &quot;Provides a robust methodology for saving significant computational resources during model development.&quot;,
+      &quot;Facilitates planning expensive training at 1B+ scale with fewer full-size experiments.&quot;,
+      &quot;Offers actionable insights for building industrial-grade retrieval systems.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Reranker performance follows predictable power laws with model size and data scale for metrics like NDCG@10, MAP, and MRR.&quot;,
+    &quot;Accurate forecasting of large-model reranker performance (e.g., NDCG@10 for 1B-parameter models) is possible using only smaller-scale training runs.&quot;,
+    &quot;Scaling behavior (fit quality and apparent exponents) differs across pointwise, pairwise, and listwise fine-tuning objectives.&quot;,
+    &quot;Contrastive Entropy (CE) is less reliable for reranker forecasting compared to NDCG@10 due to sensitivity to score calibration and normalization.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;MS MARCO passage ranking dataset (MSMARCO-dev)&quot;,
+        &quot;TREC DL &#39;19&quot;,
+        &quot;TREC DL &#39;20&quot;,
+        &quot;TREC DL &#39;21&quot;,
+        &quot;TREC DL &#39;22&quot;,
+        &quot;TREC DL &#39;23&quot;,
+        &quot;DL HARD&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;NDCG@10&quot;,
+        &quot;Contrastive Entropy (CE)&quot;,
+        &quot;Mean Average Precision (MAP)&quot;,
+        &quot;Mean Reciprocal Rank (MRR)&quot;,
+        &quot;Test RMSE&quot;,
+        &quot;Test MAE&quot;
+      ],
+      &quot;setting&quot;: &quot;Cross-encoder rerankers (Ettin series) finetuned on 100k MSMARCO queries, with BM25 as the first-stage retriever. Evaluation includes in-domain (MSMARCO-dev) and out-of-domain (TREC DL, DL HARD) datasets. Power-law functions are fitted and predictive accuracy evaluated via held-out checkpoints using RMSE.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 106,
+          &quot;xmin&quot;: 87,
+          &quot;ymax&quot;: 603,
+          &quot;xmax&quot;: 915
+        },
+        &quot;caption&quot;: &quot;Scaling behavior of NDCG@10 (top row) and Contrastive Entropy (bottom row) under model, data, and joint scaling.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 4
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 120,
+          &quot;xmin&quot;: 84,
+          &quot;ymax&quot;: 568,
+          &quot;xmax&quot;: 916
+        },
+        &quot;caption&quot;: &quot;Model scaling trends on TREC DL ’19 across NDCG@10, MAP, and MRR.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 5
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.015 (Pairwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, Pointwise&quot;,
+            &quot;delta&quot;: &quot;0.000&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.015&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.015 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, Listwise&quot;,
+            &quot;delta&quot;: &quot;+0.003&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.018&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.016 (Listwise)&quot;,
+            &quot;benchmark&quot;: &quot;Data Scaling, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.014&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.030&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.030 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Data Scaling, Listwise&quot;,
+            &quot;delta&quot;: &quot;-0.014&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.016&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.023 (Pairwise)&quot;,
+            &quot;benchmark&quot;: &quot;Joint Scaling, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.003&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.026&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.026 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Joint Scaling, Pairwise&quot;,
+            &quot;delta&quot;: &quot;-0.003&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.023&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.023 (Pairwise)&quot;,
+            &quot;benchmark&quot;: &quot;Joint Scaling, Listwise&quot;,
+            &quot;delta&quot;: &quot;+0.003&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.026&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;NDCG Forecasting Errors (MSMARCO-dev)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.076 (Pairwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.272&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.348&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.348 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, Pairwise&quot;,
+            &quot;delta&quot;: &quot;-0.272&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.076&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.076 (Pairwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, Listwise&quot;,
+            &quot;delta&quot;: &quot;+0.007&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.083&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.061 (Listwise)&quot;,
+            &quot;benchmark&quot;: &quot;Data Scaling, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.068&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.129&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.129 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Data Scaling, Listwise&quot;,
+            &quot;delta&quot;: &quot;-0.068&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.061&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.105 (Listwise)&quot;,
+            &quot;benchmark&quot;: &quot;Joint Scaling, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.136&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.241&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.241 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Joint Scaling, Listwise&quot;,
+            &quot;delta&quot;: &quot;-0.136&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.105&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Contrastive Entropy Forecasting Errors (MSMARCO-dev)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.011 (Pairwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, NDCG, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.004&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.015&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.015 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, NDCG, Pairwise&quot;,
+            &quot;delta&quot;: &quot;-0.004&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.011&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.010 (Listwise)&quot;,
+            &quot;benchmark&quot;: &quot;Data Scaling (150M), NDCG, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.035&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.045&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.045 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Data Scaling (150M), NDCG, Listwise&quot;,
+            &quot;delta&quot;: &quot;-0.035&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.010&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.043 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, MAP, Pointwise&quot;,
+            &quot;delta&quot;: &quot;0.000&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.043&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.043 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, MAP, Pairwise&quot;,
+            &quot;delta&quot;: &quot;+0.008&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.051&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.087 (Listwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, MRR, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.014&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.101&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.101 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, MRR, Listwise&quot;,
+            &quot;delta&quot;: &quot;-0.014&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.087&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;TREC DL Forecasting Errors (NDCG, MAP, MRR)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.013 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, MAP, Pointwise&quot;,
+            &quot;delta&quot;: &quot;0.000&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.013&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.013 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Model Scaling, MAP, Listwise&quot;,
+            &quot;delta&quot;: &quot;+0.007&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.020&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.016 (Listwise)&quot;,
+            &quot;benchmark&quot;: &quot;Data Scaling, MAP, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.009&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.025&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.025 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Data Scaling, MAP, Listwise&quot;,
+            &quot;delta&quot;: &quot;-0.009&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.016&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.019 (Pairwise)&quot;,
+            &quot;benchmark&quot;: &quot;Joint Scaling, MAP, Pointwise&quot;,
+            &quot;delta&quot;: &quot;+0.002&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.021&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.021 (Pointwise)&quot;,
+            &quot;benchmark&quot;: &quot;Joint Scaling, MAP, Pairwise&quot;,
+            &quot;delta&quot;: &quot;-0.002&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.019&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.019 (Pairwise)&quot;,
+            &quot;benchmark&quot;: &quot;Joint Scaling, MAP, Listwise&quot;,
+            &quot;delta&quot;: &quot;+0.003&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Test RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.022&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;MSMARCO-dev Forecasting Errors (MAP, MRR)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Reranker performance follows predictable power laws with model and data scale for traditional metrics like NDCG@10.&quot;,
+      &quot;Accurate forecasting of downstream ranking quality (e.g., NDCG@10) in the large-model regime is possible using only smaller-scale training runs.&quot;,
+      &quot;This provides a practical approach for planning expensive reranker training by reducing the need for full-scale experiments.&quot;,
+      &quot;Scaling behavior (fit quality and apparent exponents) differs across pointwise, pairwise, and listwise objectives, indicating that a single universal fit is unlikely to capture all paradigms equally well.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;UMass Amherst, Emory University&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Presents the first systematic study of scaling laws for rerankers across pointwise, pairwise, and listwise learning-to-rank paradigms.&quot;,
+      &quot;Demonstrates that reranker performance (e.g., NDCG@10) follows predictable power laws with model size, training data exposure, and their joint effect.&quot;,
+      &quot;Shows that the performance of a 1B-parameter reranker can be accurately forecast using smaller-scale training runs (up to 400M parameters) across various metrics and datasets.&quot;,
+      &quot;Highlights that scaling behavior and forecasting errors differ significantly across the three reranking objectives.&quot;
+    ],
+    &quot;main&quot;: &quot;First systematic study characterizing scaling laws for rerankers in information retrieval, enabling accurate performance forecasting for large models from smaller-scale experiments across various learning-to-rank objectives.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A final and most influential step in multi-stage retrieval pipelines that reorders a relatively small set of candidates retrieved by an earlier stage to maximize ranking quality.&quot;,
+        &quot;term&quot;: &quot;Reranking&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Empirical regularities where model performance follows predictable patterns (e.g., power laws) as computational resources (model size, data, compute) increase.&quot;,
+        &quot;term&quot;: &quot;Scaling Laws&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A widely used top-k ranking metric that measures the usefulness or gain of a document based on its position in the ranked list, with a logarithmic reduction for lower ranks.&quot;,
+        &quot;term&quot;: &quot;NDCG@10&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A continuous diagnostic metric used to analyze scaling, representing the negative log-probability of ranking a relevant passage above negative passages, similar to proxy losses like perplexity.&quot;,
+        &quot;term&quot;: &quot;Contrastive Entropy (CE)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Multi-stage Information Retrieval Systems&quot;,
+      &quot;Learning-to-Rank Paradigms (Pointwise, Pairwise, Listwise)&quot;,
+      &quot;Neural Language Models and Cross-Encoders&quot;,
+      &quot;Power-law Distributions and Curve Fitting&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Information Retrieval Scaling Laws&quot;,
+    &quot;Reranker Performance Forecasting&quot;,
+    &quot;Learning-to-Rank Paradigms&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;RAG&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Prior work on scaling laws has focused on natural language generation (e.g., language model loss) and dense retrieval (e.g., first-stage retrieval quality), which are not directly applicable to reranking due to its unique characteristics.&quot;,
+      &quot;Unlike dense retrieval, rerankers operate on a candidate set induced by a first-stage retriever (e.g., BM25), making the decision space conditional on upstream retrieval.&quot;,
+      &quot;Existing scaling analyses for retrieval components often focus on approximate candidate selection over a corpus rather than fine-grained reranking over a retriever-induced candidate set.&quot;,
+      &quot;The paper extends the understanding of scaling behavior to downstream ranking quality metrics (e.g., NDCG@10) rather than solely perplexity-style objectives or continuous proxy losses, which have shown limitations in direct forecasting for retrieval.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;Contrastive Entropy (CE) is less reliable for reranker forecasting compared to NDCG@10, as it is sensitive to score calibration and normalization, which can cause fluctuations in trends.&quot;,
+      &quot;Mean Reciprocal Rank (MRR) does not show predictable scaling on all evaluation datasets, particularly on TREC DL &#39;19.&quot;,
+      &quot;A single universal power-law fit is unlikely to capture the scaling behavior equally well across all pointwise, pairwise, and listwise paradigms due to observed differences in fit quality and exponents.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Model Size Scaling&quot;,
+        &quot;value&quot;: &quot;Modeled using a saturating power law: $M(M) = a - b M^{-c}$, where $M$ is the number of parameters, $a$ is the asymptotic performance ceiling, $b$ controls scale of gains, and $c$ is the model-scaling exponent.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Data Size Scaling&quot;,
+        &quot;value&quot;: &quot;Modeled using an analogous power law: $M(S) = a - b S^{-c}$, where $S$ is the training step or consumed examples, $a$ is the plateau NDCG, and $c$ captures how quickly performance saturates.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Joint Scaling (Model and Data)&quot;,
+        &quot;value&quot;: &quot;Modeled using an additive joint scaling law: $M(M, S) = a - b M^{-\\alpha} - c S^{-\\beta}$, where $\\alpha$ and $\\beta$ quantify respective returns to scaling model size and training exposure, and $a$ is the joint asymptote.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Pointwise Reranking Objective&quot;,
+        &quot;value&quot;: &quot;The model predicts a per-document relevance label $y$ for a tuple $(q, d, y)$ by minimizing Binary Cross Entropy Loss over individual scores $f_{\\theta}(q, d_i)$.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Pairwise Reranking Objective&quot;,
+        &quot;value&quot;: &quot;The model is trained on triplets $(q, d^+, d^-)$ such that $f_{\\theta}(q, d^+) &gt; f_{\\theta}(q, d^-)$ via a pairwise margin loss, specifically RankNet loss.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Listwise Reranking Objective&quot;,
+        &quot;value&quot;: &quot;The model is trained on a query with a full document list $(q, \\mathbf{d}, \\mathbf{y})$ using a permutation-aware, list-level objective, specifically ListNet loss.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Train a family of cross-encoder reranking models (Ettin series) across increasing model sizes (17M to 400M) and increasing data exposure (up to 100k queries).&quot;,
+      &quot;Evaluate trained models using both a proxy metric (Contrastive Entropy) and a downstream metric (NDCG@10, MAP, MRR).&quot;,
+      &quot;Fit appropriate power-law functions (model-size, data-size, and joint scaling) to the observed performance trends.&quot;,
+      &quot;Validate the predictive power by holding out the last N points of the scaling curve (e.g., 1B model performance from 400M models) and calculating RMSE/MAE for the extrapolated estimates.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Reranker Scoring Function&quot;,
+        &quot;value&quot;: &quot;Given a query $q$ and candidate set $C(q) = \\{d_1, \\ldots, d_K\\}$, a reranker computes a scoring function $f_{\\theta}(q, d_i) \\mapsto s_i \\in \\mathbb{R}$ that induces a ranking $\\pi(q) = \\text{argsort}_i s_i$.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;NDCG@k Metric&quot;,
+        &quot;value&quot;: &quot;$\\text{NDCG}@k = \\frac{\\sum_{r=1}^k 2^{\\text{rel}_r}-1 / \\log_2(r+1)}{\\sum_{r=1}^k 2^{\\text{rel}_r^*}-1 / \\log_2(r+1)}$, where $\\text{rel}_r$ is relevance grade at position $r$ by the model and $\\text{rel}_r^*$ is the ideal relevance grade at position $r$.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Contrastive Entropy Metric&quot;,
+        &quot;value&quot;: &quot;$CE = -\\log \\frac{\\exp(s(q_i, p_i^+; \\theta))}{\\exp(s(q_i, p_i^+; \\theta)) + \\sum_j \\exp(s(q_i, p_j^-; \\theta))}$, where $q_i$ is the $i$-th query, $p_i^+$ is a relevant passage, $p_j^-$ are sampled non-relevant passages, and $s(q, p; \\theta)$ is the model scoring function.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The authors state that the code and evaluation protocols used for training, evaluation, and large-scale performance forecasting will be released.&quot;,
+    &quot;systemModules&quot;: []
+  },
+  &quot;thesis&quot;: &quot;Reranker performance follows predictable power laws with model and data scale, allowing accurate forecasting of large-model performance from smaller-scale training runs and providing a practical approach for efficient planning of expensive reranker training.&quot;,
+  &quot;title&quot;: &quot;Scaling Laws for Reranking in Information Retrieval&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2603.04816&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2603.04816&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2603.04816&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{},&quot;authors&quot;:&quot;Rahul Seetharaman, Aman Bansal, Hamed Zamani, Kaustubh D. Dhole&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper presents the first systematic study of scaling laws specifically for rerankers, a crucial but underexplored component of multi-stage information retrieval systems. It demonstrates that reranker performance, particularly NDCG@10, follows predictable power laws with model size and data, enabling accurate forecasting of large-model performance from smaller-scale training runs. This offers significant practical value by saving computational resources in training expensive large-scale rerankers. The work also highlights how scaling behavior differs across pointwise, pairwise, and listwise objectives, providing actionable insights for practitioners.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;The high cost of training large-scale reranking models makes it crucial to accurately forecast the performance of a 1B-parameter model using only smaller-scale training runs (e.g., up to 400M parameters) to save computational resources.&quot;,&quot;statement&quot;:&quot;While scaling laws are well-established for natural language generation and dense retrieval, they are largely underexplored for reranking systems. Reranking presents unique challenges due to operating on retriever-induced candidate sets, heterogeneous learning-to-rank objectives, and discontinuous top-k metrics like NDCG, making scaling behavior non-obvious.&quot;,&quot;whyItMatters&quot;:[&quot;Enables accurate forecasting of large reranker performance from smaller-scale training runs.&quot;,&quot;Provides a robust methodology for saving significant computational resources during model development.&quot;,&quot;Facilitates planning expensive training at 1B+ scale with fewer full-size experiments.&quot;,&quot;Offers actionable insights for building industrial-grade retrieval systems.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Reranker performance follows predictable power laws with model size and data scale for metrics like NDCG@10, MAP, and MRR.&quot;,&quot;Accurate forecasting of large-model reranker performance (e.g., NDCG@10 for 1B-parameter models) is possible using only smaller-scale training runs.&quot;,&quot;Scaling behavior (fit quality and apparent exponents) differs across pointwise, pairwise, and listwise fine-tuning objectives.&quot;,&quot;Contrastive Entropy (CE) is less reliable for reranker forecasting compared to NDCG@10 due to sensitivity to score calibration and normalization.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;MS MARCO passage ranking dataset (MSMARCO-dev)&quot;,&quot;TREC DL &#39;19&quot;,&quot;TREC DL &#39;20&quot;,&quot;TREC DL &#39;21&quot;,&quot;TREC DL &#39;22&quot;,&quot;TREC DL &#39;23&quot;,&quot;DL HARD&quot;],&quot;metrics&quot;:[&quot;NDCG@10&quot;,&quot;Contrastive Entropy (CE)&quot;,&quot;Mean Average Precision (MAP)&quot;,&quot;Mean Reciprocal Rank (MRR)&quot;,&quot;Test RMSE&quot;,&quot;Test MAE&quot;],&quot;setting&quot;:&quot;Cross-encoder rerankers (Ettin series) finetuned on 100k MSMARCO queries, with BM25 as the first-stage retriever. Evaluation includes in-domain (MSMARCO-dev) and out-of-domain (TREC DL, DL HARD) datasets. Power-law functions are fitted and predictive accuracy evaluated via held-out checkpoints using RMSE.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:106,&quot;xmin&quot;:87,&quot;ymax&quot;:603,&quot;xmax&quot;:915},&quot;caption&quot;:&quot;Scaling behavior of NDCG@10 (top row) and Contrastive Entropy (bottom row) under model, data, and joint scaling.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:4},{&quot;boundingBox&quot;:{&quot;ymin&quot;:120,&quot;xmin&quot;:84,&quot;ymax&quot;:568,&quot;xmax&quot;:916},&quot;caption&quot;:&quot;Model scaling trends on TREC DL ’19 across NDCG@10, MAP, and MRR.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:5}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.015 (Pairwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, Pointwise&quot;,&quot;delta&quot;:&quot;0.000&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.015&quot;},{&quot;baseline&quot;:&quot;0.015 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, Listwise&quot;,&quot;delta&quot;:&quot;+0.003&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.018&quot;},{&quot;baseline&quot;:&quot;0.016 (Listwise)&quot;,&quot;benchmark&quot;:&quot;Data Scaling, Pointwise&quot;,&quot;delta&quot;:&quot;+0.014&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.030&quot;},{&quot;baseline&quot;:&quot;0.030 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Data Scaling, Listwise&quot;,&quot;delta&quot;:&quot;-0.014&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.016&quot;},{&quot;baseline&quot;:&quot;0.023 (Pairwise)&quot;,&quot;benchmark&quot;:&quot;Joint Scaling, Pointwise&quot;,&quot;delta&quot;:&quot;+0.003&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.026&quot;},{&quot;baseline&quot;:&quot;0.026 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Joint Scaling, Pairwise&quot;,&quot;delta&quot;:&quot;-0.003&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.023&quot;},{&quot;baseline&quot;:&quot;0.023 (Pairwise)&quot;,&quot;benchmark&quot;:&quot;Joint Scaling, Listwise&quot;,&quot;delta&quot;:&quot;+0.003&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.026&quot;}],&quot;title&quot;:&quot;NDCG Forecasting Errors (MSMARCO-dev)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.076 (Pairwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, Pointwise&quot;,&quot;delta&quot;:&quot;+0.272&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.348&quot;},{&quot;baseline&quot;:&quot;0.348 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, Pairwise&quot;,&quot;delta&quot;:&quot;-0.272&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.076&quot;},{&quot;baseline&quot;:&quot;0.076 (Pairwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, Listwise&quot;,&quot;delta&quot;:&quot;+0.007&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.083&quot;},{&quot;baseline&quot;:&quot;0.061 (Listwise)&quot;,&quot;benchmark&quot;:&quot;Data Scaling, Pointwise&quot;,&quot;delta&quot;:&quot;+0.068&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.129&quot;},{&quot;baseline&quot;:&quot;0.129 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Data Scaling, Listwise&quot;,&quot;delta&quot;:&quot;-0.068&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.061&quot;},{&quot;baseline&quot;:&quot;0.105 (Listwise)&quot;,&quot;benchmark&quot;:&quot;Joint Scaling, Pointwise&quot;,&quot;delta&quot;:&quot;+0.136&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.241&quot;},{&quot;baseline&quot;:&quot;0.241 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Joint Scaling, Listwise&quot;,&quot;delta&quot;:&quot;-0.136&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.105&quot;}],&quot;title&quot;:&quot;Contrastive Entropy Forecasting Errors (MSMARCO-dev)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.011 (Pairwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, NDCG, Pointwise&quot;,&quot;delta&quot;:&quot;+0.004&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.015&quot;},{&quot;baseline&quot;:&quot;0.015 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, NDCG, Pairwise&quot;,&quot;delta&quot;:&quot;-0.004&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.011&quot;},{&quot;baseline&quot;:&quot;0.010 (Listwise)&quot;,&quot;benchmark&quot;:&quot;Data Scaling (150M), NDCG, Pointwise&quot;,&quot;delta&quot;:&quot;+0.035&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.045&quot;},{&quot;baseline&quot;:&quot;0.045 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Data Scaling (150M), NDCG, Listwise&quot;,&quot;delta&quot;:&quot;-0.035&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.010&quot;},{&quot;baseline&quot;:&quot;0.043 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, MAP, Pointwise&quot;,&quot;delta&quot;:&quot;0.000&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.043&quot;},{&quot;baseline&quot;:&quot;0.043 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, MAP, Pairwise&quot;,&quot;delta&quot;:&quot;+0.008&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.051&quot;},{&quot;baseline&quot;:&quot;0.087 (Listwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, MRR, Pointwise&quot;,&quot;delta&quot;:&quot;+0.014&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.101&quot;},{&quot;baseline&quot;:&quot;0.101 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, MRR, Listwise&quot;,&quot;delta&quot;:&quot;-0.014&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.087&quot;}],&quot;title&quot;:&quot;TREC DL Forecasting Errors (NDCG, MAP, MRR)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.013 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, MAP, Pointwise&quot;,&quot;delta&quot;:&quot;0.000&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.013&quot;},{&quot;baseline&quot;:&quot;0.013 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Model Scaling, MAP, Listwise&quot;,&quot;delta&quot;:&quot;+0.007&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.020&quot;},{&quot;baseline&quot;:&quot;0.016 (Listwise)&quot;,&quot;benchmark&quot;:&quot;Data Scaling, MAP, Pointwise&quot;,&quot;delta&quot;:&quot;+0.009&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.025&quot;},{&quot;baseline&quot;:&quot;0.025 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Data Scaling, MAP, Listwise&quot;,&quot;delta&quot;:&quot;-0.009&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.016&quot;},{&quot;baseline&quot;:&quot;0.019 (Pairwise)&quot;,&quot;benchmark&quot;:&quot;Joint Scaling, MAP, Pointwise&quot;,&quot;delta&quot;:&quot;+0.002&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.021&quot;},{&quot;baseline&quot;:&quot;0.021 (Pointwise)&quot;,&quot;benchmark&quot;:&quot;Joint Scaling, MAP, Pairwise&quot;,&quot;delta&quot;:&quot;-0.002&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.019&quot;},{&quot;baseline&quot;:&quot;0.019 (Pairwise)&quot;,&quot;benchmark&quot;:&quot;Joint Scaling, MAP, Listwise&quot;,&quot;delta&quot;:&quot;+0.003&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Test RMSE&quot;,&quot;thisPaper&quot;:&quot;0.022&quot;}],&quot;title&quot;:&quot;MSMARCO-dev Forecasting Errors (MAP, MRR)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Reranker performance follows predictable power laws with model and data scale for traditional metrics like NDCG@10.&quot;,&quot;Accurate forecasting of downstream ranking quality (e.g., NDCG@10) in the large-model regime is possible using only smaller-scale training runs.&quot;,&quot;This provides a practical approach for planning expensive reranker training by reducing the need for full-scale experiments.&quot;,&quot;Scaling behavior (fit quality and apparent exponents) differs across pointwise, pairwise, and listwise objectives, indicating that a single universal fit is unlikely to capture all paradigms equally well.&quot;]},&quot;institutions&quot;:&quot;UMass Amherst, Emory University&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Presents the first systematic study of scaling laws for rerankers across pointwise, pairwise, and listwise learning-to-rank paradigms.&quot;,&quot;Demonstrates that reranker performance (e.g., NDCG@10) follows predictable power laws with model size, training data exposure, and their joint effect.&quot;,&quot;Shows that the performance of a 1B-parameter reranker can be accurately forecast using smaller-scale training runs (up to 400M parameters) across various metrics and datasets.&quot;,&quot;Highlights that scaling behavior and forecasting errors differ significantly across the three reranking objectives.&quot;],&quot;main&quot;:&quot;First systematic study characterizing scaling laws for rerankers in information retrieval, enabling accurate performance forecasting for large models from smaller-scale experiments across various learning-to-rank objectives.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A final and most influential step in multi-stage retrieval pipelines that reorders a relatively small set of candidates retrieved by an earlier stage to maximize ranking quality.&quot;,&quot;term&quot;:&quot;Reranking&quot;},{&quot;definition&quot;:&quot;Empirical regularities where model performance follows predictable patterns (e.g., power laws) as computational resources (model size, data, compute) increase.&quot;,&quot;term&quot;:&quot;Scaling Laws&quot;},{&quot;definition&quot;:&quot;A widely used top-k ranking metric that measures the usefulness or gain of a document based on its position in the ranked list, with a logarithmic reduction for lower ranks.&quot;,&quot;term&quot;:&quot;NDCG@10&quot;},{&quot;definition&quot;:&quot;A continuous diagnostic metric used to analyze scaling, representing the negative log-probability of ranking a relevant passage above negative passages, similar to proxy losses like perplexity.&quot;,&quot;term&quot;:&quot;Contrastive Entropy (CE)&quot;}],&quot;prerequisites&quot;:[&quot;Multi-stage Information Retrieval Systems&quot;,&quot;Learning-to-Rank Paradigms (Pointwise, Pairwise, Listwise)&quot;,&quot;Neural Language Models and Cross-Encoders&quot;,&quot;Power-law Distributions and Curve Fitting&quot;]},&quot;subTopics&quot;:[&quot;Information Retrieval Scaling Laws&quot;,&quot;Reranker Performance Forecasting&quot;,&quot;Learning-to-Rank Paradigms&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Prior work on scaling laws has focused on natural language generation (e.g., language model loss) and dense retrieval (e.g., first-stage retrieval quality), which are not directly applicable to reranking due to its unique characteristics.&quot;,&quot;Unlike dense retrieval, rerankers operate on a candidate set induced by a first-stage retriever (e.g., BM25), making the decision space conditional on upstream retrieval.&quot;,&quot;Existing scaling analyses for retrieval components often focus on approximate candidate selection over a corpus rather than fine-grained reranking over a retriever-induced candidate set.&quot;,&quot;The paper extends the understanding of scaling behavior to downstream ranking quality metrics (e.g., NDCG@10) rather than solely perplexity-style objectives or continuous proxy losses, which have shown limitations in direct forecasting for retrieval.&quot;],&quot;limitations&quot;:[&quot;Contrastive Entropy (CE) is less reliable for reranker forecasting compared to NDCG@10, as it is sensitive to score calibration and normalization, which can cause fluctuations in trends.&quot;,&quot;Mean Reciprocal Rank (MRR) does not show predictable scaling on all evaluation datasets, particularly on TREC DL &#39;19.&quot;,&quot;A single universal power-law fit is unlikely to capture the scaling behavior equally well across all pointwise, pairwise, and listwise paradigms due to observed differences in fit quality and exponents.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Model Size Scaling&quot;,&quot;value&quot;:&quot;Modeled using a saturating power law: $M(M) = a - b M^{-c}$, where $M$ is the number of parameters, $a$ is the asymptotic performance ceiling, $b$ controls scale of gains, and $c$ is the model-scaling exponent.&quot;},{&quot;label&quot;:&quot;Data Size Scaling&quot;,&quot;value&quot;:&quot;Modeled using an analogous power law: $M(S) = a - b S^{-c}$, where $S$ is the training step or consumed examples, $a$ is the plateau NDCG, and $c$ captures how quickly performance saturates.&quot;},{&quot;label&quot;:&quot;Joint Scaling (Model and Data)&quot;,&quot;value&quot;:&quot;Modeled using an additive joint scaling law: $M(M, S) = a - b M^{-\\alpha} - c S^{-\\beta}$, where $\\alpha$ and $\\beta$ quantify respective returns to scaling model size and training exposure, and $a$ is the joint asymptote.&quot;},{&quot;label&quot;:&quot;Pointwise Reranking Objective&quot;,&quot;value&quot;:&quot;The model predicts a per-document relevance label $y$ for a tuple $(q, d, y)$ by minimizing Binary Cross Entropy Loss over individual scores $f_{\\theta}(q, d_i)$.&quot;},{&quot;label&quot;:&quot;Pairwise Reranking Objective&quot;,&quot;value&quot;:&quot;The model is trained on triplets $(q, d^+, d^-)$ such that $f_{\\theta}(q, d^+) &gt; f_{\\theta}(q, d^-)$ via a pairwise margin loss, specifically RankNet loss.&quot;},{&quot;label&quot;:&quot;Listwise Reranking Objective&quot;,&quot;value&quot;:&quot;The model is trained on a query with a full document list $(q, \\mathbf{d}, \\mathbf{y})$ using a permutation-aware, list-level objective, specifically ListNet loss.&quot;}],&quot;pipelineFlow&quot;:[&quot;Train a family of cross-encoder reranking models (Ettin series) across increasing model sizes (17M to 400M) and increasing data exposure (up to 100k queries).&quot;,&quot;Evaluate trained models using both a proxy metric (Contrastive Entropy) and a downstream metric (NDCG@10, MAP, MRR).&quot;,&quot;Fit appropriate power-law functions (model-size, data-size, and joint scaling) to the observed performance trends.&quot;,&quot;Validate the predictive power by holding out the last N points of the scaling curve (e.g., 1B model performance from 400M models) and calculating RMSE/MAE for the extrapolated estimates.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Reranker Scoring Function&quot;,&quot;value&quot;:&quot;Given a query $q$ and candidate set $C(q) = \\{d_1, \\ldots, d_K\\}$, a reranker computes a scoring function $f_{\\theta}(q, d_i) \\mapsto s_i \\in \\mathbb{R}$ that induces a ranking $\\pi(q) = \\text{argsort}_i s_i$.&quot;},{&quot;label&quot;:&quot;NDCG@k Metric&quot;,&quot;value&quot;:&quot;$\\text{NDCG}@k = \\frac{\\sum_{r=1}^k 2^{\\text{rel}_r}-1 / \\log_2(r+1)}{\\sum_{r=1}^k 2^{\\text{rel}_r^*}-1 / \\log_2(r+1)}$, where $\\text{rel}_r$ is relevance grade at position $r$ by the model and $\\text{rel}_r^*$ is the ideal relevance grade at position $r$.&quot;},{&quot;label&quot;:&quot;Contrastive Entropy Metric&quot;,&quot;value&quot;:&quot;$CE = -\\log \\frac{\\exp(s(q_i, p_i^+; \\theta))}{\\exp(s(q_i, p_i^+; \\theta)) + \\sum_j \\exp(s(q_i, p_j^-; \\theta))}$, where $q_i$ is the $i$-th query, $p_i^+$ is a relevant passage, $p_j^-$ are sampled non-relevant passages, and $s(q, p; \\theta)$ is the model scoring function.&quot;}],&quot;reproducibility&quot;:&quot;The authors state that the code and evaluation protocols used for training, evaluation, and large-scale performance forecasting will be released.&quot;,&quot;systemModules&quot;:[]},&quot;thesis&quot;:&quot;Reranker performance follows predictable power laws with model and data scale, allowing accurate forecasting of large-model performance from smaller-scale training runs and providing a practical approach for efficient planning of expensive reranker training.&quot;,&quot;title&quot;:&quot;Scaling Laws for Reranking in Information Retrieval&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2603.04816&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

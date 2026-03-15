@@ -1,0 +1,547 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 198,
+      "xmin": 86,
+      "ymax": 421,
+      "xmax": 908
+    },
+    "caption": "Overview of DiffuRank. (a) Pointwise approach that estimates the relevance score of each query-document pair; (b) Logits-based Listwise approach that jointly assesses the relevance scores of multiple documents; (c) and (d) Permutation-based Listwise approach that directly produces the ranking list, including two inference methods: sampling and assignment.",
+    "figureNumber": 1,
+    "pageIndex": 3
+  },
+  "authors": "Qi Liu, Kun Ai, Jiaxin Mao, Yanzhao Zhang, Mingxin Li, Dingkun Long, Pengjun Xie, Fengbin Zhu, Ji-Rong Wen",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "The paper introduces a novel and effective paradigm for document reranking by leveraging diffusion language models (dLLMs). This addresses key limitations of prevalent autoregressive LLM-based rerankers, such as high latency and error propagation. By proposing three distinct, well-tailored dLLM-based reranking strategies and demonstrating competitive or superior performance to AR-LLMs, the work opens a new research direction for dLLMs in information retrieval. The detailed analysis of training and inference strategies, along with efficiency improvements, makes this a strong contribution."
+  },
+  "coreProblem": {
+    "statement": "Most existing LLM-based document rerankers rely on autoregressive generation, which limits their efficiency (due to token-by-token decoding and sequential dependency) and flexibility (due to error propagation from fixed left-to-right generation order), hindering their real-world applicability for large-scale reranking tasks.",
+    "whyItMatters": [
+      "Document reranking is a critical component in information retrieval systems, directly impacting the quality of search results presented to users.",
+      "Improving the efficiency and flexibility of LLM-based rerankers is essential for deploying them in real-world, large-scale IR systems.",
+      "Overcoming the limitations of autoregressive models would unlock the full potential of large language models for complex structured prediction tasks like ranking."
+    ],
+    "concreteExample": "When an LLM-based reranker is used to reorder a list of 100 documents, the autoregressive generation process evaluates documents one by one, leading to significant latency and potential for early ranking errors to propagate, resulting in a suboptimal final list."
+  },
+  "evaluationHighlights": [
+    "DiffuRank consistently outperforms the traditional BM25 baseline across almost all datasets in both zero-shot and fine-tuned settings.",
+    "In zero-shot settings, DiffuRank achieves performance comparable to the best autoregressive LLM-based baselines.",
+    "After fine-tuning, DiffuRank, particularly its permutation-based variants, achieves the best overall average performance on BEIR, surpassing all evaluated LLM-based rerankers and demonstrating strong cross-domain generalization.",
+    "Permutation-based methods, especially DiffuRank Perm-Assign, consistently emerge as the most effective dLLM reranking approach in both zero-shot and fine-tuned evaluations.",
+    "DiffuRank Perm-Assign demonstrates strong performance with low latency, showcasing a favorable efficiency-effectiveness trade-off compared to listwise LLM baselines."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "TREC Deep Learning (DL19, DL20)",
+        "BEIR (Covid, NFCorpus, Touche, DBPedia, SciFact, Signal1M, TREC News, Robust04)"
+      ],
+      "metrics": [
+        "NDCG@10"
+      ],
+      "setting": "Zero-shot performance and fine-tuned performance. Fine-tuning was done on approximately 40K samples from MS MARCO, where each sample consists of a query and up to 20 ranked candidate documents annotated by GPT-4."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 708,
+          "xmin": 167,
+          "ymax": 785,
+          "xmax": 479
+        },
+        "caption": "Effect of different sampling steps $K$ used for DiffuRank Perm-Samp on TREC DL.",
+        "figureNumber": 2,
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 172,
+          "xmin": 524,
+          "ymax": 462,
+          "xmax": 890
+        },
+        "caption": "Iterative filling dynamics of the permutation-based reranker.",
+        "figureNumber": 3,
+        "pageIndex": 7
+      },
+      {
+        "boundingBox": {
+          "ymin": 694,
+          "xmin": 524,
+          "ymax": 843,
+          "xmax": 890
+        },
+        "caption": "Efficiency analysis of listwise methods on DL20. We report the average latency of reranking top 100 documents per query, and we did not use any acceleration techniques.",
+        "figureNumber": 4,
+        "pageIndex": 7
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "80.66",
+            "benchmark": "Covid",
+            "delta": "-7.67",
+            "isPositive": false,
+            "metric": "NDCG@10",
+            "thisPaper": "72.99"
+          },
+          {
+            "baseline": "38.28",
+            "benchmark": "NFCorpus",
+            "delta": "-2.20",
+            "isPositive": false,
+            "metric": "NDCG@10",
+            "thisPaper": "36.08"
+          },
+          {
+            "baseline": "35.94",
+            "benchmark": "Touche",
+            "delta": "+1.24",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "37.18"
+          },
+          {
+            "baseline": "42.18",
+            "benchmark": "DBPedia",
+            "delta": "+1.16",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "43.34"
+          },
+          {
+            "baseline": "75.91",
+            "benchmark": "SciFact",
+            "delta": "-3.91",
+            "isPositive": false,
+            "metric": "NDCG@10",
+            "thisPaper": "72.00"
+          },
+          {
+            "baseline": "30.56",
+            "benchmark": "Signal",
+            "delta": "+4.05",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "34.61"
+          },
+          {
+            "baseline": "48.86",
+            "benchmark": "News",
+            "delta": "-2.07",
+            "isPositive": false,
+            "metric": "NDCG@10",
+            "thisPaper": "46.79"
+          },
+          {
+            "baseline": "54.87",
+            "benchmark": "Robust",
+            "delta": "-3.49",
+            "isPositive": false,
+            "metric": "NDCG@10",
+            "thisPaper": "51.38"
+          },
+          {
+            "baseline": "50.91",
+            "benchmark": "Avg.",
+            "delta": "-1.61",
+            "isPositive": false,
+            "metric": "NDCG@10",
+            "thisPaper": "49.30"
+          }
+        ],
+        "title": "Zero-shot Performance on BEIR Benchmark"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "73.15",
+            "benchmark": "DL19",
+            "delta": "+0.29",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "73.44"
+          },
+          {
+            "baseline": "70.75",
+            "benchmark": "DL20",
+            "delta": "+1.06",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "71.81"
+          },
+          {
+            "baseline": "85.37",
+            "benchmark": "Covid",
+            "delta": "+0.81",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "86.18"
+          },
+          {
+            "baseline": "40.05",
+            "benchmark": "NFCorpus",
+            "delta": "-0.41",
+            "isPositive": false,
+            "metric": "NDCG@10",
+            "thisPaper": "39.64"
+          },
+          {
+            "baseline": "31.73",
+            "benchmark": "Touche",
+            "delta": "+8.81",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "40.54"
+          },
+          {
+            "baseline": "45.44",
+            "benchmark": "DBPedia",
+            "delta": "+1.51",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "46.95"
+          },
+          {
+            "baseline": "78.96",
+            "benchmark": "SciFact",
+            "delta": "-0.19",
+            "isPositive": false,
+            "metric": "NDCG@10",
+            "thisPaper": "78.77"
+          },
+          {
+            "baseline": "32.48",
+            "benchmark": "Signal",
+            "delta": "+0.52",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "33.00"
+          },
+          {
+            "baseline": "52.36",
+            "benchmark": "News",
+            "delta": "+3.04",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "55.40"
+          },
+          {
+            "baseline": "60.72",
+            "benchmark": "Robust",
+            "delta": "+0.48",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "61.20"
+          },
+          {
+            "baseline": "53.39",
+            "benchmark": "Avg.",
+            "delta": "+1.82",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "55.21"
+          }
+        ],
+        "title": "Fine-tuned Performance on TREC DL and BEIR Benchmark"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "80.66",
+        "benchmark": "Covid",
+        "delta": "-7.67",
+        "isPositive": false,
+        "metric": "NDCG@10",
+        "thisPaper": "72.99"
+      },
+      {
+        "baseline": "38.28",
+        "benchmark": "NFCorpus",
+        "delta": "-2.20",
+        "isPositive": false,
+        "metric": "NDCG@10",
+        "thisPaper": "36.08"
+      },
+      {
+        "baseline": "35.94",
+        "benchmark": "Touche",
+        "delta": "+1.24",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "37.18"
+      },
+      {
+        "baseline": "42.18",
+        "benchmark": "DBPedia",
+        "delta": "+1.16",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "43.34"
+      },
+      {
+        "baseline": "75.91",
+        "benchmark": "SciFact",
+        "delta": "-3.91",
+        "isPositive": false,
+        "metric": "NDCG@10",
+        "thisPaper": "72.00"
+      },
+      {
+        "baseline": "30.56",
+        "benchmark": "Signal",
+        "delta": "+4.05",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "34.61"
+      },
+      {
+        "baseline": "48.86",
+        "benchmark": "News",
+        "delta": "-2.07",
+        "isPositive": false,
+        "metric": "NDCG@10",
+        "thisPaper": "46.79"
+      },
+      {
+        "baseline": "54.87",
+        "benchmark": "Robust",
+        "delta": "-3.49",
+        "isPositive": false,
+        "metric": "NDCG@10",
+        "thisPaper": "51.38"
+      },
+      {
+        "baseline": "50.91",
+        "benchmark": "Avg.",
+        "delta": "-1.61",
+        "isPositive": false,
+        "metric": "NDCG@10",
+        "thisPaper": "49.30"
+      },
+      {
+        "baseline": "73.15",
+        "benchmark": "DL19",
+        "delta": "+0.29",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "73.44"
+      },
+      {
+        "baseline": "70.75",
+        "benchmark": "DL20",
+        "delta": "+1.06",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "71.81"
+      },
+      {
+        "baseline": "85.37",
+        "benchmark": "Covid",
+        "delta": "+0.81",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "86.18"
+      },
+      {
+        "baseline": "40.05",
+        "benchmark": "NFCorpus",
+        "delta": "-0.41",
+        "isPositive": false,
+        "metric": "NDCG@10",
+        "thisPaper": "39.64"
+      },
+      {
+        "baseline": "31.73",
+        "benchmark": "Touche",
+        "delta": "+8.81",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "40.54"
+      },
+      {
+        "baseline": "45.44",
+        "benchmark": "DBPedia",
+        "delta": "+1.51",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "46.95"
+      },
+      {
+        "baseline": "78.96",
+        "benchmark": "SciFact",
+        "delta": "-0.19",
+        "isPositive": false,
+        "metric": "NDCG@10",
+        "thisPaper": "78.77"
+      },
+      {
+        "baseline": "32.48",
+        "benchmark": "Signal",
+        "delta": "+0.52",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "33.00"
+      },
+      {
+        "baseline": "52.36",
+        "benchmark": "News",
+        "delta": "+3.04",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "55.40"
+      },
+      {
+        "baseline": "60.72",
+        "benchmark": "Robust",
+        "delta": "+0.48",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "61.20"
+      },
+      {
+        "baseline": "53.39",
+        "benchmark": "Avg.",
+        "delta": "+1.82",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "55.21"
+      }
+    ],
+    "mainTakeaways": [
+      "dLLM-based rerankers, particularly permutation-based variants like DiffuRank Perm-Assign, achieve competitive performance compared to, and in fine-tuned settings often exceed, autoregressive LLM-based rerankers of similar model sizes.",
+      "Fine-tuning significantly improves the performance of both LLM and dLLM-based rerankers, with listwise variants generally outperforming pointwise ones.",
+      "The choice of training objectives (ranking-aware vs. token-level classification) and masking strategies (structure-aware vs. random) critically impacts the reranking performance of dLLMs.",
+      "Constrained inference methods are essential for generating valid permutations, achieving 100% correctness, and significantly improving performance compared to vanilla sampling.",
+      "DiffuRank offers a flexible trade-off between effectiveness and efficiency, especially in its permutation-based assignment formulation, making it a scalable alternative to autoregressive architectures."
+    ]
+  },
+  "institutions": "Renmin University of China, Alibaba Group, National University of Singapore",
+  "keyNovelty": {
+    "main": "The first systematic investigation and application of diffusion language models (dLLMs) for document reranking, introducing novel strategies and training methods to overcome the limitations of autoregressive LLMs.",
+    "explanation": [
+      "DiffuRank systematically explores the application of diffusion language models (dLLMs) for document reranking, a task traditionally dominated by autoregressive LLMs. Unlike autoregressive models, dLLMs support flexible and parallel decoding, which mitigates the efficiency and error propagation issues of sequential generation.",
+      "The framework introduces three distinct reranking strategies based on dLLMs: a pointwise approach (cross-encoder), a logits-based listwise approach (jointly assesses relevance from masked positions), and a permutation-based listwise approach (directly generates ranked sequences).",
+      "Tailored training objectives and inference methods are designed for each strategy. For pointwise and logits-based, listwise distillation losses (Cross-Entropy or RankNet) are used. For permutation-based, a supervised fine-tuning objective is used with a structure-aware masking strategy and constrained sampling or an assignment problem approach (Hungarian algorithm) for inference, ensuring valid permutations."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A type of generative model that learns to reverse a forward diffusion process (gradually adding noise) to reconstruct data from noise. For text, this often involves masking and unmasking tokens iteratively.",
+        "term": "Diffusion Language Models (dLLMs)"
+      },
+      {
+        "definition": "Language models that generate text token by token, where each token's generation depends on previously generated tokens. This sequential nature can lead to high latency and error propagation in tasks like ranking.",
+        "term": "Autoregressive Language Models (AR-LLMs)"
+      },
+      {
+        "definition": "The task of reordering an initial set of retrieved documents (e.g., from a first-stage retriever like BM25) to produce a more accurate and relevant final ranking for a given query.",
+        "term": "Document Reranking"
+      },
+      {
+        "definition": "A metric used to measure the quality of a ranked list, considering both the relevance of items and their position in the list, with higher positions for more relevant items receiving higher weight.",
+        "term": "NDCG@10 (Normalized Discounted Cumulative Gain at 10)"
+      },
+      {
+        "definition": "An algorithm that solves the assignment problem in polynomial time, finding a minimum-cost bipartite matching between two sets of equal size.",
+        "term": "Hungarian Algorithm"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of Large Language Models (LLMs) and their architectures (e.g., Transformers).",
+      "Familiarity with information retrieval concepts, including ranking metrics and pipelines.",
+      "Basic knowledge of generative models and supervised learning principles."
+    ]
+  },
+  "subTopics": [
+    "Information Retrieval",
+    "Generative Models",
+    "Natural Language Processing",
+    "Large Language Models"
+  ],
+  "tags": [
+    {
+      "name": "Document Reranking",
+      "type": "primary"
+    },
+    {
+      "name": "Diffusion Models",
+      "type": "topic"
+    },
+    {
+      "name": "Large Language Models",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike autoregressive LLM-based rerankers (e.g., RankGPT, Qwen3-8B Listwise), DiffuRank leverages dLLMs, which allow for parallel decoding and are not constrained to a fixed left-to-right generation order, mitigating issues of high latency and error propagation.",
+      "Existing non-generative LLM approaches (e.g., FIRST, ICR, E2Rank) treat LLMs merely as encoders or feature extractors, restricting their generative potential. DiffuRank aims to fully leverage the generative and reasoning capabilities of dLLMs through different ranking formulations.",
+      "DiffuRank's permutation-based approach with constrained sampling or assignment problem formulation provides a more robust and stable way to generate valid ranking lists compared to vanilla autoregressive generation or simple iterative denoising in dLLMs."
+    ],
+    "limitations": [
+      "Current dLLMs are not natively optimized for long contexts, requiring strategies like sliding windows for long candidate lists.",
+      "The optimal number of sampling steps for permutation-based methods (DiffuRank Perm-Samp) is dataset-dependent, and excessive denoising steps can harm ranking quality, suggesting a need for careful hyperparameter tuning.",
+      "The sampling-based permutation method can produce invalid outputs (duplicates or misses) without explicit constraints, necessitating post-processing or more robust inference strategies."
+    ],
+    "modeling": [
+      {
+        "label": "MDLM Forward Process",
+        "value": "Given a clean text sequence $x_0 = (x_1^0, ..., x_L^0)$, MDLMs define a forward noising process that progressively masks a subset of tokens. At a chosen noise level $t \\in [0, 1]$, each token is independently replaced with a mask token $[M]$ with probability $t$. Formally: $q(x_t | x_0) = \\prod_{i=1}^L q(x_i^t | x_i^0)$, where $q(x_i^t | x_i^0) = (1-t, x_i^t = x_i^0; t, x_i^t = [M])$."
+      },
+      {
+        "label": "MDLM Reverse Process Objective",
+        "value": "The model learns a mask predictor $p_\\theta$ to reconstruct $x_0$ from $x_t$, minimizing the expected negative log-likelihood over masked positions: $L(\\theta) = -E_{t,x_0,x_t} [\\sum_{i: x_i^t = [M]} \\frac{1}{t} \\log p_\\theta(x_i^0 | x_t)]$. This is implemented by a Transformer that outputs a probability distribution over the vocabulary."
+      },
+      {
+        "label": "Pointwise Relevance Score",
+        "value": "For a query $q$ and document $d_i$, after a single denoising step, the probabilities for binary relevance tokens '0' and '1' ($p_0, p_1$) at the masked position are extracted. The relevance score is $s(q, d_i) = \\frac{p_1}{p_0 + p_1}$."
+      },
+      {
+        "label": "Listwise Cross-Entropy Loss (Distillation)",
+        "value": "Used for training Pointwise and Logits-based Listwise models with permutation distillation from a teacher model: $L_{CE} = - \\sum_{rank=1} \\log \\frac{e^{s(q,d_i)}}{\\sum_{j=1}^N e^{s(q,d_j)}}$."
+      },
+      {
+        "label": "Pairwise RankNet Loss (Distillation)",
+        "value": "Alternatively used for training Pointwise and Logits-based Listwise models, constructed from relative relevance preferences of teachers: $L_{RankNet} = \\sum_{i=1}^N \\sum_{j=1}^N \\mathbf{1}_{rank_i < rank_j} \\log(1 + e^{s(q,d_i) - s(q,d_j)})$, where $rank_i$ is the rank position of the $i$-th document labeled by the teacher model."
+      },
+      {
+        "label": "Permutation-based SFT Objective",
+        "value": "For training the permutation-based reranker, supervised fine-tuning (SFT) is used under the MDLM denoising objective. Given a prompt (query, documents) and a target ranking string, a noisy sequence $x_t$ is obtained by masking a subset of response tokens. The objective is: $L(\\theta) = -E_t [\\sum_{i: x_i^t = [M]} \\frac{1}{p_i} \\log p_\\theta(x_i | x_t)]$, where $p_i$ is the masking probability."
+      },
+      {
+        "label": "Permutation as Assignment Problem",
+        "value": "The problem is formulated as finding a global permutation in one shot. A cost matrix $C \\in \\mathbb{R}^{N \\times N}$ is constructed, where $C_{ij} = - \\log P_{ij}$ and $P_{ij} = p_\\theta(r_i^0 | \\rho_0, r_t = ID_j)$ is the probability of document $j$ being at rank position $i$. This minimum-cost bipartite matching problem is solved efficiently using the Hungarian algorithm."
+      }
+    ],
+    "pipelineFlow": [
+      "DiffuRank takes a query and an initial set of candidate documents as input for reranking.",
+      "Depending on the chosen strategy (Pointwise, Logits-based Listwise, or Permutation-based Listwise), dLLMs process the input.",
+      "For Pointwise, each query-document pair is evaluated independently, and a scalar relevance score (0-1) is predicted.",
+      "For Logits-based Listwise, the dLLM jointly assesses relevance scores for multiple documents by extracting parallel logits from masked positions in a single forward pass, and documents are ranked based on these scores. A sliding window strategy is used for long contexts.",
+      "For Permutation-based Listwise, the dLLM directly generates a ranked sequence of document identifiers. This can be done via constrained iterative sampling or by formulating it as an assignment problem solved by the Hungarian algorithm.",
+      "The final output is a reranked list of documents, ordered by their predicted relevance to the query."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Given",
+        "value": "A query $q$ and an initial set of $N$ candidate documents $D = \\{d_1, \\ldots, d_N\\}$."
+      },
+      {
+        "label": "Task",
+        "value": "To produce a reranked list of documents $D'$ that optimally orders the documents from most relevant to least relevant with respect to $q$, specifically by estimating relevance scores or directly generating a permutation."
+      }
+    ],
+    "reproducibility": "The authors state that the code is available at https://github.com/liuqi6777/DiffusionRank. Detailed implementation specifics such as backbone model (LLaDA-1.5 8B), LoRA adaptation parameters (rank 16, alpha 32, dropout 0), optimizer (AdamW), learning rate (1e-4), weight decay (0.01), batch size (64 with 8 NVIDIA A100 GPUs), mixed precision, and DeepSpeed ZeRO-3 are provided. Training dataset (RankZephyr, 40K samples from MS MARCO) and evaluation procedures (LLM4Ranking framework, sliding window for listwise) are also described.",
+    "systemModules": []
+  },
+  "thesis": "Diffusion language models (dLLMs) can effectively serve as a novel and more flexible paradigm for document reranking, overcoming the efficiency and architectural limitations of autoregressive large language models by supporting parallel decoding and structured generation, while achieving competitive or superior performance.",
+  "title": "DiffuRank: Effective Document Reranking with Diffusion Language Models",
+  "url": "https://arxiv.org/abs/2602.12528",
+  "venue": "Conference'17",
+  "year": "2026"
+}

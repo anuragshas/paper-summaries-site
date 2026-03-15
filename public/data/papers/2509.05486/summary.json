@@ -1,0 +1,228 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 0,
+      "xmin": 0,
+      "ymax": 0,
+      "xmax": 0
+    },
+    "caption": "N/A - The paper does not contain a specific neural architecture diagram, opting for a procedural methodology description.",
+    "pageIndex": 0
+  },
+  "authors": "Jessica M. Lundin, Ada Zhang, Nihal Karim, Hamza Louzan, Victor Wei, David Adelani, Cody Carroll",
+  "breakthroughAssessment": {
+    "score": 4,
+    "justification": "The study provides a first-of-its-kind large-scale quantification of the 'token tax' by linking linguistic fertility to both performance degradation and specific multi-million dollar economic costs for frontier models like Llama 3.1 405B, while evaluating the impact of modern reasoning architectures."
+  },
+  "coreProblem": {
+    "statement": "Tokenization inefficiency (high fertility) imposes structural disadvantages on morphologically complex, low-resource languages, leading to lower model accuracy and prohibitive computational/economic costs.",
+    "whyItMatters": [
+      "BILLIONS of speakers of low-resource languages are systematically underrepresented in AI capabilities.",
+      "The $O(n^2)$ attention scaling creates nonlinear increases in energy consumption and CO2 emissions.",
+      "Economic exclusion occurs through unfair pricing structures that penalize high-fertility languages."
+    ],
+    "concreteExample": "Training a large model like Llama-3.1-405B costs roughly $105M for English tokens. For a language with double the token fertility, the $O(n^2)$ scaling of transformer attention results in a $4\\times$ cost increase, ballooning the budget to $420M for the same content."
+  },
+  "evaluationHighlights": [
+    "Reasoning models (o1, DeepSeek) outperform non-reasoning peers by 8-12 points on African languages.",
+    "Fertility explains 20-50% of the variance in model accuracy across subjects.",
+    "Each additional token per word reduces model accuracy by 8 to 18 percentage points.",
+    "Inference latency doubles for languages with 2x fertility compared to English."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "AfriMMLU (9,000 MCQA items across 5 subjects in 16 African languages)"
+      ],
+      "metrics": [
+        "Accuracy (MCQA)",
+        "Fertility ($F = T/W$)",
+        "Parity ($P$)",
+        "Compute Cost (etaFLOP-days)",
+        "Financial Cost (USD)"
+      ],
+      "setting": "Zero-shot MCQA inference across 10 LLMs including reasoning models (o1, DeepSeek-R1) and non-reasoning models (GPT-4o, Llama 3.1, Claude 3.5)."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 92,
+          "xmin": 178,
+          "ymax": 597,
+          "xmax": 822
+        },
+        "caption": "Figure 1: Accuracy in English (upper panel) and 17* combined African languages (middle panel) across the 5 MMLU subjects with the performance gap (bottom panel).",
+        "pageIndex": 2
+      },
+      {
+        "boundingBox": {
+          "ymin": 605,
+          "xmin": 178,
+          "ymax": 720,
+          "xmax": 822
+        },
+        "caption": "Figure 2: Fertility vs accuracy trade-offs for Llama 3.1 405B model across five experimental conditions.",
+        "pageIndex": 2
+      },
+      {
+        "boundingBox": {
+          "ymin": 135,
+          "xmin": 178,
+          "ymax": 836,
+          "xmax": 822
+        },
+        "caption": "Figure 3: Fertility vs. accuracy trade-offs for the 10 models across five MMLU subjects including correlation coefficient.",
+        "pageIndex": 8
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "English (MMLU)",
+        "benchmark": "AfriMMLU",
+        "delta": "-25 points",
+        "isPositive": false,
+        "metric": "Accuracy",
+        "thisPaper": "African Languages"
+      },
+      {
+        "baseline": "Non-reasoning LLMs",
+        "benchmark": "AfriMMLU",
+        "delta": "+8-12 points",
+        "isPositive": true,
+        "metric": "Accuracy",
+        "thisPaper": "Reasoning Models (o1, DeepSeek-R1)"
+      }
+    ],
+    "mainTakeaways": [
+      "Fertility is a highly reliable predictor of MCQA accuracy; higher fertility consistently predicts lower accuracy.",
+      "Reasoning capabilities substantially reduce tokenization bias but do not eliminate the underlying economic 'token tax'.",
+      "The 'token tax' is a systemic barrier that requires technical, economic (pricing), and benchmarking interventions for equity."
+    ],
+    "keyResultGroups": []
+  },
+  "institutions": "University of San Francisco, McGill University, Institute for Disease Modeling (Gates Foundation)",
+  "keyNovelty": {
+    "main": "The systematic quantification of linguistic 'Token Tax' as an economic and computational barrier that scales quadratically with token inflation.",
+    "explanation": [
+      "Directly links the quadratic scaling law $O(n^2)$ of transformers to the financial inequality of multilingual tokenization.",
+      "Provides the first large-scale evaluation of 'reasoning-oriented' models (like DeepSeek-R1 and o1) in the context of tokenization bias.",
+      "Quantifies the 'token tax' in specific dollar amounts for frontier models ($105M vs $420M for training)."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "The average number of tokens required to represent a word in a specific language ($F = T/W$).",
+        "term": "Fertility"
+      },
+      {
+        "definition": "The ratio of token sequence lengths between a target language and a baseline language (English) for equivalent content.",
+        "term": "Parity"
+      },
+      {
+        "definition": "The extra cost in compute, time, and money paid by speakers of languages with high fertility due to model architectural constraints.",
+        "term": "Token Tax"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of Transformer sequence length scaling laws ($O(n^2)$)",
+      "Familiarity with the MMLU benchmark",
+      "Basic knowledge of Byte Pair Encoding (BPE) tokenization"
+    ]
+  },
+  "subTopics": [
+    "Fertility vs Accuracy Correlation",
+    "Economic Impact of Token Inflation",
+    "Reasoning Models for Low-Resource NLP",
+    "African Multilingual Benchmark (AfriMMLU)",
+    "Transformer Compute Scaling"
+  ],
+  "tags": [
+    {
+      "name": "Multilingual NLP",
+      "type": "primary"
+    },
+    {
+      "name": "Tokenization Bias",
+      "type": "topic"
+    },
+    {
+      "name": "African Languages",
+      "type": "topic"
+    },
+    {
+      "name": "AI Ethics",
+      "type": "topic"
+    },
+    {
+      "name": "LLM Scaling Laws",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Extends previous fertility-accuracy studies from a few models to 10 diverse models including reasoning architectures.",
+      "Moves beyond BLEU point analysis to economic and training cost quantification.",
+      "Utilizes the new AfriMMLU benchmark which covers 16 African languages."
+    ],
+    "limitations": [
+      "Amharic was excluded from Mixed Effects analysis due to unique script differences.",
+      "Economic costs are estimates based on published scaling laws rather than actual proprietary cloud billing data.",
+      "The study focuses primarily on African languages; other high-fertility language groups (e.g., Southeast Asian) were not the primary focus."
+    ],
+    "modeling": [
+      {
+        "label": "Fertility Definition",
+        "value": "$F = \\frac{T}{W}$"
+      },
+      {
+        "label": "Parity Definition",
+        "value": "$Parity = \\frac{|t(s_A)|}{|t(s_B)|}$"
+      },
+      {
+        "label": "Mixed Effect Structure",
+        "list": [
+          "AIC-selected random effects structure",
+          "Included both random intercept and random slope",
+          "Regression slopes range from -0.08 to -0.185"
+        ]
+      }
+    ],
+    "pipelineFlow": [
+      "Select 10 LLMs and calculate fertility for 16 target African languages.",
+      "Run inference on AfriMMLU to obtain model accuracy per language/subject.",
+      "Fit linear regressions of accuracy on fertility for each model-subject pair.",
+      "Analyze the variance explained ($R^2$) and correlation coefficients ($\\rho$).",
+      "Map token inflation to $O(n^2)$ compute costs for training and $O(n)$ costs for inference."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Quadratic Scaling Impact",
+        "value": "Transformer models scale with $O(n^2)$ in sequence length; thus a $2\\times$ increase in tokens leads to a $4\\times$ increase in compute cost."
+      }
+    ],
+    "reproducibility": "Public datasets are released containing model results from AfriMMLU and comprehensive MMLU token metrics.",
+    "systemModules": [
+      {
+        "details": "Converts text to tokens; efficiency varies by language.",
+        "name": "Tokenizer",
+        "role": "Input Processing"
+      },
+      {
+        "details": "Includes Reasoning (o1, DeepSeek) and Non-reasoning (GPT-4o, Llama) models.",
+        "name": "Large Language Model",
+        "role": "Inference and Reasoning"
+      },
+      {
+        "details": "The benchmark used to evaluate multilingual performance in African contexts.",
+        "name": "AfriMMLU",
+        "role": "Evaluation Framework"
+      }
+    ]
+  },
+  "thesis": "Inefficient tokenization creates a 'token tax'\u2014a structural inequality where morphologically complex and low-resource languages suffer from significantly lower model accuracy and exponentially higher computational costs compared to English.",
+  "title": "The Token Tax: Systematic Bias in Multilingual Tokenization",
+  "url": "https://arxiv.org/abs/2509.05486v1",
+  "venue": "ArXiv (Preprint)",
+  "year": "2025"
+}

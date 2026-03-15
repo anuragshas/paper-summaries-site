@@ -1,0 +1,19 @@
+{
+  "paperId": "2601.08345",
+  "title": "MLPlatt: Simple Calibration Framework for Ranking Models",
+  "authors": "Piotr Bajger, Roman Dusek, Krzysztof Galias, Pawel Mlynicek, Aleksander Wawer, and Pawel Zawistowski",
+  "publishedDate": null,
+  "tags": [
+    "Ranking Model Calibration",
+    "E-commerce",
+    "CTR Prediction",
+    "Machine Learning"
+  ],
+  "sourceUrl": "N/A",
+  "pagePath": "/paper-summaries-site/papers/2601.08345",
+  "summaryPath": "/paper-summaries-site/data/papers/2601.08345/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

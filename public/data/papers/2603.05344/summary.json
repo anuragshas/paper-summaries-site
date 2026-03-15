@@ -1,0 +1,244 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 151,
+      "xmin": 118,
+      "ymax": 840,
+      "xmax": 879
+    },
+    "caption": "System architecture of O PEN D EV , organized into four layers: Entry & UI, Agent, Tool & Context, and Persistence. Arrows indicate primary data-flow directions.",
+    "figureNumber": 2,
+    "pageIndex": 3
+  },
+  "authors": "Nghi D. Q. Bui",
+  "breakthroughAssessment": {
+    "justification": "This paper presents a well-engineered, open-source AI coding agent (OpenDev) that tackles critical, practical challenges for terminal-native interaction. While it explicitly states it's \"not to present a novel algorithmic breakthrough,\" its comprehensive system design, including innovative approaches to context engineering, multi-model routing, safety, and agent memory, represents a strong engineering contribution. It bridges the gap between closed-source industrial practice and open academic discourse, providing a valuable blueprint for future autonomous software engineering systems. The detailed technical report and open-source nature make it a highly useful contribution to the sub-field, although it doesn't propose a foundational new algorithm or achieve a dramatic SOTA improvement on benchmarks (which aren't the primary focus).",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "Traditional IDE plugins require human oversight; even frontier models struggle with continuous terminal operation on benchmarks like Terminal-Bench and LongCLI-Bench due to issues like context window limits, destructive operations, and limited extensibility.",
+    "statement": "Developing effective autonomous AI coding agents for terminal-native environments, capable of handling long-horizon development tasks while maintaining strict safety controls and efficient context management.",
+    "whyItMatters": [
+      "Current AI coding assistants struggle with context window limitations, leading to reasoning degradation.",
+      "Preventing destructive operations is critical when agents can execute arbitrary shell commands.",
+      "Extending agent capabilities without overwhelming the agent's prompt budget is essential for long-running sessions."
+    ]
+  },
+  "evaluationHighlights": [
+    "OpenDev is an open-source, command-line agent providing unprecedented autonomy for long-horizon development tasks in terminal environments.",
+    "Its compound AI system architecture allows flexible and cost-effective model routing for different cognitive tasks (action, thinking, critique, vision, compaction).",
+    "The extended ReAct loop, incorporating explicit thinking and self-critique, improves reasoning depth and prevents premature action.",
+    "Adaptive Context Compaction and a dual-memory system effectively manage context window limits, extending session length and preserving strategic context.",
+    "Event-driven system reminders counteract instruction fade-out, a common reliability problem in long-running sessions, leading to higher compliance rates from the agent.",
+    "A five-layer defense-in-depth safety architecture ensures robust protection against destructive operations and system failures."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [],
+      "metrics": [],
+      "setting": "The paper focuses on presenting a system design and engineering lessons rather than conducting formal, quantitative experiments against benchmarks. It refers to existing benchmarks (Terminal-Bench, LongCLI-Bench) to highlight the problem, but doesn't report OpenDev's performance on them."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 139,
+          "xmin": 150,
+          "ymax": 718,
+          "xmax": 878
+        },
+        "caption": "The agent harness architecture: a detailed view of the Agent layer from Figure 2. The central ReAct loop (six phases: pre-check and compaction, thinking, self-critique, action, tool execution, post-processing) is surrounded by seven supporting subsystems. User messages enter through a message injection queue (top). The Prompt Composition engine assembles modular sections by priority into the system prompt. The Tool Registry dispatches to specialized handlers, with MCP tools discovered lazily. The Safety System enforces multiple independent layers (approval, dangerous command detection, hooks, stale-read detection, plan mode restrictions, doom loop detection, iteration cap, cooperative cancellation). Context Engineering applies five-stage progressive compaction as the conversation grows. Memory and Session services provide persistent strategy memory (playbook), session storage, and per-step undo via git snapshots. Subagent Orchestration spawns isolated agent instances with filtered tool access for parallel exploration or specialized tasks.",
+        "figureNumber": 4,
+        "pageIndex": 7
+      },
+      {
+        "boundingBox": {
+          "ymin": 339,
+          "xmin": 240,
+          "ymax": 490,
+          "xmax": 757
+        },
+        "caption": "Dual-mode operation within the Agent layer (Figure 4). A user prompt enters the MainAgent , which routes to either Plan Mode (left, read-only) or Normal Mode (right, full access). Plan Mode spawns a Planner subagent that explores the codebase, analyzes patterns, and produces a structured plan for user approval. Upon approval, the system transitions to Normal Mode, where the agent executes the planned steps with full tool access. The user can re-enter Plan Mode at any point if unexpected results require re-planning.",
+        "figureNumber": 5,
+        "pageIndex": 8
+      },
+      {
+        "boundingBox": {
+          "ymin": 268,
+          "xmin": 184,
+          "ymax": 857,
+          "xmax": 801
+        },
+        "caption": "Sequence diagram of a single conversation turn in O PEN D EV . A user message enters through one of three interfaces, passes through query processing, and enters the ReAct iteration loop. Each iteration comprises context management, optional thinking, an action LLM call, and tool dispatch through the registry. The loop continues until the agent signals completion or a termination condition is met, after which the conversation state is persisted.",
+        "figureNumber": 6,
+        "pageIndex": 10
+      },
+      {
+        "boundingBox": {
+          "ymin": 393,
+          "xmin": 272,
+          "ymax": 732,
+          "xmax": 724
+        },
+        "caption": "Detailed view of the compaction subsystem from Figure 9. Five stages activate at progressive pressure thresholds (70%, 80%, 85%, 90%, 99%), transitioning observations between active, faded, and archived states before emergency summarization is required.",
+        "figureNumber": 13,
+        "pageIndex": 24
+      }
+    ],
+    "keyResultGroups": [],
+    "keyResults": [],
+    "mainTakeaways": [
+      "OpenDev's compound AI architecture allows flexible model selection per workflow, optimizing cost, latency, and capability.",
+      "The Extended ReAct loop with explicit thinking/self-critique and staged compaction improves reasoning quality and context efficiency.",
+      "Event-driven system reminders effectively counteract instruction fade-out in long-running sessions, improving reliability.",
+      "A five-layer defense-in-depth safety architecture prevents destructive operations and enhances system robustness.",
+      "Adaptive Context Compaction and a dual-memory system significantly improve context management, extending session length and preserving strategic context."
+    ]
+  },
+  "institutions": "OpenDev",
+  "keyNovelty": {
+    "explanation": [
+      "Compound AI system architecture: Deploys multiple specialized sub-agents and workflows, each bound to a user-configured LLM, allowing for per-workflow LLM configurability to balance cost, latency, and capability.",
+      "Extended ReAct execution pipeline: Incorporates explicit thinking and optional self-critique phases and staged context compaction directly into the reasoning loop.",
+      "Behavioral steering: Uses event-driven system reminders to counteract instruction fade-out in long-running sessions by injecting targeted guidance, and a conditional prompt composition pipeline for context-relevant instruction delivery.",
+      "Token-efficient extensibility and defense-in-depth safety: Implements a registry-based tool architecture with lazy discovery via MCP and a five-layer safety architecture that enforces constraints at progressively lower levels of abstraction.",
+      "Context engineering as a first-class concern: Integrates Adaptive Context Compaction, a dual-memory architecture (episodic for long-range, working for short-range), and system reminders to manage the LLM context window efficiently."
+    ],
+    "main": "An open-source, production-ready, terminal-native AI coding agent, OpenDev, designed as a compound AI system with a focus on scaffolding, runtime harness, and comprehensive context engineering to address real-world software development challenges."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "AI coding assistants that operate directly within the command-line interface, integrating with source control, build systems, and remote environments.",
+        "term": "Terminal-native agents"
+      },
+      {
+        "definition": "An architecture that combines multiple models, retrievers, and tools, rather than relying on a single monolithic LLM, for enhanced capabilities and flexibility.",
+        "term": "Compound AI system"
+      },
+      {
+        "definition": "The process of assembling the agent (system prompt, tool schemas, subagent registry) before the first user prompt, configuring its initial state and capabilities.",
+        "term": "Scaffolding"
+      },
+      {
+        "definition": "The runtime orchestration layer that manages tool dispatch, context management, safety enforcement, and session persistence during agent execution.",
+        "term": "Harness"
+      },
+      {
+        "definition": "A five-stage pipeline of progressively aggressive strategies to reduce token usage in the LLM's context window as pressure rises.",
+        "term": "Adaptive Context Compaction (ACC)"
+      },
+      {
+        "definition": "Short, single-purpose messages injected into the conversation at specific decision points to counteract instruction fade-out in long-running sessions.",
+        "term": "Event-driven system reminders"
+      }
+    ],
+    "prerequisites": [
+      "Large Language Models (LLMs)",
+      "ReAct (Reasoning and Acting) framework",
+      "Software development concepts (source control, build systems, terminal environments)",
+      "Context window management in LLMs"
+    ]
+  },
+  "subTopics": [
+    "AI Agents",
+    "Software Engineering",
+    "Large Language Models"
+  ],
+  "tags": [
+    {
+      "name": "Agent",
+      "type": "primary"
+    },
+    {
+      "name": "QA",
+      "type": "topic"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike traditional IDE plugins, OpenDev is a terminal-native agent, offering greater autonomy for long-horizon development tasks.",
+      "Addresses shortcomings of existing CLI-native agents (e.g., Aider, CodeAct, Open Interpreter, Claude Code) by providing a comprehensive, open-source technical report on design decisions and trade-offs, which are often undocumented or closed-source.",
+      "Unlike benchmark-oriented frameworks (e.g., SWE-Agent), OpenDev focuses on interactive daily use rather than automated evaluation.",
+      "Improves upon standard ReAct by adding explicit thinking and self-critique phases, and integrating staged context compaction.",
+      "Resolves limitations of prior memory systems (e.g., pure summarization losing identifiers, only recent messages losing long-range context) with a dual-memory architecture for comprehensive context.",
+      "Addresses instruction fade-out, a common problem in long-running sessions, with event-driven system reminders, which are more effective than relying on a static system prompt."
+    ],
+    "limitations": [
+      "The paper focuses on presenting a system design and engineering lessons learned, rather than a direct performance comparison against state-of-the-art benchmarks for AI coding agents."
+    ],
+    "modeling": [
+      {
+        "label": "Compound AI System",
+        "value": "Not a single monolithic LLM, but a structured ensemble of agents and workflows, each independently bound to a user-configured LLM, allowing for per-workflow configurability."
+      },
+      {
+        "label": "Extended ReAct Loop",
+        "value": "Extends the standard ReAct cycle with explicit thinking and optional self-critique phases, and integrates staged context compaction directly into the reasoning loop."
+      },
+      {
+        "label": "Multi-Model Architecture",
+        "list": [
+          "Action model: Primary execution model for tool-based reasoning, default for most workloads.",
+          "Thinking model: Optional model for extended reasoning without tool access, focusing on strategic planning.",
+          "Critique model: Optional model for self-evaluation, activated selectively at the HIGH thinking level.",
+          "Vision model: Vision-language model for processing screenshots and images, essential for visual debugging.",
+          "Compact model: Smaller, faster model for summarization during context compaction, prioritizing speed and cost."
+        ]
+      }
+    ],
+    "pipelineFlow": [
+      "User input arrives through one of three interfaces (CLI invocation, TUI, or Web UI) at the MainAgent.",
+      "Input dispatch classifies it as either a REPL slash command (deterministic execution) or a natural language query (enters agent loop).",
+      "If a query, MainAgent routes to either Plan Mode (for planning tasks, delegated to a Planner subagent with read-only tools) or Normal Mode (for full execution with all tools).",
+      "The agent processes queries through an Extended ReAct Loop, which iterates through six phases: pre-check & compaction, thinking, self-critique, action, tool execution, and post-processing.",
+      "The Context Engineering Layer manages the LLM context window through dynamic system prompt construction, tool result optimization, dual-memory (episodic and working), and adaptive context compaction.",
+      "Tool calls initiated by the LLM in the action phase are dispatched via a Tool Registry, with safety checks and approval from the Safety System (five independent layers).",
+      "Event-driven system reminders are injected to counteract instruction fade-out in long-running sessions.",
+      "Session state, including conversation history and learned strategies, is persisted by the Persistence Layer.",
+      "The loop continues until the agent produces a final response, signals completion, or exhausts its iteration budget, after which results are rendered."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Challenges for terminal agents",
+        "value": "Managing finite context windows over sessions that routinely exceed the model’s token budget, preventing destructive operations when the agent can execute arbitrary shell commands, and extending capabilities without overwhelming the agent’s prompt budget."
+      }
+    ],
+    "reproducibility": "The paper describes OpenDev as an open-source, command-line coding agent, providing a GitHub URL (https://github.com/opendev-to/opendev). This indicates a high degree of reproducibility and allows researchers to examine the code and replicate findings.",
+    "systemModules": [
+      {
+        "details": "Parses arguments, bootstraps shared managers (ConfigManager, SessionManager, ModeManager, ApprovalManager), and supports two frontends (TUI and Web UI) that implement a shared UICallback contract, keeping the agent layer UI-agnostic.",
+        "name": "Entry & UI Layer",
+        "role": "Interface for user interaction and system initialization."
+      },
+      {
+        "details": "The core of the agent system, comprising a single concrete MainAgent class with specialized model roles (Action, Thinking, Critique, Vision, Compact), an AgentFactory for assembly, and implementation of the Extended ReAct Loop. It handles routing between Plan Mode and Normal Mode, and orchestrates subagents.",
+        "name": "Agent Layer",
+        "role": "Manages agent reasoning, execution, and subagent orchestration."
+      },
+      {
+        "details": "The Tool Execution Layer, built around a ToolRegistry, dispatches calls to typed handlers for file operations, process execution, and web access, with support for batch parallel execution and on-demand MCP tool discovery. The Context Engineering Layer manages the LLM context window through Prompt Composer, System Reminders, Memory (episodic and working), and Adaptive Context Compaction.",
+        "name": "Tool & Context Layers",
+        "role": "Provides tool access, execution, and comprehensive management of the LLM's context window."
+      },
+      {
+        "details": "Stores various system states: Config Manager (resolves settings), Session Manager (saves conversation histories), Provider Cache (stores model capability metadata), and an operation log (tracks file changes for rollback).",
+        "name": "Persistence Layer",
+        "role": "Ensures state continuity and data integrity across sessions."
+      },
+      {
+        "details": "A defense-in-depth architecture with five independent layers: Prompt-Level Guardrails, Schema-Level Tool Restrictions, Runtime Approval System, Tool-Level Validation, and Lifecycle Hooks. Each layer prevents specific classes of harm.",
+        "name": "Safety System",
+        "role": "Enforces constraints and prevents dangerous or destructive actions by the agent."
+      }
+    ]
+  },
+  "thesis": "OpenDev provides a secure, extensible foundation for terminal-first AI assistance by addressing key engineering challenges through a compound AI system architecture, extended ReAct loop, context engineering, multi-model routing, and safety mechanisms, bridging the gap between industrial practice and academic discourse.",
+  "title": "Building Effective AI Coding Agents for the Terminal: Scaffolding, Harness, Context Engineering, and Lessons Learned",
+  "url": "https://arxiv.org/abs/2603.05344",
+  "venue": "N/A",
+  "year": "2026"
+}

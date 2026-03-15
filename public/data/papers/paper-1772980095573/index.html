@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GENERATIVE REWARD MODELS</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>GENERATIVE REWARD MODELS</h1>
+      <p class="meta"><strong>Authors:</strong> Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://www.synthlabs.ai/pdf/Generative_Reward_Models.pdf" target="_blank" rel="noopener noreferrer">https://www.synthlabs.ai/pdf/Generative_Reward_Models.pdf</a></p>
+      <p class="muted">Generated summary artifact for paper-1772980095573</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>We propose Generative Reward Models (GenRM), a hybrid approach that unifies Reinforcement Learning from Human Feedback (RLHF) and Reinforcement Learning from AI Feedback (RLAIF) methodologies by training an LLM on self-generated reasoning traces to produce synthetic preference labels that align with human judgments.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Current alignment approaches (RLHF and RLAIF) face limitations: explicitly parameterized reward models struggle with robustness and generalization to out-of-distribution (OOD) data, and RLAIF methods like LLM-as-a-judge may not always align well with actual user preferences when acting as the sole evaluator.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A unified Generative Reward Model (GenRM) framework that combines RLHF and RLAIF methodologies, leveraging self-generated reasoning traces and iterative training to fine-tune LLMs for improved preference modeling and alignment, especially for out-of-distribution generalization.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>GenRM significantly outperforms zero-shot LLM-based judgments on both in-distribution (9-31% accuracy improvement) and out-of-distribution (2-6% accuracy improvement) tasks.</li><li>GenRM achieves in-distribution accuracy comparable to Bradley-Terry models while significantly outperforming them on out-of-distribution tasks (10-45% accuracy improvement).</li><li>STaR-DPO achieves a 91.0% accuracy on the RewardBench Safety category, surpassing the best performing PairRM model (81.8%).</li><li>On UltraInteract, STaR-DPO achieves 90.2% accuracy for reasoning tasks, significantly outperforming STaR-SFT (68.8%) and other explicit reward models (around 94%).</li><li>Utilizing inference-time compute, such as majority voting over 32 samples, consistently improves performance by 1.6% on UltraFeedback and 3.8% on RewardBench.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Generative Reward Models (GenRM), especially CoT-GenRM and STaR-DPO variants, significantly outperform zero-shot LLM-based judgments and traditional Bradley-Terry reward models on out-of-distribution tasks.</li><li>Reasoning-based approaches, such as CoT-GenRM and STaR-DPO, show notably stronger performance, particularly on reasoning-heavy and safety-related categories.</li><li>The STaR-DPO model consistently achieves the strongest results across various benchmarks, demonstrating superior out-of-domain generalization while matching in-distribution performance.</li><li>Using inference-time compute, such as majority voting, further boosts the accuracy of the critic model, indicating the effectiveness of &#39;System 2&#39; reasoning approaches.</li><li>Bootstrapping rationales from stronger models (e.g., GPT-4) can initially underperform standard STaR methods but can be improved with additional on-policy training, highlighting the impact of training methodology on performance.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>A limitation of the current CoT-GenRM approach is the potential for misalignment when incorrect rationales are generated.</li><li>The training rationales from the post-rationalization model can be off-policy for the base model, leading to a distribution mismatch during training.</li><li>The STaR-Rationalizer model struggles to generalize to more novel tasks where it generates rationales different from those seen during training.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 120,
+      &quot;xmin&quot;: 200,
+      &quot;ymax&quot;: 320,
+      &quot;xmax&quot;: 780
+    },
+    &quot;caption&quot;: &quot;Methods overview. Bradley-Terry methods directly output the probability of y1 being preferred over y2, while GenRM compares the LLMs next-token probabilities of answer indicator tokens (I1, I2). CoT-GenRM samples reasoning traces (r) followed by the answer indicator token.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 1
+  },
+  &quot;authors&quot;: &quot;Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper introduces Generative Reward Models (GenRM), a novel framework unifying RLHF and RLAIF. It effectively addresses key limitations of prior work, particularly the struggle of explicit reward models with out-of-distribution generalization and the alignment issues of LLM-as-a-judge methods with human preferences. By leveraging self-generated reasoning traces and iterative training, GenRM significantly improves performance on OOD tasks and reasoning benchmarks, offering a robust and scalable approach to preference modeling. While not a paradigm shift, it is a strong contribution to the field.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Figure 3 demonstrates a case where LLM-as-a-judge fails to accurately judge a general assistant task, incorrectly preferring a less relevant response, whereas the proposed STaR-DPO model succeeds.&quot;,
+    &quot;statement&quot;: &quot;Current alignment approaches (RLHF and RLAIF) face limitations: explicitly parameterized reward models struggle with robustness and generalization to out-of-distribution (OOD) data, and RLAIF methods like LLM-as-a-judge may not always align well with actual user preferences when acting as the sole evaluator.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;RLHF is resource-intensive, requiring large human preference datasets and sophisticated online optimization techniques (e.g., PPO).&quot;,
+      &quot;RLAIF addresses data collection challenges but synthetic preferences generated by LLMs may not align well with human preference judgments.&quot;,
+      &quot;Explicitly parameterized reward models (e.g., Bradley-Terry) often lack robustness and fail to generalize well to out-of-distribution tasks.&quot;,
+      &quot;LLM-as-a-judge methods, while offering a robust alternative, do not always accurately reflect actual user preferences, limiting their effectiveness as sole evaluators.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;GenRM significantly outperforms zero-shot LLM-based judgments on both in-distribution (9-31% accuracy improvement) and out-of-distribution (2-6% accuracy improvement) tasks.&quot;,
+    &quot;GenRM achieves in-distribution accuracy comparable to Bradley-Terry models while significantly outperforming them on out-of-distribution tasks (10-45% accuracy improvement).&quot;,
+    &quot;STaR-DPO achieves a 91.0% accuracy on the RewardBench Safety category, surpassing the best performing PairRM model (81.8%).&quot;,
+    &quot;On UltraInteract, STaR-DPO achieves 90.2% accuracy for reasoning tasks, significantly outperforming STaR-SFT (68.8%) and other explicit reward models (around 94%).&quot;,
+    &quot;Utilizing inference-time compute, such as majority voting over 32 samples, consistently improves performance by 1.6% on UltraFeedback and 3.8% on RewardBench.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;UltraFeedback&quot;,
+        &quot;RewardBench&quot;,
+        &quot;RewardBench (Chat)&quot;,
+        &quot;RewardBench (Chat Hard)&quot;,
+        &quot;RewardBench (Reasoning)&quot;,
+        &quot;RewardBench (Safety)&quot;,
+        &quot;UltraInteract&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Accuracy&quot;,
+        &quot;Maj@1&quot;,
+        &quot;Maj@32&quot;
+      ],
+      &quot;setting&quot;: &quot;Evaluation of generative reward models against classical reward models and zero-shot LLM-based judges on both in-domain and out-of-domain tasks.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 285,
+          &quot;xmin&quot;: 160,
+          &quot;ymax&quot;: 500,
+          &quot;xmax&quot;: 850
+        },
+        &quot;caption&quot;: &quot;Comparing generative reward models with prior reward modeling methods on in- domain (UltraFeedback) data and out-of-domain data (RewardBench). All generative model scores are the result of a majority vote over 32 samples.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 5
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 38,
+          &quot;xmin&quot;: 155,
+          &quot;ymax&quot;: 250,
+          &quot;xmax&quot;: 855
+        },
+        &quot;caption&quot;: &quot;Comparing generative reward models with prior reward modeling methods on in- domain (UltraInteract) data and out-of-domain data (RewardBench) split into reasoning and non- reasoning subsets. All generative model scores are the result of a majority vote over 32 samples.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 7
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 60,
+          &quot;xmin&quot;: 155,
+          &quot;ymax&quot;: 480,
+          &quot;xmax&quot;: 860
+        },
+        &quot;caption&quot;: &quot;Comparing generative reward models with prior reward modeling methods with ma- jority vote evaluation. Top row models are trained on UltraFeedback (Cui et al., 2024), and bottom row models are trained on UltraInteract (Yuan et al., 2024a). Left column models are evaluated on ei- ther UltraFeedback or UltraInteract, and right column models are evaluated on RewardBench (Lam- bert et al., 2024). Solid line methods are sampled to produce final answers and shading reflects a 95% confidence interval.&quot;,
+        &quot;figureNumber&quot;: 5,
+        &quot;pageIndex&quot;: 8
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;approx 73.0%&quot;,
+            &quot;benchmark&quot;: &quot;UltraFeedback (in-dist)&quot;,
+            &quot;delta&quot;: &quot;+1.0%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;approx 74.0%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;77.8%&quot;,
+            &quot;benchmark&quot;: &quot;RewardBench (OOD)&quot;,
+            &quot;delta&quot;: &quot;+4.1%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;81.9%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;81.8%&quot;,
+            &quot;benchmark&quot;: &quot;RewardBench (Safety)&quot;,
+            &quot;delta&quot;: &quot;+9.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;91.0%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;General Assistant Tasks Performance&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;68.8%&quot;,
+            &quot;benchmark&quot;: &quot;UltraInteract (in-dist)&quot;,
+            &quot;delta&quot;: &quot;+21.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;90.2%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;76.6%&quot;,
+            &quot;benchmark&quot;: &quot;RewardBench (Reasoning)&quot;,
+            &quot;delta&quot;: &quot;+10.6%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;87.2%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;78.0%&quot;,
+            &quot;benchmark&quot;: &quot;RewardBench (excl. Reasoning)&quot;,
+            &quot;delta&quot;: &quot;-3.0%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;75.0%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Reasoning Tasks Performance&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;67.68&quot;,
+            &quot;benchmark&quot;: &quot;UltraFeedback (Llama3.1 8B baseline)&quot;,
+            &quot;delta&quot;: &quot;+2.45&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Maj@32&quot;,
+            &quot;thisPaper&quot;: &quot;70.13&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;77.61&quot;,
+            &quot;benchmark&quot;: &quot;RewardBench (Llama3.1 8B baseline)&quot;,
+            &quot;delta&quot;: &quot;-8.83&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Maj@32&quot;,
+            &quot;thisPaper&quot;: &quot;68.78&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;67.68&quot;,
+            &quot;benchmark&quot;: &quot;UltraFeedback (Llama3.1 8B baseline)&quot;,
+            &quot;delta&quot;: &quot;-5.08&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Maj@32&quot;,
+            &quot;thisPaper&quot;: &quot;62.60&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;77.61&quot;,
+            &quot;benchmark&quot;: &quot;RewardBench (Llama3.1 8B baseline)&quot;,
+            &quot;delta&quot;: &quot;-7.09&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Maj@32&quot;,
+            &quot;thisPaper&quot;: &quot;70.52&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Bootstrapping Rationales&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Generative Reward Models (GenRM), especially CoT-GenRM and STaR-DPO variants, significantly outperform zero-shot LLM-based judgments and traditional Bradley-Terry reward models on out-of-distribution tasks.&quot;,
+      &quot;Reasoning-based approaches, such as CoT-GenRM and STaR-DPO, show notably stronger performance, particularly on reasoning-heavy and safety-related categories.&quot;,
+      &quot;The STaR-DPO model consistently achieves the strongest results across various benchmarks, demonstrating superior out-of-domain generalization while matching in-distribution performance.&quot;,
+      &quot;Using inference-time compute, such as majority voting, further boosts the accuracy of the critic model, indicating the effectiveness of &#39;System 2&#39; reasoning approaches.&quot;,
+      &quot;Bootstrapping rationales from stronger models (e.g., GPT-4) can initially underperform standard STaR methods but can be improved with additional on-policy training, highlighting the impact of training methodology on performance.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;SynthLabs, Stanford University&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;GenRM replaces the Bradley-Terry reward modeling approach with a more general preference modeling objective that does not assume a point-wise reward estimate, a special model architecture, or a specific preference distribution parameterization.&quot;,
+      &quot;It integrates Chain-of-Thought (CoT) reasoning into preference modeling, which significantly improves both in-distribution and out-of-distribution performance by encouraging more logical, step-wise decision-making.&quot;,
+      &quot;The framework utilizes a STaR-like methodology to align the LLM with user preferences, effectively training it to function as a reward model through self-generated reasoning traces and iterative training loops.&quot;,
+      &quot;GenRM supports various training techniques including bootstrapping intermediate reasoning from ground-truth or stronger rationalization models (CoT-GenRM with Rationalization) and fully self-bootstrapped reasoning (CoT-GenRM-STaR and STaR-DPO).&quot;
+    ],
+    &quot;main&quot;: &quot;A unified Generative Reward Model (GenRM) framework that combines RLHF and RLAIF methodologies, leveraging self-generated reasoning traces and iterative training to fine-tune LLMs for improved preference modeling and alignment, especially for out-of-distribution generalization.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A process to align large language models with human preferences using human preference labels.&quot;,
+        &quot;term&quot;: &quot;Reinforcement Learning from Human Feedback (RLHF)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;An alternative to RLHF that uses synthetic preferences generated by an LLM to address human data collection challenges.&quot;,
+        &quot;term&quot;: &quot;Reinforcement Learning from AI Feedback (RLAIF)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A statistical model typically used in RLHF to capture human preferences from pairwise rankings of responses.&quot;,
+        &quot;term&quot;: &quot;Bradley-Terry (BT) Preference Model&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;An iterative bootstrapping approach that improves LLM reasoning capabilities by training models to generate and refine rationales.&quot;,
+        &quot;term&quot;: &quot;Self-Taught Reasoner (STaR)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;An offline alignment algorithm that can directly optimize a policy using preference data, mathematically interchanging the reward model and optimal policy.&quot;,
+        &quot;term&quot;: &quot;Direct Preference Optimization (DPO)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A prompting technique that encourages LLMs to generate intermediate reasoning steps, leading to more logical decision-making.&quot;,
+        &quot;term&quot;: &quot;Chain-of-Thought (CoT) Reasoning&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Supervised Fine-Tuning (SFT)&quot;,
+      &quot;Proximal Policy Optimization (PPO)&quot;,
+      &quot;Kullback-Leibler (KL) divergence&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Reinforcement Learning from Human Feedback&quot;,
+    &quot;AI Feedback&quot;,
+    &quot;Preference Modeling&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;RL&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike traditional RLHF, GenRM reduces the need for resource-intensive human annotation and sophisticated online optimization by utilizing AI-generated feedback and self-generated reasoning traces.&quot;,
+      &quot;Compared to explicitly parameterized reward models like Bradley-Terry, GenRM offers improved robustness and generalization capabilities, particularly to out-of-distribution (OOD) tasks, due to its more general preference modeling objective.&quot;,
+      &quot;While RLAIF methods like LLM-as-a-judge may not fully align with human preferences, GenRM, especially its CoT variants, demonstrate better alignment and significantly improved OOD generalization.&quot;,
+      &quot;The STaR-DPO model within GenRM outperforms STaR-SFT and base LLM-as-a-judge, exhibiting superior robustness and performance across various benchmarks.&quot;,
+      &quot;Unlike some concurrent works that rely on full reference solutions or separate strong models for rationales, GenRM utilizes fully self-bootstrapped rationales within a comprehensive language modeling setup, avoiding additional architectural complexity.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;A limitation of the current CoT-GenRM approach is the potential for misalignment when incorrect rationales are generated.&quot;,
+      &quot;The training rationales from the post-rationalization model can be off-policy for the base model, leading to a distribution mismatch during training.&quot;,
+      &quot;The STaR-Rationalizer model struggles to generalize to more novel tasks where it generates rationales different from those seen during training.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Base LLM&quot;,
+        &quot;value&quot;: &quot;LLaMa-3.1-8B-Instruct (Dubey et al., 2024)&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Training Framework&quot;,
+        &quot;value&quot;: &quot;GPT-NeoX framework (Andonian et al., 2023)&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Generation Settings&quot;,
+        &quot;list&quot;: [
+          &quot;SGLang version: 0.3.0&quot;,
+          &quot;Temperature: 1.0&quot;,
+          &quot;Top-p: 0.95&quot;
+        ]
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Begin with a strong pre-trained LLM that acts as a zero-shot judge in an RLAIF setting.&quot;,
+      &quot;Given a task (x) and two responses (y1, y2), directly prompt the LLM to provide an answer indicator token (I) indicating a preference over the answers.&quot;,
+      &quot;For the GenRM (no CoT) variant, train the LLM as a classifier by directly predicting the answer token probabilities for each response using a standard supervised fine-tuning objective.&quot;,
+      &quot;For the CoT-GenRM approach, additionally prompt the model to provide intermediate Chain-of-Thought reasoning (r) before outputting the final answer indicator token.&quot;,
+      &quot;CoT-GenRM can be trained with Rationalization (bootstrapping reasoning from ground-truth or stronger rationalization models) or through a Self-Taught Reasoner (STaR) approach, where the model self-bootstraps intermediate reasoning.&quot;,
+      &quot;A STaR-DPO variant utilizes a Direct Preference Optimization objective with preference pairs that include both correct and incorrect rationales.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Bradley-Terry Preference Model&quot;,
+        &quot;value&quot;: &quot;$p_{\\text{BT}}(y_1 \\succ y_2 \\mid x) = \\frac{\\exp(r(x,y_1))}{\\exp(r(x,y_1)) + \\exp(r(x,y_2))} = \\sigma(r(x,y_1) - r(x,y_2))$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Reward Modeling Loss&quot;,
+        &quot;value&quot;: &quot;$\\mathcal{L}_{\\text{rew}}(r_\\phi) = -\\mathbb{E}_{(x,y_w,y_l) \\sim \\mathcal{D}}[\\log \\sigma(r_\\phi(x,y_w) - r_\\phi(x,y_l))]$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;GenRM Training Objective (no CoT)&quot;,
+        &quot;value&quot;: &quot;$\\mathcal{L}_{\\text{GenRM}}(\\pi_\\phi) = \\mathbb{E}_{(x,y_1,y_2,I) \\sim \\mathcal{D}}[-\\log \\pi_\\phi(I \\mid x, y_1, y_2)]$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;CoT-GenRM with Rationalization Training Objective&quot;,
+        &quot;value&quot;: &quot;$\\mathcal{L}_{\\text{GenRM-Rationalization}}(\\pi_\\phi) = \\mathbb{E}_{(x,y_1,y_2,r,I) \\sim \\mathcal{D}}[-\\log \\pi_\\phi(I \\mid x, y_1, y_2, r) - \\log \\pi_\\phi(r \\mid x, y_1, y_2)]$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;STaR-DPO Training Objective&quot;,
+        &quot;value&quot;: &quot;$\\mathcal{L}_{\\text{GenRM-DPO}}(\\pi_\\phi) = \\mathbb{E}_{\\mathcal{D}} [\\log \\sigma (\\beta \\log \\frac{\\pi_\\phi(I_w, r_w \\mid x, y_1, y_2)}{\\pi_{\\text{ref}}(I_w, r_w \\mid x, y_1, y_2)} - \\beta \\log \\frac{\\pi_\\phi(I_l, r_l \\mid x, y_1, y_2)}{\\pi_{\\text{ref}}(I_l, r_l \\mid x, y_1, y_2)})]$&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;N/A&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;The base LLM used is LLaMa-3.1-8B-Instruct. It is prompted to act as a classifier for preferences or to generate reasoning traces.&quot;,
+        &quot;name&quot;: &quot;LLM (Large Language Model)&quot;,
+        &quot;role&quot;: &quot;Serves as a zero-shot judge for preference prediction and is fine-tuned to become the generative reward model.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Intermediate steps generated by the LLM (e.g., using Chain-of-Thought prompting) to justify its preference judgments, improving logical consistency.&quot;,
+        &quot;name&quot;: &quot;Reasoning Traces (r)&quot;,
+        &quot;role&quot;: &quot;Augments the preference prediction process, particularly in CoT-GenRM variants, leading to more robust decision-making.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Tokens used by the LLM to explicitly indicate its preference between two given responses (e.g., &#39;A&#39; or &#39;B&#39;).&quot;,
+        &quot;name&quot;: &quot;Answer Indicator Tokens (I)&quot;,
+        &quot;role&quot;: &quot;Represent the explicit preference output from the LLM, used in the training objectives for GenRM and CoT-GenRM.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;We propose Generative Reward Models (GenRM), a hybrid approach that unifies Reinforcement Learning from Human Feedback (RLHF) and Reinforcement Learning from AI Feedback (RLAIF) methodologies by training an LLM on self-generated reasoning traces to produce synthetic preference labels that align with human judgments.&quot;,
+  &quot;title&quot;: &quot;GENERATIVE REWARD MODELS&quot;,
+  &quot;url&quot;: &quot;https://www.synthlabs.ai/pdf/Generative_Reward_Models.pdf&quot;,
+  &quot;venue&quot;: &quot;Preprint&quot;,
+  &quot;year&quot;: &quot;2024&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;paper-1772980095573&quot;,&quot;sourceUrl&quot;:&quot;https://www.synthlabs.ai/pdf/Generative_Reward_Models.pdf&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:120,&quot;xmin&quot;:200,&quot;ymax&quot;:320,&quot;xmax&quot;:780},&quot;caption&quot;:&quot;Methods overview. Bradley-Terry methods directly output the probability of y1 being preferred over y2, while GenRM compares the LLMs next-token probabilities of answer indicator tokens (I1, I2). CoT-GenRM samples reasoning traces (r) followed by the answer indicator token.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},&quot;authors&quot;:&quot;Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper introduces Generative Reward Models (GenRM), a novel framework unifying RLHF and RLAIF. It effectively addresses key limitations of prior work, particularly the struggle of explicit reward models with out-of-distribution generalization and the alignment issues of LLM-as-a-judge methods with human preferences. By leveraging self-generated reasoning traces and iterative training, GenRM significantly improves performance on OOD tasks and reasoning benchmarks, offering a robust and scalable approach to preference modeling. While not a paradigm shift, it is a strong contribution to the field.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Figure 3 demonstrates a case where LLM-as-a-judge fails to accurately judge a general assistant task, incorrectly preferring a less relevant response, whereas the proposed STaR-DPO model succeeds.&quot;,&quot;statement&quot;:&quot;Current alignment approaches (RLHF and RLAIF) face limitations: explicitly parameterized reward models struggle with robustness and generalization to out-of-distribution (OOD) data, and RLAIF methods like LLM-as-a-judge may not always align well with actual user preferences when acting as the sole evaluator.&quot;,&quot;whyItMatters&quot;:[&quot;RLHF is resource-intensive, requiring large human preference datasets and sophisticated online optimization techniques (e.g., PPO).&quot;,&quot;RLAIF addresses data collection challenges but synthetic preferences generated by LLMs may not align well with human preference judgments.&quot;,&quot;Explicitly parameterized reward models (e.g., Bradley-Terry) often lack robustness and fail to generalize well to out-of-distribution tasks.&quot;,&quot;LLM-as-a-judge methods, while offering a robust alternative, do not always accurately reflect actual user preferences, limiting their effectiveness as sole evaluators.&quot;]},&quot;evaluationHighlights&quot;:[&quot;GenRM significantly outperforms zero-shot LLM-based judgments on both in-distribution (9-31% accuracy improvement) and out-of-distribution (2-6% accuracy improvement) tasks.&quot;,&quot;GenRM achieves in-distribution accuracy comparable to Bradley-Terry models while significantly outperforming them on out-of-distribution tasks (10-45% accuracy improvement).&quot;,&quot;STaR-DPO achieves a 91.0% accuracy on the RewardBench Safety category, surpassing the best performing PairRM model (81.8%).&quot;,&quot;On UltraInteract, STaR-DPO achieves 90.2% accuracy for reasoning tasks, significantly outperforming STaR-SFT (68.8%) and other explicit reward models (around 94%).&quot;,&quot;Utilizing inference-time compute, such as majority voting over 32 samples, consistently improves performance by 1.6% on UltraFeedback and 3.8% on RewardBench.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;UltraFeedback&quot;,&quot;RewardBench&quot;,&quot;RewardBench (Chat)&quot;,&quot;RewardBench (Chat Hard)&quot;,&quot;RewardBench (Reasoning)&quot;,&quot;RewardBench (Safety)&quot;,&quot;UltraInteract&quot;],&quot;metrics&quot;:[&quot;Accuracy&quot;,&quot;Maj@1&quot;,&quot;Maj@32&quot;],&quot;setting&quot;:&quot;Evaluation of generative reward models against classical reward models and zero-shot LLM-based judges on both in-domain and out-of-domain tasks.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:285,&quot;xmin&quot;:160,&quot;ymax&quot;:500,&quot;xmax&quot;:850},&quot;caption&quot;:&quot;Comparing generative reward models with prior reward modeling methods on in- domain (UltraFeedback) data and out-of-domain data (RewardBench). All generative model scores are the result of a majority vote over 32 samples.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:5},{&quot;boundingBox&quot;:{&quot;ymin&quot;:38,&quot;xmin&quot;:155,&quot;ymax&quot;:250,&quot;xmax&quot;:855},&quot;caption&quot;:&quot;Comparing generative reward models with prior reward modeling methods on in- domain (UltraInteract) data and out-of-domain data (RewardBench) split into reasoning and non- reasoning subsets. All generative model scores are the result of a majority vote over 32 samples.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:7},{&quot;boundingBox&quot;:{&quot;ymin&quot;:60,&quot;xmin&quot;:155,&quot;ymax&quot;:480,&quot;xmax&quot;:860},&quot;caption&quot;:&quot;Comparing generative reward models with prior reward modeling methods with ma- jority vote evaluation. Top row models are trained on UltraFeedback (Cui et al., 2024), and bottom row models are trained on UltraInteract (Yuan et al., 2024a). Left column models are evaluated on ei- ther UltraFeedback or UltraInteract, and right column models are evaluated on RewardBench (Lam- bert et al., 2024). Solid line methods are sampled to produce final answers and shading reflects a 95% confidence interval.&quot;,&quot;figureNumber&quot;:5,&quot;pageIndex&quot;:8}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;approx 73.0%&quot;,&quot;benchmark&quot;:&quot;UltraFeedback (in-dist)&quot;,&quot;delta&quot;:&quot;+1.0%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;approx 74.0%&quot;},{&quot;baseline&quot;:&quot;77.8%&quot;,&quot;benchmark&quot;:&quot;RewardBench (OOD)&quot;,&quot;delta&quot;:&quot;+4.1%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;81.9%&quot;},{&quot;baseline&quot;:&quot;81.8%&quot;,&quot;benchmark&quot;:&quot;RewardBench (Safety)&quot;,&quot;delta&quot;:&quot;+9.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;91.0%&quot;}],&quot;title&quot;:&quot;General Assistant Tasks Performance&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;68.8%&quot;,&quot;benchmark&quot;:&quot;UltraInteract (in-dist)&quot;,&quot;delta&quot;:&quot;+21.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;90.2%&quot;},{&quot;baseline&quot;:&quot;76.6%&quot;,&quot;benchmark&quot;:&quot;RewardBench (Reasoning)&quot;,&quot;delta&quot;:&quot;+10.6%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;87.2%&quot;},{&quot;baseline&quot;:&quot;78.0%&quot;,&quot;benchmark&quot;:&quot;RewardBench (excl. Reasoning)&quot;,&quot;delta&quot;:&quot;-3.0%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;75.0%&quot;}],&quot;title&quot;:&quot;Reasoning Tasks Performance&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;67.68&quot;,&quot;benchmark&quot;:&quot;UltraFeedback (Llama3.1 8B baseline)&quot;,&quot;delta&quot;:&quot;+2.45&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Maj@32&quot;,&quot;thisPaper&quot;:&quot;70.13&quot;},{&quot;baseline&quot;:&quot;77.61&quot;,&quot;benchmark&quot;:&quot;RewardBench (Llama3.1 8B baseline)&quot;,&quot;delta&quot;:&quot;-8.83&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Maj@32&quot;,&quot;thisPaper&quot;:&quot;68.78&quot;},{&quot;baseline&quot;:&quot;67.68&quot;,&quot;benchmark&quot;:&quot;UltraFeedback (Llama3.1 8B baseline)&quot;,&quot;delta&quot;:&quot;-5.08&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Maj@32&quot;,&quot;thisPaper&quot;:&quot;62.60&quot;},{&quot;baseline&quot;:&quot;77.61&quot;,&quot;benchmark&quot;:&quot;RewardBench (Llama3.1 8B baseline)&quot;,&quot;delta&quot;:&quot;-7.09&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Maj@32&quot;,&quot;thisPaper&quot;:&quot;70.52&quot;}],&quot;title&quot;:&quot;Bootstrapping Rationales&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Generative Reward Models (GenRM), especially CoT-GenRM and STaR-DPO variants, significantly outperform zero-shot LLM-based judgments and traditional Bradley-Terry reward models on out-of-distribution tasks.&quot;,&quot;Reasoning-based approaches, such as CoT-GenRM and STaR-DPO, show notably stronger performance, particularly on reasoning-heavy and safety-related categories.&quot;,&quot;The STaR-DPO model consistently achieves the strongest results across various benchmarks, demonstrating superior out-of-domain generalization while matching in-distribution performance.&quot;,&quot;Using inference-time compute, such as majority voting, further boosts the accuracy of the critic model, indicating the effectiveness of &#39;System 2&#39; reasoning approaches.&quot;,&quot;Bootstrapping rationales from stronger models (e.g., GPT-4) can initially underperform standard STaR methods but can be improved with additional on-policy training, highlighting the impact of training methodology on performance.&quot;]},&quot;institutions&quot;:&quot;SynthLabs, Stanford University&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;GenRM replaces the Bradley-Terry reward modeling approach with a more general preference modeling objective that does not assume a point-wise reward estimate, a special model architecture, or a specific preference distribution parameterization.&quot;,&quot;It integrates Chain-of-Thought (CoT) reasoning into preference modeling, which significantly improves both in-distribution and out-of-distribution performance by encouraging more logical, step-wise decision-making.&quot;,&quot;The framework utilizes a STaR-like methodology to align the LLM with user preferences, effectively training it to function as a reward model through self-generated reasoning traces and iterative training loops.&quot;,&quot;GenRM supports various training techniques including bootstrapping intermediate reasoning from ground-truth or stronger rationalization models (CoT-GenRM with Rationalization) and fully self-bootstrapped reasoning (CoT-GenRM-STaR and STaR-DPO).&quot;],&quot;main&quot;:&quot;A unified Generative Reward Model (GenRM) framework that combines RLHF and RLAIF methodologies, leveraging self-generated reasoning traces and iterative training to fine-tune LLMs for improved preference modeling and alignment, especially for out-of-distribution generalization.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A process to align large language models with human preferences using human preference labels.&quot;,&quot;term&quot;:&quot;Reinforcement Learning from Human Feedback (RLHF)&quot;},{&quot;definition&quot;:&quot;An alternative to RLHF that uses synthetic preferences generated by an LLM to address human data collection challenges.&quot;,&quot;term&quot;:&quot;Reinforcement Learning from AI Feedback (RLAIF)&quot;},{&quot;definition&quot;:&quot;A statistical model typically used in RLHF to capture human preferences from pairwise rankings of responses.&quot;,&quot;term&quot;:&quot;Bradley-Terry (BT) Preference Model&quot;},{&quot;definition&quot;:&quot;An iterative bootstrapping approach that improves LLM reasoning capabilities by training models to generate and refine rationales.&quot;,&quot;term&quot;:&quot;Self-Taught Reasoner (STaR)&quot;},{&quot;definition&quot;:&quot;An offline alignment algorithm that can directly optimize a policy using preference data, mathematically interchanging the reward model and optimal policy.&quot;,&quot;term&quot;:&quot;Direct Preference Optimization (DPO)&quot;},{&quot;definition&quot;:&quot;A prompting technique that encourages LLMs to generate intermediate reasoning steps, leading to more logical decision-making.&quot;,&quot;term&quot;:&quot;Chain-of-Thought (CoT) Reasoning&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Supervised Fine-Tuning (SFT)&quot;,&quot;Proximal Policy Optimization (PPO)&quot;,&quot;Kullback-Leibler (KL) divergence&quot;]},&quot;subTopics&quot;:[&quot;Reinforcement Learning from Human Feedback&quot;,&quot;AI Feedback&quot;,&quot;Preference Modeling&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;RL&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike traditional RLHF, GenRM reduces the need for resource-intensive human annotation and sophisticated online optimization by utilizing AI-generated feedback and self-generated reasoning traces.&quot;,&quot;Compared to explicitly parameterized reward models like Bradley-Terry, GenRM offers improved robustness and generalization capabilities, particularly to out-of-distribution (OOD) tasks, due to its more general preference modeling objective.&quot;,&quot;While RLAIF methods like LLM-as-a-judge may not fully align with human preferences, GenRM, especially its CoT variants, demonstrate better alignment and significantly improved OOD generalization.&quot;,&quot;The STaR-DPO model within GenRM outperforms STaR-SFT and base LLM-as-a-judge, exhibiting superior robustness and performance across various benchmarks.&quot;,&quot;Unlike some concurrent works that rely on full reference solutions or separate strong models for rationales, GenRM utilizes fully self-bootstrapped rationales within a comprehensive language modeling setup, avoiding additional architectural complexity.&quot;],&quot;limitations&quot;:[&quot;A limitation of the current CoT-GenRM approach is the potential for misalignment when incorrect rationales are generated.&quot;,&quot;The training rationales from the post-rationalization model can be off-policy for the base model, leading to a distribution mismatch during training.&quot;,&quot;The STaR-Rationalizer model struggles to generalize to more novel tasks where it generates rationales different from those seen during training.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Base LLM&quot;,&quot;value&quot;:&quot;LLaMa-3.1-8B-Instruct (Dubey et al., 2024)&quot;},{&quot;label&quot;:&quot;Training Framework&quot;,&quot;value&quot;:&quot;GPT-NeoX framework (Andonian et al., 2023)&quot;},{&quot;label&quot;:&quot;Generation Settings&quot;,&quot;list&quot;:[&quot;SGLang version: 0.3.0&quot;,&quot;Temperature: 1.0&quot;,&quot;Top-p: 0.95&quot;]}],&quot;pipelineFlow&quot;:[&quot;Begin with a strong pre-trained LLM that acts as a zero-shot judge in an RLAIF setting.&quot;,&quot;Given a task (x) and two responses (y1, y2), directly prompt the LLM to provide an answer indicator token (I) indicating a preference over the answers.&quot;,&quot;For the GenRM (no CoT) variant, train the LLM as a classifier by directly predicting the answer token probabilities for each response using a standard supervised fine-tuning objective.&quot;,&quot;For the CoT-GenRM approach, additionally prompt the model to provide intermediate Chain-of-Thought reasoning (r) before outputting the final answer indicator token.&quot;,&quot;CoT-GenRM can be trained with Rationalization (bootstrapping reasoning from ground-truth or stronger rationalization models) or through a Self-Taught Reasoner (STaR) approach, where the model self-bootstraps intermediate reasoning.&quot;,&quot;A STaR-DPO variant utilizes a Direct Preference Optimization objective with preference pairs that include both correct and incorrect rationales.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Bradley-Terry Preference Model&quot;,&quot;value&quot;:&quot;$p_{\\text{BT}}(y_1 \\succ y_2 \\mid x) = \\frac{\\exp(r(x,y_1))}{\\exp(r(x,y_1)) + \\exp(r(x,y_2))} = \\sigma(r(x,y_1) - r(x,y_2))$&quot;},{&quot;label&quot;:&quot;Reward Modeling Loss&quot;,&quot;value&quot;:&quot;$\\mathcal{L}_{\\text{rew}}(r_\\phi) = -\\mathbb{E}_{(x,y_w,y_l) \\sim \\mathcal{D}}[\\log \\sigma(r_\\phi(x,y_w) - r_\\phi(x,y_l))]$&quot;},{&quot;label&quot;:&quot;GenRM Training Objective (no CoT)&quot;,&quot;value&quot;:&quot;$\\mathcal{L}_{\\text{GenRM}}(\\pi_\\phi) = \\mathbb{E}_{(x,y_1,y_2,I) \\sim \\mathcal{D}}[-\\log \\pi_\\phi(I \\mid x, y_1, y_2)]$&quot;},{&quot;label&quot;:&quot;CoT-GenRM with Rationalization Training Objective&quot;,&quot;value&quot;:&quot;$\\mathcal{L}_{\\text{GenRM-Rationalization}}(\\pi_\\phi) = \\mathbb{E}_{(x,y_1,y_2,r,I) \\sim \\mathcal{D}}[-\\log \\pi_\\phi(I \\mid x, y_1, y_2, r) - \\log \\pi_\\phi(r \\mid x, y_1, y_2)]$&quot;},{&quot;label&quot;:&quot;STaR-DPO Training Objective&quot;,&quot;value&quot;:&quot;$\\mathcal{L}_{\\text{GenRM-DPO}}(\\pi_\\phi) = \\mathbb{E}_{\\mathcal{D}} [\\log \\sigma (\\beta \\log \\frac{\\pi_\\phi(I_w, r_w \\mid x, y_1, y_2)}{\\pi_{\\text{ref}}(I_w, r_w \\mid x, y_1, y_2)} - \\beta \\log \\frac{\\pi_\\phi(I_l, r_l \\mid x, y_1, y_2)}{\\pi_{\\text{ref}}(I_l, r_l \\mid x, y_1, y_2)})]$&quot;}],&quot;reproducibility&quot;:&quot;N/A&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;The base LLM used is LLaMa-3.1-8B-Instruct. It is prompted to act as a classifier for preferences or to generate reasoning traces.&quot;,&quot;name&quot;:&quot;LLM (Large Language Model)&quot;,&quot;role&quot;:&quot;Serves as a zero-shot judge for preference prediction and is fine-tuned to become the generative reward model.&quot;},{&quot;details&quot;:&quot;Intermediate steps generated by the LLM (e.g., using Chain-of-Thought prompting) to justify its preference judgments, improving logical consistency.&quot;,&quot;name&quot;:&quot;Reasoning Traces (r)&quot;,&quot;role&quot;:&quot;Augments the preference prediction process, particularly in CoT-GenRM variants, leading to more robust decision-making.&quot;},{&quot;details&quot;:&quot;Tokens used by the LLM to explicitly indicate its preference between two given responses (e.g., &#39;A&#39; or &#39;B&#39;).&quot;,&quot;name&quot;:&quot;Answer Indicator Tokens (I)&quot;,&quot;role&quot;:&quot;Represent the explicit preference output from the LLM, used in the training objectives for GenRM and CoT-GenRM.&quot;}]},&quot;thesis&quot;:&quot;We propose Generative Reward Models (GenRM), a hybrid approach that unifies Reinforcement Learning from Human Feedback (RLHF) and Reinforcement Learning from AI Feedback (RLAIF) methodologies by training an LLM on self-generated reasoning traces to produce synthetic preference labels that align with human judgments.&quot;,&quot;title&quot;:&quot;GENERATIVE REWARD MODELS&quot;,&quot;url&quot;:&quot;https://www.synthlabs.ai/pdf/Generative_Reward_Models.pdf&quot;,&quot;venue&quot;:&quot;Preprint&quot;,&quot;year&quot;:&quot;2024&quot;}}</script>
+</body>
+</html>

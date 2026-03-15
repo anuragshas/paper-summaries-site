@@ -1,0 +1,19 @@
+{
+  "paperId": "2603.01562",
+  "title": "RubricBench: Aligning Model-Generated Rubrics with Human Standards",
+  "authors": "Qiyuan Zhang, Junyi Zhou, Yufei Wang, Fuyuan Lyu, Yidong Ming, Can Xu, Qingfeng Sun, Kai Zheng, Peng Kang, Xue Liu, Chen Ma",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "LLM Evaluation",
+    "Reward Models",
+    "Benchmarks",
+    "AI Alignment"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2603.01562",
+  "pagePath": "/paper-summaries-site/papers/2603.01562",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.01562/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

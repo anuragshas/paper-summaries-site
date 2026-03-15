@@ -1,0 +1,391 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 101,
+      "xmin": 230,
+      "ymax": 352,
+      "xmax": 821
+    },
+    "caption": "Voxtral Realtime architecture and decoding scheme for a target delay $\\tau = 80$ ms. Voxtral Realtime consists of a causal audio encoder to embed the input audio stream, an MLP adapter layer to temporally downsample the audio embeddings, and a text decoder to auto-regressively generate the output text stream. The downsampled audio embeddings from the adapter and the embeddings of previously generated tokens have the same frame-rate of 12.5Hz, with each frame representing 80ms of audio. These are summed and processed by the text decoder, which predicts one token per frame. The decoder emits a padding token [P] while waiting for sufficient acoustic evidence. Once a word is acoustically complete and the target delay $\\tau$ has elapsed, a word-boundary token [W] is emitted to initiate generation, followed by the corresponding subword tokens.",
+    "figureNumber": 2,
+    "pageIndex": 2
+  },
+  "authors": "Mistral AI Team",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "Voxtral Realtime makes a strong contribution by bridging the gap between offline and real-time ASR, achieving near-offline transcription quality at sub-second latencies. Its novel causal architecture with Ada RMS-Norm for dynamic delay conditioning and large-scale multilingual pretraining addresses key challenges in streaming ASR. The integration with vLLM for efficient deployment and open-sourcing further amplify its impact, enabling practical real-time applications across 13 languages. It represents a significant step towards enabling performant and deployable streaming ASR."
+  },
+  "coreProblem": {
+    "statement": "The core problem is to achieve offline-level automatic speech recognition transcription quality in real-time streaming settings, particularly at sub-second latencies and across multiple languages and domains. Existing approaches either adapt offline models (which degrades performance at low delays) or natively streaming models that struggle to match offline quality at sub-second latencies or lack multilingual robustness.",
+    "whyItMatters": [
+      "Many real-world applications such as voice assistants and live captioning require immediate transcription.",
+      "Offline ASR models, which rely on full audio context, are unsuitable for real-time scenarios.",
+      "Adapting offline models for streaming often leads to degraded accuracy in low-delay regimes due to training-inference mismatch.",
+      "Achieving robust, high-quality streaming ASR in multilingual and multi-domain settings remains a significant challenge."
+    ],
+    "concreteExample": "Voice assistants, live captioning services, and interactive speech interfaces require automatic speech recognition (ASR) to produce transcriptions in real-time as audio streams, often with strict sub-second latency constraints."
+  },
+  "evaluationHighlights": [
+    "At a delay of 480 ms, Voxtral Realtime approaches the accuracy of Scribe v2 Realtime (an industry-leading real-time API model) and Whisper (a widely adopted open-source offline ASR system).",
+    "At higher delays (e.g., 960 ms and 2400 ms), Voxtral Realtime matches or surpasses strong offline baselines like Voxtral Mini Transcribe V2 on several English and multilingual benchmarks, especially in long-form English tasks.",
+    "Voxtral Realtime substantially outperforms existing open-source streaming baselines at comparable latencies across all benchmark categories.",
+    "The model consistently improves as latency increases and maintains strong performance across diverse distributions.",
+    "Ada RMS-Norm for delay conditioning leads to faster convergence and lower overall WER compared to alternative conditioning strategies (summing delay embeddings or special tokens).",
+    "Grouping word-boundary tokens ([W]) during target construction results in faster convergence and lower WERs, better preserving the language decoder's pre-trained text distributions.",
+    "Left-padding the audio stream with zeros during inference improves transcription accuracy across various task categories, suggesting it acts as an 'attention sink'."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "FLEURS (multilingual)",
+        "Mozilla Common Voice (MCV, multilingual)",
+        "LibriSpeech Test Clean (LS-C, English short-form)",
+        "LibriSpeech Test Other (LS-O, English short-form)",
+        "GigaSpeech (GS, English short-form)",
+        "VoxPopuli (VP, English short-form)",
+        "SwitchBoard (SB, English short-form)",
+        "CallHome (CH, English short-form)",
+        "CHiME-4 (C-4, English short-form)",
+        "SPGISpeech (SPGI, English short-form)",
+        "TED-LIUM (TED, English short-form)",
+        "Earnings-22 (E22, English short-form)",
+        "Meanwhile (MW, English long-form)",
+        "Earnings-21 (E21, English long-form)",
+        "TED-LIUM (long-form version, English long-form)"
+      ],
+      "metrics": [
+        "Word Error Rate (WER) (%)",
+        "Character Error Rate (CER) (%)"
+      ],
+      "setting": "Evaluation across English and multilingual benchmarks, comparing against offline systems (Whisper, Voxtral Mini Transcribe V2), real-time APIs (GPT-4o mini Transcribe, Scribe v2 Realtime), and open-source streaming models (DSM 1B En-Fr, DSM 2.6B En, Nemotron Streaming) at various controlled delays (240ms, 480ms, 960ms, 2400ms)."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 180,
+          "xmin": 252,
+          "ymax": 817,
+          "xmax": 771
+        },
+        "caption": "Voxtral Realtime approaches offline accuracy at sub-second latency. Macro-average word error- rate (WER) vs. delay on the FLEURS multilingual benchmark for realtime and offline models. Lower is better. At 480 ms delay, Voxtral Realtime is competitive with Scribe v2 Realtime, the leading realtime API model, as well as Whisper, the most popular open-source offline model. It surpasses both baselines at 960 ms delay, approaching the performance of Voxtral Mini Transcribe V2, a state-of-the-art offline transcription model.",
+        "figureNumber": 1,
+        "pageIndex": 0
+      },
+      {
+        "boundingBox": {
+          "ymin": 50,
+          "xmin": 175,
+          "ymax": 299,
+          "xmax": 832
+        },
+        "caption": "Ablation of delay-conditioning mechanisms. Word error-rate on three languages from the FLEURS dataset as a function of training progress. Ada RMS-Norm consistently improves convergence speed and final accuracy compared to alternative conditioning strategies.",
+        "figureNumber": 3,
+        "pageIndex": 7
+      },
+      {
+        "boundingBox": {
+          "ymin": 299,
+          "xmin": 175,
+          "ymax": 561,
+          "xmax": 832
+        },
+        "caption": "Ablation of target construction schemes. Word error-rate on three languages from the FLEURS dataset as a function of training progress. Inserting a single word-boundary token [W] per-group better preserves the capabilities of the pre-trained language decoder than inserting a [W] per-word.",
+        "figureNumber": 4,
+        "pageIndex": 7
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "8.23",
+            "benchmark": "Overall (macro-avg)",
+            "delta": "+0.49",
+            "isPositive": false,
+            "metric": "WER (%) AVG",
+            "thisPaper": "8.72"
+          },
+          {
+            "baseline": "7.33",
+            "benchmark": "Overall (macro-avg)",
+            "delta": "+1.39",
+            "isPositive": false,
+            "metric": "WER (%) AVG",
+            "thisPaper": "8.72"
+          },
+          {
+            "baseline": "7.11",
+            "benchmark": "Overall (macro-avg)",
+            "delta": "+0.59",
+            "isPositive": false,
+            "metric": "WER (%) AVG",
+            "thisPaper": "7.70"
+          },
+          {
+            "baseline": "7.11",
+            "benchmark": "Overall (macro-avg)",
+            "delta": "-0.38",
+            "isPositive": true,
+            "metric": "WER (%) AVG",
+            "thisPaper": "6.73"
+          },
+          {
+            "baseline": "7.11",
+            "benchmark": "En-Long",
+            "delta": "-0.18",
+            "isPositive": true,
+            "metric": "WER (%)",
+            "thisPaper": "6.93"
+          },
+          {
+            "baseline": "5.90",
+            "benchmark": "FLEURS",
+            "delta": "+0.83",
+            "isPositive": false,
+            "metric": "WER (%)",
+            "thisPaper": "6.73"
+          }
+        ],
+        "title": "Macro-average WER across Benchmarks (from Table 3)"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "8.23",
+        "benchmark": "Overall (macro-avg)",
+        "delta": "+0.49",
+        "isPositive": false,
+        "metric": "WER (%) AVG",
+        "thisPaper": "8.72"
+      },
+      {
+        "baseline": "7.33",
+        "benchmark": "Overall (macro-avg)",
+        "delta": "+1.39",
+        "isPositive": false,
+        "metric": "WER (%) AVG",
+        "thisPaper": "8.72"
+      },
+      {
+        "baseline": "7.11",
+        "benchmark": "Overall (macro-avg)",
+        "delta": "+0.59",
+        "isPositive": false,
+        "metric": "WER (%) AVG",
+        "thisPaper": "7.70"
+      },
+      {
+        "baseline": "7.11",
+        "benchmark": "Overall (macro-avg)",
+        "delta": "-0.38",
+        "isPositive": true,
+        "metric": "WER (%) AVG",
+        "thisPaper": "6.73"
+      },
+      {
+        "baseline": "7.11",
+        "benchmark": "En-Long",
+        "delta": "-0.18",
+        "isPositive": true,
+        "metric": "WER (%)",
+        "thisPaper": "6.93"
+      },
+      {
+        "baseline": "5.90",
+        "benchmark": "FLEURS",
+        "delta": "+0.83",
+        "isPositive": false,
+        "metric": "WER (%)",
+        "thisPaper": "6.73"
+      }
+    ],
+    "mainTakeaways": [
+      "Voxtral Realtime demonstrates that offline-level transcription quality is achievable in a fully streaming framework at sub-second latencies.",
+      "The model significantly outperforms existing open-source streaming baselines and becomes competitive with leading real-time APIs and strong offline models at moderate-to-higher delays.",
+      "The Ada RMS-Norm mechanism, group-based word boundary token generation, and left-padding are crucial design choices for achieving high performance and robustness across various latencies and languages."
+    ]
+  },
+  "institutions": "Mistral AI Team",
+  "keyNovelty": {
+    "main": "Voxtral Realtime is a natively streaming ASR model that achieves near-offline transcription quality at sub-second latency through a causal audio encoder, an Adaptive RMS-Norm for dynamic delay conditioning, and large-scale multilingual pretraining, coupled with efficient vLLM integration for deployment.",
+    "explanation": [
+      "Voxtral Realtime introduces a natively streaming ASR architecture, unlike approaches that adapt offline models via chunking or sliding windows. It is trained end-to-end for streaming with explicit alignment between audio and text streams, ensuring causal processing and bounded lookahead.",
+      "The architecture includes a novel causal audio encoder, trained from scratch with modern components like RMSNorm, SwiGLU, and RoPE. This causal design ensures that only past and current audio inputs are used for predictions.",
+      "A key innovation is the Adaptive RMS-Norm (Ada RMS-Norm) mechanism in the language decoder. This mechanism conditions the decoder on a target streaming delay $\\tau$, allowing a single model to operate effectively at any delay that is a multiple of 80ms without needing re-training for different latencies. The conditioning is injected additively in the normalized space on the feed-forward branch of every Transformer block using a sinusoidal embedding of $\\tau$.",
+      "The model is pretrained at scale on a large, multilingual dataset spanning 13 languages, which enables robust generalization across diverse languages and domains.",
+      "The paper introduces contributions to the vLLM framework for real-time serving, including paged attention for temporally heterogeneous KV caches (one for encoder, one for decoder), resumable streaming sessions, and a WebSocket API for full-duplex streaming input/output. This facilitates low-latency deployment and high throughput."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "Automatic Speech Recognition (ASR) is the process of converting spoken language into written text.",
+        "term": "Automatic Speech Recognition (ASR)"
+      },
+      {
+        "definition": "A deep learning model architecture that uses self-attention mechanisms to process sequential data, commonly used in NLP and increasingly in speech.",
+        "term": "Transformer"
+      },
+      {
+        "definition": "A type of sequence modeling where the prediction at any time step depends only on past and current inputs, not future inputs. Essential for real-time streaming.",
+        "term": "Causal Modeling"
+      },
+      {
+        "definition": "Root Mean Square Layer Normalization, an alternative to LayerNorm that has been shown to improve training stability and downstream performance in Transformers.",
+        "term": "RMSNorm"
+      },
+      {
+        "definition": "Swish Gated Linear Unit, a type of activation function often used in Transformer architectures.",
+        "term": "SwiGLU"
+      },
+      {
+        "definition": "Rotary Position Embedding, a method for encoding positional information in Transformers that allows for effective length extrapolation.",
+        "term": "RoPE"
+      },
+      {
+        "definition": "A framework for streaming sequence-to-sequence learning that uses a decoder-only model over aligned audio and text streams, enabling explicit control over streaming delays.",
+        "term": "Delayed Streams Modeling (DSM)"
+      },
+      {
+        "definition": "A common metric for evaluating the performance of ASR systems, calculated as the number of errors (substitutions, deletions, insertions) divided by the total number of words in the reference text.",
+        "term": "Word Error Rate (WER)"
+      },
+      {
+        "definition": "A metric similar to WER but calculated at the character level, often used for languages without clear word boundaries (e.g., Chinese, Japanese).",
+        "term": "Character Error Rate (CER)"
+      },
+      {
+        "definition": "An optimized attention mechanism used in large language models to manage the Key-Value (KV) cache efficiently, often by paging KV states to avoid fragmentation.",
+        "term": "PagedAttention"
+      },
+      {
+        "definition": "A fast LLM serving engine for offline and online inference that uses PagedAttention for efficient memory management.",
+        "term": "vLLM"
+      }
+    ],
+    "prerequisites": [
+      "Familiarity with deep learning fundamentals.",
+      "Understanding of Transformer architecture components (self-attention, feed-forward networks, positional encodings).",
+      "Basic knowledge of Automatic Speech Recognition (ASR) principles.",
+      "Concepts of sequence-to-sequence modeling and recurrent neural networks (RNNs) in context of streaming."
+    ]
+  },
+  "subTopics": [
+    "Streaming ASR",
+    "Low-Latency Speech Recognition",
+    "Multilingual ASR",
+    "Transformer Architectures",
+    "Efficient Inference",
+    "Real-time Systems"
+  ],
+  "tags": [
+    {
+      "name": "Automatic Speech Recognition",
+      "type": "primary"
+    },
+    {
+      "name": "Streaming ASR",
+      "type": "topic"
+    },
+    {
+      "name": "Deep Learning",
+      "type": "topic"
+    },
+    {
+      "name": "Transformers",
+      "type": "topic"
+    },
+    {
+      "name": "Low-Latency Systems",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike previous approaches that adapt offline ASR models (e.g., Whisper) by chunking or sliding windows, Voxtral Realtime is a natively streaming architecture trained end-to-end. This avoids the fundamental training-inference mismatch that often degrades accuracy in low-delay regimes for adapted offline models.",
+      "It improves upon prior natively streaming approaches like Delayed Streams Modeling (DSM) by achieving offline-level accuracy at sub-second latencies and supporting robust multilingual and multi-domain generalization, whereas DSM approaches were limited in these aspects.",
+      "The causal audio encoder in Voxtral Realtime differs from bidirectional encoders used in offline models like Whisper (Table 2), which leverages full context. Voxtral Realtime's encoder is specifically designed for causal, real-time processing.",
+      "The integration with vLLM provides a more efficient and production-ready serving solution for streaming ASR compared to generic inference frameworks, particularly by addressing the challenges of heterogeneous KV caches in streaming encoder-decoder models."
+    ],
+    "limitations": [
+      "The paper implicitly suggests that achieving offline-level performance at sub-second latency in multilingual and multi-domain settings was a prior limitation of other streaming ASR systems.",
+      "The investigation into left-padding as an attention sink is left for future work, indicating that its full potential and theoretical underpinnings are not yet fully explored.",
+      "While the model supports 13 languages, it does not explicitly state its performance across all possible language combinations or extreme low-resource languages, suggesting potential for further generalization."
+    ],
+    "modeling": [
+      {
+        "label": "Overall Architecture",
+        "list": [
+          "Transformer-based streaming ASR model following Delayed Streams Modeling (DSM).",
+          "Comprises a causal audio encoder, a temporal adapter, and a Transformer decoder.",
+          "Outputs one token per downsampled audio frame (80 ms)."
+        ],
+        "value": "Voxtral Realtime is a Transformer-based, stream-synchronous ASR model composed of a causal audio encoder, a temporal adapter (MLP), and a Transformer decoder. It leverages explicit alignment between audio and text streams and is designed for real-time, low-latency performance."
+      },
+      {
+        "label": "Causal Audio Encoder",
+        "list": [
+          "Trained from scratch, uses causal convolutions and causal self-attention layers.",
+          "Converts waveform to log-Mel spectrogram (128 Mel bins, 10 ms hop length).",
+          "Adopts modern architectural choices: RMSNorm, SwiGLU, RoPE, and a 750-frame sliding window.",
+          "Emits one embedding every 20 ms (50 Hz)."
+        ],
+        "value": "The audio encoder is a causal Transformer that processes input audio (log-Mel spectrograms) through a convolutional stem and a stack of causal self-attention layers with RMSNorm, SwiGLU, and RoPE. It maintains a 4-frame history buffer and a 750-frame sliding window for unbounded streaming with bounded memory."
+      },
+      {
+        "label": "Adapter Layer",
+        "list": [
+          "Single MLP layer.",
+          "Temporally downsamples encoder outputs by 4x.",
+          "Reduces effective frame rate to 12.5 Hz (80 ms per embedding), matching the decoder's processing rate."
+        ],
+        "value": "A lightweight MLP adapter layer is inserted between the audio encoder and the language decoder. Its role is to temporally downsample the encoder outputs by a factor of 4x, reducing the effective sequence length and computational cost for the language decoder while preserving acoustic information."
+      },
+      {
+        "label": "Language Decoder",
+        "list": [
+          "Decoder-only Transformer, operating synchronously with the adapter stream.",
+          "Follows DSM's delayed-streams decoding scheme.",
+          "Performs one autoregressive decoding step every 80 ms, emitting text tokens or non-emitting placeholders [P].",
+          "Conditioned on target streaming delay $\\tau$ using an Adaptive RMSNorm (AdaRMSNorm) mechanism.",
+          "Uses sliding window attention with an 8192-token left-context.",
+          "Initializes from Ministral 3B.",
+          "Training uses a z-loss penalty on logit norm to stabilize embedding norms."
+        ],
+        "value": "The language decoder is a decoder-only Transformer that generates text autoregressively. It operates synchronously with the adapter, consuming a fused representation of downsampled audio embeddings and previously generated text tokens. It employs an Adaptive RMSNorm mechanism to condition on a target streaming delay $\\tau$, allowing a single model to adapt to various latency requirements. Specifically, given hidden states $x$, a block computes: $r_{\\text{attn}} = \\text{Attn}(\\text{RMSNorm}(x))$, $h = x + r_{\\text{attn}}$, $r_{\\text{ffn}} = \\text{FFN}(\\text{RMSNorm}(h) \\odot (1.0 + g(\\tau)))$, $y = h + r_{\\text{ffn}}$, where $g(\\tau)$ is a delay embedding."
+      }
+    ],
+    "pipelineFlow": [
+      "Input audio stream is fed into the Causal Audio Encoder.",
+      "The encoder processes audio causally, generating embeddings every 20 ms.",
+      "Encoder embeddings pass through the Adapter Layer, which downsamples them by 4x to produce embeddings every 80 ms.",
+      "The Language Decoder operates synchronously, performing one autoregressive decoding step every 80 ms.",
+      "The decoder consumes fused representations (current-step audio embedding + embedding of most recently generated text token) and predicts the next token.",
+      "The target delay $\\tau$ is dynamically conditioned into the decoder via Ada RMS-Norm.",
+      "During inference, the model maintains two KV caches (one for encoder, one for decoder) with different frame rates, managed by vLLM's paged-attention for efficiency.",
+      "A WebSocket API enables full-duplex streaming: incremental audio ingestion and continuous token output streaming."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Input",
+        "value": "Continuous audio stream."
+      },
+      {
+        "label": "Output",
+        "value": "Discrete text stream (transcription), generated in real-time."
+      },
+      {
+        "label": "Constraints",
+        "value": "Sub-second latency (e.g., 240ms, 480ms, 960ms, 2400ms), causal processing (no future context), high transcription quality (comparable to offline ASR), multilingual and multi-domain robustness."
+      },
+      {
+        "label": "Objective",
+        "value": "Minimize Word Error Rate (WER) or Character Error Rate (CER) while adhering to latency constraints and maintaining native streaming capabilities across various languages and domains."
+      }
+    ],
+    "reproducibility": "The model weights are released under the Apache 2.0 license. The paper details the model architecture, training methodology, and inference mechanisms, which are essential for reproducibility. Training involves pretraining on a large-scale dataset spanning 13 languages. The model leverages common components like RMSNorm, SwiGLU, and RoPE. Hyperparameters such as batch size (370 hours), learning rates ($4 \\times 10^{-4}$ for warm-up, $6 \\times 10^{-5}$ for end-to-end), and optimizer (AdamW) are specified. The integration with vLLM is also described, indicating that the serving framework is publicly available and extensible. This suggests a good level of reproducibility for researchers to build upon and evaluate the system.",
+    "systemModules": []
+  },
+  "thesis": "Voxtral Realtime achieves offline-level automatic speech recognition transcription quality at sub-second latency through a natively streaming Transformer-based architecture, featuring a causal audio encoder, an Adaptive RMS-Norm for dynamic delay conditioning, and large-scale multilingual pretraining, making it suitable for practical real-time applications.",
+  "url": "https://arxiv.org/abs/arXiv:2602.11298"
+}

@@ -1,0 +1,21 @@
+{
+  "paperId": "paper-1772343143036",
+  "title": "The Context Trap: Why End-to-End Audio Language Models Fail Multi-turn Dialogues",
+  "authors": "Zhi Rui Tam Wen-Yu Chang Yun-Nung Chen",
+  "publishedDate": null,
+  "tags": [
+    "Spoken Dialogue Systems",
+    "End-to-End Models",
+    "Audio Language Models",
+    "Dialogue Coherence",
+    "Context Tracking",
+    "LLM Evaluation"
+  ],
+  "sourceUrl": "https://aclanthology.org/2026.iwsds-1.7.pdf",
+  "pagePath": "/paper-summaries-site/papers/paper-1772343143036",
+  "summaryPath": "/paper-summaries-site/data/papers/paper-1772343143036/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

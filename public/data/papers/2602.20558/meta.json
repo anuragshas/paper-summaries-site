@@ -1,0 +1,21 @@
+{
+  "paperId": "2602.20558",
+  "title": "From Logs to Language: Learning Optimal Verbalization for LLM-Based Recommendation in Production",
+  "authors": "Yucheng Shi, Ying Li, Yu Wang, Yesu Feng, Arjun Rao, Rein Houthooft, Shradha Sehgal, Jin Wang, Hao Zhen, Ninghao Liu, Linas Baltrunas",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "LLM-based Recommendation",
+    "Verbalization",
+    "Reinforcement Learning",
+    "Data-Centric AI",
+    "Prompt Optimization",
+    "Sequential Recommendation"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2602.20558",
+  "pagePath": "/paper-summaries-site/papers/2602.20558",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.20558/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

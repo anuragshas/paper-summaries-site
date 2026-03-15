@@ -1,0 +1,266 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 100,
+      "xmin": 200,
+      "ymax": 500,
+      "xmax": 800
+    },
+    "caption": "Not explicitly an architecture figure, but the paper describes a two-stage process. The overall process for correcting position bias involves a first stage to estimate ranking residuals and a second stage to use these residuals as a control function in the click model. No single consolidated figure represents the entire architecture.",
+    "pageIndex": -1
+  },
+  "authors": "Md Aminul Islam, Kathryn Vasilaky, Elena Zheleva",
+  "breakthroughAssessment": {
+    "score": 8,
+    "justification": "This paper introduces a novel and robust control function-based method to correct for position bias in Learning to Rank (LTR). It addresses key limitations of prior methods by not requiring knowledge of the true propensity model or a specific LTR algorithm, and it explicitly handles non-linearity. The proposed 'debias validation clicks' technique is a significant practical contribution for hyperparameter tuning in real-world scenarios lacking unbiased data. Experimental results consistently show superior performance across multiple benchmarks and robustness to varying conditions (bias severity, data quantity, noise), making it a strong advancement in the field of fair and unbiased ranking."
+  },
+  "coreProblem": {
+    "statement": "Learning-to-Rank (LTR) systems trained on implicit feedback (e.g., clicks) suffer from position bias, where higher-ranked items receive more clicks regardless of their true relevance. This leads to biased LTR models that overestimate the relevance of high-ranked items and underestimate low-ranked ones, degrading ranking performance and reinforcing negative feedback loops.",
+    "whyItMatters": [
+      "It degrades the accuracy and effectiveness of LTR models, leading to suboptimal search results and recommendations.",
+      "It reinforces negative feedback loops, perpetuating and exacerbating existing biases in ranking systems.",
+      "It can lead to an unfair user experience by presenting less relevant items more prominently due to learned bias.",
+      "Biased models can result in missed opportunities for users to discover truly relevant content at lower ranks."
+    ],
+    "concreteExample": "If a search result for 'cat pictures' is truly relevant but appears at the 5th position, it receives fewer clicks than a less relevant result at the 1st position simply due to its displayed rank. An LTR model trained on this click data might erroneously learn that the 5th position item is less relevant."
+  },
+  "evaluationHighlights": [
+    "CFC significantly outperforms baseline LTR models (LambdaMART, DNN) and most state-of-the-art debiasing methods on Yahoo!, MSLR-WEB10k, and Istella-S datasets when true relevance labels are available for validation.",
+    "The proposed 'debias validation clicks' technique (CFC-BC) performs comparably to CFC with true labels, demonstrating its effectiveness for hyperparameter tuning in the absence of unbiased validation data.",
+    "CFC methods exhibit high robustness to varying degrees of position bias severity, maintaining performance even under strong bias conditions.",
+    "Performance of CFC improves or remains stable as the number of clicks (data quantity) increases, indicating scalability.",
+    "CFC is robust to different levels of click noise, making it practical for real-world noisy click data."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Yahoo! (Set1)",
+        "MSLR-WEB10k",
+        "Istella-S"
+      ],
+      "metrics": [
+        "Expected Reciprocal Rank (ERR@10)",
+        "Normalized Discounted Cumulative Gain (NDCG@10)"
+      ],
+      "setting": "The experiments are conducted on three widely used public LTR datasets, evaluating the proposed control function (CFC) method against several state-of-the-art baselines, including propensity-based methods, click models, and Heckman models. Both LambdaMART and DNN are used as underlying LTR algorithms."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 577,
+          "xmin": 521,
+          "ymax": 888,
+          "xmax": 908
+        },
+        "caption": "Figure 1: The performance of different methods with varying levels of position bias.",
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 442,
+          "xmin": 88,
+          "ymax": 563,
+          "xmax": 477
+        },
+        "caption": "Figure 2: The performance of different methods by varying the number of passes for clicks generation.",
+        "pageIndex": 7
+      },
+      {
+        "boundingBox": {
+          "ymin": 133,
+          "xmin": 88,
+          "ymax": 259,
+          "xmax": 478
+        },
+        "caption": "Figure 3: The performance of different methods up to 10 (p) positions with varying percentages of noisy clicks.",
+        "pageIndex": 7
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "LambdaMART (0.341)",
+        "benchmark": "Yahoo!",
+        "delta": "+0.018 (5.3%)",
+        "isPositive": true,
+        "metric": "ERR@10",
+        "thisPaper": "CFC-S (0.359)"
+      },
+      {
+        "baseline": "LambdaMART (0.282)",
+        "benchmark": "MSLR-WEB10k",
+        "delta": "+0.019 (6.7%)",
+        "isPositive": true,
+        "metric": "ERR@10",
+        "thisPaper": "CFC-S (0.301)"
+      },
+      {
+        "baseline": "LambdaMART (0.709)",
+        "benchmark": "Istella-S",
+        "delta": "+0.021 (2.9%)",
+        "isPositive": true,
+        "metric": "ERR@10",
+        "thisPaper": "CFC-S (0.730)"
+      },
+      {
+        "baseline": "CFC (with true labels) (0.462)",
+        "benchmark": "Yahoo!",
+        "delta": "-0.004",
+        "isPositive": false,
+        "metric": "ERR@10",
+        "thisPaper": "CFC-BC (0.458)"
+      }
+    ],
+    "mainTakeaways": [
+      "The control function approach (CFC) significantly boosts the performance of underlying LTR models by effectively correcting position bias.",
+      "CFC outperforms existing debiasing methods on various datasets and metrics, indicating its superior effectiveness.",
+      "The 'debias validation clicks' technique (CFC-BC) is a practical and effective solution for hyperparameter tuning in the common absence of unbiased validation data.",
+      "The CFC method demonstrates strong robustness to different levels of position bias, click data quantity, and noise in clicks.",
+      "The choice of the first-stage ranking model (e.g., Ridge, Logistic Regression, SVM, XGBoost) and its parameters can impact overall performance, but CFC consistently improves all of them."
+    ],
+    "keyResultGroups": []
+  },
+  "institutions": "Miami University, California Polytechnic State University, University of Illinois Chicago",
+  "keyNovelty": {
+    "main": "A novel control function-based method for position bias correction in Learning to Rank (LTR) that uses a two-stage process to estimate true relevance without requiring knowledge of the true propensity or specific LTR model, while allowing for non-linear relationships.",
+    "explanation": [
+      "The method operates in a two-stage process: a first stage models the historical ranking to generate residuals (control function), and a second stage uses these residuals to condition the click model and correct for endogeneity.",
+      "Unlike prior work, it does not require knowledge of the true propensity model or a specific underlying LTR algorithm, offering greater flexibility.",
+      "It explicitly allows for non-linearity in the underlying ranking model and complex feature interactions, overcoming limitations of many existing debiasing methods.",
+      "A novel 'debias validation clicks' technique is introduced for hyperparameter tuning, which is crucial for real-world applications where unbiased validation data is scarce."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A phenomenon in Learning to Rank where items displayed at higher positions receive more clicks and attention, regardless of their intrinsic relevance, leading to biased click data.",
+        "term": "Position Bias"
+      },
+      {
+        "definition": "A statistical technique used to address endogeneity (when an explanatory variable in a regression model is correlated with the error term) by including an additional variable that captures the endogenous relationship.",
+        "term": "Control Function"
+      },
+      {
+        "definition": "A family of machine learning algorithms designed to construct ranking models for information retrieval and recommendation systems.",
+        "term": "Learning to Rank (LTR)"
+      },
+      {
+        "definition": "A statistical problem where an explanatory variable in a model is correlated with the error term, leading to biased and inconsistent parameter estimates.",
+        "term": "Endogeneity"
+      }
+    ],
+    "prerequisites": [
+      "Basic understanding of Learning to Rank (LTR) algorithms and metrics (e.g., NDCG, ERR).",
+      "Familiarity with statistical concepts such as bias, endogeneity, and regression analysis.",
+      "Knowledge of common debiasing techniques for LTR, such as propensity score methods and click models.",
+      "An understanding of Generalized Additive Models (GAMs) and their application in statistical modeling."
+    ]
+  },
+  "subTopics": [
+    "Learning to Rank",
+    "Bias Correction",
+    "Causal Inference",
+    "Information Retrieval",
+    "Recommender Systems",
+    "Econometrics"
+  ],
+  "tags": [
+    {
+      "name": "Learning to Rank",
+      "type": "primary"
+    },
+    {
+      "name": "Position Bias",
+      "type": "primary"
+    },
+    {
+      "name": "Control Function",
+      "type": "topic"
+    },
+    {
+      "name": "Bias Correction",
+      "type": "topic"
+    },
+    {
+      "name": "Information Retrieval",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike propensity-based methods, our approach does not require prior knowledge of the true propensity model, which is often difficult to estimate accurately in practice.",
+      "Compared to click models, our control function method is better equipped to handle complex feature interactions and the endogeneity of position bias.",
+      "In contrast to Heckman models, our method allows for non-linear relationships in the underlying ranking process and does not constrain the choice of the LTR algorithm, making it more generalizable.",
+      "The method overcomes the limitations of previous methods that struggle with incorporating rich feature interactions and are often restricted to specific ranking functions or assumptions about data generation."
+    ],
+    "limitations": [
+      "The method relies on the assumption that unobserved errors in the click equation are conditionally independent of the control function, which may not always hold.",
+      "The first stage of the control function requires an effective model of the historical ranking process to accurately estimate residuals.",
+      "While a solution for hyperparameter tuning without unbiased data is proposed, the fundamental challenge of acquiring truly unbiased validation data remains a hurdle in LTR research."
+    ],
+    "modeling": [
+      {
+        "label": "Click Probability Model (Implicit)",
+        "value": "$P(C_{p_i}=1 | Y_{p_i}, X_{p_i}^0) = \rho(X_{p_i}^0) \times \text{clickability}(Y_{p_i})$ where $C_{p_i}$ is click at position $p_i$, $Y_{p_i}$ is true relevance, $X_{p_i}^0$ are features of position $p_i$, $\rho$ is the examination probability (position bias), and clickability is a function of true relevance."
+      },
+      {
+        "label": "Stage 1: Item Ranking Residuals",
+        "value": "The rank of item $i$ at position $p_i$ is modeled as $r(y|p_i) = m_1(X_{p_i}) + e_{p_i}^{rank}$, where $m_1$ is a function (e.g., LambdaMART) of item features $X_{p_i}$, and $e_{p_i}^{rank}$ are the residuals representing exogenous variation not explained by observable features."
+      },
+      {
+        "label": "Stage 2: Click Model with Control Function",
+        "value": "The click probability $P(C_{p_i} = 1 | Y_{p_i}, X_{p_i}^0, f(e_{p_i}^{rank})) = \text{logistic}(\beta_0 + \beta_1 Y_{p_i} + \beta_2 X_{p_i}^0 + \beta_3 f(e_{p_i}^{rank}))$, where $f(e_{p_i}^{rank})$ is a function of the Stage 1 residuals (control function), $\beta$ are coefficients, and $X_{p_i}^0$ represents position features."
+      },
+      {
+        "label": "Residual Transformation Options",
+        "list": [
+          "Normalization: Scale raw residuals $e_{p_i}^{rank}$ to $[0,1]$ or to follow a uniform distribution.",
+          "PDF Transformation: Assuming normally distributed residuals, use the Probability Density Function to compute hazard ratios.",
+          "CDFT Transformation: Use a non-parametric Kernel Density Estimation (KDE) to estimate the Cumulative Distribution Function (CDF) for hazard ratio calculation, relaxing the normality assumption."
+        ]
+      }
+    ],
+    "pipelineFlow": [
+      "**Stage 1: Model Historical Ranking Process**: Train an LTR model (e.g., LambdaMART, DNN) on historical click data to predict item ranks. Calculate the residuals ($e_{q i}^{\text {rank }}$) from this prediction.",
+      "**Stage 2: Estimate True Click Probabilities**: Use the residuals from Stage 1 as a control function in a second-stage click model. This stage estimates the unbiased click probability based on item features, without the confounding effect of position bias.",
+      "**Generate Debiased Validation Clicks (for tuning)**: Use the estimated unbiased click probabilities to generate synthetic debiased click data, which can then be used for hyperparameter tuning of the LTR model in the absence of true relevance labels.",
+      "**Train Final LTR Model**: Train the final LTR model using the debiased click probabilities or the corrected click data."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Goal",
+        "value": "To develop a method for correcting position bias in Learning to Rank (LTR) systems to obtain accurate relevance estimates and train debiased ranking models from biased click data, thereby improving ranking performance and user experience."
+      },
+      {
+        "label": "Input",
+        "value": "Biased click data $(q, g, p, C)$, where $q$ is a query, $g$ is a document, $p$ is the display position, and $C$ is a binary click signal (1 for click, 0 for no click)."
+      },
+      {
+        "label": "Output",
+        "value": "A debiased LTR model that accurately predicts true item relevance ($Y$) and an effective method for hyperparameter tuning without relying on unbiased validation data."
+      }
+    ],
+    "reproducibility": "The paper provides detailed descriptions of the methodology, including mathematical formulations and experimental setups (datasets, metrics, baselines). The datasets used are publicly available. The authors mention using LambdaMART and DNN as underlying LTR algorithms and explore different statistical models for the control function. However, specific code or implementation details are not provided in the paper, so full reproducibility might require reimplementation based on the descriptions.",
+    "systemModules": [
+      {
+        "details": "Models the historical ranking process using an LTR algorithm (e.g., LambdaMART, DNN) and extracts residuals ($e_{q i}^{\text {rank }}$) which capture exogenous variation not explained by observable query-item features. These residuals serve as the control function.",
+        "name": "Stage 1: Ranking Residual Estimator",
+        "role": "Generates the control variable to mitigate endogeneity."
+      },
+      {
+        "details": "Uses the control function (residuals from Stage 1) along with item and query features to estimate the true, unbiased click probability, effectively correcting for position bias. This stage can incorporate non-linear relationships using models like Generalized Additive Models (GAMs) or Neural Networks.",
+        "name": "Stage 2: Debiased Click Probability Model",
+        "role": "Estimates true relevance-based click probabilities, free from position bias."
+      },
+      {
+        "details": "A technique to generate synthetic debiased click data for hyperparameter tuning of LTR models, especially when true unbiased validation data is unavailable. It leverages the unbiased click probabilities estimated in Stage 2.",
+        "name": "Debias Validation Clicks Module",
+        "role": "Enables robust hyperparameter tuning in resource-constrained settings."
+      }
+    ]
+  },
+  "thesis": "This paper proposes a novel control function-based, two-stage method that effectively corrects for position bias in Learning to Rank (LTR) systems by estimating true click probabilities without requiring prior knowledge of the propensity model or specific LTR algorithms. The method is general, allows for non-linearity, and includes a novel technique for hyperparameter tuning without unbiased validation data, leading to superior and more robust ranking performance.",
+  "title": "Correcting for Position Bias in Learning to Rank: A Control Function Approach",
+  "url": "https://arxiv.org/pdf/2206.06989v2",
+  "venue": "arXiv",
+  "year": "2022"
+}
