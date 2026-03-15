@@ -199,7 +199,7 @@ export function PaperSummary({ data, pdfImages }: { data: PaperSummaryData; pdfI
   }, [data, openSections, modalImage]);
 
   return (
-    <div className="max-w-[1100px] mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-5 bg-[#dce0e8] font-sans text-[#4c4f69] leading-relaxed text-[13px] sm:text-[15px] md:text-[16px] break-words overflow-x-hidden">
+    <div className="max-w-[1100px] mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-5 bg-[#dce0e8] font-sans text-[#4c4f69] leading-relaxed text-[13px] sm:text-[15px] md:text-[16px] break-words">
       <div className="bg-[#eff1f5] rounded-xl p-4 sm:p-5 md:p-6 mb-4 sm:mb-5 shadow-sm">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#4c4f69] m-0 mb-3 leading-tight">
           <a href={data.url} target="_blank" rel="noreferrer" className="text-[#1e66f5] hover:underline break-words">
