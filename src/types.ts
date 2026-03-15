@@ -15,6 +15,16 @@ export interface SummaryManifestItem {
 export interface SummaryManifest {
   basePath: string;
   count: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface SummarySearchManifest extends SummaryManifest {
+  papers: SummaryManifestItem[];
+}
+
+export interface SummaryPage extends SummaryManifest {
+  page: number;
   papers: SummaryManifestItem[];
 }
 
