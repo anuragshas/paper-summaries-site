@@ -1,0 +1,179 @@
+{
+  "basePath": "/paper-summaries-site/",
+  "count": 28,
+  "pageSize": 10,
+  "totalPages": 3,
+  "page": 2,
+  "papers": [
+    {
+      "paperId": "2602.22661",
+      "title": "dLLM : Simple Diffusion Language Modeling",
+      "authors": "Zhanhui Zhou, Lingjie Chen, Hanghang Tong, Dawn Song",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Diffusion Language Models",
+        "Open-source Frameworks",
+        "Natural Language Processing",
+        "Model Training",
+        "Model Inference",
+        "Reproducibility"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.22661",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.22661/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.22661/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.22661"
+    },
+    {
+      "paperId": "2602.22219",
+      "title": "Comparative Analysis of Neural Retriever-Reranker Pipelines for Retrieval-Augmented Generation over Knowledge Graphs in E-commerce Applications",
+      "authors": "Teri Rumble, Zbyn\u011bk Gazd\u00edk, Javad Zarrin, and Jagdeep Ahluwalia",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Retrieval-Augmented Generation (RAG)",
+        "Knowledge Graphs",
+        "E-commerce",
+        "Information Retrieval",
+        "Large Language Models (LLMs)",
+        "Cross-encoders",
+        "Semi-structured Data"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.22219",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.22219/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.22219/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.22219"
+    },
+    {
+      "paperId": "2602.21456",
+      "title": "Revisiting Text Ranking in Deep Research",
+      "authors": "Chuan Meng, Litu Ou, Sean MacAvaney, Jeff Dalton",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "RAG",
+        "QA",
+        "Benchmark"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/2602.21456",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.21456/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.21456/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.21456"
+    },
+    {
+      "paperId": "2602.20558",
+      "title": "From Logs to Language: Learning Optimal Verbalization for LLM-Based Recommendation in Production",
+      "authors": "Yucheng Shi, Ying Li, Yu Wang, Yesu Feng, Arjun Rao, Rein Houthooft, Shradha Sehgal, Jin Wang, Hao Zhen, Ninghao Liu, Linas Baltrunas",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "LLM-based Recommendation",
+        "Verbalization",
+        "Reinforcement Learning",
+        "Data-Centric AI",
+        "Prompt Optimization",
+        "Sequential Recommendation"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.20558",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.20558/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.20558/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.20558"
+    },
+    {
+      "paperId": "2602.18734",
+      "title": "Rethinking Retrieval-Augmented Generation as a Cooperative Decision-Making Problem",
+      "authors": "Lichang Song, Ting Long, Yi Chang",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Retrieval-Augmented Generation",
+        "Multi-Agent Systems",
+        "Reinforcement Learning",
+        "Large Language Models",
+        "Question Answering",
+        "Natural Language Processing"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.18734",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.18734/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.18734/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.18734"
+    },
+    {
+      "paperId": "2602.14265",
+      "title": "STATe-of-Thoughts: Structured Action Templates for Tree-of-Thoughts",
+      "authors": "Zachary Bamberger, Till R. Saenger, Gilad Morad, Ofra Amir, Brandon M. Stewart, Amir Feder",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Reasoning",
+        "Agent",
+        "Benchmark"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/2602.14265",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.14265/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.14265/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.14265"
+    },
+    {
+      "paperId": "2602.12528",
+      "title": "DiffuRank: Effective Document Reranking with Diffusion Language Models",
+      "authors": "Qi Liu, Kun Ai, Jiaxin Mao, Yanzhao Zhang, Mingxin Li, Dingkun Long, Pengjun Xie, Fengbin Zhu, Ji-Rong Wen",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Document Reranking",
+        "Diffusion Models",
+        "Large Language Models"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/2602.12528",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.12528/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.12528/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.12528"
+    },
+    {
+      "paperId": "2602.11298",
+      "title": "2602.11298",
+      "authors": "Mistral AI Team",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Automatic Speech Recognition",
+        "Streaming ASR",
+        "Deep Learning",
+        "Transformers",
+        "Low-Latency Systems"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.11298",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.11298/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.11298/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.11298"
+    },
+    {
+      "paperId": "2602.07774",
+      "title": "Generative Reasoning Re-ranker",
+      "authors": "Mingfu Liang, Yufei Li, Jay Xu, Kavosh Asadi, Xi Liu, Shuo Gu, Kaushik Rangadurai, Frank Shyu, Shuaiwen Wang, Song Yang, Zhijing Li, Jiang Liu, Mengying Sun, Fei Tian, Xiaohan Wei, Chonglin Sun, Jacob Tao, Shike Mei, Wenlin Chen, Santanu Kolay, Sandeep Pandey, Hamed Firooz, Luke Simon",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Large Language Models (LLMs)",
+        "Recommendation Systems",
+        "Reinforcement Learning (RL)",
+        "Re-ranking",
+        "Semantic IDs",
+        "Chain-of-Thought Reasoning"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.07774",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.07774/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.07774/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.07774"
+    },
+    {
+      "paperId": "2509.05486",
+      "title": "The Token Tax: Systematic Bias in Multilingual Tokenization",
+      "authors": "Jessica M. Lundin, Ada Zhang, Nihal Karim, Hamza Louzan, Victor Wei, David Adelani, Cody Carroll",
+      "publishedDate": "2025-09-01",
+      "tags": [
+        "Multilingual NLP",
+        "Tokenization Bias",
+        "African Languages",
+        "AI Ethics",
+        "LLM Scaling Laws"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/2509.05486v1",
+      "summaryPath": "/paper-summaries-site/data/papers/2509.05486/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2509.05486/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2509.05486"
+    }
+  ]
+}
