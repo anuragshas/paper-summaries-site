@@ -1,0 +1,18 @@
+{
+  "paperId": "2403.00417",
+  "title": "Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models",
+  "authors": "Jinbiao Yang",
+  "publishedDate": "2024-03-01",
+  "tags": [
+    "Pretraining",
+    "Memory",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/pdf/2403.00417",
+  "pagePath": "/paper-summaries-site/papers/2403.00417",
+  "summaryPath": "/paper-summaries-site/data/papers/2403.00417/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

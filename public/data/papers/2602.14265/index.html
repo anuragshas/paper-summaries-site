@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STATe-of-Thoughts: Structured Action Templates for Tree-of-Thoughts</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>STATe-of-Thoughts: Structured Action Templates for Tree-of-Thoughts</h1>
+      <p class="meta"><strong>Authors:</strong> Zachary Bamberger, Till R. Saenger, Gilad Morad, Ofra Amir, Brandon M. Stewart, Amir Feder</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/2602.14265" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2602.14265</a></p>
+      <p class="muted">Generated summary artifact for 2602.14265</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>STATe-of-Thoughts (STATe) is an interpretable Inference-Time-Compute (ITC) framework that enhances output diversity, controllability, and quality in large language models by replacing stochastic sampling with discrete, action-guided textual interventions in a tree-search paradigm.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Existing Inference-Time-Compute (ITC) methods like Best-of-N and Tree-of-Thoughts (ToT) often fail to achieve meaningful output diversity due to reliance on high-temperature sampling and offer limited control over the reasoning process, which restricts explainability.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A controllable and interpretable Inference-Time-Compute (ITC) framework, STATe-of-Thoughts, that leverages structured action templates for explicit search over high-level reasoning patterns within a Tree-of-Thoughts paradigm.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>STATe consistently achieves the highest semantic diversity across various models and temperatures on NoveltyBench, outperforming temperature-based stochastic sampling and other ITC methods, without degrading output quality.</li><li>The framework enables greater control and interpretability over generation, as demonstrated by the strong predictability of argument quality from sequential action features.</li><li>STATe&#39;s M2-guided trajectory selection successfully identifies and generates high-quality arguments from previously unobserved regions of the action space, substantially outperforming random and topic-presence baselines.</li><li>The level of coupling between reasoning actions and final output (synthesis mode) significantly impacts the predictability of argument quality.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>STATe-of-Thoughts significantly enhances output diversity compared to temperature-based sampling and other ITC methods without quality degradation, showing up to twice as many semantically distinct outputs on NoveltyBench.</li><li>Sequential action features, which capture the timing and order of controller decisions, are highly predictive of argument quality (e.g., R2 of 0.57 under strict synthesis), outperforming simpler presence-based models.</li><li>The attribution framework allows for targeted generation, enabling STATe to identify and explore promising, previously unseen regions of the action space, consistently outperforming random and topic-based baselines in argument quality win rates.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>STATe&#39;s reliance on prefilling text prefixes for intervention-based branching makes it currently straightforward primarily with open-source models, which may be less capable than advanced closed-source models.</li><li>The attribution analysis of action-outcome relationships is observational, not causal, meaning it identifies correlations rather than direct causal effects.</li><li>The rigidity in action and prefix design means actions are realized by fixed textual prefixes, which can limit natural surface forms and create stylistic artifacts if not carefully engineered.</li><li>There is a trade-off between control and quality in the synthesis step; strict synthesis offers high predictability but can produce stilted prose, while more flexible modes improve eloquence but reduce the direct mapping from actions to output properties.</li><li>The current approach to generating multiple realizations of the same trajectory through random seeds yields only limited diversity, suggesting a need for alternative variation methods at the tree level.</li><li>The framework currently focuses on single-turn, multi-step generation and does not explicitly model multi-turn conversational dynamics or support general tool calling beyond what is encoded in action templates.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 120,
+      &quot;xmin&quot;: 114,
+      &quot;ymax&quot;: 435,
+      &quot;xmax&quot;: 860
+    },
+    &quot;caption&quot;: &quot;STATe for argument generation. Tasked with generating persuasive arguments in favor of banning single-use plastics, STATe’s workflow involves the following steps: (1) Define action templates that control output features of interest, such as structural prefixes and content themes. (2) Generate outputs via tree search (Grey nodes indicate pruned branches; the rightmost path illustrates early stopping after a single step). (3) Evaluate outputs on a downstream metric, and study associations between action choices and performance.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 1
+  },
+  &quot;authors&quot;: &quot;Zachary Bamberger, Till R. Saenger, Gilad Morad, Ofra Amir, Brandon M. Stewart, Amir Feder&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper presents a novel and systematic approach to enhance control, interpretability, and diversity in LLM generation by replacing stochastic sampling with structured action templates within a Tree-of-Thoughts framework. It demonstrates clear quantitative improvements in diversity and shows that explicit action sequences are highly predictive of output quality, enabling targeted generation of high-quality content. This is a significant step towards more controllable and explainable LLM outputs, addressing key limitations of existing Inference-Time-Compute methods. While not a paradigm shift, it offers a highly useful and practical framework for the field.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;In persuasive writing, researchers need to systematically vary rhetorical structure and content themes of arguments to study features that drive belief change. Similarly, in creative writing, generating diverse yet high-quality outputs that satisfy audience preferences is a challenge.&quot;,
+    &quot;statement&quot;: &quot;Existing Inference-Time-Compute (ITC) methods like Best-of-N and Tree-of-Thoughts (ToT) often fail to achieve meaningful output diversity due to reliance on high-temperature sampling and offer limited control over the reasoning process, which restricts explainability.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Many LLM applications require systematic and interpretable control over how text is produced.&quot;,
+      &quot;Achieving diverse yet high-quality outputs is challenging for LLMs.&quot;,
+      &quot;Current methods provide limited insight into which high-level decision patterns drive generation success or failure.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;STATe consistently achieves the highest semantic diversity across various models and temperatures on NoveltyBench, outperforming temperature-based stochastic sampling and other ITC methods, without degrading output quality.&quot;,
+    &quot;The framework enables greater control and interpretability over generation, as demonstrated by the strong predictability of argument quality from sequential action features.&quot;,
+    &quot;STATe&#39;s M2-guided trajectory selection successfully identifies and generates high-quality arguments from previously unobserved regions of the action space, substantially outperforming random and topic-presence baselines.&quot;,
+    &quot;The level of coupling between reasoning actions and final output (synthesis mode) significantly impacts the predictability of argument quality.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;NoveltyBench&quot;,
+        &quot;Argument Generation Dataset&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Mean Distinct (D)&quot;,
+        &quot;Mean Utility (U)&quot;,
+        &quot;R2 (coefficient of determination)&quot;,
+        &quot;Win (T) percentage&quot;,
+        &quot;Top-10 counts&quot;,
+        &quot;Top-100 counts&quot;
+      ],
+      &quot;setting&quot;: &quot;Comparison of STATe against existing ITC methods (I/O, CoT, ToT) on diversity and utility, and evaluation of an attribution framework for argument quality prediction and targeted generation.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 232,
+          &quot;xmin&quot;: 136,
+          &quot;ymax&quot;: 450,
+          &quot;xmax&quot;: 854
+        },
+        &quot;caption&quot;: &quot;Predictability of argument quality from controller actions. (A) Cross-validation R2 across model variants: M1a (structure presence only), M1b (content presence only), M1c (both), and M2 (full sequential model with position effects and transitions). (B) Held-out test set performance with 95% bootstrap confidence intervals. The sequential model consistently outperforms presence-based baselines, with the largest absolute predictability under strict synthesis.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 12
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;3.36&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-30B-A3B (T=0.7)&quot;,
+            &quot;delta&quot;: &quot;+1.66&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Mean Distinct (D)&quot;,
+            &quot;thisPaper&quot;: &quot;5.02&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.28&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-30B-A3B (T=0.7)&quot;,
+            &quot;delta&quot;: &quot;+0.55&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Mean Utility (U)&quot;,
+            &quot;thisPaper&quot;: &quot;3.83&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;2.44&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-30B-A3B (T=0.7)&quot;,
+            &quot;delta&quot;: &quot;+2.58&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Mean Distinct (D)&quot;,
+            &quot;thisPaper&quot;: &quot;5.02&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;2.85&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-30B-A3B (T=0.7)&quot;,
+            &quot;delta&quot;: &quot;+0.98&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Mean Utility (U)&quot;,
+            &quot;thisPaper&quot;: &quot;3.83&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;NoveltyBench Diversity (D) and Utility (U) for Qwen3-30B-A3B (T=0.7)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.38&quot;,
+            &quot;benchmark&quot;: &quot;Strict Synthesis&quot;,
+            &quot;delta&quot;: &quot;+0.19&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R2&quot;,
+            &quot;thisPaper&quot;: &quot;0.57&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.28&quot;,
+            &quot;benchmark&quot;: &quot;Faithful Synthesis&quot;,
+            &quot;delta&quot;: &quot;+0.10&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R2&quot;,
+            &quot;thisPaper&quot;: &quot;0.38&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.20&quot;,
+            &quot;benchmark&quot;: &quot;Restructured Synthesis&quot;,
+            &quot;delta&quot;: &quot;+0.17&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R2&quot;,
+            &quot;thisPaper&quot;: &quot;0.37&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Predictability of Argument Quality (Test R2)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;50.0%&quot;,
+            &quot;benchmark&quot;: &quot;Strict Synthesis (vs. Random)&quot;,
+            &quot;delta&quot;: &quot;+27.8%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win (T)&quot;,
+            &quot;thisPaper&quot;: &quot;77.8%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.0%&quot;,
+            &quot;benchmark&quot;: &quot;Strict Synthesis (vs. M1b (Topic Presence))&quot;,
+            &quot;delta&quot;: &quot;+17.6%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win (T)&quot;,
+            &quot;thisPaper&quot;: &quot;67.6%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.0%&quot;,
+            &quot;benchmark&quot;: &quot;Strict Synthesis (vs. Original Top 5%)&quot;,
+            &quot;delta&quot;: &quot;+1.7%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win (T)&quot;,
+            &quot;thisPaper&quot;: &quot;51.7%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.0%&quot;,
+            &quot;benchmark&quot;: &quot;Faithful Synthesis (vs. Random)&quot;,
+            &quot;delta&quot;: &quot;+31.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win (T)&quot;,
+            &quot;thisPaper&quot;: &quot;81.2%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.0%&quot;,
+            &quot;benchmark&quot;: &quot;Faithful Synthesis (vs. M1b (Topic Presence))&quot;,
+            &quot;delta&quot;: &quot;+27.3%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win (T)&quot;,
+            &quot;thisPaper&quot;: &quot;77.3%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.0%&quot;,
+            &quot;benchmark&quot;: &quot;Faithful Synthesis (vs. Original Top 5%)&quot;,
+            &quot;delta&quot;: &quot;-10.4%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Win (T)&quot;,
+            &quot;thisPaper&quot;: &quot;39.6%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.0%&quot;,
+            &quot;benchmark&quot;: &quot;Restructured Synthesis (vs. Random)&quot;,
+            &quot;delta&quot;: &quot;+27.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win (T)&quot;,
+            &quot;thisPaper&quot;: &quot;77.4%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.0%&quot;,
+            &quot;benchmark&quot;: &quot;Restructured Synthesis (vs. M1b (Topic Presence))&quot;,
+            &quot;delta&quot;: &quot;+13.5%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win (T)&quot;,
+            &quot;thisPaper&quot;: &quot;63.5%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.0%&quot;,
+            &quot;benchmark&quot;: &quot;Restructured Synthesis (vs. Original Top 5%)&quot;,
+            &quot;delta&quot;: &quot;-30.7%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Win (T)&quot;,
+            &quot;thisPaper&quot;: &quot;19.3%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Targeted Trajectory Exploration (Win Rate)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;STATe-of-Thoughts significantly enhances output diversity compared to temperature-based sampling and other ITC methods without quality degradation, showing up to twice as many semantically distinct outputs on NoveltyBench.&quot;,
+      &quot;Sequential action features, which capture the timing and order of controller decisions, are highly predictive of argument quality (e.g., R2 of 0.57 under strict synthesis), outperforming simpler presence-based models.&quot;,
+      &quot;The attribution framework allows for targeted generation, enabling STATe to identify and explore promising, previously unseen regions of the action space, consistently outperforming random and topic-based baselines in argument quality win rates.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Technion — Israel Institute of Technology, Princeton University, Independent, Hebrew University of Jerusalem&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;STATe replaces stochastic temperature sampling with discrete, action-guided textual interventions in tree search, where a controller selects high-level reasoning actions and a generator produces steps conditioned on these choices. This leads to greater response diversity and allows exploration of fundamentally different reasoning strategies.&quot;,
+      &quot;The framework explicitly tracks action sequences, capturing interpretable features that are highly predictive of output quality, as shown in a case study on argument generation. This provides systematic insights into which textual features and reasoning patterns drive performance.&quot;,
+      &quot;By estimating the association between performance and action choices, STATe can identify promising yet unexplored regions of the action space, enabling direct steering of generation towards high-quality outputs.&quot;
+    ],
+    &quot;main&quot;: &quot;A controllable and interpretable Inference-Time-Compute (ITC) framework, STATe-of-Thoughts, that leverages structured action templates for explicit search over high-level reasoning patterns within a Tree-of-Thoughts paradigm.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;Methods that provide large language models (LLMs) with additional &#39;reasoning&#39; tokens and permit parallel reasoning attempts, designed to improve complex reasoning or multi-step solutions.&quot;,
+        &quot;term&quot;: &quot;Inference-Time-Compute (ITC)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A framework that reframes generation as a search over a tree of partial reasoning steps, enabling branching at intermediate points, evaluation of progress, and pruning of unpromising paths.&quot;,
+        &quot;term&quot;: &quot;Tree-of-Thoughts (ToT)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Discrete and interpretable textual interventions that encode high-level reasoning choices, such as rhetorical structure or content themes, used by STATe to diversify branches in tree search.&quot;,
+        &quot;term&quot;: &quot;Action Templates&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Chain-of-Thought (CoT) Reasoning&quot;,
+      &quot;Beam Search Algorithms&quot;,
+      &quot;LASSO Regression&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Natural Language Generation&quot;,
+    &quot;Interpretable AI&quot;,
+    &quot;Large Language Models&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Agent&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike traditional ToT implementations that rely on high-temperature stochastic sampling, STATe replaces this with discrete action templates, leading to greater and more controllable diversity of outputs rather than homogeneous content.&quot;,
+      &quot;STATe supports both verifiable and task-specific LLM-as-a-Judge evaluators for reliable scoring and candidate selection, which helps mitigate the quality-diversity trade-off common in prior ITC methods.&quot;,
+      &quot;STATe tracks actions along a reasoning trajectory, enabling a systematic attribution analysis of which textual features and reasoning patterns influence performance, a capability largely absent in previous ITC frameworks.&quot;,
+      &quot;STATe incorporates adaptive termination mechanisms, allowing the system to stop reasoning when sufficient progress is made or when a FINISH action is chosen, addressing the limitation of predetermined step counts in traditional ToT that can lead to overthinking or premature termination.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;STATe&#39;s reliance on prefilling text prefixes for intervention-based branching makes it currently straightforward primarily with open-source models, which may be less capable than advanced closed-source models.&quot;,
+      &quot;The attribution analysis of action-outcome relationships is observational, not causal, meaning it identifies correlations rather than direct causal effects.&quot;,
+      &quot;The rigidity in action and prefix design means actions are realized by fixed textual prefixes, which can limit natural surface forms and create stylistic artifacts if not carefully engineered.&quot;,
+      &quot;There is a trade-off between control and quality in the synthesis step; strict synthesis offers high predictability but can produce stilted prose, while more flexible modes improve eloquence but reduce the direct mapping from actions to output properties.&quot;,
+      &quot;The current approach to generating multiple realizations of the same trajectory through random seeds yields only limited diversity, suggesting a need for alternative variation methods at the tree level.&quot;,
+      &quot;The framework currently focuses on single-turn, multi-step generation and does not explicitly model multi-turn conversational dynamics or support general tool calling beyond what is encoded in action templates.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Presence-Based Model (M1a-c)&quot;,
+        &quot;value&quot;: &quot;Represents each trajectory $\\tau = (a_1, ..., a_n, y)$ using binary indicators $1_a(\\tau)$ for whether each action type $a$ appeared anywhere in $\\tau$. This produces a feature vector $x^{\\text{presence}} \\in \\{0, 1\\}^{|A|-1}$ which ignores action order and frequency. A linear model $Y_i = \\alpha + x^{\\text{presence}}_i \\beta + \\epsilon_i$ is fit to predict final output quality $Y$.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Sequential Model (M2)&quot;,
+        &quot;list&quot;: [
+          &quot;Position Features: $1_{a,k}(\\tau)$ indicates if action $a$ occurs at step $k$, capturing when an action&#39;s effect depends on its timing.&quot;,
+          &quot;Transition Features: $1^{k \\to k+1}_{a \\to a&#39;}(\\tau) = 1_{a,k}(\\tau) \\cdot 1_{a&#39;,k+1}(\\tau)$ captures sequential patterns, specifically bi-grams of actions.&quot;
+        ],
+        &quot;value&quot;: &quot;Extends the presence-based representation by capturing sequential ordering through Position Features and Transition Features. A LASSO regression $\\hat{\\beta} = \\text{argmin}_{\\beta} (\\frac{1}{2N} \\sum_{i=1}^N (Y_i - x^{\\text{sequential}}_i \\beta)^2 + \\alpha \\|\\beta\\|_1) $ is used for automatic feature selection and predicting output quality $Y$ while controlling model complexity.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;STATe operates as a modular Plan \\rightarrow Generate \\rightarrow Evaluate \\rightarrow Select loop, initialized with an input $x$.&quot;,
+      &quot;For each reasoning layer $i$ (from 1 to maximum depth $d+1$), the system iterates through candidate states $s_{i-1}$ from the previous layer.&quot;,
+      &quot;The Controller selects up to $n$ actions $a^j_i$ from the action space $A$ for each state, or a FINISH action if reasoning is sufficient.&quot;,
+      &quot;The Generator produces either new reasoning thoughts $z^j_i$ (appending them to $s_{i-1}$ to form new candidate states $s_i$) or final responses $y^j$ (forming final states $s_i$ for collection in $F$), conditioned on textual guidance from the selected actions.&quot;,
+      &quot;The Evaluator scores candidate intermediate states $s_i$ using a Process Reward Model ($V_{\\text{PRM}}$) to guide beam selection (retaining top-$k$ states for the next layer).&quot;,
+      &quot;Upon termination, all final states in $F$ are scored by an Outcome Reward Model ($V_{\\text{ORM}}$), and the highest-scoring final state is returned.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;State definition&quot;,
+        &quot;value&quot;: &quot;Each node represents a state $s_i := [x, z_1, ..., z_i] = [x, Z_i]$, capturing a partial solution with the input $x$ and reasoning steps $Z_i$ so far.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Complete solution definition&quot;,
+        &quot;value&quot;: &quot;A leaf node $s_{d+1}$ represents a complete solution $[x, Z_d, y]$ where $y$ is the final answer and $d$ is the predefined maximum reasoning depth.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Controller output selection&quot;,
+        &quot;value&quot;: &quot;The controller&#39;s output is formally defined as $\\{a^1_i, ..., a^n_i\\} = C(s_{i-1}, A, n)$, where $n$ actions are selected from action space $A$ given state $s_{i-1}$. This selection implicitly uses a scoring function $Q(s_{i-1}, a_i)$ such that $\\{a^1_i, ..., a^n_i\\} = \\text{arg max}_{A&#39; \\subset A, |A&#39;|=n} \\sum_{a_i \\in A&#39;} Q(s_{i-1}, a_i)$.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The framework is available at state-of-thoughts. The paper also mentions the use of 2 GPUs for experiments, and that source code and additional experimental details are provided in the appendix.&quot;
+  },
+  &quot;thesis&quot;: &quot;STATe-of-Thoughts (STATe) is an interpretable Inference-Time-Compute (ITC) framework that enhances output diversity, controllability, and quality in large language models by replacing stochastic sampling with discrete, action-guided textual interventions in a tree-search paradigm.&quot;,
+  &quot;title&quot;: &quot;STATe-of-Thoughts: Structured Action Templates for Tree-of-Thoughts&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/2602.14265&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2602.14265&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/2602.14265&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:120,&quot;xmin&quot;:114,&quot;ymax&quot;:435,&quot;xmax&quot;:860},&quot;caption&quot;:&quot;STATe for argument generation. Tasked with generating persuasive arguments in favor of banning single-use plastics, STATe’s workflow involves the following steps: (1) Define action templates that control output features of interest, such as structural prefixes and content themes. (2) Generate outputs via tree search (Grey nodes indicate pruned branches; the rightmost path illustrates early stopping after a single step). (3) Evaluate outputs on a downstream metric, and study associations between action choices and performance.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},&quot;authors&quot;:&quot;Zachary Bamberger, Till R. Saenger, Gilad Morad, Ofra Amir, Brandon M. Stewart, Amir Feder&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper presents a novel and systematic approach to enhance control, interpretability, and diversity in LLM generation by replacing stochastic sampling with structured action templates within a Tree-of-Thoughts framework. It demonstrates clear quantitative improvements in diversity and shows that explicit action sequences are highly predictive of output quality, enabling targeted generation of high-quality content. This is a significant step towards more controllable and explainable LLM outputs, addressing key limitations of existing Inference-Time-Compute methods. While not a paradigm shift, it offers a highly useful and practical framework for the field.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;In persuasive writing, researchers need to systematically vary rhetorical structure and content themes of arguments to study features that drive belief change. Similarly, in creative writing, generating diverse yet high-quality outputs that satisfy audience preferences is a challenge.&quot;,&quot;statement&quot;:&quot;Existing Inference-Time-Compute (ITC) methods like Best-of-N and Tree-of-Thoughts (ToT) often fail to achieve meaningful output diversity due to reliance on high-temperature sampling and offer limited control over the reasoning process, which restricts explainability.&quot;,&quot;whyItMatters&quot;:[&quot;Many LLM applications require systematic and interpretable control over how text is produced.&quot;,&quot;Achieving diverse yet high-quality outputs is challenging for LLMs.&quot;,&quot;Current methods provide limited insight into which high-level decision patterns drive generation success or failure.&quot;]},&quot;evaluationHighlights&quot;:[&quot;STATe consistently achieves the highest semantic diversity across various models and temperatures on NoveltyBench, outperforming temperature-based stochastic sampling and other ITC methods, without degrading output quality.&quot;,&quot;The framework enables greater control and interpretability over generation, as demonstrated by the strong predictability of argument quality from sequential action features.&quot;,&quot;STATe&#39;s M2-guided trajectory selection successfully identifies and generates high-quality arguments from previously unobserved regions of the action space, substantially outperforming random and topic-presence baselines.&quot;,&quot;The level of coupling between reasoning actions and final output (synthesis mode) significantly impacts the predictability of argument quality.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;NoveltyBench&quot;,&quot;Argument Generation Dataset&quot;],&quot;metrics&quot;:[&quot;Mean Distinct (D)&quot;,&quot;Mean Utility (U)&quot;,&quot;R2 (coefficient of determination)&quot;,&quot;Win (T) percentage&quot;,&quot;Top-10 counts&quot;,&quot;Top-100 counts&quot;],&quot;setting&quot;:&quot;Comparison of STATe against existing ITC methods (I/O, CoT, ToT) on diversity and utility, and evaluation of an attribution framework for argument quality prediction and targeted generation.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:232,&quot;xmin&quot;:136,&quot;ymax&quot;:450,&quot;xmax&quot;:854},&quot;caption&quot;:&quot;Predictability of argument quality from controller actions. (A) Cross-validation R2 across model variants: M1a (structure presence only), M1b (content presence only), M1c (both), and M2 (full sequential model with position effects and transitions). (B) Held-out test set performance with 95% bootstrap confidence intervals. The sequential model consistently outperforms presence-based baselines, with the largest absolute predictability under strict synthesis.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:12}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;3.36&quot;,&quot;benchmark&quot;:&quot;Qwen3-30B-A3B (T=0.7)&quot;,&quot;delta&quot;:&quot;+1.66&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Mean Distinct (D)&quot;,&quot;thisPaper&quot;:&quot;5.02&quot;},{&quot;baseline&quot;:&quot;3.28&quot;,&quot;benchmark&quot;:&quot;Qwen3-30B-A3B (T=0.7)&quot;,&quot;delta&quot;:&quot;+0.55&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Mean Utility (U)&quot;,&quot;thisPaper&quot;:&quot;3.83&quot;},{&quot;baseline&quot;:&quot;2.44&quot;,&quot;benchmark&quot;:&quot;Qwen3-30B-A3B (T=0.7)&quot;,&quot;delta&quot;:&quot;+2.58&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Mean Distinct (D)&quot;,&quot;thisPaper&quot;:&quot;5.02&quot;},{&quot;baseline&quot;:&quot;2.85&quot;,&quot;benchmark&quot;:&quot;Qwen3-30B-A3B (T=0.7)&quot;,&quot;delta&quot;:&quot;+0.98&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Mean Utility (U)&quot;,&quot;thisPaper&quot;:&quot;3.83&quot;}],&quot;title&quot;:&quot;NoveltyBench Diversity (D) and Utility (U) for Qwen3-30B-A3B (T=0.7)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.38&quot;,&quot;benchmark&quot;:&quot;Strict Synthesis&quot;,&quot;delta&quot;:&quot;+0.19&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R2&quot;,&quot;thisPaper&quot;:&quot;0.57&quot;},{&quot;baseline&quot;:&quot;0.28&quot;,&quot;benchmark&quot;:&quot;Faithful Synthesis&quot;,&quot;delta&quot;:&quot;+0.10&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R2&quot;,&quot;thisPaper&quot;:&quot;0.38&quot;},{&quot;baseline&quot;:&quot;0.20&quot;,&quot;benchmark&quot;:&quot;Restructured Synthesis&quot;,&quot;delta&quot;:&quot;+0.17&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R2&quot;,&quot;thisPaper&quot;:&quot;0.37&quot;}],&quot;title&quot;:&quot;Predictability of Argument Quality (Test R2)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;50.0%&quot;,&quot;benchmark&quot;:&quot;Strict Synthesis (vs. Random)&quot;,&quot;delta&quot;:&quot;+27.8%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win (T)&quot;,&quot;thisPaper&quot;:&quot;77.8%&quot;},{&quot;baseline&quot;:&quot;50.0%&quot;,&quot;benchmark&quot;:&quot;Strict Synthesis (vs. M1b (Topic Presence))&quot;,&quot;delta&quot;:&quot;+17.6%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win (T)&quot;,&quot;thisPaper&quot;:&quot;67.6%&quot;},{&quot;baseline&quot;:&quot;50.0%&quot;,&quot;benchmark&quot;:&quot;Strict Synthesis (vs. Original Top 5%)&quot;,&quot;delta&quot;:&quot;+1.7%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win (T)&quot;,&quot;thisPaper&quot;:&quot;51.7%&quot;},{&quot;baseline&quot;:&quot;50.0%&quot;,&quot;benchmark&quot;:&quot;Faithful Synthesis (vs. Random)&quot;,&quot;delta&quot;:&quot;+31.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win (T)&quot;,&quot;thisPaper&quot;:&quot;81.2%&quot;},{&quot;baseline&quot;:&quot;50.0%&quot;,&quot;benchmark&quot;:&quot;Faithful Synthesis (vs. M1b (Topic Presence))&quot;,&quot;delta&quot;:&quot;+27.3%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win (T)&quot;,&quot;thisPaper&quot;:&quot;77.3%&quot;},{&quot;baseline&quot;:&quot;50.0%&quot;,&quot;benchmark&quot;:&quot;Faithful Synthesis (vs. Original Top 5%)&quot;,&quot;delta&quot;:&quot;-10.4%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Win (T)&quot;,&quot;thisPaper&quot;:&quot;39.6%&quot;},{&quot;baseline&quot;:&quot;50.0%&quot;,&quot;benchmark&quot;:&quot;Restructured Synthesis (vs. Random)&quot;,&quot;delta&quot;:&quot;+27.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win (T)&quot;,&quot;thisPaper&quot;:&quot;77.4%&quot;},{&quot;baseline&quot;:&quot;50.0%&quot;,&quot;benchmark&quot;:&quot;Restructured Synthesis (vs. M1b (Topic Presence))&quot;,&quot;delta&quot;:&quot;+13.5%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win (T)&quot;,&quot;thisPaper&quot;:&quot;63.5%&quot;},{&quot;baseline&quot;:&quot;50.0%&quot;,&quot;benchmark&quot;:&quot;Restructured Synthesis (vs. Original Top 5%)&quot;,&quot;delta&quot;:&quot;-30.7%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Win (T)&quot;,&quot;thisPaper&quot;:&quot;19.3%&quot;}],&quot;title&quot;:&quot;Targeted Trajectory Exploration (Win Rate)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;STATe-of-Thoughts significantly enhances output diversity compared to temperature-based sampling and other ITC methods without quality degradation, showing up to twice as many semantically distinct outputs on NoveltyBench.&quot;,&quot;Sequential action features, which capture the timing and order of controller decisions, are highly predictive of argument quality (e.g., R2 of 0.57 under strict synthesis), outperforming simpler presence-based models.&quot;,&quot;The attribution framework allows for targeted generation, enabling STATe to identify and explore promising, previously unseen regions of the action space, consistently outperforming random and topic-based baselines in argument quality win rates.&quot;]},&quot;institutions&quot;:&quot;Technion — Israel Institute of Technology, Princeton University, Independent, Hebrew University of Jerusalem&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;STATe replaces stochastic temperature sampling with discrete, action-guided textual interventions in tree search, where a controller selects high-level reasoning actions and a generator produces steps conditioned on these choices. This leads to greater response diversity and allows exploration of fundamentally different reasoning strategies.&quot;,&quot;The framework explicitly tracks action sequences, capturing interpretable features that are highly predictive of output quality, as shown in a case study on argument generation. This provides systematic insights into which textual features and reasoning patterns drive performance.&quot;,&quot;By estimating the association between performance and action choices, STATe can identify promising yet unexplored regions of the action space, enabling direct steering of generation towards high-quality outputs.&quot;],&quot;main&quot;:&quot;A controllable and interpretable Inference-Time-Compute (ITC) framework, STATe-of-Thoughts, that leverages structured action templates for explicit search over high-level reasoning patterns within a Tree-of-Thoughts paradigm.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;Methods that provide large language models (LLMs) with additional &#39;reasoning&#39; tokens and permit parallel reasoning attempts, designed to improve complex reasoning or multi-step solutions.&quot;,&quot;term&quot;:&quot;Inference-Time-Compute (ITC)&quot;},{&quot;definition&quot;:&quot;A framework that reframes generation as a search over a tree of partial reasoning steps, enabling branching at intermediate points, evaluation of progress, and pruning of unpromising paths.&quot;,&quot;term&quot;:&quot;Tree-of-Thoughts (ToT)&quot;},{&quot;definition&quot;:&quot;Discrete and interpretable textual interventions that encode high-level reasoning choices, such as rhetorical structure or content themes, used by STATe to diversify branches in tree search.&quot;,&quot;term&quot;:&quot;Action Templates&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Chain-of-Thought (CoT) Reasoning&quot;,&quot;Beam Search Algorithms&quot;,&quot;LASSO Regression&quot;]},&quot;subTopics&quot;:[&quot;Natural Language Generation&quot;,&quot;Interpretable AI&quot;,&quot;Large Language Models&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Agent&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike traditional ToT implementations that rely on high-temperature stochastic sampling, STATe replaces this with discrete action templates, leading to greater and more controllable diversity of outputs rather than homogeneous content.&quot;,&quot;STATe supports both verifiable and task-specific LLM-as-a-Judge evaluators for reliable scoring and candidate selection, which helps mitigate the quality-diversity trade-off common in prior ITC methods.&quot;,&quot;STATe tracks actions along a reasoning trajectory, enabling a systematic attribution analysis of which textual features and reasoning patterns influence performance, a capability largely absent in previous ITC frameworks.&quot;,&quot;STATe incorporates adaptive termination mechanisms, allowing the system to stop reasoning when sufficient progress is made or when a FINISH action is chosen, addressing the limitation of predetermined step counts in traditional ToT that can lead to overthinking or premature termination.&quot;],&quot;limitations&quot;:[&quot;STATe&#39;s reliance on prefilling text prefixes for intervention-based branching makes it currently straightforward primarily with open-source models, which may be less capable than advanced closed-source models.&quot;,&quot;The attribution analysis of action-outcome relationships is observational, not causal, meaning it identifies correlations rather than direct causal effects.&quot;,&quot;The rigidity in action and prefix design means actions are realized by fixed textual prefixes, which can limit natural surface forms and create stylistic artifacts if not carefully engineered.&quot;,&quot;There is a trade-off between control and quality in the synthesis step; strict synthesis offers high predictability but can produce stilted prose, while more flexible modes improve eloquence but reduce the direct mapping from actions to output properties.&quot;,&quot;The current approach to generating multiple realizations of the same trajectory through random seeds yields only limited diversity, suggesting a need for alternative variation methods at the tree level.&quot;,&quot;The framework currently focuses on single-turn, multi-step generation and does not explicitly model multi-turn conversational dynamics or support general tool calling beyond what is encoded in action templates.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Presence-Based Model (M1a-c)&quot;,&quot;value&quot;:&quot;Represents each trajectory $\\tau = (a_1, ..., a_n, y)$ using binary indicators $1_a(\\tau)$ for whether each action type $a$ appeared anywhere in $\\tau$. This produces a feature vector $x^{\\text{presence}} \\in \\{0, 1\\}^{|A|-1}$ which ignores action order and frequency. A linear model $Y_i = \\alpha + x^{\\text{presence}}_i \\beta + \\epsilon_i$ is fit to predict final output quality $Y$.&quot;},{&quot;label&quot;:&quot;Sequential Model (M2)&quot;,&quot;list&quot;:[&quot;Position Features: $1_{a,k}(\\tau)$ indicates if action $a$ occurs at step $k$, capturing when an action&#39;s effect depends on its timing.&quot;,&quot;Transition Features: $1^{k \\to k+1}_{a \\to a&#39;}(\\tau) = 1_{a,k}(\\tau) \\cdot 1_{a&#39;,k+1}(\\tau)$ captures sequential patterns, specifically bi-grams of actions.&quot;],&quot;value&quot;:&quot;Extends the presence-based representation by capturing sequential ordering through Position Features and Transition Features. A LASSO regression $\\hat{\\beta} = \\text{argmin}_{\\beta} (\\frac{1}{2N} \\sum_{i=1}^N (Y_i - x^{\\text{sequential}}_i \\beta)^2 + \\alpha \\|\\beta\\|_1) $ is used for automatic feature selection and predicting output quality $Y$ while controlling model complexity.&quot;}],&quot;pipelineFlow&quot;:[&quot;STATe operates as a modular Plan \\rightarrow Generate \\rightarrow Evaluate \\rightarrow Select loop, initialized with an input $x$.&quot;,&quot;For each reasoning layer $i$ (from 1 to maximum depth $d+1$), the system iterates through candidate states $s_{i-1}$ from the previous layer.&quot;,&quot;The Controller selects up to $n$ actions $a^j_i$ from the action space $A$ for each state, or a FINISH action if reasoning is sufficient.&quot;,&quot;The Generator produces either new reasoning thoughts $z^j_i$ (appending them to $s_{i-1}$ to form new candidate states $s_i$) or final responses $y^j$ (forming final states $s_i$ for collection in $F$), conditioned on textual guidance from the selected actions.&quot;,&quot;The Evaluator scores candidate intermediate states $s_i$ using a Process Reward Model ($V_{\\text{PRM}}$) to guide beam selection (retaining top-$k$ states for the next layer).&quot;,&quot;Upon termination, all final states in $F$ are scored by an Outcome Reward Model ($V_{\\text{ORM}}$), and the highest-scoring final state is returned.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;State definition&quot;,&quot;value&quot;:&quot;Each node represents a state $s_i := [x, z_1, ..., z_i] = [x, Z_i]$, capturing a partial solution with the input $x$ and reasoning steps $Z_i$ so far.&quot;},{&quot;label&quot;:&quot;Complete solution definition&quot;,&quot;value&quot;:&quot;A leaf node $s_{d+1}$ represents a complete solution $[x, Z_d, y]$ where $y$ is the final answer and $d$ is the predefined maximum reasoning depth.&quot;},{&quot;label&quot;:&quot;Controller output selection&quot;,&quot;value&quot;:&quot;The controller&#39;s output is formally defined as $\\{a^1_i, ..., a^n_i\\} = C(s_{i-1}, A, n)$, where $n$ actions are selected from action space $A$ given state $s_{i-1}$. This selection implicitly uses a scoring function $Q(s_{i-1}, a_i)$ such that $\\{a^1_i, ..., a^n_i\\} = \\text{arg max}_{A&#39; \\subset A, |A&#39;|=n} \\sum_{a_i \\in A&#39;} Q(s_{i-1}, a_i)$.&quot;}],&quot;reproducibility&quot;:&quot;The framework is available at state-of-thoughts. The paper also mentions the use of 2 GPUs for experiments, and that source code and additional experimental details are provided in the appendix.&quot;},&quot;thesis&quot;:&quot;STATe-of-Thoughts (STATe) is an interpretable Inference-Time-Compute (ITC) framework that enhances output diversity, controllability, and quality in large language models by replacing stochastic sampling with discrete, action-guided textual interventions in a tree-search paradigm.&quot;,&quot;title&quot;:&quot;STATe-of-Thoughts: Structured Action Templates for Tree-of-Thoughts&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/2602.14265&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

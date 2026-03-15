@@ -1,0 +1,20 @@
+{
+  "paperId": "2603.03251",
+  "title": "Speculative Speculative Decoding",
+  "authors": "Tanishq Kumar, Tri Dao, Avner May",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "Large Language Models",
+    "Inference Optimization",
+    "Speculative Decoding",
+    "Parallel Computing",
+    "Algorithm"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2603.03251",
+  "pagePath": "/paper-summaries-site/papers/2603.03251",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.03251/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -1,0 +1,361 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 117,
+      "xmin": 78,
+      "ymax": 290,
+      "xmax": 895
+    },
+    "caption": "Figure 1: Mine and Refine Overview. Stage 1 trains a shared encoder on the original dataset using supervised contrastive training and a definite relevance target induced by circular decision boundary. Stage 2 continues training on a curriculum based multi-class contrastive loss, to achieve both stable embedding and semantically coherent embeddings space, with strong intra-class compactness.",
+    "pageIndex": 3
+  },
+  "authors": "Jiaqi Xi, Raghav Saboo, Luming Chen, Martin Wang, Sudeep Das",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "The paper introduces a novel two-stage contrastive learning framework, 'Mine and Refine,' tailored for optimizing graded relevance in e-commerce search. It combines a label-aware supervised contrastive loss (SuPCon) for initial semantic space learning with a multi-class extension of circle loss for fine-grained boundary sharpening, along with innovative data augmentation. The framework demonstrates significant improvements in both offline evaluation metrics (NDCG, Recall, Precision) and critical online business metrics (Add To Cart Rate, Conversion Rate, Gross Order Value) in a real-world production setting, representing a strong practical and methodological contribution to semantic search and contrastive learning."
+  },
+  "coreProblem": {
+    "statement": "Optimizing multi-category e-commerce search retrieval to effectively handle graded relevance for long-tail and rare queries, ensuring scalability and adherence to product/policy constraints.",
+    "whyItMatters": [
+      "Demands embeddings that generalize to long tail and rare queries.",
+      "Requires scalable supervision compatible with product and policy constraints.",
+      "Production systems benefit from clear separation of similarly rated items.",
+      "Delivers statistically significant gains in engagement and business impact."
+    ],
+    "concreteExample": "In e-commerce search, users might be satisfied with 'substitute' or 'complement' items (graded relevance) in addition to exact matches. Existing retrieval systems often struggle to distinguish these subtle degrees of relevance, especially for long-tail or rare queries, while maintaining scalability and adhering to business policies."
+  },
+  "evaluationHighlights": [
+    "Achieved significant improvements in offline retrieval metrics (NDCG@10, Recall@10, Precision@10) across various benchmarks, with up to +4.28% delta on Recall@10 against a strong pretrained embedding model baseline.",
+    "Demonstrated positive and statistically significant relative lifts in online A/B tests: +2.5% for Add To Cart Rate (ATCR), +1.1% for Conversion Rate (CVR), and +0.7% for Gross Order Value (GOV).",
+    "Ablation studies confirm the effectiveness of the two-stage training, multi-class circle loss, item taxonomy enrichment, synthetic query enrichment, and spelling augmentation, each contributing to performance gains.",
+    "The method shows enhanced semantic separability between different relevance grades, as visualized by violin plots of similarity score distributions and average margins."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Pretrained 0.3B Embedding Model",
+        "Lexical baseline (BM25)",
+        "Hybrid baseline (BM25 + Hybrid embedding model)",
+        "Siamese, SuPCon (Stage 1 only)",
+        "Siamese, SuPCon + Circle loss (Stage 1 + Stage 2 with basic hard negatives)"
+      ],
+      "metrics": [
+        "NDCG@K",
+        "Recall@K",
+        "Precision@K",
+        "Add To Cart Rate (ATCR)",
+        "Conversion Rate (CVR)",
+        "Gross Order Value (GOV)"
+      ],
+      "setting": "Both offline evaluations (on a proprietary dataset simulating top K items retrieval) and online A/B tests (one-month duration with 50%/50% traffic split in a production environment) were conducted."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 136,
+          "xmin": 68,
+          "ymax": 298,
+          "xmax": 483
+        },
+        "caption": "Figure 2: Violin plots of similarity score distributions for Stage 1 with SuPCon and Stage 2 with Circle Loss.",
+        "pageIndex": 5
+      },
+      {
+        "boundingBox": {
+          "ymin": 136,
+          "xmin": 514,
+          "ymax": 298,
+          "xmax": 930
+        },
+        "caption": "Figure 3: Violin plots of query level average margin: $\\mu(q, d^0) - \\mu(q, d^1)$, $\\mu(q, d^1) - \\mu(q, d^2)$ for $t = j, i, k \\in \\{0, 1, 2\\}$.",
+        "pageIndex": 5
+      },
+      {
+        "boundingBox": {
+          "ymin": 142,
+          "xmin": 107,
+          "ymax": 240,
+          "xmax": 895
+        },
+        "caption": "Table 1: Offline Model Evaluation across Metrics",
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 312,
+          "xmin": 237,
+          "ymax": 360,
+          "xmax": 770
+        },
+        "caption": "Table 2: Side By Side Evaluation",
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 387,
+          "xmin": 237,
+          "ymax": 440,
+          "xmax": 770
+        },
+        "caption": "Table 3: Online A/B test results: relative improvement (%) of Mine and Refine over the baseline system",
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 129,
+          "xmin": 107,
+          "ymax": 259,
+          "xmax": 895
+        },
+        "caption": "Table 4: Ablation Studies on Model Architecture and Item Taxonomy Enrichment",
+        "pageIndex": 7
+      },
+      {
+        "boundingBox": {
+          "ymin": 359,
+          "xmin": 107,
+          "ymax": 429,
+          "xmax": 895
+        },
+        "caption": "Table 5: Ablation Study on Synthetic Query Enrichment",
+        "pageIndex": 7
+      },
+      {
+        "boundingBox": {
+          "ymin": 506,
+          "xmin": 107,
+          "ymax": 576,
+          "xmax": 895
+        },
+        "caption": "Table 6: Ablation Study on Spelling Variation Augmentation",
+        "pageIndex": 7
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "Pretrained 0.3B Embedding Model",
+        "benchmark": "Offline Evaluation",
+        "delta": "+4.18%",
+        "isPositive": true,
+        "metric": "NDCG@10",
+        "thisPaper": "19.89%"
+      },
+      {
+        "baseline": "Pretrained 0.3B Embedding Model",
+        "benchmark": "Offline Evaluation",
+        "delta": "+4.28%",
+        "isPositive": true,
+        "metric": "Recall@10",
+        "thisPaper": "19.87%"
+      },
+      {
+        "baseline": "Pretrained 0.3B Embedding Model",
+        "benchmark": "Offline Evaluation",
+        "delta": "+3.41%",
+        "isPositive": true,
+        "metric": "Precision@10",
+        "thisPaper": "19.52%"
+      },
+      {
+        "baseline": "Production baseline",
+        "benchmark": "Online A/B Test",
+        "delta": "+2.5%",
+        "isPositive": true,
+        "metric": "ATCR (Add To Cart Rate)",
+        "thisPaper": "2.5% relative lift"
+      },
+      {
+        "baseline": "Production baseline",
+        "benchmark": "Online A/B Test",
+        "delta": "+1.1%",
+        "isPositive": true,
+        "metric": "CVR (Conversion Rate)",
+        "thisPaper": "1.1% relative lift"
+      },
+      {
+        "baseline": "Production baseline",
+        "benchmark": "Online A/B Test",
+        "delta": "+0.7%",
+        "isPositive": true,
+        "metric": "GOV (Gross Order Value)",
+        "thisPaper": "0.7% relative lift"
+      }
+    ],
+    "mainTakeaways": [
+      "The proposed two-stage 'Mine and Refine' framework significantly improves semantic search relevance by effectively modeling graded relevance in e-commerce.",
+      "The combination of label-aware supervised contrastive loss (SuPCon) and multi-class circle loss creates a robust global semantic space and sharpens boundaries between relevance grades.",
+      "Data augmentation techniques, including additive spelling augmentation and synthetic query generation, are crucial for enhancing model robustness and performance.",
+      "Extensive offline and online A/B testing confirms the practical efficacy and business impact of the framework, showing statistically significant gains in key engagement and business metrics."
+    ],
+    "keyResultGroups": []
+  },
+  "institutions": "DoorDash Inc., New York City, New York, USA; DoorDash Inc., Sunnyvale, California, USA; DoorDash Inc., San Francisco, California, USA",
+  "keyNovelty": {
+    "main": "A two-stage 'Mine and Refine' contrastive training framework for semantic text embeddings, specifically designed for optimizing graded relevance in e-commerce search, incorporating a multi-class circle loss and policy-aligned data augmentation.",
+    "explanation": [
+      "**Two-stage 'Mine and Refine' Framework**: A novel approach combining two distinct training stages. Stage 1 ('Mine') uses a label-aware supervised contrastive objective to establish a robust global semantic space. Stage 2 ('Refine') refines this space by mining hard negatives and applying a multi-class extension of circle loss.",
+      "**Multi-class Circle Loss for Graded Relevance**: Extends the circle loss objective to explicitly handle three levels of graded relevance ($d^0$ for exact match, $d^1$ for substitute/complement, $d^2$ for irrelevant) by dynamically optimizing margins and sharpening boundaries between these classes.",
+      "**Policy-Aligned LLM for Hard Negative Resummarization**: A lightweight LLM is finetuned to re-summarize mined hard negatives, aligning them with predefined policy guidelines to improve the quality of negative samples.",
+      "**Robustness via Additive Spelling Augmentation and Synthetic Query Generation**: Introduces novel data augmentation techniques to improve model robustness to diverse, noisy, and long-tail queries, making the embeddings more resilient and generalizable."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A technique in machine learning where a model is trained to make similar samples closer in an embedding space and dissimilar samples farther apart.",
+        "term": "Contrastive Learning"
+      },
+      {
+        "definition": "A model architecture consisting of two identical (or symmetric) neural networks that process two separate inputs to learn their similarity or relationship in an embedding space.",
+        "term": "Siamese Two-Tower Networks"
+      },
+      {
+        "definition": "The degree of relevance between a query and a document, often categorized into multiple levels (e.g., exact match, substitute, unrelated) rather than a simple binary relevant/irrelevant.",
+        "term": "Graded Relevance"
+      },
+      {
+        "definition": "Negative examples that are particularly challenging for a model to distinguish from positive examples, often found by identifying samples that are close to positive samples in the embedding space.",
+        "term": "Hard Negative Mining"
+      },
+      {
+        "definition": "A metric used to evaluate the quality of ranked lists, considering the position of relevant items and discounting their value at lower ranks.",
+        "term": "NDCG (Normalized Discounted Cumulative Gain)"
+      }
+    ],
+    "prerequisites": [
+      "Deep learning fundamentals",
+      "Embedding-based information retrieval systems",
+      "Basic understanding of contrastive learning objectives (e.g., triplet loss, InfoNCE)",
+      "Metrics for ranking and retrieval (e.g., Precision, Recall, NDCG)"
+    ]
+  },
+  "subTopics": [
+    "E-commerce Search",
+    "Information Retrieval",
+    "Semantic Search",
+    "Contrastive Learning",
+    "Deep Learning for Search",
+    "Graded Relevance",
+    "Hard Negative Mining",
+    "Large Language Models (LLMs) in Retrieval"
+  ],
+  "tags": [
+    {
+      "name": "Information Retrieval",
+      "type": "primary"
+    },
+    {
+      "name": "E-commerce",
+      "type": "topic"
+    },
+    {
+      "name": "Deep Learning",
+      "type": "topic"
+    },
+    {
+      "name": "Contrastive Learning",
+      "type": "topic"
+    },
+    {
+      "name": "Semantic Search",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike prior work that often assumes binary relevance, this paper explicitly addresses and optimizes for multi-level graded relevance (exact, substitute/complement, irrelevant).",
+      "Previous contrastive learning methods (e.g., triplet loss, ArcFace) may struggle with nuanced graded relevance or fixed margins; this paper introduces a multi-class extension of circle loss for dynamic margin optimization and boundary sharpening.",
+      "The two-stage framework uniquely combines a robust global semantic space (Stage 1) with fine-grained boundary refinement (Stage 2), which is an improvement over single-stage training approaches.",
+      "The paper introduces a policy-aligned LLM for re-summarizing hard negatives, which is a novel way to leverage LLMs to improve negative sample quality beyond simple hard negative mining.",
+      "Traditional methods might be susceptible to noisy or sparse supervision; this work leverages human annotations and controlled noise reduction strategies for more stable training."
+    ],
+    "limitations": [
+      "The paper implicitly suggests that current methods may still have room for improvement in handling extremely long-tail items and cold-start scenarios, although the proposed method aims to improve generalization.",
+      "The specific details of the lightweight LLM used for re-summarization are not extensively elaborated upon, and its broader applicability beyond e-commerce policy alignment is not explored."
+    ],
+    "modeling": [
+      {
+        "label": "Stage 1: Mine - Label Aware Supervised Contrastive Loss (SuPCon)",
+        "value": "This stage trains a Siamese two-tower retriever using a label-aware supervised contrastive objective for query-item pairs $(q,d)$ with relevance label $t \\in \\{0,1,2\\}$. The objective function aims to pull same-label samples closer and push different-label samples apart in the embedding space, adapted from supervised contrastive loss. The loss function is given by $L_C = \\sum_{t \\in \\{0,1,2\\}} \\frac{1}{|(q,d^t)|} \\sum_{(q,d^t)} -\\log \\frac{\\exp(s(q,d^t)/\\tau)}{\\sum_{(q,d') \\in \\mathcal{P}(q,d^t)} \\exp(s(q,d')/\\tau)}$, where $s(q,d)$ is the cosine similarity, $\\tau$ is a temperature parameter, and $\\mathcal{P}(q,d^t)$ includes positives and in-batch negatives for a given query $q$ and target relevance $t$. This shapes a robust global semantic space."
+      },
+      {
+        "label": "Stage 2: Refine - Multi-class Circle Loss",
+        "value": "This stage refines the embedding space using a multi-class extension of circle loss to explicitly sharpen similarity boundaries for graded relevance. The loss considers three relevance levels ($0, 1, 2$) and is formulated as a sum of three components, each focusing on a specific relevance grade. For example, the loss for a grade $t$ pair $(q, d^t)$ involves pushing other grades away and pulling similar grades closer with dynamic margins. The general form for the loss components is $\\log[1 + \\sum_{j \\in J} \\exp(\\gamma(m_{n_j} - s(q,p_j))) + \\sum_{k \\in K} \\exp(\\gamma(s(q,n_k) - m_{p_k}))]$, where $s$ is similarity, $\\gamma$ is a scale factor, $m$ are margins, and $p_j, n_k$ denote positive and negative pairs relevant to the target grade. This dynamic margin optimization ensures clear separation for graded relevance."
+      },
+      {
+        "label": "Offline Hard Sample Mining (OHSM)",
+        "list": [
+          "Uses Approximate Nearest Neighbors (ANN) search to identify hard negative examples for each query in the dataset.",
+          "These hard negatives are then re-summarized by a policy-aligned lightweight LLM to ensure their quality and relevance for training, focusing on candidates that are most confusing to the model."
+        ],
+        "value": "Hard negatives are crucial for effective contrastive learning. This paper mines them offline using ANN and improves their quality by re-summarizing them with a policy-aligned LLM, making them more challenging and informative for the model."
+      },
+      {
+        "label": "Robustness through Data Augmentation",
+        "list": [
+          "**Additive Spelling Augmentation**: Introduces common spelling variations to queries during training to make the model robust to noisy user inputs.",
+          "**Synthetic Query Generation**: Creates synthetic queries based on item features and other attributes to cover long-tail and rare query distributions, enhancing generalization."
+        ],
+        "value": "To improve model robustness and generalize to real-world query variations, the framework incorporates two data augmentation techniques: additive spelling augmentation and synthetic query generation."
+      }
+    ],
+    "pipelineFlow": [
+      "**Stage 1: Mine** (Initial Training): A Siamese two-tower retriever is trained with a label-aware supervised contrastive objective (SuPCon) on annotated query-item pairs. This stage aims to create a robust global semantic embedding space.",
+      "**Stage 2: Refine** (Fine-grained Training): This stage further trains the retriever. It involves Offline Hard Sample Mining where Approximate Nearest Neighbors (ANN) search identifies hard negative examples. These hard negatives are then re-summarized using a policy-aligned lightweight LLM.",
+      "The refined hard negatives, along with the original dataset, are used to train the retriever with a multi-class extension of circle loss, which explicitly sharpens the similarity boundaries between different graded relevance levels.",
+      "Throughout both stages or as an enhancement, data augmentation techniques like additive spelling augmentation and synthetic query generation are applied to improve model robustness.",
+      "The final trained model is then deployed as an embedding-based retriever for e-commerce search, using ANN for efficient retrieval of relevant items."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Input",
+        "value": "User query $q$ and a catalog of items $D = \\{d_1, d_2, ..., d_N\\}$."
+      },
+      {
+        "label": "Output",
+        "value": "A ranked list of items from $D$ that are semantically relevant to $q$, optimizing for graded relevance levels."
+      },
+      {
+        "label": "Relevance Grades",
+        "value": "Three levels of graded relevance for a query-item pair $(q,d)$: $d^0$ (exact match), $d^1$ (substitute/complement), and $d^2$ (irrelevant)."
+      },
+      {
+        "label": "Objective",
+        "value": "Learn item and query embeddings such that same-grade pairs are clustered, and different-grade pairs are separated by appropriate margins, especially distinguishing $d^0$, $d^1$, and $d^2$ items."
+      }
+    ],
+    "reproducibility": "Limited. The paper states that their code, models, and datasets are proprietary, restricting external reproducibility of the exact experiments. However, the methodology is described in detail.",
+    "systemModules": [
+      {
+        "details": "Processes user queries and item metadata into numerical representations suitable for embedding models. This includes standard NLP techniques.",
+        "name": "Text Processing and Representation",
+        "role": "Feature engineering and input preparation"
+      },
+      {
+        "details": "The core model architecture, typically a dual encoder, that learns to map queries and items into a shared embedding space. In Stage 1, it's trained with label-aware supervised contrastive loss. In Stage 2, it's fine-tuned with multi-class circle loss.",
+        "name": "Siamese Two-Tower Retriever (Shared Encoder)",
+        "role": "Embedding generation and similarity computation"
+      },
+      {
+        "details": "A lightweight Large Language Model (LLM) that is fine-tuned to re-summarize hard negative examples identified via ANN search. This re-summarization is guided by policy guidelines to ensure the negatives are challenging and semantically meaningful.",
+        "name": "Policy-Aligned Lightweight LLM",
+        "role": "Hard negative refinement and policy alignment"
+      },
+      {
+        "details": "Used during Stage 2 ('Refine') to efficiently find the closest (most similar) items to a given query or item in the embedding space. This helps identify effective hard negative samples.",
+        "name": "Approximate Nearest Neighbors (ANN) Retrieval",
+        "role": "Efficient similarity search and hard negative mining"
+      },
+      {
+        "details": "A dataset of query-item pairs with human-annotated relevance labels categorized into three grades ($d^0, d^1, d^2$).",
+        "name": "Graded Labeling",
+        "role": "Supervision signal for training"
+      }
+    ]
+  },
+  "thesis": "We propose a two-stage \u201cMine and Refine\u201d contrastive training framework that optimizes semantic text embeddings for graded relevance in multi-category e-commerce search, leading to improved retrieval relevance and business impact.",
+  "title": "Mine and Refine: Optimizing Graded Relevance in E-commerce Search Retrieval",
+  "url": "https://arxiv.org/pdf/2402.17654.pdf",
+  "venue": "ACM SIGKDD",
+  "year": "2024"
+}

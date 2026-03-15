@@ -1,0 +1,18 @@
+{
+  "paperId": "2602.14265",
+  "title": "STATe-of-Thoughts: Structured Action Templates for Tree-of-Thoughts",
+  "authors": "Zachary Bamberger, Till R. Saenger, Gilad Morad, Ofra Amir, Brandon M. Stewart, Amir Feder",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "Reasoning",
+    "Agent",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2602.14265",
+  "pagePath": "/paper-summaries-site/papers/2602.14265",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.14265/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

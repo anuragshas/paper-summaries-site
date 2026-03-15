@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Think before Recommendation: Autonomous Reasoning-enhanced Recommender</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Think before Recommendation: Autonomous Reasoning-enhanced Recommender</h1>
+      <p class="meta"><strong>Authors:</strong> Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://openreview.net/pdf?id=fVs2BCjCqC" target="_blank" rel="noopener noreferrer">https://openreview.net/pdf?id=fVs2BCjCqC</a></p>
+      <p class="muted">Generated summary artifact for paper-1773559204996</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>This paper proposes RecZero, an RL-based recommendation paradigm that trains a single LLM to autonomously develop reasoning capabilities for rating prediction, overcoming limitations of traditional distillation-based methods such as insufficient recommendation capability, costly supervision, and superficial transfer of reasoning ability. It also introduces RecOne, a hybrid paradigm combining SFT with RL for faster convergence and stronger performance.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Existing distillation-based methods for leveraging LLMs&#39; reasoning capabilities in rating prediction suffer from limitations such as insufficient recommendation capability of teacher models, costly and static supervision, and superficial transfer of reasoning ability.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A novel RL-based paradigm (RecZero) for LLM-enhanced recommendation that enables autonomous reasoning and eliminates multi-model, multi-stage distillation, complemented by a hybrid approach (RecOne) for robust performance.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>RecOne achieved significant performance improvements, lowering RMSE by 6.7% on Book, 12.2% on Music, and 6.2% on Yelp, and cutting MAE by 16.8% on Book, 29.9% on Music, and 7.5% on Yelp, compared to the strongest LLM-based baseline (Reason4Rec).</li><li>RecZero (pure RL) also surpassed all baselines in terms of MAE across the three datasets, demonstrating the effectiveness of the RL paradigm even without cold-start initialization.</li><li>RecZero(early-stop) achieved a 21.5% MAE reduction against the strongest pure-SFT baseline (Reason4Rec) with significantly fewer labeled samples (0.48K vs. 20K) and computational resources, demonstrating superior cost-effectiveness.</li><li>The cold-start SFT initialization in RecOne proved effective in enhancing the model&#39;s initial capabilities and elevating its performance ceiling for RL optimization, achieving faster convergence.</li><li>Ablation studies confirmed the critical impact of proposed components such as structured multi-step thinking and rule-based reward modeling on recommendation performance.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>RecOne significantly outperforms all baseline methods, including traditional and LLM-based approaches, across all evaluated metrics (RMSE and MAE) and datasets.</li><li>The pure RL approach (RecZero) also surpasses all baselines in terms of MAE, demonstrating the inherent superiority of the RL paradigm for autonomous reasoning-enhanced recommendation.</li><li>RecOne&#39;s cold-start supervised fine-tuning (SFT) initialization effectively boosts the model&#39;s initial capabilities and elevates its performance ceiling during subsequent RL optimization.</li><li>The proposed components, including the structured &#39;Think-before-Recommendation&#39; prompt and rule-based reward modeling, are crucial for achieving the superior performance of RecOne.</li><li>RecZero and RecOne offer a simpler and more cost-efficient pipeline (single model, teacher-free, end-to-end optimization) compared to complex multi-stage distillation methods, requiring fewer labeled samples, less training time, and lower inference cost.</li><li>Both RecZero and RecOne enable fast adaptation to cold-start scenarios and distribution shifts with minimal new interactions, making them well-suited for dynamic commercial recommender systems.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Due to computational constraints, the study could not fully assess the potential performance gains achievable by leveraging larger base models for RL, potentially hindering a thorough evaluation of the models&#39; true performance potential.</li><li>The study did not explore whether RecZero and RecOne could serve as viable replacements for existing Teacher models in generating cold-start data for multi-round self-iterative optimization.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 92,
+      &quot;xmin&quot;: 141,
+      &quot;ymax&quot;: 648,
+      &quot;xmax&quot;: 876
+    },
+    &quot;caption&quot;: &quot;Figure 2: The RecZero and RecOne frameworks utilize a unified target to optimize multi-step reasoning within a coupled structure, achieving reasoning-enhanced predictions specifically designed for recommendation scenarios.&quot;,
+    &quot;figureNumber&quot;: 2,
+    &quot;pageIndex&quot;: 3
+  },
+  &quot;authors&quot;: &quot;Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper presents a strong contribution by introducing an RL-based paradigm for LLM-enhanced recommendation, effectively addressing key limitations of existing distillation methods. RecZero&#39;s autonomous reasoning and rule-based rewards, coupled with RecOne&#39;s hybrid SFT+RL approach, demonstrate significant performance gains and cost-effectiveness. The work is highly useful to the sub-field of LLM-based recommenders and RL applications. It provides a novel direction for improving reasoning capabilities in LLMs for personalized recommendations. The practical benefits in terms of efficiency and adaptability are notable.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;General-purpose teacher LLMs often lack domain-specific knowledge for recommendation, producing reasoning traces that are misaligned with the rate prediction objective. Additionally, generating high-quality reasoning data (whether via human annotation or LLM API calls) is time- and resource-intensive, and fine-tuned student models may only imitate surface-level reasoning patterns.&quot;,
+    &quot;statement&quot;: &quot;Existing distillation-based methods for leveraging LLMs&#39; reasoning capabilities in rating prediction suffer from limitations such as insufficient recommendation capability of teacher models, costly and static supervision, and superficial transfer of reasoning ability.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Suboptimal reasoning processes in teacher models hinder the student model&#39;s performance.&quot;,
+      &quot;High costs for data generation and static supervision limit the scalability and adaptability of LLM-based recommenders.&quot;,
+      &quot;Superficial transfer of reasoning ability leads to overfitting and poor generalization to unseen tasks, limiting the practical applicability of these models.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;RecOne achieved significant performance improvements, lowering RMSE by 6.7% on Book, 12.2% on Music, and 6.2% on Yelp, and cutting MAE by 16.8% on Book, 29.9% on Music, and 7.5% on Yelp, compared to the strongest LLM-based baseline (Reason4Rec).&quot;,
+    &quot;RecZero (pure RL) also surpassed all baselines in terms of MAE across the three datasets, demonstrating the effectiveness of the RL paradigm even without cold-start initialization.&quot;,
+    &quot;RecZero(early-stop) achieved a 21.5% MAE reduction against the strongest pure-SFT baseline (Reason4Rec) with significantly fewer labeled samples (0.48K vs. 20K) and computational resources, demonstrating superior cost-effectiveness.&quot;,
+    &quot;The cold-start SFT initialization in RecOne proved effective in enhancing the model&#39;s initial capabilities and elevating its performance ceiling for RL optimization, achieving faster convergence.&quot;,
+    &quot;Ablation studies confirmed the critical impact of proposed components such as structured multi-step thinking and rule-based reward modeling on recommendation performance.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Amazon-book&quot;,
+        &quot;Amazon-music&quot;,
+        &quot;Yelp&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Mean Absolute Error (MAE)&quot;,
+        &quot;Root Mean Square Error (RMSE)&quot;
+      ],
+      &quot;setting&quot;: &quot;Rating prediction task on real-world datasets&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 217,
+          &quot;xmin&quot;: 536,
+          &quot;ymax&quot;: 358,
+          &quot;xmax&quot;: 819
+        },
+        &quot;caption&quot;: &quot;Figure 3: The performance of RecZero and RecOne over training steps.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 7
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 100,
+          &quot;xmin&quot;: 170,
+          &quot;ymax&quot;: 266,
+          &quot;xmax&quot;: 474
+        },
+        &quot;caption&quot;: &quot;Figure 4: 4a and 4b separately show the MAE and RMSE performance of RecOne and its four ablation variants on four datasets.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 8
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 100,
+          &quot;xmin&quot;: 520,
+          &quot;ymax&quot;: 266,
+          &quot;xmax&quot;: 834
+        },
+        &quot;caption&quot;: &quot;Figure 4: 4a and 4b separately show the MAE and RMSE performance of RecOne and its four ablation variants on four datasets.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 8
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.8325&quot;,
+            &quot;benchmark&quot;: &quot;Book&quot;,
+            &quot;delta&quot;: &quot;-0.0541&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.7784&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.5937&quot;,
+            &quot;benchmark&quot;: &quot;Book&quot;,
+            &quot;delta&quot;: &quot;-0.0920&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;MAE&quot;,
+            &quot;thisPaper&quot;: &quot;0.5017&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.7647&quot;,
+            &quot;benchmark&quot;: &quot;Music&quot;,
+            &quot;delta&quot;: &quot;-0.0871&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.6776&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.5352&quot;,
+            &quot;benchmark&quot;: &quot;Music&quot;,
+            &quot;delta&quot;: &quot;-0.1536&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;MAE&quot;,
+            &quot;thisPaper&quot;: &quot;0.3816&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.9972&quot;,
+            &quot;benchmark&quot;: &quot;Yelp&quot;,
+            &quot;delta&quot;: &quot;-0.0198&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RMSE&quot;,
+            &quot;thisPaper&quot;: &quot;0.9774&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.7473&quot;,
+            &quot;benchmark&quot;: &quot;Yelp&quot;,
+            &quot;delta&quot;: &quot;-0.0461&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;MAE&quot;,
+            &quot;thisPaper&quot;: &quot;0.7012&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;RecOne vs. Strongest LLM-based Baseline (Reason4Rec)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.5937&quot;,
+            &quot;benchmark&quot;: &quot;Book&quot;,
+            &quot;delta&quot;: &quot;-0.0684&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;MAE&quot;,
+            &quot;thisPaper&quot;: &quot;0.5253&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.5352&quot;,
+            &quot;benchmark&quot;: &quot;Music&quot;,
+            &quot;delta&quot;: &quot;-0.1081&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;MAE&quot;,
+            &quot;thisPaper&quot;: &quot;0.4271&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.7473&quot;,
+            &quot;benchmark&quot;: &quot;Yelp&quot;,
+            &quot;delta&quot;: &quot;-0.0044&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;MAE&quot;,
+            &quot;thisPaper&quot;: &quot;0.7429&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;RecZero vs. Strongest LLM-based Baseline (Reason4Rec) on MAE&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.6472&quot;,
+            &quot;benchmark&quot;: &quot;Amazon Music&quot;,
+            &quot;delta&quot;: &quot;-0.1153&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;MAE&quot;,
+            &quot;thisPaper&quot;: &quot;0.5319&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;RecZero (early-stop) vs. RecOne(SFT)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;RecOne significantly outperforms all baseline methods, including traditional and LLM-based approaches, across all evaluated metrics (RMSE and MAE) and datasets.&quot;,
+      &quot;The pure RL approach (RecZero) also surpasses all baselines in terms of MAE, demonstrating the inherent superiority of the RL paradigm for autonomous reasoning-enhanced recommendation.&quot;,
+      &quot;RecOne&#39;s cold-start supervised fine-tuning (SFT) initialization effectively boosts the model&#39;s initial capabilities and elevates its performance ceiling during subsequent RL optimization.&quot;,
+      &quot;The proposed components, including the structured &#39;Think-before-Recommendation&#39; prompt and rule-based reward modeling, are crucial for achieving the superior performance of RecOne.&quot;,
+      &quot;RecZero and RecOne offer a simpler and more cost-efficient pipeline (single model, teacher-free, end-to-end optimization) compared to complex multi-stage distillation methods, requiring fewer labeled samples, less training time, and lower inference cost.&quot;,
+      &quot;Both RecZero and RecOne enable fast adaptation to cold-start scenarios and distribution shifts with minimal new interactions, making them well-suited for dynamic commercial recommender systems.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Taobao &amp; Tmall Group of Alibaba, China; National University of Singapore; Institute of Dataspace, Hefei Comprehensive National Science Center; Shanghai Key Laboratory of Data Science&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;RecZero introduces a pure Reinforcement Learning (RL) paradigm for LLM-based recommendation, which trains a single LLM end-to-end to autonomously develop reasoning capabilities for rating prediction, departing from traditional multi-model and multi-stage distillation approaches.&quot;,
+      &quot;The &#39;Think-before-Recommendation&#39; prompt construction employs a structured reasoning template with special tokens (e.g., &lt;analyze user&gt;, &lt;analyze item&gt;, &lt;match&gt;, &lt;rate&gt;) to guide the LLM through step-wise analysis of user interests, item features, and user-item compatibility.&quot;,
+      &quot;Rule-based Reward Modeling, utilizing Group Relative Policy Optimization (GRPO), computes rewards for reasoning trajectories based on format correctness and ground-truth rating differences, optimizing the LLM without requiring costly labeled reasoning traces.&quot;,
+      &quot;RecOne is a hybrid paradigm that combines cold-start supervised fine-tuning (SFT) with RL, using high-quality reasoning samples to initialize the LLM, thereby achieving faster convergence and stronger initial reasoning capabilities before further RL optimization.&quot;
+    ],
+    &quot;main&quot;: &quot;A novel RL-based paradigm (RecZero) for LLM-enhanced recommendation that enables autonomous reasoning and eliminates multi-model, multi-stage distillation, complemented by a hybrid approach (RecOne) for robust performance.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;The task of predicting a user&#39;s rating for a target item, often enhanced by explicit reasoning steps performed by large language models.&quot;,
+        &quot;term&quot;: &quot;Reasoning-enhanced rating prediction&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A common paradigm in LLM-based recommendation where a larger &#39;teacher&#39; model generates intermediate reasoning traces or outputs, which are then used to supervise fine-tuning a smaller &#39;student&#39; model.&quot;,
+        &quot;term&quot;: &quot;Distillation-based methods&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A reinforcement learning policy optimization algorithm that reduces memory requirements by estimating group scores and replaces traditional reward models with rule-based reward mechanisms, guiding policy optimization by the relative performance of generated outputs within a group.&quot;,
+        &quot;term&quot;: &quot;Group Relative Policy Optimization (GRPO)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The problem in recommender systems where there is insufficient data (e.g., interactions, ratings) for new users or items, making it difficult to generate accurate recommendations.&quot;,
+        &quot;term&quot;: &quot;Cold-start problem&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Reinforcement Learning (RL)&quot;,
+      &quot;Recommender Systems&quot;,
+      &quot;Supervised Fine-tuning (SFT)&quot;,
+      &quot;Collaborative Filtering (CF)&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Recommendation Systems&quot;,
+    &quot;Reinforcement Learning&quot;,
+    &quot;Large Language Models&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;RL&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Rec&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;RecZero and RecOne address key limitations of existing distillation-based LLM recommendation methods, specifically, the teacher model&#39;s insufficient recommendation capability, costly and static supervision, and superficial transfer of reasoning ability.&quot;,
+      &quot;Unlike multi-model, multi-stage distillation approaches (e.g., Rec-SAVER, EXP3RT, Reason4Rec), RecZero trains a single LLM end-to-end through pure RL, eliminating the need for separate teacher-student models and decoupled training stages.&quot;,
+      &quot;RecZero&#39;s &#39;Think-before-Recommendation&#39; prompt construction and rule-based reward modeling provide recommendation-specific objectives and autonomous optimization, contrasting with general-purpose teacher LLMs that may lack domain-specific knowledge or require manual label generation.&quot;,
+      &quot;RecOne&#39;s hybrid approach, combining cold-start supervised fine-tuning (SFT) with subsequent RL, offers faster convergence and stronger initial capabilities than pure RL, and more robust reasoning than pure SFT, which often memorizes rather than genuinely generalizes.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;Due to computational constraints, the study could not fully assess the potential performance gains achievable by leveraging larger base models for RL, potentially hindering a thorough evaluation of the models&#39; true performance potential.&quot;,
+      &quot;The study did not explore whether RecZero and RecOne could serve as viable replacements for existing Teacher models in generating cold-start data for multi-round self-iterative optimization.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Rating Prediction Rule&quot;,
+        &quot;value&quot;: &quot;$\\hat{y}_{u,i} = \\text{argmax}_{k \\in Y} P_\\theta (y_{u,i} = k | H_u, M_i)$, where $\\hat{y}_{u,i}$ is the predicted rating for user $u$ on item $i$, and $\\theta$ represents the model parameters. For LLM: $\\hat{r}_{u,i}, \\hat{y}_{u,i} = \\text{LLM}(x_{u,i}) = \\text{LLM}(H_u, M_i)$, where $\\hat{r}_{u,i}$ is the reasoning trace.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Format Reward&quot;,
+        &quot;value&quot;: &quot;$R_{format} = \\begin{cases} 0.5 &amp; \\text{if the format is correct} \\\\ -0.5 &amp; \\text{if the format is incorrect} \\end{cases}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Answer Reward&quot;,
+        &quot;value&quot;: &quot;$R_{answer} = 1 - |y - \\hat{y}| / max\\_error$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Total Reward&quot;,
+        &quot;value&quot;: &quot;$R = R_{format} + R_{answer}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;GRPO Objective Function&quot;,
+        &quot;value&quot;: &quot;$J_{GRPO}(\\theta) = E_{x \\sim D, \\{y_i\\}^G_{i=1} \\sim \\pi_{\\theta_{old}}(\\cdot|x)}[\\frac{1}{G} \\sum_{i=1}^G \\frac{1}{|y_i|} \\sum_{t=1}^{|y_i|} (\\min(\\frac{\\pi_\\theta(y_{i,t}|x, y_{i,&lt;t})}{\\pi_{\\theta_{old}}(y_{i,t}|x, y_{i,&lt;t})} \\hat{A}_{i,t}, \\text{clip}(\\frac{\\pi_\\theta(y_{i,t}|x, y_{i,&lt;t})}{\\pi_{\\theta_{old}}(y_{i,t}|x, y_{i,&lt;t})}, 1 - \\epsilon, 1 + \\epsilon) \\hat{A}_{i,t}) - \\beta D_{KL}[\\pi_\\theta \\| \\pi_{ref}])]$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Advantage Term&quot;,
+        &quot;value&quot;: &quot;$\\hat{A}_i = (R_i - \\text{mean}(\\{R_1, ..., R_G\\})) / \\text{std}(\\{R_1, ..., R_G\\})$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;SFT Training Objective&quot;,
+        &quot;value&quot;: &quot;$\\max_\\theta \\sum_{(x,y^{trace}) \\in D_{trace}} \\sum_{t=1}^{|y^{trace}|} \\log P_\\theta(y^{trace}_t | x, y^{trace}_{&lt;t})$&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;RecZero takes user history and target item as input to a single LLM.&quot;,
+      &quot;The LLM performs structured reasoning through &#39;Think-before-Recommendation&#39; prompts: user interest extraction (&lt;analyze user&gt;), item attribute summarization (&lt;analyze item&gt;), compatibility evaluation (&lt;match&gt;), and final rating prediction (&lt;rate&gt;).&quot;,
+      &quot;Rule-based rewards (based on format correctness and accuracy of predicted rating) are computed from the generated reasoning traces and ratings.&quot;,
+      &quot;Group Relative Policy Optimization (GRPO) is then used to refine the LLM&#39;s policy based on these rewards, optimizing reasoning and prediction end-to-end.&quot;,
+      &quot;RecOne initiates its model with cold-start supervised fine-tuning (SFT) using high-quality reasoning traces generated by a teacher LLM (DeepSeek-R1), which are categorized into aligned and misaligned traces.&quot;,
+      &quot;The SFT-initialized RecOne model is subsequently further optimized using the RecZero RL paradigm to enhance its reasoning capabilities and recommendation performance.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Goal&quot;,
+        &quot;value&quot;: &quot;To predict user ratings for items that align with user preferences by training a large language model to autonomously develop reasoning capabilities.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;Yes, the paper fully discloses all necessary information for reproducibility in the Appendix, including details about datasets, experimental setups, hyperparameters, and evaluation metrics.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;A Qwen2.5-7B-Instruct-1M model is used as the base LLM, serving as the core component that performs reasoning and rating prediction.&quot;,
+        &quot;name&quot;: &quot;Large Language Model (LLM)&quot;,
+        &quot;role&quot;: &quot;Core model for reasoning and prediction&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Employs a structured reasoning template with specific tags (&lt;analyze user&gt;, &lt;analyze item&gt;, &lt;match&gt;, &lt;rate&gt;) to guide the LLM&#39;s step-wise analysis of user interests, item features, and user-item compatibility.&quot;,
+        &quot;name&quot;: &quot;&#39;Think-before-Recommendation&#39; Prompt Constructor&quot;,
+        &quot;role&quot;: &quot;Guides LLM to generate structured reasoning&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Adopts Group Relative Policy Optimization (GRPO) to compute rewards based on both format correctness ($R_{format}$) and the difference between predicted and ground-truth ratings ($R_{answer}$), promoting stable and efficient learning without external labels.&quot;,
+        &quot;name&quot;: &quot;Rule-based Reward Modeling&quot;,
+        &quot;role&quot;: &quot;Provides feedback for LLM optimization&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A specialized sampling method to obtain high-quality reasoning traces, generated by a teacher LLM (DeepSeek-R1), which are used to initialize RecOne via supervised fine-tuning, especially for cold-start scenarios.&quot;,
+        &quot;name&quot;: &quot;Cold-Start Supervised Fine-Tuning (SFT)&quot;,
+        &quot;role&quot;: &quot;Initializes RecOne with foundational reasoning capabilities&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;This paper proposes RecZero, an RL-based recommendation paradigm that trains a single LLM to autonomously develop reasoning capabilities for rating prediction, overcoming limitations of traditional distillation-based methods such as insufficient recommendation capability, costly supervision, and superficial transfer of reasoning ability. It also introduces RecOne, a hybrid paradigm combining SFT with RL for faster convergence and stronger performance.&quot;,
+  &quot;title&quot;: &quot;Think before Recommendation: Autonomous Reasoning-enhanced Recommender&quot;,
+  &quot;url&quot;: &quot;https://openreview.net/pdf?id=fVs2BCjCqC&quot;,
+  &quot;venue&quot;: &quot;NeurIPS&quot;,
+  &quot;year&quot;: &quot;2025&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;paper-1773559204996&quot;,&quot;sourceUrl&quot;:&quot;https://openreview.net/pdf?id=fVs2BCjCqC&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:92,&quot;xmin&quot;:141,&quot;ymax&quot;:648,&quot;xmax&quot;:876},&quot;caption&quot;:&quot;Figure 2: The RecZero and RecOne frameworks utilize a unified target to optimize multi-step reasoning within a coupled structure, achieving reasoning-enhanced predictions specifically designed for recommendation scenarios.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:3},&quot;authors&quot;:&quot;Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper presents a strong contribution by introducing an RL-based paradigm for LLM-enhanced recommendation, effectively addressing key limitations of existing distillation methods. RecZero&#39;s autonomous reasoning and rule-based rewards, coupled with RecOne&#39;s hybrid SFT+RL approach, demonstrate significant performance gains and cost-effectiveness. The work is highly useful to the sub-field of LLM-based recommenders and RL applications. It provides a novel direction for improving reasoning capabilities in LLMs for personalized recommendations. The practical benefits in terms of efficiency and adaptability are notable.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;General-purpose teacher LLMs often lack domain-specific knowledge for recommendation, producing reasoning traces that are misaligned with the rate prediction objective. Additionally, generating high-quality reasoning data (whether via human annotation or LLM API calls) is time- and resource-intensive, and fine-tuned student models may only imitate surface-level reasoning patterns.&quot;,&quot;statement&quot;:&quot;Existing distillation-based methods for leveraging LLMs&#39; reasoning capabilities in rating prediction suffer from limitations such as insufficient recommendation capability of teacher models, costly and static supervision, and superficial transfer of reasoning ability.&quot;,&quot;whyItMatters&quot;:[&quot;Suboptimal reasoning processes in teacher models hinder the student model&#39;s performance.&quot;,&quot;High costs for data generation and static supervision limit the scalability and adaptability of LLM-based recommenders.&quot;,&quot;Superficial transfer of reasoning ability leads to overfitting and poor generalization to unseen tasks, limiting the practical applicability of these models.&quot;]},&quot;evaluationHighlights&quot;:[&quot;RecOne achieved significant performance improvements, lowering RMSE by 6.7% on Book, 12.2% on Music, and 6.2% on Yelp, and cutting MAE by 16.8% on Book, 29.9% on Music, and 7.5% on Yelp, compared to the strongest LLM-based baseline (Reason4Rec).&quot;,&quot;RecZero (pure RL) also surpassed all baselines in terms of MAE across the three datasets, demonstrating the effectiveness of the RL paradigm even without cold-start initialization.&quot;,&quot;RecZero(early-stop) achieved a 21.5% MAE reduction against the strongest pure-SFT baseline (Reason4Rec) with significantly fewer labeled samples (0.48K vs. 20K) and computational resources, demonstrating superior cost-effectiveness.&quot;,&quot;The cold-start SFT initialization in RecOne proved effective in enhancing the model&#39;s initial capabilities and elevating its performance ceiling for RL optimization, achieving faster convergence.&quot;,&quot;Ablation studies confirmed the critical impact of proposed components such as structured multi-step thinking and rule-based reward modeling on recommendation performance.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Amazon-book&quot;,&quot;Amazon-music&quot;,&quot;Yelp&quot;],&quot;metrics&quot;:[&quot;Mean Absolute Error (MAE)&quot;,&quot;Root Mean Square Error (RMSE)&quot;],&quot;setting&quot;:&quot;Rating prediction task on real-world datasets&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:217,&quot;xmin&quot;:536,&quot;ymax&quot;:358,&quot;xmax&quot;:819},&quot;caption&quot;:&quot;Figure 3: The performance of RecZero and RecOne over training steps.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:7},{&quot;boundingBox&quot;:{&quot;ymin&quot;:100,&quot;xmin&quot;:170,&quot;ymax&quot;:266,&quot;xmax&quot;:474},&quot;caption&quot;:&quot;Figure 4: 4a and 4b separately show the MAE and RMSE performance of RecOne and its four ablation variants on four datasets.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:8},{&quot;boundingBox&quot;:{&quot;ymin&quot;:100,&quot;xmin&quot;:520,&quot;ymax&quot;:266,&quot;xmax&quot;:834},&quot;caption&quot;:&quot;Figure 4: 4a and 4b separately show the MAE and RMSE performance of RecOne and its four ablation variants on four datasets.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:8}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.8325&quot;,&quot;benchmark&quot;:&quot;Book&quot;,&quot;delta&quot;:&quot;-0.0541&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RMSE&quot;,&quot;thisPaper&quot;:&quot;0.7784&quot;},{&quot;baseline&quot;:&quot;0.5937&quot;,&quot;benchmark&quot;:&quot;Book&quot;,&quot;delta&quot;:&quot;-0.0920&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;MAE&quot;,&quot;thisPaper&quot;:&quot;0.5017&quot;},{&quot;baseline&quot;:&quot;0.7647&quot;,&quot;benchmark&quot;:&quot;Music&quot;,&quot;delta&quot;:&quot;-0.0871&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RMSE&quot;,&quot;thisPaper&quot;:&quot;0.6776&quot;},{&quot;baseline&quot;:&quot;0.5352&quot;,&quot;benchmark&quot;:&quot;Music&quot;,&quot;delta&quot;:&quot;-0.1536&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;MAE&quot;,&quot;thisPaper&quot;:&quot;0.3816&quot;},{&quot;baseline&quot;:&quot;0.9972&quot;,&quot;benchmark&quot;:&quot;Yelp&quot;,&quot;delta&quot;:&quot;-0.0198&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RMSE&quot;,&quot;thisPaper&quot;:&quot;0.9774&quot;},{&quot;baseline&quot;:&quot;0.7473&quot;,&quot;benchmark&quot;:&quot;Yelp&quot;,&quot;delta&quot;:&quot;-0.0461&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;MAE&quot;,&quot;thisPaper&quot;:&quot;0.7012&quot;}],&quot;title&quot;:&quot;RecOne vs. Strongest LLM-based Baseline (Reason4Rec)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.5937&quot;,&quot;benchmark&quot;:&quot;Book&quot;,&quot;delta&quot;:&quot;-0.0684&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;MAE&quot;,&quot;thisPaper&quot;:&quot;0.5253&quot;},{&quot;baseline&quot;:&quot;0.5352&quot;,&quot;benchmark&quot;:&quot;Music&quot;,&quot;delta&quot;:&quot;-0.1081&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;MAE&quot;,&quot;thisPaper&quot;:&quot;0.4271&quot;},{&quot;baseline&quot;:&quot;0.7473&quot;,&quot;benchmark&quot;:&quot;Yelp&quot;,&quot;delta&quot;:&quot;-0.0044&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;MAE&quot;,&quot;thisPaper&quot;:&quot;0.7429&quot;}],&quot;title&quot;:&quot;RecZero vs. Strongest LLM-based Baseline (Reason4Rec) on MAE&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.6472&quot;,&quot;benchmark&quot;:&quot;Amazon Music&quot;,&quot;delta&quot;:&quot;-0.1153&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;MAE&quot;,&quot;thisPaper&quot;:&quot;0.5319&quot;}],&quot;title&quot;:&quot;RecZero (early-stop) vs. RecOne(SFT)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;RecOne significantly outperforms all baseline methods, including traditional and LLM-based approaches, across all evaluated metrics (RMSE and MAE) and datasets.&quot;,&quot;The pure RL approach (RecZero) also surpasses all baselines in terms of MAE, demonstrating the inherent superiority of the RL paradigm for autonomous reasoning-enhanced recommendation.&quot;,&quot;RecOne&#39;s cold-start supervised fine-tuning (SFT) initialization effectively boosts the model&#39;s initial capabilities and elevates its performance ceiling during subsequent RL optimization.&quot;,&quot;The proposed components, including the structured &#39;Think-before-Recommendation&#39; prompt and rule-based reward modeling, are crucial for achieving the superior performance of RecOne.&quot;,&quot;RecZero and RecOne offer a simpler and more cost-efficient pipeline (single model, teacher-free, end-to-end optimization) compared to complex multi-stage distillation methods, requiring fewer labeled samples, less training time, and lower inference cost.&quot;,&quot;Both RecZero and RecOne enable fast adaptation to cold-start scenarios and distribution shifts with minimal new interactions, making them well-suited for dynamic commercial recommender systems.&quot;]},&quot;institutions&quot;:&quot;Taobao &amp; Tmall Group of Alibaba, China; National University of Singapore; Institute of Dataspace, Hefei Comprehensive National Science Center; Shanghai Key Laboratory of Data Science&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;RecZero introduces a pure Reinforcement Learning (RL) paradigm for LLM-based recommendation, which trains a single LLM end-to-end to autonomously develop reasoning capabilities for rating prediction, departing from traditional multi-model and multi-stage distillation approaches.&quot;,&quot;The &#39;Think-before-Recommendation&#39; prompt construction employs a structured reasoning template with special tokens (e.g., &lt;analyze user&gt;, &lt;analyze item&gt;, &lt;match&gt;, &lt;rate&gt;) to guide the LLM through step-wise analysis of user interests, item features, and user-item compatibility.&quot;,&quot;Rule-based Reward Modeling, utilizing Group Relative Policy Optimization (GRPO), computes rewards for reasoning trajectories based on format correctness and ground-truth rating differences, optimizing the LLM without requiring costly labeled reasoning traces.&quot;,&quot;RecOne is a hybrid paradigm that combines cold-start supervised fine-tuning (SFT) with RL, using high-quality reasoning samples to initialize the LLM, thereby achieving faster convergence and stronger initial reasoning capabilities before further RL optimization.&quot;],&quot;main&quot;:&quot;A novel RL-based paradigm (RecZero) for LLM-enhanced recommendation that enables autonomous reasoning and eliminates multi-model, multi-stage distillation, complemented by a hybrid approach (RecOne) for robust performance.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;The task of predicting a user&#39;s rating for a target item, often enhanced by explicit reasoning steps performed by large language models.&quot;,&quot;term&quot;:&quot;Reasoning-enhanced rating prediction&quot;},{&quot;definition&quot;:&quot;A common paradigm in LLM-based recommendation where a larger &#39;teacher&#39; model generates intermediate reasoning traces or outputs, which are then used to supervise fine-tuning a smaller &#39;student&#39; model.&quot;,&quot;term&quot;:&quot;Distillation-based methods&quot;},{&quot;definition&quot;:&quot;A reinforcement learning policy optimization algorithm that reduces memory requirements by estimating group scores and replaces traditional reward models with rule-based reward mechanisms, guiding policy optimization by the relative performance of generated outputs within a group.&quot;,&quot;term&quot;:&quot;Group Relative Policy Optimization (GRPO)&quot;},{&quot;definition&quot;:&quot;The problem in recommender systems where there is insufficient data (e.g., interactions, ratings) for new users or items, making it difficult to generate accurate recommendations.&quot;,&quot;term&quot;:&quot;Cold-start problem&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Reinforcement Learning (RL)&quot;,&quot;Recommender Systems&quot;,&quot;Supervised Fine-tuning (SFT)&quot;,&quot;Collaborative Filtering (CF)&quot;]},&quot;subTopics&quot;:[&quot;Recommendation Systems&quot;,&quot;Reinforcement Learning&quot;,&quot;Large Language Models&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;RL&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Rec&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;RecZero and RecOne address key limitations of existing distillation-based LLM recommendation methods, specifically, the teacher model&#39;s insufficient recommendation capability, costly and static supervision, and superficial transfer of reasoning ability.&quot;,&quot;Unlike multi-model, multi-stage distillation approaches (e.g., Rec-SAVER, EXP3RT, Reason4Rec), RecZero trains a single LLM end-to-end through pure RL, eliminating the need for separate teacher-student models and decoupled training stages.&quot;,&quot;RecZero&#39;s &#39;Think-before-Recommendation&#39; prompt construction and rule-based reward modeling provide recommendation-specific objectives and autonomous optimization, contrasting with general-purpose teacher LLMs that may lack domain-specific knowledge or require manual label generation.&quot;,&quot;RecOne&#39;s hybrid approach, combining cold-start supervised fine-tuning (SFT) with subsequent RL, offers faster convergence and stronger initial capabilities than pure RL, and more robust reasoning than pure SFT, which often memorizes rather than genuinely generalizes.&quot;],&quot;limitations&quot;:[&quot;Due to computational constraints, the study could not fully assess the potential performance gains achievable by leveraging larger base models for RL, potentially hindering a thorough evaluation of the models&#39; true performance potential.&quot;,&quot;The study did not explore whether RecZero and RecOne could serve as viable replacements for existing Teacher models in generating cold-start data for multi-round self-iterative optimization.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Rating Prediction Rule&quot;,&quot;value&quot;:&quot;$\\hat{y}_{u,i} = \\text{argmax}_{k \\in Y} P_\\theta (y_{u,i} = k | H_u, M_i)$, where $\\hat{y}_{u,i}$ is the predicted rating for user $u$ on item $i$, and $\\theta$ represents the model parameters. For LLM: $\\hat{r}_{u,i}, \\hat{y}_{u,i} = \\text{LLM}(x_{u,i}) = \\text{LLM}(H_u, M_i)$, where $\\hat{r}_{u,i}$ is the reasoning trace.&quot;},{&quot;label&quot;:&quot;Format Reward&quot;,&quot;value&quot;:&quot;$R_{format} = \\begin{cases} 0.5 &amp; \\text{if the format is correct} \\\\ -0.5 &amp; \\text{if the format is incorrect} \\end{cases}$&quot;},{&quot;label&quot;:&quot;Answer Reward&quot;,&quot;value&quot;:&quot;$R_{answer} = 1 - |y - \\hat{y}| / max\\_error$&quot;},{&quot;label&quot;:&quot;Total Reward&quot;,&quot;value&quot;:&quot;$R = R_{format} + R_{answer}$&quot;},{&quot;label&quot;:&quot;GRPO Objective Function&quot;,&quot;value&quot;:&quot;$J_{GRPO}(\\theta) = E_{x \\sim D, \\{y_i\\}^G_{i=1} \\sim \\pi_{\\theta_{old}}(\\cdot|x)}[\\frac{1}{G} \\sum_{i=1}^G \\frac{1}{|y_i|} \\sum_{t=1}^{|y_i|} (\\min(\\frac{\\pi_\\theta(y_{i,t}|x, y_{i,&lt;t})}{\\pi_{\\theta_{old}}(y_{i,t}|x, y_{i,&lt;t})} \\hat{A}_{i,t}, \\text{clip}(\\frac{\\pi_\\theta(y_{i,t}|x, y_{i,&lt;t})}{\\pi_{\\theta_{old}}(y_{i,t}|x, y_{i,&lt;t})}, 1 - \\epsilon, 1 + \\epsilon) \\hat{A}_{i,t}) - \\beta D_{KL}[\\pi_\\theta \\| \\pi_{ref}])]$&quot;},{&quot;label&quot;:&quot;Advantage Term&quot;,&quot;value&quot;:&quot;$\\hat{A}_i = (R_i - \\text{mean}(\\{R_1, ..., R_G\\})) / \\text{std}(\\{R_1, ..., R_G\\})$&quot;},{&quot;label&quot;:&quot;SFT Training Objective&quot;,&quot;value&quot;:&quot;$\\max_\\theta \\sum_{(x,y^{trace}) \\in D_{trace}} \\sum_{t=1}^{|y^{trace}|} \\log P_\\theta(y^{trace}_t | x, y^{trace}_{&lt;t})$&quot;}],&quot;pipelineFlow&quot;:[&quot;RecZero takes user history and target item as input to a single LLM.&quot;,&quot;The LLM performs structured reasoning through &#39;Think-before-Recommendation&#39; prompts: user interest extraction (&lt;analyze user&gt;), item attribute summarization (&lt;analyze item&gt;), compatibility evaluation (&lt;match&gt;), and final rating prediction (&lt;rate&gt;).&quot;,&quot;Rule-based rewards (based on format correctness and accuracy of predicted rating) are computed from the generated reasoning traces and ratings.&quot;,&quot;Group Relative Policy Optimization (GRPO) is then used to refine the LLM&#39;s policy based on these rewards, optimizing reasoning and prediction end-to-end.&quot;,&quot;RecOne initiates its model with cold-start supervised fine-tuning (SFT) using high-quality reasoning traces generated by a teacher LLM (DeepSeek-R1), which are categorized into aligned and misaligned traces.&quot;,&quot;The SFT-initialized RecOne model is subsequently further optimized using the RecZero RL paradigm to enhance its reasoning capabilities and recommendation performance.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Goal&quot;,&quot;value&quot;:&quot;To predict user ratings for items that align with user preferences by training a large language model to autonomously develop reasoning capabilities.&quot;}],&quot;reproducibility&quot;:&quot;Yes, the paper fully discloses all necessary information for reproducibility in the Appendix, including details about datasets, experimental setups, hyperparameters, and evaluation metrics.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;A Qwen2.5-7B-Instruct-1M model is used as the base LLM, serving as the core component that performs reasoning and rating prediction.&quot;,&quot;name&quot;:&quot;Large Language Model (LLM)&quot;,&quot;role&quot;:&quot;Core model for reasoning and prediction&quot;},{&quot;details&quot;:&quot;Employs a structured reasoning template with specific tags (&lt;analyze user&gt;, &lt;analyze item&gt;, &lt;match&gt;, &lt;rate&gt;) to guide the LLM&#39;s step-wise analysis of user interests, item features, and user-item compatibility.&quot;,&quot;name&quot;:&quot;&#39;Think-before-Recommendation&#39; Prompt Constructor&quot;,&quot;role&quot;:&quot;Guides LLM to generate structured reasoning&quot;},{&quot;details&quot;:&quot;Adopts Group Relative Policy Optimization (GRPO) to compute rewards based on both format correctness ($R_{format}$) and the difference between predicted and ground-truth ratings ($R_{answer}$), promoting stable and efficient learning without external labels.&quot;,&quot;name&quot;:&quot;Rule-based Reward Modeling&quot;,&quot;role&quot;:&quot;Provides feedback for LLM optimization&quot;},{&quot;details&quot;:&quot;A specialized sampling method to obtain high-quality reasoning traces, generated by a teacher LLM (DeepSeek-R1), which are used to initialize RecOne via supervised fine-tuning, especially for cold-start scenarios.&quot;,&quot;name&quot;:&quot;Cold-Start Supervised Fine-Tuning (SFT)&quot;,&quot;role&quot;:&quot;Initializes RecOne with foundational reasoning capabilities&quot;}]},&quot;thesis&quot;:&quot;This paper proposes RecZero, an RL-based recommendation paradigm that trains a single LLM to autonomously develop reasoning capabilities for rating prediction, overcoming limitations of traditional distillation-based methods such as insufficient recommendation capability, costly supervision, and superficial transfer of reasoning ability. It also introduces RecOne, a hybrid paradigm combining SFT with RL for faster convergence and stronger performance.&quot;,&quot;title&quot;:&quot;Think before Recommendation: Autonomous Reasoning-enhanced Recommender&quot;,&quot;url&quot;:&quot;https://openreview.net/pdf?id=fVs2BCjCqC&quot;,&quot;venue&quot;:&quot;NeurIPS&quot;,&quot;year&quot;:&quot;2025&quot;}}</script>
+</body>
+</html>

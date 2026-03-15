@@ -1,0 +1,343 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 321,
+      "xmin": 169,
+      "ymax": 501,
+      "xmax": 856
+    },
+    "caption": "EMPO2 mode combinations. By combining the two rollout modes and update modes, three EMPO mode configurations are possible: on-policy learning without memory, on-policy learning with memory and off-policy learning.",
+    "figureNumber": 5,
+    "pageIndex": 4
+  },
+  "authors": "Zeyuan Liu, Jeonghye Kim, Xufang Luo, Dongsheng Li, Yuqing Yang",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "EMPO2 presents a significant advancement for LLM agents by addressing the crucial exploration bottleneck through a novel hybrid framework. Its integration of self-generated memory with both on- and off-policy updates effectively allows agents to explore new environments and internalize learned knowledge, leading to substantial performance gains on complex benchmarks like ScienceWorld and WebShop, and impressive out-of-distribution adaptability. The method moves beyond prior memory-only approaches by enabling parametric policy updates from memory, bridging a key gap in LLM agent capabilities."
+  },
+  "coreProblem": {
+    "statement": "Exploration remains the key bottleneck for large language model (LLM) agents trained with reinforcement learning (RL). Prior methods primarily exploit pretrained knowledge and conduct only limited search, failing to discover novel states or acquire new information in complex environments.",
+    "whyItMatters": [
+      "LLM agents fail in environments requiring the discovery of novel states, leading to erroneous behaviors and suboptimal performance.",
+      "Limited exploration hinders the ability of LLM agents to generalize effectively to unseen scenarios and new tasks.",
+      "The inability to continuously improve through self-guided exploration limits the long-term adaptability and versatility of LLM-based agents."
+    ],
+    "concreteExample": "In ScienceWorld, an agent tasked with \"turn on the red light bulb\" struggles because of insufficient exploration. It fails to locate the bulb and explore alternative actions, instead repeating actions and stagnating in its score, as shown in Figure 3."
+  },
+  "evaluationHighlights": [
+    "EMPO2 achieves substantial performance gains, with 128.6% improvement on ScienceWorld and 11.3% improvement on WebShop over the strong online RL baseline GRPO.",
+    "The method demonstrates superior adaptability to new, out-of-distribution tasks, achieving good scores with only a few trials and no weight updates, indicating effective use of memory to explore unfamiliar environments.",
+    "Ablation studies confirm that a balanced integration of both on-policy learning with memory and off-policy learning is most effective for performance improvement, leading to faster convergence and stronger final results.",
+    "Unlike baselines that converge prematurely to suboptimal solutions, EMPO2 leverages continuous exploration to successfully solve complex tasks."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "ScienceWorld (interactive text-based science experiments)",
+        "WebShop (HTML-based online shopping environment)"
+      ],
+      "metrics": [
+        "Average Score",
+        "Success Rate (%)"
+      ],
+      "setting": "Online Reinforcement Learning for LLM agents, using Qwen2.5-7B-Instruct as the base model."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 634,
+          "xmin": 192,
+          "ymax": 762,
+          "xmax": 825
+        },
+        "caption": "(a) Comparison of the learning curves of GRPO and EMPO2 (ours) on the ScienceWorld power-component task. While GRPO converges to suboptimal performance, EMPO2 continues to improve and accomplish the task. (b) Comparison of EMPO2 and other baselines in in-distribution (ID) and out-of-distribution (OOD) settings on and WebShop. In ID experiments, it adapts well to familiar environments, achieving 128.6% on ScienceWorld and 11.3% on WebShop improvements over GRPO. In OOD experiments, it also shows strong performance with few trials and no weight updates, indicating effective use of memory to explore unfamiliar environments. Full results are in Tables 1, 2, and Figure 8.",
+        "figureNumber": 1,
+        "pageIndex": 0
+      },
+      {
+        "boundingBox": {
+          "ymin": 75,
+          "xmin": 137,
+          "ymax": 269,
+          "xmax": 882
+        },
+        "caption": "Comparison of GRPO and EMPO2 adapting to new tasks. Step 0 has no memory, while later steps use accumulated memory as in EMPO2 training.",
+        "figureNumber": 8,
+        "pageIndex": 8
+      },
+      {
+        "boundingBox": {
+          "ymin": 746,
+          "xmin": 179,
+          "ymax": 866,
+          "xmax": 843
+        },
+        "caption": "(a) EMPO2 learning curves with varying p, (b) with varying q",
+        "figureNumber": 9,
+        "pageIndex": 9
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "33.2",
+            "benchmark": "Average",
+            "delta": "+42.7",
+            "isPositive": true,
+            "metric": "Score",
+            "thisPaper": "75.9"
+          },
+          {
+            "baseline": "72.4 \\pm 6.8",
+            "benchmark": "find-animal",
+            "delta": "+27.6",
+            "isPositive": true,
+            "metric": "Score",
+            "thisPaper": "100.0 \\pm 0.0"
+          },
+          {
+            "baseline": "68.7 \\pm 7.1",
+            "benchmark": "find-living-thing",
+            "delta": "+31.3",
+            "isPositive": true,
+            "metric": "Score",
+            "thisPaper": "100.0 \\pm 0.0"
+          },
+          {
+            "baseline": "15.1 \\pm 3.9",
+            "benchmark": "power-component",
+            "delta": "+79.2",
+            "isPositive": true,
+            "metric": "Score",
+            "thisPaper": "94.3 \\pm 3.6"
+          },
+          {
+            "baseline": "27.8 \\pm 6.1",
+            "benchmark": "test-conductivity",
+            "delta": "+61.7",
+            "isPositive": true,
+            "metric": "Score",
+            "thisPaper": "89.5 \\pm 3.2"
+          }
+        ],
+        "title": "ScienceWorld Performance Comparison (Average and Representative Tasks)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "86.2 \\pm 2.6",
+            "benchmark": "WebShop",
+            "delta": "+2.1",
+            "isPositive": true,
+            "metric": "Score",
+            "thisPaper": "88.3 \\pm 2.6"
+          },
+          {
+            "baseline": "75.2 \\pm 3.8",
+            "benchmark": "WebShop",
+            "delta": "+1.7%",
+            "isPositive": true,
+            "metric": "Succ.",
+            "thisPaper": "76.9 \\pm 4.1"
+          }
+        ],
+        "title": "WebShop Performance Comparison"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "33.2",
+        "benchmark": "ScienceWorld (Average)",
+        "delta": "+42.7",
+        "isPositive": true,
+        "metric": "Score",
+        "thisPaper": "75.9"
+      },
+      {
+        "baseline": "86.2 \\pm 2.6",
+        "benchmark": "WebShop",
+        "delta": "+2.1",
+        "isPositive": true,
+        "metric": "Score",
+        "thisPaper": "88.3 \\pm 2.6"
+      },
+      {
+        "baseline": "75.2 \\pm 3.8",
+        "benchmark": "WebShop",
+        "delta": "+1.7%",
+        "isPositive": true,
+        "metric": "Succ.",
+        "thisPaper": "76.9 \\pm 4.1"
+      },
+      {
+        "baseline": "15.1 \\pm 3.9",
+        "benchmark": "ScienceWorld (power-component)",
+        "delta": "+79.2",
+        "isPositive": true,
+        "metric": "Score",
+        "thisPaper": "94.3 \\pm 3.6"
+      },
+      {
+        "baseline": "72.4 \\pm 6.8",
+        "benchmark": "ScienceWorld (find-animal)",
+        "delta": "+27.6",
+        "isPositive": true,
+        "metric": "Score",
+        "thisPaper": "100.0 \\pm 0.0"
+      }
+    ],
+    "mainTakeaways": [
+      "EMPO2 significantly improves learning efficiency and performance on complex, multi-step embodied tasks requiring extensive exploration compared to prior online RL methods.",
+      "The hybrid approach, combining memory-augmented exploration with both on- and off-policy updates, is crucial for stability, effectiveness, and achieving superior final performance.",
+      "EMPO2 demonstrates strong generalization capabilities, adapting rapidly to new domains and out-of-distribution tasks with minimal trials and no weight updates, highlighting effective knowledge internalization.",
+      "The self-generated memory and intrinsic rewards encourage continuous exploration, enabling agents to successfully solve tasks where baselines converge prematurely to suboptimal solutions."
+    ]
+  },
+  "institutions": "Microsoft Research, KAIST",
+  "keyNovelty": {
+    "main": "A hybrid Reinforcement Learning framework (EMPO2) that enhances LLM agent exploration by combining self-generated memory for non-parametric updates with both on-policy and off-policy parametric updates.",
+    "explanation": [
+      "EMPO2 introduces a novel hybrid RL framework that integrates non-parametric memory-augmented exploration with both on-policy and off-policy updates for LLM agents.",
+      "It leverages a memory buffer to store self-generated \"tips\" (reflective guidance) from past rollouts. These tips, produced by the policy itself, are used to guide future exploration and prevent repeated mistakes.",
+      "The framework employs a dual rollout mechanism: one mode prompts without memory, and another uses memory-augmented prompting, where the policy conditions its actions on retrieved tips.",
+      "It features a dual update mechanism: on-policy updates retain tips in the policy conditioning, while off-policy updates recompute log-probabilities without tips. This off-policy mode acts as a reward-guided knowledge distillation, internalizing the benefits of tips into the base policy parameters to reduce dependence on external memory at inference time.",
+      "An intrinsic reward based on the novelty of current states is introduced to further encourage exploration, especially when extrinsic rewards are sparse.",
+      "A masking mechanism is applied to the GRPO loss to stabilize off-policy training by suppressing advantage terms for low-probability tokens, preventing instability."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A paradigm where agents learn to make decisions by interacting with an environment to maximize a cumulative reward signal.",
+        "term": "Reinforcement Learning (RL)"
+      },
+      {
+        "definition": "LLMs that are endowed with the ability to interact with external environments, perform multi-step reasoning, and adapt their behavior.",
+        "term": "Large Language Model (LLM) Agents"
+      },
+      {
+        "definition": "The process of discovering novel states and actions in an environment to gather information and improve the agent's understanding of optimal strategies.",
+        "term": "Exploration (in RL)"
+      },
+      {
+        "definition": "An RL method where the policy used to collect data (behavior policy) is the same as the policy being updated (target policy).",
+        "term": "On-Policy Learning"
+      },
+      {
+        "definition": "An RL method where the policy used to collect data (behavior policy) is different from the policy being updated (target policy), allowing for reuse of experiences generated by other policies.",
+        "term": "Off-Policy Learning"
+      },
+      {
+        "definition": "An online RL algorithm that updates policies by comparing multiple rollouts for the same task, using relative advantage to credit actions.",
+        "term": "Group Relative Policy Optimization (GRPO)"
+      },
+      {
+        "definition": "A technique used in off-policy RL to correct for the distributional shift between the behavior policy and the target policy when estimating expected values.",
+        "term": "Importance Sampling"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of Reinforcement Learning fundamentals (e.g., policies, rewards, trajectories, on-policy vs off-policy).",
+      "Familiarity with Large Language Models and their applications as agents.",
+      "Knowledge of Proximal Policy Optimization (PPO) and its variants like GRPO."
+    ]
+  },
+  "subTopics": [
+    "Reinforcement Learning for LLMs",
+    "Exploration in RL",
+    "Memory-augmented LLM agents",
+    "On-policy and Off-policy learning",
+    "Knowledge Distillation in RL"
+  ],
+  "tags": [
+    {
+      "name": "Reinforcement Learning",
+      "type": "primary"
+    },
+    {
+      "name": "Large Language Models",
+      "type": "primary"
+    },
+    {
+      "name": "Exploration",
+      "type": "topic"
+    },
+    {
+      "name": "Memory-Augmented Agents",
+      "type": "topic"
+    },
+    {
+      "name": "Policy Optimization",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike prior LLM agent methods that mainly exploit pretrained knowledge and perform limited search within familiar distributions, EMPO2 emphasizes systematic exploration for discovering novel states.",
+      "Compared to non-parametric memory-only approaches like Reflexion and REMEMBERER, EMPO2 not only uses memory but also *internalizes* the acquired knowledge into parametric policy updates, overcoming performance saturation and enhancing generalization.",
+      "It extends the GRPO baseline by integrating memory-augmented exploration and a hybrid on- and off-policy update mechanism, leading to substantially higher sample efficiency and stability.",
+      "EMPO2 reduces reliance on external resources and human engineering, contrasting with methods that depend on warm-start supervised fine-tuning (SFT) or privileged information."
+    ],
+    "limitations": [
+      "The current memory retrieval mechanism relies on a simple similarity-based search, and more advanced retrieval methods could potentially enhance performance.",
+      "Experiments were primarily conducted with Qwen2.5-7B-Instruct; extending EMPO2 to a broader range of model families and sizes could provide deeper insights into its generality and robustness.",
+      "Future research could explore applying EMPO2 to new domains such as mathematics, coding, multi-hop question answering, and multimodal RL.",
+      "Further investigation into other off-policy techniques beyond importance sampling could lead to more stable and efficient hybrid optimization."
+    ],
+    "modeling": [
+      {
+        "label": "GRPO Loss (Baseline)",
+        "value": "$E_{u \\sim p(U) \\{ \\tau^{(i)} \\}_{i=1}^N \\sim \\pi_{\\theta_{\\text{old}}}} \\left[ \\frac{1}{NT} \\sum_{i=1}^N \\sum_{t=1}^T \\min \\left( \\rho_{\\theta}(a_t^{(i)}) A(a_t^{(i)}), \\text{clip}(\\rho_{\\theta}(a_t^{(i)}), 1 - \\epsilon, 1 + \\epsilon) A(a_t^{(i)}) \\right) \\right] - \\beta D_{\\text{KL}}(\\pi_{\\theta}(\\cdot \\mid u) \\parallel \\pi_{\\text{ref}}(\\cdot \\mid u))$, where $\\rho_{\\theta}(a_t^{(i)}) = \\frac{\\pi_{\\theta}(a_t^{(i)} \\mid s_t^{(i)}, u)}{\\pi_{\\theta_{\\text{old}}}(a_t^{(i)} \\mid s_t^{(i)}, u)}$."
+      },
+      {
+        "label": "EMPO2 Modified Loss",
+        "value": "$E_{u \\sim p(U) \\{ \\tau^{(i)} \\}_{i=1}^N \\sim \\pi_{\\theta_{\\text{old}}}} \\left[ \\frac{1}{NT} \\sum_{i=1}^N \\sum_{t=1}^T \\min \\left( \\rho^{(i,t)}_{\\theta} A(a_t^{(i)}), \\text{clip}(\\rho^{(i,t)}_{\\theta}, 1 - \\epsilon, 1 + \\epsilon) A(a_t^{(i)}) \\right) \\cdot \\mathbf{1}_{\\pi_{\\theta}(a_t^{(i)} \\mid s_t^{(i)}, u) \\geq \\delta} \\right] - \\beta D_{\\text{KL}}(\\pi_{\\theta}(\\cdot \\mid u) \\parallel \\pi_{\\text{ref}}(\\cdot \\mid u))$, introducing a masking mechanism $\\mathbf{1}_{\\pi_{\\theta}(a_t^{(i)} \\mid s_t^{(i)}, u) \\geq \\delta}$ to stabilize training by suppressing the advantage term for low-probability tokens below threshold $\\delta$."
+      },
+      {
+        "label": "Intrinsic Reward for Exploration",
+        "value": "$r_{\\text{intrinsic}} = \\frac{1}{n}$, where $n$ is the number of similar past states. This reward encourages the agent to explore novel states by adding to the environment's extrinsic rewards."
+      }
+    ],
+    "pipelineFlow": [
+      "EMPO2 operates in an alternating rollout and update phase, both leveraging a hybrid approach.",
+      "Rollout Phase: Actions are generated at each step by selecting between two modes with a probability $p$: (1) Prompting Without Memory, where the policy $\\pi_{\\theta}$ conditions actions only on the current state $s_t$ and task $u$; or (2) Memory-Augmented Prompting, where the policy conditions actions on $s_t$, $u$, and retrieved \"tips\" from a memory buffer.",
+      "Self-Generated Memory and Tips: After each episode, the policy $\\pi_{\\theta}$ generates reflective tips from the final state and task context, which are then appended to the memory buffer.",
+      "Update Phase: Trajectories generated during the rollout phase are used for policy updates, which also occur in two modes with a probability $q$: (a) On-Policy Updates, where the importance sampling ratio uses policies conditioned on the current state, task, and retrieved tips (retaining the tips); or (b) Off-Policy Updates, where the old policy used for sampling was conditioned on tips, but the new policy $\\pi_{\\theta}$ is updated *without* conditioning on tips, allowing the policy to internalize the knowledge from tips (reward-guided knowledge distillation)."
+    ],
+    "problemDefinition": [
+      {
+        "label": "LLM Agent in Online RL",
+        "value": "An LLM agent solves a multi-step task $u \\sim p(U)$ by interacting with an environment. The LLM policy $\\pi_{\\theta}$ generates natural-language actions $a_{t+1} \\sim \\pi_{\\theta}(\\cdot \\mid s_t, u)$ given current state $s_t$ and task $u$, receiving reward $r_t$ and transitioning to $s_{t+1}$. The goal is to maximize cumulative rewards over a trajectory $\\tau = \\{u, a_1, r_1, s_1, a_2, r_2, \\dots, s_T\\}$."
+      }
+    ],
+    "reproducibility": "The authors state that an Agent Lightning version of EMPO2 is released at `agent-lightning/empo2`. Detailed training information, pseudocode (Appendix A), hyperparameters for both EMPO2 and baselines (Appendix D), and GPU resources (8x NVIDIA A100 40GB GPUs) are provided.",
+    "systemModules": [
+      {
+        "details": "Stores reflective \"tips\" generated by the policy itself from past trajectory reflections. These tips provide self-guidance to avoid repeated mistakes and explore new strategies.",
+        "name": "Memory Buffer (M)",
+        "role": "External Memory"
+      },
+      {
+        "details": "A retrieval operator that selects the most relevant tips from the memory buffer for the current state, e.g., via similarity search in an embedding space.",
+        "name": "Tip Retrieval (Retr)",
+        "role": "Memory Access"
+      },
+      {
+        "details": "The Large Language Model-based policy that generates actions. It can be conditioned on the current state, task, and optionally the retrieved tips, depending on the rollout mode.",
+        "name": "Policy ($\\pi_{\\theta}$)",
+        "role": "Action Generation"
+      },
+      {
+        "details": "A mechanism that optimizes the policy parameters using a modified Group Relative Policy Optimization (GRPO) loss function, incorporating a masking mechanism for stability and adapting importance sampling for hybrid updates.",
+        "name": "Policy Optimization Module",
+        "role": "Learning Algorithm"
+      }
+    ]
+  },
+  "thesis": "We propose Exploratory Memory-Augmented On- and Off-Policy Optimization (EMPO2), a novel hybrid RL algorithm that enhances exploration in parametric RL by leveraging non-parametric memory updates and integrating both on-policy and off-policy learning to improve training efficiency, stability, and adaptability to new domains, thereby overcoming the limitations of current LLM agents in novel environments.",
+  "title": "Exploratory Memory-Augmented LLM Agent via Hybrid On- and Off-Policy Optimization",
+  "url": "https://arxiv.org/abs/arXiv:2602.23008",
+  "venue": "ICLR 2026",
+  "year": "2026"
+}

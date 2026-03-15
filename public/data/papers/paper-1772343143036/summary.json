@@ -1,0 +1,258 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 265,
+      "xmin": 513,
+      "ymax": 532,
+      "xmax": 882
+    },
+    "caption": "E2E audio models exhibit severe dialogue quality degradation across turns, while modular systems maintain stable performance despite higher latency.",
+    "figureNumber": 1,
+    "pageIndex": 0
+  },
+  "authors": "Zhi Rui Tam Wen-Yu Chang Yun-Nung Chen",
+  "breakthroughAssessment": {
+    "score": 6,
+    "justification": "The paper provides a valuable, systematic investigation and clear empirical evidence of a critical weakness in current end-to-end audio language models for complex dialogue tasks. While it does not propose a new model or method, its detailed analysis and robust evaluation framework identify a significant \"context trap\" problem, offering crucial insights for future research directions in developing more robust AudioLMs. The finding that audio quality is *not* the bottleneck but dialogue modeling capabilities are, is a strong contribution to the understanding of these systems."
+  },
+  "coreProblem": {
+    "statement": "End-to-end (E2E) audio language models (AudioLMs) struggle to maintain dialogue coherence, specifically in context maintenance and topic tracking, in complex, multi-turn task-oriented dialogues.",
+    "whyItMatters": [
+      "Audio interfaces are crucial for accessibility for users with motor disabilities, visual impairments, low literacy, or situational constraints, making robust spoken dialogue systems essential.",
+      "AudioLMs promise low-latency, real-time audio interaction (200-320ms vs. 2-5s for modular systems), which is critical for natural conversational flow.",
+      "The inability of E2E models to maintain coherence and context hinders their practical applicability in real-world multi-turn task-oriented dialogue systems, despite their latency advantages."
+    ],
+    "concreteExample": "In multi-phase sales-customer scenarios, E2E audio language models like Qwen-Omni-3B (E2E) show severe degradation in naturalness, with scores plummeting from 51.4 to 23.9 within just seven turns, a problem not observed in modular counterparts."
+  },
+  "evaluationHighlights": [
+    "First systematic investigation comparing E2E AudioLMs against modular (ASR+LLM+TTS) systems for multi-turn and multi-phase task-oriented dialogues.",
+    "Demonstrated that E2E AudioLMs consistently underperform modular systems, exhibiting severe turn-by-turn degradation in dialogue naturalness and consistency.",
+    "Revealed that dialogue quality degradation in E2E models is primarily due to fundamental limitations in dialogue modeling (context maintenance, topic tracking), not audio generation quality.",
+    "Quantified specific failure modes in E2E systems, showing significantly higher severity for Generic responses, Repetition, Memory errors, Misunderstanding, and Topic Drift compared to modular baselines."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Modular ASR+LLM+TTS System (Whisper-2-large + gpt-4o-mini/Qwen-Omni (text) + Sesame-1B)",
+        "Text-only baseline (gpt-4o-mini)"
+      ],
+      "metrics": [
+        "Objective Audio Quality (MOSA-Net+ score, 1-5 for quality, 0-1 for intelligibility)",
+        "Perceptive Audio Quality (LLM-as-Judge using gemini-2.5-flash)",
+        "Voice Consistency (LLM-as-Judge, 0-100)",
+        "Naturalness (LLM-as-Judge from transcribed text, 0-100)",
+        "Consistency (LLM-as-Judge from transcribed text, 0-100)",
+        "Failure Type Severity (Generic, Topic Drift, Repetition, Misunderstanding, Memory, 0-100)"
+      ],
+      "setting": "Multi-phase task-oriented dialogues in a sales-customer scenario, utilizing the SalesBot 2.0 framework. 500 sampled dialogues, averaging 20.35 turns, designed to evaluate long-context coherence maintenance across chitchat, transition, and core task-oriented dialogue phases."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 209,
+          "xmin": 122,
+          "ymax": 795,
+          "xmax": 874
+        },
+        "caption": "Top panels show text-based dialogue quality metrics (Naturalness and Consistency) evaluated on text, while bottom panels display audio quality metrics (MOSNet Quality and Voice Consistency). All audio quality metrics remain relatively stable across all systems throughout the dialogue, suggesting audio generation quality is not the primary factor driving dialogue coherence degradation.",
+        "figureNumber": 2,
+        "pageIndex": 3
+      },
+      {
+        "boundingBox": {
+          "ymin": 415,
+          "xmin": 513,
+          "ymax": 622,
+          "xmax": 875
+        },
+        "caption": "Correlation matrix between text-based dialogue quality metrics (Naturalness and Consistency) and audio quality metrics (Quality, Intelligibility, and Voice Consistency).",
+        "figureNumber": 3,
+        "pageIndex": 3
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "95.7",
+        "benchmark": "GPT-4o-m (Text)",
+        "delta": "-66.8",
+        "isPositive": false,
+        "metric": "Naturalness",
+        "thisPaper": "28.9 (Qwen-Omni-3B E2E)"
+      },
+      {
+        "baseline": "90.6",
+        "benchmark": "GPT-4o-m (Text)",
+        "delta": "-60.9",
+        "isPositive": false,
+        "metric": "Consistency",
+        "thisPaper": "29.7 (Qwen-Omni-3B E2E)"
+      },
+      {
+        "baseline": "4.4 (MiMo (M))",
+        "benchmark": "MiMo (M)",
+        "delta": "+6.7",
+        "isPositive": false,
+        "metric": "Topic Drift Severity",
+        "thisPaper": "11.1 (MiMo (E2E))"
+      },
+      {
+        "baseline": "3.2 (Qwen-3B (M))",
+        "benchmark": "Qwen-3B (M)",
+        "delta": "+7.8",
+        "isPositive": false,
+        "metric": "Misunderstanding Severity",
+        "thisPaper": "11.0 (Qwen-3B (E2E))"
+      },
+      {
+        "baseline": "5.9 (Qwen-3B (M))",
+        "benchmark": "Qwen-3B (M)",
+        "delta": "+33.5",
+        "isPositive": false,
+        "metric": "Memory Severity",
+        "thisPaper": "39.4 (Qwen-3B (E2E))"
+      }
+    ],
+    "mainTakeaways": [
+      "Current open-weight AudioLMs consistently underperform modular ASR+LLM+TTS systems in terms of dialogue naturalness and consistency in multi-turn task-oriented dialogues.",
+      "The performance degradation in E2E AudioLMs is primarily caused by fundamental limitations in dialogue modeling, specifically context maintenance and topic tracking, rather than deficiencies in audio generation quality.",
+      "E2E models exhibit significantly higher rates of critical dialogue failures, including generic responses, repetition, memory loss, misunderstanding, and topic drift, particularly for models like Qwen-Omni-3B E2E."
+    ],
+    "keyResultGroups": []
+  },
+  "institutions": "National Taiwan University, Taipei, Taiwan",
+  "keyNovelty": {
+    "main": "The first systematic investigation into the conversational performance of end-to-end audio language models (AudioLMs) versus modular ASR-LLM-TTS systems in multi-turn and multi-phase task-oriented dialogues, revealing a 'context trap' due to AudioLMs' fundamental limitations in dialogue modeling.",
+    "explanation": [
+      "This is the first systematic and comprehensive investigation into the conversational performance of end-to-end audio language models compared to modular systems within the challenging domain of multi-turn and multi-phase task-oriented dialogues.",
+      "The study explicitly disentangles the impact of audio generation quality from core dialogue modeling capabilities on overall performance, demonstrating that audio quality is not the bottleneck.",
+      "It provides a detailed error analysis, categorizing and quantifying specific failure types that lead to dialogue degradation in E2E systems, identifying a \"context trap\" where these models struggle with coherence over turns."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "End-to-end models that process speech directly without intermediate text conversion, aiming for low-latency audio response generation.",
+        "term": "Audio Language Models (AudioLMs)"
+      },
+      {
+        "definition": "AI systems designed to help users achieve specific goals through conversation, often involving information retrieval or task execution.",
+        "term": "Task-Oriented Dialogue (TOD) Systems"
+      },
+      {
+        "definition": "The ability of a dialogue system to maintain a logical and semantically connected flow across multiple turns, preventing irrelevant or contradictory responses.",
+        "term": "Dialogue Coherence"
+      },
+      {
+        "definition": "The property of a dialogue system consistently tracking and utilizing information, user intent, and conversation history throughout an interaction.",
+        "term": "Context Maintenance"
+      },
+      {
+        "definition": "Dialogue systems that are composed of distinct, cascaded modules such as Automatic Speech Recognition (ASR), Large Language Models (LLM) for reasoning, and Text-to-Speech (TTS).",
+        "term": "Modular Dialogue Systems"
+      }
+    ],
+    "prerequisites": [
+      "Familiarity with foundational concepts in Natural Language Processing (NLP) and speech processing.",
+      "Understanding of different architectures for dialogue systems, particularly modular versus end-to-end approaches.",
+      "Basic knowledge of Large Language Models (LLMs) and their application in conversational AI."
+    ]
+  },
+  "subTopics": [
+    "Spoken Dialogue Systems",
+    "End-to-End Models",
+    "Audio Language Models",
+    "Dialogue Coherence",
+    "Context Tracking",
+    "Task-Oriented Dialogue",
+    "Performance Evaluation",
+    "Error Analysis"
+  ],
+  "tags": [
+    {
+      "name": "Spoken Dialogue Systems",
+      "type": "primary"
+    },
+    {
+      "name": "End-to-End Models",
+      "type": "primary"
+    },
+    {
+      "name": "Audio Language Models",
+      "type": "topic"
+    },
+    {
+      "name": "Dialogue Coherence",
+      "type": "topic"
+    },
+    {
+      "name": "Context Tracking",
+      "type": "topic"
+    },
+    {
+      "name": "LLM Evaluation",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Prior work on AudioLMs focused heavily on their low-latency advantages but largely overlooked a systematic investigation into their conversational quality, especially in complex multi-turn, multi-phase dialogues.",
+      "Previous studies highlighted the poor performance of state-of-the-art dialogue state trackers and E2E models on spoken dialogue benchmarks, often attributing failures to ASR errors or fundamental differences in spoken discourse; this work specifically disentangles audio quality from dialogue modeling issues.",
+      "Unlike some research showing E2E models maintaining performance under ASR noise in single-turn tasks, this study reveals significant degradation in multi-turn, multi-phase scenarios."
+    ],
+    "limitations": [
+      "The study identifies limitations of *current* open-weight AudioLMs but suggests future research is needed to determine whether these issues stem from architectural constraints, training data, or both.",
+      "The paper implicitly suggests that while E2E systems have latency benefits, their current state makes them unsuitable for complex dialogue, potentially limiting their immediate real-world deployment in such scenarios.",
+      "Future research should explore hybrid approaches that combine the latency benefits of AudioLMs with the conversational coherence of modular components."
+    ],
+    "modeling": [
+      {
+        "label": "Objective Audio Quality Assessment",
+        "value": "Utilizes MOSA-Net+ ($1-5$ quality score, $0-1$ intelligibility score) for technical measurement of audio performance."
+      },
+      {
+        "label": "Perceptive Audio Quality Assessment",
+        "value": "Employs an LLM-as-Judge approach with gemini-2.5-flash to assign a subjective quality metric, leveraging its audio understanding capabilities."
+      },
+      {
+        "label": "Dialogue Coherence and Consistency Assessment",
+        "value": "Leverages the LLM-as-Judge framework from SalesBot (Lin and Chen, 2023; Chang and Chen, 2024) to measure naturalness and consistency scores from transcribed dialogue outputs."
+      },
+      {
+        "label": "Failure Analysis Categorization",
+        "list": [
+          "Generic: Non-specific, template-like responses lacking contextual grounding.",
+          "Topic Drift: Deviation from the established conversation topic.",
+          "Repetition: Redundant content across turns.",
+          "Misunderstanding: Failure to correctly interpret user intent.",
+          "Memory: Inability to maintain context from previous turns."
+        ],
+        "value": "Errors are categorized into five types, with severity scores ($0-100$)."
+      }
+    ],
+    "pipelineFlow": [
+      "Modular Baseline: User's spoken input is processed by a Speech-to-Text (ASR) module, then the transcribed text is fed to a Large Language Model (LLM) for dialogue reasoning and text generation, and finally, the generated text is converted to audio by a Text-to-Speech (TTS) module for the agent's response.",
+      "End-to-End Audio Language Models: User's spoken input is directly processed by an AudioLM which generates an audio response without intermediate text representations, aiming for significantly lower latency."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Input",
+        "value": "User's spoken utterances in a multi-turn, multi-phase task-oriented dialogue."
+      },
+      {
+        "label": "Output",
+        "value": "Agent's spoken response, evaluated for audio quality, dialogue naturalness, and consistency over turns."
+      },
+      {
+        "label": "Goal",
+        "value": "To compare the performance of E2E AudioLMs against modular ASR-LLM-TTS systems in maintaining dialogue coherence and context tracking in complex conversational scenarios."
+      }
+    ],
+    "reproducibility": "Code for the AudioConv framework is available at https://github.com/MiuLab/AudioConv. The evaluation dataset is derived from SalesBot 2.0 (Chang and Chen, 2024) and includes 500 sampled dialogues with specific statistics provided (Table 3 and 4).",
+    "systemModules": []
+  },
+  "thesis": "End-to-end (E2E) audio language models (AudioLMs) consistently underperform modular (ASR, LLM, TTS) systems in multi-turn task-oriented dialogues due to fundamental limitations in context maintenance and topic tracking, despite their low-latency advantage, indicating a critical 'context trap' that current architectures must overcome.",
+  "title": "The Context Trap: Why End-to-End Audio Language Models Fail Multi-turn Dialogues",
+  "url": "https://aclanthology.org/2026.iwsds-1.7.pdf",
+  "venue": "Proceedings of the 16th International Workshop on Spoken Dialogue Systems Technology",
+  "year": "2026"
+}

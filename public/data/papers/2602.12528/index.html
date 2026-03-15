@@ -1,0 +1,189 @@
+<!doctype html><html><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><style>
+      mjx-container,
+      mjx-container[display="true"] {
+        display: inline-block !important;
+        margin: 0 0.08em !important;
+        vertical-align: middle;
+      }
+    </style>
+<link rel="stylesheet" crossorigin="" href="/assets/index-Cs3x48PB.css">
+<style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style>
+<style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style>
+<style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style>
+<style id="MJX-SVG-styles">
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style></head><body><div id="summary-export"><div class="max-w-[1100px] mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-5 bg-[#dce0e8] font-sans text-[#4c4f69] leading-relaxed text-[14px] sm:text-[15px] md:text-[16px]"><div class="bg-[#eff1f5] rounded-xl p-4 sm:p-5 md:p-6 mb-4 sm:mb-5 shadow-sm"><h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#4c4f69] m-0 mb-3 leading-tight"><a href="https://arxiv.org/abs/2602.12528" target="_blank" rel="noreferrer" class="text-[#1e66f5] hover:underline">DiffuRank: Effective Document Reranking with Diffusion Language Models</a></h1><div class="text-[#5c5f77] text-sm sm:text-base mb-2">Qi Liu, Kun Ai, Jiaxin Mao, Yanzhao Zhang, Mingxin Li, Dingkun Long, Pengjun Xie, Fengbin Zhu, Ji-Rong Wen</div><div class="text-[#6c6f85] text-xs sm:text-sm mb-3">Renmin University of China, Alibaba Group, National University of Singapore</div><div class="text-[#5c5f77] text-sm sm:text-base mb-3">Conference'17 (2026)</div><div class="flex flex-wrap gap-2 mt-3"><span class="inline-block text-xs font-medium px-3 py-1 rounded-full select-none bg-[#8839ef] text-[#eff1f5]">Document Reranking</span><span class="inline-block text-xs font-medium px-3 py-1 rounded-full select-none bg-[#e6e9ef] text-[#1e66f5]">Diffusion Models</span><span class="inline-block text-xs font-medium px-3 py-1 rounded-full select-none bg-[#e6e9ef] text-[#1e66f5]">Large Language Models</span></div></div><div class="bg-[#eff1f5] rounded-xl p-4 sm:p-5 md:p-6 mb-4 sm:mb-5 shadow-sm"><h2 class="text-base sm:text-lg md:text-xl font-semibold text-[#4c4f69] m-0 mb-4 pb-2 border-b-2 border-[#1e66f5]">📝 Paper Summary</h2><div class="flex flex-wrap gap-2 mb-4"><span class="inline-block bg-[#e6e9ef] text-[#8839ef] text-xs px-2.5 py-1 rounded-full">Information Retrieval</span><span class="inline-block bg-[#e6e9ef] text-[#8839ef] text-xs px-2.5 py-1 rounded-full">Generative Models</span><span class="inline-block bg-[#e6e9ef] text-[#8839ef] text-xs px-2.5 py-1 rounded-full">Natural Language Processing</span><span class="inline-block bg-[#e6e9ef] text-[#8839ef] text-xs px-2.5 py-1 rounded-full">Large Language Models</span></div><div class="mb-5"><div class="text-base sm:text-lg font-medium text-[#4c4f69] bg-gradient-to-br from-[#e6e9ef] to-[#bcc0cc] p-3 sm:p-4 rounded-lg border-l-4 border-[#1e66f5]">Diffusion language models (dLLMs) can effectively serve as a novel and more flexible paradigm for document reranking, overcoming the efficiency and architectural limitations of autoregressive large language models by supporting parallel decoding and structured generation, while achieving competitive or superior performance.</div></div><div class="mb-5"><div class="text-xs sm:text-sm font-semibold text-[#5c5f77] mb-2 uppercase tracking-wide">Core Problem</div><div class="text-sm sm:text-base text-[#4c4f69] mb-3">Most existing LLM-based document rerankers rely on autoregressive generation, which limits their efficiency (due to token-by-token decoding and sequential dependency) and flexibility (due to error propagation from fixed left-to-right generation order), hindering their real-world applicability for large-scale reranking tasks.</div><div class="mt-3"><em class="text-[#5c5f77]">Why it matters:</em><ul class="mt-2 pl-5 list-disc text-[#5c5f77]"><li class="mb-1.5">Document reranking is a critical component in information retrieval systems, directly impacting the quality of search results presented to users.</li><li class="mb-1.5">Improving the efficiency and flexibility of LLM-based rerankers is essential for deploying them in real-world, large-scale IR systems.</li><li class="mb-1.5">Overcoming the limitations of autoregressive models would unlock the full potential of large language models for complex structured prediction tasks like ranking.</li></ul></div><div class="mt-3 p-3 bg-[#e6e9ef] border-l-4 border-[#1e66f5] rounded"><strong class="text-[#1e66f5] block mb-1">Concrete Example:</strong><span class="text-[#4c4f69]">When an LLM-based reranker is used to reorder a list of 100 documents, the autoregressive generation process evaluates documents one by one, leading to significant latency and potential for early ranking errors to propagate, resulting in a suboptimal final list.</span></div></div><div class="mb-5"><div class="text-xs sm:text-sm font-semibold text-[#5c5f77] mb-2 uppercase tracking-wide">Key Novelty</div><div class="bg-[#dce0e8] border border-[#7287fd] rounded-lg p-4"><div class="font-semibold text-[#8839ef] mb-2">The first systematic investigation and application of diffusion language models (dLLMs) for document reranking, introducing novel strategies and training methods to overcome the limitations of autoregressive LLMs.</div><ul class="mt-2 pl-5 list-disc marker:text-[#7287fd] text-[#4c4f69]"><li class="mb-1">DiffuRank systematically explores the application of diffusion language models (dLLMs) for document reranking, a task traditionally dominated by autoregressive LLMs. Unlike autoregressive models, dLLMs support flexible and parallel decoding, which mitigates the efficiency and error propagation issues of sequential generation.</li><li class="mb-1">The framework introduces three distinct reranking strategies based on dLLMs: a pointwise approach (cross-encoder), a logits-based listwise approach (jointly assesses relevance from masked positions), and a permutation-based listwise approach (directly generates ranked sequences).</li><li class="mb-1">Tailored training objectives and inference methods are designed for each strategy. For pointwise and logits-based, listwise distillation losses (Cross-Entropy or RankNet) are used. For permutation-based, a supervised fine-tuning objective is used with a structure-aware masking strategy and constrained sampling or an assignment problem approach (Hungarian algorithm) for inference, ensuring valid permutations.</li></ul></div></div><div class="mb-5"><div class="text-xs sm:text-sm font-semibold text-[#5c5f77] mb-2 uppercase tracking-wide">Evaluation Highlights</div><ul class="m-0 pl-5 list-disc text-[#5c5f77]"><li class="mb-1.5">DiffuRank consistently outperforms the traditional BM25 baseline across almost all datasets in both zero-shot and fine-tuned settings.</li><li class="mb-1.5">In zero-shot settings, DiffuRank achieves performance comparable to the best autoregressive LLM-based baselines.</li><li class="mb-1.5">After fine-tuning, DiffuRank, particularly its permutation-based variants, achieves the best overall average performance on BEIR, surpassing all evaluated LLM-based rerankers and demonstrating strong cross-domain generalization.</li><li class="mb-1.5">Permutation-based methods, especially DiffuRank Perm-Assign, consistently emerge as the most effective dLLM reranking approach in both zero-shot and fine-tuned evaluations.</li><li class="mb-1.5">DiffuRank Perm-Assign demonstrates strong performance with low latency, showcasing a favorable efficiency-effectiveness trade-off compared to listwise LLM baselines.</li></ul></div><div class="mb-5"><div class="text-xs sm:text-sm font-semibold text-[#5c5f77] mb-2 uppercase tracking-wide">Breakthrough Assessment</div><div class="flex items-center gap-3"><div class="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full text-sm sm:text-base font-bold text-[#eff1f5] shrink-0 bg-[#04a5e5]">7.5/10</div><div class="flex-1 text-[#5c5f77] text-sm sm:text-base">The paper introduces a novel and effective paradigm for document reranking by leveraging diffusion language models (dLLMs). This addresses key limitations of prevalent autoregressive LLM-based rerankers, such as high latency and error propagation. By proposing three distinct, well-tailored dLLM-based reranking strategies and demonstrating competitive or superior performance to AR-LLMs, the work opens a new research direction for dLLMs in information retrieval. The detailed analysis of training and inference strategies, along with efficiency improvements, makes this a strong contribution.</div></div></div></div><div class="bg-[#eff1f5] rounded-xl p-4 sm:p-5 md:p-6 mb-4 sm:mb-5 shadow-sm"><h2 class="text-base sm:text-lg md:text-xl font-semibold text-[#4c4f69] m-0 cursor-pointer flex justify-between items-center border-b-2 border-[#1e66f5] pb-2">⚙️ Technical Details<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right text-[#8c8fa1]" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></h2></div><div class="bg-[#eff1f5] rounded-xl p-4 sm:p-5 md:p-6 mb-4 sm:mb-5 shadow-sm"><h2 class="text-base sm:text-lg md:text-xl font-semibold text-[#4c4f69] m-0 cursor-pointer flex justify-between items-center border-b-2 border-[#1e66f5] pb-2">📊 Experiments &amp; Results<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right text-[#8c8fa1]" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></h2></div><div class="bg-[#eff1f5] rounded-xl p-4 sm:p-5 md:p-6 mb-4 sm:mb-5 shadow-sm"><h2 class="text-base sm:text-lg md:text-xl font-semibold text-[#4c4f69] m-0 cursor-pointer flex justify-between items-center border-b-2 border-[#1e66f5] pb-2">📚 Prerequisite Knowledge<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right text-[#8c8fa1]" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></h2></div><div class="text-center text-[#8c8fa1] text-xs sm:text-sm mt-8 sm:mt-10 p-4 sm:p-5">Generated using Gemini API</div></div></div></body></html>

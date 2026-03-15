@@ -1,0 +1,455 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 197,
+      "xmin": 190,
+      "ymax": 332,
+      "xmax": 804
+    },
+    "caption": "Example architecture of a Retrieval-Augmented Generation (RAG) system.",
+    "figureNumber": 1,
+    "pageIndex": 3
+  },
+  "authors": "Teri Rumble, Zbyn\u011bk Gazd\u00edk, Javad Zarrin, and Jagdeep Ahluwalia",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "This paper makes a strong contribution by addressing a practical and challenging problem: Retrieval-Augmented Generation (RAG) over structured knowledge graphs in e-commerce. It provides a systematic evaluation of various retriever-reranker pipeline components and introduces specific well-engineered pipeline variants that significantly outperform existing benchmarks. The empirical validation on a large-scale, proprietary-like dataset (Amazon STaRK SKB) provides strong evidence of its utility and offers actionable insights for real-world deployments. While the core RAG components exist, the novel combination, optimization, and rigorous benchmarking for this specific, complex domain (SKB + cross-encoders) constitute a substantial and impactful step forward, moving beyond general RAG to domain-specific, production-ready systems."
+  },
+  "coreProblem": {
+    "statement": "Applying Retrieval-Augmented Generation (RAG) to structured knowledge graphs (KGs), especially in e-commerce, presents challenges in scaling retrieval across connected graphs, preserving contextual relationships during response generation, and effectively integrating cross-encoders with structured data.",
+    "whyItMatters": [
+      "Conventional Large Language Models (LLMs) are prone to generating hallucinated or outdated content, especially when queries relate to proprietary or non-public information.",
+      "RAG addresses this limitation by grounding LLM responses in authoritative, domain-specific external knowledge, which is crucial for enterprise applications.",
+      "Production-level RAG systems for complex data structures like knowledge graphs require semantic reasoning capabilities, fast execution, and low computational costs to be scalable.",
+      "E-commerce platforms present unique challenges due to their scale, proprietary nature, complex structural organization of product catalogs, and diverse, complex customer queries."
+    ],
+    "concreteExample": "Processing natural language queries for product information from large-scale, proprietary e-commerce product catalogs (Knowledge Bases) with millions of products and complex relationships."
+  },
+  "evaluationHighlights": [
+    "Achieved 20.4% higher Hit@1 and 14.5% higher Mean Reciprocal Rank (MRR) compared to published benchmarks on the Amazon STaRK dataset, demonstrating significant performance gains.",
+    "Empirically demonstrated that cross-encoder reranking provides statistically significant improvements over standalone retrieval methods, substantially boosting overall pipeline effectiveness.",
+    "Identified the FAISS HNSW + webis/set-encoder-large pipeline configuration as the best-performing model, excelling across all evaluation metrics.",
+    "Validated that careful model selection, optimized pre-processing, and multi-stage pipeline design are critical for building scalable, enterprise-grade RAG systems tailored for e-commerce."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Amazon STaRK Semi-Structured Knowledge Base (SKB)",
+        "STaRK Synthesized Prompt and Response Key dataset (9,100 natural language queries)"
+      ],
+      "metrics": [
+        "Hit@1",
+        "Hit@5",
+        "Recall@20",
+        "MRR (Mean Reciprocal Rank)"
+      ],
+      "setting": "Retrieval-Augmented Generation (RAG) pipelines for e-commerce natural language queries over semi-structured knowledge bases, focusing on retrieval and reranking performance prior to text generation."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 359,
+          "xmin": 137,
+          "ymax": 574,
+          "xmax": 856
+        },
+        "caption": "Text Pre-processing Method Comparison with 100 queries.",
+        "figureNumber": 5,
+        "pageIndex": 15
+      },
+      {
+        "boundingBox": {
+          "ymin": 537,
+          "xmin": 102,
+          "ymax": 690,
+          "xmax": 893
+        },
+        "caption": "Performance Comparison of Retrieval Models Across Key Metrics. Four-panel visualization showing performance distributions for three retrieval approaches across Hit@1, Hit@5, Recall@20, and MRR metrics (panels A\u2013D, respectively). Vertical error bars represent 95% confidence intervals around mean performance scores. Evaluation conducted on validation dataset (n=910 queries).",
+        "figureNumber": 6,
+        "pageIndex": 17
+      },
+      {
+        "boundingBox": {
+          "ymin": 29,
+          "xmin": 102,
+          "ymax": 190,
+          "xmax": 893
+        },
+        "caption": "Performance Comparison of Re-ranking Models Across Key Metrics. Four-panel visualization showing performance distributions for six re-ranking approaches across Hit@1, Hit@5, Recall@20, and MRR metrics (panels A\u2013D, respectively). Vertical error bars represent 95% confidence intervals around mean performance scores. Evaluation conducted on validation dataset (n=910 queries).",
+        "figureNumber": 7,
+        "pageIndex": 19
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "0.4242",
+            "benchmark": "Validation Dataset",
+            "delta": "-0.0330",
+            "isPositive": false,
+            "metric": "Hit@1",
+            "thisPaper": "0.3912"
+          },
+          {
+            "baseline": "0.4242",
+            "benchmark": "Validation Dataset",
+            "delta": "-0.0363",
+            "isPositive": false,
+            "metric": "Hit@1",
+            "thisPaper": "0.3879"
+          },
+          {
+            "baseline": "0.6582",
+            "benchmark": "Validation Dataset",
+            "delta": "-0.0153",
+            "isPositive": false,
+            "metric": "Hit@5",
+            "thisPaper": "0.6429"
+          },
+          {
+            "baseline": "0.6582",
+            "benchmark": "Validation Dataset",
+            "delta": "-0.0197",
+            "isPositive": false,
+            "metric": "Hit@5",
+            "thisPaper": "0.6385"
+          },
+          {
+            "baseline": "0.5264",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.0126",
+            "isPositive": true,
+            "metric": "Recall@20",
+            "thisPaper": "0.5390"
+          },
+          {
+            "baseline": "0.5264",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.0088",
+            "isPositive": true,
+            "metric": "Recall@20",
+            "thisPaper": "0.5352"
+          },
+          {
+            "baseline": "0.5295",
+            "benchmark": "Validation Dataset",
+            "delta": "-0.0198",
+            "isPositive": false,
+            "metric": "MRR",
+            "thisPaper": "0.5097"
+          },
+          {
+            "baseline": "0.5295",
+            "benchmark": "Validation Dataset",
+            "delta": "-0.0235",
+            "isPositive": false,
+            "metric": "MRR",
+            "thisPaper": "0.5060"
+          }
+        ],
+        "title": "Retrieval Model Comparison (Validation Dataset)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.3879",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.1528",
+            "isPositive": true,
+            "metric": "Hit@1",
+            "thisPaper": "0.5407"
+          },
+          {
+            "baseline": "0.6385",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.1099",
+            "isPositive": true,
+            "metric": "Hit@5",
+            "thisPaper": "0.7484"
+          },
+          {
+            "baseline": "0.5352",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.0733",
+            "isPositive": true,
+            "metric": "Rec@20",
+            "thisPaper": "0.6085"
+          },
+          {
+            "baseline": "0.5060",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.1295",
+            "isPositive": true,
+            "metric": "MRR",
+            "thisPaper": "0.6355"
+          },
+          {
+            "baseline": "0.3879",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.1154",
+            "isPositive": true,
+            "metric": "Hit@1",
+            "thisPaper": "0.5033"
+          },
+          {
+            "baseline": "0.6385",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.0901",
+            "isPositive": true,
+            "metric": "Hit@5",
+            "thisPaper": "0.7286"
+          },
+          {
+            "baseline": "0.5352",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.0427",
+            "isPositive": true,
+            "metric": "Rec@20",
+            "thisPaper": "0.5779"
+          },
+          {
+            "baseline": "0.5060",
+            "benchmark": "Validation Dataset",
+            "delta": "+0.0988",
+            "isPositive": true,
+            "metric": "MRR",
+            "thisPaper": "0.6048"
+          }
+        ],
+        "title": "Reranking Model Comparison (Validation Dataset)"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "0.3879",
+        "benchmark": "Validation Dataset",
+        "delta": "+0.1528",
+        "isPositive": true,
+        "metric": "Hit@1",
+        "thisPaper": "0.5407"
+      },
+      {
+        "baseline": "0.6385",
+        "benchmark": "Validation Dataset",
+        "delta": "+0.1099",
+        "isPositive": true,
+        "metric": "Hit@5",
+        "thisPaper": "0.7484"
+      },
+      {
+        "baseline": "0.5352",
+        "benchmark": "Validation Dataset",
+        "delta": "+0.0733",
+        "isPositive": true,
+        "metric": "Recall@20",
+        "thisPaper": "0.6085"
+      },
+      {
+        "baseline": "0.5060",
+        "benchmark": "Validation Dataset",
+        "delta": "+0.1295",
+        "isPositive": true,
+        "metric": "MRR",
+        "thisPaper": "0.6355"
+      },
+      {
+        "baseline": "0.4549",
+        "benchmark": "Amazon STaRK Synthetic Query Set",
+        "delta": "+0.0858",
+        "isPositive": true,
+        "metric": "Hit@1",
+        "thisPaper": "0.5407"
+      },
+      {
+        "baseline": "0.7113",
+        "benchmark": "Amazon STaRK Synthetic Query Set",
+        "delta": "+0.0371",
+        "isPositive": true,
+        "metric": "Hit@5",
+        "thisPaper": "0.7484"
+      },
+      {
+        "baseline": "0.5377",
+        "benchmark": "Amazon STaRK Synthetic Query Set",
+        "delta": "+0.0708",
+        "isPositive": true,
+        "metric": "Recall@20",
+        "thisPaper": "0.6085"
+      },
+      {
+        "baseline": "0.5591",
+        "benchmark": "Amazon STaRK Synthetic Query Set",
+        "delta": "+0.0764",
+        "isPositive": true,
+        "metric": "MRR",
+        "thisPaper": "0.6355"
+      }
+    ],
+    "mainTakeaways": [
+      "Cross-encoder reranking consistently provides statistically significant improvements over standalone retrieval methods across all models and metrics.",
+      "The webis/set-encoder-large cross-encoder, particularly when combined with FAISS HNSW retrieval, achieved the highest performance across all evaluation metrics, demonstrating its superiority in fine-grained relevance ranking.",
+      "Dense retrieval methods (FAISS-based) generally demonstrated stronger performance for Recall@20 compared to sparse retrieval (BM25), indicating better coverage of relevant items.",
+      "The optimized Retriever-Reranker pipelines developed in this study significantly exceed the performance of published benchmarks on the Amazon STaRK dataset.",
+      "Model selection is crucial; NLI-based and sentence similarity cross-encoders significantly underperformed compared to other re-ranking architectures, highlighting the importance of task-specific model choice."
+    ]
+  },
+  "institutions": "Abertay University, UK",
+  "keyNovelty": {
+    "main": "Design and empirical evaluation of specialized Retriever-Reranker pipelines for Retrieval-Augmented Generation (RAG) over proprietary semi-structured knowledge bases (SKBs) in e-commerce, integrating dense/sparse retrieval with cross-encoder reranking.",
+    "explanation": [
+      "The paper introduces and technically specifies three novel Retriever-Reranker pipeline configurations: FRWSR (FAISS Retrieval + Webis Set-encoder Reranking), FRMR (FAISS Retrieval + MS MARCO Reranking), and BARMR (BM25 Augmented Retrieval + MS MARCO Reranking). These pipelines integrate dense or sparse retrieval with advanced cross-encoder reranking specifically for knowledge graphs.",
+      "It conducts the first empirical performance evaluation of these specialized RAG pipelines on the Amazon STaRK benchmark, a production-scale e-commerce dataset that includes detailed product attributes and inter-product relationships. This evaluation uses ground-truth node responses, enabling direct comparison with published baselines.",
+      "The study provides actionable insights for optimizing RAG models that leverage Semi-structured Knowledge Base (SKB) architectures in natural language query processing. It demonstrates substantial performance improvements (e.g., 20.4% higher Hit@1 and 14.5% higher MRR) over existing benchmarks, informing the development of scalable, enterprise-grade RAG systems for domain-specific applications."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A framework that combines a pre-trained generative language model with an external knowledge retriever to ground responses in factual, up-to-date information, thereby mitigating hallucination.",
+        "term": "Retrieval-Augmented Generation (RAG)"
+      },
+      {
+        "definition": "A type of neural re-ranking model that jointly encodes a query and a document as a single input, allowing for full self-attention across all tokens to capture fine-grained semantic interactions and output a relevance score.",
+        "term": "Cross-encoders"
+      },
+      {
+        "definition": "A knowledge repository that combines elements of structured data (e.g., product attributes) with less rigidly structured text (e.g., reviews, descriptions), often represented as a graph.",
+        "term": "Semi-structured Knowledge Base (SKB)"
+      },
+      {
+        "definition": "An evaluation metric that assesses whether a relevant document appears within the top-$k$ positions of the reranked list.",
+        "term": "Hit@k"
+      },
+      {
+        "definition": "An evaluation metric that measures the proportion of relevant items in the top-$k$ prediction results, indicating the model's ability to identify all relevant items.",
+        "term": "Recall@k"
+      },
+      {
+        "definition": "An evaluation metric that calculates the average inverse rank of the first relevant document across queries, emphasizing the rank of the first correct answer.",
+        "term": "Mean Reciprocal Rank (MRR)"
+      }
+    ],
+    "prerequisites": [
+      "Natural Language Processing (NLP) fundamentals",
+      "Large Language Models (LLMs) and their architectures (e.g., Transformers)",
+      "Information Retrieval (IR) concepts, including sparse and dense retrieval methods",
+      "Knowledge Graphs (KGs) and graph data structures",
+      "Vector embeddings and similarity search algorithms (e.g., FAISS, HNSW)"
+    ]
+  },
+  "subTopics": [
+    "RAG for Knowledge Graphs",
+    "Cross-encoder Reranking",
+    "Dense and Sparse Retrieval",
+    "E-commerce Product Catalogs",
+    "Empirical Evaluation of RAG Pipelines",
+    "Semantic Search"
+  ],
+  "tags": [
+    {
+      "name": "Retrieval-Augmented Generation (RAG)",
+      "type": "primary"
+    },
+    {
+      "name": "Knowledge Graphs",
+      "type": "primary"
+    },
+    {
+      "name": "E-commerce",
+      "type": "primary"
+    },
+    {
+      "name": "Information Retrieval",
+      "type": "topic"
+    },
+    {
+      "name": "Large Language Models (LLMs)",
+      "type": "topic"
+    },
+    {
+      "name": "Cross-encoders",
+      "type": "topic"
+    },
+    {
+      "name": "Semi-structured Data",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike conventional RAG systems that perform well on unstructured text, this study specifically addresses the challenges of applying RAG to complex structured knowledge graphs, such as those found in e-commerce product catalogs, which often involve multi-hop reasoning and diverse query types.",
+      "The paper provides a systematic evaluation framework to overcome limitations identified in previous work on the STaRK dataset, which struggled with sufficient processing of edge data within the knowledge graph.",
+      "While Large Language Models (LLMs) can be used for re-ranking, this work emphasizes cross-encoders as a more computationally efficient and often more consistent alternative for the specific task of re-ranking query-document pairs, especially in production environments, compared to the context window limitations and processing costs of general-purpose LLMs.",
+      "The study evaluates different types of cross-encoders, noting that point-wise and set-wise methods are more feasible for large text contexts compared to computationally intensive pair-wise and list-wise models."
+    ],
+    "limitations": [
+      "The use of general-purpose LLMs for re-ranking can be impractical in production due to context window limits and significant processing times and costs.",
+      "Pair-wise and list-wise cross-encoder models are often infeasible for large texts due to memory input token constraints, limiting the study's focus to point-wise and set-wise approaches.",
+      "BM25 retrieval methods, while efficient, lack the ability to capture deeper semantic relationships between terms, relying on exact or near-exact keyword matches.",
+      "Dense retrieval methods (e.g., FAISS) can be computationally expensive for large-scale indices and their performance relies heavily on the quality of embeddings."
+    ],
+    "modeling": [
+      {
+        "label": "Retrieval Strategies",
+        "list": [
+          "BM25: A sparse lexical retrieval method, efficient and interpretable, but limited to exact term matching and lacks capture of semantic similarity.",
+          "BM25 Augmented: BM25 enhanced with 1-hop knowledge graph expansion to improve lexical matches, though with increased computational overhead.",
+          "FAISS - FLAT: A dense retrieval method (vector-based, exact search) using E5-Large embeddings, offering brute-force nearest neighbor search but is computationally expensive for large-scale indices.",
+          "FAISS - HNSW: A dense retrieval method (vector-based, approximate search) using Hierarchical Navigable Small World (HNSW) algorithm for rapid semantic search through graph-based hops, with slight reduction in accuracy due to approximation."
+        ]
+      },
+      {
+        "label": "Reranking Models (Cross-encoders & LLMs)",
+        "list": [
+          "ms-marco-MiniLM-L-6-v2: A point-wise cross-encoder for passage ranking, distilled MiniLM with 6 layers, optimized for speed and low latency.",
+          "ms-marco-MiniLM-L-12-v2: A point-wise cross-encoder for passage ranking, a 12-layer version offering better accuracy.",
+          "BAAI/bge-reranker-base: A point-wise BERT-based reranker trained with list-wise contrastive learning for dense retrieval and reranking.",
+          "webis/set-encoder-base/large: Set-wise permutation-invariant attention transformer encoders designed for novelty detection and modeling long-range dependencies across documents.",
+          "Claude 4 Sonnet: An LLM-based re-ranker, selected for its recent release, robust API, and substantial token capacity for processing longer document contexts."
+        ]
+      },
+      {
+        "label": "Embedding Model",
+        "value": "E5-Large embedding model used for dense retrieval operations."
+      }
+    ],
+    "pipelineFlow": [
+      "Data Modification: Semi-structured knowledge source undergoes data cleaning and metadata enrichment.",
+      "Indexing: Processed data is fed into an indexing component to construct and maintain embedded representations in a vector database.",
+      "Query Preprocessing: User natural language queries undergo tokenization, normalization, or expansion.",
+      "Retrieval: Manipulated query is compared against the indexed vector store (via semantic or lexical search) to retrieve a candidate set of 'top k' entries.",
+      "Reranking: The candidate set is passed to a re-ranking module (e.g., cross-encoder) that refines their order by computing fine-grained relevance scores.",
+      "Generation: The reordered results are provided to a natural language generator (e.g., LLM) to produce a contextually relevant response to the query."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Retrieval-Augmented Generation (RAG)",
+        "value": "Formally, given a query $q \\in Q$ and a large corpus $D$, the goal is to generate an output $a \\in A$ that is factually consistent with respect to $D$. RAG explicitly decomposes this problem into retrieval, reranking, and generation."
+      },
+      {
+        "label": "Retriever Function",
+        "value": "A retriever $R$ maps the query $q$ to a candidate set of $k$ documents: $C_k(q) = R(q) \\subset D$, with $|C_k(q)| = k$."
+      },
+      {
+        "label": "KG-augmented Retriever",
+        "value": "The retriever $R_G$ extends conventional retrieval by an optional structured expansion step, augmenting the candidate set $C_k(q)$ with 1-hop neighbors from the knowledge graph $G$: $C_k^G(q) = R_G(q) = \\text{Expand}_{G,1}(C_k(q)) = C_k(q) \\cup \\bigcup_{v \\in \\eta(C_k(q))} N_G^{(1)}(v)$."
+      },
+      {
+        "label": "Reranker Function",
+        "value": "A reranker $f$ assigns fine-grained scores to candidates $d \\in C_k(q)$, inducing a permutation $\\pi_f: C_k(q) \\to \\{1, ..., k\\}$, where $d_j$ denotes the document with $\\pi_f(d_j)=j$."
+      },
+      {
+        "label": "Generator Function",
+        "value": "A generator $G$ conditions on the query $q$ and the reranked set $C_k(q)$ to produce an answer: $a = G(q, \\pi_f(C_k(q)))$."
+      }
+    ],
+    "reproducibility": "The data used in this study (Amazon STaRK SKB and Synthesized Prompt and Response Key) are publicly available from the Hugging Face repository snap-stanford/stark. The code associated with all three proposed Retriever-Reranker pipelines is available in a public Github repository (https://github.com/tep00018/ECommerceRAG).",
+    "systemModules": []
+  },
+  "thesis": "This study designs and comparatively evaluates multiple Retriever-Reranker pipelines, integrating dense or sparse retrieval with cross-encoder reranking, specifically optimized for natural language queries over proprietary semi-structured knowledge bases (SKBs) in e-commerce, demonstrating significant performance improvements over existing benchmarks.",
+  "title": "Comparative Analysis of Neural Retriever-Reranker Pipelines for Retrieval-Augmented Generation over Knowledge Graphs in E-commerce Applications",
+  "url": "https://arxiv.org/abs/arXiv:2602.22219",
+  "venue": "N/A",
+  "year": "2025"
+}

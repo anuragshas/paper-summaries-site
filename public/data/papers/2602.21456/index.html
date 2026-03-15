@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revisiting Text Ranking in Deep Research</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Revisiting Text Ranking in Deep Research</h1>
+      <p class="meta"><strong>Authors:</strong> Chuan Meng, Litu Ou, Sean MacAvaney, Jeff Dalton</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/2602.21456" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2602.21456</a></p>
+      <p class="muted">Generated summary artifact for 2602.21456</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Existing text ranking methods, including retrievers and re-rankers, can be systematically analyzed and reproduced in the deep research setting using a fixed corpus, revealing key insights into retrieval units, pipeline configurations, and query characteristics. Addressing the training-inference query mismatch through methods like Query-to-Question (Q2Q) is crucial for improving neural ranker performance.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Despite the essential role of search in deep research (which involves multi-hop, reasoning-intensive queries requiring extensive open-web exploration), how existing text ranking methods perform in this setting remains poorly understood due to reliance on black-box live web search APIs and a lack of systematic analysis of search components.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A systematic, white-box evaluation of diverse text ranking methods in deep research, addressing gaps in understanding retrieval units, re-ranking, and query mismatch, complemented by a novel Query-to-Question (Q2Q) reformulation method.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>The lexical retriever BM25, when paired with the gpt-oss-20b agent on the passage corpus, achieved the highest answer accuracy (0.572) across all retrieval settings in the study.</li><li>The BM25-monoT5-3B pipeline with gpt-oss-20b (re-ranking depth 50) achieved the best overall performance in the study, reaching 0.716 recall and 0.689 accuracy, a configuration comparable to a GPT-5-based agent baseline from prior work.</li><li>The proposed Query-to-Question (Q2Q) method (Q+R variant) significantly improved neural retriever performance, e.g., SPLADE-v3 accuracy increased by +0.041 and Qwen3-Embed-8B accuracy by +0.042.</li><li>Re-ranking consistently improved recall and accuracy across all evaluated methods and agents, with deeper re-ranking depths yielding further performance gains and reductions in search calls.</li><li>Passage-level units enabled higher answer accuracy and completion rates, particularly for agents with smaller context windows (e.g., gpt-oss-20b), by allowing more search and reasoning iterations.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Passage-level retrieval units are more efficient for LLM agents with limited context windows, leading to higher answer accuracy and completion rates compared to document-level units, and reducing sensitivity to document length normalization in lexical retrieval.</li><li>The lexical retriever BM25, when appropriately configured for the deep research setting (e.g., proper document length normalization and indexing only the first 512 tokens), outperforms neural rankers in most cases, especially with web-search-style queries typical of agent interactions.</li><li>Re-ranking consistently and significantly improves ranking effectiveness and answer accuracy while reducing search calls; these gains are further amplified by deeper re-ranking depths and stronger initial retrievers.</li><li>The proposed Query-to-Question (Q2Q) method effectively mitigates the training-inference query mismatch for neural rankers, substantially improving their performance, but can harm performance for lexical retrievers like BM25.</li><li>Reasoning-based re-rankers like Rank1 do not consistently show a clear advantage over non-reasoning ones, potentially due to misinterpretation of keyword-rich web-search queries.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The study exclusively uses one deep research dataset (BrowseComp-Plus); expanding to other benchmarks with fixed corpora and manual relevance judgments could enhance generalizability.</li><li>Only two LLMs (gpt-oss-20b and GLM-4.7-Flash) are used as agents; evaluating additional model families and larger model sizes could provide further insights into generalisability.</li><li>The scope of the study does not include exploring additional rankers or advanced configurations, such as scaling laws.</li><li>Parameter tuning for BM25 was performed directly on all BrowseComp-Plus queries due to the absence of a dedicated validation set, which warrants caution when comparing tuned BM25 results with other retrievers.</li><li>The reasoning-based re-ranker Rank1 did not show a clear advantage over non-reasoning methods, sometimes misinterpreting keyword-rich web-search queries, suggesting limitations in its explicit reasoning effectiveness for certain query types.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;authors&quot;: &quot;Chuan Meng, Litu Ou, Sean MacAvaney, Jeff Dalton&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper provides a rigorous, systematic, and transparent analysis of text ranking methods in the emerging and important deep research setting. It reproduces key findings, debunks some assumptions (like neural always being better), and proposes a practical solution (Q2Q) to a crucial problem (query mismatch). The open-sourcing of code and data further enhances its contribution. While it doesn&#39;t introduce a fundamentally new model architecture, its thorough empirical study and practical insights are highly valuable for advancing research in LLM-based agents and RAG.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;LLM-based agents using opaque web search APIs for deep research tasks where current text ranking methods&#39; behavior is unclear. Specifically, three research gaps are identified: (i) the effectiveness of passage-level versus document-level retrieval units, (ii) the consistent benefits of re-ranking across various configurations, and (iii) the impact of potential mismatches between agent-issued queries (web-search style) and the natural-language questions used to train text rankers.&quot;,
+    &quot;statement&quot;: &quot;Despite the essential role of search in deep research (which involves multi-hop, reasoning-intensive queries requiring extensive open-web exploration), how existing text ranking methods perform in this setting remains poorly understood due to reliance on black-box live web search APIs and a lack of systematic analysis of search components.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Black-box web search APIs hinder systematic analysis of search components, preventing a clear understanding of their contributions.&quot;,
+      &quot;Feeding full web pages to LLM-based agents quickly exhausts context windows, potentially removing relevant content due to truncation.&quot;,
+      &quot;It remains unclear whether widely-used re-ranking methods consistently benefit LLM-based agents compared to human users.&quot;,
+      &quot;A potential mismatch between agent-issued queries (which often follow web-search-style syntax with keywords) and the natural-language questions used to train neural rankers can severely degrade neural retrieval quality.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;The lexical retriever BM25, when paired with the gpt-oss-20b agent on the passage corpus, achieved the highest answer accuracy (0.572) across all retrieval settings in the study.&quot;,
+    &quot;The BM25-monoT5-3B pipeline with gpt-oss-20b (re-ranking depth 50) achieved the best overall performance in the study, reaching 0.716 recall and 0.689 accuracy, a configuration comparable to a GPT-5-based agent baseline from prior work.&quot;,
+    &quot;The proposed Query-to-Question (Q2Q) method (Q+R variant) significantly improved neural retriever performance, e.g., SPLADE-v3 accuracy increased by +0.041 and Qwen3-Embed-8B accuracy by +0.042.&quot;,
+    &quot;Re-ranking consistently improved recall and accuracy across all evaluated methods and agents, with deeper re-ranking depths yielding further performance gains and reductions in search calls.&quot;,
+    &quot;Passage-level units enabled higher answer accuracy and completion rates, particularly for agents with smaller context windows (e.g., gpt-oss-20b), by allowing more search and reasoning iterations.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;BrowseComp-Plus (document corpus)&quot;,
+        &quot;BrowseComp-Plus (passage corpus)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;#Search calls&quot;,
+        &quot;Recall&quot;,
+        &quot;Accuracy&quot;,
+        &quot;Completion rate&quot;,
+        &quot;R@5&quot;,
+        &quot;nDCG@10&quot;
+      ],
+      &quot;setting&quot;: &quot;Deep research scenarios using LLM-based agents (gpt-oss-20b, GLM-4.7-Flash) interacting with text ranking methods over fixed document and passage corpora derived from BrowseComp-Plus.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 109,
+          &quot;xmin&quot;: 79,
+          &quot;ymax&quot;: 564,
+          &quot;xmax&quot;: 918
+        },
+        &quot;caption&quot;: &quot;Heatmap from a grid search on BrowseComp-Plus using the original full queries (not end-to-end), showing the effectiveness (evaluated by evidence judgments) of BM25 under different hyperparameter settings. The red \\times denotes the default parameter setting following [6], while the green + denotes the best parameter setting found by the grid search. The lighter the colour, the higher the retrieval performance.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 7
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.476&quot;,
+            &quot;benchmark&quot;: &quot;SPLADE-v3 (Document corpus)&quot;,
+            &quot;delta&quot;: &quot;+0.040&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.516&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.476&quot;,
+            &quot;benchmark&quot;: &quot;SPLADE-v3 (Document corpus)&quot;,
+            &quot;delta&quot;: &quot;+0.053&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.529&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.259&quot;,
+            &quot;benchmark&quot;: &quot;BM25 (Document corpus)&quot;,
+            &quot;delta&quot;: &quot;+0.313&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.572&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.259&quot;,
+            &quot;benchmark&quot;: &quot;BM25 (Document corpus)&quot;,
+            &quot;delta&quot;: &quot;+0.042&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.301&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.366&quot;,
+            &quot;benchmark&quot;: &quot;BM25 (Document corpus)&quot;,
+            &quot;delta&quot;: &quot;+0.250&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall&quot;,
+            &quot;thisPaper&quot;: &quot;0.616&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Passage vs. Document Unit Effectiveness (gpt-oss-20b)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.521 (ColBERTv2)&quot;,
+            &quot;benchmark&quot;: &quot;Passage corpus&quot;,
+            &quot;delta&quot;: &quot;+0.051&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.572 (BM25)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.552 (ColBERTv2)&quot;,
+            &quot;benchmark&quot;: &quot;Passage corpus&quot;,
+            &quot;delta&quot;: &quot;+0.064&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall&quot;,
+            &quot;thisPaper&quot;: &quot;0.616 (BM25)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.516 (SPLADE-v3)&quot;,
+            &quot;benchmark&quot;: &quot;Passage corpus&quot;,
+            &quot;delta&quot;: &quot;-0.110&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.406 (RepLLaMA)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.545 (SPLADE-v3)&quot;,
+            &quot;benchmark&quot;: &quot;Passage corpus&quot;,
+            &quot;delta&quot;: &quot;-0.096&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Recall&quot;,
+            &quot;thisPaper&quot;: &quot;0.449 (RepLLaMA)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Retriever Performance Comparison (gpt-oss-20b, Passage Corpus)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.572&quot;,
+            &quot;benchmark&quot;: &quot;BM25 (no re-ranking)&quot;,
+            &quot;delta&quot;: &quot;+0.117&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.689 (BM25, monoT5, d=50)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.616&quot;,
+            &quot;benchmark&quot;: &quot;BM25 (no re-ranking)&quot;,
+            &quot;delta&quot;: &quot;+0.100&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall&quot;,
+            &quot;thisPaper&quot;: &quot;0.716 (BM25, monoT5, d=50)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.516&quot;,
+            &quot;benchmark&quot;: &quot;SPLADE-v3 (no re-ranking)&quot;,
+            &quot;delta&quot;: &quot;+0.130&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.646 (SPLADE-v3, monoT5, d=50)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.417&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-Embed-8B (no re-ranking)&quot;,
+            &quot;delta&quot;: &quot;+0.142&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.559 (Qwen3-Embed-8B, monoT5, d=50)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.674 (BM25, monoT5, d=20)&quot;,
+            &quot;benchmark&quot;: &quot;BM25 (monoT5, d=20)&quot;,
+            &quot;delta&quot;: &quot;+0.015&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.689 (BM25, monoT5, d=50)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Re-ranking Effectiveness (gpt-oss-20b, Passage Corpus)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.516 (Raw query)&quot;,
+            &quot;benchmark&quot;: &quot;SPLADE-v3&quot;,
+            &quot;delta&quot;: &quot;+0.041&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.557 (Q2Q (Q+R))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.545 (Raw query)&quot;,
+            &quot;benchmark&quot;: &quot;SPLADE-v3&quot;,
+            &quot;delta&quot;: &quot;+0.040&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall&quot;,
+            &quot;thisPaper&quot;: &quot;0.585 (Q2Q (Q+R))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.417 (Raw query)&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-Embed-8B&quot;,
+            &quot;delta&quot;: &quot;+0.042&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.459 (Q2Q (Q+R))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.470 (Raw query)&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-Embed-8B&quot;,
+            &quot;delta&quot;: &quot;+0.037&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall&quot;,
+            &quot;thisPaper&quot;: &quot;0.507 (Q2Q (Q+R))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.580 (Raw query)&quot;,
+            &quot;benchmark&quot;: &quot;Rank1 (SPLADE-v3)&quot;,
+            &quot;delta&quot;: &quot;+0.033&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.613 (Rank1 (SPLADE-v3), Q2Q (Q+R))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.572 (Raw query)&quot;,
+            &quot;benchmark&quot;: &quot;BM25&quot;,
+            &quot;delta&quot;: &quot;-0.015&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Acc.&quot;,
+            &quot;thisPaper&quot;: &quot;0.557 (Q2Q (Q+R))&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Q2Q Reformulation Effectiveness (gpt-oss-20b, Passage Corpus)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Passage-level retrieval units are more efficient for LLM agents with limited context windows, leading to higher answer accuracy and completion rates compared to document-level units, and reducing sensitivity to document length normalization in lexical retrieval.&quot;,
+      &quot;The lexical retriever BM25, when appropriately configured for the deep research setting (e.g., proper document length normalization and indexing only the first 512 tokens), outperforms neural rankers in most cases, especially with web-search-style queries typical of agent interactions.&quot;,
+      &quot;Re-ranking consistently and significantly improves ranking effectiveness and answer accuracy while reducing search calls; these gains are further amplified by deeper re-ranking depths and stronger initial retrievers.&quot;,
+      &quot;The proposed Query-to-Question (Q2Q) method effectively mitigates the training-inference query mismatch for neural rankers, substantially improving their performance, but can harm performance for lexical retrievers like BM25.&quot;,
+      &quot;Reasoning-based re-rankers like Rank1 do not consistently show a clear advantage over non-reasoning ones, potentially due to misinterpretation of keyword-rich web-search queries.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;The University of Edinburgh, University of Glasgow&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;The paper provides the first comprehensive reproduction and evaluation of a broad spectrum of text ranking methods (including lexical, learned sparse, single-vector dense, and multi-vector dense retrievers, as well as various re-rankers) in the deep research context on the BrowseComp-Plus dataset.&quot;,
+      &quot;It constructs a passage corpus for the BrowseComp-Plus dataset, enabling detailed analysis of retrieval units and their impact on LLM agent performance.&quot;,
+      &quot;It identifies key findings regarding the effectiveness of different retrieval units (passage-level units improve efficiency), retriever types (lexical BM25 excels with web-search-style queries), and the crucial role of re-ranking.&quot;,
+      &quot;The work introduces a Query-to-Question (Q2Q) reformulation method to effectively bridge the training-inference query mismatch for neural rankers in deep research.&quot;,
+      &quot;The study open-sources its code, data, and agent-generated traces of reasoning and search calls, promoting transparency and reproducibility in deep research evaluation.&quot;
+    ],
+    &quot;main&quot;: &quot;A systematic, white-box evaluation of diverse text ranking methods in deep research, addressing gaps in understanding retrieval units, re-ranking, and query mismatch, complemented by a novel Query-to-Question (Q2Q) reformulation method.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A task involving multi-hop, reasoning-intensive queries that require extensive exploration of the open web and are difficult for both humans and LLMs.&quot;,
+        &quot;term&quot;: &quot;Deep Research&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A widely used framework for LLM-based agents that synergizes reasoning and acting, performing multiple iterations of reasoning and search (e.g., generating a reasoning trace, issuing a search query, and processing results).&quot;,
+        &quot;term&quot;: &quot;ReAct paradigm&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Text segments derived from documents, typically of a concise length (e.g., up to 250 words), used as fundamental units for retrieval, aimed at improving efficiency under context window limitations.&quot;,
+        &quot;term&quot;: &quot;Passage-level retrieval units&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A proposed method to translate agent-issued web search queries, which are often keyword-driven, into natural-language questions to mitigate the training-inference query mismatch with neural rankers that are typically trained on natural-language questions (e.g., from MS MARCO).&quot;,
+        &quot;term&quot;: &quot;Query-to-Question (Q2Q) reformulation&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Understanding of text ranking methods in Information Retrieval (IR), including lexical (e.g., BM25), learned sparse (e.g., SPLADE-v3), single-vector dense (e.g., RepLLaMA, Qwen3-Embed-8B), and multi-vector dense (e.g., ColBERTv2) retrievers.&quot;,
+      &quot;Knowledge of re-ranking techniques, including inexpensive (e.g., monoT5), LLM-based (e.g., RankLLaMA), and CoT-based reasoning re-rankers (e.g., Rank1).&quot;,
+      &quot;Familiarity with Large Language Models (LLMs), their application as agents, and concepts like Chain-of-Thought (CoT) reasoning and context windows.&quot;,
+      &quot;Basic concepts of information retrieval evaluation metrics such as Recall, Accuracy, R@5, and nDCG@10.&quot;,
+      &quot;Understanding of deep research as a challenging, multi-hop search paradigm requiring iterative exploration.&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Information Retrieval&quot;,
+    &quot;Large Language Models&quot;,
+    &quot;Agent Systems&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;RAG&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Prior work on deep research largely relies on black-box live web search APIs, hindering systematic analysis of search components and the transparency of text ranking method contributions, whereas this paper uses a fixed document corpus (BrowseComp-Plus) to enable white-box evaluation.&quot;,
+      &quot;Previous studies typically feed truncated retrieved documents to agents, risking information loss. This work investigates passage-level units and a full-document reader to address this limitation.&quot;,
+      &quot;While prior research examined one specific re-ranking method, a systematic evaluation across various ranking configurations in deep research was lacking. This paper provides a comprehensive study across different initial retrievers, re-ranker types, and re-ranking cut-offs.&quot;,
+      &quot;Prior studies indicated that neural retrievers often underperform lexical methods on out-of-domain data. This paper revisits this finding, showing that BM25 can outperform neural rankers in the deep research setting given proper configuration.&quot;,
+      &quot;The issue of query-format mismatch between agent-issued (web-search style) queries and neural rankers trained on natural-language questions was underexplored; this paper proposes the Query-to-Question (Q2Q) method to mitigate this mismatch.&quot;,
+      &quot;Unlike contemporaneous work that tests a limited set of retrievers in scientific literature search, this paper evaluates a broader range of retrievers and re-rankers in a general open-domain setting.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The study exclusively uses one deep research dataset (BrowseComp-Plus); expanding to other benchmarks with fixed corpora and manual relevance judgments could enhance generalizability.&quot;,
+      &quot;Only two LLMs (gpt-oss-20b and GLM-4.7-Flash) are used as agents; evaluating additional model families and larger model sizes could provide further insights into generalisability.&quot;,
+      &quot;The scope of the study does not include exploring additional rankers or advanced configurations, such as scaling laws.&quot;,
+      &quot;Parameter tuning for BM25 was performed directly on all BrowseComp-Plus queries due to the absence of a dedicated validation set, which warrants caution when comparing tuned BM25 results with other retrievers.&quot;,
+      &quot;The reasoning-based re-ranker Rank1 did not show a clear advantage over non-reasoning methods, sometimes misinterpreting keyword-rich web-search queries, suggesting limitations in its explicit reasoning effectiveness for certain query types.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;BM25 (Lexical Retriever)&quot;,
+        &quot;value&quot;: &quot;A lexical retriever based on vocabulary-level vectors, using a bag-of-words approach. Its effectiveness is sensitive to two parameters: $k_1$ for term-frequency saturation and $b$ for document length normalisation.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;SPLADE-v3 (Learned Sparse Retriever)&quot;,
+        &quot;value&quot;: &quot;A learned sparse retriever that leverages BERT to predict sparse vectors over BERT&#39;s vocabulary list for both queries and documents.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;RepLLaMA (Single-vector Dense Retriever)&quot;,
+        &quot;value&quot;: &quot;A single-vector dense retriever that fine-tunes Llama 2 using LoRA to produce a single embedding vector. It appends an end-of-sequence token to input and uses the hidden state of the last model layer for the embedding.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Qwen3-Embed-8B (Single-vector Dense Retriever)&quot;,
+        &quot;value&quot;: &quot;The largest variant of the Qwen3-Embedding series, fine-tuned on synthetic data across multiple domains and languages. It follows the RepLLaMA approach for obtaining query and document embeddings.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;ColBERTv2 (Multi-vector Dense Retriever)&quot;,
+        &quot;value&quot;: &quot;A multi-vector retriever that trains BERT to produce embeddings for each token in the query and the document. Relevance is modeled as the sum of the maximum similarities between each query vector and all document vectors.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;monoT5-3B (Inexpensive Re-ranker)&quot;,
+        &quot;value&quot;: &quot;A non-reasoning-based re-ranker that fine-unes T5 to output &#39;true&#39; or &#39;false&#39; to indicate relevance, with the probability of the &#39;true&#39; token used as the relevance score. The 3B model variant is used.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;RankLLaMA-7B (LLM-based Re-ranker)&quot;,
+        &quot;value&quot;: &quot;A non-reasoning-based re-ranker that fine-tunes Llama 2 with LoRA to project the representation of the end-of-sequence token to a relevance score.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Rank1-7B (CoT-based Reasoning Re-ranker)&quot;,
+        &quot;value&quot;: &quot;A reasoning-based re-ranker that fine-tunes Qwen 2.5 to generate a reasoning trace (e.g., &#39;&lt;think&gt; ... &lt;/think&gt;&#39;) before producing a &#39;true&#39;/&#39;false&#39; decision. Ground truth reasoning traces are used for training.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;A user issues a deep research query $q_u$.&quot;,
+      &quot;A deep research agent $A$ (e.g., gpt-oss-20b or GLM-4.7-Flash) takes $q_u$ as input and initiates multiple iterations of reasoning and search.&quot;,
+      &quot;At each iteration $t$, the agent generates a reasoning trace $s_t$ to determine whether to output a final answer or invoke search.&quot;,
+      &quot;If search is invoked, the agent issues a search query $q_t$, which is defined as $q_t = A(q_u, s_0, q_0, D_0, \\dots, s_t)$.&quot;,
+      &quot;Optionally, the agent-issued web search query $q_t$ can be reformulated into a natural-language question $\\tilde{q}_t$ by a Query-to-Question (Q2Q) method $g$ (i.e., $\\tilde{q}_t = g(q_t)$ or $\\tilde{q}_t = g(q_t, s_t)$).&quot;,
+      &quot;The (original or reformulated) search query is sent to a text ranking method $f$, which returns a ranked list of documents $D_t = f(q_t)$ (or $D_t = f(\\tilde{q}_t)$).&quot;,
+      &quot;The ranked list $D_t$ (potentially processed by a full-document reader) is fed back to the agent to produce the reasoning trace for the next iteration $t+1$, defined as $s_{t+1} = A(q_u, s_0, q_0, D_0, \\dots, s_t, q_t, D_t)$.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Text Ranking (Ad-hoc Search)&quot;,
+        &quot;value&quot;: &quot;Given a query $q_u$ issued by a user and a corpus of documents $C = \\{ d_1, d_2, \\dots, d_n \\}$ with $n$ documents, the goal of a text ranking method $f$ is to return a ranked list $D \\subseteq C$ of size $k$, i.e., $D = f(q_u, C)$.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Text Ranking in Deep Research&quot;,
+        &quot;value&quot;: &quot;Following the ReAct paradigm, a deep research agent $A$ takes a user query $q_u$ as input and performs multiple iterations of reasoning and search. At iteration $t$, the agent generates a reasoning trace $s_t$ that determines whether to output the final answer or invoke search. If search is invoked, it issues a search query $q_t$ to a text ranking method $f$, which returns a ranked list $D_t$. The ranked list $D_t$ is then fed back to the agent to produce the reasoning trace at the next iteration $t+1$. The formal definitions are: $q_t = A(q_u, s_0, q_0, D_0, \\dots, s_t)$ and $D_t = f(q_t)$, with $s_{t+1} = A(q_u, s_0, q_0, D_0, \\dots, s_t, q_t, D_t)$.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The authors open-source their code, data, and all agent-generated traces of reasoning and search calls at https://github.com/ChuanMeng/text-ranking-in-deep-research. The traces are released in an encrypted format and can be locally decrypted for post-hoc analyses of agent behavior, following the BrowseComp-Plus protocol.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Two LLMs, gpt-oss-20b (20B parameters) and GLM-4.7-Flash (30B parameters), are used. Both are trained for web search invocation and chain-of-thought reasoning. gpt-oss-20b supports a 131,072-token context window, and GLM-4.7-Flash supports a 202,752-token context window.&quot;,
+        &quot;name&quot;: &quot;Deep Research Agents&quot;,
+        &quot;role&quot;: &quot;Act as the decision-making core, generating search queries and reasoning traces in an iterative process to answer deep research queries.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Includes lexical-based sparse (BM25), learned sparse (SPLADE-v3), single-vector dense (RepLLaMA, Qwen3-Embed-8B), and multi-vector dense (ColBERTv2) retrievers. These methods are used to retrieve an initial set of documents or passages.&quot;,
+        &quot;name&quot;: &quot;Retrievers&quot;,
+        &quot;role&quot;: &quot;Identify and retrieve relevant documents or passages from the corpus in response to agent-issued search queries.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Includes monoT5-3B (inexpensive), RankLLaMA-7B (LLM-based), and Rank1-7B (CoT-based reasoning) re-rankers. These are pointwise re-rankers that assign a relevance score to query-document pairs.&quot;,
+        &quot;name&quot;: &quot;Re-rankers&quot;,
+        &quot;role&quot;: &quot;Re-order the initial retrieved list of documents or passages to improve ranking effectiveness, potentially using reasoning capabilities.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A method to translate agent-issued web search queries into natural-language questions, implemented using gpt-oss-20b in low reasoning-effort mode. It can take either the raw query or the raw query plus the agent&#39;s recent reasoning trace as input.&quot;,
+        &quot;name&quot;: &quot;Query-to-Question (Q2Q) Reformulator&quot;,
+        &quot;role&quot;: &quot;Mitigate the training-inference query mismatch between agent-issued web-search-style queries and natural-language-style questions used to train neural rankers.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;When using document-level retrieval, an optional tool that agents can invoke to access complete documents beyond the initial truncated view (first 512 tokens), compensating for information loss due to truncation.&quot;,
+        &quot;name&quot;: &quot;Full-document Reader&quot;,
+        &quot;role&quot;: &quot;Provide agents with access to complete document content to improve answer accuracy.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;The BrowseComp-Plus dataset provides 830 fact-seeking, reasoning-intensive, long-form queries with human-verified relevance judgments for a fixed corpus. A passage corpus is constructed by segmenting documents into canonical passages of up to 250 words.&quot;,
+        &quot;name&quot;: &quot;BrowseComp-Plus Dataset&quot;,
+        &quot;role&quot;: &quot;Provide a fixed dataset for evaluating text ranking methods in a transparent and reproducible deep research setting.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;Existing text ranking methods, including retrievers and re-rankers, can be systematically analyzed and reproduced in the deep research setting using a fixed corpus, revealing key insights into retrieval units, pipeline configurations, and query characteristics. Addressing the training-inference query mismatch through methods like Query-to-Question (Q2Q) is crucial for improving neural ranker performance.&quot;,
+  &quot;title&quot;: &quot;Revisiting Text Ranking in Deep Research&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/2602.21456&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2602.21456&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/2602.21456&quot;,&quot;summary&quot;:{&quot;authors&quot;:&quot;Chuan Meng, Litu Ou, Sean MacAvaney, Jeff Dalton&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper provides a rigorous, systematic, and transparent analysis of text ranking methods in the emerging and important deep research setting. It reproduces key findings, debunks some assumptions (like neural always being better), and proposes a practical solution (Q2Q) to a crucial problem (query mismatch). The open-sourcing of code and data further enhances its contribution. While it doesn&#39;t introduce a fundamentally new model architecture, its thorough empirical study and practical insights are highly valuable for advancing research in LLM-based agents and RAG.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;LLM-based agents using opaque web search APIs for deep research tasks where current text ranking methods&#39; behavior is unclear. Specifically, three research gaps are identified: (i) the effectiveness of passage-level versus document-level retrieval units, (ii) the consistent benefits of re-ranking across various configurations, and (iii) the impact of potential mismatches between agent-issued queries (web-search style) and the natural-language questions used to train text rankers.&quot;,&quot;statement&quot;:&quot;Despite the essential role of search in deep research (which involves multi-hop, reasoning-intensive queries requiring extensive open-web exploration), how existing text ranking methods perform in this setting remains poorly understood due to reliance on black-box live web search APIs and a lack of systematic analysis of search components.&quot;,&quot;whyItMatters&quot;:[&quot;Black-box web search APIs hinder systematic analysis of search components, preventing a clear understanding of their contributions.&quot;,&quot;Feeding full web pages to LLM-based agents quickly exhausts context windows, potentially removing relevant content due to truncation.&quot;,&quot;It remains unclear whether widely-used re-ranking methods consistently benefit LLM-based agents compared to human users.&quot;,&quot;A potential mismatch between agent-issued queries (which often follow web-search-style syntax with keywords) and the natural-language questions used to train neural rankers can severely degrade neural retrieval quality.&quot;]},&quot;evaluationHighlights&quot;:[&quot;The lexical retriever BM25, when paired with the gpt-oss-20b agent on the passage corpus, achieved the highest answer accuracy (0.572) across all retrieval settings in the study.&quot;,&quot;The BM25-monoT5-3B pipeline with gpt-oss-20b (re-ranking depth 50) achieved the best overall performance in the study, reaching 0.716 recall and 0.689 accuracy, a configuration comparable to a GPT-5-based agent baseline from prior work.&quot;,&quot;The proposed Query-to-Question (Q2Q) method (Q+R variant) significantly improved neural retriever performance, e.g., SPLADE-v3 accuracy increased by +0.041 and Qwen3-Embed-8B accuracy by +0.042.&quot;,&quot;Re-ranking consistently improved recall and accuracy across all evaluated methods and agents, with deeper re-ranking depths yielding further performance gains and reductions in search calls.&quot;,&quot;Passage-level units enabled higher answer accuracy and completion rates, particularly for agents with smaller context windows (e.g., gpt-oss-20b), by allowing more search and reasoning iterations.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;BrowseComp-Plus (document corpus)&quot;,&quot;BrowseComp-Plus (passage corpus)&quot;],&quot;metrics&quot;:[&quot;#Search calls&quot;,&quot;Recall&quot;,&quot;Accuracy&quot;,&quot;Completion rate&quot;,&quot;R@5&quot;,&quot;nDCG@10&quot;],&quot;setting&quot;:&quot;Deep research scenarios using LLM-based agents (gpt-oss-20b, GLM-4.7-Flash) interacting with text ranking methods over fixed document and passage corpora derived from BrowseComp-Plus.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:109,&quot;xmin&quot;:79,&quot;ymax&quot;:564,&quot;xmax&quot;:918},&quot;caption&quot;:&quot;Heatmap from a grid search on BrowseComp-Plus using the original full queries (not end-to-end), showing the effectiveness (evaluated by evidence judgments) of BM25 under different hyperparameter settings. The red \\times denotes the default parameter setting following [6], while the green + denotes the best parameter setting found by the grid search. The lighter the colour, the higher the retrieval performance.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:7}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.476&quot;,&quot;benchmark&quot;:&quot;SPLADE-v3 (Document corpus)&quot;,&quot;delta&quot;:&quot;+0.040&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.516&quot;},{&quot;baseline&quot;:&quot;0.476&quot;,&quot;benchmark&quot;:&quot;SPLADE-v3 (Document corpus)&quot;,&quot;delta&quot;:&quot;+0.053&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.529&quot;},{&quot;baseline&quot;:&quot;0.259&quot;,&quot;benchmark&quot;:&quot;BM25 (Document corpus)&quot;,&quot;delta&quot;:&quot;+0.313&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.572&quot;},{&quot;baseline&quot;:&quot;0.259&quot;,&quot;benchmark&quot;:&quot;BM25 (Document corpus)&quot;,&quot;delta&quot;:&quot;+0.042&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.301&quot;},{&quot;baseline&quot;:&quot;0.366&quot;,&quot;benchmark&quot;:&quot;BM25 (Document corpus)&quot;,&quot;delta&quot;:&quot;+0.250&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall&quot;,&quot;thisPaper&quot;:&quot;0.616&quot;}],&quot;title&quot;:&quot;Passage vs. Document Unit Effectiveness (gpt-oss-20b)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.521 (ColBERTv2)&quot;,&quot;benchmark&quot;:&quot;Passage corpus&quot;,&quot;delta&quot;:&quot;+0.051&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.572 (BM25)&quot;},{&quot;baseline&quot;:&quot;0.552 (ColBERTv2)&quot;,&quot;benchmark&quot;:&quot;Passage corpus&quot;,&quot;delta&quot;:&quot;+0.064&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall&quot;,&quot;thisPaper&quot;:&quot;0.616 (BM25)&quot;},{&quot;baseline&quot;:&quot;0.516 (SPLADE-v3)&quot;,&quot;benchmark&quot;:&quot;Passage corpus&quot;,&quot;delta&quot;:&quot;-0.110&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.406 (RepLLaMA)&quot;},{&quot;baseline&quot;:&quot;0.545 (SPLADE-v3)&quot;,&quot;benchmark&quot;:&quot;Passage corpus&quot;,&quot;delta&quot;:&quot;-0.096&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Recall&quot;,&quot;thisPaper&quot;:&quot;0.449 (RepLLaMA)&quot;}],&quot;title&quot;:&quot;Retriever Performance Comparison (gpt-oss-20b, Passage Corpus)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.572&quot;,&quot;benchmark&quot;:&quot;BM25 (no re-ranking)&quot;,&quot;delta&quot;:&quot;+0.117&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.689 (BM25, monoT5, d=50)&quot;},{&quot;baseline&quot;:&quot;0.616&quot;,&quot;benchmark&quot;:&quot;BM25 (no re-ranking)&quot;,&quot;delta&quot;:&quot;+0.100&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall&quot;,&quot;thisPaper&quot;:&quot;0.716 (BM25, monoT5, d=50)&quot;},{&quot;baseline&quot;:&quot;0.516&quot;,&quot;benchmark&quot;:&quot;SPLADE-v3 (no re-ranking)&quot;,&quot;delta&quot;:&quot;+0.130&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.646 (SPLADE-v3, monoT5, d=50)&quot;},{&quot;baseline&quot;:&quot;0.417&quot;,&quot;benchmark&quot;:&quot;Qwen3-Embed-8B (no re-ranking)&quot;,&quot;delta&quot;:&quot;+0.142&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.559 (Qwen3-Embed-8B, monoT5, d=50)&quot;},{&quot;baseline&quot;:&quot;0.674 (BM25, monoT5, d=20)&quot;,&quot;benchmark&quot;:&quot;BM25 (monoT5, d=20)&quot;,&quot;delta&quot;:&quot;+0.015&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.689 (BM25, monoT5, d=50)&quot;}],&quot;title&quot;:&quot;Re-ranking Effectiveness (gpt-oss-20b, Passage Corpus)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.516 (Raw query)&quot;,&quot;benchmark&quot;:&quot;SPLADE-v3&quot;,&quot;delta&quot;:&quot;+0.041&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.557 (Q2Q (Q+R))&quot;},{&quot;baseline&quot;:&quot;0.545 (Raw query)&quot;,&quot;benchmark&quot;:&quot;SPLADE-v3&quot;,&quot;delta&quot;:&quot;+0.040&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall&quot;,&quot;thisPaper&quot;:&quot;0.585 (Q2Q (Q+R))&quot;},{&quot;baseline&quot;:&quot;0.417 (Raw query)&quot;,&quot;benchmark&quot;:&quot;Qwen3-Embed-8B&quot;,&quot;delta&quot;:&quot;+0.042&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.459 (Q2Q (Q+R))&quot;},{&quot;baseline&quot;:&quot;0.470 (Raw query)&quot;,&quot;benchmark&quot;:&quot;Qwen3-Embed-8B&quot;,&quot;delta&quot;:&quot;+0.037&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall&quot;,&quot;thisPaper&quot;:&quot;0.507 (Q2Q (Q+R))&quot;},{&quot;baseline&quot;:&quot;0.580 (Raw query)&quot;,&quot;benchmark&quot;:&quot;Rank1 (SPLADE-v3)&quot;,&quot;delta&quot;:&quot;+0.033&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.613 (Rank1 (SPLADE-v3), Q2Q (Q+R))&quot;},{&quot;baseline&quot;:&quot;0.572 (Raw query)&quot;,&quot;benchmark&quot;:&quot;BM25&quot;,&quot;delta&quot;:&quot;-0.015&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Acc.&quot;,&quot;thisPaper&quot;:&quot;0.557 (Q2Q (Q+R))&quot;}],&quot;title&quot;:&quot;Q2Q Reformulation Effectiveness (gpt-oss-20b, Passage Corpus)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Passage-level retrieval units are more efficient for LLM agents with limited context windows, leading to higher answer accuracy and completion rates compared to document-level units, and reducing sensitivity to document length normalization in lexical retrieval.&quot;,&quot;The lexical retriever BM25, when appropriately configured for the deep research setting (e.g., proper document length normalization and indexing only the first 512 tokens), outperforms neural rankers in most cases, especially with web-search-style queries typical of agent interactions.&quot;,&quot;Re-ranking consistently and significantly improves ranking effectiveness and answer accuracy while reducing search calls; these gains are further amplified by deeper re-ranking depths and stronger initial retrievers.&quot;,&quot;The proposed Query-to-Question (Q2Q) method effectively mitigates the training-inference query mismatch for neural rankers, substantially improving their performance, but can harm performance for lexical retrievers like BM25.&quot;,&quot;Reasoning-based re-rankers like Rank1 do not consistently show a clear advantage over non-reasoning ones, potentially due to misinterpretation of keyword-rich web-search queries.&quot;]},&quot;institutions&quot;:&quot;The University of Edinburgh, University of Glasgow&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;The paper provides the first comprehensive reproduction and evaluation of a broad spectrum of text ranking methods (including lexical, learned sparse, single-vector dense, and multi-vector dense retrievers, as well as various re-rankers) in the deep research context on the BrowseComp-Plus dataset.&quot;,&quot;It constructs a passage corpus for the BrowseComp-Plus dataset, enabling detailed analysis of retrieval units and their impact on LLM agent performance.&quot;,&quot;It identifies key findings regarding the effectiveness of different retrieval units (passage-level units improve efficiency), retriever types (lexical BM25 excels with web-search-style queries), and the crucial role of re-ranking.&quot;,&quot;The work introduces a Query-to-Question (Q2Q) reformulation method to effectively bridge the training-inference query mismatch for neural rankers in deep research.&quot;,&quot;The study open-sources its code, data, and agent-generated traces of reasoning and search calls, promoting transparency and reproducibility in deep research evaluation.&quot;],&quot;main&quot;:&quot;A systematic, white-box evaluation of diverse text ranking methods in deep research, addressing gaps in understanding retrieval units, re-ranking, and query mismatch, complemented by a novel Query-to-Question (Q2Q) reformulation method.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A task involving multi-hop, reasoning-intensive queries that require extensive exploration of the open web and are difficult for both humans and LLMs.&quot;,&quot;term&quot;:&quot;Deep Research&quot;},{&quot;definition&quot;:&quot;A widely used framework for LLM-based agents that synergizes reasoning and acting, performing multiple iterations of reasoning and search (e.g., generating a reasoning trace, issuing a search query, and processing results).&quot;,&quot;term&quot;:&quot;ReAct paradigm&quot;},{&quot;definition&quot;:&quot;Text segments derived from documents, typically of a concise length (e.g., up to 250 words), used as fundamental units for retrieval, aimed at improving efficiency under context window limitations.&quot;,&quot;term&quot;:&quot;Passage-level retrieval units&quot;},{&quot;definition&quot;:&quot;A proposed method to translate agent-issued web search queries, which are often keyword-driven, into natural-language questions to mitigate the training-inference query mismatch with neural rankers that are typically trained on natural-language questions (e.g., from MS MARCO).&quot;,&quot;term&quot;:&quot;Query-to-Question (Q2Q) reformulation&quot;}],&quot;prerequisites&quot;:[&quot;Understanding of text ranking methods in Information Retrieval (IR), including lexical (e.g., BM25), learned sparse (e.g., SPLADE-v3), single-vector dense (e.g., RepLLaMA, Qwen3-Embed-8B), and multi-vector dense (e.g., ColBERTv2) retrievers.&quot;,&quot;Knowledge of re-ranking techniques, including inexpensive (e.g., monoT5), LLM-based (e.g., RankLLaMA), and CoT-based reasoning re-rankers (e.g., Rank1).&quot;,&quot;Familiarity with Large Language Models (LLMs), their application as agents, and concepts like Chain-of-Thought (CoT) reasoning and context windows.&quot;,&quot;Basic concepts of information retrieval evaluation metrics such as Recall, Accuracy, R@5, and nDCG@10.&quot;,&quot;Understanding of deep research as a challenging, multi-hop search paradigm requiring iterative exploration.&quot;]},&quot;subTopics&quot;:[&quot;Information Retrieval&quot;,&quot;Large Language Models&quot;,&quot;Agent Systems&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Prior work on deep research largely relies on black-box live web search APIs, hindering systematic analysis of search components and the transparency of text ranking method contributions, whereas this paper uses a fixed document corpus (BrowseComp-Plus) to enable white-box evaluation.&quot;,&quot;Previous studies typically feed truncated retrieved documents to agents, risking information loss. This work investigates passage-level units and a full-document reader to address this limitation.&quot;,&quot;While prior research examined one specific re-ranking method, a systematic evaluation across various ranking configurations in deep research was lacking. This paper provides a comprehensive study across different initial retrievers, re-ranker types, and re-ranking cut-offs.&quot;,&quot;Prior studies indicated that neural retrievers often underperform lexical methods on out-of-domain data. This paper revisits this finding, showing that BM25 can outperform neural rankers in the deep research setting given proper configuration.&quot;,&quot;The issue of query-format mismatch between agent-issued (web-search style) queries and neural rankers trained on natural-language questions was underexplored; this paper proposes the Query-to-Question (Q2Q) method to mitigate this mismatch.&quot;,&quot;Unlike contemporaneous work that tests a limited set of retrievers in scientific literature search, this paper evaluates a broader range of retrievers and re-rankers in a general open-domain setting.&quot;],&quot;limitations&quot;:[&quot;The study exclusively uses one deep research dataset (BrowseComp-Plus); expanding to other benchmarks with fixed corpora and manual relevance judgments could enhance generalizability.&quot;,&quot;Only two LLMs (gpt-oss-20b and GLM-4.7-Flash) are used as agents; evaluating additional model families and larger model sizes could provide further insights into generalisability.&quot;,&quot;The scope of the study does not include exploring additional rankers or advanced configurations, such as scaling laws.&quot;,&quot;Parameter tuning for BM25 was performed directly on all BrowseComp-Plus queries due to the absence of a dedicated validation set, which warrants caution when comparing tuned BM25 results with other retrievers.&quot;,&quot;The reasoning-based re-ranker Rank1 did not show a clear advantage over non-reasoning methods, sometimes misinterpreting keyword-rich web-search queries, suggesting limitations in its explicit reasoning effectiveness for certain query types.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;BM25 (Lexical Retriever)&quot;,&quot;value&quot;:&quot;A lexical retriever based on vocabulary-level vectors, using a bag-of-words approach. Its effectiveness is sensitive to two parameters: $k_1$ for term-frequency saturation and $b$ for document length normalisation.&quot;},{&quot;label&quot;:&quot;SPLADE-v3 (Learned Sparse Retriever)&quot;,&quot;value&quot;:&quot;A learned sparse retriever that leverages BERT to predict sparse vectors over BERT&#39;s vocabulary list for both queries and documents.&quot;},{&quot;label&quot;:&quot;RepLLaMA (Single-vector Dense Retriever)&quot;,&quot;value&quot;:&quot;A single-vector dense retriever that fine-tunes Llama 2 using LoRA to produce a single embedding vector. It appends an end-of-sequence token to input and uses the hidden state of the last model layer for the embedding.&quot;},{&quot;label&quot;:&quot;Qwen3-Embed-8B (Single-vector Dense Retriever)&quot;,&quot;value&quot;:&quot;The largest variant of the Qwen3-Embedding series, fine-tuned on synthetic data across multiple domains and languages. It follows the RepLLaMA approach for obtaining query and document embeddings.&quot;},{&quot;label&quot;:&quot;ColBERTv2 (Multi-vector Dense Retriever)&quot;,&quot;value&quot;:&quot;A multi-vector retriever that trains BERT to produce embeddings for each token in the query and the document. Relevance is modeled as the sum of the maximum similarities between each query vector and all document vectors.&quot;},{&quot;label&quot;:&quot;monoT5-3B (Inexpensive Re-ranker)&quot;,&quot;value&quot;:&quot;A non-reasoning-based re-ranker that fine-unes T5 to output &#39;true&#39; or &#39;false&#39; to indicate relevance, with the probability of the &#39;true&#39; token used as the relevance score. The 3B model variant is used.&quot;},{&quot;label&quot;:&quot;RankLLaMA-7B (LLM-based Re-ranker)&quot;,&quot;value&quot;:&quot;A non-reasoning-based re-ranker that fine-tunes Llama 2 with LoRA to project the representation of the end-of-sequence token to a relevance score.&quot;},{&quot;label&quot;:&quot;Rank1-7B (CoT-based Reasoning Re-ranker)&quot;,&quot;value&quot;:&quot;A reasoning-based re-ranker that fine-tunes Qwen 2.5 to generate a reasoning trace (e.g., &#39;&lt;think&gt; ... &lt;/think&gt;&#39;) before producing a &#39;true&#39;/&#39;false&#39; decision. Ground truth reasoning traces are used for training.&quot;}],&quot;pipelineFlow&quot;:[&quot;A user issues a deep research query $q_u$.&quot;,&quot;A deep research agent $A$ (e.g., gpt-oss-20b or GLM-4.7-Flash) takes $q_u$ as input and initiates multiple iterations of reasoning and search.&quot;,&quot;At each iteration $t$, the agent generates a reasoning trace $s_t$ to determine whether to output a final answer or invoke search.&quot;,&quot;If search is invoked, the agent issues a search query $q_t$, which is defined as $q_t = A(q_u, s_0, q_0, D_0, \\dots, s_t)$.&quot;,&quot;Optionally, the agent-issued web search query $q_t$ can be reformulated into a natural-language question $\\tilde{q}_t$ by a Query-to-Question (Q2Q) method $g$ (i.e., $\\tilde{q}_t = g(q_t)$ or $\\tilde{q}_t = g(q_t, s_t)$).&quot;,&quot;The (original or reformulated) search query is sent to a text ranking method $f$, which returns a ranked list of documents $D_t = f(q_t)$ (or $D_t = f(\\tilde{q}_t)$).&quot;,&quot;The ranked list $D_t$ (potentially processed by a full-document reader) is fed back to the agent to produce the reasoning trace for the next iteration $t+1$, defined as $s_{t+1} = A(q_u, s_0, q_0, D_0, \\dots, s_t, q_t, D_t)$.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Text Ranking (Ad-hoc Search)&quot;,&quot;value&quot;:&quot;Given a query $q_u$ issued by a user and a corpus of documents $C = \\{ d_1, d_2, \\dots, d_n \\}$ with $n$ documents, the goal of a text ranking method $f$ is to return a ranked list $D \\subseteq C$ of size $k$, i.e., $D = f(q_u, C)$.&quot;},{&quot;label&quot;:&quot;Text Ranking in Deep Research&quot;,&quot;value&quot;:&quot;Following the ReAct paradigm, a deep research agent $A$ takes a user query $q_u$ as input and performs multiple iterations of reasoning and search. At iteration $t$, the agent generates a reasoning trace $s_t$ that determines whether to output the final answer or invoke search. If search is invoked, it issues a search query $q_t$ to a text ranking method $f$, which returns a ranked list $D_t$. The ranked list $D_t$ is then fed back to the agent to produce the reasoning trace at the next iteration $t+1$. The formal definitions are: $q_t = A(q_u, s_0, q_0, D_0, \\dots, s_t)$ and $D_t = f(q_t)$, with $s_{t+1} = A(q_u, s_0, q_0, D_0, \\dots, s_t, q_t, D_t)$.&quot;}],&quot;reproducibility&quot;:&quot;The authors open-source their code, data, and all agent-generated traces of reasoning and search calls at https://github.com/ChuanMeng/text-ranking-in-deep-research. The traces are released in an encrypted format and can be locally decrypted for post-hoc analyses of agent behavior, following the BrowseComp-Plus protocol.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Two LLMs, gpt-oss-20b (20B parameters) and GLM-4.7-Flash (30B parameters), are used. Both are trained for web search invocation and chain-of-thought reasoning. gpt-oss-20b supports a 131,072-token context window, and GLM-4.7-Flash supports a 202,752-token context window.&quot;,&quot;name&quot;:&quot;Deep Research Agents&quot;,&quot;role&quot;:&quot;Act as the decision-making core, generating search queries and reasoning traces in an iterative process to answer deep research queries.&quot;},{&quot;details&quot;:&quot;Includes lexical-based sparse (BM25), learned sparse (SPLADE-v3), single-vector dense (RepLLaMA, Qwen3-Embed-8B), and multi-vector dense (ColBERTv2) retrievers. These methods are used to retrieve an initial set of documents or passages.&quot;,&quot;name&quot;:&quot;Retrievers&quot;,&quot;role&quot;:&quot;Identify and retrieve relevant documents or passages from the corpus in response to agent-issued search queries.&quot;},{&quot;details&quot;:&quot;Includes monoT5-3B (inexpensive), RankLLaMA-7B (LLM-based), and Rank1-7B (CoT-based reasoning) re-rankers. These are pointwise re-rankers that assign a relevance score to query-document pairs.&quot;,&quot;name&quot;:&quot;Re-rankers&quot;,&quot;role&quot;:&quot;Re-order the initial retrieved list of documents or passages to improve ranking effectiveness, potentially using reasoning capabilities.&quot;},{&quot;details&quot;:&quot;A method to translate agent-issued web search queries into natural-language questions, implemented using gpt-oss-20b in low reasoning-effort mode. It can take either the raw query or the raw query plus the agent&#39;s recent reasoning trace as input.&quot;,&quot;name&quot;:&quot;Query-to-Question (Q2Q) Reformulator&quot;,&quot;role&quot;:&quot;Mitigate the training-inference query mismatch between agent-issued web-search-style queries and natural-language-style questions used to train neural rankers.&quot;},{&quot;details&quot;:&quot;When using document-level retrieval, an optional tool that agents can invoke to access complete documents beyond the initial truncated view (first 512 tokens), compensating for information loss due to truncation.&quot;,&quot;name&quot;:&quot;Full-document Reader&quot;,&quot;role&quot;:&quot;Provide agents with access to complete document content to improve answer accuracy.&quot;},{&quot;details&quot;:&quot;The BrowseComp-Plus dataset provides 830 fact-seeking, reasoning-intensive, long-form queries with human-verified relevance judgments for a fixed corpus. A passage corpus is constructed by segmenting documents into canonical passages of up to 250 words.&quot;,&quot;name&quot;:&quot;BrowseComp-Plus Dataset&quot;,&quot;role&quot;:&quot;Provide a fixed dataset for evaluating text ranking methods in a transparent and reproducible deep research setting.&quot;}]},&quot;thesis&quot;:&quot;Existing text ranking methods, including retrievers and re-rankers, can be systematically analyzed and reproduced in the deep research setting using a fixed corpus, revealing key insights into retrieval units, pipeline configurations, and query characteristics. Addressing the training-inference query mismatch through methods like Query-to-Question (Q2Q) is crucial for improving neural ranker performance.&quot;,&quot;title&quot;:&quot;Revisiting Text Ranking in Deep Research&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/2602.21456&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

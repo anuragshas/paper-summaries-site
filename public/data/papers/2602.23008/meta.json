@@ -1,0 +1,20 @@
+{
+  "paperId": "2602.23008",
+  "title": "Exploratory Memory-Augmented LLM Agent via Hybrid On- and Off-Policy Optimization",
+  "authors": "Zeyuan Liu, Jeonghye Kim, Xufang Luo, Dongsheng Li, Yuqing Yang",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "Reinforcement Learning",
+    "Large Language Models",
+    "Exploration",
+    "Memory-Augmented Agents",
+    "Policy Optimization"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2602.23008",
+  "pagePath": "/paper-summaries-site/papers/2602.23008",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.23008/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "paperId": "2602.22661",
+  "title": "dLLM : Simple Diffusion Language Modeling",
+  "authors": "Zhanhui Zhou, Lingjie Chen, Hanghang Tong, Dawn Song",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "Diffusion Language Models",
+    "Open-source Frameworks",
+    "Natural Language Processing",
+    "Model Training",
+    "Model Inference",
+    "Reproducibility"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2602.22661",
+  "pagePath": "/paper-summaries-site/papers/2602.22661",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.22661/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

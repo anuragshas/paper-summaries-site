@@ -1,0 +1,427 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 445,
+      "xmin": 140,
+      "ymax": 770,
+      "xmax": 874
+    },
+    "caption": "Overview of the 3-stage training pipeline: student LLM mid-training on tokenized semantic IDs (up), reasoning data generation with teacher LLM and rejection sampling (middle), and student LLM reasoning enablement by SFT and RL (down)",
+    "figureNumber": 1,
+    "pageIndex": 1
+  },
+  "authors": "Mingfu Liang, Yufei Li, Jay Xu, Kavosh Asadi, Xi Liu, Shuo Gu, Kaushik Rangadurai, Frank Shyu, Shuaiwen Wang, Song Yang, Zhijing Li, Jiang Liu, Mengying Sun, Fei Tian, Xiaohan Wei, Chonglin Sun, Jacob Tao, Shike Mei, Wenlin Chen, Santanu Kolay, Sandeep Pandey, Hamed Firooz, Luke Simon",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "This paper presents a strong contribution by addressing multiple overlooked limitations in LLM-based recommendation re-ranking. The three-stage pipeline, including novel semantic ID tokenization, structured reasoning trace generation, and a tailored RL approach with conditional rewards, is a comprehensive solution. The empirical results demonstrate significant improvements over strong baselines on real-world datasets. The work's focus on bridging LLMs' world knowledge with item semantics for the re-ranking task is impactful, and the ablation studies provide valuable insights into the design choices. While not entirely field-shifting, it sets a new benchmark for interpretable and effective re-ranking."
+  },
+  "coreProblem": {
+    "statement": "Existing LLM-based recommendation systems face three key limitations: (1) The re-ranking phase, crucial for refining final recommendations, is largely overlooked; (2) LLMs' reasoning abilities, particularly those enhanced through reinforcement learning (RL) and high-quality reasoning data, are underexploited; and (3) The reliance on non-semantic item IDs causes scalability challenges in industrial systems with billions of identifiers.",
+    "whyItMatters": [
+      "Re-ranking is a critical component for refining and enhancing the final recommendation outcome and user experience.",
+      "Fully leveraging LLMs' reasoning capabilities, especially with RL and high-quality data, can lead to more sophisticated, personalized, and interpretable recommendations.",
+      "Addressing the scalability issues of item representation through semantic IDs is essential for deploying LLM-based recommendation systems in real-world industrial settings with vast item catalogs."
+    ],
+    "concreteExample": "In an e-commerce platform, given a user's purchase history and a list of 10 candidate items from an initial retrieval model, the system needs to re-rank these candidates to accurately predict which item the user is most likely to purchase next. This requires nuanced understanding of user preferences, item semantics, and domain-specific patterns, as well as the ability to generate a verifiable explanation for the re-ranking decision."
+  },
+  "evaluationHighlights": [
+    "GR2 surpasses the state-of-the-art OneRec-Think by 2.4% in Recall@5 and 1.3% in NDCG@5 on two real-world datasets.",
+    "The proposed tokenization enhancement and mid-training strategy significantly improve recommendation quality, achieving up to 18.7% relative gain on NDCG@5 for single-task learning over ORT's baseline.",
+    "Advanced reasoning traces, particularly those generated via rejection sampling with domain knowledge priming, yield substantial gains across metrics.",
+    "Reinforcement Learning (RL) with a custom reward function tailored for re-ranking is crucial for translating learned reasoning capabilities into improved re-ranking performance, addressing the mismatch where supervised fine-tuning alone might degrade performance."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Amazon Review (Beauty)",
+        "Amazon Review (Sports)"
+      ],
+      "metrics": [
+        "Recall@K",
+        "NDCG@K",
+        "Collision/Uniqueness Rate"
+      ],
+      "setting": "Sequential recommendation using a leave-one-out evaluation strategy, with item-user interactions sorted chronologically. Performance is evaluated at K=1, 5, 9 (for Recall) and K=5, 10 (for NDCG)."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 100,
+          "xmin": 199,
+          "ymax": 442,
+          "xmax": 814
+        },
+        "caption": "Ablation study on techniques for improving codebook uniformity in RQ-VAE. We report unique Uniqueness rate (%) on the Amazon Beauty dataset. Configurations achieving $\\ge 99\\%$ are bolded.",
+        "figureNumber": 2,
+        "pageIndex": 11
+      },
+      {
+        "boundingBox": {
+          "ymin": 449,
+          "xmin": 199,
+          "ymax": 659,
+          "xmax": 814
+        },
+        "caption": "Ablation study on codebook balancing techniques for RQ-VAE on Amazon Beauty dataset. All configurations use EMA updates and random last level assignment, which are required to achieve $\\ge 99\\%$ unique SID rate. Metrics are evaluated using a TIGER-style sequential recommendation model trained for 50 epochs.",
+        "figureNumber": 3,
+        "pageIndex": 12
+      },
+      {
+        "boundingBox": {
+          "ymin": 270,
+          "xmin": 200,
+          "ymax": 420,
+          "xmax": 814
+        },
+        "caption": "Performance comparison with the OneRec-Think (ORT) (Liu et al., 2025) on the Amazon Beauty dataset. Our proposed tokenization enhancement and the corresponding mid-training (Section 2) achieve significant improvement over the ORT's results provided by their official GitHub implementation (https://github.com/wangshy31/OneRec-Think). The result of \"Base\" and \"Base+IA\" are cited from the Table 2 of the ORT paper.",
+        "figureNumber": 4,
+        "pageIndex": 13
+      },
+      {
+        "boundingBox": {
+          "ymin": 530,
+          "xmin": 200,
+          "ymax": 781,
+          "xmax": 814
+        },
+        "caption": "Re-ranking performance comparison with retriever on the Amazon Beauty dataset. Our post-training achieve significant improvement over pre-ranked results. \"MTL\" denotes mid-training with multi-task. \"RL-zeroshot\" means RL directly from the base model without SFT. \"targeted\" and \"rejection\" correspond to the two reasoning trace generation strategies used to SFT and serve as the reference policies in RL stage. \"KP\" denotes domain knowledge priming in reasoning generation.",
+        "figureNumber": 5,
+        "pageIndex": 13
+      },
+      {
+        "boundingBox": {
+          "ymin": 98,
+          "xmin": 200,
+          "ymax": 349,
+          "xmax": 814
+        },
+        "caption": "Re-ranking performance comparison with retriever on the Amazon Sports dataset. \"STL\" denotes mid-training with single-task.",
+        "figureNumber": 6,
+        "pageIndex": 14
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "Base (ORT) - 0.0460",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0031",
+            "isPositive": true,
+            "metric": "recall@5",
+            "thisPaper": "tokenization enhancement (Ours) - 0.0491"
+          },
+          {
+            "baseline": "Base (ORT) - 0.0654",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0041",
+            "isPositive": true,
+            "metric": "recall@10",
+            "thisPaper": "tokenization enhancement (Ours) - 0.0695"
+          },
+          {
+            "baseline": "Base+IA (ORT) - 0.0532",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0032",
+            "isPositive": true,
+            "metric": "recall@5",
+            "thisPaper": "Mid-Training w/ Single-task (Ours) - 0.0564"
+          },
+          {
+            "baseline": "Base+IA (ORT) - 0.0342",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0064",
+            "isPositive": true,
+            "metric": "ndcg@5",
+            "thisPaper": "Mid-Training w/ Single-task (Ours) - 0.0406"
+          },
+          {
+            "baseline": "Base+IA (ORT) - 0.0735",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0039",
+            "isPositive": true,
+            "metric": "recall@10",
+            "thisPaper": "Mid-Training w/ Multi-task (Ours) - 0.0774"
+          }
+        ],
+        "title": "Tokenized Mid-Training Performance (Amazon Beauty)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "Pre-rank (MTL) - 0.2892",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0085",
+            "isPositive": true,
+            "metric": "recall@1",
+            "thisPaper": "RL-rejection-KP - 0.2977"
+          },
+          {
+            "baseline": "Pre-rank (MTL) - 0.7227",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0233",
+            "isPositive": true,
+            "metric": "recall@5",
+            "thisPaper": "RL-rejection-KP - 0.7460"
+          },
+          {
+            "baseline": "Pre-rank (MTL) - 0.9534",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0029",
+            "isPositive": true,
+            "metric": "recall@9",
+            "thisPaper": "RL-rejection-KP - 0.9563"
+          },
+          {
+            "baseline": "Pre-rank (MTL) - 0.5101",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0133",
+            "isPositive": true,
+            "metric": "ndcg@5",
+            "thisPaper": "RL-rejection-KP - 0.5234"
+          },
+          {
+            "baseline": "Pre-rank (MTL) - 0.5997",
+            "benchmark": "Amazon Beauty",
+            "delta": "+0.0053",
+            "isPositive": true,
+            "metric": "ndcg@10",
+            "thisPaper": "RL-rejection-KP - 0.6050"
+          }
+        ],
+        "title": "Re-ranking Performance (Amazon Beauty)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "Pre-rank (STL) - 0.2422",
+            "benchmark": "Amazon Sports",
+            "delta": "+0.0006",
+            "isPositive": true,
+            "metric": "recall@1",
+            "thisPaper": "RL-targeted-KP - 0.2428"
+          },
+          {
+            "baseline": "Pre-rank (STL) - 0.7077",
+            "benchmark": "Amazon Sports",
+            "delta": "+0.0006",
+            "isPositive": true,
+            "metric": "recall@5",
+            "thisPaper": "RL-targeted-KP - 0.7083"
+          },
+          {
+            "baseline": "Pre-rank (STL) - 0.9583",
+            "benchmark": "Amazon Sports",
+            "delta": "+0.0000",
+            "isPositive": true,
+            "metric": "recall@9",
+            "thisPaper": "RL-targeted-KP - 0.9583"
+          },
+          {
+            "baseline": "Pre-rank (STL) - 0.4796",
+            "benchmark": "Amazon Sports",
+            "delta": "+0.0006",
+            "isPositive": true,
+            "metric": "ndcg@5",
+            "thisPaper": "RL-targeted-KP - 0.4802"
+          },
+          {
+            "baseline": "Pre-rank (STL) - 0.5742",
+            "benchmark": "Amazon Sports",
+            "delta": "+0.0003",
+            "isPositive": true,
+            "metric": "ndcg@10",
+            "thisPaper": "RL-targeted-KP - 0.5745"
+          }
+        ],
+        "title": "Re-ranking Performance (Amazon Sports)"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "Base+IA (ORT) - 0.0532",
+        "benchmark": "Amazon Beauty",
+        "delta": "+0.0032",
+        "isPositive": true,
+        "metric": "recall@5",
+        "thisPaper": "Mid-Training w/ Single-task (Ours) - 0.0564"
+      },
+      {
+        "baseline": "Base+IA (ORT) - 0.0342",
+        "benchmark": "Amazon Beauty",
+        "delta": "+0.0064",
+        "isPositive": true,
+        "metric": "ndcg@5",
+        "thisPaper": "Mid-Training w/ Single-task (Ours) - 0.0406"
+      },
+      {
+        "baseline": "Pre-rank (MTL) - 0.7227",
+        "benchmark": "Amazon Beauty",
+        "delta": "+0.0233",
+        "isPositive": true,
+        "metric": "recall@5",
+        "thisPaper": "RL-rejection-KP - 0.7460"
+      },
+      {
+        "baseline": "Pre-rank (MTL) - 0.5101",
+        "benchmark": "Amazon Beauty",
+        "delta": "+0.0133",
+        "isPositive": true,
+        "metric": "ndcg@5",
+        "thisPaper": "RL-rejection-KP - 0.5234"
+      },
+      {
+        "baseline": "Pre-rank (STL) - 0.2422",
+        "benchmark": "Amazon Sports",
+        "delta": "+0.0006",
+        "isPositive": true,
+        "metric": "recall@1",
+        "thisPaper": "RL-targeted-KP - 0.2428"
+      }
+    ],
+    "mainTakeaways": [
+      "The proposed tokenization enhancement alone and combined with mid-training significantly improves recommendation quality over state-of-the-art LLM-based approaches, with relative gains up to 18.7% on NDCG@5 for single-task learning.",
+      "GR2 consistently outperforms strong baselines like OneRec-Think across both Recall@K and NDCG@K metrics on real-world datasets, demonstrating superior re-ranking performance.",
+      "The quality of reasoning traces plays a critical role in re-ranking performance, with rejection sampling with hierarchical item information (RL-rejection-KP) consistently outperforming vanilla reasoning traces and yielding significant relative improvements.",
+      "Reinforcement learning is necessary to translate reasoning capabilities into re-ranking improvements; supervised fine-tuning (SFT) alone, despite learning high-quality reasoning traces, does not consistently yield improved re-ranking performance and can even lead to degradation, highlighting the need for explicit RL optimization."
+    ]
+  },
+  "institutions": "Meta AI",
+  "keyNovelty": {
+    "main": "A novel three-stage end-to-end training pipeline for Generative Reasoning Re-ranker (GR2) that integrates unique semantic ID representation, high-quality reasoning trace generation, and reinforcement learning tailored for recommendation re-ranking.",
+    "explanation": [
+      "Introduces a robust method for transforming non-semantic item identifiers into highly unique ($\\ge 99\\%$) and semantically meaningful Semantic IDs (SIDs), which are then used in a mid-training stage to bridge LLM world knowledge with item semantics.",
+      "Develops specialized prompts and employs rejection sampling with iterative verification to generate high-quality, hierarchical, and grounded reasoning traces for the re-ranking task.",
+      "Adapts Decoupled Clip and Dynamic sAmpling Policy Optimization (DAPO) with a custom, verifiable reward function specifically designed for re-ranking scenarios, which effectively refines the LLM's reasoning process and avoids reward hacking by preserving original item order."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A compact, symbolic representation of an item, typically a sequence of discrete integers derived from an item's textual features, used to mitigate scalability issues of large embedding tables and enhance semantic understanding.",
+        "term": "Semantic ID (SID)"
+      },
+      {
+        "definition": "The final stage in a recommendation system pipeline where an initial list of candidate items from a retriever is refined and reordered based on user preferences and other contextual factors to produce the most relevant recommendations.",
+        "term": "Re-ranking"
+      },
+      {
+        "definition": "A phenomenon in Residual Quantized Variational Autoencoders (RQ-VAE) where only a small subset of the learned codebook entries are actively used during training, leading to poor reconstruction quality and high collision rates in generated codes.",
+        "term": "Codebook Collapse"
+      },
+      {
+        "definition": "A state-of-the-art reinforcement learning algorithm (Decoupled Clip and Dynamic sAmpling Policy Optimization) designed for scalable LLM supervision, effective in resolving issues like entropy collapse and rollout length bias.",
+        "term": "DAPO"
+      },
+      {
+        "definition": "A step-by-step, explicit explanation or chain of thought generated by an LLM that details the rationale behind a particular decision or output, used here to provide interpretable reasoning for re-ranking recommendations.",
+        "term": "Reasoning Trace"
+      }
+    ],
+    "prerequisites": [
+      "Large Language Models (LLMs)",
+      "Recommendation Systems principles",
+      "Reinforcement Learning (RL) concepts (e.g., policy optimization, reward functions)",
+      "Supervised Fine-tuning (SFT)",
+      "Generative Models",
+      "Residual Quantized Variational Autoencoders (RQ-VAE)",
+      "Chain-of-Thought (CoT) reasoning"
+    ]
+  },
+  "subTopics": [
+    "Recommendation Systems",
+    "Large Language Models",
+    "Reinforcement Learning",
+    "Generative Models",
+    "Semantic Representations",
+    "Information Retrieval",
+    "Sequential Recommendation"
+  ],
+  "tags": [
+    {
+      "name": "Large Language Models (LLMs)",
+      "type": "primary"
+    },
+    {
+      "name": "Recommendation Systems",
+      "type": "primary"
+    },
+    {
+      "name": "Reinforcement Learning (RL)",
+      "type": "topic"
+    },
+    {
+      "name": "Re-ranking",
+      "type": "topic"
+    },
+    {
+      "name": "Semantic IDs",
+      "type": "topic"
+    },
+    {
+      "name": "Chain-of-Thought Reasoning",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike prior LLM-based recommenders (e.g., P5, OneRec-Think, PLUM) that primarily adapt LLMs for retrieval and ranking, GR2 specifically targets the re-ranking stage, which is often overlooked.",
+      "Most existing work uses LLMs in zero-shot or supervised fine-tuning, leaving advanced reasoning capabilities (especially via RL and high-quality reasoning data) underexploited, whereas GR2 fully leverages these through a tailored RL approach.",
+      "GR2 addresses the scalability issue of non-semantic item IDs by introducing a robust semantic ID tokenization method, ensuring high uniqueness and semantic meaningfulness, unlike approaches that rely solely on raw item IDs.",
+      "GR2 generates high-quality, hierarchical reasoning traces using carefully designed prompts and rejection sampling, which is more rigorous than simple Chain-of-Thought prompting, and uses these for SFT, providing foundational reasoning skills.",
+      "GR2's reinforcement learning stage employs a custom reward function (ranking reward and conditional format reward) specifically tailored for re-ranking, which mitigates reward hacking and directly optimizes for re-ranking objectives, a departure from general-purpose RL applications in LLMs."
+    ],
+    "limitations": [
+      "The paper implicitly highlights that while Supervised Fine-tuning (SFT) can enable coherent reasoning, it does not consistently translate into improved re-ranking performance, and in some cases, can even degrade metrics (e.g., SFT-targeted-KP Recall@1 on Beauty dataset decreases from Pre-rank MTL). This suggests a mismatch between reasoning quality and ranking optimality, necessitating the more complex RL stage.",
+      "Although advanced reasoning traces are shown to be beneficial, the generation process, especially for rejection sampling, can be computationally intensive and requires a powerful teacher LLM (e.g., Qwen3-32B), which might be a resource constraint for some applications."
+    ],
+    "modeling": [
+      {
+        "label": "Contrastive Loss",
+        "value": "$L_{\\text{ctr}}(x_i) = -\\frac{1}{|P(i)|} \\sum_{p \\in P(i)} \\log \\frac{\\exp(s(x_i, x_p))}{\\exp(s(x_i, x_p)) + \\sum_{n \\in N(i)} \\exp(s(x_i, x_n))}$, where $s(x_i, x_j) = \\frac{\\tilde{h}_i^\\top \\tilde{h}_j}{T}$ is a temperature-scaled cosine similarity, and $P(i)$ and $N(i)$ are sets of positive and negative co-engaged samples, respectively."
+      },
+      {
+        "label": "Diversity Loss for Codebook Utilization",
+        "value": "$L_{\\text{div}} = \\lambda_{\\text{div}} \\sum_{k=1}^K C_k \\sum_{j=1}^{C_k} p^2_{k,j}$, where $p_{k,j} = \\frac{n_{k,j}}{\\sum_{m=1}^{C_k} n_{k,m}}$ is the proportion of assignments to the $j$-th entry of the $k$-th codebook, encouraging uniform codebook usage."
+      },
+      {
+        "label": "Supervised Fine-tuning (SFT) Loss",
+        "value": "$L_{\\text{SFT}} = -\\lambda_r \\sum_{i=1}^M \\log P(r_i | P, r_{<i}) - \\lambda_o \\sum_{j=1}^T \\log P(o_j | P, \\tau, o_{<j})$, which is a language modeling loss with separate weights $\\lambda_r$ and $\\lambda_o$ for reasoning tokens $r_i$ and ranked output tokens $o_j$, conditioned on the prompt $P$ and previous tokens."
+      },
+      {
+        "label": "Ranking Reward",
+        "value": "$R_{\\text{rank}} = \\frac{r^D_{s_{v_{n+1}}} - r^O_{s_{v_{n+1}}}}{|D|}$, measuring the promotion of the target item by re-ranking, where $r^D_{s_{v_{n+1}}}$ and $r^O_{s_{v_{n+1}}}$ are the ranks of the target item in the pre-ranked and re-ranked lists, respectively. This reward is conditionally combined with a format reward $R_{\\text{fmt}}$ to ensure parseable outputs."
+      },
+      {
+        "label": "DAPO Objective for RL",
+        "value": "$J_{\\text{DAPO}}(\\theta) = E_{(q,D) \\sim D, \\{o_i\\}_{i=1}^G \\sim \\pi_{\\theta_{\\text{old}}}(\\cdot|q)} \\Big[ \\frac{1}{\\sum_{i=1}^G |o_i|} \\sum_{i=1}^G |o_i| \\sum_{t=1}^{\\text{min}} \\Big( r_{i,t}(\\theta) \\hat{A}_{i,t}, \\text{clip}(r_{i,t}(\\theta), 1-\\epsilon_{\\text{low}}, 1+\\epsilon_{\\text{high}}) \\hat{A}_{i,t} \\Big) \\Big]$, where $r_{i,t}(\\theta) = \\frac{\\pi_{\\theta}(o_{i,t}|q, o_{i,<t})}{\\pi_{\\theta_{\\text{old}}}(o_{i,t}|q, o_{i,<t})}$ is the importance ratio and $\\hat{A}_{i,t}$ is the normalized advantage estimate within a group of $G$ sampled outputs."
+      }
+    ],
+    "pipelineFlow": [
+      "Stage 1: Tokenized Mid-Training - A pre-trained student LLM (e.g., Qwen3-8B) is mid-trained on highly unique semantic IDs (SIDs), which are encoded from non-semantic item IDs using an enhanced tokenizer, to align recommendation knowledge with the LLM's linguistic space and world knowledge.",
+      "Stage 2: Reasoning Data Generation - A more powerful teacher LLM (e.g., Qwen3-32B) generates high-quality, hierarchical reasoning traces for the re-ranking task using carefully designed chat-format prompts and either targeted sampling (with ground truth) or rejection sampling (iterative verification).",
+      "Stage 3: Reasoning Enablement for Re-ranking (SFT & RL) - The student LLM is first fine-tuned (SFT) on the generated reasoning traces to acquire foundational reasoning skills. Subsequently, reinforcement learning (RL) using the adapted DAPO algorithm with a custom, verifiable reward function specifically for re-ranking further refines the LLM's reasoning process and optimizes ranking performance."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Input",
+        "value": "User purchase history, a pre-ranked list of candidate items (with SIDs, titles, and categories) from a retriever."
+      },
+      {
+        "label": "Output",
+        "value": "A re-ranked list of candidates, along with a structured reasoning trace (JSON object containing explanation and recommendations) that promotes the ground-truth next item."
+      },
+      {
+        "label": "Goal",
+        "value": "Improve recommendation quality by re-ranking candidates through reasoning-aware post-training, optimizing for metrics like Recall@K and NDCG@K while providing interpretable reasoning."
+      }
+    ],
+    "reproducibility": "The paper details the datasets used (Amazon Review Beauty and Sports), preprocessing steps, and evaluation metrics. It refers to official GitHub implementations for baselines (OneRec-Think) for result citation. Appendix A provides a detailed formulation of Semantic ID (SID) and Appendix E outlines the parsing function for format reward. While the core GR2 code is not open-sourced, sufficient methodological details are provided for potential replication.",
+    "systemModules": []
+  },
+  "thesis": "The Generative Reasoning Re-ranker (GR2) framework, with its three-stage training pipeline encompassing robust semantic ID mid-training, high-quality reasoning data generation, and tailored reinforcement learning, effectively addresses the limitations of LLM-based recommendation re-ranking by bridging item semantics with world knowledge and optimizing reasoning capabilities, leading to superior and interpretable recommendation performance.",
+  "title": "Generative Reasoning Re-ranker",
+  "url": "https://arxiv.org/abs/arXiv:2602.07774",
+  "venue": "N/A",
+  "year": "2026"
+}

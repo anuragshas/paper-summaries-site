@@ -1,0 +1,18 @@
+{
+  "paperId": "2602.12528",
+  "title": "DiffuRank: Effective Document Reranking with Diffusion Language Models",
+  "authors": "Qi Liu, Kun Ai, Jiaxin Mao, Yanzhao Zhang, Mingxin Li, Dingkun Long, Pengjun Xie, Fengbin Zhu, Ji-Rong Wen",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "Document Reranking",
+    "Diffusion Models",
+    "Large Language Models"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2602.12528",
+  "pagePath": "/paper-summaries-site/papers/2602.12528",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.12528/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

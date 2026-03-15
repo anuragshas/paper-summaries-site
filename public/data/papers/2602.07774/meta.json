@@ -1,0 +1,21 @@
+{
+  "paperId": "2602.07774",
+  "title": "Generative Reasoning Re-ranker",
+  "authors": "Mingfu Liang, Yufei Li, Jay Xu, Kavosh Asadi, Xi Liu, Shuo Gu, Kaushik Rangadurai, Frank Shyu, Shuaiwen Wang, Song Yang, Zhijing Li, Jiang Liu, Mengying Sun, Fei Tian, Xiaohan Wei, Chonglin Sun, Jacob Tao, Shike Mei, Wenlin Chen, Santanu Kolay, Sandeep Pandey, Hamed Firooz, Luke Simon",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "Large Language Models (LLMs)",
+    "Recommendation Systems",
+    "Reinforcement Learning (RL)",
+    "Re-ranking",
+    "Semantic IDs",
+    "Chain-of-Thought Reasoning"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2602.07774",
+  "pagePath": "/paper-summaries-site/papers/2602.07774",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.07774/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "paperId": "2602.17654",
+  "title": "Mine and Refine: Optimizing Graded Relevance in E-commerce Search Retrieval",
+  "authors": "Jiaqi Xi, Raghav Saboo, Luming Chen, Martin Wang, Sudeep Das",
+  "publishedDate": "2024-02-01",
+  "tags": [
+    "Information Retrieval",
+    "E-commerce",
+    "Deep Learning",
+    "Contrastive Learning",
+    "Semantic Search"
+  ],
+  "sourceUrl": "https://arxiv.org/pdf/2402.17654.pdf",
+  "pagePath": "/paper-summaries-site/papers/2602.17654",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.17654/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "paperId": "paper-1772980095573",
+  "title": "GENERATIVE REWARD MODELS",
+  "authors": "Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak",
+  "publishedDate": null,
+  "tags": [
+    "RL",
+    "Reasoning",
+    "QA"
+  ],
+  "sourceUrl": "https://www.synthlabs.ai/pdf/Generative_Reward_Models.pdf",
+  "pagePath": "/paper-summaries-site/papers/paper-1772980095573",
+  "summaryPath": "/paper-summaries-site/data/papers/paper-1772980095573/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

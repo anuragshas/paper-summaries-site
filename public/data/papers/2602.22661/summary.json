@@ -1,0 +1,501 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 197,
+      "xmin": 107,
+      "ymax": 442,
+      "xmax": 792
+    },
+    "caption": "A unified trainer interface supports a variety of purposes via modular trainers and configuration changes. Figure 1a shows the MDLM pretraining setup. Figure 1b shows the single-line trainer swap from MDLMTrainer to BD3LMTrainer . Figure 1c shows the minimal changes to use MDLMTrainer for SFT: NoAttentionMaskWrapper keeps padding EOS visible, and label_pad_token_id=eos_token_id trains the model to generate EOS from extra mask tokens in inputs. Figure 1d shows the minimal changes to adapt an autoregressive LM to MDLM: right_shift_logits reuses next-token prediction, and PrependBOSWrapper prepends BOS to provide the predictions for the first mask token.",
+    "figureNumber": 1,
+    "pageIndex": 2
+  },
+  "authors": "Zhanhui Zhou, Lingjie Chen, Hanghang Tong, Dawn Song",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "The paper addresses a crucial need for standardization and reproducibility in the rapidly evolving field of Diffusion Language Models (DLMs). By providing a unified, modular, and open-source framework for training, inference, and evaluation, dLLM significantly lowers the barrier to entry for researchers and practitioners. The release of concrete recipes and checkpoints for various DLM configurations (finetuning large DLMs, converting BERT-style models, converting autoregressive LMs) is a substantial contribution, accelerating future research and development. While the core diffusion model concepts are not entirely novel to this paper, the systematic approach and comprehensive tooling provided by dLLM are highly impactful for the community, fostering consistency and facilitating comparison across models. The careful reproduction of prior results and sensitivity analysis further adds to its value."
+  },
+  "coreProblem": {
+    "statement": "The rapid evolution of Diffusion Language Models (DLMs) is hampered by the lack of a unified, standardized, and easily reproducible framework for their core components, making it difficult to reproduce, compare, and extend existing methods.",
+    "whyItMatters": [
+      "It hinders research progress and innovation by increasing the effort required for replication and extension.",
+      "It makes fair comparison between different DLM architectures and algorithms challenging due to inconsistent implementations and evaluation setups.",
+      "It creates a high barrier to entry for new researchers and practitioners wanting to explore or apply DLMs."
+    ],
+    "concreteExample": "Many current Diffusion Language Models (DLMs) use similar core components for training, inference, and evaluation, but these components are scattered across disparate, ad-hoc research codebases or lack transparent implementations. This means if a researcher wants to reproduce a recent DLM paper's results, or extend a method with a new decoding strategy, they often have to re-implement significant parts from scratch or navigate inconsistent APIs."
+  },
+  "evaluationHighlights": [
+    "DLM evaluation is highly sensitive to inference hyperparameters (e.g., maximum new tokens, CFG, temperature, parallel token updates), which are often not explicitly stated or rigorously controlled in prior work.",
+    "The dLLM framework successfully reproduces official evaluation results from prior works like LLaDA and Dream, demonstrating its consistency and reliability.",
+    "The framework enables the conversion of existing BERT-style encoders and autoregressive LMs into functional DLMs with minimal architectural changes and compute, achieving competitive performance on some benchmarks.",
+    "Speedup techniques like caching and parallel decoding in Fast-dLLM can significantly improve inference throughput, but accuracy can sometimes be negatively impacted, and performance varies by benchmark and 'max new tokens' setting."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "GSM8K",
+        "MATH500",
+        "Countdown",
+        "Sudoku",
+        "HumanEval",
+        "MBPP",
+        "BBH",
+        "MMLU",
+        "MMLU-Pro",
+        "HellaSwag",
+        "LAMBADA",
+        "WinoGrande",
+        "ARC-C",
+        "PIQA",
+        "GPQA"
+      ],
+      "metrics": [
+        "Accuracy",
+        "Tok/s"
+      ],
+      "setting": "A unified evaluation pipeline built upon lm-evaluation-harness, carefully matching preprocessing, decoding settings, and post-processing used for each model-task pair in official pipelines to ensure consistent and fair comparisons across models."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 387,
+          "xmin": 103,
+          "ymax": 679,
+          "xmax": 819
+        },
+        "caption": "Fast-dLLM evaluation results with max new tokens @ 256 and 512 . Model selection follows the original Fast-dLLM evaluation for consistency and fair comparison. C ACHE uses block-wise approximate KV caching within each decoding block; P ARALLEL uses confidence-based parallel token updates; C ACHE & P ARALLEL combines both. Note that max new tokens determines the number of pre-allocated padding tokens in the bidirec- tional context window, therefore affecting compute and measured performance.",
+        "figureNumber": 4,
+        "pageIndex": 4
+      },
+      {
+        "boundingBox": {
+          "ymin": 159,
+          "xmin": 137,
+          "ymax": 332,
+          "xmax": 804
+        },
+        "caption": "Sensitivity to decoding hyperparameters. We vary individual sampling hy- perparameters at inference time and observe that performance can degrade sharply from the optimal configuration. B ASELINE denotes the best-performing setting; S UPPRESS does not suppress <eos> from the beginning of generation; CFG sets cfg=0.5 ; P ARALLEL @ 4 generates four tokens per step; and T EMP @ 0 sets temperature=0.0 .",
+        "figureNumber": 5,
+        "pageIndex": 5
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "79.91",
+            "benchmark": "LLaDA-Instruct",
+            "delta": "+0.68",
+            "isPositive": true,
+            "metric": "GSM8K",
+            "thisPaper": "80.59"
+          },
+          {
+            "baseline": "34.80",
+            "benchmark": "LLaDA-Instruct",
+            "delta": "+0.60",
+            "isPositive": true,
+            "metric": "MATH500",
+            "thisPaper": "35.40"
+          },
+          {
+            "baseline": "19.92",
+            "benchmark": "LLaDA-Instruct",
+            "delta": "+7.03",
+            "isPositive": true,
+            "metric": "Countdown",
+            "thisPaper": "26.95"
+          },
+          {
+            "baseline": "6.93",
+            "benchmark": "Dream-Instruct",
+            "delta": "+12.75",
+            "isPositive": true,
+            "metric": "Sudoku",
+            "thisPaper": "19.68"
+          },
+          {
+            "baseline": "35.98",
+            "benchmark": "Dream-Instruct",
+            "delta": "+1.22",
+            "isPositive": true,
+            "metric": "HumanEval",
+            "thisPaper": "37.20"
+          },
+          {
+            "baseline": "44.36",
+            "benchmark": "Dream-Instruct",
+            "delta": "+1.17",
+            "isPositive": true,
+            "metric": "MBPP",
+            "thisPaper": "45.53"
+          }
+        ],
+        "title": "MDLM SFT on Open-Weight Large DLMs (Table 1)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "2.1",
+            "benchmark": "ModernBERT-large-chat-v0.1",
+            "delta": "+7.2",
+            "isPositive": true,
+            "metric": "GSM8K",
+            "thisPaper": "9.3"
+          },
+          {
+            "baseline": "17.8",
+            "benchmark": "ModernBERT-large-chat-v0.1",
+            "delta": "+7.8",
+            "isPositive": true,
+            "metric": "BBH",
+            "thisPaper": "25.6"
+          },
+          {
+            "baseline": "1.4",
+            "benchmark": "ModernBERT-large-chat-v0.1",
+            "delta": "+2.2",
+            "isPositive": true,
+            "metric": "MATH",
+            "thisPaper": "3.6"
+          },
+          {
+            "baseline": "22.9",
+            "benchmark": "ModernBERT-large-chat-v0.1",
+            "delta": "+6.7",
+            "isPositive": true,
+            "metric": "MMLU",
+            "thisPaper": "29.6"
+          },
+          {
+            "baseline": "55.5",
+            "benchmark": "ModernBERT-large-chat-v0.1",
+            "delta": "-9.2",
+            "isPositive": false,
+            "metric": "LAMBADA",
+            "thisPaper": "46.3"
+          }
+        ],
+        "title": "Converting BERT-style Encoders to DLMs (Table 2)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "32.3",
+            "benchmark": "Qwen3-0.6B-bd3lm-v0.1",
+            "delta": "+14.0",
+            "isPositive": true,
+            "metric": "HumanEval",
+            "thisPaper": "46.3"
+          },
+          {
+            "baseline": "36.6",
+            "benchmark": "Qwen3-0.6B-bd3lm-v0.1",
+            "delta": "+1.6",
+            "isPositive": true,
+            "metric": "MBPP",
+            "thisPaper": "38.2"
+          },
+          {
+            "baseline": "59.6",
+            "benchmark": "Qwen3-0.6B-bd3lm-v0.1",
+            "delta": "-13.3",
+            "isPositive": false,
+            "metric": "GSM8K",
+            "thisPaper": "46.3"
+          },
+          {
+            "baseline": "52.8",
+            "benchmark": "Qwen3-0.6B-bd3lm-v0.1",
+            "delta": "-13.7",
+            "isPositive": false,
+            "metric": "MMLU",
+            "thisPaper": "39.1"
+          }
+        ],
+        "title": "Converting Autoregressive LMs to DLMs (Table 3)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "6.7 Tok/s",
+            "benchmark": "GSM8K",
+            "delta": "+1.4 Tok/s",
+            "isPositive": true,
+            "metric": "Baseline Tok/s",
+            "thisPaper": "8.1 Tok/s"
+          },
+          {
+            "baseline": "78.5",
+            "benchmark": "GSM8K",
+            "delta": "-0.5",
+            "isPositive": false,
+            "metric": "Acc +Both",
+            "thisPaper": "78.0"
+          },
+          {
+            "baseline": "9.1 Tok/s",
+            "benchmark": "MATH",
+            "delta": "+0.6 Tok/s",
+            "isPositive": true,
+            "metric": "Baseline Tok/s",
+            "thisPaper": "9.7 Tok/s"
+          },
+          {
+            "baseline": "33.2",
+            "benchmark": "MATH",
+            "delta": "+4.3",
+            "isPositive": true,
+            "metric": "Acc +Both",
+            "thisPaper": "37.5"
+          },
+          {
+            "baseline": "30.5 Tok/s",
+            "benchmark": "HumanEval",
+            "delta": "-11.7 Tok/s",
+            "isPositive": false,
+            "metric": "Baseline Tok/s",
+            "thisPaper": "18.8 Tok/s"
+          }
+        ],
+        "title": "Fast-dLLM LLaDA-Instruct Reproducibility & Throughput (Table 6a)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "9.1 Tok/s",
+            "benchmark": "GSM8K",
+            "delta": "-0.1 Tok/s",
+            "isPositive": false,
+            "metric": "Baseline Tok/s",
+            "thisPaper": "9.0 Tok/s"
+          },
+          {
+            "baseline": "74.8",
+            "benchmark": "GSM8K",
+            "delta": "-0.6",
+            "isPositive": false,
+            "metric": "Acc +Both",
+            "thisPaper": "74.2"
+          },
+          {
+            "baseline": "11.4 Tok/s",
+            "benchmark": "MATH",
+            "delta": "+13.7 Tok/s",
+            "isPositive": true,
+            "metric": "Baseline Tok/s",
+            "thisPaper": "25.1 Tok/s"
+          },
+          {
+            "baseline": "37.6",
+            "benchmark": "MATH",
+            "delta": "-6.5",
+            "isPositive": false,
+            "metric": "Acc +Both",
+            "thisPaper": "31.1"
+          }
+        ],
+        "title": "Fast-dLLM Dream-Base Reproducibility & Throughput (Table 7a)"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "79.91",
+        "benchmark": "LLaDA-Instruct",
+        "delta": "+0.68",
+        "isPositive": true,
+        "metric": "GSM8K",
+        "thisPaper": "80.59"
+      },
+      {
+        "baseline": "19.92",
+        "benchmark": "LLaDA-Instruct",
+        "delta": "+7.03",
+        "isPositive": true,
+        "metric": "Countdown",
+        "thisPaper": "26.95"
+      },
+      {
+        "baseline": "2.1",
+        "benchmark": "ModernBERT-large-chat-v0.1",
+        "delta": "+7.2",
+        "isPositive": true,
+        "metric": "GSM8K",
+        "thisPaper": "9.3"
+      },
+      {
+        "baseline": "17.8",
+        "benchmark": "ModernBERT-large-chat-v0.1",
+        "delta": "+7.8",
+        "isPositive": true,
+        "metric": "BBH",
+        "thisPaper": "25.6"
+      },
+      {
+        "baseline": "32.3",
+        "benchmark": "Qwen3-0.6B-bd3lm-v0.1",
+        "delta": "+14.0",
+        "isPositive": true,
+        "metric": "HumanEval",
+        "thisPaper": "46.3"
+      },
+      {
+        "baseline": "59.6",
+        "benchmark": "Qwen3-0.6B-bd3lm-v0.1",
+        "delta": "-13.3",
+        "isPositive": false,
+        "metric": "GSM8K",
+        "thisPaper": "46.3"
+      },
+      {
+        "baseline": "6.7 Tok/s",
+        "benchmark": "GSM8K",
+        "delta": "+1.4 Tok/s",
+        "isPositive": true,
+        "metric": "Baseline Tok/s (LLaDA-Instruct)",
+        "thisPaper": "8.1 Tok/s"
+      },
+      {
+        "baseline": "78.5",
+        "benchmark": "GSM8K",
+        "delta": "-0.5",
+        "isPositive": false,
+        "metric": "Acc +Both (LLaDA-Instruct)",
+        "thisPaper": "78.0"
+      }
+    ],
+    "mainTakeaways": [
+      "Supervised finetuning (SFT) on reasoning data significantly improves the reasoning capabilities of open-weight large DLMs (LLaDA-Instruct, Dream-Instruct) across various math, planning, and coding benchmarks.",
+      "BERT-style encoder-only models can be effectively converted into diffusion chatbots via MDLM SFT without architectural modifications, achieving competitive performance compared to autoregressive baselines like GPT-2 on several benchmarks.",
+      "Autoregressive LMs can be converted into functional DLMs (MDLM and BD3LM variants) through minimal SFT alone, demonstrating a practical and compute-efficient path to building DLMs, particularly showing strength in code generation tasks like HumanEval and MBPP, although often trailing ARLMs on general knowledge and reasoning benchmarks."
+    ]
+  },
+  "institutions": "UC Berkeley, UIUC",
+  "keyNovelty": {
+    "main": "An open-source, modular, and extensible framework that unifies the training, inference, and evaluation pipelines for Diffusion Language Models (DLMs), accompanied by reproducible recipes and checkpoints for various DLM configurations.",
+    "explanation": [
+      "dLLM provides unified trainer modules (e.g., MDLMTrainer, BD3LMTrainer) that cover common DLM training objectives. Its modular design decouples diffusion modeling logic from model architectures, allowing for easy reproduction, finetuning of existing DLMs (LLaDA, Dream), and development of new models from scratch with minimal refactoring. It integrates with HuggingFace Accelerate and PEFT for scalable and efficient training.",
+      "dLLM introduces a lightweight Sampler abstraction that unifies inference APIs across different DLMs and algorithms. This plug-and-play approach allows users to swap between various inference algorithms (including optimized ones like Fast-dLLM for accelerated MDLM decoding) without modifying the underlying model implementations. A Terminal Visualizer is also provided for debugging and interpreting non-left-to-right decoding processes unique to DLMs.",
+      "dLLM offers a unified evaluation interface that extends the lm-evaluation-harness. This interface meticulously matches the preprocessing, decoding settings, and post-processing used in prior work's official pipelines, enabling consistent and faithful reproduction of model-specific scores and fair comparisons across models.",
+      "The framework includes minimal, end-to-end recipes and released checkpoints for building small DLMs from scratch or converting existing LMs (BERT-style encoders, autoregressive LMs like Qwen) into DLMs via simple SFT, making DLM development more accessible with minimal compute requirements."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A class of generative models that generate data by reversing a forward process that progressively adds noise or corrupts information over a continuous time variable $t \\in [0, 1]$. The generative reverse process learns to denoise the corrupted data to recover the original clean data.",
+        "term": "Discrete Diffusion Models (DDMs)"
+      },
+      {
+        "definition": "A type of discrete diffusion model where the forward process simplifies to an absorbing-state masking process. Each token in a sequence is independently masked with a probability $t$, and the model is trained to predict the unmasked tokens.",
+        "term": "Masked Diffusion Language Models (MDLM)"
+      },
+      {
+        "definition": "A diffusion model that combines autoregression with diffusion. The input sequence is partitioned into non-overlapping blocks, and each block is generated autoregressively via a diffusion process conditioned on the clean history of previous blocks.",
+        "term": "Block Diffusion Language Models (BD3LM)"
+      },
+      {
+        "definition": "A widely used open-source library for training and evaluating large transformer models, providing tools for distributed training, parameter-efficient finetuning, and various model architectures and datasets.",
+        "term": "HuggingFace Ecosystem (Accelerate, PEFT, Transformers)"
+      }
+    ],
+    "prerequisites": [
+      "Familiarity with foundational Large Language Models (LLMs) and transformer architectures.",
+      "Basic understanding of generative models, particularly autoregressive language models.",
+      "Knowledge of diffusion models, including concepts of forward and reverse processes, and denoising objectives."
+    ]
+  },
+  "subTopics": [
+    "Diffusion Models for Text Generation",
+    "Open-source Machine Learning Frameworks",
+    "Language Model Finetuning",
+    "Model Evaluation and Reproducibility",
+    "Efficient Inference for Large Language Models"
+  ],
+  "tags": [
+    {
+      "name": "Diffusion Language Models",
+      "type": "primary"
+    },
+    {
+      "name": "Open-source Frameworks",
+      "type": "topic"
+    },
+    {
+      "name": "Natural Language Processing",
+      "type": "topic"
+    },
+    {
+      "name": "Model Training",
+      "type": "topic"
+    },
+    {
+      "name": "Model Inference",
+      "type": "topic"
+    },
+    {
+      "name": "Reproducibility",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Prior open-weight DLMs (e.g., LLaDA, Dream, DiffuGPT, RND1) often lack unified development pipelines across training, inference, and evaluation, making reproduction and comparison difficult. dLLM addresses this by providing a standardized, modular framework.",
+      "Existing efficient inference tools for DLMs (e.g., Fast-dLLM) are typically developed independently of training and evaluation components, leading to inconsistent interfaces. dLLM integrates these into a unified sampler abstraction.",
+      "Evaluation pipelines and reported results for DLMs vary significantly across papers (different task sets, inference hyperparameters), making consistent comparisons challenging. dLLM provides a unified evaluation interface that carefully matches prior work's setups for faithful reproduction and comparison."
+    ],
+    "limitations": [
+      "DLM variants converted from autoregressive LMs (ARLMs) still trail their AR counterparts on most general knowledge and reasoning benchmarks (e.g., MMLU, BBH), indicating a performance gap at scale for these tasks.",
+      "DLM evaluation is highly sensitive to inference hyperparameters (e.g., max new tokens, temperature, classifier-free guidance), a fact often not explicitly stated or consistently handled in prior work, making fair comparisons difficult without careful matching.",
+      "The framework's focus is on common diffusion objectives (MDLM, BD3LM) and may require extensions for less common or newer diffusion objectives, although its modular design facilitates this."
+    ],
+    "modeling": [
+      {
+        "label": "Discrete Diffusion Forward Process",
+        "value": "The forward process $q(x_t|x_0)$ adds noise (e.g., random masking) to an original sequence $x_0 = (x_1, ..., x_L)$ over time $t: 0 \\to 1$, transforming it into a noisy sequence $x_t$. For a token $x_i^0$, the probability of it becoming $x_i^t$ is defined as: $q(x_i^t | x_i^0) = (1 - t)I(x_i^t = x_i^0) + tI(x_i^t = m)$, where $I$ is the indicator function and $m$ is a special mask token."
+      },
+      {
+        "label": "Masked Diffusion Language Model (MDLM) Training Objective",
+        "value": "The generative reverse process $p_\\theta(x_0|x_t)$ learns to predict the unmasked tokens. The training objective minimizes the negative log-likelihood of the clean tokens given the masked input, with a time-dependent reweighting (e.g., $1/t$ for linear schedule): $L_{\\text{MDLM}} = \\mathbb{E}_{t\\sim\\mathcal{U}(0,1), x_0} \\left[ \\frac{1}{t} \\sum_{i \\in M_t} -\\log p_\\theta(x_i^0 | x_t) \\right]$, where $M_t$ are indices where $x_i^t = m$."
+      },
+      {
+        "label": "Block Diffusion (BD3LM) Training Objective",
+        "value": "BD3LM partitions the sequence $x$ into $K$ non-overlapping blocks $B_1, ..., B_K$. The model generates blocks autoregressively, with each block $B_k$ generated via a diffusion process conditioned on the clean history of previous blocks $x_{<B_k}$. The objective is a diffusion loss averaged over time, applied to the current block tokens: $L_{\\text{BD3LM}} = \\sum_{k=1}^K \\mathbb{E}_{t\\sim\\mathcal{U}(0,1), x_0} \\left[ \\frac{1}{t} \\sum_{i \\in \\text{mask}(B_k, t)} -\\log p_\\theta(x_i^0 | x_{B_k}^t, x_{<B_k}) \\right]$, where $\\text{mask}(B_k, t)$ is the set of masked indices within block $B_k$ at time $t$."
+      }
+    ],
+    "pipelineFlow": [
+      "**Training:** Users select a DLM architecture and a training objective (e.g., MDLM, BD3LM). dLLM's unified trainer modules handle data loading, corruption, and optimization, leveraging HuggingFace Accelerate for distributed training and PEFT for parameter-efficient finetuning. This supports both pretraining and finetuning of existing or new DLMs.",
+      "**Inference:** After training, the model is loaded into a Sampler instance. The Sampler provides a unified interface, allowing users to plug-and-play different decoding algorithms (e.g., vanilla, Fast-dLLM for speedup) without modifying the model. A terminal visualizer aids in debugging and understanding the iterative decoding process.",
+      "**Evaluation:** The trained model is evaluated using dLLM's unified evaluation interface, which extends lm-evaluation-harness. This interface ensures consistency by carefully matching preprocessing, decoding, and post-processing steps used in official benchmarks, enabling faithful reproduction and comparison of results across models."
+    ],
+    "problemDefinition": [],
+    "reproducibility": "The paper emphasizes reproducibility as a core contribution. It provides open-source code on GitHub (https://github.com/ZHZisZZ/dllm) and releases checkpoints of all small DLMs on HuggingFace Hub (https://huggingface.co/dllm-hub). The unified evaluation pipeline is designed to reproduce official results from prior work, and experimental results show close alignment with published figures. The paper details training recipes for various model configurations.",
+    "systemModules": [
+      {
+        "details": "Provides unified trainer modules (e.g., MDLMTrainer, BD3LMTrainer) that abstract away boilerplate code for common DLM training objectives. It's built on HuggingFace's Trainer and integrates with Accelerate for distributed training and PEFT for parameter-efficient finetuning. Its modular design allows swapping trainers or modifying data collators with minimal changes to support new objectives (e.g., SFT, AR-to-MDLM adaptation) without altering the core pipeline.",
+        "name": "Trainer",
+        "role": "Manages the training process for various Diffusion Language Models."
+      },
+      {
+        "details": "Introduces a lightweight abstraction, Sampler(model, tokenizer), that decouples inference algorithms from model implementations. This allows for plug-and-play swapping of different decoding strategies (e.g., vanilla MDLMSampler, MDLMFastdLLMSampler for accelerated inference) without modifying the underlying DLM. It provides a consistent inference API across models and algorithms.",
+        "name": "Sampler",
+        "role": "Handles the generation of text from trained DLMs using various inference algorithms."
+      },
+      {
+        "details": "An extension of the lm-evaluation-harness framework, specifically designed for DLMs. It carefully matches the preprocessing, decoding settings, and post-processing steps used in prior work for each model-task pair. This ensures that reported results are faithfully reproduced and allows for consistent comparisons across different DLMs and benchmarks.",
+        "name": "Evaluation Interface",
+        "role": "Provides a unified and reproducible framework for evaluating DLMs across various benchmarks."
+      },
+      {
+        "details": "A debugging and interpretability tool that visualizes the token decoding order and the evolution of the generated text over decoding steps. Unlike autoregressive LMs, DLMs decode tokens in a non-sequential order, making this visualization valuable for understanding model behavior and debugging.",
+        "name": "Terminal Visualizer",
+        "role": "Assists in understanding the non-sequential decoding process of DLMs during inference."
+      }
+    ]
+  },
+  "thesis": "dLLM, an open-source framework, unifies and standardizes the end-to-end development pipeline for Diffusion Language Models (training, inference, evaluation), making them more accessible, reproducible, and extensible, thereby accelerating research and enabling fair comparisons across new designs and existing models.",
+  "title": "dLLM : Simple Diffusion Language Modeling",
+  "url": "https://arxiv.org/abs/arXiv:2602.22661",
+  "venue": "N/A",
+  "year": "2026"
+}

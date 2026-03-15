@@ -1,0 +1,22 @@
+{
+  "paperId": "2602.22219",
+  "title": "Comparative Analysis of Neural Retriever-Reranker Pipelines for Retrieval-Augmented Generation over Knowledge Graphs in E-commerce Applications",
+  "authors": "Teri Rumble, Zbyn\u011bk Gazd\u00edk, Javad Zarrin, and Jagdeep Ahluwalia",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "Retrieval-Augmented Generation (RAG)",
+    "Knowledge Graphs",
+    "E-commerce",
+    "Information Retrieval",
+    "Large Language Models (LLMs)",
+    "Cross-encoders",
+    "Semi-structured Data"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2602.22219",
+  "pagePath": "/paper-summaries-site/papers/2602.22219",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.22219/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "paperId": "2506.06989",
+  "title": "Correcting for Position Bias in Learning to Rank: A Control Function Approach",
+  "authors": "Md Aminul Islam, Kathryn Vasilaky, Elena Zheleva",
+  "publishedDate": "2022-06-01",
+  "tags": [
+    "Learning to Rank",
+    "Position Bias",
+    "Control Function",
+    "Bias Correction",
+    "Information Retrieval"
+  ],
+  "sourceUrl": "https://arxiv.org/pdf/2206.06989v2",
+  "pagePath": "/paper-summaries-site/papers/2506.06989",
+  "summaryPath": "/paper-summaries-site/data/papers/2506.06989/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

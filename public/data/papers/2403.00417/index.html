@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models</h1>
+      <p class="meta"><strong>Authors:</strong> Jinbiao Yang</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/pdf/2403.00417" target="_blank" rel="noopener noreferrer">https://arxiv.org/pdf/2403.00417</a></p>
+      <p class="muted">Generated summary artifact for 2403.00417</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>By drawing inspiration from cognitive science, specifically the &#39;Principle of Least Effort&#39; (PLE), tokenizers can be designed to autonomously learn an integrated vocabulary of subwords, words, and multiword expressions (MWEs), thereby achieving a more effective balance between the number of tokens and types, leading to more efficient and accurate language processing in LLMs.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Current subword tokenizers (like Byte Pair Encoding, BPE) face limitations in handling non-Latin languages and multiword expressions (MWEs), and rely on extensive training data and computational resources to grasp MWE nuances, impacting Large Language Model (LLM) performance.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>The introduction of the &#39;Principle of Least Effort&#39; (PLE) from cognitive science as a guiding theoretical framework for tokenizer design, and the development of the Less-is-Better (LiB) model, which learns flexible, cognitively plausible linguistic units (subwords, words, MWEs) to optimize tokenization for LLMs.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>LiB achieves the lowest Bits per character (BPC) scores on both English (BRphono) and Chinese (CTB8) corpora, indicating more efficient text representation.</li><li>LiB demonstrates superior performance even on simple language models, suggesting its units are more cognitively plausible and effective.</li><li>The model&#39;s ability to learn an integrated vocabulary of subwords, words, and Multiword Expressions (MWEs) overcomes limitations of traditional tokenizers, especially for complex languages.</li><li>LiB&#39;s unsupervised method allows it to flexibly adapt to the complexity and diversity of different language inputs while balancing cognitive loads.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>The LiB model consistently achieves lower Bits per character (BPC) scores across both English and Chinese corpora, demonstrating superior tokenization efficiency compared to Character, BPE subword, and Word tokenizers.</li><li>LiB autonomously learns an integrated vocabulary comprising subwords, words, and multiword expressions (MWEs), which are more consistent with human cognitive units.</li><li>The LiB model balances the number of tokens and types effectively, leading to reduced cognitive burden in language processing.</li><li>This cognitive science-based approach provides a promising new direction for tokenizer design, particularly beneficial for complex languages lacking clear word boundaries like Chinese.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The paper states that current LiB is primarily a &#39;cognitive model&#39; and has not been fully optimized for large language models, implying further research is needed for direct LLM integration.</li><li>The direct introduction of MWEs can increase the number of types significantly (as seen in Jurassic models), potentially contradicting the goal of efficient performance if not carefully selected.</li><li>Low-frequency MWEs might lead to insufficient representation in training data, making accurate learning and prediction difficult.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 175,
+      &quot;xmin&quot;: 160,
+      &quot;ymax&quot;: 820,
+      &quot;xmax&quot;: 820
+    },
+    &quot;caption&quot;: &quot;The LiB model. A. the overview information flow, B. the strategies of text segmentation, C. the strategies of lexicon/vocabulary update.&quot;,
+    &quot;figureNumber&quot;: 2,
+    &quot;pageIndex&quot;: 9
+  },
+  &quot;authors&quot;: &quot;Jinbiao Yang&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper presents a novel cognitive science-inspired approach to tokenizer design, introducing the &#39;Principle of Least Effort&#39; and the &#39;Less-is-Better&#39; (LiB) model. It offers a fresh perspective by explicitly addressing the balance of tokens and types, and the integration of MWEs, which are significant challenges for current LLM tokenizers. The experimental results, though on simple language models, demonstrate consistent improvement in Bits per character scores across different languages, highlighting the potential for more efficient and cognitively aligned tokenization. While it&#39;s a strong theoretical contribution with promising initial results, its direct impact on state-of-the-art large language models still needs to be fully demonstrated.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;For languages like Chinese, BPE subwords may be mostly single characters, requiring 1.7x more tokens than a similar English sentence. Also, Multiword Expressions (MWEs) like &#39;kick the bucket&#39; are often overlooked or handled inefficiently by current tokenizers.&quot;,
+    &quot;statement&quot;: &quot;Current subword tokenizers (like Byte Pair Encoding, BPE) face limitations in handling non-Latin languages and multiword expressions (MWEs), and rely on extensive training data and computational resources to grasp MWE nuances, impacting Large Language Model (LLM) performance.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Tokenization significantly influences Large Language Models&#39; (LLMs) performance.&quot;,
+      &quot;Current tokenizers struggle with Out-Of-Vocabulary (OOV) units and complex language phenomena across diverse languages.&quot;,
+      &quot;Inefficient tokenization increases computational complexity and memory requirements for LLMs.&quot;,
+      &quot;Poor handling of MWEs limits LLMs&#39; ability to capture nuanced semantics and idiom implications, impacting language understanding.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;LiB achieves the lowest Bits per character (BPC) scores on both English (BRphono) and Chinese (CTB8) corpora, indicating more efficient text representation.&quot;,
+    &quot;LiB demonstrates superior performance even on simple language models, suggesting its units are more cognitively plausible and effective.&quot;,
+    &quot;The model&#39;s ability to learn an integrated vocabulary of subwords, words, and Multiword Expressions (MWEs) overcomes limitations of traditional tokenizers, especially for complex languages.&quot;,
+    &quot;LiB&#39;s unsupervised method allows it to flexibly adapt to the complexity and diversity of different language inputs while balancing cognitive loads.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;CTB8 (Chinese corpus)&quot;,
+        &quot;BRphono (English corpus)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Bits per character (BPC) score&quot;,
+        &quot;Average token length&quot;,
+        &quot;Vocabulary size&quot;
+      ],
+      &quot;setting&quot;: &quot;Evaluation on simple language models using different tokenization methods (Character, BPE subword, Word, LiB chunk).&quot;
+    },
+    &quot;experimentFigures&quot;: [],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;2.333&quot;,
+            &quot;benchmark&quot;: &quot;CTB8&quot;,
+            &quot;delta&quot;: &quot;-0.238&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;2-Gram BPC&quot;,
+            &quot;thisPaper&quot;: &quot;2.095&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1.193&quot;,
+            &quot;benchmark&quot;: &quot;CTB8&quot;,
+            &quot;delta&quot;: &quot;-0.290&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;3-Gram BPC&quot;,
+            &quot;thisPaper&quot;: &quot;0.903&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.977&quot;,
+            &quot;benchmark&quot;: &quot;BRphono&quot;,
+            &quot;delta&quot;: &quot;-0.186&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;2-Gram BPC&quot;,
+            &quot;thisPaper&quot;: &quot;0.791&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.584&quot;,
+            &quot;benchmark&quot;: &quot;BRphono&quot;,
+            &quot;delta&quot;: &quot;-0.100&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;3-Gram BPC&quot;,
+            &quot;thisPaper&quot;: &quot;0.484&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Bits per character (BPC) Scores (Lower is Better)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;The LiB model consistently achieves lower Bits per character (BPC) scores across both English and Chinese corpora, demonstrating superior tokenization efficiency compared to Character, BPE subword, and Word tokenizers.&quot;,
+      &quot;LiB autonomously learns an integrated vocabulary comprising subwords, words, and multiword expressions (MWEs), which are more consistent with human cognitive units.&quot;,
+      &quot;The LiB model balances the number of tokens and types effectively, leading to reduced cognitive burden in language processing.&quot;,
+      &quot;This cognitive science-based approach provides a promising new direction for tokenizer design, particularly beneficial for complex languages lacking clear word boundaries like Chinese.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Max Planck Institute for Psycholinguistics&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Traditional tokenizers are engineering-driven; this paper proposes a cognitive science-based approach, arguing that tokenizers should emulate human language processing mechanisms.&quot;,
+      &quot;The LiB model employs a &#39;Memorizer&#39; to merge adjacent tokens into longer units (reducing token count, increasing type count) and a &#39;Forgetter&#39; to remove less useful units (reducing type count), achieving a dynamic balance.&quot;,
+      &quot;This approach aims to minimize cognitive burden by balancing short-term (working memory) and long-term (lexicon storage) memory costs, distinct from global compression objectives like Minimum Description Length (MDL).&quot;,
+      &quot;LiB unifies subwords, words, and MWEs into a single vocabulary, addressing the limitations of subword tokenizers in handling complex linguistic units and non-Latin languages.&quot;
+    ],
+    &quot;main&quot;: &quot;The introduction of the &#39;Principle of Least Effort&#39; (PLE) from cognitive science as a guiding theoretical framework for tokenizer design, and the development of the Less-is-Better (LiB) model, which learns flexible, cognitively plausible linguistic units (subwords, words, MWEs) to optimize tokenization for LLMs.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;The process of segmenting continuous text into discrete units (tokens) for computational processing.&quot;,
+        &quot;term&quot;: &quot;Tokenization&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The individual lexical units resulting from tokenization in a corpus.&quot;,
+        &quot;term&quot;: &quot;Tokens&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The total number of unique lexical units (vocabulary size) in a corpus.&quot;,
+        &quot;term&quot;: &quot;Types&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Sequences of words that have a unique, holistic meaning that cannot be easily derived from the meanings of their individual parts (e.g., &#39;kick the bucket&#39;).&quot;,
+        &quot;term&quot;: &quot;Multiword Expressions (MWEs)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A cognitive science theory stating that humans naturally tend to solve problems and use language in ways that minimize their total cognitive effort, balancing short-term and long-term burdens.&quot;,
+        &quot;term&quot;: &quot;Principle of Least Effort (PLE)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Understanding of Large Language Models (LLMs) and their training processes.&quot;,
+      &quot;Familiarity with subword tokenization methods like Byte Pair Encoding (BPE), WordPiece, SentencePiece, and Unigram.&quot;,
+      &quot;Knowledge of Out-Of-Vocabulary (OOV) issues in natural language processing.&quot;,
+      &quot;Basic concepts of information theory and data compression (e.g., Minimum Description Length).&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Tokenization&quot;,
+    &quot;Cognitive Science in NLP&quot;,
+    &quot;Multiword Expressions&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Memory&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike traditional word-level tokenizers, LiB overcomes OOV issues and adapts to complex language phenomena.&quot;,
+      &quot;Compared to subword tokenizers like BPE, LiB can effectively handle non-Latin languages and explicitly learn Multiword Expressions (MWEs) rather than implicitly learning them through massive data.&quot;,
+      &quot;LiB differs from existing approaches that rely on brute-force computational power to learn MWEs by providing a theoretically grounded cognitive science approach.&quot;,
+      &quot;While prior work often focuses on engineering objectives (e.g., splitting infrequent words), LiB is guided by a general cognitive theory (PLE).&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The paper states that current LiB is primarily a &#39;cognitive model&#39; and has not been fully optimized for large language models, implying further research is needed for direct LLM integration.&quot;,
+      &quot;The direct introduction of MWEs can increase the number of types significantly (as seen in Jurassic models), potentially contradicting the goal of efficient performance if not carefully selected.&quot;,
+      &quot;Low-frequency MWEs might lead to insufficient representation in training data, making accurate learning and prediction difficult.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Guiding Principle&quot;,
+        &quot;value&quot;: &quot;Principle of Least Effort (PLE), which aims to minimize total cognitive work by balancing short-term (working memory storage, information decoding) and long-term (memory storage and retrieval for types) cognitive burdens.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Optimization Objective&quot;,
+        &quot;value&quot;: &quot;The LiB model balances two individual minimizations, specifically $min(\\#tokens)$ and $min(\\#types)$, rather than a global minimization of $min(\\#tokens + \\#types)$ as in Minimum Description Length (MDL) theory.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Input characters are fed into the LiB model.&quot;,
+      &quot;A &#39;Memorizer&#39; component continuously merges adjacent tokens in the input corpus into new, longer units, adding them to the vocabulary.&quot;,
+      &quot;A &#39;Forgetter&#39; component removes less useful or infrequent units from the vocabulary.&quot;,
+      &quot;The &#39;Memorizer&#39; and &#39;Forgetter&#39; operate in balance to reach a steady state, generating a vocabulary of units that minimize cognitive burden.&quot;,
+      &quot;The model uses strategies like &#39;Larger-first selection&#39; for text segmentation and &#39;Memorizing,&#39; &#39;Re-ranking,&#39; and &#39;Forgetting&#39; for lexicon/vocabulary updates.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Objective of Tokenizer Design&quot;,
+        &quot;value&quot;: &quot;To find an ideal segmentation solution that optimizes the number of tokens while controlling the number of types, thereby reducing computational complexity and memory requirements for LMs, and enhancing generalization.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Limitations of Subword Tokenizers&quot;,
+        &quot;value&quot;: &quot;Difficulty in handling non-Latin languages (e.g., Chinese, Burmese, Amharic requiring significantly more tokens) and inability to capture nuanced semantics and idiom implications of Multiword Expressions (MWEs).&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;N/A&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Continuously merges adjacent tokens in the input corpus into new (longer) units. These new units are stored in the vocabulary, which generally decreases the number of unit tokens in the text but increases the number of types.&quot;,
+        &quot;name&quot;: &quot;Memorizer&quot;,
+        &quot;role&quot;: &quot;Vocabulary Growth&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Removes less useful or infrequently appearing &#39;junk&#39; units from the vocabulary. &#39;Junk&#39; units are defined as those that increase the number of unit tokens in sentences or are rarely encountered, thereby reducing the number of unit types.&quot;,
+        &quot;name&quot;: &quot;Forgetter&quot;,
+        &quot;role&quot;: &quot;Vocabulary Pruning&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;By drawing inspiration from cognitive science, specifically the &#39;Principle of Least Effort&#39; (PLE), tokenizers can be designed to autonomously learn an integrated vocabulary of subwords, words, and multiword expressions (MWEs), thereby achieving a more effective balance between the number of tokens and types, leading to more efficient and accurate language processing in LLMs.&quot;,
+  &quot;title&quot;: &quot;Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/pdf/2403.00417&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;N/A&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2403.00417&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/pdf/2403.00417&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:175,&quot;xmin&quot;:160,&quot;ymax&quot;:820,&quot;xmax&quot;:820},&quot;caption&quot;:&quot;The LiB model. A. the overview information flow, B. the strategies of text segmentation, C. the strategies of lexicon/vocabulary update.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:9},&quot;authors&quot;:&quot;Jinbiao Yang&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper presents a novel cognitive science-inspired approach to tokenizer design, introducing the &#39;Principle of Least Effort&#39; and the &#39;Less-is-Better&#39; (LiB) model. It offers a fresh perspective by explicitly addressing the balance of tokens and types, and the integration of MWEs, which are significant challenges for current LLM tokenizers. The experimental results, though on simple language models, demonstrate consistent improvement in Bits per character scores across different languages, highlighting the potential for more efficient and cognitively aligned tokenization. While it&#39;s a strong theoretical contribution with promising initial results, its direct impact on state-of-the-art large language models still needs to be fully demonstrated.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;For languages like Chinese, BPE subwords may be mostly single characters, requiring 1.7x more tokens than a similar English sentence. Also, Multiword Expressions (MWEs) like &#39;kick the bucket&#39; are often overlooked or handled inefficiently by current tokenizers.&quot;,&quot;statement&quot;:&quot;Current subword tokenizers (like Byte Pair Encoding, BPE) face limitations in handling non-Latin languages and multiword expressions (MWEs), and rely on extensive training data and computational resources to grasp MWE nuances, impacting Large Language Model (LLM) performance.&quot;,&quot;whyItMatters&quot;:[&quot;Tokenization significantly influences Large Language Models&#39; (LLMs) performance.&quot;,&quot;Current tokenizers struggle with Out-Of-Vocabulary (OOV) units and complex language phenomena across diverse languages.&quot;,&quot;Inefficient tokenization increases computational complexity and memory requirements for LLMs.&quot;,&quot;Poor handling of MWEs limits LLMs&#39; ability to capture nuanced semantics and idiom implications, impacting language understanding.&quot;]},&quot;evaluationHighlights&quot;:[&quot;LiB achieves the lowest Bits per character (BPC) scores on both English (BRphono) and Chinese (CTB8) corpora, indicating more efficient text representation.&quot;,&quot;LiB demonstrates superior performance even on simple language models, suggesting its units are more cognitively plausible and effective.&quot;,&quot;The model&#39;s ability to learn an integrated vocabulary of subwords, words, and Multiword Expressions (MWEs) overcomes limitations of traditional tokenizers, especially for complex languages.&quot;,&quot;LiB&#39;s unsupervised method allows it to flexibly adapt to the complexity and diversity of different language inputs while balancing cognitive loads.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;CTB8 (Chinese corpus)&quot;,&quot;BRphono (English corpus)&quot;],&quot;metrics&quot;:[&quot;Bits per character (BPC) score&quot;,&quot;Average token length&quot;,&quot;Vocabulary size&quot;],&quot;setting&quot;:&quot;Evaluation on simple language models using different tokenization methods (Character, BPE subword, Word, LiB chunk).&quot;},&quot;experimentFigures&quot;:[],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;2.333&quot;,&quot;benchmark&quot;:&quot;CTB8&quot;,&quot;delta&quot;:&quot;-0.238&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;2-Gram BPC&quot;,&quot;thisPaper&quot;:&quot;2.095&quot;},{&quot;baseline&quot;:&quot;1.193&quot;,&quot;benchmark&quot;:&quot;CTB8&quot;,&quot;delta&quot;:&quot;-0.290&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;3-Gram BPC&quot;,&quot;thisPaper&quot;:&quot;0.903&quot;},{&quot;baseline&quot;:&quot;0.977&quot;,&quot;benchmark&quot;:&quot;BRphono&quot;,&quot;delta&quot;:&quot;-0.186&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;2-Gram BPC&quot;,&quot;thisPaper&quot;:&quot;0.791&quot;},{&quot;baseline&quot;:&quot;0.584&quot;,&quot;benchmark&quot;:&quot;BRphono&quot;,&quot;delta&quot;:&quot;-0.100&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;3-Gram BPC&quot;,&quot;thisPaper&quot;:&quot;0.484&quot;}],&quot;title&quot;:&quot;Bits per character (BPC) Scores (Lower is Better)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;The LiB model consistently achieves lower Bits per character (BPC) scores across both English and Chinese corpora, demonstrating superior tokenization efficiency compared to Character, BPE subword, and Word tokenizers.&quot;,&quot;LiB autonomously learns an integrated vocabulary comprising subwords, words, and multiword expressions (MWEs), which are more consistent with human cognitive units.&quot;,&quot;The LiB model balances the number of tokens and types effectively, leading to reduced cognitive burden in language processing.&quot;,&quot;This cognitive science-based approach provides a promising new direction for tokenizer design, particularly beneficial for complex languages lacking clear word boundaries like Chinese.&quot;]},&quot;institutions&quot;:&quot;Max Planck Institute for Psycholinguistics&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Traditional tokenizers are engineering-driven; this paper proposes a cognitive science-based approach, arguing that tokenizers should emulate human language processing mechanisms.&quot;,&quot;The LiB model employs a &#39;Memorizer&#39; to merge adjacent tokens into longer units (reducing token count, increasing type count) and a &#39;Forgetter&#39; to remove less useful units (reducing type count), achieving a dynamic balance.&quot;,&quot;This approach aims to minimize cognitive burden by balancing short-term (working memory) and long-term (lexicon storage) memory costs, distinct from global compression objectives like Minimum Description Length (MDL).&quot;,&quot;LiB unifies subwords, words, and MWEs into a single vocabulary, addressing the limitations of subword tokenizers in handling complex linguistic units and non-Latin languages.&quot;],&quot;main&quot;:&quot;The introduction of the &#39;Principle of Least Effort&#39; (PLE) from cognitive science as a guiding theoretical framework for tokenizer design, and the development of the Less-is-Better (LiB) model, which learns flexible, cognitively plausible linguistic units (subwords, words, MWEs) to optimize tokenization for LLMs.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;The process of segmenting continuous text into discrete units (tokens) for computational processing.&quot;,&quot;term&quot;:&quot;Tokenization&quot;},{&quot;definition&quot;:&quot;The individual lexical units resulting from tokenization in a corpus.&quot;,&quot;term&quot;:&quot;Tokens&quot;},{&quot;definition&quot;:&quot;The total number of unique lexical units (vocabulary size) in a corpus.&quot;,&quot;term&quot;:&quot;Types&quot;},{&quot;definition&quot;:&quot;Sequences of words that have a unique, holistic meaning that cannot be easily derived from the meanings of their individual parts (e.g., &#39;kick the bucket&#39;).&quot;,&quot;term&quot;:&quot;Multiword Expressions (MWEs)&quot;},{&quot;definition&quot;:&quot;A cognitive science theory stating that humans naturally tend to solve problems and use language in ways that minimize their total cognitive effort, balancing short-term and long-term burdens.&quot;,&quot;term&quot;:&quot;Principle of Least Effort (PLE)&quot;}],&quot;prerequisites&quot;:[&quot;Understanding of Large Language Models (LLMs) and their training processes.&quot;,&quot;Familiarity with subword tokenization methods like Byte Pair Encoding (BPE), WordPiece, SentencePiece, and Unigram.&quot;,&quot;Knowledge of Out-Of-Vocabulary (OOV) issues in natural language processing.&quot;,&quot;Basic concepts of information theory and data compression (e.g., Minimum Description Length).&quot;]},&quot;subTopics&quot;:[&quot;Tokenization&quot;,&quot;Cognitive Science in NLP&quot;,&quot;Multiword Expressions&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Memory&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike traditional word-level tokenizers, LiB overcomes OOV issues and adapts to complex language phenomena.&quot;,&quot;Compared to subword tokenizers like BPE, LiB can effectively handle non-Latin languages and explicitly learn Multiword Expressions (MWEs) rather than implicitly learning them through massive data.&quot;,&quot;LiB differs from existing approaches that rely on brute-force computational power to learn MWEs by providing a theoretically grounded cognitive science approach.&quot;,&quot;While prior work often focuses on engineering objectives (e.g., splitting infrequent words), LiB is guided by a general cognitive theory (PLE).&quot;],&quot;limitations&quot;:[&quot;The paper states that current LiB is primarily a &#39;cognitive model&#39; and has not been fully optimized for large language models, implying further research is needed for direct LLM integration.&quot;,&quot;The direct introduction of MWEs can increase the number of types significantly (as seen in Jurassic models), potentially contradicting the goal of efficient performance if not carefully selected.&quot;,&quot;Low-frequency MWEs might lead to insufficient representation in training data, making accurate learning and prediction difficult.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Guiding Principle&quot;,&quot;value&quot;:&quot;Principle of Least Effort (PLE), which aims to minimize total cognitive work by balancing short-term (working memory storage, information decoding) and long-term (memory storage and retrieval for types) cognitive burdens.&quot;},{&quot;label&quot;:&quot;Optimization Objective&quot;,&quot;value&quot;:&quot;The LiB model balances two individual minimizations, specifically $min(\\#tokens)$ and $min(\\#types)$, rather than a global minimization of $min(\\#tokens + \\#types)$ as in Minimum Description Length (MDL) theory.&quot;}],&quot;pipelineFlow&quot;:[&quot;Input characters are fed into the LiB model.&quot;,&quot;A &#39;Memorizer&#39; component continuously merges adjacent tokens in the input corpus into new, longer units, adding them to the vocabulary.&quot;,&quot;A &#39;Forgetter&#39; component removes less useful or infrequent units from the vocabulary.&quot;,&quot;The &#39;Memorizer&#39; and &#39;Forgetter&#39; operate in balance to reach a steady state, generating a vocabulary of units that minimize cognitive burden.&quot;,&quot;The model uses strategies like &#39;Larger-first selection&#39; for text segmentation and &#39;Memorizing,&#39; &#39;Re-ranking,&#39; and &#39;Forgetting&#39; for lexicon/vocabulary updates.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Objective of Tokenizer Design&quot;,&quot;value&quot;:&quot;To find an ideal segmentation solution that optimizes the number of tokens while controlling the number of types, thereby reducing computational complexity and memory requirements for LMs, and enhancing generalization.&quot;},{&quot;label&quot;:&quot;Limitations of Subword Tokenizers&quot;,&quot;value&quot;:&quot;Difficulty in handling non-Latin languages (e.g., Chinese, Burmese, Amharic requiring significantly more tokens) and inability to capture nuanced semantics and idiom implications of Multiword Expressions (MWEs).&quot;}],&quot;reproducibility&quot;:&quot;N/A&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Continuously merges adjacent tokens in the input corpus into new (longer) units. These new units are stored in the vocabulary, which generally decreases the number of unit tokens in the text but increases the number of types.&quot;,&quot;name&quot;:&quot;Memorizer&quot;,&quot;role&quot;:&quot;Vocabulary Growth&quot;},{&quot;details&quot;:&quot;Removes less useful or infrequently appearing &#39;junk&#39; units from the vocabulary. &#39;Junk&#39; units are defined as those that increase the number of unit tokens in sentences or are rarely encountered, thereby reducing the number of unit types.&quot;,&quot;name&quot;:&quot;Forgetter&quot;,&quot;role&quot;:&quot;Vocabulary Pruning&quot;}]},&quot;thesis&quot;:&quot;By drawing inspiration from cognitive science, specifically the &#39;Principle of Least Effort&#39; (PLE), tokenizers can be designed to autonomously learn an integrated vocabulary of subwords, words, and multiword expressions (MWEs), thereby achieving a more effective balance between the number of tokens and types, leading to more efficient and accurate language processing in LLMs.&quot;,&quot;title&quot;:&quot;Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models&quot;,&quot;url&quot;:&quot;https://arxiv.org/pdf/2403.00417&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;N/A&quot;}}</script>
+</body>
+</html>

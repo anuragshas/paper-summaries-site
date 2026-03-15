@@ -1,0 +1,18 @@
+{
+  "paperId": "2603.05706",
+  "title": "Reasoning Models Struggle to Control their Chains of Thought",
+  "authors": "Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "Reasoning",
+    "Benchmark",
+    "Factuality"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2603.05706",
+  "pagePath": "/paper-summaries-site/papers/2603.05706",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.05706/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -1,0 +1,359 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 248,
+      "xmin": 283,
+      "ymax": 506,
+      "xmax": 794
+    },
+    "caption": "Autorubric evaluation pipeline. A RubricDataset packages a task prompt, a Rubric (weighted criteria), and DataItem s (submissions to evaluate). The EvalRunner iterates over items, delegating each to Rubric.grade() , which dispatches to the CriterionGrader . The grader issues N × M independent LLM calls ( N judges, M criteria) in parallel via asyncio.gather() , where each call evaluates one criterion under one judge—a single-judge configuration is treated as an ensemble of one, unifying the code path. Criteria may be binary (met/unmet) or multi-choice with option shuffling to mitigate position bias. Per- criterion votes are then combined by a configurable aggregation strategy (majority vote, weighted vote, mean, or mode) to produce an EnsembleEvaluationReport . Three cross- cutting concerns operate transparently: disk-based response caching avoids redundant LLM calls, per-provider rate limiting controls concurrency, and checkpoint files (manifest + JSONL) enable resumable evaluation runs.",
+    "figureNumber": 1,
+    "pageIndex": 7
+  },
+  "authors": "Delip Rao, Chris Callison-Burch",
+  "breakthroughAssessment": {
+    "justification": "Autorubric provides a much-needed unified framework for rubric-based LLM evaluation, consolidating fragmented techniques and integrating best practices from educational measurement and psychometrics. Its open-source nature and comprehensive features for bias mitigation, reliability analysis, and production infrastructure significantly improve the reliability and reproducibility of LLM evaluation, which is a critical problem in the field. The introduction of the CHARM-100 dataset further contributes to robust evaluation. While not a paradigm shift, it is a highly impactful and well-engineered contribution that addresses a major practical and methodological challenge.",
+    "score": 8
+  },
+  "coreProblem": {
+    "concreteExample": "When evaluating a chatbot's response to a user query, practitioners currently have to manually combine different techniques for handling position bias, selecting judges (single LLM vs. ensemble), and aggregating scores, leading to inconsistent results and difficulty comparing across studies.",
+    "statement": "Techniques for reliable rubric-based evaluation of Large Language Model (LLM) text generation are fragmented across various academic papers, leading to inconsistent implementations, difficulty comparing results, and repeated reinvention of solutions, compounded by a disconnect from established principles in educational measurement and psychometrics.",
+    "whyItMatters": [
+      "Reliable and reproducible evaluation is crucial for advancing generative AI systems.",
+      "Inconsistent evaluation methods hinder the comparison of LLM performance across different research efforts.",
+      "Ad-hoc implementations of evaluation techniques can introduce biases and reduce the trustworthiness of results.",
+      "Bridging the gap between NLP and fields like psychometrics can lead to more robust and theoretically grounded evaluation practices."
+    ]
+  },
+  "evaluationHighlights": [
+    "Autorubric with Gemini-3-Flash (5-shot) achieved 80.0% accuracy on RiceChem, outperforming zero-shot GPT-4 (70.9%) and 0-shot Gemini-3-Flash (77.2%), with sublinear cost increase.",
+    "On ResearcherBench, Autorubric judges (Sonnet-4.5, Gemini-3-Flash) produced consistent system rankings (Gemini DeepResearch > OpenAI DeepResearch > Grok3 DeepSearch), with Gemini-3-Flash being 5-6x cheaper than Sonnet-4.5.",
+    "On the new CHARM-100 dataset, Autorubric correctly applied type-appropriate agreement metrics across binary, ordinal, and nominal criteria. Binary criteria (factual accuracy) showed the strongest agreement (87.0% exact accuracy, $\\kappa = 0.642$).",
+    "Adjacent accuracy for ordinal criteria was consistently high (85-93%), indicating the judge is usually within one step of ground truth, despite lower exact accuracy (38-58%).",
+    "The framework successfully demonstrated its capabilities across various settings: few-shot calibration (RiceChem), multi-judge ensemble evaluation (ResearcherBench), and mixed criterion types (CHARM-100)."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "RiceChem (college-level chemistry grading)",
+        "ResearcherBench (deep research system evaluation)",
+        "CHARM-100 (chatbot assessment with heterogeneous criteria)"
+      ],
+      "metrics": [
+        "Accuracy",
+        "Cost ($)",
+        "Coverage Score",
+        "Exact Acc.",
+        "Adj. Acc.",
+        "$\\kappa$ (Cohen's kappa, weighted kappa)",
+        "Spearman correlation"
+      ],
+      "setting": "Rubric-based LLM evaluation for text generation quality, covering educational assessment, deep research systems, and chatbot responses."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 269,
+          "xmin": 281,
+          "ymax": 331,
+          "xmax": 787
+        },
+        "caption": "Few-shot accuracy vs. cost on RiceChem dataset. Although it is not apparent in the plot, it must noted here that cost grows sub-linearly due to prompt caching.",
+        "figureNumber": 4,
+        "pageIndex": 19
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "70.9%",
+            "benchmark": "RiceChem",
+            "delta": "+6.3%",
+            "isPositive": true,
+            "metric": "Accuracy (0-shot)",
+            "thisPaper": "77.2%"
+          },
+          {
+            "baseline": "70.9%",
+            "benchmark": "RiceChem",
+            "delta": "+9.1%",
+            "isPositive": true,
+            "metric": "Accuracy (5-shot)",
+            "thisPaper": "80.0%"
+          }
+        ],
+        "title": "RiceChem Rubric Entailment Task"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.703",
+            "benchmark": "OpenAI DeepResearch",
+            "delta": "+0.062",
+            "isPositive": true,
+            "metric": "Coverage Score (Sonnet-4.5)",
+            "thisPaper": "0.620"
+          },
+          {
+            "baseline": "0.693",
+            "benchmark": "Gemini DeepResearch",
+            "delta": "+0.117",
+            "isPositive": true,
+            "metric": "Coverage Score (Gemini-3-Flash)",
+            "thisPaper": "0.692"
+          },
+          {
+            "baseline": "0.441",
+            "benchmark": "Grok3 DeepSearch",
+            "delta": "+0.138",
+            "isPositive": true,
+            "metric": "Coverage Score (Sonnet-4.5)",
+            "thisPaper": "0.579"
+          }
+        ],
+        "title": "ResearcherBench Mean Coverage Scores"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "N/A",
+            "benchmark": "factual_accuracy",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "Exact Acc.",
+            "thisPaper": "87.0%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "naturalness",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "Exact Acc.",
+            "thisPaper": "58.0%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "satisfaction",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "Exact Acc.",
+            "thisPaper": "42.0%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "specificity",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "Exact Acc.",
+            "thisPaper": "39.5%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "response_length",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "Exact Acc.",
+            "thisPaper": "81.0%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "factual_accuracy",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "$\\kappa$",
+            "thisPaper": "0.642"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "naturalness",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "$\\kappa$",
+            "thisPaper": "0.719"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "satisfaction",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "$\\kappa$",
+            "thisPaper": "0.648"
+          }
+        ],
+        "title": "CHARM-100 Per-Criterion Results"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "Autorubric achieves evaluation accuracy comparable to or exceeding published baselines on various tasks (college-level chemistry grading, deep research system evaluation).",
+      "Few-shot calibration significantly improves accuracy with sublinear cost increases due to prompt caching, demonstrating a favorable accuracy-cost tradeoff.",
+      "Multi-judge ensemble evaluation yields consistent system rankings and can be cost-effective with cheaper judges like Gemini-3-Flash for screening, reserving expensive judges for fine-grained analysis.",
+      "The framework successfully handles mixed criterion types (binary, ordinal, nominal) within a single rubric, applying appropriate agreement metrics for each.",
+      "Binary criteria generally yield the strongest agreement, while ordinal criteria show high adjacent accuracy but lower exact accuracy due to LLMs avoiding intermediate categories. Nominal criteria show asymmetric sensitivity."
+    ]
+  },
+  "institutions": "University of Pennsylvania",
+  "keyNovelty": {
+    "explanation": [
+      "Autorubric consolidates and operationalizes a wide array of best practices and mitigation techniques for rubric-based LLM evaluation, which were previously scattered and inconsistently applied across the literature. This includes rubric specification (analytic, weighted, positive/negative criteria), judging strategies (single-judge, multi-judge ensembles with various aggregations), bias mitigations (option shuffling, length penalties, explicit uncertainty handling), and reliability analysis.",
+      "The framework integrates insights from educational measurement and psychometrics, formalizing concepts like criterion types (binary, ordinal, nominal) and reliability metrics (Cohen's kappa, weighted kappa, Spearman correlation, EMD) into a practical Python library.",
+      "Autorubric provides production-grade infrastructure features such as response caching, checkpointing, multi-provider rate limiting, and cost tracking, which are essential for deploying LLM evaluation at scale.",
+      "The paper introduces CHARM-100, a novel chatbot evaluation dataset with per-sample ground truth labels across binary, ordinal, and nominal criteria, designed to stress-test rubric evaluation frameworks on heterogeneous criteria."
+    ],
+    "main": "A unified, open-source Python framework (Autorubric) for reliable, rubric-based LLM evaluation, synthesizing fragmented techniques and integrating psychometric principles with production-grade infrastructure."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A scoring instrument composed of criteria (what is evaluated) and performance-level descriptions (how quality is characterized).",
+        "term": "Rubric"
+      },
+      {
+        "definition": "A method of evaluation where an LLM is prompted to rate text outputs against specified criteria, acting as a human judge.",
+        "term": "LLM-as-a-Judge (LaaJ)"
+      },
+      {
+        "definition": "Rubrics that assign a single overall score based on integrated judgment, often faster but less diagnostic.",
+        "term": "Holistic Rubrics"
+      },
+      {
+        "definition": "Rubrics that decompose evaluation into separate, independently scored criteria, providing diagnostic information and greater transparency.",
+        "term": "Analytic Rubrics"
+      },
+      {
+        "definition": "A measure of inter-rater reliability for categorical judgments, adjusted for chance agreement.",
+        "term": "Cohen's Kappa ($\\kappa$)"
+      },
+      {
+        "definition": "An LLM's tendency to prefer longer outputs, irrespective of quality.",
+        "term": "Verbosity Bias"
+      },
+      {
+        "definition": "The tendency of LLM judges to assign different scores based on the position of options or content in the prompt.",
+        "term": "Position Bias"
+      },
+      {
+        "definition": "The use of multiple LLMs or multiple samples from the same LLM to evaluate criteria, with their judgments aggregated to improve reliability.",
+        "term": "Ensemble Judging"
+      },
+      {
+        "definition": "Including example submissions with correct verdicts in the prompt to demonstrate how the rubric should be applied.",
+        "term": "Few-shot Calibration"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of Large Language Models (LLMs) and their applications in text generation.",
+      "Familiarity with common LLM evaluation paradigms.",
+      "Basic knowledge of statistical metrics for reliability (e.g., accuracy, correlation coefficients).",
+      "Concepts of rubrics in educational assessment."
+    ]
+  },
+  "subTopics": [
+    "LLM Evaluation",
+    "Rubric Design",
+    "Reliability and Bias Mitigation"
+  ],
+  "tags": [
+    {
+      "name": "QA",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    },
+    {
+      "name": "Reasoning",
+      "type": "primary"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Prior LLM-as-a-judge (LaaJ) evaluation techniques are fragmented across various papers, requiring practitioners to manually discover, understand, and combine them ad hoc. Autorubric unifies these techniques into a single, open-source framework.",
+      "Existing LLM evaluation often lacks a systematic integration of principles from educational measurement and psychometrics, leading to inconsistencies. Autorubric explicitly incorporates these foundations for more robust evaluation design.",
+      "While individual bias mitigation strategies (e.g., ensemble judging, position bias mitigation, uncertainty handling) exist in the literature, Autorubric combines and operationalizes them within a unified API.",
+      "Autorubric's production infrastructure for caching, rate limiting, and checkpointing is built-in, addressing practical deployment concerns often overlooked in academic papers on evaluation methodologies.",
+      "Unlike many existing chatbot evaluation benchmarks that use a single scale type across all criteria, Autorubric, via CHARM-100, supports and evaluates mixed criterion types (binary, ordinal, nominal) within a single rubric."
+    ],
+    "limitations": [
+      "Autorubric provides infrastructure for rubric-based evaluation but does not assess rubric quality itself; it assumes rubrics are well-designed, and comprehensive rubric validation still requires domain expertise and iterative refinement.",
+      "Reliability improvements from ensemble judging come at a linear cost with the number of judges, which can be prohibitive for large-scale evaluations.",
+      "LLM judges tend to gravitate towards middle-category collapse in ordinal criteria, leading to lower exact accuracy, suggesting a need for coarser scales or using adjacent accuracy as the primary metric.",
+      "Rubrics developed for one domain may not directly transfer to another, and Autorubric provides no automated mechanism for cross-domain rubric adaptation.",
+      "The framework provides options for handling uncertainty but leaves advanced techniques (like predictive reliability diagrams and conformal prediction) for future work.",
+      "LLM-generated explanations might be post-hoc rationalizations rather than faithful accounts of the judgment process and should be treated as aids to human review, not ground truth reasoning."
+    ],
+    "modeling": [
+      {
+        "label": "Score Aggregation",
+        "value": "Score aggregation follows a weighted sum of individual criterion verdicts, normalized to be within $[0, 1]$. The formula is $\\text{score} = \\max \\left( 0, \\min \\left( 1, \\frac{\\sum_{i=1}^{n} v_i \\cdot w_i}{\\sum w_i > 0 w_i} \\right) \\right)$, where $w_i$ is the weight and $v_i$ is the verdict value (1 for MET, 0 for UNMET in binary, or explicit value for multi-choice criteria)."
+      },
+      {
+        "label": "Length Penalty Function",
+        "value": "Penalty is subtracted from the base score to mitigate verbosity bias. It is zero when token count $c \\leq \\text{free_budget}$, reaches $\\text{penalty_at_cap}$ when $c \\geq \\text{max_cap}$, and follows a power curve between: $\\text{penalty}(c) = \\text{penalty_at_cap} \\cdot \\left( \\frac{c - \\text{free_budget}}{\\text{max_cap} - \\text{free_budget}} \\right)^{\\text{exponent}}$."
+      },
+      {
+        "label": "Coverage Score (binary criteria)",
+        "value": "For binary criteria, the coverage score is defined as $\\text{Coverage} = \\frac{\\sum_i w_i \\cdot c_i}{\\sum_i w_i}$, where $w_i$ is the criterion weight and $c_i \\in \\{0, 1\\}$ indicates whether criterion $i$ is met."
+      }
+    ],
+    "pipelineFlow": [
+      "A RubricDataset (packaging prompt, rubric, and data items) is passed to the EvalRunner.",
+      "The EvalRunner iterates over each data item, delegating evaluation to Rubric.grade().",
+      "Rubric.grade() dispatches to the CriterionGrader, which issues N x M independent LLM calls (N judges, M criteria) in parallel.",
+      "Each LLM call evaluates one criterion under one judge, with optional position bias mitigation (option shuffling).",
+      "Per-criterion verdicts are combined using a configurable aggregation strategy (majority, weighted, unanimous, or any-vote).",
+      "The process incorporates transparent cross-cutting concerns: disk-based response caching, per-provider rate limiting, and checkpointing for resumable runs.",
+      "An EnsembleEvaluationReport is produced, including individual judge scores, mean agreement, and per-criterion vote distributions."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Rubric",
+        "value": "A scoring instrument comprising criteria (what is being evaluated) and performance-level descriptions (characterizing quality)."
+      },
+      {
+        "label": "Criterion Types",
+        "value": "Individual criteria can be binary (MET/UNMET), ordinal (ordered levels, e.g., Likert scales), or nominal (unordered categorical choices)."
+      }
+    ],
+    "reproducibility": "Autorubric explicitly addresses reproducibility through several mechanisms: built-in response caching (keying on full request, model, parameters) avoids redundant LLM calls and ensures consistent results; checkpointing stores intermediate results for resumable batch evaluation; and position bias mitigation via option shuffling reduces outcome variance.",
+    "systemModules": [
+      {
+        "details": "Encapsulates the task prompt, the rubric (weighted criteria), and the data items (submissions) to be evaluated.",
+        "name": "RubricDataset",
+        "role": "Data and configuration container"
+      },
+      {
+        "details": "Iterates over data items, delegates evaluation to Rubric.grade(), and manages overall evaluation flow including checkpointing.",
+        "name": "EvalRunner",
+        "role": "Orchestrates the evaluation pipeline"
+      },
+      {
+        "details": "Dispatches individual LLM calls per criterion per judge, handles multi-judge ensembles, and aggregates verdicts. Manages LLM configurations, training data for few-shot calibration, and reasoning configurations.",
+        "name": "CriterionGrader",
+        "role": "Manages LLM interaction and per-criterion evaluation"
+      },
+      {
+        "details": "Defines a criterion with a weight, a text requirement, and optional options for multi-choice criteria. Supports binary, ordinal, and nominal types.",
+        "name": "Criterion",
+        "role": "Specifies individual evaluation criteria"
+      },
+      {
+        "details": "Applies a configurable penalty to the score based on the submission's token count, mitigating verbosity bias.",
+        "name": "LengthPenalty",
+        "role": "Mitigates verbosity bias"
+      },
+      {
+        "details": "Provides strategies (SKIP, ZERO, PARTIAL, FAIL) for handling cases where a criterion cannot be confidently assessed.",
+        "name": "CannotAssessConfig",
+        "role": "Manages uncertainty handling"
+      }
+    ]
+  },
+  "thesis": "By synthesizing fragmented techniques into a unified, open-source Python framework (Autorubric) and integrating principles from educational measurement and psychometrics, we can significantly improve the reliability, reproducibility, and practical deployability of rubric-based LLM evaluation for text generation.",
+  "title": "Autorubric: A Unified Framework for Rubric-Based LLM Evaluation",
+  "venue": "Preprint (Under review)",
+  "year": "2026",
+  "url": "https://arxiv.org/abs/2603.00077"
+}

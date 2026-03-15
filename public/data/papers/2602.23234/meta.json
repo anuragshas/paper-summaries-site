@@ -1,0 +1,21 @@
+{
+  "paperId": "2602.23234",
+  "title": "Scaling Search Relevance: Augmenting App Store Ranking with LLM-Generated Judgments",
+  "authors": "Evangelia Christakopoulou, Vivekkumar Patel, Hemanth Velaga, Sandip Gaikwad",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "Information Retrieval",
+    "Large Language Models",
+    "Search Ranking",
+    "Multi-Objective Learning",
+    "Data Augmentation",
+    "App Store"
+  ],
+  "sourceUrl": "https://arxiv.org/pdf/2602.23234",
+  "pagePath": "/paper-summaries-site/papers/2602.23234",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.23234/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

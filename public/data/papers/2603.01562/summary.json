@@ -1,0 +1,370 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 80,
+      "xmin": 165,
+      "ymax": 305,
+      "xmax": 875
+    },
+    "caption": "Overview of RubricBench construction and evaluation setting. Starting from existing preference data, we curate challenging preference pairs via multi-dimensional filtering and annotate them with instruction-only human rubrics through a three-stage pipeline with quality control.",
+    "figureNumber": 1,
+    "pageIndex": 2
+  },
+  "authors": "Qiyuan Zhang, Junyi Zhou, Yufei Wang, Fuyuan Lyu, Yidong Ming, Can Xu, Qingfeng Sun, Kai Zheng, Peng Kang, Xue Liu, Chen Ma",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "The paper introduces RubricBench, a novel and comprehensive benchmark crucial for evaluating rubric-guided LLM evaluation, a paradigm gaining traction in AI alignment. It addresses key limitations of prior benchmarks by providing human-annotated, instruction-derived, atomic rubrics and adversarial samples. The paper's core contribution is identifying and quantifying a significant \"Rubric Gap\" (approx. 27% accuracy deficit) between human and model-generated rubrics across various LLM families. This finding is impactful as it redirects research focus from scaling model execution to improving the quality of rubric formation and cognitive alignment, providing a robust diagnostic tool for the field."
+  },
+  "coreProblem": {
+    "statement": "The community lacks a unified and robust benchmark to assess the reliability of rubric-guided evaluation for Large Language Models (LLMs). Existing benchmarks often rely on saturated samples, lack discriminative complexity, and critically, do not provide ground-truth rubric annotations, making it impossible to rigorously evaluate the quality of model-generated evaluation criteria.",
+    "whyItMatters": [
+      "Ensures objective and verifiable evaluation criteria for increasingly complex LLM generations, moving beyond surface-level biases.",
+      "Is fundamental for aligning LLMs with human preferences, providing essential feedback signals for policy optimization and candidate selection.",
+      "Mitigates critical issues like reward hacking, where models exploit spurious correlations instead of truly satisfying user intent.",
+      "Addresses the bottleneck where current Reward Models (RMs) prioritize high-quality presentation over actual problem resolution."
+    ],
+    "concreteExample": "Models often generate overly strict or unnecessary rules, leading to 'value inversion' where a correct refusal (e.g., stating infeasibility for an impossible task like 'convert SQL to Mongo for all cases') is penalized, while a hallucinatory or fabricated solution is rewarded, because the model's self-generated rubric misprioritizes surface-level checks over core feasibility and honesty."
+  },
+  "evaluationHighlights": [
+    "Rubric-aware pipelines consistently improve performance over vanilla baselines, but a substantial performance gap remains when switching from self-generated to human-annotated rubrics.",
+    "Safety-critical tasks exhibit the highest sensitivity to rubric quality; human rubrics restore performance on safety tasks to over 90%, whereas self-generated methods significantly underperform.",
+    "Even with human-authored rubrics, model accuracy plateaus around 85%, indicating persistent 'execution errors' where models fail to correctly apply correctly specified rubrics.",
+    "Models frequently struggle with 'cognitive misalignment,' failing to prioritize implicit rules and generating tangential or overly rigid criteria, leading to issues like 'value inversion' in judgments."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "RubricBench (across domains: Instruction Following, STEM Reasoning, CODE, SAFETY, CHAT)"
+      ],
+      "metrics": [
+        "Preference Accuracy (Acc)",
+        "Rubric Recall",
+        "Hallucination Rate",
+        "Structural F1"
+      ],
+      "setting": "LLM judges are evaluated under three controlled conditions (Vanilla, Self-Generated Rubrics, Human-Annotated Rubrics) while keeping backbones, prompts, and decoding parameters fixed to isolate the impact of rubric quality."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 100,
+          "xmin": 105,
+          "ymax": 305,
+          "xmax": 875
+        },
+        "caption": "RubricBench statistics overview. (a) Domain and source composition of RubricBench. (b) Distribution of rubric items per example and text lengths of instructions, responses, and rubrics.",
+        "figureNumber": 2,
+        "pageIndex": 3
+      },
+      {
+        "boundingBox": {
+          "ymin": 90,
+          "xmin": 130,
+          "ymax": 310,
+          "xmax": 875
+        },
+        "caption": "Test-time Scaling Results. (a) Scaling auto-rubrics. (b) Scaling human rubrics. (c) Scaling refinement. All vary test-time compute.",
+        "figureNumber": 3,
+        "pageIndex": 6
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "FARE 54.5",
+            "benchmark": "Overall (Rubric-Aware RMs (Self-Generated))",
+            "delta": "+3.6",
+            "isPositive": true,
+            "metric": "Acc",
+            "thisPaper": "OpenRubric 58.1"
+          },
+          {
+            "baseline": "OpenRubric 58.1",
+            "benchmark": "Overall (Analysis: Human-Annotated Oracle)",
+            "delta": "+27.2",
+            "isPositive": true,
+            "metric": "Acc",
+            "thisPaper": "OpenRubric (Oracle) 85.3"
+          },
+          {
+            "baseline": "OpenRubric 57.8",
+            "benchmark": "Overall (Analysis: Human-Annotated Oracle)",
+            "delta": "+27.1",
+            "isPositive": true,
+            "metric": "Acc",
+            "thisPaper": "OpenRubric (Oracle) 84.9"
+          }
+        ],
+        "title": "Main Results on RubricBench (Table 2)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "57.8% (Self-Gen.)",
+            "benchmark": "DeepSeek-v3.2",
+            "delta": "+27.1%",
+            "isPositive": true,
+            "metric": "Accuracy",
+            "thisPaper": "84.9% (Human)"
+          },
+          {
+            "baseline": "46.7% (Self-Gen.)",
+            "benchmark": "GPT-4o-mini",
+            "delta": "+26.7%",
+            "isPositive": true,
+            "metric": "Accuracy",
+            "thisPaper": "73.4% (Human)"
+          },
+          {
+            "baseline": "58.0% (Self-Gen.)",
+            "benchmark": "Gemini-3-Flash",
+            "delta": "+27.3%",
+            "isPositive": true,
+            "metric": "Accuracy",
+            "thisPaper": "85.3% (Human)"
+          }
+        ],
+        "title": "The Rubric Gap under controlled rubric sources (Table 3)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "CheckEval 53.8%",
+            "benchmark": "Generated Rubrics",
+            "delta": "-6.3%",
+            "isPositive": false,
+            "metric": "Rubric Recall",
+            "thisPaper": "OpenRubric 47.5%"
+          },
+          {
+            "baseline": "CheckEval 68.7%",
+            "benchmark": "Generated Rubrics",
+            "delta": "+3.9%",
+            "isPositive": false,
+            "metric": "Hallucination Rate",
+            "thisPaper": "OpenRubric 72.6%"
+          },
+          {
+            "baseline": "CheckEval 38.2",
+            "benchmark": "Generated Rubrics",
+            "delta": "-6.7",
+            "isPositive": false,
+            "metric": "Structural F1",
+            "thisPaper": "OpenRubric 31.5"
+          }
+        ],
+        "title": "Structural Quality Analysis of Generated Rubrics (Table 4)"
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "FARE 54.5",
+        "benchmark": "Overall (Rubric-Aware RMs (Self-Generated))",
+        "delta": "+3.6",
+        "isPositive": true,
+        "metric": "Acc",
+        "thisPaper": "OpenRubric 58.1"
+      },
+      {
+        "baseline": "OpenRubric 58.1",
+        "benchmark": "Overall (Analysis: Human-Annotated Oracle)",
+        "delta": "+27.2",
+        "isPositive": true,
+        "metric": "Acc",
+        "thisPaper": "OpenRubric (Oracle) 85.3"
+      },
+      {
+        "baseline": "57.8% (Self-Gen.)",
+        "benchmark": "DeepSeek-v3.2",
+        "delta": "+27.1%",
+        "isPositive": true,
+        "metric": "Accuracy",
+        "thisPaper": "84.9% (Human)"
+      },
+      {
+        "baseline": "46.7% (Self-Gen.)",
+        "benchmark": "GPT-4o-mini",
+        "delta": "+26.7%",
+        "isPositive": true,
+        "metric": "Accuracy",
+        "thisPaper": "73.4% (Human)"
+      },
+      {
+        "baseline": "58.0% (Self-Gen.)",
+        "benchmark": "Gemini-3-Flash",
+        "delta": "+27.3%",
+        "isPositive": true,
+        "metric": "Accuracy",
+        "thisPaper": "85.3% (Human)"
+      },
+      {
+        "baseline": "CheckEval 53.8%",
+        "benchmark": "Generated Rubrics",
+        "delta": "-6.3%",
+        "isPositive": false,
+        "metric": "Rubric Recall",
+        "thisPaper": "OpenRubric 47.5%"
+      },
+      {
+        "baseline": "CheckEval 68.7%",
+        "benchmark": "Generated Rubrics",
+        "delta": "+3.9%",
+        "isPositive": false,
+        "metric": "Hallucination Rate",
+        "thisPaper": "OpenRubric 72.6%"
+      },
+      {
+        "baseline": "CheckEval 38.2",
+        "benchmark": "Generated Rubrics",
+        "delta": "-6.7",
+        "isPositive": false,
+        "metric": "Structural F1",
+        "thisPaper": "OpenRubric 31.5"
+      }
+    ],
+    "mainTakeaways": [
+      "RubricBench effectively differentiates the performance of various Reward Models (RMs) and LLM judges, validating its discriminative power as an evaluation testbed.",
+      "A substantial 'Rubric Gap' of approximately 27% accuracy exists between model-generated and human-annotated rubrics, highlighting a key bottleneck in automated evaluation.",
+      "The performance deficit stems primarily from models' inability to autonomously formulate high-quality rubrics, rather than their capacity to execute judgments when guided by correct rubrics.",
+      "Increasing test-time compute, such as sampling more rubrics or applying iterative refinement, does not close the Rubric Gap, indicating that raw scaling is insufficient to overcome the rubric quality issue."
+    ]
+  },
+  "institutions": "City University of Hong Kong, Tencent Hunyuan, MBZUAI, McGill - Mila & Quebec AI Institute, University of Illinois Springfield",
+  "keyNovelty": {
+    "main": "Introduction of RubricBench, a novel benchmark featuring human-annotated, instruction-derived rubrics and adversarial preference pairs to rigorously assess the reliability of rubric-guided LLM evaluation and diagnose the 'Rubric Gap' in current models.",
+    "explanation": [
+      "RubricBench is the first benchmark to explicitly provide human-annotated, instruction-derived, and atomic rubrics, serving as a rigorous ground truth for evaluating rubric-guided LLM evaluation.",
+      "It curates 1,147 adversarial preference pairs through a multi-dimensional filtration pipeline, ensuring challenging samples that expose failures of holistic or surface-driven evaluation.",
+      "The benchmark quantifies the 'Rubric Gap', a persistent performance deficit (approx. 27% accuracy) between human-authored and model-generated rubrics, demonstrating that the primary limitation is rubric formation, not execution.",
+      "The work introduces structured metrics like Rubric Recall, Hallucination Rate, and Structural F1 to measure how well automatically induced criteria align with human-annotated rubrics at the rule level, enabling diagnostic analysis."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "Models that learn human preferences from comparative data to provide feedback signals for LLMs, essential for alignment during training and inference.",
+        "term": "Reward Models (RMs)"
+      },
+      {
+        "definition": "An evaluation paradigm where vague quality definitions are decomposed into atomic, verifiable constraints (rubrics or checklists) to objectively steer the evaluation process.",
+        "term": "Rubric-Guided Evaluation"
+      },
+      {
+        "definition": "The fraction of reference rubric items that are successfully recovered or matched by the model's induced rubric.",
+        "term": "Rubric Recall"
+      },
+      {
+        "definition": "The proportion of model-generated rubric items that do not match any human-annotated reference constraint, indicating irrelevant or non-binding criteria.",
+        "term": "Hallucination Rate"
+      },
+      {
+        "definition": "A metric (harmonic mean of precision and recall, where precision is $1 - \\text{HallucinationRate}$) used to evaluate the structural alignment between model-generated and human-annotated rubrics.",
+        "term": "Structural F1"
+      }
+    ],
+    "prerequisites": [
+      "Familiarity with Large Language Models (LLMs) and their applications.",
+      "Understanding of Reinforcement Learning from Human Feedback (RLHF) and AI alignment.",
+      "Knowledge of common biases in LLM evaluation, such as verbosity bias or reward hacking."
+    ]
+  },
+  "subTopics": [
+    "Large Language Models",
+    "Reward Models",
+    "Evaluation Benchmarks",
+    "Rubric-Guided Evaluation",
+    "AI Alignment",
+    "Cognitive Misalignment"
+  ],
+  "tags": [
+    {
+      "name": "LLM Evaluation",
+      "type": "primary"
+    },
+    {
+      "name": "Reward Models",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmarks",
+      "type": "topic"
+    },
+    {
+      "name": "AI Alignment",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Existing reward model benchmarks (e.g., RewardBench2, RMB, PPE) often rely on saturated or outdated samples that lack the complexity to differentiate modern LLMs and generally lack human-level rubric annotations, making direct comparison of rubric quality impossible.",
+      "While some initiatives (e.g., HealthBench, ProfBench) introduce rubric-guided protocols, their data is typically domain-confined, lacking the generality required for a universal standard, unlike RubricBench's broad domain coverage.",
+      "Unlike prior work that evaluates holistic preferences or CoT rationales, RubricBench focuses on the quality of the evaluation criteria themselves (rubrics), directly quantifying how well models can autonomously generate valid and aligned evaluation standards.",
+      "Scalar and generative RMs, as well as standard LLM-as-a-judge models, struggle to perform much better than random chance on RubricBench without explicit constraints, highlighting the benchmark's discriminative power and the insufficiency of implicit reasoning."
+    ],
+    "limitations": [
+      "The dataset is re-curated from existing public benchmarks, which might inherently bound its data distribution and may not fully represent long-tail scenarios found in specialized proprietary domains.",
+      "Reliance on high-quality expert annotation for gold-standard rubrics restricts the scale of the benchmark compared to fully synthetic datasets, potentially limiting its utility for large-scale training purposes.",
+      "Formulating evaluation strictly as a set of binary checklist constraints prioritizes verifiability over nuance, which may not perfectly capture the continuous nature of quality in highly subjective tasks such as creative writing."
+    ],
+    "modeling": [
+      {
+        "label": "Preference Accuracy",
+        "value": "Given an instruction and candidate responses $(y^{(A)}, y^{(B)})$, a judge outputs a binary preference $\\hat{z} \\in \\{A, B\\}$. Let $z^\\star$ be the human preference label. Preference accuracy is defined as $Acc = \\frac{1}{|D|} \\sum_{i \\in D} I[\\hat{z}_i = z^\\star_i]$, where $D$ is the set of pairwise comparisons and $I[\\cdot]$ is the indicator function."
+      },
+      {
+        "label": "Rubric Recall",
+        "value": "For an induced rubric $\\tilde{R} = \\{\\tilde{r}_1, \\dots, \\tilde{r}_K\\}$ and a human-annotated reference rubric $R = \\{r_1, \\dots, r_M\\}$, Rubric Recall is defined as $RubricRecall = \\frac{H}{M}$, where $H$ is the number of reference items matched by at least one induced item."
+      },
+      {
+        "label": "Hallucination Rate",
+        "value": "The Hallucination Rate counts induced items that match none of the references. It's calculated as $HallucinationRate = \\frac{1}{K} \\sum_{k=1}^K u_k$, where $u_k = I[\\sum_{j=1}^M \\text{match}(\\tilde{r}_k, r_j) = 0]$."
+      },
+      {
+        "label": "Structural F1",
+        "value": "Structural F1 combines Rubric Recall and precision (defined as $1 - \\text{HallucinationRate}$) using their harmonic mean: $StructuralF1 = \\frac{2 \\text{ RubricRecall } \\text{ Prec}}{\\text{RubricRecall } + \\text{ Prec}}$."
+      }
+    ],
+    "pipelineFlow": [
+      "Data Source Pools: Start with samples from existing high-quality benchmarks (e.g., HelpSteer3, PPE, RewardBench2).",
+      "Stage I: Data Curation (Multi-dimensional Filtering): Apply filtering to retain challenging preference pairs based on three dimensions: Input Complexity (complex, compositional instructions), Output Surface Bias (rejected responses with misleading surface features like length or formatting), and Process Failures (reasoning-dependent instances with flawed intermediate steps).",
+      "Stage II: Rubric Annotation: Expert annotators create instruction-only human rubrics for each selected sample. These rubrics are designed to be structurally atomic (binary Yes/No checks, 2-10 items) and semantically objective (derived solely from the instruction without access to responses).",
+      "Stage III: Quality Control and Verification: Implement a three-stage protocol involving Expert Reconciliation (senior reviewer synthesizes dual annotations), Structural Validation (checks for logical consistency, minimal redundancy, and instruction alignment), and Stress Testing (spot checks on safety/reasoning tasks with held-out models).",
+      "RubricBench: The final curated benchmark comprising 1,147 pairwise comparisons, each augmented with an expert-annotated, instruction-derived rubric, serving as a structured reference for RM-generated evaluation."
+    ],
+    "problemDefinition": [],
+    "reproducibility": "The paper provides details on the model specifications and checkpoints used in experiments in Appendix A.2 and discusses the strict rubric matching protocol in Appendix B. It also includes the full prompts used for rubric generation and judgment in Appendix F, facilitating reproduction of the experimental setup.",
+    "systemModules": [
+      {
+        "details": "Existing benchmarks (HelpSteer3, PPE, RewardBench2) providing real user samples, which are then refined for complexity.",
+        "name": "Data Source Pools",
+        "role": "Initial source of preference data"
+      },
+      {
+        "details": "A process to select challenging samples based on input complexity (explicit/implicit constraints), output surface bias (length, formatting, tone), and process failures (reasoning fallacies).",
+        "name": "Multi-dimensional Filtering Pipeline",
+        "role": "Curator of discriminative preference pairs"
+      },
+      {
+        "details": "Experts annotate each sample with 2-10 atomic, binary (Yes/No) rubrics derived strictly from the instruction, without access to candidate responses, ensuring semantic objectivity and structural atomicity.",
+        "name": "Rubric Annotation Protocol",
+        "role": "Generator of ground-truth evaluation criteria"
+      },
+      {
+        "details": "A three-stage protocol: 1) Expert Reconciliation (consensus-based), 2) Structural Validation (logical consistency, minimal redundancy, instruction alignment), 3) Stress Testing (spot checks on safety/reasoning tasks).",
+        "name": "Quality Control and Verification",
+        "role": "Ensurer of rubric reliability and structural integrity"
+      },
+      {
+        "details": "The final benchmark, consisting of 1,147 pairwise comparisons, each augmented with expert-annotated, instruction-derived rubrics, for assessing rubric-guided evaluation.",
+        "name": "RubricBench",
+        "role": "Unified evaluation benchmark"
+      }
+    ]
+  },
+  "thesis": "RubricBench, a curated benchmark featuring human-annotated, instruction-derived, atomic rubrics, reveals a substantial 'Rubric Gap' in state-of-the-art LLMs, demonstrating that models struggle to autonomously specify valid evaluation criteria and thus bottleneck rubric-guided evaluation at the rubric formation stage rather than execution.",
+  "title": "RubricBench: Aligning Model-Generated Rubrics with Human Standards",
+  "url": "https://arxiv.org/abs/arXiv:2603.01562",
+  "venue": "N/A",
+  "year": "2026"
+}

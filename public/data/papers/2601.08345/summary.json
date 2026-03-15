@@ -1,0 +1,317 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 175,
+      "xmin": 255,
+      "ymax": 342,
+      "xmax": 747
+    },
+    "caption": "Figure 2: MLPlatt model structure. The context vector $x_{ctx}$ is processed through the context model to produce an embedding. The embedding is concatenated with the ranker score, which is then passed to the MonoMLP model.",
+    "pageIndex": 6
+  },
+  "authors": "Piotr Bajger, Roman Dusek, Krzysztof Galias, Pawel Mlynicek, Aleksander Wawer, and Pawel Zawistowski",
+  "breakthroughAssessment": {
+    "score": 7,
+    "justification": "This paper presents a strong contribution to the field of ranking model calibration, particularly in e-commerce. The key novelty lies in the context-aware and monotonic Multi-Layer Platt architecture, which significantly improves calibration quality (F-ECE, LogLoss) while preserving ranking order and even boosting ranking performance (AUC). The ability to convert uncalibrated ranker scores into interpretable CTR probabilities, leveraging granular contextual features, is highly valuable for real-world applications (e.g., ad ranking, bidding strategies). The method is robust and demonstrated superior performance on large-scale datasets compared to several state-of-the-art baselines. It addresses a practical and important problem, providing a clear path to integrate rankers into probabilistic decision-making pipelines."
+  },
+  "coreProblem": {
+    "statement": "Ranking models often suffer from poor interpretability and non-scale calibration, especially when utilizing ranking loss functions that prioritize order over absolute probability. This limits their applicability for post-hoc calibration and direct probabilistic interpretation, which are crucial for many real-world applications.",
+    "whyItMatters": [
+      "Uncalibrated ranker outputs are intrinsically uninterpretable as true probabilities, hindering their use in decision-making.",
+      "Many downstream tasks, such as ad ranking, bid strategies, and engagement prediction, require accurate probabilistic outputs.",
+      "The lack of calibration often necessitates separate Click-Through Rate (CTR) estimators, increasing system complexity and potential inconsistencies.",
+      "Probabilistic interpretations are essential for transparent and consistent integration of diverse signals (e.g., relevance, sponsored content) to balance user experience and platform revenue."
+    ],
+    "concreteExample": "In e-commerce, a ranking model might output scores that accurately order items, but these scores don't directly represent click probabilities. This makes it challenging to use them effectively for downstream tasks like bid optimization in ad ranking or comparing the value of sponsored versus organic search results, where true probabilities are required."
+  },
+  "evaluationHighlights": [
+    "MLPlatt achieved over a 10x reduction in Field-level Expected Calibration Error (F-ECE) on the proprietary Allegro dataset (0.0277 to 0.0021), demonstrating significant improvement in calibration quality.",
+    "The method consistently outperformed state-of-the-art post-hoc calibration techniques (Platt Scaling, Isotonic Regression, ConfCalib, DESC) across two large-scale e-commerce datasets (Allegro and AliExpress) in terms of F-ECE and LogLoss.",
+    "MLPlatt improved Area Under the Curve (AUC) by ~12% on Allegro and ~1% on AliExpress, showing that calibration can be achieved without harming, and even improving, ranking performance.",
+    "The monotonicity constraint successfully preserved the original ranking order, ensuring that calibration does not negatively impact the relative ordering of items.",
+    "Ablation studies confirmed the crucial role of both the Context Model and the Monotonic Multi-Layer Perceptron (MonoMLP) components for achieving high-quality context-aware calibration."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Platt Scaling [19]",
+        "Smoothed Isotonic Regression [4]",
+        "ConfCalib [25]",
+        "DESC [23]",
+        "Regression-Compatible Ranking Loss (RCR) [1]"
+      ],
+      "metrics": [
+        "Field-level Expected Calibration Error (F-ECE)",
+        "LogLoss",
+        "Normalized Discounted Cumulative Gain (NDCG)",
+        "Area Under the ROC Curve (AUC)"
+      ],
+      "setting": "Experiments were conducted in an e-commerce context, utilizing both a proprietary dataset (Allegro) with 200M listings and a publicly available dataset (AliExpress) with 5M listings. The evaluation focused on high-quality calibration globally and within strata corresponding to device type and country."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 186,
+          "xmin": 218,
+          "ymax": 305,
+          "xmax": 786
+        },
+        "caption": "Table 2: Calibration and ranking metrics for different calibration methods on the Allegro dataset. Best values are marked with boldface. Statistically significant difference (compared to MLPlatt) with p-value smaller than 0.01 is denoted with an asterisk.",
+        "pageIndex": 11
+      },
+      {
+        "boundingBox": {
+          "ymin": 510,
+          "xmin": 218,
+          "ymax": 629,
+          "xmax": 787
+        },
+        "caption": "Table 3: Calibration and ranking metrics for different calibration methods on the AliExpress dataset. Best values are marked with boldface. Statistically significant difference (compared to MLPlatt) with p-value smaller than 0.01 is denoted with an asterisk.",
+        "pageIndex": 12
+      },
+      {
+        "boundingBox": {
+          "ymin": 812,
+          "xmin": 345,
+          "ymax": 893,
+          "xmax": 660
+        },
+        "caption": "Table 4: Fraction of listings whose order is affected by MLPlatt calibration model depending on the monotonicity penalty $\\theta$ in the loss function.",
+        "pageIndex": 12
+      },
+      {
+        "boundingBox": {
+          "ymin": 753,
+          "xmin": 310,
+          "ymax": 847,
+          "xmax": 695
+        },
+        "caption": "Table 5: Influence of components of MLPlatt on the calibration and ranking metrics. Best results are marked with boldface.",
+        "pageIndex": 13
+      },
+      {
+        "boundingBox": {
+          "ymin": 175,
+          "xmin": 218,
+          "ymax": 302,
+          "xmax": 786
+        },
+        "caption": "Table 6: Comparison of LambdaLoss + MLPlatt and Regression-Compatible Ranking Loss (RCR) [1] calibrated rankers. Higher $\\alpha$ means more focus on ranking objective in the RCR loss. Best values are marked with bold-face. Statistically significant differences with respect to MLPlatt with p-value smaller than 0.01 are marked with asterisk.",
+        "pageIndex": 14
+      }
+    ],
+    "keyResults": [
+      {
+        "baseline": "Platt [19]",
+        "benchmark": "Allegro",
+        "delta": "0.0256 (92.4%) improvement",
+        "isPositive": true,
+        "metric": "F-ECE",
+        "thisPaper": "0.0021"
+      },
+      {
+        "baseline": "Platt [19]",
+        "benchmark": "Allegro",
+        "delta": "0.0074 (2.5%) improvement",
+        "isPositive": true,
+        "metric": "LogLoss",
+        "thisPaper": "0.2896"
+      },
+      {
+        "baseline": "Platt [19]",
+        "benchmark": "Allegro",
+        "delta": "0.0679 (11.9%) improvement",
+        "isPositive": true,
+        "metric": "AUC",
+        "thisPaper": "0.6350"
+      },
+      {
+        "baseline": "Platt [19]",
+        "benchmark": "AliExpress",
+        "delta": "0.0028 (50%) improvement",
+        "isPositive": true,
+        "metric": "F-ECE",
+        "thisPaper": "0.0028"
+      },
+      {
+        "baseline": "Platt [19]",
+        "benchmark": "AliExpress",
+        "delta": "0.0001 (0.03%) improvement",
+        "isPositive": true,
+        "metric": "LogLoss",
+        "thisPaper": "0.3043"
+      },
+      {
+        "baseline": "Platt [19]",
+        "benchmark": "AliExpress",
+        "delta": "0.0071 (1.1%) improvement",
+        "isPositive": true,
+        "metric": "AUC",
+        "thisPaper": "0.6480"
+      }
+    ],
+    "mainTakeaways": [
+      "MLPlatt consistently achieves state-of-the-art calibration performance, significantly outperforming other post-hoc calibration methods in terms of F-ECE and LogLoss across diverse e-commerce datasets.",
+      "The method successfully ensures high-quality calibration both globally and within specific contextual fields (e.g., device, country), demonstrating its effectiveness in real-world scenarios.",
+      "Calibration via MLPlatt not only preserves the original ranking order but often leads to improvements in ranking metrics like AUC, indicating that well-calibrated probabilities can enhance overall model performance.",
+      "The integration of contextual features via the Context Model is critical for achieving superior calibration quality, as evidenced by ablation studies.",
+      "MLPlatt offers a robust solution for making outputs of rankers trained with ranking-specific losses (e.g., LambdaLoss) interpretable as CTR probabilities, overcoming a common limitation of such models."
+    ],
+    "keyResultGroups": []
+  },
+  "institutions": "Allegro sp. z o.o., Institute of Computer Science, Polish Academy of Sciences, Warsaw University of Technology",
+  "keyNovelty": {
+    "main": "A context-aware and monotonic calibration framework (MLPlatt) for converting uncalibrated ranking model scores into interpretable Click-Through Rate (CTR) probabilities, while preserving the original ranking order.",
+    "explanation": [
+      "MLPlatt introduces a Multi-Layer Platt architecture that transforms raw, uncalibrated ranker scores into well-calibrated Click-Through Rate (CTR) probabilities.",
+      "A key innovation is the integration of listing-level contextual features ($x_{ctx}$) into the calibration process. This 'context awareness' allows MLPlatt to perform field-level calibration, ensuring accurate probabilities across different user-device-country strata, which traditional post-hoc methods often fail to achieve.",
+      "The framework includes a novel monotonicity constraint that ensures the calibrated output ($c$) is monotonically increasing with respect to the original ranker score ($r$). This guarantees that the original ranking order is preserved while providing interpretable probabilities.",
+      "It is designed to be lightweight and easily integrable into existing ranking pipelines, acting as a post-hoc calibration layer without significantly increasing latency."
+    ]
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "Machine learning models designed to order a list of items based on their relevance or expected user engagement, commonly used in search engines and recommendation systems.",
+        "term": "Ranking models"
+      },
+      {
+        "definition": "The process of adjusting model predictions so that they accurately reflect true probabilities. For example, if a model predicts a 70% chance of an event, the event should occur 70% of the time in expectation.",
+        "term": "Calibration"
+      },
+      {
+        "definition": "The ratio of users who click on a specific link or advertisement to the total number of users who view it, serving as a measure of engagement.",
+        "term": "Click-Through Rate (CTR)"
+      },
+      {
+        "definition": "A technique that involves applying a calibration method after a model has been fully trained and its predictions have been generated.",
+        "term": "Post-hoc calibration"
+      },
+      {
+        "definition": "A condition in a mathematical function or model that ensures if an input increases, its output either increases or stays the same, thereby preserving the relative order of inputs.",
+        "term": "Monotonicity constraint"
+      },
+      {
+        "definition": "A metric used to quantify the calibration quality of a model, specifically designed to account for different subsets or 'fields' of data (e.g., device, country, user demographics) to ensure accuracy across these varying contexts.",
+        "term": "Field-level Expected Calibration Error (F-ECE)"
+      },
+      {
+        "definition": "A common evaluation metric in information retrieval and ranking that measures the ranking quality by giving higher importance to relevant items that appear at higher positions in the ranked list.",
+        "term": "Normalized Discounted Cumulative Gain (NDCG)"
+      }
+    ],
+    "prerequisites": [
+      "Machine Learning (specifically deep learning fundamentals)",
+      "Information Retrieval (IR) systems and ranking algorithms",
+      "Understanding of Click-Through Rate (CTR) prediction models",
+      "Knowledge of common loss functions in machine learning (e.g., Binary Cross-Entropy)",
+      "Familiarity with basic calibration techniques like Platt Scaling or Isotonic Regression"
+    ]
+  },
+  "subTopics": [
+    "Ranking Models",
+    "Calibration",
+    "Click-Through Rate Prediction",
+    "E-commerce Search and Recommendation",
+    "Deep Learning for Ranking",
+    "Probabilistic Modeling"
+  ],
+  "tags": [
+    {
+      "name": "Ranking Model Calibration",
+      "type": "primary"
+    },
+    {
+      "name": "E-commerce",
+      "type": "topic"
+    },
+    {
+      "name": "CTR Prediction",
+      "type": "topic"
+    },
+    {
+      "name": "Machine Learning",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike traditional post-hoc calibration methods (e.g., Platt Scaling, Isotonic Regression) that only consider the raw ranker score, MLPlatt incorporates listing-level contextual features ($x_{ctx}$), enabling granular, context-aware (field-level) calibration.",
+      "Existing multi-field calibration methods like DESC and ConfCalib are typically more complex or do not achieve the same level of performance across both calibration and ranking metrics as MLPlatt.",
+      "MLPlatt addresses the challenge of uncalibrated outputs from rankers trained with ranking-specific losses (e.g., LambdaLoss) by converting them into interpretable probabilities while preserving rank order, which RCR-trained rankers struggle with in terms of calibration.",
+      "The proposed framework is designed to be lightweight and can be easily integrated into existing ranking pipelines as a post-hoc calibration layer, minimizing computational overhead compared to retraining complex ranking models."
+    ],
+    "limitations": [
+      "The method relies on a pre-trained backbone ranker, meaning its overall performance is inherently dependent on the quality of this underlying ranker.",
+      "The effectiveness of context-aware calibration depends on the availability and richness of contextual features during both training and inference.",
+      "The two-stage training procedure (first ranker, then calibrator) might add complexity compared to end-to-end learning approaches, though it offers flexibility."
+    ],
+    "modeling": [
+      {
+        "label": "Input Features",
+        "list": [
+          "$x_{item}$: Multidimensional feature vector describing intrinsic properties of an item (e.g., product name, price, brand, categories).",
+          "$x_{ctx}$: Query-level or user-level contextual features (e.g., search phrase, user age, device type, country)."
+        ],
+        "value": "An item is represented by $x_{item}$, and the ranking context by $x_{ctx}$."
+      },
+      {
+        "label": "Ranker Model",
+        "value": "A pre-trained ranker model $f(x_{ctx}, x_{item})$ produces an uncalibrated ranking score $r$. The paper notes that this ranker can be trained with ranking-specific loss functions like LambdaLoss."
+      },
+      {
+        "label": "Calibration Function Objective",
+        "value": "The goal is to learn a calibration function $c = g(r, x_{ctx})$ that transforms the uncalibrated ranker score $r$ and contextual features $x_{ctx}$ into a calibrated click probability $c$. This function $g$ must be monotonically increasing with respect to $r$ to preserve the original ranking order."
+      }
+    ],
+    "pipelineFlow": [
+      "**Stage 1: Ranker Training** A backbone ranker model is initially trained using a ranking-specific loss function (e.g., LambdaLoss) on the entire dataset to optimize ranking performance.",
+      "**Stage 2: MLPlatt Calibration Model Training** The MLPlatt model is trained using a two-step procedure on the same dataset. For each query-item pair, the uncalibrated ranker score ($r'$) from the trained ranker and the contextual features ($x_{ctx}$) are recorded, along with the true target click labels ($c_{true}$).",
+      "**MLPlatt Forward Pass** The context vector $x_{ctx}$ is first processed by a 'Context Model' to produce an embedding. The ranker score $r$ is then concatenated with this context embedding. This concatenated vector is fed into a 'MonoMLP' (Monotonic Multi-Layer Perceptron).",
+      "**Loss Function Application** The MonoMLP is trained using a composite loss function: $L_{Calib}(c_{true}, c, d; \\theta) = L_{BCE}(c_{true}, c) + \\theta L_{Mono}(d)$. Here, $L_{BCE}$ is the Binary Cross-Entropy loss for calibration, and $L_{Mono}(d)$ is a penalty term that enforces monotonicity with respect to the ranker score $r$, weighted by $\\theta$.",
+      "**Output Generation** The final layer of the MonoMLP applies a sigmoid activation function, outputting the calibrated probability of click $c$. This calibrated score $c$ can then be used in downstream applications requiring interpretable probabilities."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Input",
+        "value": "Uncalibrated ranker score $r$ for an item and a given context, and a set of contextual features $x_{ctx}$."
+      },
+      {
+        "label": "Output",
+        "value": "A calibrated click probability $c \\in [0, 1]$ such that $c$ accurately reflects the true probability of click, and $c$ is monotonically increasing with respect to $r$."
+      },
+      {
+        "label": "Goal",
+        "value": "To learn a function $g(r, x_{ctx}) = c$ that performs post-hoc calibration of ranker outputs into CTR probabilities, preserves the original ranking order, and supports field-level calibration based on context."
+      }
+    ],
+    "reproducibility": "The paper provides detailed descriptions of the MLPlatt architecture, training procedure, loss functions, and evaluation metrics. It specifies the proprietary Allegro dataset and the public AliExpress dataset used, along with their characteristics. Hyperparameters for the models and experimental setup for baselines are outlined. While no explicit code repository is mentioned, the methodology is described with sufficient detail to enable replication by researchers with appropriate resources and access to similar e-commerce datasets.",
+    "systemModules": [
+      {
+        "details": "Takes $x_{item}$ (item features) and $x_{ctx}$ (context features) as input and outputs an uncalibrated ranking score $r$. This module is typically pre-trained using ranking-specific loss functions (e.g., LambdaLoss) to optimize item ordering.",
+        "name": "Ranker",
+        "role": "Generates the initial uncalibrated score that needs to be calibrated."
+      },
+      {
+        "details": "Processes the context vector $x_{ctx}$ to generate an embedding. For simplicity, in the AliExpress dataset, this module was an identity layer as $x_{ctx}$ had fewer dimensions. For the Allegro dataset, it was a multi-layer perceptron (MLP) with specific layer sizes.",
+        "name": "Context Model",
+        "role": "Learns to extract and embed contextual information, allowing the calibration model to differentiate average CTRs across various contexts (e.g., devices, countries)."
+      },
+      {
+        "details": "Concatenates the uncalibrated ranker score $r$ with the embedding produced by the Context Model. This combined vector serves as the input to the MonoMLP.",
+        "name": "Concatenation Layer",
+        "role": "Merges the ranker's relevance signal with contextual information for unified processing by the main calibration network."
+      },
+      {
+        "details": "A Multi-Layer Perceptron architecture where the weights are constrained during training to ensure that the output is monotonically increasing with respect to the ranker score input. The final layer uses a sigmoid activation to output probabilities.",
+        "name": "MonoMLP (Monotonic Multi-Layer Perceptron)",
+        "role": "Transforms the concatenated input into a calibrated probability of click, while strictly preserving the original ranking order due to its monotonicity constraint."
+      }
+    ]
+  },
+  "thesis": "This paper proposes MLPlatt, a simple yet effective context-aware calibration framework for ranking models, which transforms uncalibrated ranker outputs into interpretable and well-calibrated Click-Through Rate (CTR) probabilities while preserving the original item ordering.",
+  "title": "MLPlatt: Simple Calibration Framework for Ranking Models",
+  "url": "N/A",
+  "venue": "N/A",
+  "year": "2023"
+}

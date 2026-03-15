@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reasoning Models Struggle to Control their Chains of Thought</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Reasoning Models Struggle to Control their Chains of Thought</h1>
+      <p class="meta"><strong>Authors:</strong> Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2603.05706" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2603.05706</a></p>
+      <p class="muted">Generated summary artifact for 2603.05706</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>While Chain-of-Thought (CoT) monitoring is a promising tool for detecting misbehaviors in LLMs, its effectiveness could be undermined if models learn to control their CoT to evade detection. This paper proposes the CoT-Control evaluation suite to measure this &#39;CoT controllability&#39; and finds that current reasoning models generally exhibit low controllability, which is a positive sign for monitorability, but this capability can be influenced by factors like model scale, reasoning effort, and RL training, suggesting a need for frontier labs to actively track and understand these dynamics.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Chain-of-thought (CoT) monitoring is a promising approach for detecting misbehaviors and understanding the internal reasoning of large language models. However, this approach is vulnerable if models gain the ability to strategically control or &#39;obfuscate&#39; their CoT to evade detection, thereby undermining oversight mechanisms.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>Introduction of CoT-Control, a novel evaluation suite and metric for measuring the &#39;CoT controllability&#39; of reasoning models, assessing their ability to strategically modify or suppress their Chain-of-Thought to evade monitoring.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Reasoning models consistently demonstrate significantly lower CoT controllability compared to their ability to control final outputs (e.g., Claude Sonnet 4.5: 2.7% CoT controllability vs. 61.9% output controllability).</li><li>CoT controllability tends to increase with model parameter size in open-weight models (e.g., GPT-OSS 120B achieved +6.4% higher CoT controllability than GPT-OSS 20B).</li><li>Increased reasoning effort (longer CoT traces) and more outcome-based Reinforcement Learning (RL) training significantly reduce CoT controllability (e.g., OLMo-3-Think 7B&#39;s CoT controllability dropped by 9.5% after RL training).</li><li>Situational awareness (telling models they are being monitored or evaluated) can slightly increase CoT controllability by up to 4 percentage points, but prompt optimization via automated red-teaming does not reliably generalize to unseen instruction types.</li><li>Iterative refinement using AI feedback substantially increases CoT controllability (e.g., GPT-OSS 120B showed a +44.0% gain in controllability score after iterations).</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Reasoning models generally exhibit low CoT controllability, especially when compared to their output controllability, which is a positive indicator for CoT monitorability.</li><li>Model scale is positively correlated with CoT controllability in open-weight models, suggesting larger models might be more controllable, while increased reasoning effort and RL training on reasoning tasks decrease it.</li><li>While situational awareness can slightly boost CoT controllability, current adversarial prompt optimization methods are ineffective at reliably increasing generalizable CoT control.</li><li>The task performance drop is most significant for &#39;Information Suppression&#39; type of CoT control, indicating a trade-off between control and utility.</li><li>The ability to iteratively refine CoT compliance via AI feedback significantly enhances controllability, highlighting a potential pathway for improving controllable CoT in models.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The CoT-Control tasks serve as practical proxies and do not perfectly simulate ideal adversarial settings where models spontaneously pursue misaligned goals and actively try to evade monitors.</li><li>The study primarily focuses on prompting-based elicitation of CoT controllability, potentially missing other avenues like varying amounts of RL or supervised finetuning that could increase controllability.</li><li>Models demonstrate better control over certain features of their CoT than others, indicating that the evaluated breadth of control types might be limited.</li><li>The mechanism behind low CoT controllability is not fully understood, highlighting a need for further research into its causes and implications.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {},
+  &quot;authors&quot;: &quot;Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper introduces a novel and critical evaluation suite, CoT-Control, to measure reasoning models&#39; ability to control their Chain-of-Thought (CoT) to evade monitoring. This directly addresses a significant AI safety concern about monitorability. The systematic analysis of factors influencing CoT controllability (e.g., model scale, reasoning effort, RL training) provides valuable insights and tools for the AI safety and interpretability communities. While not a paradigm shift, it is a strong contribution that defines a new evaluation methodology and provides actionable recommendations for frontier labs.&quot;,
+    &quot;score&quot;: 6
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;A reasoning model tasked with answering a genetics question might be instructed to avoid using the word &#39;chromosome&#39; in its internal reasoning. If the model can successfully and reliably follow this instruction without mentioning the forbidden word, it demonstrates CoT controllability, which could be exploited for monitor evasion.&quot;,
+    &quot;statement&quot;: &quot;Chain-of-thought (CoT) monitoring is a promising approach for detecting misbehaviors and understanding the internal reasoning of large language models. However, this approach is vulnerable if models gain the ability to strategically control or &#39;obfuscate&#39; their CoT to evade detection, thereby undermining oversight mechanisms.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;CoT monitoring is considered a crucial tool for AI safety, enabling detection of malicious intent, plans, and precursors of misbehavior in advanced AI systems.&quot;,
+      &quot;If models can control their CoT, it erodes the reliability of CoT as a signal for external oversight mechanisms, making it difficult to assess model alignment and safety.&quot;,
+      &quot;This capability, termed CoT controllability, represents a critical failure pathway that could lead to deploying misaligned AI agents without adequate monitoring.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Reasoning models consistently demonstrate significantly lower CoT controllability compared to their ability to control final outputs (e.g., Claude Sonnet 4.5: 2.7% CoT controllability vs. 61.9% output controllability).&quot;,
+    &quot;CoT controllability tends to increase with model parameter size in open-weight models (e.g., GPT-OSS 120B achieved +6.4% higher CoT controllability than GPT-OSS 20B).&quot;,
+    &quot;Increased reasoning effort (longer CoT traces) and more outcome-based Reinforcement Learning (RL) training significantly reduce CoT controllability (e.g., OLMo-3-Think 7B&#39;s CoT controllability dropped by 9.5% after RL training).&quot;,
+    &quot;Situational awareness (telling models they are being monitored or evaluated) can slightly increase CoT controllability by up to 4 percentage points, but prompt optimization via automated red-teaming does not reliably generalize to unseen instruction types.&quot;,
+    &quot;Iterative refinement using AI feedback substantially increases CoT controllability (e.g., GPT-OSS 120B showed a +44.0% gain in controllability score after iterations).&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;GPQA&quot;,
+        &quot;MMLU-Pro&quot;,
+        &quot;Humanity&#39;s Last Exam (HLE)&quot;,
+        &quot;BFCL&quot;,
+        &quot;SWE-Bench Verified&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Controllability Score&quot;,
+        &quot;Meta Discussion Rate&quot;,
+        &quot;Controllability Score without Meta-Discussion&quot;,
+        &quot;Performance Drop (pp)&quot;
+      ],
+      &quot;setting&quot;: &quot;Evaluation of CoT controllability across 13 frontier LLMs (e.g., Claude, GPT-5, Qwen3, Deepseek R1) and several open-source reasoning models (e.g., OLMo-3-RL-Zero, Magistral-Medium, OpenThinker) using the CoT-Control evaluation suite.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 75,
+          &quot;xmin&quot;: 160,
+          &quot;ymax&quot;: 236,
+          &quot;xmax&quot;: 820
+        },
+        &quot;caption&quot;: &quot;Reasoning models struggle to control their CoT compared to controlling their output. Lower CoT controllability is associated with higher monitorability and, therefore, higher safety. Note that is confounded by length as seen in (c).&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 279,
+          &quot;xmin&quot;: 172,
+          &quot;ymax&quot;: 337,
+          &quot;xmax&quot;: 403
+        },
+        &quot;caption&quot;: &quot;CoT controllability increases with parameter count in open-weight models.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 278,
+          &quot;xmin&quot;: 615,
+          &quot;ymax&quot;: 337,
+          &quot;xmax&quot;: 820
+        },
+        &quot;caption&quot;: &quot;CoT controllability decreases as the amount of RL from verifiable rewards (RLVR) training increases.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 201,
+          &quot;xmin&quot;: 247,
+          &quot;ymax&quot;: 341,
+          &quot;xmax&quot;: 753
+        },
+        &quot;caption&quot;: &quot;Task performance drops most under successful suppression, but changes little under additions or stylistic edits. Results only include examples that models manage to control their CoT; drops are baseline minus compliant.&quot;,
+        &quot;figureNumber&quot;: 5,
+        &quot;pageIndex&quot;: 5
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 442,
+          &quot;xmin&quot;: 153,
+          &quot;ymax&quot;: 609,
+          &quot;xmax&quot;: 846
+        },
+        &quot;caption&quot;: &quot;Situational awareness has a small but non-trivial effect on CoT controllability. Each (controllability type, dataset) pair includes 150 examples; each model has 4,050 total. Monitor Awareness refers to settings where we inform models that their CoT are being monitored. Eval Awareness denotes settings where we inform models that they are being evaluated for CoT controllability.&quot;,
+        &quot;figureNumber&quot;: 6,
+        &quot;pageIndex&quot;: 6
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 115,
+          &quot;xmin&quot;: 350,
+          &quot;ymax&quot;: 257,
+          &quot;xmax&quot;: 752
+        },
+        &quot;caption&quot;: &quot;CoT controllability decreases as reasoning effort increases.&quot;,
+        &quot;figureNumber&quot;: 9,
+        &quot;pageIndex&quot;: 8
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 76,
+          &quot;xmin&quot;: 338,
+          &quot;ymax&quot;: 219,
+          &quot;xmax&quot;: 706
+        },
+        &quot;caption&quot;: &quot;CoT controllability decreases at a different rate for different RL training data. Each color represents a model trained on the correspond- ing data. The CoT controllability of the model trained on \&quot;General\&quot; (chat data) tends to decrease more slowly than that of models trained on coding and math.&quot;,
+        &quot;figureNumber&quot;: 10,
+        &quot;pageIndex&quot;: 9
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 88,
+          &quot;xmin&quot;: 177,
+          &quot;ymax&quot;: 249,
+          &quot;xmax&quot;: 823
+        },
+        &quot;caption&quot;: &quot;Iterative refinement via AI feedback substantially increases CoT compliance. We compare the average compliance rate at iteration 0 (baseline) versus after up to 10 IRPAIF iterations, where each failed attempt is followed by GPT-5-mini feedback that is appended to the next prompt. Results are averaged over 25 questions sampled from each CoT-Control dataset; error bars show standard errors. Gains are largest for GPT-OSS and Qwen3, while newer Claude models (especially Sonnet 4.5) improve less.&quot;,
+        &quot;figureNumber&quot;: 12,
+        &quot;pageIndex&quot;: 21
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 395,
+          &quot;xmin&quot;: 182,
+          &quot;ymax&quot;: 508,
+          &quot;xmax&quot;: 818
+        },
+        &quot;caption&quot;: &quot;OLMo-3–Think models show significantly lower CoT controllability after reasoning training across SFT, DPO, and RL stages. Notably, for the 32B model, SFT disrupts model behaviors, leading to a sudden drop in controllability. During subsequent DPO and RL stages, CoT controllability partially recovers but remains substantially lower than pre-training levels, as RL pressure inherently reduces the original level of CoT controllability. However, the specific impact of training stages prior to RL remains inconclusive, which we leave for future work to explore.&quot;,
+        &quot;figureNumber&quot;: 15,
+        &quot;pageIndex&quot;: 23
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 72,
+          &quot;xmin&quot;: 167,
+          &quot;ymax&quot;: 276,
+          &quot;xmax&quot;: 829
+        },
+        &quot;caption&quot;: &quot;Most open-source models show significantly lower CoT controllability after reasoning training.&quot;,
+        &quot;figureNumber&quot;: 16,
+        &quot;pageIndex&quot;: 24
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;61.9% (Output)&quot;,
+            &quot;benchmark&quot;: &quot;Claude Sonnet 4.5&quot;,
+            &quot;delta&quot;: &quot;-59.2%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;2.7% (CoT)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;69.3% (Output)&quot;,
+            &quot;benchmark&quot;: &quot;GPT-OSS 120B&quot;,
+            &quot;delta&quot;: &quot;-63.3%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;6.0% (CoT)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;48.6% (Output)&quot;,
+            &quot;benchmark&quot;: &quot;Deepseek R1&quot;,
+            &quot;delta&quot;: &quot;-48.5%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;0.1% (CoT)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;CoT vs. Output Controllability (Figure 1a)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.7% (14B)&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3&quot;,
+            &quot;delta&quot;: &quot;+2.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;2.9% (32B)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1.2% (20B)&quot;,
+            &quot;benchmark&quot;: &quot;GPT-OSS&quot;,
+            &quot;delta&quot;: &quot;+6.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;7.6% (120B)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Impact of Model Scale (Figure 1b)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;10.6% (Base (standard))&quot;,
+            &quot;benchmark&quot;: &quot;OLMo-3-Think 7B&quot;,
+            &quot;delta&quot;: &quot;-9.5%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;1.1% (RL)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;13.1% (Base (standard))&quot;,
+            &quot;benchmark&quot;: &quot;OLMo-3-Think 32B&quot;,
+            &quot;delta&quot;: &quot;-10.5%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;2.6% (RL)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;79.7% (Before RL training)&quot;,
+            &quot;benchmark&quot;: &quot;Magistral Medium&quot;,
+            &quot;delta&quot;: &quot;-58.9%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;20.8% (After RL training)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;31.4% (Before RL training)&quot;,
+            &quot;benchmark&quot;: &quot;OpenThinker 7B&quot;,
+            &quot;delta&quot;: &quot;-30.7%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;0.7% (After RL training)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Impact of Outcome-Based RL Training (Figures 1d, 15, 16)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.6 pp (Stylistic Modification - Claude Sonnet 4.5)&quot;,
+            &quot;benchmark&quot;: &quot;Information Suppression (GPT-OSS 120B)&quot;,
+            &quot;delta&quot;: &quot;+16.1 pp&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Performance Drop (pp)&quot;,
+            &quot;thisPaper&quot;: &quot;16.7 pp&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.6 pp (Stylistic Modification - Claude Sonnet 4.5)&quot;,
+            &quot;benchmark&quot;: &quot;Information Suppression (GPT-5.1)&quot;,
+            &quot;delta&quot;: &quot;+16.0 pp&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Performance Drop (pp)&quot;,
+            &quot;thisPaper&quot;: &quot;16.6 pp&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.6 pp (Stylistic Modification - Claude Sonnet 4.5)&quot;,
+            &quot;benchmark&quot;: &quot;Information Addition (Claude 3.7 Sonnet)&quot;,
+            &quot;delta&quot;: &quot;+6.6 pp&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Performance Drop (pp)&quot;,
+            &quot;thisPaper&quot;: &quot;7.2 pp&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Task Performance Drop due to CoT Control Type (Figure 5)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;35.6% (Baseline)&quot;,
+            &quot;benchmark&quot;: &quot;Claude 3.7 Sonnet&quot;,
+            &quot;delta&quot;: &quot;+2.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;38.0% (Monitor Awareness)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;5.4% (Baseline)&quot;,
+            &quot;benchmark&quot;: &quot;GPT-OSS-120B&quot;,
+            &quot;delta&quot;: &quot;+3.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;8.6% (Eval Awareness)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;2.8% (Baseline)&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-32B&quot;,
+            &quot;delta&quot;: &quot;+1.6%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;4.4% (Monitor Awareness)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Impact of Situational Awareness (Figure 6)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;29.9% (Low effort)&quot;,
+            &quot;benchmark&quot;: &quot;GPT-OSS 120B&quot;,
+            &quot;delta&quot;: &quot;-28.6%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;1.3% (Extra High effort)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;19.9% (Low effort)&quot;,
+            &quot;benchmark&quot;: &quot;GPT-OSS 20B&quot;,
+            &quot;delta&quot;: &quot;-19.4%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;0.5% (Extra High effort)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Impact of Reasoning Effort (Figure 9)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;10.1% (Iteration 0)&quot;,
+            &quot;benchmark&quot;: &quot;GPT-OSS 120B&quot;,
+            &quot;delta&quot;: &quot;+44.0%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;54.1% (After All Iterations)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;8.9% (Iteration 0)&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3 32B&quot;,
+            &quot;delta&quot;: &quot;+31.1%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;40.0% (After All Iterations)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;38.8% (Iteration 0)&quot;,
+            &quot;benchmark&quot;: &quot;Claude 3.7 Sonnet&quot;,
+            &quot;delta&quot;: &quot;+29.8%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;CoT Controllability Score (%)&quot;,
+            &quot;thisPaper&quot;: &quot;68.6% (After All Iterations)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Elicitability via Iterative Refinement (Figure 12)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Reasoning models generally exhibit low CoT controllability, especially when compared to their output controllability, which is a positive indicator for CoT monitorability.&quot;,
+      &quot;Model scale is positively correlated with CoT controllability in open-weight models, suggesting larger models might be more controllable, while increased reasoning effort and RL training on reasoning tasks decrease it.&quot;,
+      &quot;While situational awareness can slightly boost CoT controllability, current adversarial prompt optimization methods are ineffective at reliably increasing generalizable CoT control.&quot;,
+      &quot;The task performance drop is most significant for &#39;Information Suppression&#39; type of CoT control, indicating a trade-off between control and utility.&quot;,
+      &quot;The ability to iteratively refine CoT compliance via AI feedback significantly enhances controllability, highlighting a potential pathway for improving controllable CoT in models.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;NYU, MATS, UCL, UPenn, OpenAI&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;The paper introduces CoT-Control, a novel evaluation suite comprising 14,076 problem instances drawn from diverse LLM benchmarks (GPQA, MMLU-Pro, HLE, BFCL, SWE-Bench Verified).&quot;,
+      &quot;It defines &#39;CoT controllability&#39; as the model&#39;s ability to reliably adhere to instructions for modifying its Chain-of-Thought while keeping the task objective fixed, effectively measuring its propensity to evade monitoring.&quot;,
+      &quot;The suite operationalizes three evasion-relevant controllability types: Information Suppression, Information Addition, and Stylistic Modification, each with varying difficulty levels, and employs programmatic graders and sanity checks for robust evaluation.&quot;,
+      &quot;The work systematically investigates the factors that influence CoT controllability, including model scale, reasoning effort, RL training, situational awareness, task difficulty, and reasoning length, providing a comprehensive analysis of this emerging AI safety risk.&quot;
+    ],
+    &quot;main&quot;: &quot;Introduction of CoT-Control, a novel evaluation suite and metric for measuring the &#39;CoT controllability&#39; of reasoning models, assessing their ability to strategically modify or suppress their Chain-of-Thought to evade monitoring.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A sequence of intermediate thoughts or reasoning steps generated by a large language model to arrive at a final answer.&quot;,
+        &quot;term&quot;: &quot;Chain-of-Thought (CoT)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The process of inspecting a large language model&#39;s Chain-of-Thought to detect misbehaviors, harmful intentions, or alignment failures.&quot;,
+        &quot;term&quot;: &quot;CoT Monitoring&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The ability of a reasoning model to reliably control or modify properties of its Chain-of-Thought in response to instructions, particularly in ways that could reduce its monitorability by external oversight mechanisms.&quot;,
+        &quot;term&quot;: &quot;CoT Controllability&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Familiarity with large language models (LLMs) and their reasoning capabilities.&quot;,
+      &quot;Understanding of prompt engineering and how instructions influence LLM behavior.&quot;,
+      &quot;Basic knowledge of AI safety and alignment concerns, particularly regarding LLM interpretability and transparency.&quot;,
+      &quot;Understanding of Reinforcement Learning (RL) principles as applied to LLM training and fine-tuning.&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;LLM safety&quot;,
+    &quot;Interpretability&quot;,
+    &quot;Prompt Engineering&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Factuality&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Prior work on Chain-of-Thought (CoT) monitoring often assumes robustness, whereas this paper introduces a measure (CoT controllability) to assess and quantify a key vulnerability that could undermine monitorability.&quot;,
+      &quot;While existing research explores how models might &#39;know&#39; they are being evaluated (situational awareness), this work specifically applies this to the context of actively controlling CoT content, showing a small but non-trivial effect.&quot;,
+      &quot;Unlike some previous work focusing on detecting misbehavior in CoT, this paper defines and measures the model&#39;s explicit ability to *control* its CoT content in response to instructions, rather than just observing spontaneous misbehavior.&quot;,
+      &quot;The paper provides a structured evaluation suite with concrete, programmatic checks, offering a more systematic approach to studying CoT manipulation compared to more ad-hoc observations.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The CoT-Control tasks serve as practical proxies and do not perfectly simulate ideal adversarial settings where models spontaneously pursue misaligned goals and actively try to evade monitors.&quot;,
+      &quot;The study primarily focuses on prompting-based elicitation of CoT controllability, potentially missing other avenues like varying amounts of RL or supervised finetuning that could increase controllability.&quot;,
+      &quot;Models demonstrate better control over certain features of their CoT than others, indicating that the evaluated breadth of control types might be limited.&quot;,
+      &quot;The mechanism behind low CoT controllability is not fully understood, highlighting a need for further research into its causes and implications.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Evaluated Models&quot;,
+        &quot;list&quot;: [
+          &quot;Claude 3.7 Sonnet (Anthropic)&quot;,
+          &quot;Claude Sonnet 4 (Anthropic)&quot;,
+          &quot;Claude Sonnet 4.5 (Anthropic)&quot;,
+          &quot;GPT-5.2 (OpenAI)&quot;,
+          &quot;GPT-5.1 (OpenAI)&quot;,
+          &quot;GPT-5 (OpenAI)&quot;,
+          &quot;o4-mini (OpenAI)&quot;,
+          &quot;o3 (OpenAI)&quot;,
+          &quot;GPT-OSS 120B (OpenAI)&quot;,
+          &quot;GPT-OSS 20B (OpenAI)&quot;,
+          &quot;Qwen3 32B (Team)&quot;,
+          &quot;Qwen3 14B (Team)&quot;,
+          &quot;DeepSeek R1 (DeepSeek-AI)&quot;
+        ]
+      },
+      {
+        &quot;label&quot;: &quot;Open-source Models for RL Impact&quot;,
+        &quot;list&quot;: [
+          &quot;OLMo-3-RL-Zero (Math, Code, General)&quot;,
+          &quot;OLMo-3-Think (7B, 32B)&quot;,
+          &quot;Magistral-Medium&quot;,
+          &quot;OpenThinker3-7B&quot;
+        ]
+      },
+      {
+        &quot;label&quot;: &quot;Baseline Methods&quot;,
+        &quot;list&quot;: [
+          &quot;Output controllability (controlling final response)&quot;,
+          &quot;External-CoT controllability (wrapping reasoning in tags and controlling it for reasoning models)&quot;,
+          &quot;External-CoT controllability (for non-reasoning models)&quot;
+        ]
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Task Selection: Questions are sourced from diverse LLM benchmarks (GPQA, MMLU-Pro, HLE, BFCL, SWE-Bench Verified), yielding 14,076 test instances.&quot;,
+      &quot;Instruction Appending: CoT controllability instructions are appended to each problem, typically in the user message, asking the model to modify its CoT while solving the problem.&quot;,
+      &quot;Controllability Types: Instructions fall into three categories: Information Suppression (e.g., keyword suppression), Information Addition (e.g., adding specific phrases), and Stylistic Modification (e.g., case changes), each with graded difficulty.&quot;,
+      &quot;Model Inference: Evaluated models generate their Chain-of-Thought and final answer under the given constraints.&quot;,
+      &quot;Scoring: Programmatic graders, tailored to each controllability type, evaluate whether the model&#39;s CoT successfully adheres to the instructions. Sanity checks distinguish true controllability failures from instruction misunderstanding.&quot;,
+      &quot;Metric Calculation: The primary metric is the Controllability Score, representing the percentage of successful CoT adherence. Secondary metrics include Meta Discussion Rate and Controllability Score without Meta-Discussion.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;CoT Controllability&quot;,
+        &quot;value&quot;: &quot;The ability of a reasoning model to reliably control properties of its Chain-of-Thought (CoT) in ways that reduce monitorability. It is estimated by providing models with instructions that keep the task objective fixed while steering the CoT with proxy instructions that simulate abilities connected to reducing monitorability.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;CoT-Control Evaluation Suite&quot;,
+        &quot;value&quot;: &quot;An evaluation suite that measures CoT controllability by pairing questions from diverse LLM benchmarks with CoT controllability instructions, yielding 14,076 test instances. It focuses on three evasion-relevant controllability types (Information Suppression, Information Addition, Stylistic Modification) with varying difficulty levels.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The authors publicly release the CoT-Control evaluation suite at https://github.com/YuehHanChen/CoTControl. They also include a canary string in the dataset to prevent models trained on it from being used to detect future CoT monitoring. Evaluation setups, metrics, and details on model checkpoints are provided in the appendices.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;The core component for measuring CoT controllability, comprising 14,076 problems from benchmarks like GPQA, MMLU-Pro, HLE, BFCL, and SWE-Bench Verified. Each problem is paired with a CoT controllability instruction.&quot;,
+        &quot;name&quot;: &quot;CoT-Control Evaluation Suite&quot;,
+        &quot;role&quot;: &quot;Central evaluation framework&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Three categories of instructions for modifying CoT: Information Suppression (e.g., forbidding keywords), Information Addition (e.g., adding specific phrases), and Stylistic Modification (e.g., enforcing casing). Each type has Easy, Medium, and Hard difficulty levels.&quot;,
+        &quot;name&quot;: &quot;CoT Controllability Instruction Types&quot;,
+        &quot;role&quot;: &quot;Define the types of CoT manipulation to be tested&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Automated tools designed to verify whether a model&#39;s generated Chain-of-Thought adheres to the specific controllability instructions, ensuring reliable and scalable grading.&quot;,
+        &quot;name&quot;: &quot;Programmatic Graders&quot;,
+        &quot;role&quot;: &quot;Automatic scoring of CoT compliance&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Multiple-choice questions designed to probe whether models understand the concept of a &#39;reasoning stage&#39; and recognize that they themselves possess one, helping to differentiate controllability failures from task misunderstanding.&quot;,
+        &quot;name&quot;: &quot;Sanity Checks (Instruction Understanding and Self-Awareness)&quot;,
+        &quot;role&quot;: &quot;Validate that observed failures are due to controllability limitations, not model confusion&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;While Chain-of-Thought (CoT) monitoring is a promising tool for detecting misbehaviors in LLMs, its effectiveness could be undermined if models learn to control their CoT to evade detection. This paper proposes the CoT-Control evaluation suite to measure this &#39;CoT controllability&#39; and finds that current reasoning models generally exhibit low controllability, which is a positive sign for monitorability, but this capability can be influenced by factors like model scale, reasoning effort, and RL training, suggesting a need for frontier labs to actively track and understand these dynamics.&quot;,
+  &quot;title&quot;: &quot;Reasoning Models Struggle to Control their Chains of Thought&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2603.05706&quot;,
+  &quot;venue&quot;: &quot;arXiv&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2603.05706&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2603.05706&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{},&quot;authors&quot;:&quot;Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper introduces a novel and critical evaluation suite, CoT-Control, to measure reasoning models&#39; ability to control their Chain-of-Thought (CoT) to evade monitoring. This directly addresses a significant AI safety concern about monitorability. The systematic analysis of factors influencing CoT controllability (e.g., model scale, reasoning effort, RL training) provides valuable insights and tools for the AI safety and interpretability communities. While not a paradigm shift, it is a strong contribution that defines a new evaluation methodology and provides actionable recommendations for frontier labs.&quot;,&quot;score&quot;:6},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;A reasoning model tasked with answering a genetics question might be instructed to avoid using the word &#39;chromosome&#39; in its internal reasoning. If the model can successfully and reliably follow this instruction without mentioning the forbidden word, it demonstrates CoT controllability, which could be exploited for monitor evasion.&quot;,&quot;statement&quot;:&quot;Chain-of-thought (CoT) monitoring is a promising approach for detecting misbehaviors and understanding the internal reasoning of large language models. However, this approach is vulnerable if models gain the ability to strategically control or &#39;obfuscate&#39; their CoT to evade detection, thereby undermining oversight mechanisms.&quot;,&quot;whyItMatters&quot;:[&quot;CoT monitoring is considered a crucial tool for AI safety, enabling detection of malicious intent, plans, and precursors of misbehavior in advanced AI systems.&quot;,&quot;If models can control their CoT, it erodes the reliability of CoT as a signal for external oversight mechanisms, making it difficult to assess model alignment and safety.&quot;,&quot;This capability, termed CoT controllability, represents a critical failure pathway that could lead to deploying misaligned AI agents without adequate monitoring.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Reasoning models consistently demonstrate significantly lower CoT controllability compared to their ability to control final outputs (e.g., Claude Sonnet 4.5: 2.7% CoT controllability vs. 61.9% output controllability).&quot;,&quot;CoT controllability tends to increase with model parameter size in open-weight models (e.g., GPT-OSS 120B achieved +6.4% higher CoT controllability than GPT-OSS 20B).&quot;,&quot;Increased reasoning effort (longer CoT traces) and more outcome-based Reinforcement Learning (RL) training significantly reduce CoT controllability (e.g., OLMo-3-Think 7B&#39;s CoT controllability dropped by 9.5% after RL training).&quot;,&quot;Situational awareness (telling models they are being monitored or evaluated) can slightly increase CoT controllability by up to 4 percentage points, but prompt optimization via automated red-teaming does not reliably generalize to unseen instruction types.&quot;,&quot;Iterative refinement using AI feedback substantially increases CoT controllability (e.g., GPT-OSS 120B showed a +44.0% gain in controllability score after iterations).&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;GPQA&quot;,&quot;MMLU-Pro&quot;,&quot;Humanity&#39;s Last Exam (HLE)&quot;,&quot;BFCL&quot;,&quot;SWE-Bench Verified&quot;],&quot;metrics&quot;:[&quot;Controllability Score&quot;,&quot;Meta Discussion Rate&quot;,&quot;Controllability Score without Meta-Discussion&quot;,&quot;Performance Drop (pp)&quot;],&quot;setting&quot;:&quot;Evaluation of CoT controllability across 13 frontier LLMs (e.g., Claude, GPT-5, Qwen3, Deepseek R1) and several open-source reasoning models (e.g., OLMo-3-RL-Zero, Magistral-Medium, OpenThinker) using the CoT-Control evaluation suite.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:75,&quot;xmin&quot;:160,&quot;ymax&quot;:236,&quot;xmax&quot;:820},&quot;caption&quot;:&quot;Reasoning models struggle to control their CoT compared to controlling their output. Lower CoT controllability is associated with higher monitorability and, therefore, higher safety. Note that is confounded by length as seen in (c).&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:279,&quot;xmin&quot;:172,&quot;ymax&quot;:337,&quot;xmax&quot;:403},&quot;caption&quot;:&quot;CoT controllability increases with parameter count in open-weight models.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:278,&quot;xmin&quot;:615,&quot;ymax&quot;:337,&quot;xmax&quot;:820},&quot;caption&quot;:&quot;CoT controllability decreases as the amount of RL from verifiable rewards (RLVR) training increases.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:201,&quot;xmin&quot;:247,&quot;ymax&quot;:341,&quot;xmax&quot;:753},&quot;caption&quot;:&quot;Task performance drops most under successful suppression, but changes little under additions or stylistic edits. Results only include examples that models manage to control their CoT; drops are baseline minus compliant.&quot;,&quot;figureNumber&quot;:5,&quot;pageIndex&quot;:5},{&quot;boundingBox&quot;:{&quot;ymin&quot;:442,&quot;xmin&quot;:153,&quot;ymax&quot;:609,&quot;xmax&quot;:846},&quot;caption&quot;:&quot;Situational awareness has a small but non-trivial effect on CoT controllability. Each (controllability type, dataset) pair includes 150 examples; each model has 4,050 total. Monitor Awareness refers to settings where we inform models that their CoT are being monitored. Eval Awareness denotes settings where we inform models that they are being evaluated for CoT controllability.&quot;,&quot;figureNumber&quot;:6,&quot;pageIndex&quot;:6},{&quot;boundingBox&quot;:{&quot;ymin&quot;:115,&quot;xmin&quot;:350,&quot;ymax&quot;:257,&quot;xmax&quot;:752},&quot;caption&quot;:&quot;CoT controllability decreases as reasoning effort increases.&quot;,&quot;figureNumber&quot;:9,&quot;pageIndex&quot;:8},{&quot;boundingBox&quot;:{&quot;ymin&quot;:76,&quot;xmin&quot;:338,&quot;ymax&quot;:219,&quot;xmax&quot;:706},&quot;caption&quot;:&quot;CoT controllability decreases at a different rate for different RL training data. Each color represents a model trained on the correspond- ing data. The CoT controllability of the model trained on \&quot;General\&quot; (chat data) tends to decrease more slowly than that of models trained on coding and math.&quot;,&quot;figureNumber&quot;:10,&quot;pageIndex&quot;:9},{&quot;boundingBox&quot;:{&quot;ymin&quot;:88,&quot;xmin&quot;:177,&quot;ymax&quot;:249,&quot;xmax&quot;:823},&quot;caption&quot;:&quot;Iterative refinement via AI feedback substantially increases CoT compliance. We compare the average compliance rate at iteration 0 (baseline) versus after up to 10 IRPAIF iterations, where each failed attempt is followed by GPT-5-mini feedback that is appended to the next prompt. Results are averaged over 25 questions sampled from each CoT-Control dataset; error bars show standard errors. Gains are largest for GPT-OSS and Qwen3, while newer Claude models (especially Sonnet 4.5) improve less.&quot;,&quot;figureNumber&quot;:12,&quot;pageIndex&quot;:21},{&quot;boundingBox&quot;:{&quot;ymin&quot;:395,&quot;xmin&quot;:182,&quot;ymax&quot;:508,&quot;xmax&quot;:818},&quot;caption&quot;:&quot;OLMo-3–Think models show significantly lower CoT controllability after reasoning training across SFT, DPO, and RL stages. Notably, for the 32B model, SFT disrupts model behaviors, leading to a sudden drop in controllability. During subsequent DPO and RL stages, CoT controllability partially recovers but remains substantially lower than pre-training levels, as RL pressure inherently reduces the original level of CoT controllability. However, the specific impact of training stages prior to RL remains inconclusive, which we leave for future work to explore.&quot;,&quot;figureNumber&quot;:15,&quot;pageIndex&quot;:23},{&quot;boundingBox&quot;:{&quot;ymin&quot;:72,&quot;xmin&quot;:167,&quot;ymax&quot;:276,&quot;xmax&quot;:829},&quot;caption&quot;:&quot;Most open-source models show significantly lower CoT controllability after reasoning training.&quot;,&quot;figureNumber&quot;:16,&quot;pageIndex&quot;:24}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;61.9% (Output)&quot;,&quot;benchmark&quot;:&quot;Claude Sonnet 4.5&quot;,&quot;delta&quot;:&quot;-59.2%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;2.7% (CoT)&quot;},{&quot;baseline&quot;:&quot;69.3% (Output)&quot;,&quot;benchmark&quot;:&quot;GPT-OSS 120B&quot;,&quot;delta&quot;:&quot;-63.3%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;6.0% (CoT)&quot;},{&quot;baseline&quot;:&quot;48.6% (Output)&quot;,&quot;benchmark&quot;:&quot;Deepseek R1&quot;,&quot;delta&quot;:&quot;-48.5%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;0.1% (CoT)&quot;}],&quot;title&quot;:&quot;CoT vs. Output Controllability (Figure 1a)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.7% (14B)&quot;,&quot;benchmark&quot;:&quot;Qwen3&quot;,&quot;delta&quot;:&quot;+2.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;2.9% (32B)&quot;},{&quot;baseline&quot;:&quot;1.2% (20B)&quot;,&quot;benchmark&quot;:&quot;GPT-OSS&quot;,&quot;delta&quot;:&quot;+6.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;7.6% (120B)&quot;}],&quot;title&quot;:&quot;Impact of Model Scale (Figure 1b)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;10.6% (Base (standard))&quot;,&quot;benchmark&quot;:&quot;OLMo-3-Think 7B&quot;,&quot;delta&quot;:&quot;-9.5%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;1.1% (RL)&quot;},{&quot;baseline&quot;:&quot;13.1% (Base (standard))&quot;,&quot;benchmark&quot;:&quot;OLMo-3-Think 32B&quot;,&quot;delta&quot;:&quot;-10.5%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;2.6% (RL)&quot;},{&quot;baseline&quot;:&quot;79.7% (Before RL training)&quot;,&quot;benchmark&quot;:&quot;Magistral Medium&quot;,&quot;delta&quot;:&quot;-58.9%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;20.8% (After RL training)&quot;},{&quot;baseline&quot;:&quot;31.4% (Before RL training)&quot;,&quot;benchmark&quot;:&quot;OpenThinker 7B&quot;,&quot;delta&quot;:&quot;-30.7%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;0.7% (After RL training)&quot;}],&quot;title&quot;:&quot;Impact of Outcome-Based RL Training (Figures 1d, 15, 16)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.6 pp (Stylistic Modification - Claude Sonnet 4.5)&quot;,&quot;benchmark&quot;:&quot;Information Suppression (GPT-OSS 120B)&quot;,&quot;delta&quot;:&quot;+16.1 pp&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Performance Drop (pp)&quot;,&quot;thisPaper&quot;:&quot;16.7 pp&quot;},{&quot;baseline&quot;:&quot;0.6 pp (Stylistic Modification - Claude Sonnet 4.5)&quot;,&quot;benchmark&quot;:&quot;Information Suppression (GPT-5.1)&quot;,&quot;delta&quot;:&quot;+16.0 pp&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Performance Drop (pp)&quot;,&quot;thisPaper&quot;:&quot;16.6 pp&quot;},{&quot;baseline&quot;:&quot;0.6 pp (Stylistic Modification - Claude Sonnet 4.5)&quot;,&quot;benchmark&quot;:&quot;Information Addition (Claude 3.7 Sonnet)&quot;,&quot;delta&quot;:&quot;+6.6 pp&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Performance Drop (pp)&quot;,&quot;thisPaper&quot;:&quot;7.2 pp&quot;}],&quot;title&quot;:&quot;Task Performance Drop due to CoT Control Type (Figure 5)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;35.6% (Baseline)&quot;,&quot;benchmark&quot;:&quot;Claude 3.7 Sonnet&quot;,&quot;delta&quot;:&quot;+2.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;38.0% (Monitor Awareness)&quot;},{&quot;baseline&quot;:&quot;5.4% (Baseline)&quot;,&quot;benchmark&quot;:&quot;GPT-OSS-120B&quot;,&quot;delta&quot;:&quot;+3.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;8.6% (Eval Awareness)&quot;},{&quot;baseline&quot;:&quot;2.8% (Baseline)&quot;,&quot;benchmark&quot;:&quot;Qwen3-32B&quot;,&quot;delta&quot;:&quot;+1.6%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;4.4% (Monitor Awareness)&quot;}],&quot;title&quot;:&quot;Impact of Situational Awareness (Figure 6)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;29.9% (Low effort)&quot;,&quot;benchmark&quot;:&quot;GPT-OSS 120B&quot;,&quot;delta&quot;:&quot;-28.6%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;1.3% (Extra High effort)&quot;},{&quot;baseline&quot;:&quot;19.9% (Low effort)&quot;,&quot;benchmark&quot;:&quot;GPT-OSS 20B&quot;,&quot;delta&quot;:&quot;-19.4%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;0.5% (Extra High effort)&quot;}],&quot;title&quot;:&quot;Impact of Reasoning Effort (Figure 9)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;10.1% (Iteration 0)&quot;,&quot;benchmark&quot;:&quot;GPT-OSS 120B&quot;,&quot;delta&quot;:&quot;+44.0%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;54.1% (After All Iterations)&quot;},{&quot;baseline&quot;:&quot;8.9% (Iteration 0)&quot;,&quot;benchmark&quot;:&quot;Qwen3 32B&quot;,&quot;delta&quot;:&quot;+31.1%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;40.0% (After All Iterations)&quot;},{&quot;baseline&quot;:&quot;38.8% (Iteration 0)&quot;,&quot;benchmark&quot;:&quot;Claude 3.7 Sonnet&quot;,&quot;delta&quot;:&quot;+29.8%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;CoT Controllability Score (%)&quot;,&quot;thisPaper&quot;:&quot;68.6% (After All Iterations)&quot;}],&quot;title&quot;:&quot;Elicitability via Iterative Refinement (Figure 12)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Reasoning models generally exhibit low CoT controllability, especially when compared to their output controllability, which is a positive indicator for CoT monitorability.&quot;,&quot;Model scale is positively correlated with CoT controllability in open-weight models, suggesting larger models might be more controllable, while increased reasoning effort and RL training on reasoning tasks decrease it.&quot;,&quot;While situational awareness can slightly boost CoT controllability, current adversarial prompt optimization methods are ineffective at reliably increasing generalizable CoT control.&quot;,&quot;The task performance drop is most significant for &#39;Information Suppression&#39; type of CoT control, indicating a trade-off between control and utility.&quot;,&quot;The ability to iteratively refine CoT compliance via AI feedback significantly enhances controllability, highlighting a potential pathway for improving controllable CoT in models.&quot;]},&quot;institutions&quot;:&quot;NYU, MATS, UCL, UPenn, OpenAI&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;The paper introduces CoT-Control, a novel evaluation suite comprising 14,076 problem instances drawn from diverse LLM benchmarks (GPQA, MMLU-Pro, HLE, BFCL, SWE-Bench Verified).&quot;,&quot;It defines &#39;CoT controllability&#39; as the model&#39;s ability to reliably adhere to instructions for modifying its Chain-of-Thought while keeping the task objective fixed, effectively measuring its propensity to evade monitoring.&quot;,&quot;The suite operationalizes three evasion-relevant controllability types: Information Suppression, Information Addition, and Stylistic Modification, each with varying difficulty levels, and employs programmatic graders and sanity checks for robust evaluation.&quot;,&quot;The work systematically investigates the factors that influence CoT controllability, including model scale, reasoning effort, RL training, situational awareness, task difficulty, and reasoning length, providing a comprehensive analysis of this emerging AI safety risk.&quot;],&quot;main&quot;:&quot;Introduction of CoT-Control, a novel evaluation suite and metric for measuring the &#39;CoT controllability&#39; of reasoning models, assessing their ability to strategically modify or suppress their Chain-of-Thought to evade monitoring.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A sequence of intermediate thoughts or reasoning steps generated by a large language model to arrive at a final answer.&quot;,&quot;term&quot;:&quot;Chain-of-Thought (CoT)&quot;},{&quot;definition&quot;:&quot;The process of inspecting a large language model&#39;s Chain-of-Thought to detect misbehaviors, harmful intentions, or alignment failures.&quot;,&quot;term&quot;:&quot;CoT Monitoring&quot;},{&quot;definition&quot;:&quot;The ability of a reasoning model to reliably control or modify properties of its Chain-of-Thought in response to instructions, particularly in ways that could reduce its monitorability by external oversight mechanisms.&quot;,&quot;term&quot;:&quot;CoT Controllability&quot;}],&quot;prerequisites&quot;:[&quot;Familiarity with large language models (LLMs) and their reasoning capabilities.&quot;,&quot;Understanding of prompt engineering and how instructions influence LLM behavior.&quot;,&quot;Basic knowledge of AI safety and alignment concerns, particularly regarding LLM interpretability and transparency.&quot;,&quot;Understanding of Reinforcement Learning (RL) principles as applied to LLM training and fine-tuning.&quot;]},&quot;subTopics&quot;:[&quot;LLM safety&quot;,&quot;Interpretability&quot;,&quot;Prompt Engineering&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Factuality&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Prior work on Chain-of-Thought (CoT) monitoring often assumes robustness, whereas this paper introduces a measure (CoT controllability) to assess and quantify a key vulnerability that could undermine monitorability.&quot;,&quot;While existing research explores how models might &#39;know&#39; they are being evaluated (situational awareness), this work specifically applies this to the context of actively controlling CoT content, showing a small but non-trivial effect.&quot;,&quot;Unlike some previous work focusing on detecting misbehavior in CoT, this paper defines and measures the model&#39;s explicit ability to *control* its CoT content in response to instructions, rather than just observing spontaneous misbehavior.&quot;,&quot;The paper provides a structured evaluation suite with concrete, programmatic checks, offering a more systematic approach to studying CoT manipulation compared to more ad-hoc observations.&quot;],&quot;limitations&quot;:[&quot;The CoT-Control tasks serve as practical proxies and do not perfectly simulate ideal adversarial settings where models spontaneously pursue misaligned goals and actively try to evade monitors.&quot;,&quot;The study primarily focuses on prompting-based elicitation of CoT controllability, potentially missing other avenues like varying amounts of RL or supervised finetuning that could increase controllability.&quot;,&quot;Models demonstrate better control over certain features of their CoT than others, indicating that the evaluated breadth of control types might be limited.&quot;,&quot;The mechanism behind low CoT controllability is not fully understood, highlighting a need for further research into its causes and implications.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Evaluated Models&quot;,&quot;list&quot;:[&quot;Claude 3.7 Sonnet (Anthropic)&quot;,&quot;Claude Sonnet 4 (Anthropic)&quot;,&quot;Claude Sonnet 4.5 (Anthropic)&quot;,&quot;GPT-5.2 (OpenAI)&quot;,&quot;GPT-5.1 (OpenAI)&quot;,&quot;GPT-5 (OpenAI)&quot;,&quot;o4-mini (OpenAI)&quot;,&quot;o3 (OpenAI)&quot;,&quot;GPT-OSS 120B (OpenAI)&quot;,&quot;GPT-OSS 20B (OpenAI)&quot;,&quot;Qwen3 32B (Team)&quot;,&quot;Qwen3 14B (Team)&quot;,&quot;DeepSeek R1 (DeepSeek-AI)&quot;]},{&quot;label&quot;:&quot;Open-source Models for RL Impact&quot;,&quot;list&quot;:[&quot;OLMo-3-RL-Zero (Math, Code, General)&quot;,&quot;OLMo-3-Think (7B, 32B)&quot;,&quot;Magistral-Medium&quot;,&quot;OpenThinker3-7B&quot;]},{&quot;label&quot;:&quot;Baseline Methods&quot;,&quot;list&quot;:[&quot;Output controllability (controlling final response)&quot;,&quot;External-CoT controllability (wrapping reasoning in tags and controlling it for reasoning models)&quot;,&quot;External-CoT controllability (for non-reasoning models)&quot;]}],&quot;pipelineFlow&quot;:[&quot;Task Selection: Questions are sourced from diverse LLM benchmarks (GPQA, MMLU-Pro, HLE, BFCL, SWE-Bench Verified), yielding 14,076 test instances.&quot;,&quot;Instruction Appending: CoT controllability instructions are appended to each problem, typically in the user message, asking the model to modify its CoT while solving the problem.&quot;,&quot;Controllability Types: Instructions fall into three categories: Information Suppression (e.g., keyword suppression), Information Addition (e.g., adding specific phrases), and Stylistic Modification (e.g., case changes), each with graded difficulty.&quot;,&quot;Model Inference: Evaluated models generate their Chain-of-Thought and final answer under the given constraints.&quot;,&quot;Scoring: Programmatic graders, tailored to each controllability type, evaluate whether the model&#39;s CoT successfully adheres to the instructions. Sanity checks distinguish true controllability failures from instruction misunderstanding.&quot;,&quot;Metric Calculation: The primary metric is the Controllability Score, representing the percentage of successful CoT adherence. Secondary metrics include Meta Discussion Rate and Controllability Score without Meta-Discussion.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;CoT Controllability&quot;,&quot;value&quot;:&quot;The ability of a reasoning model to reliably control properties of its Chain-of-Thought (CoT) in ways that reduce monitorability. It is estimated by providing models with instructions that keep the task objective fixed while steering the CoT with proxy instructions that simulate abilities connected to reducing monitorability.&quot;},{&quot;label&quot;:&quot;CoT-Control Evaluation Suite&quot;,&quot;value&quot;:&quot;An evaluation suite that measures CoT controllability by pairing questions from diverse LLM benchmarks with CoT controllability instructions, yielding 14,076 test instances. It focuses on three evasion-relevant controllability types (Information Suppression, Information Addition, Stylistic Modification) with varying difficulty levels.&quot;}],&quot;reproducibility&quot;:&quot;The authors publicly release the CoT-Control evaluation suite at https://github.com/YuehHanChen/CoTControl. They also include a canary string in the dataset to prevent models trained on it from being used to detect future CoT monitoring. Evaluation setups, metrics, and details on model checkpoints are provided in the appendices.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;The core component for measuring CoT controllability, comprising 14,076 problems from benchmarks like GPQA, MMLU-Pro, HLE, BFCL, and SWE-Bench Verified. Each problem is paired with a CoT controllability instruction.&quot;,&quot;name&quot;:&quot;CoT-Control Evaluation Suite&quot;,&quot;role&quot;:&quot;Central evaluation framework&quot;},{&quot;details&quot;:&quot;Three categories of instructions for modifying CoT: Information Suppression (e.g., forbidding keywords), Information Addition (e.g., adding specific phrases), and Stylistic Modification (e.g., enforcing casing). Each type has Easy, Medium, and Hard difficulty levels.&quot;,&quot;name&quot;:&quot;CoT Controllability Instruction Types&quot;,&quot;role&quot;:&quot;Define the types of CoT manipulation to be tested&quot;},{&quot;details&quot;:&quot;Automated tools designed to verify whether a model&#39;s generated Chain-of-Thought adheres to the specific controllability instructions, ensuring reliable and scalable grading.&quot;,&quot;name&quot;:&quot;Programmatic Graders&quot;,&quot;role&quot;:&quot;Automatic scoring of CoT compliance&quot;},{&quot;details&quot;:&quot;Multiple-choice questions designed to probe whether models understand the concept of a &#39;reasoning stage&#39; and recognize that they themselves possess one, helping to differentiate controllability failures from task misunderstanding.&quot;,&quot;name&quot;:&quot;Sanity Checks (Instruction Understanding and Self-Awareness)&quot;,&quot;role&quot;:&quot;Validate that observed failures are due to controllability limitations, not model confusion&quot;}]},&quot;thesis&quot;:&quot;While Chain-of-Thought (CoT) monitoring is a promising tool for detecting misbehaviors in LLMs, its effectiveness could be undermined if models learn to control their CoT to evade detection. This paper proposes the CoT-Control evaluation suite to measure this &#39;CoT controllability&#39; and finds that current reasoning models generally exhibit low controllability, which is a positive sign for monitorability, but this capability can be influenced by factors like model scale, reasoning effort, and RL training, suggesting a need for frontier labs to actively track and understand these dynamics.&quot;,&quot;title&quot;:&quot;Reasoning Models Struggle to Control their Chains of Thought&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2603.05706&quot;,&quot;venue&quot;:&quot;arXiv&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>
