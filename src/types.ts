@@ -13,7 +13,6 @@ export interface SummaryManifestItem {
 }
 
 export interface SummaryManifest {
-  generatedAt: string;
   basePath: string;
   count: number;
   papers: SummaryManifestItem[];
