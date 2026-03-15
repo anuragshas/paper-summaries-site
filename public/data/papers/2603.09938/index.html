@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions</h1>
+      <p class="meta"><strong>Authors:</strong> Mingyang Song &amp; Mao Zheng</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2603.09938" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2603.09938</a></p>
+      <p class="muted">Generated summary artifact for 2603.09938</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>This survey provides a comprehensive and structured examination of model merging in the era of Large Language Models (LLMs) through the proposed FUSE taxonomy, bridging theoretical understanding with practical application, to equip researchers and practitioners with a structured foundation for advancing model merging.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>The core problem is to efficiently combine the capabilities of multiple neural networks, particularly fine-tuned Large Language Models, into a single unified model without incurring the computational expense of ensembles or full retraining.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>The primary novelty is the introduction of the FUSE taxonomy, a four-dimensional framework (Foundations, Unification Strategies, Scenarios, Ecosystem) that systematically organizes and provides a principled understanding of model merging research in the LLM era.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>The FUSE taxonomy provides a structured, four-dimensional framework (Foundations, Unification Strategies, Scenarios, Ecosystem) for understanding model merging research.</li><li>The survey meticulously details various merging strategies, from simple weight averaging to complex Mixture-of-Experts architectures, elucidating their underlying principles, strengths, and limitations.</li><li>It highlights the critical importance of shared pretrained initialization and linear mode connectivity as theoretical underpinnings for successful model merging.</li><li>The paper explores task vector arithmetic as a powerful framework for training-free model editing, enabling intuitive operations such as knowledge addition, negation, scaling, and analogy.</li><li>It identifies key interference mechanisms (sign conflicts, magnitude disparities, redundant modifications) inherent in task vector arithmetic and discusses sparsification-enhanced methods to mitigate them.</li><li>The survey compares different merging paradigms based on factors like data-freeness, explicit interference handling, shared initialization requirements, and scalability.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Model merging provides a computationally efficient and scalable alternative to ensembles and full retraining for combining specialized LLM capabilities.</li><li>Shared pretrained initialization and the presence of linear mode connectivity are crucial theoretical underpinnings that enable successful weight interpolation and model merging.</li><li>A diverse array of unification strategies exists, including weight-space averaging, task vector arithmetic, sparsification-enhanced methods, and Mixture-of-Experts (MoE) architectures, each with distinct benefits and limitations.</li><li>Model merging finds broad applications across multi-task learning, safety alignment, domain specialization, multilingual transfer, and federated learning scenarios.</li><li>Key open challenges in the field include theoretical gaps in understanding mergeability at scale, scalability limitations for increasingly large models, and the development of robust predictive frameworks for merge compatibility.</li><li>The proposed FUSE taxonomy offers a unified organizational framework that can guide future research and practical application in model merging.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The theoretical understanding of why pretrained LLMs exhibit strong linear mode connectivity after independent fine-tuning on disparate tasks remains incomplete, especially as model scale increases.</li><li>Predicting merge compatibility requires addressing the computational challenge of efficiently approximating high-dimensional loss surface properties without exhaustive experimentation.</li><li>Weight-space averaging methods, despite simplicity, often fail when source models are fine-tuned with substantially different learning rates or regularization strengths, causing their average to land on high-loss barriers.</li><li>Importance-weighted averaging methods introduce computational overhead (e.g., for Fisher Information Matrix estimation) and require access to representative data samples, which may not always be available.</li><li>Trajectory-based averaging methods typically require access to intermediate checkpoints from a single training run, making them inapplicable when only final model weights are available in open-weight repositories, and can incur significant memory overhead.</li><li>Geometric interpolation methods are often limited to pairwise merging and can be computationally intensive, sometimes requiring complex alignment problem solving.</li><li>Task vector arithmetic suffers from parameter interference mechanisms like sign conflicts (opposing directional updates), magnitude disparities (uneven scaling of updates), and redundant parameter modifications (noise accumulation).</li><li>Mixture-of-Experts (MoE) style merging introduces a memory footprint that scales linearly with the number of experts, making deployment of K-expert systems K-times more expensive than a single merged model.</li><li>Current theoretical frameworks largely assume exact architectural correspondence, limiting their applicability to scenarios involving models with variations in layer counts or hidden dimensions, posing significant challenges for cross-architecture merging.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 325,
+      &quot;xmin&quot;: 200,
+      &quot;ymax&quot;: 420,
+      &quot;xmax&quot;: 790
+    },
+    &quot;caption&quot;: &quot;Overview of the model merging pipeline. Task-specific models \\{ \\theta_1, \\dots, \\theta_K \\}, obtained by fine-tuning a shared pretrained checkpoint \\theta_0, are combined via one of several strategies (Sections 3\\text{--}5) into a single model \\theta_{\\text{merged}}, which is then evaluated on all source tasks. Gray vertical bars represent the many-to-many mapping between model inputs and merging strategies.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 2
+  },
+  &quot;authors&quot;: &quot;Mingyang Song &amp; Mao Zheng&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper provides a highly comprehensive and well-structured survey of model merging techniques in the LLM era, introducing the FUSE taxonomy to organize the field. It bridges theoretical foundations with practical applications, meticulously detailing various methods, their mathematical principles, and practical trade-offs. The survey is extremely useful for researchers and practitioners by synthesizing a rapidly evolving landscape, identifying open challenges, and offering a roadmap for future research, thus significantly contributing to the understanding and advancement of the sub-field.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Composing specialized capabilities from fine-tuned Large Language Models (LLMs) at minimal cost, such as combining a toxic-filter model with a factual QA model.&quot;,
+    &quot;statement&quot;: &quot;The core problem is to efficiently combine the capabilities of multiple neural networks, particularly fine-tuned Large Language Models, into a single unified model without incurring the computational expense of ensembles or full retraining.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;It offers a computationally efficient alternative to traditional model combination methods like ensembles or full retraining.&quot;,
+      &quot;It enables practitioners to compose specialized capabilities, leading to multi-task LLMs.&quot;,
+      &quot;It facilitates the reuse of knowledge from diverse fine-tuned models, which is crucial with the proliferation of foundation models.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;The FUSE taxonomy provides a structured, four-dimensional framework (Foundations, Unification Strategies, Scenarios, Ecosystem) for understanding model merging research.&quot;,
+    &quot;The survey meticulously details various merging strategies, from simple weight averaging to complex Mixture-of-Experts architectures, elucidating their underlying principles, strengths, and limitations.&quot;,
+    &quot;It highlights the critical importance of shared pretrained initialization and linear mode connectivity as theoretical underpinnings for successful model merging.&quot;,
+    &quot;The paper explores task vector arithmetic as a powerful framework for training-free model editing, enabling intuitive operations such as knowledge addition, negation, scaling, and analogy.&quot;,
+    &quot;It identifies key interference mechanisms (sign conflicts, magnitude disparities, redundant modifications) inherent in task vector arithmetic and discusses sparsification-enhanced methods to mitigate them.&quot;,
+    &quot;The survey compares different merging paradigms based on factors like data-freeness, explicit interference handling, shared initialization requirements, and scalability.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [],
+      &quot;metrics&quot;: [],
+      &quot;setting&quot;: &quot;N/A (Survey Paper)&quot;
+    },
+    &quot;experimentFigures&quot;: [],
+    &quot;keyResultGroups&quot;: [],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Model merging provides a computationally efficient and scalable alternative to ensembles and full retraining for combining specialized LLM capabilities.&quot;,
+      &quot;Shared pretrained initialization and the presence of linear mode connectivity are crucial theoretical underpinnings that enable successful weight interpolation and model merging.&quot;,
+      &quot;A diverse array of unification strategies exists, including weight-space averaging, task vector arithmetic, sparsification-enhanced methods, and Mixture-of-Experts (MoE) architectures, each with distinct benefits and limitations.&quot;,
+      &quot;Model merging finds broad applications across multi-task learning, safety alignment, domain specialization, multilingual transfer, and federated learning scenarios.&quot;,
+      &quot;Key open challenges in the field include theoretical gaps in understanding mergeability at scale, scalability limitations for increasingly large models, and the development of robust predictive frameworks for merge compatibility.&quot;,
+      &quot;The proposed FUSE taxonomy offers a unified organizational framework that can guide future research and practical application in model merging.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Large Language Model Department Tencent, China&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;The paper provides a systematic treatment of model merging in the LLM era, bridging theoretical understanding (loss landscape geometry, mode connectivity, weight space symmetries) with practical application.&quot;,
+      &quot;It offers an in-depth technical analysis of various merging methodologies, including weight-space averaging, task vector arithmetic, geometric interpolation, and architecture-level composition, comparing their strengths and limitations.&quot;,
+      &quot;It conducts a systematic examination of application domains where model merging delivers practical benefits, such as multi-task generalization, multilingual transfer, preference alignment, and federated learning.&quot;,
+      &quot;It identifies pressing open challenges and articulates promising future research directions, including theoretical gaps, scalability limitations, and opportunities for automated merging systems.&quot;
+    ],
+    &quot;main&quot;: &quot;The primary novelty is the introduction of the FUSE taxonomy, a four-dimensional framework (Foundations, Unification Strategies, Scenarios, Ecosystem) that systematically organizes and provides a principled understanding of model merging research in the LLM era.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;The geometric properties of the function that maps neural network parameters to their corresponding loss values.&quot;,
+        &quot;term&quot;: &quot;Loss Landscape&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The existence of paths in weight space connecting different trained solutions along which the loss remains consistently low.&quot;,
+        &quot;term&quot;: &quot;Mode Connectivity&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The property that reordering hidden units within a layer, along with corresponding adjustments to incoming and outgoing weight matrices, produces a functionally equivalent network.&quot;,
+        &quot;term&quot;: &quot;Permutation Invariance&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The element-wise difference between the parameters of a fine-tuned model and its pretrained ancestor, which encapsulates task-specific knowledge acquired during fine-tuning.&quot;,
+        &quot;term&quot;: &quot;Task Vector&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A four-dimensional framework (Foundations, Unification Strategies, Scenarios, Ecosystem) proposed to organize model merging research by explaining why merging works, how it&#39;s performed, where it applies, and what supports its deployment.&quot;,
+        &quot;term&quot;: &quot;FUSE Taxonomy&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The process of combining the parameters of multiple trained neural networks into a single unified model, inheriting their capabilities without inference-time ensemble overhead.&quot;,
+        &quot;term&quot;: &quot;Model Merging&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Deep Learning fundamentals&quot;,
+      &quot;Large Language Models (LLMs) architecture and training principles&quot;,
+      &quot;Fine-tuning techniques&quot;,
+      &quot;Neural network optimization dynamics&quot;,
+      &quot;Basic linear algebra and calculus&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Model Merging&quot;,
+    &quot;Large Language Models&quot;,
+    &quot;Survey&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Traditional model merging methods like Simple Averaging assume equal parameter importance and Euclidean weight space, which can lead to suboptimal performance when models diverge or tasks are semantically diverse, unlike more advanced methods.&quot;,
+      &quot;Importance-weighted averaging (e.g., Fisher Merging, RegMean) improves upon uniform averaging by prioritizing high-information parameters using second-order information, but it demands higher computational overhead and requires access to training data.&quot;,
+      &quot;Trajectory-based averaging methods (e.g., SWA, EMA) exploit optimization dynamics by averaging checkpoints along training paths to find flatter minima, offering better generalization than static endpoint merging, but they necessitate access to intermediate checkpoints, which are often unavailable.&quot;,
+      &quot;Geometric interpolation techniques (e.g., SLERP, Manifold-Aware Interpolation) address the Euclidean assumption of linear averaging by preserving the curved structure of parameter spaces and vector magnitudes, particularly beneficial for divergent models, though they are computationally intensive.&quot;,
+      &quot;Task vector arithmetic provides a modular framework for training-free model editing (addition, negation, scaling) by representing task-specific knowledge as parameter differences, contrasting with full parameter merging by focusing on composable units, but it faces issues with parameter interference.&quot;,
+      &quot;Sparsification-enhanced methods (e.g., TIES-Merging, DARE) improve upon basic task vector arithmetic by strategically eliminating redundant or conflicting parameters, leading to better composability and performance, whereas naive task vector operations often suffer from interference.&quot;,
+      &quot;Mixture-of-Experts (MoE) style merging preserves specialized capabilities through distinct expert pathways and learned routing, offering a principled balance between capability preservation and unified deployment, unlike parameter averaging which aims for a single, blended model.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The theoretical understanding of why pretrained LLMs exhibit strong linear mode connectivity after independent fine-tuning on disparate tasks remains incomplete, especially as model scale increases.&quot;,
+      &quot;Predicting merge compatibility requires addressing the computational challenge of efficiently approximating high-dimensional loss surface properties without exhaustive experimentation.&quot;,
+      &quot;Weight-space averaging methods, despite simplicity, often fail when source models are fine-tuned with substantially different learning rates or regularization strengths, causing their average to land on high-loss barriers.&quot;,
+      &quot;Importance-weighted averaging methods introduce computational overhead (e.g., for Fisher Information Matrix estimation) and require access to representative data samples, which may not always be available.&quot;,
+      &quot;Trajectory-based averaging methods typically require access to intermediate checkpoints from a single training run, making them inapplicable when only final model weights are available in open-weight repositories, and can incur significant memory overhead.&quot;,
+      &quot;Geometric interpolation methods are often limited to pairwise merging and can be computationally intensive, sometimes requiring complex alignment problem solving.&quot;,
+      &quot;Task vector arithmetic suffers from parameter interference mechanisms like sign conflicts (opposing directional updates), magnitude disparities (uneven scaling of updates), and redundant parameter modifications (noise accumulation).&quot;,
+      &quot;Mixture-of-Experts (MoE) style merging introduces a memory footprint that scales linearly with the number of experts, making deployment of K-expert systems K-times more expensive than a single merged model.&quot;,
+      &quot;Current theoretical frameworks largely assume exact architectural correspondence, limiting their applicability to scenarios involving models with variations in layer counts or hidden dimensions, posing significant challenges for cross-architecture merging.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Task Addition (Multi-task Fusion)&quot;,
+        &quot;value&quot;: &quot;$ \\theta_{\\text{multi}} = \\theta_{\\text{pre}} + \\sum_{i=1}^n \\lambda_i \\tau_i $&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Task Negation (Forgetting/Unlearning)&quot;,
+        &quot;value&quot;: &quot;$ \\theta_{\\text{forget}} = \\theta_{\\text{pre}} - \\lambda\\tau $&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Task Scaling (Capability Modulation)&quot;,
+        &quot;value&quot;: &quot;$ \\theta_{\\text{scaled}} = \\theta_{\\text{pre}} + \\alpha\\tau $&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Task Analogy (Relationship Transfer)&quot;,
+        &quot;value&quot;: &quot;$ \\theta_{\\text{analogy}} = \\theta_{\\text{pre}} + \\tau_C + (\\tau_B - \\tau_A) $&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Mixture-of-Experts Output&quot;,
+        &quot;value&quot;: &quot;Given a set of $K$ expert models $ \\{ E_1, E_2, \\dots, E_K \\} $ derived from a common pretrained initialization, the merged output for an input $x$ is computed as: $ y = \\sum_{i=1}^K g_i (x) \\cdot E_i (x) $ where $ g_i (x) = \\frac{\\exp (w_i^{\\top} h(x))}{\\sum_{j=1}^K \\exp (w_j^{\\top} h(x))} $ is the routing weight.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;A shared pretrained checkpoint ($ \\theta_0 $) serves as the base for fine-tuning.&quot;,
+      &quot;Multiple task-specific models ($ \\theta_1, \\dots, \\theta_K $) are obtained by fine-tuning the pretrained checkpoint on distinct tasks.&quot;,
+      &quot;One of several merging strategies (Weight Averaging, Task Vectors, MoE/Routing, Search-Based) is applied to combine these task-specific models into a single merged model ($ \\theta_{\\text{merged}} $).&quot;,
+      &quot;The $ \\theta_{\\text{merged}} $ model is then evaluated on all source tasks to assess its performance and combined capabilities.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Task Vector Definition&quot;,
+        &quot;value&quot;: &quot;Given a pretrained model with parameters $ \\theta_{\\text{pre}} $ and a model fine-tuned on task $t$ with resulting parameters $ \\theta_t $, the task vector $ \\tau_t $ is defined as the element-wise difference: $ \\tau_t = \\theta_t - \\theta_{\\text{pre}} $.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Uniform Weight Averaging&quot;,
+        &quot;value&quot;: &quot;Given a collection of $N$ models with parameters $ \\{ \\theta_1, \\theta_2, \\dots, \\theta_N \\} $, uniform weight averaging produces a merged model with parameters: $ \\theta_{\\text{merged}} = \\frac{1}{N} \\sum_{i=1}^N \\theta_i $.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Spherical Linear Interpolation (SLERP)&quot;,
+        &quot;value&quot;: &quot;For parameter vectors normalized to unit length, SLERP computes the interpolated point as: $ \\text{SLERP} (\\theta_A, \\theta_B; \\alpha) = \\frac{\\sin ((1 - \\alpha) \\Omega)}{\\sin (\\Omega)} \\theta_A + \\frac{\\sin (\\alpha \\Omega)}{\\sin (\\Omega)} \\theta_B $ where $ \\Omega = \\arccos (\\theta_A \\cdot \\theta_B / (\\|\\theta_A\\|\\|\\theta_B\\|)) $.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The paper emphasizes that the modular architecture of modern merging frameworks, coupled with community toolkits like mergekit, is progressively lowering barriers to adoption. This ecosystem integration facilitates reproducible model merging experimentation and allows practitioners to leverage sophisticated mathematical formulations without implementing complex algorithms from scratch.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Covers theoretical explanations for why merging works, including loss landscape geometry, mode connectivity, permutation symmetry, and prerequisites.&quot;,
+        &quot;name&quot;: &quot;Foundations&quot;,
+        &quot;role&quot;: &quot;Establishes the theoretical underpinnings of model merging.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Describes the algorithmic landscape of how models are combined, encompassing weight-space averaging, task vector arithmetic, geometric interpolation, and architecture-level composition (e.g., MoE merging, search-based methods).&quot;,
+        &quot;name&quot;: &quot;Unification Strategies&quot;,
+        &quot;role&quot;: &quot;Details the methods and algorithms for performing model merging.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Identifies the application domains where model merging provides value, such as multi-task learning, safety and alignment, domain specialization, multilingual transfer, and federated learning.&quot;,
+        &quot;name&quot;: &quot;Scenarios&quot;,
+        &quot;role&quot;: &quot;Outlines the contexts and use cases for model merging.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Surveys the supporting infrastructure, including open-source tools, community platforms, evaluation benchmarks, and identifies key open challenges and future research directions.&quot;,
+        &quot;name&quot;: &quot;Ecosystem&quot;,
+        &quot;role&quot;: &quot;Examines the practical environment and resources supporting model merging.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;This survey provides a comprehensive and structured examination of model merging in the era of Large Language Models (LLMs) through the proposed FUSE taxonomy, bridging theoretical understanding with practical application, to equip researchers and practitioners with a structured foundation for advancing model merging.&quot;,
+  &quot;title&quot;: &quot;Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2603.09938&quot;,
+  &quot;venue&quot;: &quot;Preprint&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2603.09938&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2603.09938&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:325,&quot;xmin&quot;:200,&quot;ymax&quot;:420,&quot;xmax&quot;:790},&quot;caption&quot;:&quot;Overview of the model merging pipeline. Task-specific models \\{ \\theta_1, \\dots, \\theta_K \\}, obtained by fine-tuning a shared pretrained checkpoint \\theta_0, are combined via one of several strategies (Sections 3\\text{--}5) into a single model \\theta_{\\text{merged}}, which is then evaluated on all source tasks. Gray vertical bars represent the many-to-many mapping between model inputs and merging strategies.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:2},&quot;authors&quot;:&quot;Mingyang Song &amp; Mao Zheng&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper provides a highly comprehensive and well-structured survey of model merging techniques in the LLM era, introducing the FUSE taxonomy to organize the field. It bridges theoretical foundations with practical applications, meticulously detailing various methods, their mathematical principles, and practical trade-offs. The survey is extremely useful for researchers and practitioners by synthesizing a rapidly evolving landscape, identifying open challenges, and offering a roadmap for future research, thus significantly contributing to the understanding and advancement of the sub-field.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Composing specialized capabilities from fine-tuned Large Language Models (LLMs) at minimal cost, such as combining a toxic-filter model with a factual QA model.&quot;,&quot;statement&quot;:&quot;The core problem is to efficiently combine the capabilities of multiple neural networks, particularly fine-tuned Large Language Models, into a single unified model without incurring the computational expense of ensembles or full retraining.&quot;,&quot;whyItMatters&quot;:[&quot;It offers a computationally efficient alternative to traditional model combination methods like ensembles or full retraining.&quot;,&quot;It enables practitioners to compose specialized capabilities, leading to multi-task LLMs.&quot;,&quot;It facilitates the reuse of knowledge from diverse fine-tuned models, which is crucial with the proliferation of foundation models.&quot;]},&quot;evaluationHighlights&quot;:[&quot;The FUSE taxonomy provides a structured, four-dimensional framework (Foundations, Unification Strategies, Scenarios, Ecosystem) for understanding model merging research.&quot;,&quot;The survey meticulously details various merging strategies, from simple weight averaging to complex Mixture-of-Experts architectures, elucidating their underlying principles, strengths, and limitations.&quot;,&quot;It highlights the critical importance of shared pretrained initialization and linear mode connectivity as theoretical underpinnings for successful model merging.&quot;,&quot;The paper explores task vector arithmetic as a powerful framework for training-free model editing, enabling intuitive operations such as knowledge addition, negation, scaling, and analogy.&quot;,&quot;It identifies key interference mechanisms (sign conflicts, magnitude disparities, redundant modifications) inherent in task vector arithmetic and discusses sparsification-enhanced methods to mitigate them.&quot;,&quot;The survey compares different merging paradigms based on factors like data-freeness, explicit interference handling, shared initialization requirements, and scalability.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[],&quot;metrics&quot;:[],&quot;setting&quot;:&quot;N/A (Survey Paper)&quot;},&quot;experimentFigures&quot;:[],&quot;keyResultGroups&quot;:[],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Model merging provides a computationally efficient and scalable alternative to ensembles and full retraining for combining specialized LLM capabilities.&quot;,&quot;Shared pretrained initialization and the presence of linear mode connectivity are crucial theoretical underpinnings that enable successful weight interpolation and model merging.&quot;,&quot;A diverse array of unification strategies exists, including weight-space averaging, task vector arithmetic, sparsification-enhanced methods, and Mixture-of-Experts (MoE) architectures, each with distinct benefits and limitations.&quot;,&quot;Model merging finds broad applications across multi-task learning, safety alignment, domain specialization, multilingual transfer, and federated learning scenarios.&quot;,&quot;Key open challenges in the field include theoretical gaps in understanding mergeability at scale, scalability limitations for increasingly large models, and the development of robust predictive frameworks for merge compatibility.&quot;,&quot;The proposed FUSE taxonomy offers a unified organizational framework that can guide future research and practical application in model merging.&quot;]},&quot;institutions&quot;:&quot;Large Language Model Department Tencent, China&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;The paper provides a systematic treatment of model merging in the LLM era, bridging theoretical understanding (loss landscape geometry, mode connectivity, weight space symmetries) with practical application.&quot;,&quot;It offers an in-depth technical analysis of various merging methodologies, including weight-space averaging, task vector arithmetic, geometric interpolation, and architecture-level composition, comparing their strengths and limitations.&quot;,&quot;It conducts a systematic examination of application domains where model merging delivers practical benefits, such as multi-task generalization, multilingual transfer, preference alignment, and federated learning.&quot;,&quot;It identifies pressing open challenges and articulates promising future research directions, including theoretical gaps, scalability limitations, and opportunities for automated merging systems.&quot;],&quot;main&quot;:&quot;The primary novelty is the introduction of the FUSE taxonomy, a four-dimensional framework (Foundations, Unification Strategies, Scenarios, Ecosystem) that systematically organizes and provides a principled understanding of model merging research in the LLM era.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;The geometric properties of the function that maps neural network parameters to their corresponding loss values.&quot;,&quot;term&quot;:&quot;Loss Landscape&quot;},{&quot;definition&quot;:&quot;The existence of paths in weight space connecting different trained solutions along which the loss remains consistently low.&quot;,&quot;term&quot;:&quot;Mode Connectivity&quot;},{&quot;definition&quot;:&quot;The property that reordering hidden units within a layer, along with corresponding adjustments to incoming and outgoing weight matrices, produces a functionally equivalent network.&quot;,&quot;term&quot;:&quot;Permutation Invariance&quot;},{&quot;definition&quot;:&quot;The element-wise difference between the parameters of a fine-tuned model and its pretrained ancestor, which encapsulates task-specific knowledge acquired during fine-tuning.&quot;,&quot;term&quot;:&quot;Task Vector&quot;},{&quot;definition&quot;:&quot;A four-dimensional framework (Foundations, Unification Strategies, Scenarios, Ecosystem) proposed to organize model merging research by explaining why merging works, how it&#39;s performed, where it applies, and what supports its deployment.&quot;,&quot;term&quot;:&quot;FUSE Taxonomy&quot;},{&quot;definition&quot;:&quot;The process of combining the parameters of multiple trained neural networks into a single unified model, inheriting their capabilities without inference-time ensemble overhead.&quot;,&quot;term&quot;:&quot;Model Merging&quot;}],&quot;prerequisites&quot;:[&quot;Deep Learning fundamentals&quot;,&quot;Large Language Models (LLMs) architecture and training principles&quot;,&quot;Fine-tuning techniques&quot;,&quot;Neural network optimization dynamics&quot;,&quot;Basic linear algebra and calculus&quot;]},&quot;subTopics&quot;:[&quot;Model Merging&quot;,&quot;Large Language Models&quot;,&quot;Survey&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Traditional model merging methods like Simple Averaging assume equal parameter importance and Euclidean weight space, which can lead to suboptimal performance when models diverge or tasks are semantically diverse, unlike more advanced methods.&quot;,&quot;Importance-weighted averaging (e.g., Fisher Merging, RegMean) improves upon uniform averaging by prioritizing high-information parameters using second-order information, but it demands higher computational overhead and requires access to training data.&quot;,&quot;Trajectory-based averaging methods (e.g., SWA, EMA) exploit optimization dynamics by averaging checkpoints along training paths to find flatter minima, offering better generalization than static endpoint merging, but they necessitate access to intermediate checkpoints, which are often unavailable.&quot;,&quot;Geometric interpolation techniques (e.g., SLERP, Manifold-Aware Interpolation) address the Euclidean assumption of linear averaging by preserving the curved structure of parameter spaces and vector magnitudes, particularly beneficial for divergent models, though they are computationally intensive.&quot;,&quot;Task vector arithmetic provides a modular framework for training-free model editing (addition, negation, scaling) by representing task-specific knowledge as parameter differences, contrasting with full parameter merging by focusing on composable units, but it faces issues with parameter interference.&quot;,&quot;Sparsification-enhanced methods (e.g., TIES-Merging, DARE) improve upon basic task vector arithmetic by strategically eliminating redundant or conflicting parameters, leading to better composability and performance, whereas naive task vector operations often suffer from interference.&quot;,&quot;Mixture-of-Experts (MoE) style merging preserves specialized capabilities through distinct expert pathways and learned routing, offering a principled balance between capability preservation and unified deployment, unlike parameter averaging which aims for a single, blended model.&quot;],&quot;limitations&quot;:[&quot;The theoretical understanding of why pretrained LLMs exhibit strong linear mode connectivity after independent fine-tuning on disparate tasks remains incomplete, especially as model scale increases.&quot;,&quot;Predicting merge compatibility requires addressing the computational challenge of efficiently approximating high-dimensional loss surface properties without exhaustive experimentation.&quot;,&quot;Weight-space averaging methods, despite simplicity, often fail when source models are fine-tuned with substantially different learning rates or regularization strengths, causing their average to land on high-loss barriers.&quot;,&quot;Importance-weighted averaging methods introduce computational overhead (e.g., for Fisher Information Matrix estimation) and require access to representative data samples, which may not always be available.&quot;,&quot;Trajectory-based averaging methods typically require access to intermediate checkpoints from a single training run, making them inapplicable when only final model weights are available in open-weight repositories, and can incur significant memory overhead.&quot;,&quot;Geometric interpolation methods are often limited to pairwise merging and can be computationally intensive, sometimes requiring complex alignment problem solving.&quot;,&quot;Task vector arithmetic suffers from parameter interference mechanisms like sign conflicts (opposing directional updates), magnitude disparities (uneven scaling of updates), and redundant parameter modifications (noise accumulation).&quot;,&quot;Mixture-of-Experts (MoE) style merging introduces a memory footprint that scales linearly with the number of experts, making deployment of K-expert systems K-times more expensive than a single merged model.&quot;,&quot;Current theoretical frameworks largely assume exact architectural correspondence, limiting their applicability to scenarios involving models with variations in layer counts or hidden dimensions, posing significant challenges for cross-architecture merging.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Task Addition (Multi-task Fusion)&quot;,&quot;value&quot;:&quot;$ \\theta_{\\text{multi}} = \\theta_{\\text{pre}} + \\sum_{i=1}^n \\lambda_i \\tau_i $&quot;},{&quot;label&quot;:&quot;Task Negation (Forgetting/Unlearning)&quot;,&quot;value&quot;:&quot;$ \\theta_{\\text{forget}} = \\theta_{\\text{pre}} - \\lambda\\tau $&quot;},{&quot;label&quot;:&quot;Task Scaling (Capability Modulation)&quot;,&quot;value&quot;:&quot;$ \\theta_{\\text{scaled}} = \\theta_{\\text{pre}} + \\alpha\\tau $&quot;},{&quot;label&quot;:&quot;Task Analogy (Relationship Transfer)&quot;,&quot;value&quot;:&quot;$ \\theta_{\\text{analogy}} = \\theta_{\\text{pre}} + \\tau_C + (\\tau_B - \\tau_A) $&quot;},{&quot;label&quot;:&quot;Mixture-of-Experts Output&quot;,&quot;value&quot;:&quot;Given a set of $K$ expert models $ \\{ E_1, E_2, \\dots, E_K \\} $ derived from a common pretrained initialization, the merged output for an input $x$ is computed as: $ y = \\sum_{i=1}^K g_i (x) \\cdot E_i (x) $ where $ g_i (x) = \\frac{\\exp (w_i^{\\top} h(x))}{\\sum_{j=1}^K \\exp (w_j^{\\top} h(x))} $ is the routing weight.&quot;}],&quot;pipelineFlow&quot;:[&quot;A shared pretrained checkpoint ($ \\theta_0 $) serves as the base for fine-tuning.&quot;,&quot;Multiple task-specific models ($ \\theta_1, \\dots, \\theta_K $) are obtained by fine-tuning the pretrained checkpoint on distinct tasks.&quot;,&quot;One of several merging strategies (Weight Averaging, Task Vectors, MoE/Routing, Search-Based) is applied to combine these task-specific models into a single merged model ($ \\theta_{\\text{merged}} $).&quot;,&quot;The $ \\theta_{\\text{merged}} $ model is then evaluated on all source tasks to assess its performance and combined capabilities.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Task Vector Definition&quot;,&quot;value&quot;:&quot;Given a pretrained model with parameters $ \\theta_{\\text{pre}} $ and a model fine-tuned on task $t$ with resulting parameters $ \\theta_t $, the task vector $ \\tau_t $ is defined as the element-wise difference: $ \\tau_t = \\theta_t - \\theta_{\\text{pre}} $.&quot;},{&quot;label&quot;:&quot;Uniform Weight Averaging&quot;,&quot;value&quot;:&quot;Given a collection of $N$ models with parameters $ \\{ \\theta_1, \\theta_2, \\dots, \\theta_N \\} $, uniform weight averaging produces a merged model with parameters: $ \\theta_{\\text{merged}} = \\frac{1}{N} \\sum_{i=1}^N \\theta_i $.&quot;},{&quot;label&quot;:&quot;Spherical Linear Interpolation (SLERP)&quot;,&quot;value&quot;:&quot;For parameter vectors normalized to unit length, SLERP computes the interpolated point as: $ \\text{SLERP} (\\theta_A, \\theta_B; \\alpha) = \\frac{\\sin ((1 - \\alpha) \\Omega)}{\\sin (\\Omega)} \\theta_A + \\frac{\\sin (\\alpha \\Omega)}{\\sin (\\Omega)} \\theta_B $ where $ \\Omega = \\arccos (\\theta_A \\cdot \\theta_B / (\\|\\theta_A\\|\\|\\theta_B\\|)) $.&quot;}],&quot;reproducibility&quot;:&quot;The paper emphasizes that the modular architecture of modern merging frameworks, coupled with community toolkits like mergekit, is progressively lowering barriers to adoption. This ecosystem integration facilitates reproducible model merging experimentation and allows practitioners to leverage sophisticated mathematical formulations without implementing complex algorithms from scratch.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Covers theoretical explanations for why merging works, including loss landscape geometry, mode connectivity, permutation symmetry, and prerequisites.&quot;,&quot;name&quot;:&quot;Foundations&quot;,&quot;role&quot;:&quot;Establishes the theoretical underpinnings of model merging.&quot;},{&quot;details&quot;:&quot;Describes the algorithmic landscape of how models are combined, encompassing weight-space averaging, task vector arithmetic, geometric interpolation, and architecture-level composition (e.g., MoE merging, search-based methods).&quot;,&quot;name&quot;:&quot;Unification Strategies&quot;,&quot;role&quot;:&quot;Details the methods and algorithms for performing model merging.&quot;},{&quot;details&quot;:&quot;Identifies the application domains where model merging provides value, such as multi-task learning, safety and alignment, domain specialization, multilingual transfer, and federated learning.&quot;,&quot;name&quot;:&quot;Scenarios&quot;,&quot;role&quot;:&quot;Outlines the contexts and use cases for model merging.&quot;},{&quot;details&quot;:&quot;Surveys the supporting infrastructure, including open-source tools, community platforms, evaluation benchmarks, and identifies key open challenges and future research directions.&quot;,&quot;name&quot;:&quot;Ecosystem&quot;,&quot;role&quot;:&quot;Examines the practical environment and resources supporting model merging.&quot;}]},&quot;thesis&quot;:&quot;This survey provides a comprehensive and structured examination of model merging in the era of Large Language Models (LLMs) through the proposed FUSE taxonomy, bridging theoretical understanding with practical application, to equip researchers and practitioners with a structured foundation for advancing model merging.&quot;,&quot;title&quot;:&quot;Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2603.09938&quot;,&quot;venue&quot;:&quot;Preprint&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

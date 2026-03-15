@@ -1,0 +1,18 @@
+{
+  "paperId": "2603.09938",
+  "title": "Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions",
+  "authors": "Mingyang Song & Mao Zheng",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "Pretraining",
+    "QA",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2603.09938",
+  "pagePath": "/paper-summaries-site/papers/2603.09938",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.09938/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}
