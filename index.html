@@ -17,8 +17,16 @@
       mjx-container,
       mjx-container[display="true"] {
         display: inline-block !important;
+        max-width: 100%;
         margin: 0 0.08em !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
         vertical-align: middle;
+      }
+
+      mjx-container svg {
+        max-width: none;
       }
     </style>
     <script
