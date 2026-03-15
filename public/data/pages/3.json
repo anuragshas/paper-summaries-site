@@ -1,0 +1,138 @@
+{
+  "basePath": "/paper-summaries-site/",
+  "count": 28,
+  "pageSize": 10,
+  "totalPages": 3,
+  "page": 3,
+  "papers": [
+    {
+      "paperId": "2403.00417",
+      "title": "Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models",
+      "authors": "Jinbiao Yang",
+      "publishedDate": "2024-03-01",
+      "tags": [
+        "Pretraining",
+        "Memory",
+        "Benchmark"
+      ],
+      "sourceUrl": "https://arxiv.org/pdf/2403.00417",
+      "summaryPath": "/paper-summaries-site/data/papers/2403.00417/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2403.00417/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2403.00417"
+    },
+    {
+      "paperId": "2602.17654",
+      "title": "Mine and Refine: Optimizing Graded Relevance in E-commerce Search Retrieval",
+      "authors": "Jiaqi Xi, Raghav Saboo, Luming Chen, Martin Wang, Sudeep Das",
+      "publishedDate": "2024-02-01",
+      "tags": [
+        "Information Retrieval",
+        "E-commerce",
+        "Deep Learning",
+        "Contrastive Learning",
+        "Semantic Search"
+      ],
+      "sourceUrl": "https://arxiv.org/pdf/2402.17654.pdf",
+      "summaryPath": "/paper-summaries-site/data/papers/2602.17654/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2602.17654/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2602.17654"
+    },
+    {
+      "paperId": "2506.06989",
+      "title": "Correcting for Position Bias in Learning to Rank: A Control Function Approach",
+      "authors": "Md Aminul Islam, Kathryn Vasilaky, Elena Zheleva",
+      "publishedDate": "2022-06-01",
+      "tags": [
+        "Learning to Rank",
+        "Position Bias",
+        "Control Function",
+        "Bias Correction",
+        "Information Retrieval"
+      ],
+      "sourceUrl": "https://arxiv.org/pdf/2206.06989v2",
+      "summaryPath": "/paper-summaries-site/data/papers/2506.06989/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2506.06989/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2506.06989"
+    },
+    {
+      "paperId": "paper-1773559204996",
+      "title": "Think before Recommendation: Autonomous Reasoning-enhanced Recommender",
+      "authors": "Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang",
+      "publishedDate": null,
+      "tags": [
+        "RL",
+        "Rec",
+        "Reasoning"
+      ],
+      "sourceUrl": "https://openreview.net/pdf?id=fVs2BCjCqC",
+      "summaryPath": "/paper-summaries-site/data/papers/paper-1773559204996/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/paper-1773559204996/meta.json",
+      "pagePath": "/paper-summaries-site/papers/paper-1773559204996"
+    },
+    {
+      "paperId": "paper-1772980095573",
+      "title": "GENERATIVE REWARD MODELS",
+      "authors": "Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak",
+      "publishedDate": null,
+      "tags": [
+        "RL",
+        "Reasoning",
+        "QA"
+      ],
+      "sourceUrl": "https://www.synthlabs.ai/pdf/Generative_Reward_Models.pdf",
+      "summaryPath": "/paper-summaries-site/data/papers/paper-1772980095573/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/paper-1772980095573/meta.json",
+      "pagePath": "/paper-summaries-site/papers/paper-1772980095573"
+    },
+    {
+      "paperId": "paper-1772343143036",
+      "title": "The Context Trap: Why End-to-End Audio Language Models Fail Multi-turn Dialogues",
+      "authors": "Zhi Rui Tam Wen-Yu Chang Yun-Nung Chen",
+      "publishedDate": null,
+      "tags": [
+        "Spoken Dialogue Systems",
+        "End-to-End Models",
+        "Audio Language Models",
+        "Dialogue Coherence",
+        "Context Tracking",
+        "LLM Evaluation"
+      ],
+      "sourceUrl": "https://aclanthology.org/2026.iwsds-1.7.pdf",
+      "summaryPath": "/paper-summaries-site/data/papers/paper-1772343143036/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/paper-1772343143036/meta.json",
+      "pagePath": "/paper-summaries-site/papers/paper-1772343143036"
+    },
+    {
+      "paperId": "2601.08345",
+      "title": "MLPlatt: Simple Calibration Framework for Ranking Models",
+      "authors": "Piotr Bajger, Roman Dusek, Krzysztof Galias, Pawel Mlynicek, Aleksander Wawer, and Pawel Zawistowski",
+      "publishedDate": null,
+      "tags": [
+        "Ranking Model Calibration",
+        "E-commerce",
+        "CTR Prediction",
+        "Machine Learning"
+      ],
+      "sourceUrl": "N/A",
+      "summaryPath": "/paper-summaries-site/data/papers/2601.08345/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2601.08345/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2601.08345"
+    },
+    {
+      "paperId": "2601.05047",
+      "title": "Challenges and Research Directions for Large Language Model Inference Hardware",
+      "authors": "Xiaoyu Ma and David Patterson",
+      "publishedDate": null,
+      "tags": [
+        "AI Hardware",
+        "LLM Inference",
+        "Memory Systems",
+        "Computer Architecture"
+      ],
+      "sourceUrl": "N/A",
+      "summaryPath": "/paper-summaries-site/data/papers/2601.05047/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2601.05047/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2601.05047"
+    }
+  ]
+}
