@@ -1,3 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --ctp-rosewater: #dc8a78;
+  --ctp-flamingo: #dd7878;
+  --ctp-pink: #ea76cb;
+  --ctp-mauve: #8839ef;
+  --ctp-red: #d20f39;
+  --ctp-peach: #fe640b;
+  --ctp-yellow: #df8e1d;
+  --ctp-green: #40a02b;
+  --ctp-teal: #179299;
+  --ctp-sky: #04a5e5;
+  --ctp-sapphire: #209fb5;
+  --ctp-blue: #1e66f5;
+  --ctp-lavender: #7287fd;
+  --ctp-text: #4c4f69;
+  --ctp-subtext0: #6c6f85;
+  --ctp-subtext1: #5c5f77;
+  --ctp-overlay1: #8c8fa1;
+  --ctp-surface0: #ccd0da;
+  --ctp-surface1: #bcc0cc;
+  --ctp-base: #eff1f5;
+  --ctp-mantle: #e6e9ef;
+  --ctp-crust: #dce0e8;
+}
+
 :root {
   color-scheme: light;
   --bg: #f4efe7;
@@ -20,6 +47,7 @@
 body {
   margin: 0;
   min-width: 320px;
+  background-color: var(--ctp-crust);
   background:
     radial-gradient(circle at top, rgba(180, 83, 9, 0.08), transparent 28%),
     linear-gradient(180deg, #f8f3ea 0%, var(--bg) 100%);
