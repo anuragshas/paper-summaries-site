@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis</h1>
+      <p class="meta"><strong>Authors:</strong> Hazem Amamou, Stéphane Gagnon, Alan Davoust and Anderson R. Avila</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2603.05698" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2603.05698</a></p>
+      <p class="muted">Generated summary artifact for 2603.05698</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Combining knowledge graph-based methods with Retrieval-Augmented Generation (RAG) models can significantly enhance LLM robustness towards noisy and inconsistent retrieved information.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>There is an increasing concern with the impact of inconsistent retrieved information towards LLMs&#39; responses, challenging the robustness of Retrieval-Augmented Generation (RAG) systems.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>Customizing GraphRAG, a knowledge-graph-based RAG system, to address four robustness challenges (noise robustness, information integration, negative rejection, counterfactual robustness) identified by the RGB benchmark.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>GraphRAG customizations significantly improve accuracy for counterfactual robustness (ACCdoc) by up to +85.94% for GPT-3.5 and +23.00% for error detection (ED*) for GPT-4o-mini compared to the RGB baseline.</li><li>Information integration accuracy improves by up to +31.86% for GPT-3.5 and +5.87% for GPT-4o-mini with customized GraphRAG at 0% noise.</li><li>GR_ext achieves the highest negative rejection rates, at 42.66% for GPT-4o-mini and 33% for GPT-3.5, demonstrating an improved ability to identify unanswerable questions.</li><li>GraphRAG augmentation provides greater benefits for less complex models like GPT-3.5, showing larger performance increases across tasks.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Customized GraphRAG approaches significantly enhance LLM robustness to noise, counterfactual errors, and challenges in information integration compared to the standard RGB baseline.</li><li>The combination of encoded and external knowledge (GR_comb) and exclusive use of external knowledge (GR_ext) yield the greatest gains, with GR_comb achieving maximum error detection and correction, and GR_ext achieving maximum rejection scores.</li><li>Knowledge graph augmentation is particularly beneficial for models with limited encoded knowledge, such as GPT-3.5, showing greater performance increases than for GPT-4o-mini.</li><li>Current RAG systems still face challenges in negative rejection, with overall rejection rates remaining below 50%, indicating a need for further development in this area.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Future research should include solutions based on KG as baselines.</li><li>A unified solution for all four tasks addressed in the RGB benchmark is desired, removing the need for task-specific GraphRAG customization.</li><li>Further refinement is needed for negative rejection approaches, potentially by integrating confidence scores for retrieved facts.</li><li>Exploration of multimodal RAG is a future direction.</li><li>Batch processing for larger document sets for efficiency in multi-query scenarios should be explored.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 70,
+      &quot;xmin&quot;: 70,
+      &quot;ymax&quot;: 330,
+      &quot;xmax&quot;: 890
+    },
+    &quot;caption&quot;: &quot;Comparative Framework of RGB Benchmark, GraphRAG, and RobustGraphRAG for Evaluating Robustness in Retrieval-Augmented Generation&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 1
+  },
+  &quot;authors&quot;: &quot;Hazem Amamou, Stéphane Gagnon, Alan Davoust and Anderson R. Avila&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper presents a strong contribution by systematically evaluating and improving GraphRAG for robustness in RAG systems. The customized GraphRAG approaches show notable improvements over the RGB baseline across several challenging tasks (noise, counterfactual, information integration, negative rejection). The findings provide valuable insights, especially regarding the benefits for smaller LLMs. While not a paradigm shift, it&#39;s a solid advancement in making RAG systems more reliable.&quot;,
+    &quot;score&quot;: 6
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Retrieved documents might contain inaccurate information leading to unreliable responses from LLMs.&quot;,
+    &quot;statement&quot;: &quot;There is an increasing concern with the impact of inconsistent retrieved information towards LLMs&#39; responses, challenging the robustness of Retrieval-Augmented Generation (RAG) systems.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Retrieved texts may contain redundant or noisy information, increasing LLM confusion.&quot;,
+      &quot;Unstructured formats obscure explicit relationships between entities, hindering multi-hop reasoning.&quot;,
+      &quot;Contradiction detection requires costly cross-document analysis.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;GraphRAG customizations significantly improve accuracy for counterfactual robustness (ACCdoc) by up to +85.94% for GPT-3.5 and +23.00% for error detection (ED*) for GPT-4o-mini compared to the RGB baseline.&quot;,
+    &quot;Information integration accuracy improves by up to +31.86% for GPT-3.5 and +5.87% for GPT-4o-mini with customized GraphRAG at 0% noise.&quot;,
+    &quot;GR_ext achieves the highest negative rejection rates, at 42.66% for GPT-4o-mini and 33% for GPT-3.5, demonstrating an improved ability to identify unanswerable questions.&quot;,
+    &quot;GraphRAG augmentation provides greater benefits for less complex models like GPT-3.5, showing larger performance increases across tasks.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Retrieval-Augmented Generation Benchmark (RGB)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Accuracy (ACC)&quot;,
+        &quot;Accuracy for counterfactual documents (ACCdoc)&quot;,
+        &quot;Error Detection Rate (ED*)&quot;,
+        &quot;Error Correction Rate (CR)&quot;,
+        &quot;Rejection Rate&quot;
+      ],
+      &quot;setting&quot;: &quot;Evaluation of LLM robustness towards inconsistency in retrieved documents across four tasks (noise robustness, information integration, negative rejection, counterfactual robustness) using GPT-3.5 and GPT-4o-mini.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 172,
+          &quot;xmin&quot;: 178,
+          &quot;ymax&quot;: 405,
+          &quot;xmax&quot;: 818
+        },
+        &quot;caption&quot;: &quot;Comparative analysis for the noise robustness task measured by accuracy (%) for GPT-3.5 and GPT-4o-mini under varying noise ratios.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 4
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 472,
+          &quot;xmin&quot;: 180,
+          &quot;ymax&quot;: 640,
+          &quot;xmax&quot;: 800
+        },
+        &quot;caption&quot;: &quot;Comparative analysis for the negative rejection task measured by rejection rate (%) for GPT-4o-mini and GPT-3.5.&quot;,
+        &quot;figureNumber&quot;: 5,
+        &quot;pageIndex&quot;: 6
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;9.00 %&quot;,
+            &quot;benchmark&quot;: &quot;Counterfactual Robustness&quot;,
+            &quot;delta&quot;: &quot;+85.94 %&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;ACCdoc&quot;,
+            &quot;thisPaper&quot;: &quot;94.94 %&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;7.00 %&quot;,
+            &quot;benchmark&quot;: &quot;Counterfactual Robustness&quot;,
+            &quot;delta&quot;: &quot;+53.60 %&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;ED*&quot;,
+            &quot;thisPaper&quot;: &quot;60.60 %&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;57.14 %&quot;,
+            &quot;benchmark&quot;: &quot;Counterfactual Robustness&quot;,
+            &quot;delta&quot;: &quot;+38.60 %&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;CR&quot;,
+            &quot;thisPaper&quot;: &quot;95.74 %&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Counterfactual Robustness Evaluation (GPT-3.5)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;71.00 %&quot;,
+            &quot;benchmark&quot;: &quot;Counterfactual Robustness&quot;,
+            &quot;delta&quot;: &quot;-35.65 %&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;ACCdoc&quot;,
+            &quot;thisPaper&quot;: &quot;35.35 %&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;77.00 %&quot;,
+            &quot;benchmark&quot;: &quot;Counterfactual Robustness&quot;,
+            &quot;delta&quot;: &quot;+23.00 %&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;ED*&quot;,
+            &quot;thisPaper&quot;: &quot;100.00 %&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;100.00 %&quot;,
+            &quot;benchmark&quot;: &quot;Counterfactual Robustness&quot;,
+            &quot;delta&quot;: &quot;-14.15 %&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;CR&quot;,
+            &quot;thisPaper&quot;: &quot;85.85 %&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Counterfactual Robustness Evaluation (GPT-4o-mini)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;55.00 %&quot;,
+            &quot;benchmark&quot;: &quot;Information Integration&quot;,
+            &quot;delta&quot;: &quot;+31.86 %&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;86.86 %&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Information Integration Evaluation (GPT-3.5, Noise Ratio 0.0)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;82.00 %&quot;,
+            &quot;benchmark&quot;: &quot;Information Integration&quot;,
+            &quot;delta&quot;: &quot;+5.87 %&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;87.87 %&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Information Integration Evaluation (GPT-4o-mini, Noise Ratio 0.0)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;35.7 %&quot;,
+            &quot;benchmark&quot;: &quot;Negative Rejection (GPT-4o-mini)&quot;,
+            &quot;delta&quot;: &quot;+7.0 %&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Rejection Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;42.7 %&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;24.7 %&quot;,
+            &quot;benchmark&quot;: &quot;Negative Rejection (GPT-3.5)&quot;,
+            &quot;delta&quot;: &quot;+8.3 %&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Rejection Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;33 %&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Negative Rejection Evaluation&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Customized GraphRAG approaches significantly enhance LLM robustness to noise, counterfactual errors, and challenges in information integration compared to the standard RGB baseline.&quot;,
+      &quot;The combination of encoded and external knowledge (GR_comb) and exclusive use of external knowledge (GR_ext) yield the greatest gains, with GR_comb achieving maximum error detection and correction, and GR_ext achieving maximum rejection scores.&quot;,
+      &quot;Knowledge graph augmentation is particularly beneficial for models with limited encoded knowledge, such as GPT-3.5, showing greater performance increases than for GPT-4o-mini.&quot;,
+      &quot;Current RAG systems still face challenges in negative rejection, with overall rejection rates remaining below 50%, indicating a need for further development in this area.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Institut national de la recherche scientifique (INRS-EMT), Montréal, Québec, Canada; Université du Québec en Outaouais, Gatineau, Québec, Canada; INRS-UQM Mixed Research Unit on Cybersecurity, Gatineau, Québec, Canada&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Integrating structured external knowledge from retrieved documents into the RAG pipeline to enhance reasoning and mitigate issues from inaccurate information.&quot;,
+      &quot;Proposing specific prompt designs (GR_RGB, GR_def, GR_ext, GR_comb) tailored for robustness tasks like noise robustness, information integration, negative rejection, and counterfactual robustness.&quot;,
+      &quot;Demonstrating that GraphRAG customizations, particularly GR_comb and GR_ext, significantly improve performance over the standard RGB baseline, especially for less complex models like GPT-3.5.&quot;
+    ],
+    &quot;main&quot;: &quot;Customizing GraphRAG, a knowledge-graph-based RAG system, to address four robustness challenges (noise robustness, information integration, negative rejection, counterfactual robustness) identified by the RGB benchmark.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A framework that enhances Large Language Models (LLMs) by providing external knowledge via information retrieval, aiming to reduce factual hallucinations and enable access to new information.&quot;,
+        &quot;term&quot;: &quot;Retrieval-Augmented Generation (RAG)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A structured representation of knowledge that organizes entities and their relationships, typically used to improve reasoning and context.&quot;,
+        &quot;term&quot;: &quot;Knowledge Graph (KG)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A new testbed specifically designed for RAG evaluation, assessing the robustness of LLMs towards inconsistency in retrieved information across four scenarios: noise robustness, information integration, negative rejection, and counterfactual robustness.&quot;,
+        &quot;term&quot;: &quot;Retrieval-Augmented Generation Benchmark (RGB)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A knowledge-graph-based approach for question answering that builds an entity-based knowledge graph from documents using LLM capabilities and community detection to provide hierarchical summaries.&quot;,
+        &quot;term&quot;: &quot;GraphRAG&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Information Retrieval&quot;,
+      &quot;Question Answering&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Retrieval-Augmented Generation&quot;,
+    &quot;Knowledge Graphs&quot;,
+    &quot;LLM Robustness&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;RAG&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;KG&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Standard RAG retrieves unstructured documents, which often contain irrelevant or redundant information, whereas customized GraphRAG provides structured knowledge representation to improve context quality.&quot;,
+      &quot;The RGB baseline, which does not rely on structured knowledge, avoids answering questions when information is insufficient. However, GraphRAG configurations, particularly GR_ext, achieve higher rejection rates by explicitly targeting document credibility.&quot;,
+      &quot;Standard RAG systems are sensitive to noisy inputs, while customized GraphRAG approaches, especially GR_ext and GR_comb, demonstrate improved robustness to noise and factual errors.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;Future research should include solutions based on KG as baselines.&quot;,
+      &quot;A unified solution for all four tasks addressed in the RGB benchmark is desired, removing the need for task-specific GraphRAG customization.&quot;,
+      &quot;Further refinement is needed for negative rejection approaches, potentially by integrating confidence scores for retrieved facts.&quot;,
+      &quot;Exploration of multimodal RAG is a future direction.&quot;,
+      &quot;Batch processing for larger document sets for efficiency in multi-query scenarios should be explored.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Confidence Score&quot;,
+        &quot;value&quot;: &quot;A confidence score of 0.7 for entities was adopted for knowledge graph construction, serving as the minimum threshold for an entity to be included in the graph.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Community Detection Algorithm&quot;,
+        &quot;value&quot;: &quot;The Leiden algorithm was used for community detection with a resolution parameter of 1.0.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Number of Retrieved Documents&quot;,
+        &quot;value&quot;: &quot;Fixed to 5 for all experiments.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Documents from the RGB retrieval step are split into chunks.&quot;,
+      &quot;An LLM extracts entities and their relationships along with descriptions from these chunks to build an entity-based knowledge graph.&quot;,
+      &quot;Summaries of concepts are created, which are then used to build the knowledge graph.&quot;,
+      &quot;Community summaries are generated, from lower-level to higher-level, using the knowledge graph.&quot;,
+      &quot;The generated knowledge graph context is used with customized prompts for LLMs to generate answers to user questions, addressing specific robustness challenges.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Noise Robustness&quot;,
+        &quot;value&quot;: &quot;The ability of LLMs to extract correct information from noisy documents that contain inaccurate or irrelevant content.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Information Integration&quot;,
+        &quot;value&quot;: &quot;The ability of LLMs to synthesize information from multiple documents to answer complex user questions.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Negative Rejection&quot;,
+        &quot;value&quot;: &quot;The capability of LLMs to refuse to provide an answer when retrieved documents contain irrelevant information, and the LLM&#39;s encoded-prior knowledge is insufficient.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Counterfactual Robustness&quot;,
+        &quot;value&quot;: &quot;The ability to identify and disregard incorrect or contradictory information in retrieved documents, minimizing factual error propagation in generated responses.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;N/A&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Documents are split into chunks, and entities, relationships, and claims are identified to build an entity-based knowledge graph directly from the retrieved documents (both positive and negative) provided by the RGB retrieval step.&quot;,
+        &quot;name&quot;: &quot;Customized Document Indexing&quot;,
+        &quot;role&quot;: &quot;Build structured knowledge from retrieved documents to inform the RAG process.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Four distinct approaches based on GraphRAG&#39;s interaction with LLMs: GR_RGB (default RGB prompt adapted to KG), GR_def (GraphRAG&#39;s original prompt), GR_ext (exclusive use of external knowledge), and GR_comb (combination of encoded and external knowledge).&quot;,
+        &quot;name&quot;: &quot;GraphRAG Prompt Customization&quot;,
+        &quot;role&quot;: &quot;Tailor LLM prompts to improve robustness across different tasks and leverage KG context effectively.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;Combining knowledge graph-based methods with Retrieval-Augmented Generation (RAG) models can significantly enhance LLM robustness towards noisy and inconsistent retrieved information.&quot;,
+  &quot;title&quot;: &quot;Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2603.05698&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2603.05698&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2603.05698&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:70,&quot;xmin&quot;:70,&quot;ymax&quot;:330,&quot;xmax&quot;:890},&quot;caption&quot;:&quot;Comparative Framework of RGB Benchmark, GraphRAG, and RobustGraphRAG for Evaluating Robustness in Retrieval-Augmented Generation&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},&quot;authors&quot;:&quot;Hazem Amamou, Stéphane Gagnon, Alan Davoust and Anderson R. Avila&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper presents a strong contribution by systematically evaluating and improving GraphRAG for robustness in RAG systems. The customized GraphRAG approaches show notable improvements over the RGB baseline across several challenging tasks (noise, counterfactual, information integration, negative rejection). The findings provide valuable insights, especially regarding the benefits for smaller LLMs. While not a paradigm shift, it&#39;s a solid advancement in making RAG systems more reliable.&quot;,&quot;score&quot;:6},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Retrieved documents might contain inaccurate information leading to unreliable responses from LLMs.&quot;,&quot;statement&quot;:&quot;There is an increasing concern with the impact of inconsistent retrieved information towards LLMs&#39; responses, challenging the robustness of Retrieval-Augmented Generation (RAG) systems.&quot;,&quot;whyItMatters&quot;:[&quot;Retrieved texts may contain redundant or noisy information, increasing LLM confusion.&quot;,&quot;Unstructured formats obscure explicit relationships between entities, hindering multi-hop reasoning.&quot;,&quot;Contradiction detection requires costly cross-document analysis.&quot;]},&quot;evaluationHighlights&quot;:[&quot;GraphRAG customizations significantly improve accuracy for counterfactual robustness (ACCdoc) by up to +85.94% for GPT-3.5 and +23.00% for error detection (ED*) for GPT-4o-mini compared to the RGB baseline.&quot;,&quot;Information integration accuracy improves by up to +31.86% for GPT-3.5 and +5.87% for GPT-4o-mini with customized GraphRAG at 0% noise.&quot;,&quot;GR_ext achieves the highest negative rejection rates, at 42.66% for GPT-4o-mini and 33% for GPT-3.5, demonstrating an improved ability to identify unanswerable questions.&quot;,&quot;GraphRAG augmentation provides greater benefits for less complex models like GPT-3.5, showing larger performance increases across tasks.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Retrieval-Augmented Generation Benchmark (RGB)&quot;],&quot;metrics&quot;:[&quot;Accuracy (ACC)&quot;,&quot;Accuracy for counterfactual documents (ACCdoc)&quot;,&quot;Error Detection Rate (ED*)&quot;,&quot;Error Correction Rate (CR)&quot;,&quot;Rejection Rate&quot;],&quot;setting&quot;:&quot;Evaluation of LLM robustness towards inconsistency in retrieved documents across four tasks (noise robustness, information integration, negative rejection, counterfactual robustness) using GPT-3.5 and GPT-4o-mini.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:172,&quot;xmin&quot;:178,&quot;ymax&quot;:405,&quot;xmax&quot;:818},&quot;caption&quot;:&quot;Comparative analysis for the noise robustness task measured by accuracy (%) for GPT-3.5 and GPT-4o-mini under varying noise ratios.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:4},{&quot;boundingBox&quot;:{&quot;ymin&quot;:472,&quot;xmin&quot;:180,&quot;ymax&quot;:640,&quot;xmax&quot;:800},&quot;caption&quot;:&quot;Comparative analysis for the negative rejection task measured by rejection rate (%) for GPT-4o-mini and GPT-3.5.&quot;,&quot;figureNumber&quot;:5,&quot;pageIndex&quot;:6}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;9.00 %&quot;,&quot;benchmark&quot;:&quot;Counterfactual Robustness&quot;,&quot;delta&quot;:&quot;+85.94 %&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;ACCdoc&quot;,&quot;thisPaper&quot;:&quot;94.94 %&quot;},{&quot;baseline&quot;:&quot;7.00 %&quot;,&quot;benchmark&quot;:&quot;Counterfactual Robustness&quot;,&quot;delta&quot;:&quot;+53.60 %&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;ED*&quot;,&quot;thisPaper&quot;:&quot;60.60 %&quot;},{&quot;baseline&quot;:&quot;57.14 %&quot;,&quot;benchmark&quot;:&quot;Counterfactual Robustness&quot;,&quot;delta&quot;:&quot;+38.60 %&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;CR&quot;,&quot;thisPaper&quot;:&quot;95.74 %&quot;}],&quot;title&quot;:&quot;Counterfactual Robustness Evaluation (GPT-3.5)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;71.00 %&quot;,&quot;benchmark&quot;:&quot;Counterfactual Robustness&quot;,&quot;delta&quot;:&quot;-35.65 %&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;ACCdoc&quot;,&quot;thisPaper&quot;:&quot;35.35 %&quot;},{&quot;baseline&quot;:&quot;77.00 %&quot;,&quot;benchmark&quot;:&quot;Counterfactual Robustness&quot;,&quot;delta&quot;:&quot;+23.00 %&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;ED*&quot;,&quot;thisPaper&quot;:&quot;100.00 %&quot;},{&quot;baseline&quot;:&quot;100.00 %&quot;,&quot;benchmark&quot;:&quot;Counterfactual Robustness&quot;,&quot;delta&quot;:&quot;-14.15 %&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;CR&quot;,&quot;thisPaper&quot;:&quot;85.85 %&quot;}],&quot;title&quot;:&quot;Counterfactual Robustness Evaluation (GPT-4o-mini)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;55.00 %&quot;,&quot;benchmark&quot;:&quot;Information Integration&quot;,&quot;delta&quot;:&quot;+31.86 %&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;86.86 %&quot;}],&quot;title&quot;:&quot;Information Integration Evaluation (GPT-3.5, Noise Ratio 0.0)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;82.00 %&quot;,&quot;benchmark&quot;:&quot;Information Integration&quot;,&quot;delta&quot;:&quot;+5.87 %&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;87.87 %&quot;}],&quot;title&quot;:&quot;Information Integration Evaluation (GPT-4o-mini, Noise Ratio 0.0)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;35.7 %&quot;,&quot;benchmark&quot;:&quot;Negative Rejection (GPT-4o-mini)&quot;,&quot;delta&quot;:&quot;+7.0 %&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Rejection Rate (%)&quot;,&quot;thisPaper&quot;:&quot;42.7 %&quot;},{&quot;baseline&quot;:&quot;24.7 %&quot;,&quot;benchmark&quot;:&quot;Negative Rejection (GPT-3.5)&quot;,&quot;delta&quot;:&quot;+8.3 %&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Rejection Rate (%)&quot;,&quot;thisPaper&quot;:&quot;33 %&quot;}],&quot;title&quot;:&quot;Negative Rejection Evaluation&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Customized GraphRAG approaches significantly enhance LLM robustness to noise, counterfactual errors, and challenges in information integration compared to the standard RGB baseline.&quot;,&quot;The combination of encoded and external knowledge (GR_comb) and exclusive use of external knowledge (GR_ext) yield the greatest gains, with GR_comb achieving maximum error detection and correction, and GR_ext achieving maximum rejection scores.&quot;,&quot;Knowledge graph augmentation is particularly beneficial for models with limited encoded knowledge, such as GPT-3.5, showing greater performance increases than for GPT-4o-mini.&quot;,&quot;Current RAG systems still face challenges in negative rejection, with overall rejection rates remaining below 50%, indicating a need for further development in this area.&quot;]},&quot;institutions&quot;:&quot;Institut national de la recherche scientifique (INRS-EMT), Montréal, Québec, Canada; Université du Québec en Outaouais, Gatineau, Québec, Canada; INRS-UQM Mixed Research Unit on Cybersecurity, Gatineau, Québec, Canada&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Integrating structured external knowledge from retrieved documents into the RAG pipeline to enhance reasoning and mitigate issues from inaccurate information.&quot;,&quot;Proposing specific prompt designs (GR_RGB, GR_def, GR_ext, GR_comb) tailored for robustness tasks like noise robustness, information integration, negative rejection, and counterfactual robustness.&quot;,&quot;Demonstrating that GraphRAG customizations, particularly GR_comb and GR_ext, significantly improve performance over the standard RGB baseline, especially for less complex models like GPT-3.5.&quot;],&quot;main&quot;:&quot;Customizing GraphRAG, a knowledge-graph-based RAG system, to address four robustness challenges (noise robustness, information integration, negative rejection, counterfactual robustness) identified by the RGB benchmark.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A framework that enhances Large Language Models (LLMs) by providing external knowledge via information retrieval, aiming to reduce factual hallucinations and enable access to new information.&quot;,&quot;term&quot;:&quot;Retrieval-Augmented Generation (RAG)&quot;},{&quot;definition&quot;:&quot;A structured representation of knowledge that organizes entities and their relationships, typically used to improve reasoning and context.&quot;,&quot;term&quot;:&quot;Knowledge Graph (KG)&quot;},{&quot;definition&quot;:&quot;A new testbed specifically designed for RAG evaluation, assessing the robustness of LLMs towards inconsistency in retrieved information across four scenarios: noise robustness, information integration, negative rejection, and counterfactual robustness.&quot;,&quot;term&quot;:&quot;Retrieval-Augmented Generation Benchmark (RGB)&quot;},{&quot;definition&quot;:&quot;A knowledge-graph-based approach for question answering that builds an entity-based knowledge graph from documents using LLM capabilities and community detection to provide hierarchical summaries.&quot;,&quot;term&quot;:&quot;GraphRAG&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Information Retrieval&quot;,&quot;Question Answering&quot;]},&quot;subTopics&quot;:[&quot;Retrieval-Augmented Generation&quot;,&quot;Knowledge Graphs&quot;,&quot;LLM Robustness&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;KG&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Standard RAG retrieves unstructured documents, which often contain irrelevant or redundant information, whereas customized GraphRAG provides structured knowledge representation to improve context quality.&quot;,&quot;The RGB baseline, which does not rely on structured knowledge, avoids answering questions when information is insufficient. However, GraphRAG configurations, particularly GR_ext, achieve higher rejection rates by explicitly targeting document credibility.&quot;,&quot;Standard RAG systems are sensitive to noisy inputs, while customized GraphRAG approaches, especially GR_ext and GR_comb, demonstrate improved robustness to noise and factual errors.&quot;],&quot;limitations&quot;:[&quot;Future research should include solutions based on KG as baselines.&quot;,&quot;A unified solution for all four tasks addressed in the RGB benchmark is desired, removing the need for task-specific GraphRAG customization.&quot;,&quot;Further refinement is needed for negative rejection approaches, potentially by integrating confidence scores for retrieved facts.&quot;,&quot;Exploration of multimodal RAG is a future direction.&quot;,&quot;Batch processing for larger document sets for efficiency in multi-query scenarios should be explored.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Confidence Score&quot;,&quot;value&quot;:&quot;A confidence score of 0.7 for entities was adopted for knowledge graph construction, serving as the minimum threshold for an entity to be included in the graph.&quot;},{&quot;label&quot;:&quot;Community Detection Algorithm&quot;,&quot;value&quot;:&quot;The Leiden algorithm was used for community detection with a resolution parameter of 1.0.&quot;},{&quot;label&quot;:&quot;Number of Retrieved Documents&quot;,&quot;value&quot;:&quot;Fixed to 5 for all experiments.&quot;}],&quot;pipelineFlow&quot;:[&quot;Documents from the RGB retrieval step are split into chunks.&quot;,&quot;An LLM extracts entities and their relationships along with descriptions from these chunks to build an entity-based knowledge graph.&quot;,&quot;Summaries of concepts are created, which are then used to build the knowledge graph.&quot;,&quot;Community summaries are generated, from lower-level to higher-level, using the knowledge graph.&quot;,&quot;The generated knowledge graph context is used with customized prompts for LLMs to generate answers to user questions, addressing specific robustness challenges.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Noise Robustness&quot;,&quot;value&quot;:&quot;The ability of LLMs to extract correct information from noisy documents that contain inaccurate or irrelevant content.&quot;},{&quot;label&quot;:&quot;Information Integration&quot;,&quot;value&quot;:&quot;The ability of LLMs to synthesize information from multiple documents to answer complex user questions.&quot;},{&quot;label&quot;:&quot;Negative Rejection&quot;,&quot;value&quot;:&quot;The capability of LLMs to refuse to provide an answer when retrieved documents contain irrelevant information, and the LLM&#39;s encoded-prior knowledge is insufficient.&quot;},{&quot;label&quot;:&quot;Counterfactual Robustness&quot;,&quot;value&quot;:&quot;The ability to identify and disregard incorrect or contradictory information in retrieved documents, minimizing factual error propagation in generated responses.&quot;}],&quot;reproducibility&quot;:&quot;N/A&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Documents are split into chunks, and entities, relationships, and claims are identified to build an entity-based knowledge graph directly from the retrieved documents (both positive and negative) provided by the RGB retrieval step.&quot;,&quot;name&quot;:&quot;Customized Document Indexing&quot;,&quot;role&quot;:&quot;Build structured knowledge from retrieved documents to inform the RAG process.&quot;},{&quot;details&quot;:&quot;Four distinct approaches based on GraphRAG&#39;s interaction with LLMs: GR_RGB (default RGB prompt adapted to KG), GR_def (GraphRAG&#39;s original prompt), GR_ext (exclusive use of external knowledge), and GR_comb (combination of encoded and external knowledge).&quot;,&quot;name&quot;:&quot;GraphRAG Prompt Customization&quot;,&quot;role&quot;:&quot;Tailor LLM prompts to improve robustness across different tasks and leverage KG context effectively.&quot;}]},&quot;thesis&quot;:&quot;Combining knowledge graph-based methods with Retrieval-Augmented Generation (RAG) models can significantly enhance LLM robustness towards noisy and inconsistent retrieved information.&quot;,&quot;title&quot;:&quot;Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2603.05698&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>
