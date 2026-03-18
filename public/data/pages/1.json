@@ -1,6 +1,6 @@
 {
   "basePath": "/paper-summaries-site/",
-  "count": 28,
+  "count": 29,
   "pageSize": 10,
   "totalPages": 3,
   "page": 1,
@@ -49,6 +49,21 @@
       "summaryPath": "/paper-summaries-site/data/papers/2603.05706/summary.json",
       "metaPath": "/paper-summaries-site/data/papers/2603.05706/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.05706"
+    },
+    {
+      "paperId": "2603.05698",
+      "title": "Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis",
+      "authors": "Hazem Amamou, St\u00e9phane Gagnon, Alan Davoust and Anderson R. Avila",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "RAG",
+        "KG",
+        "QA"
+      ],
+      "sourceUrl": "https://arxiv.org/abs/arXiv:2603.05698",
+      "summaryPath": "/paper-summaries-site/data/papers/2603.05698/summary.json",
+      "metaPath": "/paper-summaries-site/data/papers/2603.05698/meta.json",
+      "pagePath": "/paper-summaries-site/papers/2603.05698"
     },
     {
       "paperId": "2603.05344",
@@ -145,23 +160,6 @@
       "summaryPath": "/paper-summaries-site/data/papers/2602.23234/summary.json",
       "metaPath": "/paper-summaries-site/data/papers/2602.23234/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.23234"
-    },
-    {
-      "paperId": "2602.23008",
-      "title": "Exploratory Memory-Augmented LLM Agent via Hybrid On- and Off-Policy Optimization",
-      "authors": "Zeyuan Liu, Jeonghye Kim, Xufang Luo, Dongsheng Li, Yuqing Yang",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "Reinforcement Learning",
-        "Large Language Models",
-        "Exploration",
-        "Memory-Augmented Agents",
-        "Policy Optimization"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.23008",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.23008/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.23008/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.23008"
     }
   ]
 }
