@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Survey of Large Language Models</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>A Survey of Large Language Models</h1>
+      <p class="meta"><strong>Authors:</strong> Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2303.18223" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2303.18223</a></p>
+      <p class="muted">Generated summary artifact for 2303.18223</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>This survey provides an up-to-date review of the recent advances in Large Language Models (LLMs), covering their background, key findings, and mainstream techniques across pre-training, adaptation tuning, utilization, and capacity evaluation, while also summarizing available resources and discussing future directions to serve as a useful resource for researchers and engineers.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Machines cannot naturally grasp the abilities of understanding and communicating in human language, which remains a longstanding research challenge for artificial intelligence.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A comprehensive, up-to-date survey of Large Language Models (LLMs), distilling recent advances in pre-training, adaptation tuning, utilization, and capacity evaluation, alongside resources and future directions.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>LLMs exhibit surprising emergent abilities (e.g., in-context learning, step-by-step reasoning) not observed in smaller models, appearing when scale exceeds a certain level.</li><li>The launch of ChatGPT and GPT-4 showcased advanced conversational and multimodal capabilities, driving widespread attention to LLMs.</li><li>Scaling model size, data size, and training compute consistently leads to improved LLM capacity, with specific scaling laws (KM, Chinchilla) guiding optimal resource allocation.</li><li>Alignment tuning (e.g., RLHF) is crucial for aligning LLMs with human values and preferences, effectively mitigating the generation of toxic, fictitious, or harmful content.</li><li>Instruction tuning enhances LLMs&#39; ability to follow task instructions and improves generalization to unseen tasks.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Scaling laws demonstrate that increasing model size, data size, and training compute consistently improves LLM capacity and performance.</li><li>LLMs exhibit emergent abilities like in-context learning and step-by-step reasoning that are not present in smaller models and appear non-linearly with scale.</li><li>Effective data collection, rigorous preprocessing (filtering, deduplication, privacy reduction), and optimized data scheduling (mixture, curriculum) are paramount for building capable LLMs.</li><li>Various architectures beyond the vanilla Transformer, including Mixture-of-Experts and emergent SSM-based designs, aim to improve efficiency and scalability.</li><li>Adaptation techniques such as instruction tuning and alignment tuning (e.g., RLHF) are essential for enhancing task-specific performance and ensuring LLMs are helpful, honest, and harmless.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The underlying principles behind emergent abilities in LLMs are still not well explored, lacking deep investigations into key contributing factors.</li><li>Training capable LLMs is extremely costly due to huge computational demands, making repetitive ablating studies difficult and limiting community access to important training details often confined to industry.</li><li>Aligning LLMs with human values or preferences is challenging, as LLMs are prone to generating toxic, fictitious, or harmful content, necessitating effective and efficient control approaches.</li><li>LLMs still suffer from limitations such as generating hallucinations with factual errors and potentially risky responses in specific contexts.</li><li>The capacities of LLMs are sometimes limited by their pre-training data, for example, an inability to capture up-to-date information, requiring external tools for compensation.</li><li>LLMs may perform less effectively on tasks not optimally expressed in text form, such as numerical computation.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 110,
+      &quot;xmin&quot;: 115,
+      &quot;ymax&quot;: 200,
+      &quot;xmax&quot;: 880
+    },
+    &quot;caption&quot;: &quot;A comparison of the attention patterns in three mainstream architectures. Here, the blue, green, yellow and grey rounded rectangles indicate the attention between prefix tokens, attention between prefix and target tokens, attention between target tokens, and masked attention respectively.&quot;,
+    &quot;figureNumber&quot;: 9,
+    &quot;pageIndex&quot;: 22
+  },
+  &quot;authors&quot;: &quot;Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper provides a comprehensive and timely survey of Large Language Models, consolidating recent advances across key aspects like pre-training, adaptation, utilization, and evaluation. It clarifies concepts such as scaling laws and emergent abilities, and summarizes available resources, offering significant practical and academic value to the rapidly evolving LLM field. While a survey, its structured overview and practical insights make it a strong contribution.&quot;,
+    &quot;score&quot;: 6
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;To enable machines to read, write, and communicate like humans, which requires advanced AI algorithms for understanding and grasping language.&quot;,
+    &quot;statement&quot;: &quot;Machines cannot naturally grasp the abilities of understanding and communicating in human language, which remains a longstanding research challenge for artificial intelligence.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;The technical evolution of LLMs is revolutionizing how AI algorithms are developed and used.&quot;,
+      &quot;LLMs can serve as general-purpose language task solvers, shifting the NLP research paradigm.&quot;,
+      &quot;The advent of ChatGPT and GPT-4 leads to a rethinking of the possibilities of Artificial General Intelligence (AGI).&quot;,
+      &quot;LLMs empower real-world applications (e.g., Microsoft 365 Copilot) and multimodal vision-language models.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;LLMs exhibit surprising emergent abilities (e.g., in-context learning, step-by-step reasoning) not observed in smaller models, appearing when scale exceeds a certain level.&quot;,
+    &quot;The launch of ChatGPT and GPT-4 showcased advanced conversational and multimodal capabilities, driving widespread attention to LLMs.&quot;,
+    &quot;Scaling model size, data size, and training compute consistently leads to improved LLM capacity, with specific scaling laws (KM, Chinchilla) guiding optimal resource allocation.&quot;,
+    &quot;Alignment tuning (e.g., RLHF) is crucial for aligning LLMs with human values and preferences, effectively mitigating the generation of toxic, fictitious, or harmful content.&quot;,
+    &quot;Instruction tuning enhances LLMs&#39; ability to follow task instructions and improves generalization to unseen tasks.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [],
+      &quot;metrics&quot;: [],
+      &quot;setting&quot;: &quot;N/A (This is a survey paper, not presenting new experimental results from the authors.)&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 51,
+          &quot;xmin&quot;: 105,
+          &quot;ymax&quot;: 246,
+          &quot;xmax&quot;: 490
+        },
+        &quot;caption&quot;: &quot;The trends of the cumulative numbers of arXiv papers that contain the keyphrases “language model” (since June 2018) and “large language model” (since October 2019), respectively. The statistics are calculated using exact match by querying the keyphrases in title or abstract by months. We set different x-axis ranges for the two keyphrases, because “language models” have been explored at an earlier time. We label the points corresponding to important landmarks in the research progress of LLMs. A sharp increase occurs after the release of ChatGPT: the average number of published arXiv papers that contain “large language model” in title or abstract goes from 0.40 per day to 8.58 per day (Figure 1(b)).&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 51,
+          &quot;xmin&quot;: 510,
+          &quot;ymax&quot;: 246,
+          &quot;xmax&quot;: 895
+        },
+        &quot;caption&quot;: &quot;The trends of the cumulative numbers of arXiv papers that contain the keyphrases “language model” (since June 2018) and “large language model” (since October 2019), respectively. The statistics are calculated using exact match by querying the keyphrases in title or abstract by months. We set different x-axis ranges for the two keyphrases, because “language models” have been explored at an earlier time. We label the points corresponding to important landmarks in the research progress of LLMs. A sharp increase occurs after the release of ChatGPT: the average number of published arXiv papers that contain “large language model” in title or abstract goes from 0.40 per day to 8.58 per day (Figure 1(b)).&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 375,
+          &quot;xmin&quot;: 120,
+          &quot;ymax&quot;: 510,
+          &quot;xmax&quot;: 885
+        },
+        &quot;caption&quot;: &quot;An evolution process of the four generations of language models (LM) from the perspective of task solving capacity. Note that the time period for each stage may not be very accurate, and we set the time mainly according to the publish date of the most representative studies at each stage. For neural language models, we abbreviate the paper titles of two representative studies to name the two approaches: NPLM [1] (“A neural probabilistic language model”) and NLPS [2] (“Natural language processing (almost) from scratch”). Due to the space limitation, we don’t list all representative studies in this figure.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 500,
+          &quot;xmin&quot;: 105,
+          &quot;ymax&quot;: 640,
+          &quot;xmax&quot;: 895
+        },
+        &quot;caption&quot;: &quot;A brief illustration for the technical evolution of GPT-series models. We plot this figure mainly based on the papers, blog articles and official APIs from OpenAI. Here, solid lines denote that there exists an explicit evidence (e.g., the official statement that a new model is developed based on a base model) on the evolution path between two models, while dashed lines denote a relatively weaker evolution relation.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 8
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 50,
+          &quot;xmin&quot;: 110,
+          &quot;ymax&quot;: 450,
+          &quot;xmax&quot;: 885
+        },
+        &quot;caption&quot;: &quot;An evolutionary graph of the research work conducted on LLaMA. Due to the huge number, we cannot include all the LLaMA variants in this figure, even much excellent work. To support incremental update, we share the source file of this figure, and welcome the readers to include the desired models by submitting the pull requests on our GitHub page.&quot;,
+        &quot;figureNumber&quot;: 5,
+        &quot;pageIndex&quot;: 11
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 60,
+          &quot;xmin&quot;: 105,
+          &quot;ymax&quot;: 180,
+          &quot;xmax&quot;: 890
+        },
+        &quot;caption&quot;: &quot;Ratios of various data sources in the pre-training data for existing LLMs.&quot;,
+        &quot;figureNumber&quot;: 6,
+        &quot;pageIndex&quot;: 16
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 70,
+          &quot;xmin&quot;: 115,
+          &quot;ymax&quot;: 230,
+          &quot;xmax&quot;: 885
+        },
+        &quot;caption&quot;: &quot;An illustration of a typical data preprocessing pipeline for pre-training large language models.&quot;,
+        &quot;figureNumber&quot;: 7,
+        &quot;pageIndex&quot;: 18
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 45,
+          &quot;xmin&quot;: 200,
+          &quot;ymax&quot;: 125,
+          &quot;xmax&quot;: 770
+        },
+        &quot;caption&quot;: &quot;An illustration of data scheduling for pre-training LLMs.&quot;,
+        &quot;figureNumber&quot;: 8,
+        &quot;pageIndex&quot;: 19
+      }
+    ],
+    &quot;keyResultGroups&quot;: [],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Scaling laws demonstrate that increasing model size, data size, and training compute consistently improves LLM capacity and performance.&quot;,
+      &quot;LLMs exhibit emergent abilities like in-context learning and step-by-step reasoning that are not present in smaller models and appear non-linearly with scale.&quot;,
+      &quot;Effective data collection, rigorous preprocessing (filtering, deduplication, privacy reduction), and optimized data scheduling (mixture, curriculum) are paramount for building capable LLMs.&quot;,
+      &quot;Various architectures beyond the vanilla Transformer, including Mixture-of-Experts and emergent SSM-based designs, aim to improve efficiency and scalability.&quot;,
+      &quot;Adaptation techniques such as instruction tuning and alignment tuning (e.g., RLHF) are essential for enhancing task-specific performance and ensuring LLMs are helpful, honest, and harmless.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Gaoling School of Artificial Intelligence and School of Information, Renmin University of China, Beijing, China; DIRO, Universit\\´e de Montr\\´eal, Canada.&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Provides a comprehensive and up-to-date literature review of LLMs, covering four major aspects: pre-training, adaptation tuning, utilization, and capacity evaluation.&quot;,
+      &quot;Summarizes available resources for LLM development, including publicly available model checkpoints/APIs, diverse corpora, and essential libraries.&quot;,
+      &quot;Discusses the technical evolution of GPT-series models and LLaMA model family, highlighting key milestones and architectural progressions.&quot;,
+      &quot;Analyzes critical aspects such as scaling laws, emergent abilities, and data preprocessing strategies, offering detailed formulations and comparisons.&quot;,
+      &quot;Identifies remaining challenges and future research directions for LLMs, making it a valuable resource for researchers and engineers.&quot;
+    ],
+    &quot;main&quot;: &quot;A comprehensive, up-to-date survey of Large Language Models (LLMs), distilling recent advances in pre-training, adaptation tuning, utilization, and capacity evaluation, alongside resources and future directions.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;Models based on statistical learning, building word prediction based on the Markov assumption (e.g., n-gram models).&quot;,
+        &quot;term&quot;: &quot;Statistical Language Models (SLM)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Characterize word sequence probability using neural networks (e.g., multi-layer perceptron (MLP) and recurrent neural networks (RNN)) and distributed word representations.&quot;,
+        &quot;term&quot;: &quot;Neural Language Models (NLM)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Models (e.g., BERT) pre-trained on large-scale unlabeled corpora, typically using Transformer architecture, to capture context-aware word representations.&quot;,
+        &quot;term&quot;: &quot;Pre-trained Language Models (PLM)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Quantitative approaches that characterize the relationship between model performance and factors like model size ($N$), dataset size ($D$), and training compute ($C$).&quot;,
+        &quot;term&quot;: &quot;Scaling Laws&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Abilities that are not present in small models but arise in large models when their scale reaches a certain level, showing performance significantly above random.&quot;,
+        &quot;term&quot;: &quot;Emergent Abilities&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The ability of an LLM to generate expected output for test instances given natural language instructions and/or several task demonstrations, without requiring additional training or gradient update.&quot;,
+        &quot;term&quot;: &quot;In-context Learning (ICL)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The ability of LLMs to perform well on unseen tasks that are described in the form of instructions, often achieved by fine-tuning with multi-task datasets (instruction tuning).&quot;,
+        &quot;term&quot;: &quot;Instruction Following&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A prompting strategy that enables LLMs to solve complex reasoning tasks by involving intermediate reasoning steps to derive the final answer.&quot;,
+        &quot;term&quot;: &quot;Chain-of-Thought (CoT) Prompting&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A technique that utilizes reinforcement learning with human feedback, based on human preference comparisons, to align LLMs with human values (helpful, honest, harmless).&quot;,
+        &quot;term&quot;: &quot;Reinforcement Learning from Human Feedback (RLHF)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A model scaling technique in which a subset of neural network weights for each input is sparsely activated, allowing for scaling up model parameters while maintaining constant computational cost.&quot;,
+        &quot;term&quot;: &quot;Mixture-of-Experts (MoE)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Transformer architecture&quot;,
+      &quot;Natural Language Processing (NLP) fundamentals&quot;,
+      &quot;Language Modeling (LM) concepts&quot;,
+      &quot;Pre-trained Language Models (PLMs)&quot;,
+      &quot;Distributed training algorithms for neural networks&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Pre-training LLMs&quot;,
+    &quot;Emergent Abilities&quot;,
+    &quot;LLM Architectures&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;RAG&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Statistical Language Models (SLMs) suffered from the curse of dimensionality, making it difficult to accurately estimate high-order language models and requiring specific smoothing strategies.&quot;,
+      &quot;Neural Language Models (NLMs) improved upon SLMs by using neural networks to learn distributed word representations, reducing the need for human feature engineering.&quot;,
+      &quot;Pre-trained Language Models (PLMs) (e.g., BERT) introduced context-aware word representations and established the &#39;pre-training and fine-tuning&#39; paradigm, significantly raising performance baselines for NLP tasks.&quot;,
+      &quot;LLMs extend PLMs by exploring the scaling effect to significantly larger parameter and data sizes, leading to surprising emergent abilities (e.g., in-context learning, step-by-step reasoning) not present in smaller PLMs (e.g., GPT-2 vs GPT-3).&quot;,
+      &quot;Unlike small PLMs, which often require direct access for fine-tuning, the major approach to accessing LLMs is through prompting interfaces (e.g., GPT-4 API), shifting how humans interact with AI.&quot;,
+      &quot;LLMs are moving from modeling and generating text (early LMs) to focusing on complex task solving (latest LMs like GPT-4), representing a significant leap in scientific thinking.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The underlying principles behind emergent abilities in LLMs are still not well explored, lacking deep investigations into key contributing factors.&quot;,
+      &quot;Training capable LLMs is extremely costly due to huge computational demands, making repetitive ablating studies difficult and limiting community access to important training details often confined to industry.&quot;,
+      &quot;Aligning LLMs with human values or preferences is challenging, as LLMs are prone to generating toxic, fictitious, or harmful content, necessitating effective and efficient control approaches.&quot;,
+      &quot;LLMs still suffer from limitations such as generating hallucinations with factual errors and potentially risky responses in specific contexts.&quot;,
+      &quot;The capacities of LLMs are sometimes limited by their pre-training data, for example, an inability to capture up-to-date information, requiring external tools for compensation.&quot;,
+      &quot;LLMs may perform less effectively on tasks not optimally expressed in text form, such as numerical computation.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Kaplan et al. (KM) Scaling Law&quot;,
+        &quot;value&quot;: &quot;Empirically models the power-law relationship of model performance (cross-entropy loss $L$) with model size ($N$), dataset size ($D$), and training compute ($C$) using formulas like $L(N) = \\text{const} \\cdot N^{\\alpha_N}$, $L(D) = \\text{const} \\cdot D^{\\alpha_D}$, $L(C) = \\text{const} \\cdot C^{\\alpha_C}$, showing strong dependence on these factors.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Chinchilla Scaling Law&quot;,
+        &quot;value&quot;: &quot;Proposes an alternative form for compute-optimal training for LLMs: $L(N, D) = E + A N^{-\\alpha} + B D^{-\\beta}$, where $N_{\\text{opt}}(C) = G (C/6)^{a}$ and $D_{\\text{opt}}(C) = G^{-1} (C/6)^{b}$ define the optimal allocation of compute budget to model size and data size, arguing for similar scaling of both.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Normalization Method (LayerNorm)&quot;,
+        &quot;value&quot;: &quot;$x = \\frac{x - \\mu}{\\sigma} \\cdot \\gamma + \\beta$, where $\\mu = \\frac{1}{d} \\sum_{i=1}^{d} x_i$ is the mean and $\\sigma = \\sqrt{\\frac{1}{d} \\sum_{i=1}^{d} (x_i - \\mu)^2}$ is the variance over activations per layer, used to re-center and re-scale.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Normalization Method (RMSNorm)&quot;,
+        &quot;value&quot;: &quot;Improves training speed by re-scaling activations with only the root mean square (RMS): $x \\cdot \\text{RMS}(x)^{-1} \\cdot \\gamma$, where $\\text{RMS}(x) = \\sqrt{\\frac{1}{d} \\sum_{i=1}^{d} x_i^2}$, instead of mean and variance.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Position Embedding (RoPE)&quot;,
+        &quot;value&quot;: &quot;Rotary Position Embedding sets specific rotatory matrices based on the absolute position of each key or query. The basis $\\theta_i$ for dimension $i$ is defined as $b^{-2(i-1)/d}$ (with $b=10000$ by default), resulting in attention scores that incorporate relative position information: $(W_q x_i R_{\\Theta,i}) (W_k x_j R_{\\Theta,j})^T$.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Data Collection and Preparation: Collect diverse, large-scale linguistic corpora (webpages, books, code, scientific texts) and apply preprocessing (filtering, deduplication, privacy reduction, tokenization) to ensure high quality.&quot;,
+      &quot;Pre-training: Train Transformer-based language models on the prepared massive datasets, focusing on language modeling objectives to acquire fundamental language understanding and generation skills.&quot;,
+      &quot;Adaptation Tuning: Further fine-tune pre-trained LLMs using techniques like instruction tuning (supervised fine-tuning with task descriptions) and alignment tuning (e.g., Reinforcement Learning from Human Feedback) to enhance specific abilities and align with human values.&quot;,
+      &quot;Utilization: Apply the adapted LLMs for various downstream tasks, leveraging capabilities such as in-context learning, tool manipulation (using external plugins or APIs), and building agent-like systems.&quot;,
+      &quot;Capacity Evaluation: Evaluate LLMs on a range of benchmarks to assess their abilities (e.g., reasoning, multi-modality), identify emergent properties, and ensure safety and interpretability.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Language Modeling (LM)&quot;,
+        &quot;value&quot;: &quot;LM aims to model the generative likelihood of word sequences, so as to predict the probabilities of future (or missing) tokens, serving as a major approach to advancing language intelligence.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Large Language Models (LLMs)&quot;,
+        &quot;value&quot;: &quot;Typically refers to Transformer language models containing hundreds of billions (or more) of parameters, trained on massive text data, exhibiting strong capacities to understand natural language and solve complex tasks via text generation.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The authors indicate an effort towards reproducibility and resource sharing by providing a GitHub project website (https://github.com/RUCAIBox/LLMSurvey) for supporting resources for LLMs and welcoming contributions (pull requests) to update figures like the LLaMA evolutionary graph.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;The de facto backbone architecture for developing various LLMs, characterized by stacked multi-head attention layers. It allows for scaling to hundreds or thousands of billions of parameters, supporting high parallelizability.&quot;,
+        &quot;name&quot;: &quot;Transformer Architecture&quot;,
+        &quot;role&quot;: &quot;Base Model Architecture&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A widely adopted decoder-only architecture that incorporates a unidirectional attention mask, ensuring each input token attends only to past tokens. GPT-series models (e.g., GPT-1, GPT-2, GPT-3, OPT, BLOOM) are representative of this design.&quot;,
+        &quot;name&quot;: &quot;Causal Decoder Architecture&quot;,
+        &quot;role&quot;: &quot;Mainstream LLM Architecture&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A decoder-only architecture (aka non-causal decoder) that revises masking to enable bidirectional attention over prefix tokens and unidirectional attention on generated tokens, allowing for encoding a prefix bidirectionally and autoregressively predicting output (e.g., GLM-130B, U-PaLM).&quot;,
+        &quot;name&quot;: &quot;Prefix Decoder Architecture&quot;,
+        &quot;role&quot;: &quot;Alternative Decoder Architecture&quot;
+      },
+      {
+        &quot;details&quot;: &quot;An extension to existing architectures where a subset of neural network weights is sparsely activated for each input, allowing for scaling up model parameters while maintaining a constant computational cost (e.g., Switch Transformer, GLaM).&quot;,
+        &quot;name&quot;: &quot;Mixture-of-Experts (MoE)&quot;,
+        &quot;role&quot;: &quot;Model Scaling Mechanism&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A crucial pipeline encompassing filtering (language, metric, statistic, keyword-based), deduplication (sentence, document, dataset-level), privacy reduction (removing PII), and tokenization (BPE, WordPiece, Unigram) to ensure high-quality and diverse pre-training data.&quot;,
+        &quot;name&quot;: &quot;Data Preprocessing Pipeline&quot;,
+        &quot;role&quot;: &quot;Data Preparation Module&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A tuning approach (e.g., using Reinforcement Learning with Human Feedback - RLHF) that incorporates human feedback to align LLMs with human values like helpfulness, honesty, and harmlessness, mitigating toxic or biased content generation (e.g., InstructGPT, ChatGPT).&quot;,
+        &quot;name&quot;: &quot;Alignment Tuning&quot;,
+        &quot;role&quot;: &quot;Behavior Alignment Module&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;This survey provides an up-to-date review of the recent advances in Large Language Models (LLMs), covering their background, key findings, and mainstream techniques across pre-training, adaptation tuning, utilization, and capacity evaluation, while also summarizing available resources and discussing future directions to serve as a useful resource for researchers and engineers.&quot;,
+  &quot;title&quot;: &quot;A Survey of Large Language Models&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2303.18223&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2303.18223&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2303.18223&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:110,&quot;xmin&quot;:115,&quot;ymax&quot;:200,&quot;xmax&quot;:880},&quot;caption&quot;:&quot;A comparison of the attention patterns in three mainstream architectures. Here, the blue, green, yellow and grey rounded rectangles indicate the attention between prefix tokens, attention between prefix and target tokens, attention between target tokens, and masked attention respectively.&quot;,&quot;figureNumber&quot;:9,&quot;pageIndex&quot;:22},&quot;authors&quot;:&quot;Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper provides a comprehensive and timely survey of Large Language Models, consolidating recent advances across key aspects like pre-training, adaptation, utilization, and evaluation. It clarifies concepts such as scaling laws and emergent abilities, and summarizes available resources, offering significant practical and academic value to the rapidly evolving LLM field. While a survey, its structured overview and practical insights make it a strong contribution.&quot;,&quot;score&quot;:6},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;To enable machines to read, write, and communicate like humans, which requires advanced AI algorithms for understanding and grasping language.&quot;,&quot;statement&quot;:&quot;Machines cannot naturally grasp the abilities of understanding and communicating in human language, which remains a longstanding research challenge for artificial intelligence.&quot;,&quot;whyItMatters&quot;:[&quot;The technical evolution of LLMs is revolutionizing how AI algorithms are developed and used.&quot;,&quot;LLMs can serve as general-purpose language task solvers, shifting the NLP research paradigm.&quot;,&quot;The advent of ChatGPT and GPT-4 leads to a rethinking of the possibilities of Artificial General Intelligence (AGI).&quot;,&quot;LLMs empower real-world applications (e.g., Microsoft 365 Copilot) and multimodal vision-language models.&quot;]},&quot;evaluationHighlights&quot;:[&quot;LLMs exhibit surprising emergent abilities (e.g., in-context learning, step-by-step reasoning) not observed in smaller models, appearing when scale exceeds a certain level.&quot;,&quot;The launch of ChatGPT and GPT-4 showcased advanced conversational and multimodal capabilities, driving widespread attention to LLMs.&quot;,&quot;Scaling model size, data size, and training compute consistently leads to improved LLM capacity, with specific scaling laws (KM, Chinchilla) guiding optimal resource allocation.&quot;,&quot;Alignment tuning (e.g., RLHF) is crucial for aligning LLMs with human values and preferences, effectively mitigating the generation of toxic, fictitious, or harmful content.&quot;,&quot;Instruction tuning enhances LLMs&#39; ability to follow task instructions and improves generalization to unseen tasks.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[],&quot;metrics&quot;:[],&quot;setting&quot;:&quot;N/A (This is a survey paper, not presenting new experimental results from the authors.)&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:51,&quot;xmin&quot;:105,&quot;ymax&quot;:246,&quot;xmax&quot;:490},&quot;caption&quot;:&quot;The trends of the cumulative numbers of arXiv papers that contain the keyphrases “language model” (since June 2018) and “large language model” (since October 2019), respectively. The statistics are calculated using exact match by querying the keyphrases in title or abstract by months. We set different x-axis ranges for the two keyphrases, because “language models” have been explored at an earlier time. We label the points corresponding to important landmarks in the research progress of LLMs. A sharp increase occurs after the release of ChatGPT: the average number of published arXiv papers that contain “large language model” in title or abstract goes from 0.40 per day to 8.58 per day (Figure 1(b)).&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:51,&quot;xmin&quot;:510,&quot;ymax&quot;:246,&quot;xmax&quot;:895},&quot;caption&quot;:&quot;The trends of the cumulative numbers of arXiv papers that contain the keyphrases “language model” (since June 2018) and “large language model” (since October 2019), respectively. The statistics are calculated using exact match by querying the keyphrases in title or abstract by months. We set different x-axis ranges for the two keyphrases, because “language models” have been explored at an earlier time. We label the points corresponding to important landmarks in the research progress of LLMs. A sharp increase occurs after the release of ChatGPT: the average number of published arXiv papers that contain “large language model” in title or abstract goes from 0.40 per day to 8.58 per day (Figure 1(b)).&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:375,&quot;xmin&quot;:120,&quot;ymax&quot;:510,&quot;xmax&quot;:885},&quot;caption&quot;:&quot;An evolution process of the four generations of language models (LM) from the perspective of task solving capacity. Note that the time period for each stage may not be very accurate, and we set the time mainly according to the publish date of the most representative studies at each stage. For neural language models, we abbreviate the paper titles of two representative studies to name the two approaches: NPLM [1] (“A neural probabilistic language model”) and NLPS [2] (“Natural language processing (almost) from scratch”). Due to the space limitation, we don’t list all representative studies in this figure.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:500,&quot;xmin&quot;:105,&quot;ymax&quot;:640,&quot;xmax&quot;:895},&quot;caption&quot;:&quot;A brief illustration for the technical evolution of GPT-series models. We plot this figure mainly based on the papers, blog articles and official APIs from OpenAI. Here, solid lines denote that there exists an explicit evidence (e.g., the official statement that a new model is developed based on a base model) on the evolution path between two models, while dashed lines denote a relatively weaker evolution relation.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:8},{&quot;boundingBox&quot;:{&quot;ymin&quot;:50,&quot;xmin&quot;:110,&quot;ymax&quot;:450,&quot;xmax&quot;:885},&quot;caption&quot;:&quot;An evolutionary graph of the research work conducted on LLaMA. Due to the huge number, we cannot include all the LLaMA variants in this figure, even much excellent work. To support incremental update, we share the source file of this figure, and welcome the readers to include the desired models by submitting the pull requests on our GitHub page.&quot;,&quot;figureNumber&quot;:5,&quot;pageIndex&quot;:11},{&quot;boundingBox&quot;:{&quot;ymin&quot;:60,&quot;xmin&quot;:105,&quot;ymax&quot;:180,&quot;xmax&quot;:890},&quot;caption&quot;:&quot;Ratios of various data sources in the pre-training data for existing LLMs.&quot;,&quot;figureNumber&quot;:6,&quot;pageIndex&quot;:16},{&quot;boundingBox&quot;:{&quot;ymin&quot;:70,&quot;xmin&quot;:115,&quot;ymax&quot;:230,&quot;xmax&quot;:885},&quot;caption&quot;:&quot;An illustration of a typical data preprocessing pipeline for pre-training large language models.&quot;,&quot;figureNumber&quot;:7,&quot;pageIndex&quot;:18},{&quot;boundingBox&quot;:{&quot;ymin&quot;:45,&quot;xmin&quot;:200,&quot;ymax&quot;:125,&quot;xmax&quot;:770},&quot;caption&quot;:&quot;An illustration of data scheduling for pre-training LLMs.&quot;,&quot;figureNumber&quot;:8,&quot;pageIndex&quot;:19}],&quot;keyResultGroups&quot;:[],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Scaling laws demonstrate that increasing model size, data size, and training compute consistently improves LLM capacity and performance.&quot;,&quot;LLMs exhibit emergent abilities like in-context learning and step-by-step reasoning that are not present in smaller models and appear non-linearly with scale.&quot;,&quot;Effective data collection, rigorous preprocessing (filtering, deduplication, privacy reduction), and optimized data scheduling (mixture, curriculum) are paramount for building capable LLMs.&quot;,&quot;Various architectures beyond the vanilla Transformer, including Mixture-of-Experts and emergent SSM-based designs, aim to improve efficiency and scalability.&quot;,&quot;Adaptation techniques such as instruction tuning and alignment tuning (e.g., RLHF) are essential for enhancing task-specific performance and ensuring LLMs are helpful, honest, and harmless.&quot;]},&quot;institutions&quot;:&quot;Gaoling School of Artificial Intelligence and School of Information, Renmin University of China, Beijing, China; DIRO, Universit\\´e de Montr\\´eal, Canada.&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Provides a comprehensive and up-to-date literature review of LLMs, covering four major aspects: pre-training, adaptation tuning, utilization, and capacity evaluation.&quot;,&quot;Summarizes available resources for LLM development, including publicly available model checkpoints/APIs, diverse corpora, and essential libraries.&quot;,&quot;Discusses the technical evolution of GPT-series models and LLaMA model family, highlighting key milestones and architectural progressions.&quot;,&quot;Analyzes critical aspects such as scaling laws, emergent abilities, and data preprocessing strategies, offering detailed formulations and comparisons.&quot;,&quot;Identifies remaining challenges and future research directions for LLMs, making it a valuable resource for researchers and engineers.&quot;],&quot;main&quot;:&quot;A comprehensive, up-to-date survey of Large Language Models (LLMs), distilling recent advances in pre-training, adaptation tuning, utilization, and capacity evaluation, alongside resources and future directions.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;Models based on statistical learning, building word prediction based on the Markov assumption (e.g., n-gram models).&quot;,&quot;term&quot;:&quot;Statistical Language Models (SLM)&quot;},{&quot;definition&quot;:&quot;Characterize word sequence probability using neural networks (e.g., multi-layer perceptron (MLP) and recurrent neural networks (RNN)) and distributed word representations.&quot;,&quot;term&quot;:&quot;Neural Language Models (NLM)&quot;},{&quot;definition&quot;:&quot;Models (e.g., BERT) pre-trained on large-scale unlabeled corpora, typically using Transformer architecture, to capture context-aware word representations.&quot;,&quot;term&quot;:&quot;Pre-trained Language Models (PLM)&quot;},{&quot;definition&quot;:&quot;Quantitative approaches that characterize the relationship between model performance and factors like model size ($N$), dataset size ($D$), and training compute ($C$).&quot;,&quot;term&quot;:&quot;Scaling Laws&quot;},{&quot;definition&quot;:&quot;Abilities that are not present in small models but arise in large models when their scale reaches a certain level, showing performance significantly above random.&quot;,&quot;term&quot;:&quot;Emergent Abilities&quot;},{&quot;definition&quot;:&quot;The ability of an LLM to generate expected output for test instances given natural language instructions and/or several task demonstrations, without requiring additional training or gradient update.&quot;,&quot;term&quot;:&quot;In-context Learning (ICL)&quot;},{&quot;definition&quot;:&quot;The ability of LLMs to perform well on unseen tasks that are described in the form of instructions, often achieved by fine-tuning with multi-task datasets (instruction tuning).&quot;,&quot;term&quot;:&quot;Instruction Following&quot;},{&quot;definition&quot;:&quot;A prompting strategy that enables LLMs to solve complex reasoning tasks by involving intermediate reasoning steps to derive the final answer.&quot;,&quot;term&quot;:&quot;Chain-of-Thought (CoT) Prompting&quot;},{&quot;definition&quot;:&quot;A technique that utilizes reinforcement learning with human feedback, based on human preference comparisons, to align LLMs with human values (helpful, honest, harmless).&quot;,&quot;term&quot;:&quot;Reinforcement Learning from Human Feedback (RLHF)&quot;},{&quot;definition&quot;:&quot;A model scaling technique in which a subset of neural network weights for each input is sparsely activated, allowing for scaling up model parameters while maintaining constant computational cost.&quot;,&quot;term&quot;:&quot;Mixture-of-Experts (MoE)&quot;}],&quot;prerequisites&quot;:[&quot;Transformer architecture&quot;,&quot;Natural Language Processing (NLP) fundamentals&quot;,&quot;Language Modeling (LM) concepts&quot;,&quot;Pre-trained Language Models (PLMs)&quot;,&quot;Distributed training algorithms for neural networks&quot;]},&quot;subTopics&quot;:[&quot;Pre-training LLMs&quot;,&quot;Emergent Abilities&quot;,&quot;LLM Architectures&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Statistical Language Models (SLMs) suffered from the curse of dimensionality, making it difficult to accurately estimate high-order language models and requiring specific smoothing strategies.&quot;,&quot;Neural Language Models (NLMs) improved upon SLMs by using neural networks to learn distributed word representations, reducing the need for human feature engineering.&quot;,&quot;Pre-trained Language Models (PLMs) (e.g., BERT) introduced context-aware word representations and established the &#39;pre-training and fine-tuning&#39; paradigm, significantly raising performance baselines for NLP tasks.&quot;,&quot;LLMs extend PLMs by exploring the scaling effect to significantly larger parameter and data sizes, leading to surprising emergent abilities (e.g., in-context learning, step-by-step reasoning) not present in smaller PLMs (e.g., GPT-2 vs GPT-3).&quot;,&quot;Unlike small PLMs, which often require direct access for fine-tuning, the major approach to accessing LLMs is through prompting interfaces (e.g., GPT-4 API), shifting how humans interact with AI.&quot;,&quot;LLMs are moving from modeling and generating text (early LMs) to focusing on complex task solving (latest LMs like GPT-4), representing a significant leap in scientific thinking.&quot;],&quot;limitations&quot;:[&quot;The underlying principles behind emergent abilities in LLMs are still not well explored, lacking deep investigations into key contributing factors.&quot;,&quot;Training capable LLMs is extremely costly due to huge computational demands, making repetitive ablating studies difficult and limiting community access to important training details often confined to industry.&quot;,&quot;Aligning LLMs with human values or preferences is challenging, as LLMs are prone to generating toxic, fictitious, or harmful content, necessitating effective and efficient control approaches.&quot;,&quot;LLMs still suffer from limitations such as generating hallucinations with factual errors and potentially risky responses in specific contexts.&quot;,&quot;The capacities of LLMs are sometimes limited by their pre-training data, for example, an inability to capture up-to-date information, requiring external tools for compensation.&quot;,&quot;LLMs may perform less effectively on tasks not optimally expressed in text form, such as numerical computation.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Kaplan et al. (KM) Scaling Law&quot;,&quot;value&quot;:&quot;Empirically models the power-law relationship of model performance (cross-entropy loss $L$) with model size ($N$), dataset size ($D$), and training compute ($C$) using formulas like $L(N) = \\text{const} \\cdot N^{\\alpha_N}$, $L(D) = \\text{const} \\cdot D^{\\alpha_D}$, $L(C) = \\text{const} \\cdot C^{\\alpha_C}$, showing strong dependence on these factors.&quot;},{&quot;label&quot;:&quot;Chinchilla Scaling Law&quot;,&quot;value&quot;:&quot;Proposes an alternative form for compute-optimal training for LLMs: $L(N, D) = E + A N^{-\\alpha} + B D^{-\\beta}$, where $N_{\\text{opt}}(C) = G (C/6)^{a}$ and $D_{\\text{opt}}(C) = G^{-1} (C/6)^{b}$ define the optimal allocation of compute budget to model size and data size, arguing for similar scaling of both.&quot;},{&quot;label&quot;:&quot;Normalization Method (LayerNorm)&quot;,&quot;value&quot;:&quot;$x = \\frac{x - \\mu}{\\sigma} \\cdot \\gamma + \\beta$, where $\\mu = \\frac{1}{d} \\sum_{i=1}^{d} x_i$ is the mean and $\\sigma = \\sqrt{\\frac{1}{d} \\sum_{i=1}^{d} (x_i - \\mu)^2}$ is the variance over activations per layer, used to re-center and re-scale.&quot;},{&quot;label&quot;:&quot;Normalization Method (RMSNorm)&quot;,&quot;value&quot;:&quot;Improves training speed by re-scaling activations with only the root mean square (RMS): $x \\cdot \\text{RMS}(x)^{-1} \\cdot \\gamma$, where $\\text{RMS}(x) = \\sqrt{\\frac{1}{d} \\sum_{i=1}^{d} x_i^2}$, instead of mean and variance.&quot;},{&quot;label&quot;:&quot;Position Embedding (RoPE)&quot;,&quot;value&quot;:&quot;Rotary Position Embedding sets specific rotatory matrices based on the absolute position of each key or query. The basis $\\theta_i$ for dimension $i$ is defined as $b^{-2(i-1)/d}$ (with $b=10000$ by default), resulting in attention scores that incorporate relative position information: $(W_q x_i R_{\\Theta,i}) (W_k x_j R_{\\Theta,j})^T$.&quot;}],&quot;pipelineFlow&quot;:[&quot;Data Collection and Preparation: Collect diverse, large-scale linguistic corpora (webpages, books, code, scientific texts) and apply preprocessing (filtering, deduplication, privacy reduction, tokenization) to ensure high quality.&quot;,&quot;Pre-training: Train Transformer-based language models on the prepared massive datasets, focusing on language modeling objectives to acquire fundamental language understanding and generation skills.&quot;,&quot;Adaptation Tuning: Further fine-tune pre-trained LLMs using techniques like instruction tuning (supervised fine-tuning with task descriptions) and alignment tuning (e.g., Reinforcement Learning from Human Feedback) to enhance specific abilities and align with human values.&quot;,&quot;Utilization: Apply the adapted LLMs for various downstream tasks, leveraging capabilities such as in-context learning, tool manipulation (using external plugins or APIs), and building agent-like systems.&quot;,&quot;Capacity Evaluation: Evaluate LLMs on a range of benchmarks to assess their abilities (e.g., reasoning, multi-modality), identify emergent properties, and ensure safety and interpretability.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Language Modeling (LM)&quot;,&quot;value&quot;:&quot;LM aims to model the generative likelihood of word sequences, so as to predict the probabilities of future (or missing) tokens, serving as a major approach to advancing language intelligence.&quot;},{&quot;label&quot;:&quot;Large Language Models (LLMs)&quot;,&quot;value&quot;:&quot;Typically refers to Transformer language models containing hundreds of billions (or more) of parameters, trained on massive text data, exhibiting strong capacities to understand natural language and solve complex tasks via text generation.&quot;}],&quot;reproducibility&quot;:&quot;The authors indicate an effort towards reproducibility and resource sharing by providing a GitHub project website (https://github.com/RUCAIBox/LLMSurvey) for supporting resources for LLMs and welcoming contributions (pull requests) to update figures like the LLaMA evolutionary graph.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;The de facto backbone architecture for developing various LLMs, characterized by stacked multi-head attention layers. It allows for scaling to hundreds or thousands of billions of parameters, supporting high parallelizability.&quot;,&quot;name&quot;:&quot;Transformer Architecture&quot;,&quot;role&quot;:&quot;Base Model Architecture&quot;},{&quot;details&quot;:&quot;A widely adopted decoder-only architecture that incorporates a unidirectional attention mask, ensuring each input token attends only to past tokens. GPT-series models (e.g., GPT-1, GPT-2, GPT-3, OPT, BLOOM) are representative of this design.&quot;,&quot;name&quot;:&quot;Causal Decoder Architecture&quot;,&quot;role&quot;:&quot;Mainstream LLM Architecture&quot;},{&quot;details&quot;:&quot;A decoder-only architecture (aka non-causal decoder) that revises masking to enable bidirectional attention over prefix tokens and unidirectional attention on generated tokens, allowing for encoding a prefix bidirectionally and autoregressively predicting output (e.g., GLM-130B, U-PaLM).&quot;,&quot;name&quot;:&quot;Prefix Decoder Architecture&quot;,&quot;role&quot;:&quot;Alternative Decoder Architecture&quot;},{&quot;details&quot;:&quot;An extension to existing architectures where a subset of neural network weights is sparsely activated for each input, allowing for scaling up model parameters while maintaining a constant computational cost (e.g., Switch Transformer, GLaM).&quot;,&quot;name&quot;:&quot;Mixture-of-Experts (MoE)&quot;,&quot;role&quot;:&quot;Model Scaling Mechanism&quot;},{&quot;details&quot;:&quot;A crucial pipeline encompassing filtering (language, metric, statistic, keyword-based), deduplication (sentence, document, dataset-level), privacy reduction (removing PII), and tokenization (BPE, WordPiece, Unigram) to ensure high-quality and diverse pre-training data.&quot;,&quot;name&quot;:&quot;Data Preprocessing Pipeline&quot;,&quot;role&quot;:&quot;Data Preparation Module&quot;},{&quot;details&quot;:&quot;A tuning approach (e.g., using Reinforcement Learning with Human Feedback - RLHF) that incorporates human feedback to align LLMs with human values like helpfulness, honesty, and harmlessness, mitigating toxic or biased content generation (e.g., InstructGPT, ChatGPT).&quot;,&quot;name&quot;:&quot;Alignment Tuning&quot;,&quot;role&quot;:&quot;Behavior Alignment Module&quot;}]},&quot;thesis&quot;:&quot;This survey provides an up-to-date review of the recent advances in Large Language Models (LLMs), covering their background, key findings, and mainstream techniques across pre-training, adaptation tuning, utilization, and capacity evaluation, while also summarizing available resources and discussing future directions to serve as a useful resource for researchers and engineers.&quot;,&quot;title&quot;:&quot;A Survey of Large Language Models&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2303.18223&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>
