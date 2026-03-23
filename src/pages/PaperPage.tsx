@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { ThemeToggle } from '../components/ThemeToggle';
 import { loadSummary } from '../data/loader';
 import { PaperSummary } from '../components/PaperSummary';
 import type { PaperSummaryData } from '../types';
@@ -23,6 +24,7 @@ export function PaperPage() {
     <main className="shell">
       <div className="back-row">
         <Link to="/">Back to all papers</Link>
+        <ThemeToggle />
       </div>
       {error ? <div className="card error-card">{error}</div> : null}
       {!summary && !error ? <div className="card">Loading summary...</div> : null}

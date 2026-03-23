@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { ThemeToggle } from '../components/ThemeToggle';
 import { loadManifest, loadManifestPage, loadSearchIndex } from '../data/loader';
 import type { SummaryManifest, SummaryManifestItem, SummarySearchItem } from '../types';
 
@@ -127,7 +128,10 @@ export function HomePage() {
       <section className="hero hero-catppuccin">
         <div className="hero-grid">
           <div>
-            <p className="eyebrow">anuragshas arxiv</p>
+            <div className="hero-header-row">
+              <p className="eyebrow">anuragshas arxiv</p>
+              <ThemeToggle />
+            </div>
             <h1>Research summaries, published daily</h1>
           </div>
           <div className="hero-stats-grid">
