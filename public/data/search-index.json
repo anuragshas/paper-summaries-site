@@ -1,10 +1,4 @@
 {
-  "basePath": "/paper-summaries-site/",
-  "count": 30,
-  "pageSize": 10,
-  "totalPages": 3,
-  "averageBreakthroughScore": 6.7,
-  "scoredPaperCount": 30,
   "papers": [
     {
       "paperId": "2603.10775",
@@ -16,9 +10,6 @@
         "Reasoning",
         "Benchmark"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2603.10775",
-      "summaryPath": "/paper-summaries-site/data/papers/2603.10775/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2603.10775/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.10775"
     },
     {
@@ -31,9 +22,6 @@
         "QA",
         "Benchmark"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2603.09938",
-      "summaryPath": "/paper-summaries-site/data/papers/2603.09938/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2603.09938/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.09938"
     },
     {
@@ -46,9 +34,6 @@
         "Benchmark",
         "Factuality"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2603.05706",
-      "summaryPath": "/paper-summaries-site/data/papers/2603.05706/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2603.05706/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.05706"
     },
     {
@@ -61,9 +46,6 @@
         "KG",
         "QA"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2603.05698",
-      "summaryPath": "/paper-summaries-site/data/papers/2603.05698/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2603.05698/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.05698"
     },
     {
@@ -76,9 +58,6 @@
         "QA",
         "Reasoning"
       ],
-      "sourceUrl": "https://arxiv.org/abs/2603.05344",
-      "summaryPath": "/paper-summaries-site/data/papers/2603.05344/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2603.05344/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.05344"
     },
     {
@@ -91,9 +70,6 @@
         "Benchmark",
         "QA"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2603.04816",
-      "summaryPath": "/paper-summaries-site/data/papers/2603.04816/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2603.04816/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.04816"
     },
     {
@@ -108,9 +84,6 @@
         "Parallel Computing",
         "Algorithm"
       ],
-      "sourceUrl": "https://arxiv.org/abs/2603.03251",
-      "summaryPath": "/paper-summaries-site/data/papers/2603.03251/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2603.03251/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.03251"
     },
     {
@@ -124,9 +97,6 @@
         "Benchmarks",
         "AI Alignment"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2603.01562",
-      "summaryPath": "/paper-summaries-site/data/papers/2603.01562/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2603.01562/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.01562"
     },
     {
@@ -139,9 +109,6 @@
         "Benchmark",
         "Reasoning"
       ],
-      "sourceUrl": "https://arxiv.org/abs/2603.00077",
-      "summaryPath": "/paper-summaries-site/data/papers/2603.00077/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2603.00077/meta.json",
       "pagePath": "/paper-summaries-site/papers/2603.00077"
     },
     {
@@ -157,9 +124,6 @@
         "Data Augmentation",
         "App Store"
       ],
-      "sourceUrl": "https://arxiv.org/pdf/2602.23234",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.23234/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.23234/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.23234"
     },
     {
@@ -174,9 +138,6 @@
         "Memory-Augmented Agents",
         "Policy Optimization"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.23008",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.23008/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.23008/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.23008"
     },
     {
@@ -192,9 +153,6 @@
         "Model Inference",
         "Reproducibility"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.22661",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.22661/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.22661/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.22661"
     },
     {
@@ -211,9 +169,6 @@
         "Cross-encoders",
         "Semi-structured Data"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.22219",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.22219/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.22219/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.22219"
     },
     {
@@ -226,9 +181,6 @@
         "QA",
         "Benchmark"
       ],
-      "sourceUrl": "https://arxiv.org/abs/2602.21456",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.21456/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.21456/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.21456"
     },
     {
@@ -244,9 +196,6 @@
         "Prompt Optimization",
         "Sequential Recommendation"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.20558",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.20558/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.20558/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.20558"
     },
     {
@@ -262,9 +211,6 @@
         "Question Answering",
         "Natural Language Processing"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.18734",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.18734/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.18734/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.18734"
     },
     {
@@ -277,9 +223,6 @@
         "Agent",
         "Benchmark"
       ],
-      "sourceUrl": "https://arxiv.org/abs/2602.14265",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.14265/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.14265/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.14265"
     },
     {
@@ -292,9 +235,6 @@
         "Diffusion Models",
         "Large Language Models"
       ],
-      "sourceUrl": "https://arxiv.org/abs/2602.12528",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.12528/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.12528/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.12528"
     },
     {
@@ -309,9 +249,6 @@
         "Transformers",
         "Low-Latency Systems"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.11298",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.11298/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.11298/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.11298"
     },
     {
@@ -327,9 +264,6 @@
         "Semantic IDs",
         "Chain-of-Thought Reasoning"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.07774",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.07774/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.07774/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.07774"
     },
     {
@@ -344,9 +278,6 @@
         "AI Ethics",
         "LLM Scaling Laws"
       ],
-      "sourceUrl": "https://arxiv.org/abs/2509.05486v1",
-      "summaryPath": "/paper-summaries-site/data/papers/2509.05486/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2509.05486/meta.json",
       "pagePath": "/paper-summaries-site/papers/2509.05486"
     },
     {
@@ -359,9 +290,6 @@
         "Memory",
         "Benchmark"
       ],
-      "sourceUrl": "https://arxiv.org/pdf/2403.00417",
-      "summaryPath": "/paper-summaries-site/data/papers/2403.00417/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2403.00417/meta.json",
       "pagePath": "/paper-summaries-site/papers/2403.00417"
     },
     {
@@ -376,9 +304,6 @@
         "Contrastive Learning",
         "Semantic Search"
       ],
-      "sourceUrl": "https://arxiv.org/pdf/2402.17654.pdf",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.17654/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.17654/meta.json",
       "pagePath": "/paper-summaries-site/papers/2602.17654"
     },
     {
@@ -391,9 +316,6 @@
         "QA",
         "RAG"
       ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2303.18223",
-      "summaryPath": "/paper-summaries-site/data/papers/2303.18223/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2303.18223/meta.json",
       "pagePath": "/paper-summaries-site/papers/2303.18223"
     },
     {
@@ -408,9 +330,6 @@
         "Bias Correction",
         "Information Retrieval"
       ],
-      "sourceUrl": "https://arxiv.org/pdf/2206.06989v2",
-      "summaryPath": "/paper-summaries-site/data/papers/2506.06989/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2506.06989/meta.json",
       "pagePath": "/paper-summaries-site/papers/2506.06989"
     },
     {
@@ -423,9 +342,6 @@
         "Rec",
         "Reasoning"
       ],
-      "sourceUrl": "https://openreview.net/pdf?id=fVs2BCjCqC",
-      "summaryPath": "/paper-summaries-site/data/papers/paper-1773559204996/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/paper-1773559204996/meta.json",
       "pagePath": "/paper-summaries-site/papers/paper-1773559204996"
     },
     {
@@ -438,9 +354,6 @@
         "Reasoning",
         "QA"
       ],
-      "sourceUrl": "https://www.synthlabs.ai/pdf/Generative_Reward_Models.pdf",
-      "summaryPath": "/paper-summaries-site/data/papers/paper-1772980095573/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/paper-1772980095573/meta.json",
       "pagePath": "/paper-summaries-site/papers/paper-1772980095573"
     },
     {
@@ -456,9 +369,6 @@
         "Context Tracking",
         "LLM Evaluation"
       ],
-      "sourceUrl": "https://aclanthology.org/2026.iwsds-1.7.pdf",
-      "summaryPath": "/paper-summaries-site/data/papers/paper-1772343143036/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/paper-1772343143036/meta.json",
       "pagePath": "/paper-summaries-site/papers/paper-1772343143036"
     },
     {
@@ -472,9 +382,6 @@
         "CTR Prediction",
         "Machine Learning"
       ],
-      "sourceUrl": "N/A",
-      "summaryPath": "/paper-summaries-site/data/papers/2601.08345/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2601.08345/meta.json",
       "pagePath": "/paper-summaries-site/papers/2601.08345"
     },
     {
@@ -488,9 +395,6 @@
         "Memory Systems",
         "Computer Architecture"
       ],
-      "sourceUrl": "N/A",
-      "summaryPath": "/paper-summaries-site/data/papers/2601.05047/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2601.05047/meta.json",
       "pagePath": "/paper-summaries-site/papers/2601.05047"
     }
   ]
