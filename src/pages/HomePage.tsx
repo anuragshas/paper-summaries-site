@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { loadManifest, loadManifestPage, loadSearchManifest } from '../data/loader';
-import type { SummaryManifest, SummaryManifestItem } from '../types';
+import { loadManifest, loadManifestPage, loadSearchIndex } from '../data/loader';
+import type { SummaryManifest, SummaryManifestItem, SummarySearchItem } from '../types';
 
 function formatPublishedDate(value?: string | null) {
   if (!value) return null;
@@ -18,7 +18,7 @@ export function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [manifest, setManifest] = useState<SummaryManifest | null>(null);
   const [pagePapers, setPagePapers] = useState<SummaryManifestItem[]>([]);
-  const [searchCorpus, setSearchCorpus] = useState<SummaryManifestItem[] | null>(null);
+  const [searchPapers, setSearchPapers] = useState<SummarySearchItem[] | null>(null);
   const [query, setQuery] = useState('');
   const [error, setError] = useState<string | null>(null);
 
@@ -33,6 +33,16 @@ export function HomePage() {
       })
       .catch((err: Error) => setError(err.message));
   }, []);
+
+  useEffect(() => {
+    if (!query.trim() || searchPapers) return;
+    loadSearchIndex()
+      .then((loadedIndex) => {
+        setSearchPapers(loadedIndex.papers);
+        setError(null);
+      })
+      .catch((err: Error) => setError(err.message));
+  }, [query, searchPapers]);
 
   useEffect(() => {
     if (!manifest || query.trim()) return;
@@ -53,35 +63,23 @@ export function HomePage() {
       .catch((err: Error) => setError(err.message));
   }, [manifest, currentPage, query, setSearchParams]);
 
-  useEffect(() => {
-    if (!query.trim() || searchCorpus !== null) return;
-    loadSearchManifest()
-      .then((loadedManifest) => {
-        setSearchCorpus(loadedManifest.papers);
-        setError(null);
-      })
-      .catch((err: Error) => setError(err.message));
-  }, [query, searchCorpus]);
-
   const filtered = useMemo(() => {
     const term = query.trim().toLowerCase();
     if (!term) {
       return pagePapers;
     }
-    return (searchCorpus ?? []).filter((paper) => {
-      const haystack = [paper.title, paper.authors, ...(paper.tags || [])]
+    return (searchPapers ?? []).filter((paper) => {
+      const haystack = [paper.title, ...(paper.tags || [])]
         .join(' ')
         .toLowerCase();
       return haystack.includes(term);
     });
-  }, [pagePapers, query, searchCorpus]);
+  }, [pagePapers, query, searchPapers]);
 
   const pageSize = manifest?.pageSize ?? 10;
   const isSearching = query.trim().length > 0;
   const totalCount = manifest?.count ?? 0;
-  const totalPages = isSearching
-    ? Math.max(1, Math.ceil(filtered.length / pageSize))
-    : Math.max(manifest?.totalPages ?? 1, 1);
+  const totalPages = isSearching ? Math.max(1, Math.ceil(filtered.length / pageSize)) : Math.max(manifest?.totalPages ?? 1, 1);
   const averageBreakthroughScore = manifest?.averageBreakthroughScore;
   const scoredPaperCount = manifest?.scoredPaperCount ?? 0;
 
@@ -154,7 +152,7 @@ export function HomePage() {
                 return next;
               }, { replace: true });
             }}
-            placeholder="Search by title, author, or tag"
+            placeholder="Search by paper title or tag"
           />
         </div>
       </section>
