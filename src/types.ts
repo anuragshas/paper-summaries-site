@@ -6,33 +6,20 @@ export interface SummaryManifestItem {
   authors: string;
   publishedDate?: string | null;
   tags: string[];
-  sourceUrl?: string;
-  summaryPath: string;
-  metaPath: string;
-  pagePath: string;
 }
 
 export interface SummarySearchItem {
   paperId: string;
   title: string;
-  authors: string;
-  publishedDate?: string | null;
   tags: string[];
-  pagePath: string;
 }
 
 export interface SummaryManifest {
-  basePath: string;
   count: number;
   pageSize: number;
   totalPages: number;
   averageBreakthroughScore?: number | null;
   scoredPaperCount?: number;
-}
-
-export interface SummaryPage extends SummaryManifest {
-  page: number;
-  papers: SummaryManifestItem[];
 }
 
 export interface SummaryPageData {
