@@ -2,6 +2,20 @@
   "page": 4,
   "papers": [
     {
+      "paperId": "paper-1772343143036",
+      "title": "The Context Trap: Why End-to-End Audio Language Models Fail Multi-turn Dialogues",
+      "authors": "Zhi Rui Tam Wen-Yu Chang Yun-Nung Chen",
+      "publishedDate": null,
+      "tags": [
+        "Spoken Dialogue Systems",
+        "End-to-End Models",
+        "Audio Language Models",
+        "Dialogue Coherence",
+        "Context Tracking",
+        "LLM Evaluation"
+      ]
+    },
+    {
       "paperId": "2601.08345",
       "title": "MLPlatt: Simple Calibration Framework for Ranking Models",
       "authors": "Piotr Bajger, Roman Dusek, Krzysztof Galias, Pawel Mlynicek, Aleksander Wawer, and Pawel Zawistowski",
