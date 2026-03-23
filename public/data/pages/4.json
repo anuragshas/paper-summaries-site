@@ -2,6 +2,18 @@
   "page": 4,
   "papers": [
     {
+      "paperId": "2601.08345",
+      "title": "MLPlatt: Simple Calibration Framework for Ranking Models",
+      "authors": "Piotr Bajger, Roman Dusek, Krzysztof Galias, Pawel Mlynicek, Aleksander Wawer, and Pawel Zawistowski",
+      "publishedDate": null,
+      "tags": [
+        "Ranking Model Calibration",
+        "E-commerce",
+        "CTR Prediction",
+        "Machine Learning"
+      ]
+    },
+    {
       "paperId": "2601.05047",
       "title": "Challenges and Research Directions for Large Language Model Inference Hardware",
       "authors": "Xiaoyu Ma and David Patterson",
