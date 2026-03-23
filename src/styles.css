@@ -135,6 +135,41 @@ a {
   padding: 32px 18px 64px;
 }
 
+.paper-page-header {
+  position: relative;
+  width: 100vw;
+  margin: -32px 0 24px;
+  margin-left: calc(50% - 50vw);
+  padding: 28px 0 40px;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--accent-warm) 24%, transparent), transparent 34%),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 22%, transparent), transparent 28%),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg-accent) 94%, transparent), color-mix(in srgb, var(--bg) 72%, transparent));
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--line) 44%, transparent);
+}
+
+.paper-page-header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.paper-page-controls {
+  margin: 0 0 22px;
+}
+
+.paper-page-hero-copy {
+  max-width: 860px;
+}
+
+.paper-page-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 .hero,
 .card,
 .paper-layout {
@@ -533,6 +568,19 @@ pre {
 
   .shell {
     padding: 18px 10px 40px;
+  }
+
+  .paper-page-header {
+    margin-top: -18px;
+    padding: 18px 0 28px;
+  }
+
+  .paper-page-header-inner {
+    padding: 0 10px;
+  }
+
+  .paper-page-controls {
+    margin-bottom: 16px;
   }
 
   .hero {
