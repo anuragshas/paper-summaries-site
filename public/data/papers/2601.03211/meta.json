@@ -1,0 +1,18 @@
+{
+  "paperId": "2601.03211",
+  "title": "Fine-Tuning Small Language Models as Efficient Enterprise Search Relevance Labelers",
+  "authors": "Yue Kang, Zhuoyi Huang, Benji Schussheim, Diana Licon, Dina Atia, Shixing Cao, Jacob Danovitch, Kunho Kim, Billy Norcilien, Jonah Karpman, Mahmound Sayed, Mike Taylor, Tao Sun, Pavel Metrikov, Vipul Agarwal, Chris Quirk, Ye-Yi Wang, Nick Craswell, Irene Shaffer, Tianwei Chen, Sulaiman Vesal, Soundar Srinivasan",
+  "publishedDate": "2026-01-01",
+  "tags": [
+    "QA",
+    "RAG",
+    "Pretraining"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2601.03211",
+  "pagePath": "/paper-summaries-site/papers/2601.03211",
+  "summaryPath": "/paper-summaries-site/data/papers/2601.03211/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fine-Tuning Small Language Models as Efficient Enterprise Search Relevance Labelers</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Fine-Tuning Small Language Models as Efficient Enterprise Search Relevance Labelers</h1>
+      <p class="meta"><strong>Authors:</strong> Yue Kang, Zhuoyi Huang, Benji Schussheim, Diana Licon, Dina Atia, Shixing Cao, Jacob Danovitch, Kunho Kim, Billy Norcilien, Jonah Karpman, Mahmound Sayed, Mike Taylor, Tao Sun, Pavel Metrikov, Vipul Agarwal, Chris Quirk, Ye-Yi Wang, Nick Craswell, Irene Shaffer, Tianwei Chen, Sulaiman Vesal, Soundar Srinivasan</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/2601.03211" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2601.03211</a></p>
+      <p class="muted">Generated summary artifact for 2601.03211</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>To overcome the challenges of data scarcity and high labeling costs in enterprise search, fine-tuning Small Language Models (SLMs) with a novel synthetic data generation pipeline can achieve relevance labeling quality comparable to state-of-the-art Large Language Models (LLMs) while drastically improving throughput and cost-efficiency.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>In enterprise search, building high-quality datasets at scale remains a central challenge due to the difficulty of acquiring labeled data, exacerbated by the lack of publicly available, high-quality enterprise search datasets and the computational expense and limited throughput of Large Language Models (LLMs) for large-scale labeling tasks.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>An efficient and scalable synthetic data generation and SLM fine-tuning pipeline for enterprise search relevance labeling, achieving LLM-comparable performance with significant throughput and cost advantages.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Achieved SLM-Human NDCG of 0.953 and pairwise accuracy of 63.81, outperforming GPT-4o (NDCG: 0.944, Accuracy: 62.58) on the enterprise search test dataset.</li><li>Demonstrated a throughput of 873.33 RPM on a single A100 GPU, extrapolating to nearly 7K RPM on a cluster, which is an order of magnitude faster than typical LLM labelers.</li><li>Achieved significant cost efficiency, being nearly 19 times cheaper than GPT-4o for both input tokens ($0.13 vs $2.50 per 1M) and output tokens ($0.52 vs $10.00 per 1M).</li><li>Statistical significance tests (Wilcoxon signed-rank test) confirmed that the fine-tuned labeler is non-inferior to the GPT-4o baseline within specified small margins for both pairwise accuracy and NDCG.</li><li>Qualitative analysis showed improved calibration and confidence in assigning lowest relevance scores for irrelevant passages compared to vanilla SLMs and GPT-4o.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>The fine-tuned Small Language Model (Phi-3.5 Mini Instruct) achieves performance comparable to or even surpassing GPT-4o on enterprise relevance labeling, demonstrating strong alignment with human judgments.</li><li>The proposed synthetic data generation pipeline, which includes LLM-based query generation, BM25-based negative mining, and LLM-assisted labeling, is highly effective in producing high-quality training data for enterprise search.</li><li>Fine-tuned SLMs offer substantial improvements in throughput (17x faster) and cost-efficiency (19x cheaper) compared to LLMs for large-scale relevance labeling, making them practical for real-world deployments.</li><li>Ablation studies confirm the critical importance of multi-task tuning and training data quality (e.g., query refinement) over simply increasing the raw quantity of synthetic data beyond a certain threshold.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>An initial approach to fine-tune SLMs as query generators struggled to produce high-quality, diverse, and keyword-based queries due to positivity bias in pretraining and limited model capacity, necessitating a different strategy.</li><li>The experiments primarily utilized Phi-3.5 Mini Instruct and GPT-4o; the paper notes that results with newer models (e.g., GPT-5 or other SLM families) were not included, though the authors believe the core findings generalize.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 157,
+      &quot;xmin&quot;: 153,
+      &quot;ymax&quot;: 240,
+      &quot;xmax&quot;: 885
+    },
+    &quot;caption&quot;: &quot;Overall model architecture for our proposed solution.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 5
+  },
+  &quot;authors&quot;: &quot;Yue Kang, Zhuoyi Huang, Benji Schussheim, Diana Licon, Dina Atia, Shixing Cao, Jacob Danovitch, Kunho Kim, Billy Norcilien, Jonah Karpman, Mahmound Sayed, Mike Taylor, Tao Sun, Pavel Metrikov, Vipul Agarwal, Chris Quirk, Ye-Yi Wang, Nick Craswell, Irene Shaffer, Tianwei Chen, Sulaiman Vesal, Soundar Srinivasan&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper presents a strong practical contribution to the field of enterprise search and general NLP applications where scalable and cost-effective labeling is crucial. The core novelty lies in the synthetic data generation and distillation pipeline that enables SLMs to achieve LLM-comparable performance with significant efficiency gains (17x throughput, 19x cost reduction). While the underlying techniques (synthetic data, distillation, fine-tuning) are known, their effective combination and strong empirical validation for the specific challenges of enterprise search relevance labeling make this a highly useful and impactful work. It is a solid engineering and methodological advancement.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;While the query \&quot;Juno release date\&quot; has a clear intent in web search relating to the 2007 film, the same query in enterprise could have multiple intents, e.g. looking for files containing the release date of a project named Juno or for emails from a colleague named Juno.&quot;,
+    &quot;statement&quot;: &quot;In enterprise search, building high-quality datasets at scale remains a central challenge due to the difficulty of acquiring labeled data, exacerbated by the lack of publicly available, high-quality enterprise search datasets and the computational expense and limited throughput of Large Language Models (LLMs) for large-scale labeling tasks.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Traditional human annotation methods for enterprise relevance are costly and limited in scale due to complex, context-dependent queries and sensitive data.&quot;,
+      &quot;Large Language Models (LLMs), while capable of high-quality judgments, are computationally expensive and have limited throughput, making them inefficient for large-scale enterprise labeling.&quot;,
+      &quot;The absence of publicly available, high-quality enterprise search datasets hinders the development and evaluation of effective enterprise search methods.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Achieved SLM-Human NDCG of 0.953 and pairwise accuracy of 63.81, outperforming GPT-4o (NDCG: 0.944, Accuracy: 62.58) on the enterprise search test dataset.&quot;,
+    &quot;Demonstrated a throughput of 873.33 RPM on a single A100 GPU, extrapolating to nearly 7K RPM on a cluster, which is an order of magnitude faster than typical LLM labelers.&quot;,
+    &quot;Achieved significant cost efficiency, being nearly 19 times cheaper than GPT-4o for both input tokens ($0.13 vs $2.50 per 1M) and output tokens ($0.52 vs $10.00 per 1M).&quot;,
+    &quot;Statistical significance tests (Wilcoxon signed-rank test) confirmed that the fine-tuned labeler is non-inferior to the GPT-4o baseline within specified small margins for both pairwise accuracy and NDCG.&quot;,
+    &quot;Qualitative analysis showed improved calibration and confidence in assigning lowest relevance scores for irrelevant passages compared to vanilla SLMs and GPT-4o.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Human-labeled enterprise search dataset (923 query-document pairs)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Normalized Discounted Cumulative Gain (NDCG)&quot;,
+        &quot;Pairwise Accuracy&quot;,
+        &quot;Request Per Minute (RPM)&quot;,
+        &quot;Cost (per 1M tokens)&quot;
+      ],
+      &quot;setting&quot;: &quot;Evaluation of fine-tuned Phi-3.5 Mini Instruct SLM against vanilla Phi-3.5 Mini and GPT-4o on a proprietary, human-labeled enterprise search benchmark.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 104,
+          &quot;xmin&quot;: 112,
+          &quot;ymax&quot;: 387,
+          &quot;xmax&quot;: 887
+        },
+        &quot;caption&quot;: &quot;Performance results comparing the vanilla and fine-tuned SLM models against GPT-4o on two key evaluation metrics for the enterprise search test dataset.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 11
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.944&quot;,
+            &quot;benchmark&quot;: &quot;14K synthetic data, multi-task tuning&quot;,
+            &quot;delta&quot;: &quot;+0.009&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;NDCG (SLM-Human)&quot;,
+            &quot;thisPaper&quot;: &quot;0.953&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;62.58%&quot;,
+            &quot;benchmark&quot;: &quot;14K synthetic data, multi-task tuning&quot;,
+            &quot;delta&quot;: &quot;+1.23%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%) (SLM-Human)&quot;,
+            &quot;thisPaper&quot;: &quot;63.81%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;SLM-Human Performance Comparison&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;Hundreds (typical LLM labelers)&quot;,
+            &quot;benchmark&quot;: &quot;Single A100 GPU&quot;,
+            &quot;delta&quot;: &quot;Much higher (order of magnitude faster)&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RPM&quot;,
+            &quot;thisPaper&quot;: &quot;873.33&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;$2.50&quot;,
+            &quot;benchmark&quot;: &quot;1M input tokens&quot;,
+            &quot;delta&quot;: &quot;-$2.37&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Cost ($)&quot;,
+            &quot;thisPaper&quot;: &quot;$0.13&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;$10.00&quot;,
+            &quot;benchmark&quot;: &quot;1M output tokens&quot;,
+            &quot;delta&quot;: &quot;-$9.48&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Cost ($)&quot;,
+            &quot;thisPaper&quot;: &quot;$0.52&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Throughput and Cost Efficiency&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.815&quot;,
+            &quot;benchmark&quot;: &quot;14K synthetic data, multi-task tuning&quot;,
+            &quot;delta&quot;: &quot;+0.138&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;NDCG (SLM-Human)&quot;,
+            &quot;thisPaper&quot;: &quot;0.953&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.946&quot;,
+            &quot;benchmark&quot;: &quot;14K synthetic data, multi-task tuning vs. no multi-task&quot;,
+            &quot;delta&quot;: &quot;+0.007&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;NDCG (SLM-Human)&quot;,
+            &quot;thisPaper&quot;: &quot;0.953&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.943&quot;,
+            &quot;benchmark&quot;: &quot;14K synthetic data, multi-task tuning vs. no refinement&quot;,
+            &quot;delta&quot;: &quot;+0.010&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;NDCG (SLM-Human)&quot;,
+            &quot;thisPaper&quot;: &quot;0.953&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Ablation Studies (NDCG)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;42.15%&quot;,
+            &quot;benchmark&quot;: &quot;14K synthetic data, multi-task tuning&quot;,
+            &quot;delta&quot;: &quot;+21.66%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%) (SLM-Human)&quot;,
+            &quot;thisPaper&quot;: &quot;63.81%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;62.41%&quot;,
+            &quot;benchmark&quot;: &quot;14K synthetic data, multi-task tuning vs. no multi-task&quot;,
+            &quot;delta&quot;: &quot;+1.40%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%) (SLM-Human)&quot;,
+            &quot;thisPaper&quot;: &quot;63.81%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;60.97%&quot;,
+            &quot;benchmark&quot;: &quot;14K synthetic data, multi-task tuning vs. no refinement&quot;,
+            &quot;delta&quot;: &quot;+2.84%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%) (SLM-Human)&quot;,
+            &quot;thisPaper&quot;: &quot;63.81%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Ablation Studies (Accuracy)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;The fine-tuned Small Language Model (Phi-3.5 Mini Instruct) achieves performance comparable to or even surpassing GPT-4o on enterprise relevance labeling, demonstrating strong alignment with human judgments.&quot;,
+      &quot;The proposed synthetic data generation pipeline, which includes LLM-based query generation, BM25-based negative mining, and LLM-assisted labeling, is highly effective in producing high-quality training data for enterprise search.&quot;,
+      &quot;Fine-tuned SLMs offer substantial improvements in throughput (17x faster) and cost-efficiency (19x cheaper) compared to LLMs for large-scale relevance labeling, making them practical for real-world deployments.&quot;,
+      &quot;Ablation studies confirm the critical importance of multi-task tuning and training data quality (e.g., query refinement) over simply increasing the raw quantity of synthetic data beyond a certain threshold.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Microsoft, Amazon&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;The paper introduces a novel synthetic data generation pipeline specifically tailored for enterprise search, leveraging a teacher LLM (GPT-4o) for query generation and relevance labeling, and BM25 for hard negative mining. This addresses the challenge of scarce and sensitive domain-specific data.&quot;,
+      &quot;It demonstrates a highly effective method for distilling the knowledge from a frontier LLM (GPT-4o) into a significantly smaller and more efficient SLM (Phi-3.5 Mini Instruct) for complex enterprise relevance tasks.&quot;,
+      &quot;The approach shows that the fine-tuned SLM not only achieves comparable or superior relevance labeling quality to the teacher LLM and human judgments but also drastically improves throughput and reduces operational costs for large-scale applications.&quot;
+    ],
+    &quot;main&quot;: &quot;An efficient and scalable synthetic data generation and SLM fine-tuning pipeline for enterprise search relevance labeling, achieving LLM-comparable performance with significant throughput and cost advantages.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;Compact neural networks that offer strong generalization and reasoning capacity with lower inference cost compared to Large Language Models (LLMs), making them suitable for tasks requiring high throughput and scalability.&quot;,
+        &quot;term&quot;: &quot;Small Language Models (SLMs)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A widely adopted metric in information retrieval that evaluates the quality of ranked lists with respect to graded relevance, assigning higher gains to more relevant documents and logarithmically discounting them by rank position.&quot;,
+        &quot;term&quot;: &quot;Normalized Discounted Cumulative Gain (NDCG)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A metric that measures how consistently a model preserves the correct relative ordering of documents compared to ground-truth labels by checking agreement across all possible pairs of documents for a given query.&quot;,
+        &quot;term&quot;: &quot;Pairwise Accuracy&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A strong lexical-based retrieval algorithm widely used in traditional information retrieval, employed here to mine plausible negative documents that cover a diverse spectrum of relevance levels.&quot;,
+        &quot;term&quot;: &quot;Okapi BM25&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Familiarity with Large Language Models (LLMs) and their applications in natural language processing and information retrieval.&quot;,
+      &quot;Understanding of fundamental concepts in information retrieval, including relevance assessment, document ranking, and evaluation metrics.&quot;,
+      &quot;Knowledge of model fine-tuning and distillation techniques in machine learning.&quot;,
+      &quot;Basic understanding of synthetic data generation methods for training machine learning models.&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Enterprise Search&quot;,
+    &quot;Relevance Labeling&quot;,
+    &quot;Small Language Models&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;RAG&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Prior work on SLMs for relevance labeling was mainly limited to open-domain, semantically driven retrieval tasks, whereas this work tackles the more complex and heterogeneous domain of enterprise search that combines lexical and semantic signals.&quot;,
+      &quot;Existing industrial practices for enterprise relevance labeling often rely on frontier-scale LLMs, which are computationally expensive and slow, making them unsuitable for large-scale, high-throughput applications. This work provides a faster and more cost-effective alternative.&quot;,
+      &quot;Unlike traditional web search that benefits from large public benchmarks, enterprise search lacks such datasets. This work introduces a synthetic data generation pipeline to overcome this data scarcity, a departure from methods relying solely on human annotations or biased click logs.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;An initial approach to fine-tune SLMs as query generators struggled to produce high-quality, diverse, and keyword-based queries due to positivity bias in pretraining and limited model capacity, necessitating a different strategy.&quot;,
+      &quot;The experiments primarily utilized Phi-3.5 Mini Instruct and GPT-4o; the paper notes that results with newer models (e.g., GPT-5 or other SLM families) were not included, though the authors believe the core findings generalize.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Base SLM&quot;,
+        &quot;value&quot;: &quot;Phi-3.5 Mini Instruct&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Teacher LLM&quot;,
+        &quot;value&quot;: &quot;GPT-4o&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Fine-tuning Data&quot;,
+        &quot;list&quot;: [
+          &quot;Synthetic enterprise query-document-label triplets (generated using GPT-4o for queries/labels and BM25 for negative mining)&quot;,
+          &quot;INTERS: multi-task tuning dataset for query and document understanding (approx. 250,000 samples)&quot;,
+          &quot;TREC-CAsT: public dataset for conversational information seeking (4,000 passage-query-human label triplets)&quot;,
+          &quot;MS MARCO passages: open dataset for information retrieval (over 400,000 passage-query pairs)&quot;
+        ]
+      },
+      {
+        &quot;label&quot;: &quot;Training Parameters&quot;,
+        &quot;list&quot;: [
+          &quot;2 epochs&quot;,
+          &quot;Maximum sequence length: 4096&quot;,
+          &quot;Effective batch size: 32 (per-device batch size 4 with 8 gradient accumulation steps)&quot;,
+          &quot;Conducted on a cluster of eight A100 GPUs&quot;
+        ]
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Positive Query Generation: GPT-4o is used to generate realistic, diverse enterprise queries and keywords from seed documents, leveraging a query revision stage for enhanced diversity.&quot;,
+      &quot;Negative Document Mining: The Okapi BM25 algorithm retrieves top-k documents (k=4) from the corpus for each synthetic query to identify plausible negative documents, forming query-document pairs.&quot;,
+      &quot;LLM-based Labeling: GPT-4o assigns graded relevance scores (0-4) to the synthetic query-document pairs using a carefully designed labeling prompt, followed by quality control and filtering to ensure dataset integrity.&quot;,
+      &quot;SLM Labeler Fine-tuning: The Phi-3.5 Mini Instruct model is fine-tuned on the high-quality synthetic query-document-label triplets, augmented with multi-task tuning on public datasets (INTERS, TREC-CAsT, MS MARCO) for improved generalization.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Input&quot;,
+        &quot;value&quot;: &quot;A query $q \\in Q$, where $Q$ is the space consisting of all user enterprise queries. A set of documents $D = \\{d_1, d_2, ..., d_n\\}$, where $d_i \\in D$ and $D$ are the space of documents.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Output&quot;,
+        &quot;value&quot;: &quot;A relevance score $r(q, d_i) \\in R$ for each $(q, d_i)$ pair, where $R$ is the space of relevance scores. An ordinal 0–4 scale is adopted, with 0 indicating irrelevance and 4 indicating high relevance, designed to approximate human judgments.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The paper provides a detailed workflow of the synthetic data generation pipeline (Figure 1), outlines prompt structures (Box 3.1, Box 3.2, Box 3.3), and specifies training parameters (epochs, sequence length, batch size, GPU hardware). It mentions using a proprietary human-labeled dataset for final evaluation, but does not disclose full prompt templates due to confidentiality constraints. The approach is described as fully automatic and privacy-preserving, suitable for enterprise settings.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Utilized for both initial positive query generation and subsequent query revision to enhance diversity and semantic relevance. Also serves as the teacher model for assigning graded relevance scores (0-4) to query-document pairs.&quot;,
+        &quot;name&quot;: &quot;GPT-4o&quot;,
+        &quot;role&quot;: &quot;Teacher LLM and Synthetic Query Generator&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Employed to mine plausible negative documents for each synthetic query by retrieving the top-k (k=4) documents from the corpus, excluding the original source, to create a diverse spectrum of relevance levels for training.&quot;,
+        &quot;name&quot;: &quot;Okapi BM25&quot;,
+        &quot;role&quot;: &quot;Negative Document Miner&quot;
+      },
+      {
+        &quot;details&quot;: &quot;The target small language model that is fine-tuned on the synthetic enterprise query-document-label triplets and additional public datasets (INTERS, TREC-CAsT, MS MARCO) to serve as an efficient and cost-effective enterprise search relevance labeler.&quot;,
+        &quot;name&quot;: &quot;Phi-3.5 Mini Instruct&quot;,
+        &quot;role&quot;: &quot;Fine-tuned SLM Labeler&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;To overcome the challenges of data scarcity and high labeling costs in enterprise search, fine-tuning Small Language Models (SLMs) with a novel synthetic data generation pipeline can achieve relevance labeling quality comparable to state-of-the-art Large Language Models (LLMs) while drastically improving throughput and cost-efficiency.&quot;,
+  &quot;title&quot;: &quot;Fine-Tuning Small Language Models as Efficient Enterprise Search Relevance Labelers&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/2601.03211&quot;,
+  &quot;venue&quot;: &quot;arXiv&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2601.03211&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/2601.03211&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:157,&quot;xmin&quot;:153,&quot;ymax&quot;:240,&quot;xmax&quot;:885},&quot;caption&quot;:&quot;Overall model architecture for our proposed solution.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:5},&quot;authors&quot;:&quot;Yue Kang, Zhuoyi Huang, Benji Schussheim, Diana Licon, Dina Atia, Shixing Cao, Jacob Danovitch, Kunho Kim, Billy Norcilien, Jonah Karpman, Mahmound Sayed, Mike Taylor, Tao Sun, Pavel Metrikov, Vipul Agarwal, Chris Quirk, Ye-Yi Wang, Nick Craswell, Irene Shaffer, Tianwei Chen, Sulaiman Vesal, Soundar Srinivasan&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper presents a strong practical contribution to the field of enterprise search and general NLP applications where scalable and cost-effective labeling is crucial. The core novelty lies in the synthetic data generation and distillation pipeline that enables SLMs to achieve LLM-comparable performance with significant efficiency gains (17x throughput, 19x cost reduction). While the underlying techniques (synthetic data, distillation, fine-tuning) are known, their effective combination and strong empirical validation for the specific challenges of enterprise search relevance labeling make this a highly useful and impactful work. It is a solid engineering and methodological advancement.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;While the query \&quot;Juno release date\&quot; has a clear intent in web search relating to the 2007 film, the same query in enterprise could have multiple intents, e.g. looking for files containing the release date of a project named Juno or for emails from a colleague named Juno.&quot;,&quot;statement&quot;:&quot;In enterprise search, building high-quality datasets at scale remains a central challenge due to the difficulty of acquiring labeled data, exacerbated by the lack of publicly available, high-quality enterprise search datasets and the computational expense and limited throughput of Large Language Models (LLMs) for large-scale labeling tasks.&quot;,&quot;whyItMatters&quot;:[&quot;Traditional human annotation methods for enterprise relevance are costly and limited in scale due to complex, context-dependent queries and sensitive data.&quot;,&quot;Large Language Models (LLMs), while capable of high-quality judgments, are computationally expensive and have limited throughput, making them inefficient for large-scale enterprise labeling.&quot;,&quot;The absence of publicly available, high-quality enterprise search datasets hinders the development and evaluation of effective enterprise search methods.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Achieved SLM-Human NDCG of 0.953 and pairwise accuracy of 63.81, outperforming GPT-4o (NDCG: 0.944, Accuracy: 62.58) on the enterprise search test dataset.&quot;,&quot;Demonstrated a throughput of 873.33 RPM on a single A100 GPU, extrapolating to nearly 7K RPM on a cluster, which is an order of magnitude faster than typical LLM labelers.&quot;,&quot;Achieved significant cost efficiency, being nearly 19 times cheaper than GPT-4o for both input tokens ($0.13 vs $2.50 per 1M) and output tokens ($0.52 vs $10.00 per 1M).&quot;,&quot;Statistical significance tests (Wilcoxon signed-rank test) confirmed that the fine-tuned labeler is non-inferior to the GPT-4o baseline within specified small margins for both pairwise accuracy and NDCG.&quot;,&quot;Qualitative analysis showed improved calibration and confidence in assigning lowest relevance scores for irrelevant passages compared to vanilla SLMs and GPT-4o.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Human-labeled enterprise search dataset (923 query-document pairs)&quot;],&quot;metrics&quot;:[&quot;Normalized Discounted Cumulative Gain (NDCG)&quot;,&quot;Pairwise Accuracy&quot;,&quot;Request Per Minute (RPM)&quot;,&quot;Cost (per 1M tokens)&quot;],&quot;setting&quot;:&quot;Evaluation of fine-tuned Phi-3.5 Mini Instruct SLM against vanilla Phi-3.5 Mini and GPT-4o on a proprietary, human-labeled enterprise search benchmark.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:104,&quot;xmin&quot;:112,&quot;ymax&quot;:387,&quot;xmax&quot;:887},&quot;caption&quot;:&quot;Performance results comparing the vanilla and fine-tuned SLM models against GPT-4o on two key evaluation metrics for the enterprise search test dataset.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:11}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.944&quot;,&quot;benchmark&quot;:&quot;14K synthetic data, multi-task tuning&quot;,&quot;delta&quot;:&quot;+0.009&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG (SLM-Human)&quot;,&quot;thisPaper&quot;:&quot;0.953&quot;},{&quot;baseline&quot;:&quot;62.58%&quot;,&quot;benchmark&quot;:&quot;14K synthetic data, multi-task tuning&quot;,&quot;delta&quot;:&quot;+1.23%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%) (SLM-Human)&quot;,&quot;thisPaper&quot;:&quot;63.81%&quot;}],&quot;title&quot;:&quot;SLM-Human Performance Comparison&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;Hundreds (typical LLM labelers)&quot;,&quot;benchmark&quot;:&quot;Single A100 GPU&quot;,&quot;delta&quot;:&quot;Much higher (order of magnitude faster)&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RPM&quot;,&quot;thisPaper&quot;:&quot;873.33&quot;},{&quot;baseline&quot;:&quot;$2.50&quot;,&quot;benchmark&quot;:&quot;1M input tokens&quot;,&quot;delta&quot;:&quot;-$2.37&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Cost ($)&quot;,&quot;thisPaper&quot;:&quot;$0.13&quot;},{&quot;baseline&quot;:&quot;$10.00&quot;,&quot;benchmark&quot;:&quot;1M output tokens&quot;,&quot;delta&quot;:&quot;-$9.48&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Cost ($)&quot;,&quot;thisPaper&quot;:&quot;$0.52&quot;}],&quot;title&quot;:&quot;Throughput and Cost Efficiency&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.815&quot;,&quot;benchmark&quot;:&quot;14K synthetic data, multi-task tuning&quot;,&quot;delta&quot;:&quot;+0.138&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG (SLM-Human)&quot;,&quot;thisPaper&quot;:&quot;0.953&quot;},{&quot;baseline&quot;:&quot;0.946&quot;,&quot;benchmark&quot;:&quot;14K synthetic data, multi-task tuning vs. no multi-task&quot;,&quot;delta&quot;:&quot;+0.007&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG (SLM-Human)&quot;,&quot;thisPaper&quot;:&quot;0.953&quot;},{&quot;baseline&quot;:&quot;0.943&quot;,&quot;benchmark&quot;:&quot;14K synthetic data, multi-task tuning vs. no refinement&quot;,&quot;delta&quot;:&quot;+0.010&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG (SLM-Human)&quot;,&quot;thisPaper&quot;:&quot;0.953&quot;}],&quot;title&quot;:&quot;Ablation Studies (NDCG)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;42.15%&quot;,&quot;benchmark&quot;:&quot;14K synthetic data, multi-task tuning&quot;,&quot;delta&quot;:&quot;+21.66%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%) (SLM-Human)&quot;,&quot;thisPaper&quot;:&quot;63.81%&quot;},{&quot;baseline&quot;:&quot;62.41%&quot;,&quot;benchmark&quot;:&quot;14K synthetic data, multi-task tuning vs. no multi-task&quot;,&quot;delta&quot;:&quot;+1.40%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%) (SLM-Human)&quot;,&quot;thisPaper&quot;:&quot;63.81%&quot;},{&quot;baseline&quot;:&quot;60.97%&quot;,&quot;benchmark&quot;:&quot;14K synthetic data, multi-task tuning vs. no refinement&quot;,&quot;delta&quot;:&quot;+2.84%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%) (SLM-Human)&quot;,&quot;thisPaper&quot;:&quot;63.81%&quot;}],&quot;title&quot;:&quot;Ablation Studies (Accuracy)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;The fine-tuned Small Language Model (Phi-3.5 Mini Instruct) achieves performance comparable to or even surpassing GPT-4o on enterprise relevance labeling, demonstrating strong alignment with human judgments.&quot;,&quot;The proposed synthetic data generation pipeline, which includes LLM-based query generation, BM25-based negative mining, and LLM-assisted labeling, is highly effective in producing high-quality training data for enterprise search.&quot;,&quot;Fine-tuned SLMs offer substantial improvements in throughput (17x faster) and cost-efficiency (19x cheaper) compared to LLMs for large-scale relevance labeling, making them practical for real-world deployments.&quot;,&quot;Ablation studies confirm the critical importance of multi-task tuning and training data quality (e.g., query refinement) over simply increasing the raw quantity of synthetic data beyond a certain threshold.&quot;]},&quot;institutions&quot;:&quot;Microsoft, Amazon&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;The paper introduces a novel synthetic data generation pipeline specifically tailored for enterprise search, leveraging a teacher LLM (GPT-4o) for query generation and relevance labeling, and BM25 for hard negative mining. This addresses the challenge of scarce and sensitive domain-specific data.&quot;,&quot;It demonstrates a highly effective method for distilling the knowledge from a frontier LLM (GPT-4o) into a significantly smaller and more efficient SLM (Phi-3.5 Mini Instruct) for complex enterprise relevance tasks.&quot;,&quot;The approach shows that the fine-tuned SLM not only achieves comparable or superior relevance labeling quality to the teacher LLM and human judgments but also drastically improves throughput and reduces operational costs for large-scale applications.&quot;],&quot;main&quot;:&quot;An efficient and scalable synthetic data generation and SLM fine-tuning pipeline for enterprise search relevance labeling, achieving LLM-comparable performance with significant throughput and cost advantages.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;Compact neural networks that offer strong generalization and reasoning capacity with lower inference cost compared to Large Language Models (LLMs), making them suitable for tasks requiring high throughput and scalability.&quot;,&quot;term&quot;:&quot;Small Language Models (SLMs)&quot;},{&quot;definition&quot;:&quot;A widely adopted metric in information retrieval that evaluates the quality of ranked lists with respect to graded relevance, assigning higher gains to more relevant documents and logarithmically discounting them by rank position.&quot;,&quot;term&quot;:&quot;Normalized Discounted Cumulative Gain (NDCG)&quot;},{&quot;definition&quot;:&quot;A metric that measures how consistently a model preserves the correct relative ordering of documents compared to ground-truth labels by checking agreement across all possible pairs of documents for a given query.&quot;,&quot;term&quot;:&quot;Pairwise Accuracy&quot;},{&quot;definition&quot;:&quot;A strong lexical-based retrieval algorithm widely used in traditional information retrieval, employed here to mine plausible negative documents that cover a diverse spectrum of relevance levels.&quot;,&quot;term&quot;:&quot;Okapi BM25&quot;}],&quot;prerequisites&quot;:[&quot;Familiarity with Large Language Models (LLMs) and their applications in natural language processing and information retrieval.&quot;,&quot;Understanding of fundamental concepts in information retrieval, including relevance assessment, document ranking, and evaluation metrics.&quot;,&quot;Knowledge of model fine-tuning and distillation techniques in machine learning.&quot;,&quot;Basic understanding of synthetic data generation methods for training machine learning models.&quot;]},&quot;subTopics&quot;:[&quot;Enterprise Search&quot;,&quot;Relevance Labeling&quot;,&quot;Small Language Models&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Prior work on SLMs for relevance labeling was mainly limited to open-domain, semantically driven retrieval tasks, whereas this work tackles the more complex and heterogeneous domain of enterprise search that combines lexical and semantic signals.&quot;,&quot;Existing industrial practices for enterprise relevance labeling often rely on frontier-scale LLMs, which are computationally expensive and slow, making them unsuitable for large-scale, high-throughput applications. This work provides a faster and more cost-effective alternative.&quot;,&quot;Unlike traditional web search that benefits from large public benchmarks, enterprise search lacks such datasets. This work introduces a synthetic data generation pipeline to overcome this data scarcity, a departure from methods relying solely on human annotations or biased click logs.&quot;],&quot;limitations&quot;:[&quot;An initial approach to fine-tune SLMs as query generators struggled to produce high-quality, diverse, and keyword-based queries due to positivity bias in pretraining and limited model capacity, necessitating a different strategy.&quot;,&quot;The experiments primarily utilized Phi-3.5 Mini Instruct and GPT-4o; the paper notes that results with newer models (e.g., GPT-5 or other SLM families) were not included, though the authors believe the core findings generalize.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Base SLM&quot;,&quot;value&quot;:&quot;Phi-3.5 Mini Instruct&quot;},{&quot;label&quot;:&quot;Teacher LLM&quot;,&quot;value&quot;:&quot;GPT-4o&quot;},{&quot;label&quot;:&quot;Fine-tuning Data&quot;,&quot;list&quot;:[&quot;Synthetic enterprise query-document-label triplets (generated using GPT-4o for queries/labels and BM25 for negative mining)&quot;,&quot;INTERS: multi-task tuning dataset for query and document understanding (approx. 250,000 samples)&quot;,&quot;TREC-CAsT: public dataset for conversational information seeking (4,000 passage-query-human label triplets)&quot;,&quot;MS MARCO passages: open dataset for information retrieval (over 400,000 passage-query pairs)&quot;]},{&quot;label&quot;:&quot;Training Parameters&quot;,&quot;list&quot;:[&quot;2 epochs&quot;,&quot;Maximum sequence length: 4096&quot;,&quot;Effective batch size: 32 (per-device batch size 4 with 8 gradient accumulation steps)&quot;,&quot;Conducted on a cluster of eight A100 GPUs&quot;]}],&quot;pipelineFlow&quot;:[&quot;Positive Query Generation: GPT-4o is used to generate realistic, diverse enterprise queries and keywords from seed documents, leveraging a query revision stage for enhanced diversity.&quot;,&quot;Negative Document Mining: The Okapi BM25 algorithm retrieves top-k documents (k=4) from the corpus for each synthetic query to identify plausible negative documents, forming query-document pairs.&quot;,&quot;LLM-based Labeling: GPT-4o assigns graded relevance scores (0-4) to the synthetic query-document pairs using a carefully designed labeling prompt, followed by quality control and filtering to ensure dataset integrity.&quot;,&quot;SLM Labeler Fine-tuning: The Phi-3.5 Mini Instruct model is fine-tuned on the high-quality synthetic query-document-label triplets, augmented with multi-task tuning on public datasets (INTERS, TREC-CAsT, MS MARCO) for improved generalization.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Input&quot;,&quot;value&quot;:&quot;A query $q \\in Q$, where $Q$ is the space consisting of all user enterprise queries. A set of documents $D = \\{d_1, d_2, ..., d_n\\}$, where $d_i \\in D$ and $D$ are the space of documents.&quot;},{&quot;label&quot;:&quot;Output&quot;,&quot;value&quot;:&quot;A relevance score $r(q, d_i) \\in R$ for each $(q, d_i)$ pair, where $R$ is the space of relevance scores. An ordinal 0–4 scale is adopted, with 0 indicating irrelevance and 4 indicating high relevance, designed to approximate human judgments.&quot;}],&quot;reproducibility&quot;:&quot;The paper provides a detailed workflow of the synthetic data generation pipeline (Figure 1), outlines prompt structures (Box 3.1, Box 3.2, Box 3.3), and specifies training parameters (epochs, sequence length, batch size, GPU hardware). It mentions using a proprietary human-labeled dataset for final evaluation, but does not disclose full prompt templates due to confidentiality constraints. The approach is described as fully automatic and privacy-preserving, suitable for enterprise settings.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Utilized for both initial positive query generation and subsequent query revision to enhance diversity and semantic relevance. Also serves as the teacher model for assigning graded relevance scores (0-4) to query-document pairs.&quot;,&quot;name&quot;:&quot;GPT-4o&quot;,&quot;role&quot;:&quot;Teacher LLM and Synthetic Query Generator&quot;},{&quot;details&quot;:&quot;Employed to mine plausible negative documents for each synthetic query by retrieving the top-k (k=4) documents from the corpus, excluding the original source, to create a diverse spectrum of relevance levels for training.&quot;,&quot;name&quot;:&quot;Okapi BM25&quot;,&quot;role&quot;:&quot;Negative Document Miner&quot;},{&quot;details&quot;:&quot;The target small language model that is fine-tuned on the synthetic enterprise query-document-label triplets and additional public datasets (INTERS, TREC-CAsT, MS MARCO) to serve as an efficient and cost-effective enterprise search relevance labeler.&quot;,&quot;name&quot;:&quot;Phi-3.5 Mini Instruct&quot;,&quot;role&quot;:&quot;Fine-tuned SLM Labeler&quot;}]},&quot;thesis&quot;:&quot;To overcome the challenges of data scarcity and high labeling costs in enterprise search, fine-tuning Small Language Models (SLMs) with a novel synthetic data generation pipeline can achieve relevance labeling quality comparable to state-of-the-art Large Language Models (LLMs) while drastically improving throughput and cost-efficiency.&quot;,&quot;title&quot;:&quot;Fine-Tuning Small Language Models as Efficient Enterprise Search Relevance Labelers&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/2601.03211&quot;,&quot;venue&quot;:&quot;arXiv&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

@@ -207,6 +207,15 @@
       ]
     },
     {
+      "paperId": "2601.03211",
+      "title": "Fine-Tuning Small Language Models as Efficient Enterprise Search Relevance Labelers",
+      "tags": [
+        "QA",
+        "RAG",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2510.11056",
       "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
       "tags": [

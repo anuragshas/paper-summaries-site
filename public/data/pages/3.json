@@ -2,6 +2,17 @@
   "page": 3,
   "papers": [
     {
+      "paperId": "2601.03211",
+      "title": "Fine-Tuning Small Language Models as Efficient Enterprise Search Relevance Labelers",
+      "authors": "Yue Kang, Zhuoyi Huang, Benji Schussheim, Diana Licon, Dina Atia, Shixing Cao, Jacob Danovitch, Kunho Kim, Billy Norcilien, Jonah Karpman, Mahmound Sayed, Mike Taylor, Tao Sun, Pavel Metrikov, Vipul Agarwal, Chris Quirk, Ye-Yi Wang, Nick Craswell, Irene Shaffer, Tianwei Chen, Sulaiman Vesal, Soundar Srinivasan",
+      "publishedDate": "2026-01-01",
+      "tags": [
+        "QA",
+        "RAG",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2510.11056",
       "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
       "authors": "Runze Xia, Yupeng Ji, Yuxi Zhou, Haodong Liu, Teng Zhang, and Piji Li",
@@ -107,18 +118,6 @@
         "Dialogue Coherence",
         "Context Tracking",
         "LLM Evaluation"
-      ]
-    },
-    {
-      "paperId": "2601.08345",
-      "title": "MLPlatt: Simple Calibration Framework for Ranking Models",
-      "authors": "Piotr Bajger, Roman Dusek, Krzysztof Galias, Pawel Mlynicek, Aleksander Wawer, and Pawel Zawistowski",
-      "publishedDate": null,
-      "tags": [
-        "Ranking Model Calibration",
-        "E-commerce",
-        "CTR Prediction",
-        "Machine Learning"
       ]
     }
   ]
