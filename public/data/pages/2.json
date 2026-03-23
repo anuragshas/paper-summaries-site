@@ -12,11 +12,7 @@
         "Exploration",
         "Memory-Augmented Agents",
         "Policy Optimization"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.23008",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.23008/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.23008/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.23008"
+      ]
     },
     {
       "paperId": "2602.22661",
@@ -30,11 +26,7 @@
         "Model Training",
         "Model Inference",
         "Reproducibility"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.22661",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.22661/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.22661/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.22661"
+      ]
     },
     {
       "paperId": "2602.22219",
@@ -49,11 +41,7 @@
         "Large Language Models (LLMs)",
         "Cross-encoders",
         "Semi-structured Data"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.22219",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.22219/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.22219/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.22219"
+      ]
     },
     {
       "paperId": "2602.21456",
@@ -64,11 +52,7 @@
         "RAG",
         "QA",
         "Benchmark"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/2602.21456",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.21456/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.21456/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.21456"
+      ]
     },
     {
       "paperId": "2602.20558",
@@ -82,11 +66,7 @@
         "Data-Centric AI",
         "Prompt Optimization",
         "Sequential Recommendation"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.20558",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.20558/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.20558/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.20558"
+      ]
     },
     {
       "paperId": "2602.18734",
@@ -100,11 +80,7 @@
         "Large Language Models",
         "Question Answering",
         "Natural Language Processing"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.18734",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.18734/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.18734/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.18734"
+      ]
     },
     {
       "paperId": "2602.14265",
@@ -115,11 +91,7 @@
         "Reasoning",
         "Agent",
         "Benchmark"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/2602.14265",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.14265/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.14265/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.14265"
+      ]
     },
     {
       "paperId": "2602.12528",
@@ -130,11 +102,7 @@
         "Document Reranking",
         "Diffusion Models",
         "Large Language Models"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/2602.12528",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.12528/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.12528/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.12528"
+      ]
     },
     {
       "paperId": "2602.11298",
@@ -147,11 +115,7 @@
         "Deep Learning",
         "Transformers",
         "Low-Latency Systems"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.11298",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.11298/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.11298/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.11298"
+      ]
     },
     {
       "paperId": "2602.07774",
@@ -165,11 +129,7 @@
         "Re-ranking",
         "Semantic IDs",
         "Chain-of-Thought Reasoning"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2602.07774",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.07774/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.07774/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.07774"
+      ]
     }
   ]
 }
