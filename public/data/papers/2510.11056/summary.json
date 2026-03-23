@@ -1,0 +1,418 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 100,
+      "xmin": 75,
+      "ymax": 285,
+      "xmax": 915
+    },
+    "caption": "An overview of our three-stage training pipeline for the domain-adapted reasoning LLM, consisting of Continued Pre-training (CPT), Supervised Fine-tuning (SFT), and preference optimization.",
+    "figureNumber": 1,
+    "pageIndex": 2
+  },
+  "authors": "Runze Xia, Yupeng Ji, Yuxi Zhou, Haodong Liu, Teng Zhang, and Piji Li",
+  "breakthroughAssessment": {
+    "justification": "The paper introduces a robust two-stage framework for distilling LLM reasoning capabilities to a lightweight model for industrial-scale e-commerce search relevance, addressing critical latency and domain adaptation challenges. The combined approach of a domain-adaptive teacher LLM built with a multi-dimensional reward model and the Contrastive Reasoning Self-Distillation (CRSD) method is novel and demonstrates significant improvements in both offline accuracy and online business metrics (AdCTR, AdCVR, GTV, bad case rate reduction). The comprehensive validation, including successful production deployment, highlights its strong practical value. While it represents a solid engineering and research contribution for deploying advanced LLM capabilities in latency-sensitive systems, it does not propose a fundamentally new AI paradigm.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "When a user searches for \"skin rejuvenation treatment\" and a merchant offers \"facial hydrotherapy session,\" traditional models often fail to recognize such semantic equivalence grounded in real-world knowledge, leading to the erroneous exclusion of highly relevant results.",
+    "statement": "E-commerce search systems require highly accurate and low-latency query-service relevance prediction. While Large Language Models (LLMs) offer deep reasoning capabilities, their high computational cost and latency prevent direct application in production. Conversely, lightweight models like BERT are efficient but lack deep reasoning and domain-specific knowledge.",
+    "whyItMatters": [
+      "Search relevance is fundamental in e-commerce, directly impacting user experience and business revenue.",
+      "Relevance models must handle hundreds of millions of query-service evaluations daily, demanding exceptional inference efficiency.",
+      "General-purpose LLMs are too slow and costly for real-time production environments.",
+      "Generic LLMs lack platform-specific knowledge, leading to suboptimal performance.",
+      "Traditional discriminative models (e.g., BERT-based) lack deep reasoning for complex semantic understanding and logical judgment tasks."
+    ]
+  },
+  "evaluationHighlights": [
+    "General-purpose LLMs like Qwen3-8B and DeepSeek-R1 showed significantly lower performance (Macro F1 < 0.5) on domain-specific e-commerce search tasks compared to specialized models.",
+    "The proposed domain-adapted teacher LLM (CPT+SFT+GRPO(Weighted)) achieved a Macro F1 of 0.7174, demonstrating progressive improvement with each training stage (CPT, SFT, multi-dimensional reward-guided GRPO).",
+    "The Contrastive Reasoning Self-Distillation (CRSD Full) model achieved a Macro F1 of 0.7076, significantly outperforming a standard data distillation baseline (0.6945) and a baseline reasoning distillation method (0.6959), while retaining 98.6% of the teacher LLM's performance.",
+    "Ablation studies confirmed the critical importance of reasoning paths; removing them or injecting random paths actively degraded performance.",
+    "Online A/B testing in Meituan's search advertising system showed substantial relative improvements: +0.91% in AdCTR, +1.06% in AdCVR, and +0.40% in GTV.",
+    "Manual expert review revealed a 30.5 percentage point reduction in the bad case rate in the top 5 search results, confirming practical value and successful deployment."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Domain-specific search relevance task",
+        "LLM Training Data (7M CPT examples, >45K human-annotated SFT/GRPO samples)",
+        "Reasoning Distillation Data (2.68M <query, service> pairs)",
+        "Manually annotated test set (~12,000 samples)",
+        "Meituan's e-commerce search advertising system (online A/B test)"
+      ],
+      "metrics": [
+        "Accuracy",
+        "Macro F1",
+        "Weighted F1",
+        "AdCTR (Ad Click-Through Rate)",
+        "AdCVR (Ad Conversion Rate)",
+        "GTV (Gross Transaction Volume)",
+        "UVCTR (Unique Visitor CTR)",
+        "PVCTR (Page View CTR)",
+        "Bad Case Rate Reduction"
+      ],
+      "setting": "Offline evaluation on a high-quality, manually annotated test set and online A/B testing in a large-scale e-commerce search system."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 201,
+          "xmin": 215,
+          "ymax": 388,
+          "xmax": 785
+        },
+        "caption": "An illustration of the baseline reasoning distillation method.",
+        "figureNumber": 2,
+        "pageIndex": 4
+      },
+      {
+        "boundingBox": {
+          "ymin": 405,
+          "xmin": 100,
+          "ymax": 670,
+          "xmax": 890
+        },
+        "caption": "Left: Overview of the proposed CRSD framework. Right: Illustration of the $L_{align}$ objective.",
+        "figureNumber": 3,
+        "pageIndex": 5
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "N/A",
+            "benchmark": "Qwen3-8B",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "Macro F1 (Zero-shot)",
+            "thisPaper": "0.3955"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "DeepSeek-R1",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "Macro F1 (Zero-shot)",
+            "thisPaper": "0.4067"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Qwen3-8B",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "Macro F1 (Few-shot)",
+            "thisPaper": "0.4375"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "DeepSeek-R1",
+            "delta": "N/A",
+            "isPositive": true,
+            "metric": "Macro F1 (Few-shot)",
+            "thisPaper": "0.4696"
+          }
+        ],
+        "title": "Offline General-purpose LLM Results"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.6980 (SFT Baseline)",
+            "benchmark": "Domain-Adapted LLM",
+            "delta": "+0.0052",
+            "isPositive": true,
+            "metric": "Macro F1 (CPT+SFT)",
+            "thisPaper": "0.7032"
+          },
+          {
+            "baseline": "0.7032 (CPT+SFT)",
+            "benchmark": "Domain-Adapted LLM",
+            "delta": "+0.0069",
+            "isPositive": true,
+            "metric": "Macro F1 (CPT+SFT + GRPO ($R_{label}$))",
+            "thisPaper": "0.7101"
+          },
+          {
+            "baseline": "0.7101 (CPT+SFT + GRPO ($R_{label}$))",
+            "benchmark": "Domain-Adapted LLM",
+            "delta": "+0.0073",
+            "isPositive": true,
+            "metric": "Macro F1 (CPT+SFT + GRPO (Weighted))",
+            "thisPaper": "0.7174"
+          }
+        ],
+        "title": "Offline Reasoning LLM Performance by Stage"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.6945 (Baseline)",
+            "benchmark": "Lightweight Model",
+            "delta": "+0.0014",
+            "isPositive": true,
+            "metric": "Macro F1 (Baseline Reasoning Distill.)",
+            "thisPaper": "0.6959"
+          },
+          {
+            "baseline": "0.6959 (Baseline Reasoning Distill.)",
+            "benchmark": "Lightweight Model",
+            "delta": "+0.0034",
+            "isPositive": true,
+            "metric": "Macro F1 (CRSD + $L_{align}$)",
+            "thisPaper": "0.6993"
+          },
+          {
+            "baseline": "0.6993 (CRSD + $L_{align}$)",
+            "benchmark": "Lightweight Model",
+            "delta": "+0.0083",
+            "isPositive": true,
+            "metric": "Macro F1 (CRSD Full (ours))",
+            "thisPaper": "0.7076"
+          }
+        ],
+        "title": "Offline Distillation Results and Ablation Study"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.7076 (CRSD Full (Ours))",
+            "benchmark": "Lightweight Model",
+            "delta": "-0.0129",
+            "isPositive": false,
+            "metric": "Macro F1 (w/o Reasoning Path)",
+            "thisPaper": "0.6947"
+          },
+          {
+            "baseline": "0.7076 (CRSD Full (Ours))",
+            "benchmark": "Lightweight Model",
+            "delta": "-0.0158",
+            "isPositive": false,
+            "metric": "Macro F1 (w/ Random Reasoning)",
+            "thisPaper": "0.6918"
+          }
+        ],
+        "title": "Offline Ablation on Reasoning Path Importance"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "Baseline",
+            "benchmark": "Meituan Search Advertising System",
+            "delta": "+0.91%",
+            "isPositive": true,
+            "metric": "AdCTR",
+            "thisPaper": "+0.91% (relative improvement)"
+          },
+          {
+            "baseline": "Baseline",
+            "benchmark": "Meituan Search Advertising System",
+            "delta": "+1.06%",
+            "isPositive": true,
+            "metric": "AdCVR",
+            "thisPaper": "+1.06% (relative improvement)"
+          },
+          {
+            "baseline": "Baseline",
+            "benchmark": "Meituan Search Advertising System",
+            "delta": "+0.40%",
+            "isPositive": true,
+            "metric": "GTV",
+            "thisPaper": "+0.40% (relative improvement)"
+          },
+          {
+            "baseline": "0%",
+            "benchmark": "Meituan Search Advertising System",
+            "delta": "+30.5% reduction",
+            "isPositive": true,
+            "metric": "Bad Case Rate Reduction",
+            "thisPaper": "30.5% reduction"
+          }
+        ],
+        "title": "Online A/B Test Results"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "General-purpose LLMs demonstrate significantly lower performance on domain-specific e-commerce search tasks, underscoring the necessity of domain adaptation.",
+      "The multi-dimensional weighted reward model and GRPO optimization are crucial for refining the teacher LLM's reasoning capabilities, leading to progressive performance gains.",
+      "The Contrastive Reasoning Self-Distillation (CRSD) framework effectively transfers reasoning capabilities to a lightweight student model, achieving substantial improvements over baseline distillation methods.",
+      "The semantic content and relevance of reasoning paths are vital; their absence or noise actively degrades model performance.",
+      "Online A/B tests confirm that the proposed framework delivers significant improvements in key business metrics and reduces bad case rates, validating its practical value and deployability in a real-world setting."
+    ]
+  },
+  "institutions": "Meituan; Nanjing, China",
+  "keyNovelty": {
+    "explanation": [
+      "A Domain-Adapted Reasoning LLM Pipeline: The paper proposes a three-step pipeline (Continued Pre-training, Supervised Fine-Tuning, and Preference Optimization with a Multi-Dimensional Reward Model) to construct a powerful teacher LLM tailored for e-commerce, enabling it to generate high-quality relevance judgments and detailed reasoning paths.",
+      "A Novel Contrastive Reasoning Distillation Framework (CRSD): This framework effectively transfers LLM reasoning to a lightweight BERT model by modeling the behavior of the same student model under \"standard\" and \"reasoning-augmented\" inputs, using an InfoNCE contrastive learning mechanism. This overcomes architectural heterogeneity challenges and fosters internalization of the reasoning process rather than mere output imitation.",
+      "Comprehensive Validation and Production Deployment: The paper demonstrates the effectiveness of the approach through extensive experiments on real-world datasets and a successful online deployment in a large-scale e-commerce search engine."
+    ],
+    "main": "A two-stage reasoning distillation framework that transfers LLM reasoning capabilities to a lightweight BERT model for efficient and accurate e-commerce search relevance prediction, bridging the gap between LLM performance and BERT efficiency."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "The degree of semantic alignment between a user query and a candidate service (e.g., product or service description) in e-commerce.",
+        "term": "Search Relevance"
+      },
+      {
+        "definition": "Accuracy in capturing the user's search intent.",
+        "term": "Query Understanding"
+      },
+      {
+        "definition": "Accuracy in describing the core attributes of a platform service.",
+        "term": "Service Understanding"
+      },
+      {
+        "definition": "Adherence to the platform's business logic during reasoning.",
+        "term": "Business Rule Compliance"
+      },
+      {
+        "definition": "The degree to which the reasoning rationale logically supports the final answer.",
+        "term": "Reasoning Consistency"
+      },
+      {
+        "definition": "Whether the generated answer matches the ground-truth label.",
+        "term": "Answer Correctness"
+      },
+      {
+        "definition": "A contrastive learning mechanism used to align semantic representations by pulling positive pairs closer and pushing negative pairs apart.",
+        "term": "InfoNCE"
+      }
+    ],
+    "prerequisites": [
+      "Large Language Models (LLMs)",
+      "BERT architecture",
+      "Knowledge Distillation",
+      "Reinforcement Learning (RL) with reward models",
+      "Contrastive Learning"
+    ]
+  },
+  "subTopics": [
+    "Search Relevance",
+    "Knowledge Distillation",
+    "Large Language Models"
+  ],
+  "tags": [
+    {
+      "name": "QA",
+      "type": "primary"
+    },
+    {
+      "name": "Pretraining",
+      "type": "topic"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Traditional distillation methods often struggle with architectural heterogeneity between decoder-only LLMs and encoder-only BERT models, making direct feature alignment difficult.",
+      "Existing distillation methods primarily focus on mimicking the final output, failing to effectively transfer the intrinsic logical mechanisms of the reasoning process.",
+      "Prior embedding-alignment approaches (e.g., Agrawal et al. [2] using BGE-M3 to encode reasoning paths) typically align representations from independently trained models with misaligned semantic spaces, leading to indirect supervision signals and suboptimal domain alignment.",
+      "The proposed CRSD addresses these limitations by modeling the student's behavior under reasoning-augmented inputs directly within the same architecture, compelling it to internalize the reasoning patterns without needing explicit reasoning paths at inference."
+    ],
+    "limitations": [
+      "While the framework aims to minimize performance drop when distilling from a massive LLM to a small student, some degradation is inherent in the distillation process."
+    ],
+    "modeling": [
+      {
+        "label": "Supervised Fine-Tuning (SFT) Loss",
+        "value": "$L_{SFT} = - \\sum_{i=1}^{N} [ \\log P_{\\theta}(r_i, a_i \\mid q_i, s_i)]$"
+      },
+      {
+        "label": "Final Composite Reward (GRPO)",
+        "list": [
+          "$R_{thinking}$: Average of the first four reward dimensions (process reward).",
+          "$R_{label}$: Fifth reward dimension (answer correctness)."
+        ],
+        "value": "$R_{final} = \\alpha \\cdot R_{thinking} + \\beta \\cdot R_{label}$"
+      },
+      {
+        "label": "GRPO Objective Function",
+        "list": [
+          "$\\rho_{i,t}(\\theta) = \\frac{\\pi_{\\theta}(o_{i,t} \\mid q, o_{i,<t})}{\\pi_{\\theta_{old}}(o_{i,t} \\mid q, o_{i,<t})}$ is the probability ratio.",
+          "$\\hat{A}_{i,t}$ is the advantage function, measuring the relative quality of the $i$-th output within its group $G$."
+        ],
+        "value": "$J_{GRPO}(\\theta) = E_{(q,a)\\sim D} \\left[ \\frac{1}{G} \\sum_{i=1}^{G} \\frac{1}{|o_i|} \\sum_{t=1}^{|o_i|} \\min \\left( \\rho_{i,t}(\\theta) \\hat{A}_{i,t}, \\text{clip}(\\rho_{i,t}(\\theta), 1-\\epsilon, 1+\\epsilon) \\hat{A}_{i,t} \\right) - \\beta D_{KL}(\\pi_{\\theta} \\mid \\mid \\pi_{ref}) \\right]$"
+      },
+      {
+        "label": "Baseline Reasoning Distillation Total Loss",
+        "list": [
+          "$L_{CE}$: Cross-entropy loss for the primary classification task.",
+          "$L_{cos}$: Cosine similarity-based loss for reasoning alignment.",
+          "$\\mu$: A balancing hyperparameter."
+        ],
+        "value": "$L_{total} = L_{CE} + \\mu L_{cos}$"
+      },
+      {
+        "label": "Contrastive Reasoning Self-Distillation (CRSD) Total Loss",
+        "list": [
+          "$L_{sce} = CE(y_s, y)$: Standard classification loss for the student configuration.",
+          "$L_{tce} = CE(y_r, y)$: Standard classification loss for the teacher configuration.",
+          "$L_{align} = - \\frac{1}{N} \\sum_{i=1}^{N} \\log \\frac{\\exp(\\text{sim}(\\text{cls}_i, \\text{cls}^r_i)/\\tau)}{\\sum_{j=1}^{N} \\exp(\\text{sim}(\\text{cls}_i, \\text{cls}^r_j)/\\tau)}$ is the InfoNCE contrastive learning loss.",
+          "$\\gamma, \\delta$: Balancing hyperparameters for the teacher loss and contrastive loss, respectively."
+        ],
+        "value": "$L_{CRSD} = L_{sce} + \\gamma L_{tce} + \\delta L_{align}$"
+      }
+    ],
+    "pipelineFlow": [
+      "Stage One: Building a Domain-Adapted Reasoning LLM (Teacher Model $M_t$). This involves three steps:",
+      "1. Domain-Adaptive Continued Pre-Training (CPT): An open-source LLM is pre-trained on a large-scale, multi-task search relevance corpus derived from online search logs and LLM annotations.",
+      "2. Supervised Fine-Tuning (SFT): The CPT model is fine-tuned on a human-annotated dataset of <query, service> pairs and reasoning chains to elicit human-like reasoning patterns.",
+      "3. Preference Optimization with a Multi-Dimensional Reward Model: The SFT model is further optimized using the GRPO algorithm, guided by a reward model ($M_{RM}$) that evaluates both the reasoning process and the final outcome across five dimensions.",
+      "Stage Two: Reasoning Distillation (Student Model $M_s$).",
+      "1. Contrastive Reasoning Self-Distillation (CRSD): A lightweight BERT model is trained using CRSD to internalize the teacher's reasoning capabilities. CRSD models the behavior of the same BERT model under two input configurations: a 'standard' <query, service> input and a 'reasoning-augmented' <query, service, reason> input, as a teacher-student relationship."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Objective",
+        "value": "Given a user query and a candidate service, predict the multi-class relevance degree (0-irrelevant, 1-moderate, 2-relevant) between them."
+      }
+    ],
+    "reproducibility": "The base LLM for the teacher model is Qwen3-8B. CPT is conducted with a batch size of 32 and learning rate of 1e-5. SFT uses a batch size of 16 and 1e-5 learning rate. RL uses the VERL framework, samples 16 responses per prompt, prompt batch size 64, mini-batch size 32, and a learning rate of 6e-7. The reward model is deployed via vLLM. For distillation experiments, a 6-layer Chinese BERT is used as the student model. The baseline reasoning distillation uses the BGE-M3 sentence embedding model. Distillation models are trained in a distributed data-parallel environment using PyTorch, AdamW optimizer, constant learning rate 5e-5, effective total batch size 4,096, for 5,000 steps. CRSD hyperparameters $\\gamma$ and $\\delta$ are both set to 0.01.",
+    "systemModules": [
+      {
+        "details": "An open-source LLM (e.g., Qwen3-8B) pre-trained on a large-scale, multi-task search relevance corpus (7 million domain-specific examples) to acquire foundational domain knowledge.",
+        "name": "CPT Model",
+        "role": "Base LLM for domain-adaptive pre-training"
+      },
+      {
+        "details": "The CPT Model further fine-tuned on a human-annotated dataset (>45,000 samples) to predict reasoning chains ($r_i$) and answers ($a_i$) from query-service pairs ($q_i, s_i$), enabling preliminary human-like reasoning.",
+        "name": "SFT Model",
+        "role": "Intermediate LLM fine-tuned for human-like reasoning"
+      },
+      {
+        "details": "Initialized from the SFT Model, it is trained to predict five expert-annotated scores (0-4) across Query Understanding, Service Understanding, Business Rule Compliance, Reasoning Consistency, and Answer Correctness, achieving 89.77% agreement with experts. Used to provide dense reward signals.",
+        "name": "Multi-Dimensional Reward Model ($M_{RM}$)",
+        "role": "Assesses reasoning quality and generates fine-grained reward signals"
+      },
+      {
+        "details": "The final domain-adapted reasoning LLM, which is the SFT model further optimized by the GRPO algorithm using the Multi-Dimensional Reward Model. It generates high-quality relevance labels and detailed reasoning paths for massive query-service pairs.",
+        "name": "Teacher Model ($M_t$)",
+        "role": "Powerful, domain-adapted reasoning LLM"
+      },
+      {
+        "details": "A lightweight 6-layer Chinese BERT model, which is the target model for online deployment. It is trained via the Contrastive Reasoning Self-Distillation (CRSD) framework to internalize the teacher's reasoning capabilities.",
+        "name": "Student Model ($M_s$)",
+        "role": "Lightweight, deployment-friendly inference model"
+      },
+      {
+        "details": "Models the student BERT's behavior under 'standard' (<query, service>) and 'reasoning-augmented' (<query, service, reason>) inputs as a teacher-student relationship. It uses three loss functions: student classification, teacher classification, and an in-batch contrastive alignment loss (InfoNCE).",
+        "name": "Contrastive Reasoning Self-Distillation (CRSD) Framework",
+        "role": "Transfers reasoning capabilities from teacher LLM to student BERT"
+      }
+    ]
+  },
+  "thesis": "To overcome the limitations of direct LLM application in e-commerce search due to latency and domain-specificity, we propose a two-stage reasoning distillation framework that builds a powerful, domain-adapted teacher LLM and then efficiently transfers its reasoning capabilities to a lightweight BERT student model, achieving both high accuracy and inference efficiency.",
+  "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
+  "url": "https://arxiv.org/abs/arXiv:2510.11056",
+  "venue": "WWW '26",
+  "year": "2026"
+}
