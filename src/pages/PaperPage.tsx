@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { loadSummary } from '../data/loader';
@@ -23,7 +24,9 @@ export function PaperPage() {
   return (
     <main className="shell">
       <div className="back-row">
-        <Link to="/">Back to all papers</Link>
+        <Link to="/" className="back-link" aria-label="Back to all papers">
+          <ArrowLeft size={18} />
+        </Link>
         <ThemeToggle />
       </div>
       {error ? <div className="card error-card">{error}</div> : null}
