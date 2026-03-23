@@ -103,11 +103,21 @@ a {
   align-items: start;
 }
 
+.hero-stats-grid {
+  display: grid;
+  gap: 14px;
+}
+
 .hero-stat-card {
   border: 1px solid var(--ctp-lavender);
   border-radius: 20px;
   padding: 18px;
   background: linear-gradient(180deg, rgba(114, 135, 253, 0.14), rgba(136, 57, 239, 0.08));
+}
+
+.hero-stat-card-score {
+  border-color: var(--ctp-sapphire);
+  background: linear-gradient(180deg, rgba(4, 165, 229, 0.16), rgba(23, 146, 153, 0.1));
 }
 
 .hero-stat-label {
@@ -123,6 +133,10 @@ a {
   font-size: 3rem;
   font-weight: 700;
   line-height: 1;
+}
+
+.hero-stat-value-score {
+  color: var(--ctp-sapphire);
 }
 
 .hero-stat-subtitle {
