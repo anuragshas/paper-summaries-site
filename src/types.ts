@@ -17,6 +17,8 @@ export interface SummaryManifest {
   count: number;
   pageSize: number;
   totalPages: number;
+  averageBreakthroughScore?: number | null;
+  scoredPaperCount?: number;
 }
 
 export interface SummarySearchManifest extends SummaryManifest {

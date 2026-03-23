@@ -82,6 +82,8 @@ export function HomePage() {
   const totalPages = isSearching
     ? Math.max(1, Math.ceil(filtered.length / pageSize))
     : Math.max(manifest?.totalPages ?? 1, 1);
+  const averageBreakthroughScore = manifest?.averageBreakthroughScore;
+  const scoredPaperCount = manifest?.scoredPaperCount ?? 0;
 
   const visiblePapers = useMemo(() => {
     if (!isSearching) return filtered;
@@ -124,10 +126,19 @@ export function HomePage() {
             <p className="eyebrow">anuragshas arxiv</p>
             <h1>Research summaries, published daily</h1>
           </div>
-          <div className="hero-stat-card">
-            <div className="hero-stat-label">Currently published</div>
-            <div className="hero-stat-value">{totalCount}</div>
-            <div className="hero-stat-subtitle">summaries</div>
+          <div className="hero-stats-grid">
+            <div className="hero-stat-card">
+              <div className="hero-stat-label">Currently published</div>
+              <div className="hero-stat-value">{totalCount}</div>
+              <div className="hero-stat-subtitle">summaries</div>
+            </div>
+            <div className="hero-stat-card hero-stat-card-score">
+              <div className="hero-stat-label">Average breakthrough</div>
+              <div className="hero-stat-value hero-stat-value-score">
+                {averageBreakthroughScore !== undefined && averageBreakthroughScore !== null ? averageBreakthroughScore.toFixed(1) : '--'}
+              </div>
+              <div className="hero-stat-subtitle">across {scoredPaperCount} scored papers</div>
+            </div>
           </div>
         </div>
         <div className="search-wrap">
