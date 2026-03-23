@@ -1,10 +1,4 @@
 {
-  "basePath": "/paper-summaries-site/",
-  "count": 30,
-  "pageSize": 10,
-  "totalPages": 3,
-  "averageBreakthroughScore": 6.7,
-  "scoredPaperCount": 30,
   "page": 2,
   "papers": [
     {
