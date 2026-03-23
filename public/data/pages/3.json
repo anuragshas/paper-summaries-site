@@ -12,11 +12,7 @@
         "African Languages",
         "AI Ethics",
         "LLM Scaling Laws"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/2509.05486v1",
-      "summaryPath": "/paper-summaries-site/data/papers/2509.05486/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2509.05486/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2509.05486"
+      ]
     },
     {
       "paperId": "2403.00417",
@@ -27,11 +23,7 @@
         "Pretraining",
         "Memory",
         "Benchmark"
-      ],
-      "sourceUrl": "https://arxiv.org/pdf/2403.00417",
-      "summaryPath": "/paper-summaries-site/data/papers/2403.00417/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2403.00417/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2403.00417"
+      ]
     },
     {
       "paperId": "2602.17654",
@@ -44,11 +36,7 @@
         "Deep Learning",
         "Contrastive Learning",
         "Semantic Search"
-      ],
-      "sourceUrl": "https://arxiv.org/pdf/2402.17654.pdf",
-      "summaryPath": "/paper-summaries-site/data/papers/2602.17654/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2602.17654/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2602.17654"
+      ]
     },
     {
       "paperId": "2303.18223",
@@ -59,11 +47,7 @@
         "Pretraining",
         "QA",
         "RAG"
-      ],
-      "sourceUrl": "https://arxiv.org/abs/arXiv:2303.18223",
-      "summaryPath": "/paper-summaries-site/data/papers/2303.18223/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2303.18223/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2303.18223"
+      ]
     },
     {
       "paperId": "2506.06989",
@@ -76,11 +60,7 @@
         "Control Function",
         "Bias Correction",
         "Information Retrieval"
-      ],
-      "sourceUrl": "https://arxiv.org/pdf/2206.06989v2",
-      "summaryPath": "/paper-summaries-site/data/papers/2506.06989/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2506.06989/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2506.06989"
+      ]
     },
     {
       "paperId": "paper-1773559204996",
@@ -91,11 +71,7 @@
         "RL",
         "Rec",
         "Reasoning"
-      ],
-      "sourceUrl": "https://openreview.net/pdf?id=fVs2BCjCqC",
-      "summaryPath": "/paper-summaries-site/data/papers/paper-1773559204996/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/paper-1773559204996/meta.json",
-      "pagePath": "/paper-summaries-site/papers/paper-1773559204996"
+      ]
     },
     {
       "paperId": "paper-1772980095573",
@@ -106,11 +82,7 @@
         "RL",
         "Reasoning",
         "QA"
-      ],
-      "sourceUrl": "https://www.synthlabs.ai/pdf/Generative_Reward_Models.pdf",
-      "summaryPath": "/paper-summaries-site/data/papers/paper-1772980095573/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/paper-1772980095573/meta.json",
-      "pagePath": "/paper-summaries-site/papers/paper-1772980095573"
+      ]
     },
     {
       "paperId": "paper-1772343143036",
@@ -124,11 +96,7 @@
         "Dialogue Coherence",
         "Context Tracking",
         "LLM Evaluation"
-      ],
-      "sourceUrl": "https://aclanthology.org/2026.iwsds-1.7.pdf",
-      "summaryPath": "/paper-summaries-site/data/papers/paper-1772343143036/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/paper-1772343143036/meta.json",
-      "pagePath": "/paper-summaries-site/papers/paper-1772343143036"
+      ]
     },
     {
       "paperId": "2601.08345",
@@ -140,11 +108,7 @@
         "E-commerce",
         "CTR Prediction",
         "Machine Learning"
-      ],
-      "sourceUrl": "N/A",
-      "summaryPath": "/paper-summaries-site/data/papers/2601.08345/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2601.08345/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2601.08345"
+      ]
     },
     {
       "paperId": "2601.05047",
@@ -156,11 +120,7 @@
         "LLM Inference",
         "Memory Systems",
         "Computer Architecture"
-      ],
-      "sourceUrl": "N/A",
-      "summaryPath": "/paper-summaries-site/data/papers/2601.05047/summary.json",
-      "metaPath": "/paper-summaries-site/data/papers/2601.05047/meta.json",
-      "pagePath": "/paper-summaries-site/papers/2601.05047"
+      ]
     }
   ]
 }

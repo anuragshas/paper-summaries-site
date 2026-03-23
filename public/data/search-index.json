@@ -3,119 +3,90 @@
     {
       "paperId": "2603.10775",
       "title": "Large Language Models as Annotators for Machine Translation Quality Estimation",
-      "authors": "Sidi Wang, Sophie Arnoult, Amir Kamran",
-      "publishedDate": "2026-03-01",
       "tags": [
         "QA",
         "Reasoning",
         "Benchmark"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2603.10775"
+      ]
     },
     {
       "paperId": "2603.09938",
       "title": "Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions",
-      "authors": "Mingyang Song & Mao Zheng",
-      "publishedDate": "2026-03-01",
       "tags": [
         "Pretraining",
         "QA",
         "Benchmark"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2603.09938"
+      ]
     },
     {
       "paperId": "2603.05706",
       "title": "Reasoning Models Struggle to Control their Chains of Thought",
-      "authors": "Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak",
-      "publishedDate": "2026-03-01",
       "tags": [
         "Reasoning",
         "Benchmark",
         "Factuality"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2603.05706"
+      ]
     },
     {
       "paperId": "2603.05698",
       "title": "Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis",
-      "authors": "Hazem Amamou, St\u00e9phane Gagnon, Alan Davoust and Anderson R. Avila",
-      "publishedDate": "2026-03-01",
       "tags": [
         "RAG",
         "KG",
         "QA"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2603.05698"
+      ]
     },
     {
       "paperId": "2603.05344",
       "title": "Building Effective AI Coding Agents for the Terminal: Scaffolding, Harness, Context Engineering, and Lessons Learned",
-      "authors": "Nghi D. Q. Bui",
-      "publishedDate": "2026-03-01",
       "tags": [
         "Agent",
         "QA",
         "Reasoning"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2603.05344"
+      ]
     },
     {
       "paperId": "2603.04816",
       "title": "Scaling Laws for Reranking in Information Retrieval",
-      "authors": "Rahul Seetharaman, Aman Bansal, Hamed Zamani, Kaustubh D. Dhole",
-      "publishedDate": "2026-03-01",
       "tags": [
         "RAG",
         "Benchmark",
         "QA"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2603.04816"
+      ]
     },
     {
       "paperId": "2603.03251",
       "title": "Speculative Speculative Decoding",
-      "authors": "Tanishq Kumar, Tri Dao, Avner May",
-      "publishedDate": "2026-03-01",
       "tags": [
         "Large Language Models",
         "Inference Optimization",
         "Speculative Decoding",
         "Parallel Computing",
         "Algorithm"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2603.03251"
+      ]
     },
     {
       "paperId": "2603.01562",
       "title": "RubricBench: Aligning Model-Generated Rubrics with Human Standards",
-      "authors": "Qiyuan Zhang, Junyi Zhou, Yufei Wang, Fuyuan Lyu, Yidong Ming, Can Xu, Qingfeng Sun, Kai Zheng, Peng Kang, Xue Liu, Chen Ma",
-      "publishedDate": "2026-03-01",
       "tags": [
         "LLM Evaluation",
         "Reward Models",
         "Benchmarks",
         "AI Alignment"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2603.01562"
+      ]
     },
     {
       "paperId": "2603.00077",
       "title": "Autorubric: A Unified Framework for Rubric-Based LLM Evaluation",
-      "authors": "Delip Rao, Chris Callison-Burch",
-      "publishedDate": "2026-03-01",
       "tags": [
         "QA",
         "Benchmark",
         "Reasoning"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2603.00077"
+      ]
     },
     {
       "paperId": "2602.23234",
       "title": "Scaling Search Relevance: Augmenting App Store Ranking with LLM-Generated Judgments",
-      "authors": "Evangelia Christakopoulou, Vivekkumar Patel, Hemanth Velaga, Sandip Gaikwad",
-      "publishedDate": "2026-02-01",
       "tags": [
         "Information Retrieval",
         "Large Language Models",
@@ -123,28 +94,22 @@
         "Multi-Objective Learning",
         "Data Augmentation",
         "App Store"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.23234"
+      ]
     },
     {
       "paperId": "2602.23008",
       "title": "Exploratory Memory-Augmented LLM Agent via Hybrid On- and Off-Policy Optimization",
-      "authors": "Zeyuan Liu, Jeonghye Kim, Xufang Luo, Dongsheng Li, Yuqing Yang",
-      "publishedDate": "2026-02-01",
       "tags": [
         "Reinforcement Learning",
         "Large Language Models",
         "Exploration",
         "Memory-Augmented Agents",
         "Policy Optimization"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.23008"
+      ]
     },
     {
       "paperId": "2602.22661",
       "title": "dLLM : Simple Diffusion Language Modeling",
-      "authors": "Zhanhui Zhou, Lingjie Chen, Hanghang Tong, Dawn Song",
-      "publishedDate": "2026-02-01",
       "tags": [
         "Diffusion Language Models",
         "Open-source Frameworks",
@@ -152,14 +117,11 @@
         "Model Training",
         "Model Inference",
         "Reproducibility"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.22661"
+      ]
     },
     {
       "paperId": "2602.22219",
       "title": "Comparative Analysis of Neural Retriever-Reranker Pipelines for Retrieval-Augmented Generation over Knowledge Graphs in E-commerce Applications",
-      "authors": "Teri Rumble, Zbyn\u011bk Gazd\u00edk, Javad Zarrin, and Jagdeep Ahluwalia",
-      "publishedDate": "2026-02-01",
       "tags": [
         "Retrieval-Augmented Generation (RAG)",
         "Knowledge Graphs",
@@ -168,26 +130,20 @@
         "Large Language Models (LLMs)",
         "Cross-encoders",
         "Semi-structured Data"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.22219"
+      ]
     },
     {
       "paperId": "2602.21456",
       "title": "Revisiting Text Ranking in Deep Research",
-      "authors": "Chuan Meng, Litu Ou, Sean MacAvaney, Jeff Dalton",
-      "publishedDate": "2026-02-01",
       "tags": [
         "RAG",
         "QA",
         "Benchmark"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.21456"
+      ]
     },
     {
       "paperId": "2602.20558",
       "title": "From Logs to Language: Learning Optimal Verbalization for LLM-Based Recommendation in Production",
-      "authors": "Yucheng Shi, Ying Li, Yu Wang, Yesu Feng, Arjun Rao, Rein Houthooft, Shradha Sehgal, Jin Wang, Hao Zhen, Ninghao Liu, Linas Baltrunas",
-      "publishedDate": "2026-02-01",
       "tags": [
         "LLM-based Recommendation",
         "Verbalization",
@@ -195,14 +151,11 @@
         "Data-Centric AI",
         "Prompt Optimization",
         "Sequential Recommendation"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.20558"
+      ]
     },
     {
       "paperId": "2602.18734",
       "title": "Rethinking Retrieval-Augmented Generation as a Cooperative Decision-Making Problem",
-      "authors": "Lichang Song, Ting Long, Yi Chang",
-      "publishedDate": "2026-02-01",
       "tags": [
         "Retrieval-Augmented Generation",
         "Multi-Agent Systems",
@@ -210,52 +163,40 @@
         "Large Language Models",
         "Question Answering",
         "Natural Language Processing"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.18734"
+      ]
     },
     {
       "paperId": "2602.14265",
       "title": "STATe-of-Thoughts: Structured Action Templates for Tree-of-Thoughts",
-      "authors": "Zachary Bamberger, Till R. Saenger, Gilad Morad, Ofra Amir, Brandon M. Stewart, Amir Feder",
-      "publishedDate": "2026-02-01",
       "tags": [
         "Reasoning",
         "Agent",
         "Benchmark"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.14265"
+      ]
     },
     {
       "paperId": "2602.12528",
       "title": "DiffuRank: Effective Document Reranking with Diffusion Language Models",
-      "authors": "Qi Liu, Kun Ai, Jiaxin Mao, Yanzhao Zhang, Mingxin Li, Dingkun Long, Pengjun Xie, Fengbin Zhu, Ji-Rong Wen",
-      "publishedDate": "2026-02-01",
       "tags": [
         "Document Reranking",
         "Diffusion Models",
         "Large Language Models"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.12528"
+      ]
     },
     {
       "paperId": "2602.11298",
       "title": "2602.11298",
-      "authors": "Mistral AI Team",
-      "publishedDate": "2026-02-01",
       "tags": [
         "Automatic Speech Recognition",
         "Streaming ASR",
         "Deep Learning",
         "Transformers",
         "Low-Latency Systems"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.11298"
+      ]
     },
     {
       "paperId": "2602.07774",
       "title": "Generative Reasoning Re-ranker",
-      "authors": "Mingfu Liang, Yufei Li, Jay Xu, Kavosh Asadi, Xi Liu, Shuo Gu, Kaushik Rangadurai, Frank Shyu, Shuaiwen Wang, Song Yang, Zhijing Li, Jiang Liu, Mengying Sun, Fei Tian, Xiaohan Wei, Chonglin Sun, Jacob Tao, Shike Mei, Wenlin Chen, Santanu Kolay, Sandeep Pandey, Hamed Firooz, Luke Simon",
-      "publishedDate": "2026-02-01",
       "tags": [
         "Large Language Models (LLMs)",
         "Recommendation Systems",
@@ -263,104 +204,80 @@
         "Re-ranking",
         "Semantic IDs",
         "Chain-of-Thought Reasoning"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.07774"
+      ]
     },
     {
       "paperId": "2509.05486",
       "title": "The Token Tax: Systematic Bias in Multilingual Tokenization",
-      "authors": "Jessica M. Lundin, Ada Zhang, Nihal Karim, Hamza Louzan, Victor Wei, David Adelani, Cody Carroll",
-      "publishedDate": "2025-09-01",
       "tags": [
         "Multilingual NLP",
         "Tokenization Bias",
         "African Languages",
         "AI Ethics",
         "LLM Scaling Laws"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2509.05486"
+      ]
     },
     {
       "paperId": "2403.00417",
       "title": "Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models",
-      "authors": "Jinbiao Yang",
-      "publishedDate": "2024-03-01",
       "tags": [
         "Pretraining",
         "Memory",
         "Benchmark"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2403.00417"
+      ]
     },
     {
       "paperId": "2602.17654",
       "title": "Mine and Refine: Optimizing Graded Relevance in E-commerce Search Retrieval",
-      "authors": "Jiaqi Xi, Raghav Saboo, Luming Chen, Martin Wang, Sudeep Das",
-      "publishedDate": "2024-02-01",
       "tags": [
         "Information Retrieval",
         "E-commerce",
         "Deep Learning",
         "Contrastive Learning",
         "Semantic Search"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2602.17654"
+      ]
     },
     {
       "paperId": "2303.18223",
       "title": "A Survey of Large Language Models",
-      "authors": "Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen",
-      "publishedDate": "2023-03-01",
       "tags": [
         "Pretraining",
         "QA",
         "RAG"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2303.18223"
+      ]
     },
     {
       "paperId": "2506.06989",
       "title": "Correcting for Position Bias in Learning to Rank: A Control Function Approach",
-      "authors": "Md Aminul Islam, Kathryn Vasilaky, Elena Zheleva",
-      "publishedDate": "2022-06-01",
       "tags": [
         "Learning to Rank",
         "Position Bias",
         "Control Function",
         "Bias Correction",
         "Information Retrieval"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2506.06989"
+      ]
     },
     {
       "paperId": "paper-1773559204996",
       "title": "Think before Recommendation: Autonomous Reasoning-enhanced Recommender",
-      "authors": "Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang",
-      "publishedDate": null,
       "tags": [
         "RL",
         "Rec",
         "Reasoning"
-      ],
-      "pagePath": "/paper-summaries-site/papers/paper-1773559204996"
+      ]
     },
     {
       "paperId": "paper-1772980095573",
       "title": "GENERATIVE REWARD MODELS",
-      "authors": "Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak",
-      "publishedDate": null,
       "tags": [
         "RL",
         "Reasoning",
         "QA"
-      ],
-      "pagePath": "/paper-summaries-site/papers/paper-1772980095573"
+      ]
     },
     {
       "paperId": "paper-1772343143036",
       "title": "The Context Trap: Why End-to-End Audio Language Models Fail Multi-turn Dialogues",
-      "authors": "Zhi Rui Tam Wen-Yu Chang Yun-Nung Chen",
-      "publishedDate": null,
       "tags": [
         "Spoken Dialogue Systems",
         "End-to-End Models",
@@ -368,34 +285,27 @@
         "Dialogue Coherence",
         "Context Tracking",
         "LLM Evaluation"
-      ],
-      "pagePath": "/paper-summaries-site/papers/paper-1772343143036"
+      ]
     },
     {
       "paperId": "2601.08345",
       "title": "MLPlatt: Simple Calibration Framework for Ranking Models",
-      "authors": "Piotr Bajger, Roman Dusek, Krzysztof Galias, Pawel Mlynicek, Aleksander Wawer, and Pawel Zawistowski",
-      "publishedDate": null,
       "tags": [
         "Ranking Model Calibration",
         "E-commerce",
         "CTR Prediction",
         "Machine Learning"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2601.08345"
+      ]
     },
     {
       "paperId": "2601.05047",
       "title": "Challenges and Research Directions for Large Language Model Inference Hardware",
-      "authors": "Xiaoyu Ma and David Patterson",
-      "publishedDate": null,
       "tags": [
         "AI Hardware",
         "LLM Inference",
         "Memory Systems",
         "Computer Architecture"
-      ],
-      "pagePath": "/paper-summaries-site/papers/2601.05047"
+      ]
     }
   ]
 }
