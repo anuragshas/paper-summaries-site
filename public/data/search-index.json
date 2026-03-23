@@ -207,6 +207,15 @@
       ]
     },
     {
+      "paperId": "2510.11056",
+      "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
+      "tags": [
+        "QA",
+        "Pretraining",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2509.05486",
       "title": "The Token Tax: Systematic Bias in Multilingual Tokenization",
       "tags": [
