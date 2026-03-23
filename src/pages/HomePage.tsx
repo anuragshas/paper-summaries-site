@@ -14,6 +14,12 @@ function formatPublishedDate(value?: string | null) {
   }).format(parsed);
 }
 
+function isManifestItem(
+  paper: SummaryManifestItem | SummarySearchItem,
+): paper is SummaryManifestItem {
+  return 'authors' in paper;
+}
+
 export function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [manifest, setManifest] = useState<SummaryManifest | null>(null);
@@ -169,13 +175,16 @@ export function HomePage() {
       <section className="card-list">
         {visiblePapers.map((paper) => (
           <Link key={paper.paperId} className="card paper-card" to={`/papers/${paper.paperId}`}>
+            {(() => {
+              const detailedPaper = isManifestItem(paper) ? paper : null;
+              return (
             <>
             <div className="paper-card-header">
               <p className="eyebrow paper-id">{paper.paperId}</p>
-              {formatPublishedDate(paper.publishedDate) ? <p className="paper-date">{formatPublishedDate(paper.publishedDate)}</p> : null}
+              {detailedPaper && formatPublishedDate(detailedPaper.publishedDate) ? <p className="paper-date">{formatPublishedDate(detailedPaper.publishedDate)}</p> : null}
             </div>
             <h3 className="paper-card-title">{paper.title}</h3>
-            <p className="paper-card-authors">{paper.authors}</p>
+            {detailedPaper ? <p className="paper-card-authors">{detailedPaper.authors}</p> : null}
             <div className="tag-row">
               {paper.tags?.slice(0, 4).map((tag) => (
                 <span className="tag" key={tag}>
@@ -184,6 +193,8 @@ export function HomePage() {
               ))}
             </div>
             </>
+              );
+            })()}
           </Link>
         ))}
       </section>
