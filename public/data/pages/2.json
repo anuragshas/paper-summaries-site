@@ -2,6 +2,20 @@
   "page": 2,
   "papers": [
     {
+      "paperId": "2602.23234",
+      "title": "Scaling Search Relevance: Augmenting App Store Ranking with LLM-Generated Judgments",
+      "authors": "Evangelia Christakopoulou, Vivekkumar Patel, Hemanth Velaga, Sandip Gaikwad",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Information Retrieval",
+        "Large Language Models",
+        "Search Ranking",
+        "Multi-Objective Learning",
+        "Data Augmentation",
+        "App Store"
+      ]
+    },
+    {
       "paperId": "2602.23008",
       "title": "Exploratory Memory-Augmented LLM Agent via Hybrid On- and Off-Policy Optimization",
       "authors": "Zeyuan Liu, Jeonghye Kim, Xufang Luo, Dongsheng Li, Yuqing Yang",
@@ -115,20 +129,6 @@
         "Deep Learning",
         "Transformers",
         "Low-Latency Systems"
-      ]
-    },
-    {
-      "paperId": "2602.07774",
-      "title": "Generative Reasoning Re-ranker",
-      "authors": "Mingfu Liang, Yufei Li, Jay Xu, Kavosh Asadi, Xi Liu, Shuo Gu, Kaushik Rangadurai, Frank Shyu, Shuaiwen Wang, Song Yang, Zhijing Li, Jiang Liu, Mengying Sun, Fei Tian, Xiaohan Wei, Chonglin Sun, Jacob Tao, Shike Mei, Wenlin Chen, Santanu Kolay, Sandeep Pandey, Hamed Firooz, Luke Simon",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "Large Language Models (LLMs)",
-        "Recommendation Systems",
-        "Reinforcement Learning (RL)",
-        "Re-ranking",
-        "Semantic IDs",
-        "Chain-of-Thought Reasoning"
       ]
     }
   ]

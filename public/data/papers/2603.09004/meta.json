@@ -1,0 +1,18 @@
+{
+  "paperId": "2603.09004",
+  "title": "Can AI Agents Generate Microservices? How Far are We?",
+  "authors": "Bassam Adnan, Matteo Esposito, Davide Taibi, Karthik Vaidhyanathan",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "Agent",
+    "QA",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/pdf/2603.09004",
+  "pagePath": "/paper-summaries-site/papers/2603.09004",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.09004/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

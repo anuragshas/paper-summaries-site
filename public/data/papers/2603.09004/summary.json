@@ -1,0 +1,367 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 57,
+      "xmin": 80,
+      "ymax": 450,
+      "xmax": 915
+    },
+    "caption": "Overview of the Study Design",
+    "figureNumber": 1,
+    "pageIndex": 2
+  },
+  "authors": "Bassam Adnan, Matteo Esposito, Davide Taibi, Karthik Vaidhyanathan",
+  "breakthroughAssessment": {
+    "justification": "This paper presents a solid empirical study on the capabilities and limitations of AI agents for microservice generation, an underexplored but critical area. The systematic evaluation across diverse contextual scenarios, agents, and metrics (functional correctness, code quality, efficiency) offers valuable insights for both research and practice. The findings on scenario-dependent performance, prompt sensitivity, and data contamination are significant contributions. However, it does not propose a major methodological breakthrough or a paradigm-shifting solution, concluding that fully autonomous microservice generation is not yet achievable, indicating current limitations rather than a solved problem.",
+    "score": 6
+  },
+  "coreProblem": {
+    "concreteExample": "AI agents generating a microservice that must adhere to strict API contracts and seamlessly integrate with numerous other fine-grained services, where even small errors can disrupt cross-service communication.",
+    "statement": "While Large Language Models (LLMs) have advanced code generation, their application in generating complex microservices with explicit dependencies and API contracts remains largely unexplored and the influence of contextual information on their performance is understudied.",
+    "whyItMatters": [
+      "Automating executable system generation from architecture descriptions is a long-standing goal in Software Architecture, offering benefits such as stronger compliance and improved traceability.",
+      "AI agents, with their iterative refinement capabilities and tool usage, have the potential to automate complex software engineering tasks beyond single-pass LLMs.",
+      "Microservices serve as a challenging testbed for AI agents due to the demanding requirements for both local correctness within each service and global correctness across service contracts, making them a realistic benchmark for assessing modern AI agent capabilities."
+    ]
+  },
+  "evaluationHighlights": [
+    "AI agents successfully generated microservices with functional correctness, achieving up to 98% pass rates in clean state scenarios.",
+    "Generated code consistently exhibited lower Cyclomatic Complexity and Cognitive Complexity (15-40% reduction) compared to human baselines, suggesting simpler and more maintainable code structures.",
+    "Prompt strategies had scenario-dependent effects: minimal prompts (P1) generally outperformed detailed summaries (P2) in incremental generation, while P2 sometimes significantly benefited clean state generation (e.g., Code Qwen's 63.7 percentage point improvement in integration success).",
+    "Significant efficiency disparities were observed: Code Qwen was the most cost-effective ($2.98/service) and Claude Code was the most expensive ($13.28/service). Codex had the longest generation times, with outliers reaching 104 minutes.",
+    "Performance was degraded on proprietary codebases compared to open-source ones, indicating potential data contamination effects from LLM training data."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "PiggyMetrics",
+        "Train-Ticket",
+        "TeamSync",
+        "Project-Management"
+      ],
+      "metrics": [
+        "Unit Test Pass Rate (%)",
+        "Integration Test Pass Rate (%)",
+        "Source Lines of Code (SLOC)",
+        "Cyclomatic Complexity (CycC)",
+        "Cognitive Complexity (CogC)",
+        "Total Input Tokens (K)",
+        "Total Output Tokens (K)",
+        "Avg Total Cost ($)",
+        "Avg Time (min)"
+      ],
+      "setting": "Microservice generation by AI agents across incremental and clean state scenarios, with minimal (P1) and detailed (P2) prompt strategies, using 3 agents (Claude Code, Codex, Code Qwen) and 4 projects."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 57,
+          "xmin": 80,
+          "ymax": 640,
+          "xmax": 918
+        },
+        "caption": "Code Quality Metrics comparison: Lines of Code (LoC), Cyclomatic Complexity (CycC), and Cognitive Complexity (CogC). Top row shows comparison by agent, bottom row shows comparison by configuration.",
+        "figureNumber": 3,
+        "pageIndex": 5
+      },
+      {
+        "boundingBox": {
+          "ymin": 247,
+          "xmin": 128,
+          "ymax": 357,
+          "xmax": 478
+        },
+        "caption": "Time distribution across agents and configurations",
+        "figureNumber": 4,
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 808,
+          "xmin": 128,
+          "ymax": 919,
+          "xmax": 478
+        },
+        "caption": "Cost distribution across agents and configurations",
+        "figureNumber": 5,
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 247,
+          "xmin": 520,
+          "ymax": 455,
+          "xmax": 871
+        },
+        "caption": "(a) Input and (b) Output Token distribution across agents and configurations",
+        "figureNumber": 6,
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 465,
+          "xmin": 520,
+          "ymax": 705,
+          "xmax": 870
+        },
+        "caption": "Time and Cost comparison across agents.",
+        "figureNumber": 7,
+        "pageIndex": 6
+      },
+      {
+        "boundingBox": {
+          "ymin": 49,
+          "xmin": 88,
+          "ymax": 210,
+          "xmax": 800
+        },
+        "caption": "Prompt-induced configuration loss in PiggyMetrics notification-service. With minimal prompt (P1), Codex correctly inferred MongoDB converters through codebase exploration (100% test pass). With architectural summary (P2), the agent anchored on high-level patterns (OAuth2, scheduled tasks, service communication) mentioned prominently in the summary while omitting \"custom MongoDB converters\" mentioned only briefly in implementation notes, causing 12/18 tests to fail with IllegalStateException .",
+        "figureNumber": 8,
+        "pageIndex": 7
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "100.0%",
+            "benchmark": "Train-Ticket (Incremental)",
+            "delta": "+0.0%",
+            "isPositive": true,
+            "metric": "Test Pass Rate (%)",
+            "thisPaper": "100.0% (Codex P1)"
+          },
+          {
+            "baseline": "100.0%",
+            "benchmark": "PiggyMetrics (Incremental)",
+            "delta": "-8.9%",
+            "isPositive": false,
+            "metric": "Test Pass Rate (%)",
+            "thisPaper": "91.1% (Claude Code P1)"
+          },
+          {
+            "baseline": "100.0%",
+            "benchmark": "PiggyMetrics (Incremental)",
+            "delta": "-49.5%",
+            "isPositive": false,
+            "metric": "Test Pass Rate (%)",
+            "thisPaper": "50.5% (Code Qwen P1)"
+          },
+          {
+            "baseline": "92.3%",
+            "benchmark": "Project-Management (Incremental)",
+            "delta": "-48.4%",
+            "isPositive": false,
+            "metric": "Test Pass Rate (%)",
+            "thisPaper": "43.9% (Claude Code P2)"
+          },
+          {
+            "baseline": "81.5%",
+            "benchmark": "Train-Ticket (Clean State)",
+            "delta": "+15.5%",
+            "isPositive": true,
+            "metric": "Test Pass Rate (%)",
+            "thisPaper": "97.0% (Claude Code P2)"
+          },
+          {
+            "baseline": "100.0%",
+            "benchmark": "TeamSync (Clean State)",
+            "delta": "+0.0%",
+            "isPositive": true,
+            "metric": "Test Pass Rate (%)",
+            "thisPaper": "100.0% (Codex P1)"
+          },
+          {
+            "baseline": "98.1% (Codex P1)",
+            "benchmark": "Avg. Agent Performance (Clean State)",
+            "delta": "-0.3%",
+            "isPositive": false,
+            "metric": "Test Pass Rate (%)",
+            "thisPaper": "97.8% (Claude Code P2)"
+          },
+          {
+            "baseline": "98.1% (Codex P1)",
+            "benchmark": "Avg. Agent Performance (Clean State)",
+            "delta": "-8.6%",
+            "isPositive": false,
+            "metric": "Test Pass Rate (%)",
+            "thisPaper": "89.5% (Code Qwen P2)"
+          }
+        ],
+        "title": "Functional Correctness (Table III)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "7.6",
+            "benchmark": "All Configurations",
+            "delta": "+0.2",
+            "isPositive": false,
+            "metric": "Avg Time (min)",
+            "thisPaper": "7.8 (Claude Code)"
+          },
+          {
+            "baseline": "7.6",
+            "benchmark": "All Configurations",
+            "delta": "+9.0",
+            "isPositive": false,
+            "metric": "Avg Time (min)",
+            "thisPaper": "16.6 (Codex)"
+          },
+          {
+            "baseline": "2,916",
+            "benchmark": "All Configurations",
+            "delta": "+1,500",
+            "isPositive": false,
+            "metric": "Total Input Tokens (K)",
+            "thisPaper": "4,416 (Claude Code)"
+          },
+          {
+            "baseline": "2.1",
+            "benchmark": "All Configurations",
+            "delta": "+35.4",
+            "isPositive": false,
+            "metric": "Total Output Tokens (K)",
+            "thisPaper": "37.5 (Codex)"
+          },
+          {
+            "baseline": "2.98",
+            "benchmark": "All Configurations",
+            "delta": "+2.94",
+            "isPositive": false,
+            "metric": "Avg Total Cost ($)",
+            "thisPaper": "5.92 (Codex)"
+          },
+          {
+            "baseline": "2.98",
+            "benchmark": "All Configurations",
+            "delta": "+10.30",
+            "isPositive": false,
+            "metric": "Avg Total Cost ($)",
+            "thisPaper": "13.28 (Claude Code)"
+          }
+        ],
+        "title": "Efficiency Metrics (Table IV)"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "AI agents can generate functional microservices, but their performance varies significantly by contextual scenario and prompt strategy.",
+      "In incremental generation, minimal prompts (P1) generally led to better performance by encouraging exploration, while detailed summaries (P2) often degraded performance for Claude Code and Codex.",
+      "Clean state generation consistently achieved high functional correctness (up to 98%), with explicit guidance (P2) sometimes providing substantial benefits (e.g., for Code Qwen).",
+      "Generated code generally exhibits lower cyclomatic and cognitive complexity compared to human baselines, suggesting simpler and more maintainable structures.",
+      "Significant differences in efficiency were observed across agents: Claude Code and Code Qwen were faster, while Codex was slower with notable outliers. Code Qwen was the most cost-effective, and Claude Code the most expensive.",
+      "Token verbosity did not correlate with functional correctness; Claude Code generated concise code with comparable or better test pass rates.",
+      "Performance was lower on proprietary codebases compared to open-source ones, indicating potential data contamination effects from LLM training."
+    ]
+  },
+  "institutions": "SERC, IIIT Hyderabad, India — University of Oulu, Finland — University of Southern Denmark, Denmark",
+  "keyNovelty": {
+    "explanation": [
+      "This is the first empirical study to systematically evaluate AI agents for end-to-end microservice generation across different contextual scenarios (incremental and clean state generation) and various prompt strategies (minimal vs. detailed context).",
+      "The study measures functional correctness through automated testing (unit and integration tests), assesses code quality using established metrics (SLOC, Cyclomatic Complexity, Cognitive Complexity), and analyzes agent efficiency based on generation time, cost, and token consumption.",
+      "It provides a comparative analysis of three distinct AI agents, revealing their strengths, weaknesses, and scenario-dependent performance patterns, offering practical implications for practitioners and future research directions."
+    ],
+    "main": "The first comprehensive empirical study on AI agents generating microservices, evaluating functional correctness, code quality, and efficiency across different contextual scenarios and prompt strategies."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "Large Language Models, AI models that predict the next token based on static input.",
+        "term": "LLMs"
+      },
+      {
+        "definition": "LLM-based systems that extend capabilities with autonomous task execution, tool usage, memory, and iterative refinement workflows.",
+        "term": "AI Agents"
+      },
+      {
+        "definition": "An architectural style where an application is structured as a collection of loosely coupled, fine-grained services.",
+        "term": "Microservices"
+      },
+      {
+        "definition": "Formal agreements specifying the interface and behavior of an API, crucial for inter-service communication.",
+        "term": "API Contracts"
+      },
+      {
+        "definition": "A software metric used to indicate the control flow complexity of a program.",
+        "term": "Cyclomatic Complexity (CC)"
+      },
+      {
+        "definition": "A software metric that measures the understandability of code based on human cognition.",
+        "term": "Cognitive Complexity (CogC)"
+      }
+    ],
+    "prerequisites": [
+      "Basic understanding of Software Engineering principles and practices.",
+      "Familiarity with Large Language Models and their applications in code generation.",
+      "Knowledge of microservice architecture and its challenges.",
+      "Understanding of software quality metrics and automated testing concepts."
+    ]
+  },
+  "subTopics": [
+    "AI Agents",
+    "Microservices",
+    "Code Generation"
+  ],
+  "tags": [
+    {
+      "name": "Agent",
+      "type": "primary"
+    },
+    {
+      "name": "QA",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Prior work on code generation from Architecture Description Languages (ADLs) and Domain-Specific Languages (DSLs) faced challenges like steep learning curves and limited tool support, whereas this work leverages AI agents.",
+      "Early LLM-based code generation focused on function-level snippets; this study extends to generating larger architectural units like microservices with complex integration requirements.",
+      "Unlike single-pass LLMs, the AI agents evaluated in this study augment foundation models with tool usage, memory, and iterative refinement workflows.",
+      "While some work exists on LLM-generated serverless functions, this study specifically addresses microservices, which are more complex, stateful services with intricate integration demands.",
+      "To the authors' knowledge, no prior work has systematically evaluated autonomous agents for end-to-end microservice generation across varying contextual scenarios, measuring both functional correctness and code quality through established metrics, which this paper aims to address."
+    ],
+    "limitations": [
+      "External validity is limited by the selection of specific AI agents and generation parameters, and generalizability to other architectural patterns beyond REST-based microservices is restricted.",
+      "Data contamination from LLM training on open-source repositories could inflate performance, as agents consistently performed worse on private projects not exposed to public training data.",
+      "Internal validity issues arise from using different test strategies (unit vs. integration tests) for different scenarios, which validate distinct aspects of correctness, and the pilot study potentially optimizing Claude Code's performance.",
+      "Construct validity is affected by the selection of specific microservices for removal, and efficiency metrics, though measured under controlled conditions, might be affected by variations in cloud service latency not accounted for.",
+      "Prompt caching mechanisms were not accounted for, potentially overstating actual costs for agents with effective caching."
+    ],
+    "modeling": [],
+    "pipelineFlow": [
+      "Project Selection: Systematically collected and filtered microservice systems (open-source and private) based on criteria like Java content, GitHub stars, availability of test cases, and detailed requirements documentation.",
+      "LLM Agent Selection: Selected top-performing coding agents from the LMArena leaderboard that support iterative file operations, bash commands, and tool-calling.",
+      "Pilot Study and Prompt Development: Refined prompt design through a pilot study, developing two-stage prompt strategies (P1: minimal context with microservice name and requirements path; P2: with additional implementation summary). Prompts adopted role personification (senior engineers).",
+      "Generation Scenarios: Evaluated agents across two contextual scenarios: Incremental Generation (target microservice code removed but integration points intact, agents explore existing architecture) and Clean State Generation (target microservice traces removed, agents infer system architecture from requirements alone).",
+      "Microservice Generation: For each project, three business-logic-important microservices were selected. Each experimental condition (Inc-P1, Inc-P2, CS-P1, CS-P2) was run with all three agents across four projects and three microservices per project, totaling 144 generated implementations.",
+      "Evaluation Metrics: Functional correctness was assessed via automated unit tests (incremental) or integration tests (clean state). Code quality was quantified using SonarQube for Source Lines of Code (SLOC), Cyclomatic Complexity (CycC), and Cognitive Complexity (CogC). Efficiency was measured by total input/output tokens, monetary cost, and generation time.",
+      "Statistical Analysis: Utilized Anderson-Darling test for normality, Wilcoxon signed-rank test for comparing prompt strategies, and Dunn-All Pair post-hoc test for pairwise comparisons of statistically significant differences."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Goal",
+        "value": "To evaluate the functional correctness and code quality of AI agents-generated microservices, and to assess how efficiently AI agents operate, from the viewpoint of software developers and architects in the context of existing microservice-based systems."
+      },
+      {
+        "label": "Research Question 1 (RQ1)",
+        "value": "To what extent can AI agents generate microservices across different contextual scenarios, in terms of functional correctness and code quality? (Sub-questions: RQ1.1 for incremental generation, RQ1.2 for clean state generation)."
+      },
+      {
+        "label": "Research Question 2 (RQ2)",
+        "value": "How do AI agents compare in efficiency when generating microservices? This involves analyzing generation time, computational cost, and token consumption."
+      }
+    ],
+    "reproducibility": "The complete experimental dataset, including all 144 generated microservice implementations and prompts, is publicly available at https://doi.org/10.5281/zenodo.17863951.",
+    "systemModules": []
+  },
+  "thesis": "AI agents are capable of generating microservices with maintainable code, but their performance in terms of correctness is inconsistent and highly dependent on contextual scenarios and prompt strategies, indicating that fully autonomous microservice generation is not yet achievable without significant human oversight.",
+  "title": "Can AI Agents Generate Microservices? How Far are We?",
+  "url": "https://arxiv.org/pdf/2603.09004",
+  "venue": "N/A",
+  "year": "2025"
+}

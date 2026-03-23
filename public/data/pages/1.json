@@ -24,6 +24,17 @@
       ]
     },
     {
+      "paperId": "2603.09004",
+      "title": "Can AI Agents Generate Microservices? How Far are We?",
+      "authors": "Bassam Adnan, Matteo Esposito, Davide Taibi, Karthik Vaidhyanathan",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Agent",
+        "QA",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2603.05706",
       "title": "Reasoning Models Struggle to Control their Chains of Thought",
       "authors": "Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak",
@@ -101,20 +112,6 @@
         "QA",
         "Benchmark",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2602.23234",
-      "title": "Scaling Search Relevance: Augmenting App Store Ranking with LLM-Generated Judgments",
-      "authors": "Evangelia Christakopoulou, Vivekkumar Patel, Hemanth Velaga, Sandip Gaikwad",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "Information Retrieval",
-        "Large Language Models",
-        "Search Ranking",
-        "Multi-Objective Learning",
-        "Data Augmentation",
-        "App Store"
       ]
     }
   ]
