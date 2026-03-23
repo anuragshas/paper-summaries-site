@@ -1,4 +1,4 @@
-import type { PaperSummaryData, SummaryManifest, SummaryPage, SummarySearchManifest } from '../types';
+import type { PaperSummaryData, SummaryManifest, SummaryPageData, SummarySearchIndex } from '../types';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -15,20 +15,20 @@ export async function loadManifest(): Promise<SummaryManifest> {
   return response.json() as Promise<SummaryManifest>;
 }
 
-export async function loadManifestPage(page: number): Promise<SummaryPage> {
+export async function loadManifestPage(page: number): Promise<SummaryPageData> {
   const response = await fetch(`${baseUrl}data/pages/${page}.json`);
   if (!response.ok) {
     throw new Error('Failed to load summary page.');
   }
-  return response.json() as Promise<SummaryPage>;
+  return response.json() as Promise<SummaryPageData>;
 }
 
-export async function loadSearchManifest(): Promise<SummarySearchManifest> {
+export async function loadSearchIndex(): Promise<SummarySearchIndex> {
   const response = await fetch(`${baseUrl}data/search-index.json`);
   if (!response.ok) {
-    throw new Error('Failed to load search index.');
+    throw new Error('Failed to load summary search index.');
   }
-  return response.json() as Promise<SummarySearchManifest>;
+  return response.json() as Promise<SummarySearchIndex>;
 }
 
 export async function loadSummary(paperId: string): Promise<LoadedSummary> {

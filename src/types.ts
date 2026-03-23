@@ -12,6 +12,15 @@ export interface SummaryManifestItem {
   pagePath: string;
 }
 
+export interface SummarySearchItem {
+  paperId: string;
+  title: string;
+  authors: string;
+  publishedDate?: string | null;
+  tags: string[];
+  pagePath: string;
+}
+
 export interface SummaryManifest {
   basePath: string;
   count: number;
@@ -21,13 +30,18 @@ export interface SummaryManifest {
   scoredPaperCount?: number;
 }
 
-export interface SummarySearchManifest extends SummaryManifest {
-  papers: SummaryManifestItem[];
-}
-
 export interface SummaryPage extends SummaryManifest {
   page: number;
   papers: SummaryManifestItem[];
+}
+
+export interface SummaryPageData {
+  page: number;
+  papers: SummaryManifestItem[];
+}
+
+export interface SummarySearchIndex {
+  papers: SummarySearchItem[];
 }
 
 export interface PaperSummaryData {
