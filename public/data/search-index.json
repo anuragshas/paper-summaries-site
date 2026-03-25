@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2603.22376",
+      "title": "AI Co-Scientist for Ranking: Discovering Novel Search Ranking Models alongside LLM-based AI Agents with Cloud Computing Access",
+      "tags": [
+        "Agent",
+        "Rec",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2603.10775",
       "title": "Large Language Models as Annotators for Machine Translation Quality Estimation",
       "tags": [

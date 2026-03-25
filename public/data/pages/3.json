@@ -2,6 +2,19 @@
   "page": 3,
   "papers": [
     {
+      "paperId": "2602.11298",
+      "title": "2602.11298",
+      "authors": "Mistral AI Team",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Automatic Speech Recognition",
+        "Streaming ASR",
+        "Deep Learning",
+        "Transformers",
+        "Low-Latency Systems"
+      ]
+    },
+    {
       "paperId": "2602.07774",
       "title": "Generative Reasoning Re-ranker",
       "authors": "Mingfu Liang, Yufei Li, Jay Xu, Kavosh Asadi, Xi Liu, Shuo Gu, Kaushik Rangadurai, Frank Shyu, Shuaiwen Wang, Song Yang, Zhijing Li, Jiang Liu, Mengying Sun, Fei Tian, Xiaohan Wei, Chonglin Sun, Jacob Tao, Shike Mei, Wenlin Chen, Santanu Kolay, Sandeep Pandey, Hamed Firooz, Luke Simon",
@@ -107,17 +120,6 @@
         "RL",
         "Rec",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "paper-1772980095573",
-      "title": "GENERATIVE REWARD MODELS",
-      "authors": "Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak",
-      "publishedDate": null,
-      "tags": [
-        "RL",
-        "Reasoning",
-        "QA"
       ]
     }
   ]
