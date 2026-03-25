@@ -2,6 +2,17 @@
   "page": 2,
   "papers": [
     {
+      "paperId": "2603.00077",
+      "title": "Autorubric: A Unified Framework for Rubric-Based LLM Evaluation",
+      "authors": "Delip Rao, Chris Callison-Burch",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "QA",
+        "Benchmark",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2602.23234",
       "title": "Scaling Search Relevance: Augmenting App Store Ranking with LLM-Generated Judgments",
       "authors": "Evangelia Christakopoulou, Vivekkumar Patel, Hemanth Velaga, Sandip Gaikwad",
@@ -116,19 +127,6 @@
         "Document Reranking",
         "Diffusion Models",
         "Large Language Models"
-      ]
-    },
-    {
-      "paperId": "2602.11298",
-      "title": "2602.11298",
-      "authors": "Mistral AI Team",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "Automatic Speech Recognition",
-        "Streaming ASR",
-        "Deep Learning",
-        "Transformers",
-        "Low-Latency Systems"
       ]
     }
   ]

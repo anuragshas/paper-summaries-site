@@ -1,0 +1,18 @@
+{
+  "paperId": "2603.22376",
+  "title": "AI Co-Scientist for Ranking: Discovering Novel Search Ranking Models alongside LLM-based AI Agents with Cloud Computing Access",
+  "authors": "Liwei Wu, Cho-Jui Hsieh",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "Agent",
+    "Rec",
+    "Pretraining"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2603.22376",
+  "pagePath": "/paper-summaries-site/papers/2603.22376",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.22376/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

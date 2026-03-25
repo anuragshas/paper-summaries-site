@@ -2,6 +2,17 @@
   "page": 4,
   "papers": [
     {
+      "paperId": "paper-1772980095573",
+      "title": "GENERATIVE REWARD MODELS",
+      "authors": "Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak",
+      "publishedDate": null,
+      "tags": [
+        "RL",
+        "Reasoning",
+        "QA"
+      ]
+    },
+    {
       "paperId": "paper-1772343143036",
       "title": "The Context Trap: Why End-to-End Audio Language Models Fail Multi-turn Dialogues",
       "authors": "Zhi Rui Tam Wen-Yu Chang Yun-Nung Chen",

@@ -1,0 +1,291 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 261,
+      "xmin": 517,
+      "ymax": 395,
+      "xmax": 916
+    },
+    "caption": "AI agent scientific discovery workflow",
+    "figureNumber": 1,
+    "pageIndex": 0
+  },
+  "authors": "Liwei Wu, Cho-Jui Hsieh",
+  "breakthroughAssessment": {
+    "justification": "The paper presents a strong contribution by demonstrating the feasibility and effectiveness of an end-to-end AI Co-Scientist framework for a specific, commercially relevant research domain (search ranking). The autonomous discovery of novel architectures and training strategies that outperform human-designed baselines, combined with the practical integration into cloud infrastructure, marks a significant step forward for AI-assisted scientific discovery in applied ML. While not a paradigm shift, it's highly useful and strong work in the AI agents field.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "Human experts find it challenging to design novel ranking architectures and tune complex training dynamics (like learning rates) for multi-task ranking models, leading to labor-intensive research processes and overlooked opportunities in commercial search engines.",
+    "statement": "The application of AI agents for developing novel ranking models in commercial search engines is largely unexplored, despite the proven capabilities of AI agents in other scientific discovery and software engineering domains.",
+    "whyItMatters": [
+      "Automating the search ranking research pipeline can significantly reduce routine workloads for human researchers.",
+      "AI systems can discover novel ranking architectures and training strategies that yield substantial offline performance improvements and translate into significant monetary gains in online experiments."
+    ]
+  },
+  "evaluationHighlights": [
+    "The AI Co-Scientist successfully discovered a novel technique for handling sequence features.",
+    "All model enhancements produced automatically by the AI Co-Scientist yielded substantial offline performance improvements.",
+    "The best AI-designed model (V3.5) achieved a +0.083% gain in the aggregated M metric over the human-designed V2 baseline.",
+    "The 0.1% gain in the evaluation metric M is statistically significant and translates into a 0.1% lift in Conversion Rate and millions of dollars in online experiments."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "V1 (Mean-Pooling + DCN + MOE)",
+        "V2 (Transformer + Separate Sequences) - human-designed baseline",
+        "V3.x series (AI Co-Scientist designed models)"
+      ],
+      "metrics": [
+        "Aggregated metric M (average of 6 AUC metrics across three user behavior types and two search scenes)"
+      ],
+      "setting": "Discovery of novel search ranking models for commercial search engines."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 440,
+          "xmin": 520,
+          "ymax": 609,
+          "xmax": 905
+        },
+        "caption": "AI Co-Scientist Performance Gain against H20 GPU Hours, where 0.1% gain in this eval metric is statistically significant and usually translates into 0.1% lift in Conversion Rate and millions of dollars in online experiments based on previous experiences.",
+        "figureNumber": 2,
+        "pageIndex": 0
+      },
+      {
+        "boundingBox": {
+          "ymin": 290,
+          "xmin": 153,
+          "ymax": 489,
+          "xmax": 447
+        },
+        "caption": "Comparison of Transformer designs",
+        "figureNumber": 3,
+        "pageIndex": 3
+      },
+      {
+        "boundingBox": {
+          "ymin": 218,
+          "xmin": 172,
+          "ymax": 366,
+          "xmax": 488
+        },
+        "caption": "AI Co-Scientist planning more routine tasks in Section 3.2.3 and 3.2.4",
+        "figureNumber": 4,
+        "pageIndex": 5
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "0.000",
+            "benchmark": "V1",
+            "delta": "-0.118",
+            "isPositive": false,
+            "metric": "M (%) vs V2",
+            "thisPaper": "-0.118"
+          },
+          {
+            "baseline": "0.000",
+            "benchmark": "V2",
+            "delta": "0.000",
+            "isPositive": false,
+            "metric": "M (%) vs V2",
+            "thisPaper": "0.000"
+          },
+          {
+            "baseline": "0.000",
+            "benchmark": "V3.2",
+            "delta": "+0.041",
+            "isPositive": true,
+            "metric": "M (%) vs V2",
+            "thisPaper": "+0.041"
+          },
+          {
+            "baseline": "0.000",
+            "benchmark": "V3.3",
+            "delta": "+0.061",
+            "isPositive": true,
+            "metric": "M (%) vs V2",
+            "thisPaper": "+0.061"
+          },
+          {
+            "baseline": "0.000",
+            "benchmark": "V3.4",
+            "delta": "+0.063",
+            "isPositive": true,
+            "metric": "M (%) vs V2",
+            "thisPaper": "+0.063"
+          },
+          {
+            "baseline": "0.000",
+            "benchmark": "V3.5",
+            "delta": "+0.083",
+            "isPositive": true,
+            "metric": "M (%) vs V2",
+            "thisPaper": "+0.083"
+          }
+        ],
+        "title": "Transformer Model Evolution: Architecture and Performance Summary"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "The AI Co-Scientist framework successfully discovered novel ranking model architectures and optimized training dynamics.",
+      "All AI-generated model enhancements (V3.2-V3.5) produced substantial offline performance improvements over the human-designed V2 baseline.",
+      "The best AI-designed model (V3.5) achieved significant improvements in the aggregated metric M over V1, V2, and V3.1, demonstrating the AI's ability to devise effective learning rate optimization strategies.",
+      "The AI-discovered architectures are comparable to those developed by human experts, significantly reducing routine research workloads."
+    ]
+  },
+  "institutions": "Trip.com Group, UCLA",
+  "keyNovelty": {
+    "explanation": [
+      "This is the first study in the ranking community to utilize an AI Co-Scientist framework for algorithmic research, automating the full research pipeline.",
+      "The framework strategically employs single-LLM agents for routine tasks (e.g., code implementation) and leverages multi-LLM consensus agents (GPT-5.2, Gemini Pro 3, Claude Opus 4.5) for challenging phases (e.g., results analysis, idea generation).",
+      "The system automatically discovered a novel technique for handling sequence features and optimized training dynamics, which are typically challenging even for human experts."
+    ],
+    "main": "An end-to-end AI Co-Scientist framework that automates the entire search ranking research pipeline, from idea generation to code implementation and GPU training job scheduling, for discovering novel search ranking models."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "N/A (not explicitly defined in the paper's text)",
+        "term": "Transformer"
+      },
+      {
+        "definition": "N/A (not explicitly defined in the paper's text)",
+        "term": "Factorization Machines (FM)"
+      },
+      {
+        "definition": "N/A (not explicitly defined in the paper's text)",
+        "term": "Deep & Cross Network (DCN)"
+      },
+      {
+        "definition": "N/A (not explicitly defined in the paper's text)",
+        "term": "Multi-task ranking model"
+      },
+      {
+        "definition": "Area Under the Curve, an aggregated performance metric used for evaluating classification or ranking models.",
+        "term": "AUC"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of large language models (LLMs) and their capabilities.",
+      "Familiarity with deep learning architectures, particularly Transformers.",
+      "Knowledge of search ranking problem formulation and evaluation metrics.",
+      "Basic understanding of AI agent systems for scientific discovery."
+    ]
+  },
+  "subTopics": [
+    "AI Agents",
+    "Search Ranking",
+    "Large Language Models"
+  ],
+  "tags": [
+    {
+      "name": "Agent",
+      "type": "primary"
+    },
+    {
+      "name": "Rec",
+      "type": "topic"
+    },
+    {
+      "name": "Pretraining",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Existing AI agent frameworks for scientific discovery (e.g., AI Scientist, AI Co-Scientist for biomedical discovery, AlphaEvolve) focus on general paper generation, hypothesis generation, or other scientific domains, whereas this work specifically targets novel search ranking model discovery.",
+      "Unlike previous works that may focus on specific aspects (e.g., code modification or evaluation), this framework provides an end-to-end automation of the entire research pipeline from idea to GPU training.",
+      "The proposed system tightly integrates AI agents with cloud infrastructure for large-scale experimentation, extending beyond mere hypothesis generation to autonomous code implementation and results analysis.",
+      "Current state-of-the-art ranking models like Climber and OneTrans are human-designed; this paper introduces the first AI co-scientist approach for designing such models automatically."
+    ],
+    "limitations": [
+      "AI Safety Considerations: The system relies on human experts for guardrails in production deployment; future work needs automated guardrails beyond current human reliance.",
+      "Knowledge Base Integration: The system lacks access to scientific databases and real-time literature search, limiting its ability to leverage state-of-the-art methods.",
+      "Code Reliability and Silent Bugs: AI agents may introduce subtle bugs in code implementations that are difficult to detect, potentially leading to the selection of incorrect models based purely on experimental metrics.",
+      "Role of Research Taste: Human research taste is important for guiding towards elegant and principled ideas; the system may overemphasize short-term improvements over long-term directions.",
+      "Inefficient Idea Generation and Resource Usage: Idea generation by the AI agent can be inefficient, potentially wasting GPU resources and requiring human experts to prevent catastrophic failures.",
+      "Myopic Feedback Loop: The optimization loop can exhibit myopic behavior, focusing on short-term experimental gains that may not be promising in the long run, potentially misleading the AI agent."
+    ],
+    "modeling": [
+      {
+        "label": "V1 Model (Pre-transformer baseline)",
+        "value": "Mean-Pooling + DCN + MOE"
+      },
+      {
+        "label": "V2 Model (Human-designed baseline)",
+        "value": "Transformer + Separate Sequences. It stacks sequence features and projects dense features into an embedding, which is then added to the sequence feature embeddings at all positions."
+      },
+      {
+        "label": "V3.x Models (AI Co-Scientist designed)",
+        "list": [
+          "V3.0: V2 + Positional Encoding + Attention Pooling (failed to improve)",
+          "V3.1: Transformer + Unified Sequence (failed to improve)",
+          "V3.2: V3.1 + Reduced Learning Rate (successful improvement)",
+          "V3.3: V3.2 + Slot Type Embeddings (successful improvement)",
+          "V3.4: V3.3 + Temporal Embeddings (successful improvement)",
+          "V3.5: V3.4 + Four-phase Learning Rate Optimization (successful improvement, New Best)"
+        ]
+      }
+    ],
+    "pipelineFlow": [
+      "Idea Generation: Generate promising research ideas for novel ranking architectures or training dynamics, often leveraging multi-LLM consensus.",
+      "Code Implementation: Automatically write and implement code changes based on generated ideas, handled by single-LLM agents.",
+      "Experimentation: Schedule and execute GPU experiments with tunable training parameters after committing code changes to a new git branch.",
+      "Results Analysis: Analyze and interpret experimental results using an aggregated metric $M$ to decide whether to keep changes, fix the current branch, or revert, often leveraging multi-LLM consensus.",
+      "Memory Update: Update a two-layer memory system (JOURNEY.md, EXPERIMENTS.md, FLOWS.md for first layer; Vx.y_IMPLEMENTATION.md for second layer) with research progress, code changes, and experiment results."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Goal",
+        "value": "To learn a function that maps the feature space $c, f_1, f_2, \\dots, f_S$ to the behavior signal space $V$, effectively modeling click-through and conversion probabilities for all retrieved accommodation options corresponding to each query."
+      },
+      {
+        "label": "Input Features",
+        "value": "A D-dimensional dense vector $c = (c_1, c_2, \\dots, c_D)$ capturing continuous user and query attributes, and S sparse feature sequences $f_1, f_2, \\dots, f_S$. Each sequence $f_k$ is defined as $(f_{k,1}, f_{k,2}, \\dots, f_{k,L})$, where $L$ is the maximum sequence length and $f_{k,L}$ is the latest token."
+      },
+      {
+        "label": "Output Behavior Signals",
+        "value": "A J-dimensional vector $V = (V_1, V_2, \\dots, V_J)$ where $J=10$, with each element being either binary or real-valued, representing user engagement metrics such as click and conversion signals."
+      }
+    ],
+    "reproducibility": "N/A (The paper describes the framework and its outcomes but does not provide explicit details or code for reproduction, only mentioning an 'expert in the loop' paradigm.)",
+    "systemModules": [
+      {
+        "details": "A two-layer system. The first layer consists of JOURNEY.md (research ideas, results, lessons), EXPERIMENTS.md (past and active experiments), and FLOWS.md (scheduled training flows). The second layer contains detailed per-module markdown files for each model version, e.g., Vx.y_IMPLEMENTATION.md. The AI updates all first-layer files after each iteration and only the current version's second-layer files.",
+        "name": "Memory Module",
+        "role": "Records and stores all research progress, experiment results, code changes, and technical details."
+      },
+      {
+        "details": "Motivated by the hypothesis that discriminative models and transformer scaling offer gains. Provided with good examples (V2 code changes, manual experiment scheduling). Leverages multiple state-of-the-art LLMs (GPT-5.2, Gemini Pro 3, Claude Opus 4.5) to reach consensus for the next step.",
+        "name": "Idea Generation Module",
+        "role": "Generates promising research ideas for improving ranking performance."
+      },
+      {
+        "details": "AI Co-Scientist implements code changes based on ideas generated in the Idea Generation Module. Often resolves bugs on the second attempt after reading debug logs.",
+        "name": "Code Implementation Module",
+        "role": "Automatically writes and implements code changes based on generated ideas."
+      },
+      {
+        "details": "AI Co-Scientist schedules experiments on GPUs with tunable training parameters after committing code changes to a new git branch.",
+        "name": "Experimentation Module",
+        "role": "Carries out GPU experiments for evaluating proposed changes."
+      },
+      {
+        "details": "Calculates an aggregated metric $M$ (average of 6 AUCs across 3 user behavior types and 2 search scenes over 7 days' unseen data). If $M > 0$, creates a new branch for the next iteration; if $M < 0$, decides to fix or revert based on a threshold parameter. Multiple LLMs reach consensus on this decision.",
+        "name": "Results Analysis Module",
+        "role": "Analyzes and interprets experimental results to make decisions on code changes and next steps."
+      }
+    ]
+  },
+  "thesis": "The paper demonstrates an AI Co-Scientist framework that fully automates the search ranking research pipeline, from idea generation to code implementation and GPU training, leveraging both single-LLM and multi-LLM consensus agents. This framework successfully discovers novel ranking models, outperforming human-designed baselines and significantly reducing routine research workloads.",
+  "title": "AI Co-Scientist for Ranking: Discovering Novel Search Ranking Models alongside LLM-based AI Agents with Cloud Computing Access",
+  "url": "https://arxiv.org/abs/arXiv:2603.22376",
+  "venue": "N/A",
+  "year": "2026"
+}

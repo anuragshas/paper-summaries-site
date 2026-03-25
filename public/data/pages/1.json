@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2603.22376",
+      "title": "AI Co-Scientist for Ranking: Discovering Novel Search Ranking Models alongside LLM-based AI Agents with Cloud Computing Access",
+      "authors": "Liwei Wu, Cho-Jui Hsieh",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Agent",
+        "Rec",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2603.10775",
       "title": "Large Language Models as Annotators for Machine Translation Quality Estimation",
       "authors": "Sidi Wang, Sophie Arnoult, Amir Kamran",
@@ -101,17 +112,6 @@
         "Reward Models",
         "Benchmarks",
         "AI Alignment"
-      ]
-    },
-    {
-      "paperId": "2603.00077",
-      "title": "Autorubric: A Unified Framework for Rubric-Based LLM Evaluation",
-      "authors": "Delip Rao, Chris Callison-Burch",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "QA",
-        "Benchmark",
-        "Reasoning"
       ]
     }
   ]
