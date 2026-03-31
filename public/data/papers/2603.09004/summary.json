@@ -8,7 +8,8 @@
     },
     "caption": "Overview of the Study Design",
     "figureNumber": 1,
-    "pageIndex": 2
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2603.09004/figures/architecture.webp"
   },
   "authors": "Bassam Adnan, Matteo Esposito, Davide Taibi, Karthik Vaidhyanathan",
   "breakthroughAssessment": {
@@ -62,7 +63,8 @@
         },
         "caption": "Code Quality Metrics comparison: Lines of Code (LoC), Cyclomatic Complexity (CycC), and Cognitive Complexity (CogC). Top row shows comparison by agent, bottom row shows comparison by configuration.",
         "figureNumber": 3,
-        "pageIndex": 5
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2603.09004/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -73,7 +75,8 @@
         },
         "caption": "Time distribution across agents and configurations",
         "figureNumber": 4,
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2603.09004/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -84,7 +87,8 @@
         },
         "caption": "Cost distribution across agents and configurations",
         "figureNumber": 5,
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2603.09004/figures/experiment-3.webp"
       },
       {
         "boundingBox": {
@@ -95,7 +99,8 @@
         },
         "caption": "(a) Input and (b) Output Token distribution across agents and configurations",
         "figureNumber": 6,
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2603.09004/figures/experiment-4.webp"
       },
       {
         "boundingBox": {
@@ -106,7 +111,8 @@
         },
         "caption": "Time and Cost comparison across agents.",
         "figureNumber": 7,
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2603.09004/figures/experiment-5.webp"
       },
       {
         "boundingBox": {
@@ -117,7 +123,8 @@
         },
         "caption": "Prompt-induced configuration loss in PiggyMetrics notification-service. With minimal prompt (P1), Codex correctly inferred MongoDB converters through codebase exploration (100% test pass). With architectural summary (P2), the agent anchored on high-level patterns (OAuth2, scheduled tasks, service communication) mentioned prominently in the summary while omitting \"custom MongoDB converters\" mentioned only briefly in implementation notes, causing 12/18 tests to fail with IllegalStateException .",
         "figureNumber": 8,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2603.09004/figures/experiment-6.webp"
       }
     ],
     "keyResultGroups": [
@@ -255,7 +262,7 @@
       "Performance was lower on proprietary codebases compared to open-source ones, indicating potential data contamination effects from LLM training."
     ]
   },
-  "institutions": "SERC, IIIT Hyderabad, India — University of Oulu, Finland — University of Southern Denmark, Denmark",
+  "institutions": "SERC, IIIT Hyderabad, India \u2014 University of Oulu, Finland \u2014 University of Southern Denmark, Denmark",
   "keyNovelty": {
     "explanation": [
       "This is the first empirical study to systematically evaluate AI agents for end-to-end microservice generation across different contextual scenarios (incremental and clean state generation) and various prompt strategies (minimal vs. detailed context).",

@@ -12,7 +12,8 @@
   "pagePath": "/paper-summaries-site/papers/2403.00417",
   "summaryPath": "/paper-summaries-site/data/papers/2403.00417/summary.json",
   "assets": {
-    "hasPdfImages": true,
+    "figureAssetCount": 1,
+    "hasFigureAssets": true,
     "hasStaticHtmlArtifact": true
   }
 }

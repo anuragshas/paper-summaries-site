@@ -8,7 +8,8 @@
     },
     "caption": "E2E audio models exhibit severe dialogue quality degradation across turns, while modular systems maintain stable performance despite higher latency.",
     "figureNumber": 1,
-    "pageIndex": 0
+    "pageIndex": 0,
+    "assetPath": "/paper-summaries-site/data/papers/paper-1772343143036/figures/architecture.webp"
   },
   "authors": "Zhi Rui Tam Wen-Yu Chang Yun-Nung Chen",
   "breakthroughAssessment": {
@@ -56,7 +57,8 @@
         },
         "caption": "Top panels show text-based dialogue quality metrics (Naturalness and Consistency) evaluated on text, while bottom panels display audio quality metrics (MOSNet Quality and Voice Consistency). All audio quality metrics remain relatively stable across all systems throughout the dialogue, suggesting audio generation quality is not the primary factor driving dialogue coherence degradation.",
         "figureNumber": 2,
-        "pageIndex": 3
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/paper-1772343143036/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -67,7 +69,8 @@
         },
         "caption": "Correlation matrix between text-based dialogue quality metrics (Naturalness and Consistency) and audio quality metrics (Quality, Intelligibility, and Voice Consistency).",
         "figureNumber": 3,
-        "pageIndex": 3
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/paper-1772343143036/figures/experiment-2.webp"
       }
     ],
     "keyResults": [

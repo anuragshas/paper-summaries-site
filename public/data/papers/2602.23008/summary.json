@@ -8,7 +8,8 @@
     },
     "caption": "EMPO2 mode combinations. By combining the two rollout modes and update modes, three EMPO mode configurations are possible: on-policy learning without memory, on-policy learning with memory and off-policy learning.",
     "figureNumber": 5,
-    "pageIndex": 4
+    "pageIndex": 4,
+    "assetPath": "/paper-summaries-site/data/papers/2602.23008/figures/architecture.webp"
   },
   "authors": "Zeyuan Liu, Jeonghye Kim, Xufang Luo, Dongsheng Li, Yuqing Yang",
   "breakthroughAssessment": {
@@ -52,7 +53,8 @@
         },
         "caption": "(a) Comparison of the learning curves of GRPO and EMPO2 (ours) on the ScienceWorld power-component task. While GRPO converges to suboptimal performance, EMPO2 continues to improve and accomplish the task. (b) Comparison of EMPO2 and other baselines in in-distribution (ID) and out-of-distribution (OOD) settings on and WebShop. In ID experiments, it adapts well to familiar environments, achieving 128.6% on ScienceWorld and 11.3% on WebShop improvements over GRPO. In OOD experiments, it also shows strong performance with few trials and no weight updates, indicating effective use of memory to explore unfamiliar environments. Full results are in Tables 1, 2, and Figure 8.",
         "figureNumber": 1,
-        "pageIndex": 0
+        "pageIndex": 0,
+        "assetPath": "/paper-summaries-site/data/papers/2602.23008/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -63,7 +65,8 @@
         },
         "caption": "Comparison of GRPO and EMPO2 adapting to new tasks. Step 0 has no memory, while later steps use accumulated memory as in EMPO2 training.",
         "figureNumber": 8,
-        "pageIndex": 8
+        "pageIndex": 8,
+        "assetPath": "/paper-summaries-site/data/papers/2602.23008/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -74,7 +77,8 @@
         },
         "caption": "(a) EMPO2 learning curves with varying p, (b) with varying q",
         "figureNumber": 9,
-        "pageIndex": 9
+        "pageIndex": 9,
+        "assetPath": "/paper-summaries-site/data/papers/2602.23008/figures/experiment-3.webp"
       }
     ],
     "keyResultGroups": [

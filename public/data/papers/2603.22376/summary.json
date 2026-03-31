@@ -8,7 +8,8 @@
     },
     "caption": "AI agent scientific discovery workflow",
     "figureNumber": 1,
-    "pageIndex": 0
+    "pageIndex": 0,
+    "assetPath": "/paper-summaries-site/data/papers/2603.22376/figures/architecture.webp"
   },
   "authors": "Liwei Wu, Cho-Jui Hsieh",
   "breakthroughAssessment": {
@@ -51,7 +52,8 @@
         },
         "caption": "AI Co-Scientist Performance Gain against H20 GPU Hours, where 0.1% gain in this eval metric is statistically significant and usually translates into 0.1% lift in Conversion Rate and millions of dollars in online experiments based on previous experiences.",
         "figureNumber": 2,
-        "pageIndex": 0
+        "pageIndex": 0,
+        "assetPath": "/paper-summaries-site/data/papers/2603.22376/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -62,7 +64,8 @@
         },
         "caption": "Comparison of Transformer designs",
         "figureNumber": 3,
-        "pageIndex": 3
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2603.22376/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -73,7 +76,8 @@
         },
         "caption": "AI Co-Scientist planning more routine tasks in Section 3.2.3 and 3.2.4",
         "figureNumber": 4,
-        "pageIndex": 5
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2603.22376/figures/experiment-3.webp"
       }
     ],
     "keyResultGroups": [

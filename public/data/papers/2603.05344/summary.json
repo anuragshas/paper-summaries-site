@@ -8,7 +8,8 @@
     },
     "caption": "System architecture of O PEN D EV , organized into four layers: Entry & UI, Agent, Tool & Context, and Persistence. Arrows indicate primary data-flow directions.",
     "figureNumber": 2,
-    "pageIndex": 3
+    "pageIndex": 3,
+    "assetPath": "/paper-summaries-site/data/papers/2603.05344/figures/architecture.webp"
   },
   "authors": "Nghi D. Q. Bui",
   "breakthroughAssessment": {
@@ -48,7 +49,8 @@
         },
         "caption": "The agent harness architecture: a detailed view of the Agent layer from Figure 2. The central ReAct loop (six phases: pre-check and compaction, thinking, self-critique, action, tool execution, post-processing) is surrounded by seven supporting subsystems. User messages enter through a message injection queue (top). The Prompt Composition engine assembles modular sections by priority into the system prompt. The Tool Registry dispatches to specialized handlers, with MCP tools discovered lazily. The Safety System enforces multiple independent layers (approval, dangerous command detection, hooks, stale-read detection, plan mode restrictions, doom loop detection, iteration cap, cooperative cancellation). Context Engineering applies five-stage progressive compaction as the conversation grows. Memory and Session services provide persistent strategy memory (playbook), session storage, and per-step undo via git snapshots. Subagent Orchestration spawns isolated agent instances with filtered tool access for parallel exploration or specialized tasks.",
         "figureNumber": 4,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05344/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -59,7 +61,8 @@
         },
         "caption": "Dual-mode operation within the Agent layer (Figure 4). A user prompt enters the MainAgent , which routes to either Plan Mode (left, read-only) or Normal Mode (right, full access). Plan Mode spawns a Planner subagent that explores the codebase, analyzes patterns, and produces a structured plan for user approval. Upon approval, the system transitions to Normal Mode, where the agent executes the planned steps with full tool access. The user can re-enter Plan Mode at any point if unexpected results require re-planning.",
         "figureNumber": 5,
-        "pageIndex": 8
+        "pageIndex": 8,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05344/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -70,7 +73,8 @@
         },
         "caption": "Sequence diagram of a single conversation turn in O PEN D EV . A user message enters through one of three interfaces, passes through query processing, and enters the ReAct iteration loop. Each iteration comprises context management, optional thinking, an action LLM call, and tool dispatch through the registry. The loop continues until the agent signals completion or a termination condition is met, after which the conversation state is persisted.",
         "figureNumber": 6,
-        "pageIndex": 10
+        "pageIndex": 10,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05344/figures/experiment-3.webp"
       },
       {
         "boundingBox": {
@@ -81,7 +85,8 @@
         },
         "caption": "Detailed view of the compaction subsystem from Figure 9. Five stages activate at progressive pressure thresholds (70%, 80%, 85%, 90%, 99%), transitioning observations between active, faded, and archived states before emergency summarization is required.",
         "figureNumber": 13,
-        "pageIndex": 24
+        "pageIndex": 24,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05344/figures/experiment-4.webp"
       }
     ],
     "keyResultGroups": [],
@@ -204,7 +209,7 @@
     "problemDefinition": [
       {
         "label": "Challenges for terminal agents",
-        "value": "Managing finite context windows over sessions that routinely exceed the model’s token budget, preventing destructive operations when the agent can execute arbitrary shell commands, and extending capabilities without overwhelming the agent’s prompt budget."
+        "value": "Managing finite context windows over sessions that routinely exceed the model\u2019s token budget, preventing destructive operations when the agent can execute arbitrary shell commands, and extending capabilities without overwhelming the agent\u2019s prompt budget."
       }
     ],
     "reproducibility": "The paper describes OpenDev as an open-source, command-line coding agent, providing a GitHub URL (https://github.com/opendev-to/opendev). This indicates a high degree of reproducibility and allows researchers to examine the code and replicate findings.",

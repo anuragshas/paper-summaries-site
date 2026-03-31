@@ -8,7 +8,8 @@
     },
     "caption": "The LiB model. A. the overview information flow, B. the strategies of text segmentation, C. the strategies of lexicon/vocabulary update.",
     "figureNumber": 2,
-    "pageIndex": 9
+    "pageIndex": 9,
+    "assetPath": "/paper-summaries-site/data/papers/2403.00417/figures/architecture.webp"
   },
   "authors": "Jinbiao Yang",
   "breakthroughAssessment": {

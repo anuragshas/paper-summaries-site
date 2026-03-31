@@ -8,7 +8,8 @@
     },
     "caption": "Overview of the model merging pipeline. Task-specific models \\{ \\theta_1, \\dots, \\theta_K \\}, obtained by fine-tuning a shared pretrained checkpoint \\theta_0, are combined via one of several strategies (Sections 3\\text{--}5) into a single model \\theta_{\\text{merged}}, which is then evaluated on all source tasks. Gray vertical bars represent the many-to-many mapping between model inputs and merging strategies.",
     "figureNumber": 1,
-    "pageIndex": 2
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2603.09938/figures/architecture.webp"
   },
   "authors": "Mingyang Song & Mao Zheng",
   "breakthroughAssessment": {

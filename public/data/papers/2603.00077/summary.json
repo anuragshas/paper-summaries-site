@@ -6,9 +6,10 @@
       "ymax": 506,
       "xmax": 794
     },
-    "caption": "Autorubric evaluation pipeline. A RubricDataset packages a task prompt, a Rubric (weighted criteria), and DataItem s (submissions to evaluate). The EvalRunner iterates over items, delegating each to Rubric.grade() , which dispatches to the CriterionGrader . The grader issues N × M independent LLM calls ( N judges, M criteria) in parallel via asyncio.gather() , where each call evaluates one criterion under one judge—a single-judge configuration is treated as an ensemble of one, unifying the code path. Criteria may be binary (met/unmet) or multi-choice with option shuffling to mitigate position bias. Per- criterion votes are then combined by a configurable aggregation strategy (majority vote, weighted vote, mean, or mode) to produce an EnsembleEvaluationReport . Three cross- cutting concerns operate transparently: disk-based response caching avoids redundant LLM calls, per-provider rate limiting controls concurrency, and checkpoint files (manifest + JSONL) enable resumable evaluation runs.",
+    "caption": "Autorubric evaluation pipeline. A RubricDataset packages a task prompt, a Rubric (weighted criteria), and DataItem s (submissions to evaluate). The EvalRunner iterates over items, delegating each to Rubric.grade() , which dispatches to the CriterionGrader . The grader issues N \u00d7 M independent LLM calls ( N judges, M criteria) in parallel via asyncio.gather() , where each call evaluates one criterion under one judge\u2014a single-judge configuration is treated as an ensemble of one, unifying the code path. Criteria may be binary (met/unmet) or multi-choice with option shuffling to mitigate position bias. Per- criterion votes are then combined by a configurable aggregation strategy (majority vote, weighted vote, mean, or mode) to produce an EnsembleEvaluationReport . Three cross- cutting concerns operate transparently: disk-based response caching avoids redundant LLM calls, per-provider rate limiting controls concurrency, and checkpoint files (manifest + JSONL) enable resumable evaluation runs.",
     "figureNumber": 1,
-    "pageIndex": 7
+    "pageIndex": 7,
+    "assetPath": "/paper-summaries-site/data/papers/2603.00077/figures/architecture.webp"
   },
   "authors": "Delip Rao, Chris Callison-Burch",
   "breakthroughAssessment": {
@@ -60,7 +61,8 @@
         },
         "caption": "Few-shot accuracy vs. cost on RiceChem dataset. Although it is not apparent in the plot, it must noted here that cost grows sub-linearly due to prompt caching.",
         "figureNumber": 4,
-        "pageIndex": 19
+        "pageIndex": 19,
+        "assetPath": "/paper-summaries-site/data/papers/2603.00077/figures/experiment-1.webp"
       }
     ],
     "keyResultGroups": [

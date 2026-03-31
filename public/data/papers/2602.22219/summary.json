@@ -8,7 +8,8 @@
     },
     "caption": "Example architecture of a Retrieval-Augmented Generation (RAG) system.",
     "figureNumber": 1,
-    "pageIndex": 3
+    "pageIndex": 3,
+    "assetPath": "/paper-summaries-site/data/papers/2602.22219/figures/architecture.webp"
   },
   "authors": "Teri Rumble, Zbyn\u011bk Gazd\u00edk, Javad Zarrin, and Jagdeep Ahluwalia",
   "breakthroughAssessment": {
@@ -55,7 +56,8 @@
         },
         "caption": "Text Pre-processing Method Comparison with 100 queries.",
         "figureNumber": 5,
-        "pageIndex": 15
+        "pageIndex": 15,
+        "assetPath": "/paper-summaries-site/data/papers/2602.22219/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -66,7 +68,8 @@
         },
         "caption": "Performance Comparison of Retrieval Models Across Key Metrics. Four-panel visualization showing performance distributions for three retrieval approaches across Hit@1, Hit@5, Recall@20, and MRR metrics (panels A\u2013D, respectively). Vertical error bars represent 95% confidence intervals around mean performance scores. Evaluation conducted on validation dataset (n=910 queries).",
         "figureNumber": 6,
-        "pageIndex": 17
+        "pageIndex": 17,
+        "assetPath": "/paper-summaries-site/data/papers/2602.22219/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -77,7 +80,8 @@
         },
         "caption": "Performance Comparison of Re-ranking Models Across Key Metrics. Four-panel visualization showing performance distributions for six re-ranking approaches across Hit@1, Hit@5, Recall@20, and MRR metrics (panels A\u2013D, respectively). Vertical error bars represent 95% confidence intervals around mean performance scores. Evaluation conducted on validation dataset (n=910 queries).",
         "figureNumber": 7,
-        "pageIndex": 19
+        "pageIndex": 19,
+        "assetPath": "/paper-summaries-site/data/papers/2602.22219/figures/experiment-3.webp"
       }
     ],
     "keyResultGroups": [

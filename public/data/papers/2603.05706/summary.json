@@ -1,5 +1,4 @@
 {
-  "architectureFigure": {},
   "authors": "Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak",
   "breakthroughAssessment": {
     "justification": "The paper introduces a novel and critical evaluation suite, CoT-Control, to measure reasoning models' ability to control their Chain-of-Thought (CoT) to evade monitoring. This directly addresses a significant AI safety concern about monitorability. The systematic analysis of factors influencing CoT controllability (e.g., model scale, reasoning effort, RL training) provides valuable insights and tools for the AI safety and interpretability communities. While not a paradigm shift, it is a strong contribution that defines a new evaluation methodology and provides actionable recommendations for frontier labs.",
@@ -48,7 +47,8 @@
         },
         "caption": "Reasoning models struggle to control their CoT compared to controlling their output. Lower CoT controllability is associated with higher monitorability and, therefore, higher safety. Note that is confounded by length as seen in (c).",
         "figureNumber": 1,
-        "pageIndex": 1
+        "pageIndex": 1,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -59,7 +59,8 @@
         },
         "caption": "CoT controllability increases with parameter count in open-weight models.",
         "figureNumber": 1,
-        "pageIndex": 1
+        "pageIndex": 1,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -70,7 +71,8 @@
         },
         "caption": "CoT controllability decreases as the amount of RL from verifiable rewards (RLVR) training increases.",
         "figureNumber": 1,
-        "pageIndex": 1
+        "pageIndex": 1,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-3.webp"
       },
       {
         "boundingBox": {
@@ -81,7 +83,8 @@
         },
         "caption": "Task performance drops most under successful suppression, but changes little under additions or stylistic edits. Results only include examples that models manage to control their CoT; drops are baseline minus compliant.",
         "figureNumber": 5,
-        "pageIndex": 5
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-4.webp"
       },
       {
         "boundingBox": {
@@ -92,7 +95,8 @@
         },
         "caption": "Situational awareness has a small but non-trivial effect on CoT controllability. Each (controllability type, dataset) pair includes 150 examples; each model has 4,050 total. Monitor Awareness refers to settings where we inform models that their CoT are being monitored. Eval Awareness denotes settings where we inform models that they are being evaluated for CoT controllability.",
         "figureNumber": 6,
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-5.webp"
       },
       {
         "boundingBox": {
@@ -103,7 +107,8 @@
         },
         "caption": "CoT controllability decreases as reasoning effort increases.",
         "figureNumber": 9,
-        "pageIndex": 8
+        "pageIndex": 8,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-6.webp"
       },
       {
         "boundingBox": {
@@ -114,7 +119,8 @@
         },
         "caption": "CoT controllability decreases at a different rate for different RL training data. Each color represents a model trained on the correspond- ing data. The CoT controllability of the model trained on \"General\" (chat data) tends to decrease more slowly than that of models trained on coding and math.",
         "figureNumber": 10,
-        "pageIndex": 9
+        "pageIndex": 9,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-7.webp"
       },
       {
         "boundingBox": {
@@ -125,7 +131,8 @@
         },
         "caption": "Iterative refinement via AI feedback substantially increases CoT compliance. We compare the average compliance rate at iteration 0 (baseline) versus after up to 10 IRPAIF iterations, where each failed attempt is followed by GPT-5-mini feedback that is appended to the next prompt. Results are averaged over 25 questions sampled from each CoT-Control dataset; error bars show standard errors. Gains are largest for GPT-OSS and Qwen3, while newer Claude models (especially Sonnet 4.5) improve less.",
         "figureNumber": 12,
-        "pageIndex": 21
+        "pageIndex": 21,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-8.webp"
       },
       {
         "boundingBox": {
@@ -134,9 +141,10 @@
           "ymax": 508,
           "xmax": 818
         },
-        "caption": "OLMo-3–Think models show significantly lower CoT controllability after reasoning training across SFT, DPO, and RL stages. Notably, for the 32B model, SFT disrupts model behaviors, leading to a sudden drop in controllability. During subsequent DPO and RL stages, CoT controllability partially recovers but remains substantially lower than pre-training levels, as RL pressure inherently reduces the original level of CoT controllability. However, the specific impact of training stages prior to RL remains inconclusive, which we leave for future work to explore.",
+        "caption": "OLMo-3\u2013Think models show significantly lower CoT controllability after reasoning training across SFT, DPO, and RL stages. Notably, for the 32B model, SFT disrupts model behaviors, leading to a sudden drop in controllability. During subsequent DPO and RL stages, CoT controllability partially recovers but remains substantially lower than pre-training levels, as RL pressure inherently reduces the original level of CoT controllability. However, the specific impact of training stages prior to RL remains inconclusive, which we leave for future work to explore.",
         "figureNumber": 15,
-        "pageIndex": 23
+        "pageIndex": 23,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-9.webp"
       },
       {
         "boundingBox": {
@@ -147,7 +155,8 @@
         },
         "caption": "Most open-source models show significantly lower CoT controllability after reasoning training.",
         "figureNumber": 16,
-        "pageIndex": 24
+        "pageIndex": 24,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05706/figures/experiment-10.webp"
       }
     ],
     "keyResultGroups": [

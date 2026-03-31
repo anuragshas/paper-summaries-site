@@ -8,7 +8,8 @@
     },
     "caption": "(Left) Ordinary speculative decoding (SD) requires the verifier to wait idly for the draft to speculate. (Center) In our algorithm, speculation runs on a separate device (1 \\times H100) in parallel with verification; the draft precomputes speculations for many possible verification outcomes and returns the speculated tokens immediately if one occurs. (Right) End-to-end performance of SSD, SD, and autoregressive (AR) decoding averaged over four datasets spanning math, code and chat, for Llama-3.1-70B on TP=4 H100s, batch size 1, greedy decoding, Llama-3.2-1B draft model.",
     "figureNumber": 1,
-    "pageIndex": 1
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2603.03251/figures/architecture.webp"
   },
   "authors": "Tanishq Kumar, Tri Dao, Avner May",
   "breakthroughAssessment": {
@@ -58,7 +59,8 @@
         },
         "caption": "Scaling of cache hit rates with fan out. (Left, middle) The rejection rates (1 - $p_{\\text{hit},*}(F)$) conditioned on the prior speculation coming from the primary vs backup speculator, respectively. Rejection rates (cache misses) fall as a power law in the draft-fan out, demonstrating that cache hit rates increase with cache size. (Right) The overall cache hit rate $p_{\\text{hit}}(F)$.",
         "figureNumber": 3,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2603.03251/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -69,7 +71,8 @@
         },
         "caption": "Advantage of geometric fan out strategy increases at higher temperatures, improving both speculation cache hit rate (right) and thus end-to-end speed (left). Results averaged over four datasets. At all temperatures, SSD with either fan out strategy outperforms ordinary speculative decoding.",
         "figureNumber": 4,
-        "pageIndex": 8
+        "pageIndex": 8,
+        "assetPath": "/paper-summaries-site/data/papers/2603.03251/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -80,7 +83,8 @@
         },
         "caption": "We introduce Saguaro sampling, a novel sampling scheme designed specifically for SSD. (Left) It interpolates between high cache hit rate and high speculative acceptance rate. (Right) Illustrative schematic for how Saguaro sampling increases residual probability mass on the top draft tokens, encouraging the sampled bonus token to lie in the speculation cache by construction.",
         "figureNumber": 5,
-        "pageIndex": 9
+        "pageIndex": 9,
+        "assetPath": "/paper-summaries-site/data/papers/2603.03251/figures/experiment-3.webp"
       },
       {
         "boundingBox": {
@@ -91,7 +95,8 @@
         },
         "caption": "(Left) Optimal backup speculator (fast vs neural) depends on batch size, as Theorem 17 predicts (temperature 0). (Right) We forecast how decoding speed improves with draft compute (and thus, fan-out) for batch size 16 with the fast backup speculator. At large batch sizes we become compute bound, speedups more GPUs to drafting.",
         "figureNumber": 6,
-        "pageIndex": 10
+        "pageIndex": 10,
+        "assetPath": "/paper-summaries-site/data/papers/2603.03251/figures/experiment-4.webp"
       },
       {
         "boundingBox": {
@@ -102,7 +107,8 @@
         },
         "caption": "(Left) End-to-end decoding speed comparison of SSD compared to SD and standard autoregressive decoding on Llama-3.1-Instruct 70B across four datasets. (Right) SSD improves the throughput-latency Pareto frontier.",
         "figureNumber": 7,
-        "pageIndex": 11
+        "pageIndex": 11,
+        "assetPath": "/paper-summaries-site/data/papers/2603.03251/figures/experiment-5.webp"
       }
     ],
     "keyResultGroups": [

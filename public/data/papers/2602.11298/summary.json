@@ -8,7 +8,8 @@
     },
     "caption": "Voxtral Realtime architecture and decoding scheme for a target delay $\\tau = 80$ ms. Voxtral Realtime consists of a causal audio encoder to embed the input audio stream, an MLP adapter layer to temporally downsample the audio embeddings, and a text decoder to auto-regressively generate the output text stream. The downsampled audio embeddings from the adapter and the embeddings of previously generated tokens have the same frame-rate of 12.5Hz, with each frame representing 80ms of audio. These are summed and processed by the text decoder, which predicts one token per frame. The decoder emits a padding token [P] while waiting for sufficient acoustic evidence. Once a word is acoustically complete and the target delay $\\tau$ has elapsed, a word-boundary token [W] is emitted to initiate generation, followed by the corresponding subword tokens.",
     "figureNumber": 2,
-    "pageIndex": 2
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2602.11298/figures/architecture.webp"
   },
   "authors": "Mistral AI Team",
   "breakthroughAssessment": {
@@ -69,7 +70,8 @@
         },
         "caption": "Voxtral Realtime approaches offline accuracy at sub-second latency. Macro-average word error- rate (WER) vs. delay on the FLEURS multilingual benchmark for realtime and offline models. Lower is better. At 480 ms delay, Voxtral Realtime is competitive with Scribe v2 Realtime, the leading realtime API model, as well as Whisper, the most popular open-source offline model. It surpasses both baselines at 960 ms delay, approaching the performance of Voxtral Mini Transcribe V2, a state-of-the-art offline transcription model.",
         "figureNumber": 1,
-        "pageIndex": 0
+        "pageIndex": 0,
+        "assetPath": "/paper-summaries-site/data/papers/2602.11298/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -80,7 +82,8 @@
         },
         "caption": "Ablation of delay-conditioning mechanisms. Word error-rate on three languages from the FLEURS dataset as a function of training progress. Ada RMS-Norm consistently improves convergence speed and final accuracy compared to alternative conditioning strategies.",
         "figureNumber": 3,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2602.11298/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -91,7 +94,8 @@
         },
         "caption": "Ablation of target construction schemes. Word error-rate on three languages from the FLEURS dataset as a function of training progress. Inserting a single word-boundary token [W] per-group better preserves the capabilities of the pre-trained language decoder than inserting a [W] per-word.",
         "figureNumber": 4,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2602.11298/figures/experiment-3.webp"
       }
     ],
     "keyResultGroups": [

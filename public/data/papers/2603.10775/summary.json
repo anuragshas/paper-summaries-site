@@ -8,7 +8,8 @@
     },
     "caption": "The final few-shot prompt improved upon previous steps. Changes with regard to the zero-shot prompt are marked in red: severity scale; a detailed explanation of error categories; an example of Fluency; and an example and value instruction of Omission (since the 'marked text' should come from the source sentence). Here for figure readability, we removed some quotation marks in the pseudo-JSON strings.",
     "figureNumber": 3,
-    "pageIndex": 9
+    "pageIndex": 9,
+    "assetPath": "/paper-summaries-site/data/papers/2603.10775/figures/architecture.webp"
   },
   "authors": "Sidi Wang, Sophie Arnoult, Amir Kamran",
   "breakthroughAssessment": {

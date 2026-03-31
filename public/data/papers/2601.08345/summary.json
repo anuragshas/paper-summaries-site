@@ -7,7 +7,8 @@
       "xmax": 747
     },
     "caption": "Figure 2: MLPlatt model structure. The context vector $x_{ctx}$ is processed through the context model to produce an embedding. The embedding is concatenated with the ranker score, which is then passed to the MonoMLP model.",
-    "pageIndex": 6
+    "pageIndex": 6,
+    "assetPath": "/paper-summaries-site/data/papers/2601.08345/figures/architecture.webp"
   },
   "authors": "Piotr Bajger, Roman Dusek, Krzysztof Galias, Pawel Mlynicek, Aleksander Wawer, and Pawel Zawistowski",
   "breakthroughAssessment": {
@@ -57,7 +58,8 @@
           "xmax": 786
         },
         "caption": "Table 2: Calibration and ranking metrics for different calibration methods on the Allegro dataset. Best values are marked with boldface. Statistically significant difference (compared to MLPlatt) with p-value smaller than 0.01 is denoted with an asterisk.",
-        "pageIndex": 11
+        "pageIndex": 11,
+        "assetPath": "/paper-summaries-site/data/papers/2601.08345/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -67,7 +69,8 @@
           "xmax": 787
         },
         "caption": "Table 3: Calibration and ranking metrics for different calibration methods on the AliExpress dataset. Best values are marked with boldface. Statistically significant difference (compared to MLPlatt) with p-value smaller than 0.01 is denoted with an asterisk.",
-        "pageIndex": 12
+        "pageIndex": 12,
+        "assetPath": "/paper-summaries-site/data/papers/2601.08345/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -77,7 +80,8 @@
           "xmax": 660
         },
         "caption": "Table 4: Fraction of listings whose order is affected by MLPlatt calibration model depending on the monotonicity penalty $\\theta$ in the loss function.",
-        "pageIndex": 12
+        "pageIndex": 12,
+        "assetPath": "/paper-summaries-site/data/papers/2601.08345/figures/experiment-3.webp"
       },
       {
         "boundingBox": {
@@ -87,7 +91,8 @@
           "xmax": 695
         },
         "caption": "Table 5: Influence of components of MLPlatt on the calibration and ranking metrics. Best results are marked with boldface.",
-        "pageIndex": 13
+        "pageIndex": 13,
+        "assetPath": "/paper-summaries-site/data/papers/2601.08345/figures/experiment-4.webp"
       },
       {
         "boundingBox": {
@@ -97,7 +102,8 @@
           "xmax": 786
         },
         "caption": "Table 6: Comparison of LambdaLoss + MLPlatt and Regression-Compatible Ranking Loss (RCR) [1] calibrated rankers. Higher $\\alpha$ means more focus on ranking objective in the RCR loss. Best values are marked with bold-face. Statistically significant differences with respect to MLPlatt with p-value smaller than 0.01 are marked with asterisk.",
-        "pageIndex": 14
+        "pageIndex": 14,
+        "assetPath": "/paper-summaries-site/data/papers/2601.08345/figures/experiment-5.webp"
       }
     ],
     "keyResults": [

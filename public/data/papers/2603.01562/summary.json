@@ -8,7 +8,8 @@
     },
     "caption": "Overview of RubricBench construction and evaluation setting. Starting from existing preference data, we curate challenging preference pairs via multi-dimensional filtering and annotate them with instruction-only human rubrics through a three-stage pipeline with quality control.",
     "figureNumber": 1,
-    "pageIndex": 2
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2603.01562/figures/architecture.webp"
   },
   "authors": "Qiyuan Zhang, Junyi Zhou, Yufei Wang, Fuyuan Lyu, Yidong Ming, Can Xu, Qingfeng Sun, Kai Zheng, Peng Kang, Xue Liu, Chen Ma",
   "breakthroughAssessment": {
@@ -54,7 +55,8 @@
         },
         "caption": "RubricBench statistics overview. (a) Domain and source composition of RubricBench. (b) Distribution of rubric items per example and text lengths of instructions, responses, and rubrics.",
         "figureNumber": 2,
-        "pageIndex": 3
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2603.01562/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -65,7 +67,8 @@
         },
         "caption": "Test-time Scaling Results. (a) Scaling auto-rubrics. (b) Scaling human rubrics. (c) Scaling refinement. All vary test-time compute.",
         "figureNumber": 3,
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2603.01562/figures/experiment-2.webp"
       }
     ],
     "keyResultGroups": [

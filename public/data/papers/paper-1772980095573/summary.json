@@ -8,7 +8,8 @@
     },
     "caption": "Methods overview. Bradley-Terry methods directly output the probability of y1 being preferred over y2, while GenRM compares the LLMs next-token probabilities of answer indicator tokens (I1, I2). CoT-GenRM samples reasoning traces (r) followed by the answer indicator token.",
     "figureNumber": 1,
-    "pageIndex": 1
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/paper-1772980095573/figures/architecture.webp"
   },
   "authors": "Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak",
   "breakthroughAssessment": {
@@ -60,7 +61,8 @@
         },
         "caption": "Comparing generative reward models with prior reward modeling methods on in- domain (UltraFeedback) data and out-of-domain data (RewardBench). All generative model scores are the result of a majority vote over 32 samples.",
         "figureNumber": 2,
-        "pageIndex": 5
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/paper-1772980095573/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -71,7 +73,8 @@
         },
         "caption": "Comparing generative reward models with prior reward modeling methods on in- domain (UltraInteract) data and out-of-domain data (RewardBench) split into reasoning and non- reasoning subsets. All generative model scores are the result of a majority vote over 32 samples.",
         "figureNumber": 4,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/paper-1772980095573/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -82,7 +85,8 @@
         },
         "caption": "Comparing generative reward models with prior reward modeling methods with ma- jority vote evaluation. Top row models are trained on UltraFeedback (Cui et al., 2024), and bottom row models are trained on UltraInteract (Yuan et al., 2024a). Left column models are evaluated on ei- ther UltraFeedback or UltraInteract, and right column models are evaluated on RewardBench (Lam- bert et al., 2024). Solid line methods are sampled to produce final answers and shading reflects a 95% confidence interval.",
         "figureNumber": 5,
-        "pageIndex": 8
+        "pageIndex": 8,
+        "assetPath": "/paper-summaries-site/data/papers/paper-1772980095573/figures/experiment-3.webp"
       }
     ],
     "keyResultGroups": [

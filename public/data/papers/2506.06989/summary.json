@@ -1,14 +1,4 @@
 {
-  "architectureFigure": {
-    "boundingBox": {
-      "ymin": 100,
-      "xmin": 200,
-      "ymax": 500,
-      "xmax": 800
-    },
-    "caption": "Not explicitly an architecture figure, but the paper describes a two-stage process. The overall process for correcting position bias involves a first stage to estimate ranking residuals and a second stage to use these residuals as a control function in the click model. No single consolidated figure represents the entire architecture.",
-    "pageIndex": -1
-  },
   "authors": "Md Aminul Islam, Kathryn Vasilaky, Elena Zheleva",
   "breakthroughAssessment": {
     "score": 8,
@@ -53,7 +43,8 @@
           "xmax": 908
         },
         "caption": "Figure 1: The performance of different methods with varying levels of position bias.",
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2506.06989/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -63,7 +54,8 @@
           "xmax": 477
         },
         "caption": "Figure 2: The performance of different methods by varying the number of passes for clicks generation.",
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2506.06989/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -73,7 +65,8 @@
           "xmax": 478
         },
         "caption": "Figure 3: The performance of different methods up to 10 (p) positions with varying percentages of noisy clicks.",
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2506.06989/figures/experiment-3.webp"
       }
     ],
     "keyResults": [

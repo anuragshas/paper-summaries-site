@@ -6,9 +6,10 @@
       "ymax": 519,
       "xmax": 878
     },
-    "caption": "Schematic of the main effects we observe (see Fig 2 for a version with real data). Left: Small models live in a needle in a haystack regime, where good solutions to downstream tasks occupy a tiny fraction of the surrounding weights. In this regime, it is important to have a smart search algorithm, such as gradient descent or other forms of iterative optimization. Right: Large models are surrounded by a veritable thicket of task-specific solutions. In this regime, random sampling is sufficient to quickly land on promising adaptations, which can then be ensembled to yield strong behavior, an approach we call RandOpt . (b) Solution density – i.e. density of task-improving weights in a Gaussian neighborhood of the pretrained weights – scales with model size. (c) RandOpt is O ( 1 ) in training steps, FLOP-efficient, and competitive in converged accuracy with GRPO and ES. Results are shown on the Countdown task with Olmo-3-7B-Instruct ; RandOpt uses 5000 random weight guesses and ensembles the top K ; K-pass baselines use Test-time Majority Vote (TT-MV). More results are shown in Fig. 6 and Table 4.",
+    "caption": "Schematic of the main effects we observe (see Fig 2 for a version with real data). Left: Small models live in a needle in a haystack regime, where good solutions to downstream tasks occupy a tiny fraction of the surrounding weights. In this regime, it is important to have a smart search algorithm, such as gradient descent or other forms of iterative optimization. Right: Large models are surrounded by a veritable thicket of task-specific solutions. In this regime, random sampling is sufficient to quickly land on promising adaptations, which can then be ensembled to yield strong behavior, an approach we call RandOpt . (b) Solution density \u2013 i.e. density of task-improving weights in a Gaussian neighborhood of the pretrained weights \u2013 scales with model size. (c) RandOpt is O ( 1 ) in training steps, FLOP-efficient, and competitive in converged accuracy with GRPO and ES. Results are shown on the Countdown task with Olmo-3-7B-Instruct ; RandOpt uses 5000 random weight guesses and ensembles the top K ; K-pass baselines use Test-time Majority Vote (TT-MV). More results are shown in Fig. 6 and Table 4.",
     "figureNumber": 1,
-    "pageIndex": 0
+    "pageIndex": 0,
+    "assetPath": "/paper-summaries-site/data/papers/2603.12228/figures/architecture.webp"
   },
   "authors": "Yulu Gan, Phillip Isola",
   "breakthroughAssessment": {
@@ -57,7 +58,8 @@
         },
         "caption": "Scaling laws of solution density and diversity (using Qwen-2.5 instruction tuned models). (a) Solution density increases with model scale, showing that larger models have a higher fraction of good solutions. (b) Spectral discordance across model scales, measuring solution diversity. Together, these results demonstrate that larger models have both denser and more diverse solution landscapes in the neighborhood around their pretrained weights.",
         "figureNumber": 3,
-        "pageIndex": 3
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2603.12228/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -68,7 +70,8 @@
         },
         "caption": "Scaling laws of solution density and diversity (using Qwen-2.5 instruction tuned models). (a) Solution density increases with model scale, showing that larger models have a higher fraction of good solutions. (b) Spectral discordance across model scales, measuring solution diversity. Together, these results demonstrate that larger models have both denser and more diverse solution landscapes in the neighborhood around their pretrained weights.",
         "figureNumber": 3,
-        "pageIndex": 3
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2603.12228/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -79,7 +82,8 @@
         },
         "caption": "Performance spectra and clustering of random seeds. Sampled vectors possess diverse areas of expertise, with individual seeds specializing in specific tasks. (Left) Performance of 100 random seeds across seven evaluation datasets. Each line represents a specific seed, with four lines highlighted as examples. (Right) PCA visualization of these performance vectors, where seeds with similar behavior cluster together into different groups.",
         "figureNumber": 4,
-        "pageIndex": 4
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2603.12228/figures/experiment-3.webp"
       },
       {
         "boundingBox": {
@@ -90,7 +94,8 @@
         },
         "caption": "RandOpt vs. baselines on post-training LLMs. Marker size represents model scale (0.5-8B), shape indicates task family, and transparency distinguishes benchmarks within each task family. RandOpt matches or exceeds baselines in most settings. RandOpt is run with K=50 and ES+TT-MV also uses 50 test-time samples ensembled via majority vote. 1-pass PPO/GRPO use a single test-time sample; this setting disadvantages the baseline but reflects current standard usage of these models, in which there is no test-time ensembling. Full experimental results can be found in Appendix Table 4.",
         "figureNumber": 6,
-        "pageIndex": 8
+        "pageIndex": 8,
+        "assetPath": "/paper-summaries-site/data/papers/2603.12228/figures/experiment-4.webp"
       },
       {
         "boundingBox": {
@@ -101,7 +106,8 @@
         },
         "caption": "Accuracy decomposition on GSM8k using Qwen2.5-3B-Instruct (N=3000, K=50). Grey denotes strictly correct answers (both format and answer correct), light blue denotes the questions originally answered incorrectly that are corrected after training, and purple denotes the gains are just from fixing format. For both GRPO and RandOpt, a large portion of the gains come from format correction, while another portion is from solving the problem correctly.",
         "figureNumber": 9,
-        "pageIndex": 11
+        "pageIndex": 11,
+        "assetPath": "/paper-summaries-site/data/papers/2603.12228/figures/experiment-5.webp"
       }
     ],
     "keyResultGroups": [

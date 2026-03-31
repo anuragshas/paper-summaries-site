@@ -8,7 +8,8 @@
     },
     "caption": "Figure 2: The RecZero and RecOne frameworks utilize a unified target to optimize multi-step reasoning within a coupled structure, achieving reasoning-enhanced predictions specifically designed for recommendation scenarios.",
     "figureNumber": 2,
-    "pageIndex": 3
+    "pageIndex": 3,
+    "assetPath": "/paper-summaries-site/data/papers/paper-1773559204996/figures/architecture.webp"
   },
   "authors": "Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang",
   "breakthroughAssessment": {
@@ -54,7 +55,8 @@
         },
         "caption": "Figure 3: The performance of RecZero and RecOne over training steps.",
         "figureNumber": 3,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/paper-1773559204996/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -65,7 +67,8 @@
         },
         "caption": "Figure 4: 4a and 4b separately show the MAE and RMSE performance of RecOne and its four ablation variants on four datasets.",
         "figureNumber": 4,
-        "pageIndex": 8
+        "pageIndex": 8,
+        "assetPath": "/paper-summaries-site/data/papers/paper-1773559204996/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -76,7 +79,8 @@
         },
         "caption": "Figure 4: 4a and 4b separately show the MAE and RMSE performance of RecOne and its four ablation variants on four datasets.",
         "figureNumber": 4,
-        "pageIndex": 8
+        "pageIndex": 8,
+        "assetPath": "/paper-summaries-site/data/papers/paper-1773559204996/figures/experiment-3.webp"
       }
     ],
     "keyResultGroups": [

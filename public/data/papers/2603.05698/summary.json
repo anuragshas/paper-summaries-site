@@ -8,9 +8,10 @@
     },
     "caption": "Comparative Framework of RGB Benchmark, GraphRAG, and RobustGraphRAG for Evaluating Robustness in Retrieval-Augmented Generation",
     "figureNumber": 1,
-    "pageIndex": 1
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2603.05698/figures/architecture.webp"
   },
-  "authors": "Hazem Amamou, Stéphane Gagnon, Alan Davoust and Anderson R. Avila",
+  "authors": "Hazem Amamou, St\u00e9phane Gagnon, Alan Davoust and Anderson R. Avila",
   "breakthroughAssessment": {
     "justification": "This paper presents a strong contribution by systematically evaluating and improving GraphRAG for robustness in RAG systems. The customized GraphRAG approaches show notable improvements over the RGB baseline across several challenging tasks (noise, counterfactual, information integration, negative rejection). The findings provide valuable insights, especially regarding the benefits for smaller LLMs. While not a paradigm shift, it's a solid advancement in making RAG systems more reliable.",
     "score": 6
@@ -54,7 +55,8 @@
         },
         "caption": "Comparative analysis for the noise robustness task measured by accuracy (%) for GPT-3.5 and GPT-4o-mini under varying noise ratios.",
         "figureNumber": 4,
-        "pageIndex": 4
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2603.05698/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -183,7 +185,7 @@
       "Current RAG systems still face challenges in negative rejection, with overall rejection rates remaining below 50%, indicating a need for further development in this area."
     ]
   },
-  "institutions": "Institut national de la recherche scientifique (INRS-EMT), Montréal, Québec, Canada; Université du Québec en Outaouais, Gatineau, Québec, Canada; INRS-UQM Mixed Research Unit on Cybersecurity, Gatineau, Québec, Canada",
+  "institutions": "Institut national de la recherche scientifique (INRS-EMT), Montr\u00e9al, Qu\u00e9bec, Canada; Universit\u00e9 du Qu\u00e9bec en Outaouais, Gatineau, Qu\u00e9bec, Canada; INRS-UQM Mixed Research Unit on Cybersecurity, Gatineau, Qu\u00e9bec, Canada",
   "keyNovelty": {
     "explanation": [
       "Integrating structured external knowledge from retrieved documents into the RAG pipeline to enhance reasoning and mitigate issues from inaccurate information.",

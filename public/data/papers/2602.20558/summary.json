@@ -8,7 +8,8 @@
     },
     "caption": "Two-stage training pipeline for the Data-Centric Recommendation Agent.",
     "figureNumber": 1,
-    "pageIndex": 3
+    "pageIndex": 3,
+    "assetPath": "/paper-summaries-site/data/papers/2602.20558/figures/architecture.webp"
   },
   "authors": "Yucheng Shi, Ying Li, Yu Wang, Yesu Feng, Arjun Rao, Rein Houthooft, Shradha Sehgal, Jin Wang, Hao Zhen, Ninghao Liu, Linas Baltrunas",
   "breakthroughAssessment": {
@@ -50,7 +51,8 @@
         },
         "caption": "Length reward function design.",
         "figureNumber": 2,
-        "pageIndex": 3
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2602.20558/figures/experiment-1.webp"
       }
     ],
     "keyResultGroups": [

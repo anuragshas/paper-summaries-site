@@ -8,7 +8,8 @@
     },
     "caption": "A comparison of the attention patterns in three mainstream architectures. Here, the blue, green, yellow and grey rounded rectangles indicate the attention between prefix tokens, attention between prefix and target tokens, attention between target tokens, and masked attention respectively.",
     "figureNumber": 9,
-    "pageIndex": 22
+    "pageIndex": 22,
+    "assetPath": "/paper-summaries-site/data/papers/2303.18223/figures/architecture.webp"
   },
   "authors": "Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen",
   "breakthroughAssessment": {
@@ -46,9 +47,10 @@
           "ymax": 246,
           "xmax": 490
         },
-        "caption": "The trends of the cumulative numbers of arXiv papers that contain the keyphrases “language model” (since June 2018) and “large language model” (since October 2019), respectively. The statistics are calculated using exact match by querying the keyphrases in title or abstract by months. We set different x-axis ranges for the two keyphrases, because “language models” have been explored at an earlier time. We label the points corresponding to important landmarks in the research progress of LLMs. A sharp increase occurs after the release of ChatGPT: the average number of published arXiv papers that contain “large language model” in title or abstract goes from 0.40 per day to 8.58 per day (Figure 1(b)).",
+        "caption": "The trends of the cumulative numbers of arXiv papers that contain the keyphrases \u201clanguage model\u201d (since June 2018) and \u201clarge language model\u201d (since October 2019), respectively. The statistics are calculated using exact match by querying the keyphrases in title or abstract by months. We set different x-axis ranges for the two keyphrases, because \u201clanguage models\u201d have been explored at an earlier time. We label the points corresponding to important landmarks in the research progress of LLMs. A sharp increase occurs after the release of ChatGPT: the average number of published arXiv papers that contain \u201clarge language model\u201d in title or abstract goes from 0.40 per day to 8.58 per day (Figure 1(b)).",
         "figureNumber": 1,
-        "pageIndex": 1
+        "pageIndex": 1,
+        "assetPath": "/paper-summaries-site/data/papers/2303.18223/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -57,9 +59,10 @@
           "ymax": 246,
           "xmax": 895
         },
-        "caption": "The trends of the cumulative numbers of arXiv papers that contain the keyphrases “language model” (since June 2018) and “large language model” (since October 2019), respectively. The statistics are calculated using exact match by querying the keyphrases in title or abstract by months. We set different x-axis ranges for the two keyphrases, because “language models” have been explored at an earlier time. We label the points corresponding to important landmarks in the research progress of LLMs. A sharp increase occurs after the release of ChatGPT: the average number of published arXiv papers that contain “large language model” in title or abstract goes from 0.40 per day to 8.58 per day (Figure 1(b)).",
+        "caption": "The trends of the cumulative numbers of arXiv papers that contain the keyphrases \u201clanguage model\u201d (since June 2018) and \u201clarge language model\u201d (since October 2019), respectively. The statistics are calculated using exact match by querying the keyphrases in title or abstract by months. We set different x-axis ranges for the two keyphrases, because \u201clanguage models\u201d have been explored at an earlier time. We label the points corresponding to important landmarks in the research progress of LLMs. A sharp increase occurs after the release of ChatGPT: the average number of published arXiv papers that contain \u201clarge language model\u201d in title or abstract goes from 0.40 per day to 8.58 per day (Figure 1(b)).",
         "figureNumber": 1,
-        "pageIndex": 1
+        "pageIndex": 1,
+        "assetPath": "/paper-summaries-site/data/papers/2303.18223/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -68,9 +71,10 @@
           "ymax": 510,
           "xmax": 885
         },
-        "caption": "An evolution process of the four generations of language models (LM) from the perspective of task solving capacity. Note that the time period for each stage may not be very accurate, and we set the time mainly according to the publish date of the most representative studies at each stage. For neural language models, we abbreviate the paper titles of two representative studies to name the two approaches: NPLM [1] (“A neural probabilistic language model”) and NLPS [2] (“Natural language processing (almost) from scratch”). Due to the space limitation, we don’t list all representative studies in this figure.",
+        "caption": "An evolution process of the four generations of language models (LM) from the perspective of task solving capacity. Note that the time period for each stage may not be very accurate, and we set the time mainly according to the publish date of the most representative studies at each stage. For neural language models, we abbreviate the paper titles of two representative studies to name the two approaches: NPLM [1] (\u201cA neural probabilistic language model\u201d) and NLPS [2] (\u201cNatural language processing (almost) from scratch\u201d). Due to the space limitation, we don\u2019t list all representative studies in this figure.",
         "figureNumber": 2,
-        "pageIndex": 1
+        "pageIndex": 1,
+        "assetPath": "/paper-summaries-site/data/papers/2303.18223/figures/experiment-3.webp"
       },
       {
         "boundingBox": {
@@ -81,7 +85,8 @@
         },
         "caption": "A brief illustration for the technical evolution of GPT-series models. We plot this figure mainly based on the papers, blog articles and official APIs from OpenAI. Here, solid lines denote that there exists an explicit evidence (e.g., the official statement that a new model is developed based on a base model) on the evolution path between two models, while dashed lines denote a relatively weaker evolution relation.",
         "figureNumber": 4,
-        "pageIndex": 8
+        "pageIndex": 8,
+        "assetPath": "/paper-summaries-site/data/papers/2303.18223/figures/experiment-4.webp"
       },
       {
         "boundingBox": {
@@ -92,7 +97,8 @@
         },
         "caption": "An evolutionary graph of the research work conducted on LLaMA. Due to the huge number, we cannot include all the LLaMA variants in this figure, even much excellent work. To support incremental update, we share the source file of this figure, and welcome the readers to include the desired models by submitting the pull requests on our GitHub page.",
         "figureNumber": 5,
-        "pageIndex": 11
+        "pageIndex": 11,
+        "assetPath": "/paper-summaries-site/data/papers/2303.18223/figures/experiment-5.webp"
       },
       {
         "boundingBox": {
@@ -103,7 +109,8 @@
         },
         "caption": "Ratios of various data sources in the pre-training data for existing LLMs.",
         "figureNumber": 6,
-        "pageIndex": 16
+        "pageIndex": 16,
+        "assetPath": "/paper-summaries-site/data/papers/2303.18223/figures/experiment-6.webp"
       },
       {
         "boundingBox": {
@@ -114,7 +121,8 @@
         },
         "caption": "An illustration of a typical data preprocessing pipeline for pre-training large language models.",
         "figureNumber": 7,
-        "pageIndex": 18
+        "pageIndex": 18,
+        "assetPath": "/paper-summaries-site/data/papers/2303.18223/figures/experiment-7.webp"
       },
       {
         "boundingBox": {
@@ -125,7 +133,8 @@
         },
         "caption": "An illustration of data scheduling for pre-training LLMs.",
         "figureNumber": 8,
-        "pageIndex": 19
+        "pageIndex": 19,
+        "assetPath": "/paper-summaries-site/data/papers/2303.18223/figures/experiment-8.webp"
       }
     ],
     "keyResultGroups": [],
@@ -138,7 +147,7 @@
       "Adaptation techniques such as instruction tuning and alignment tuning (e.g., RLHF) are essential for enhancing task-specific performance and ensuring LLMs are helpful, honest, and harmless."
     ]
   },
-  "institutions": "Gaoling School of Artificial Intelligence and School of Information, Renmin University of China, Beijing, China; DIRO, Universit\\´e de Montr\\´eal, Canada.",
+  "institutions": "Gaoling School of Artificial Intelligence and School of Information, Renmin University of China, Beijing, China; DIRO, Universit\\\u00b4e de Montr\\\u00b4eal, Canada.",
   "keyNovelty": {
     "explanation": [
       "Provides a comprehensive and up-to-date literature review of LLMs, covering four major aspects: pre-training, adaptation tuning, utilization, and capacity evaluation.",

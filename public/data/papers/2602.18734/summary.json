@@ -8,7 +8,8 @@
     },
     "caption": "CoRAG overview. The reranker and generator cooperate to generate responses. The task-oriented reward derived from response guides GRPO-aligned training of the reranker and GRPO optimization of the generator.",
     "figureNumber": 2,
-    "pageIndex": 2
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2602.18734/figures/architecture.webp"
   },
   "authors": "Lichang Song, Ting Long, Yi Chang",
   "breakthroughAssessment": {
@@ -64,7 +65,8 @@
         },
         "caption": "Cross-validation results with different reranker and generator combinations (Top-3 setting).",
         "figureNumber": 3,
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2602.18734/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -75,7 +77,8 @@
         },
         "caption": "Impact of the document number.",
         "figureNumber": 4,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2602.18734/figures/experiment-2.webp"
       }
     ],
     "keyResultGroups": [

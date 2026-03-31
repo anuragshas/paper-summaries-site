@@ -1,14 +1,4 @@
 {
-  "architectureFigure": {
-    "boundingBox": {
-      "ymin": 0,
-      "xmin": 0,
-      "ymax": 0,
-      "xmax": 0
-    },
-    "caption": "N/A - The paper does not contain a specific neural architecture diagram, opting for a procedural methodology description.",
-    "pageIndex": 0
-  },
   "authors": "Jessica M. Lundin, Ada Zhang, Nihal Karim, Hamza Louzan, Victor Wei, David Adelani, Cody Carroll",
   "breakthroughAssessment": {
     "score": 4,
@@ -52,7 +42,8 @@
           "xmax": 822
         },
         "caption": "Figure 1: Accuracy in English (upper panel) and 17* combined African languages (middle panel) across the 5 MMLU subjects with the performance gap (bottom panel).",
-        "pageIndex": 2
+        "pageIndex": 2,
+        "assetPath": "/paper-summaries-site/data/papers/2509.05486/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -62,7 +53,8 @@
           "xmax": 822
         },
         "caption": "Figure 2: Fertility vs accuracy trade-offs for Llama 3.1 405B model across five experimental conditions.",
-        "pageIndex": 2
+        "pageIndex": 2,
+        "assetPath": "/paper-summaries-site/data/papers/2509.05486/figures/experiment-2.webp"
       },
       {
         "boundingBox": {

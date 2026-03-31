@@ -8,7 +8,8 @@
     },
     "caption": "Memory Sparse Attention layer. MSA integrates topk selection with sparse attention, achieving strong scalability while remaining differentiable. This design enables end-to-end training, yet allows the documents to be decoupled at inference time, thereby providing robust extrapolation capability. MSA demonstrates exceptional scalability on the MS MARCO dataset, sustaining consistent performance with less than 9% degradation across an unprecedented memory context range from 16K to 100M tokens. Some curves terminate prematurely due to context length limitations.",
     "figureNumber": 2,
-    "pageIndex": 5
+    "pageIndex": 5,
+    "assetPath": "/paper-summaries-site/data/papers/2603.23516/figures/architecture.webp"
   },
   "authors": "Yu Chen, Runkai Chen, Sheng Yi, Xinda Zhao, Xiaohong Li, Jianjin Zhang, Jun Sun, Chuanrui Hu, Yunyun Han, Lidong Bing, Yafeng Deng, Tianqiao Chen",
   "breakthroughAssessment": {
@@ -60,7 +61,8 @@
         },
         "caption": "MSA integrates topk selection with sparse attention, achieving strong scalability while remaining differentiable. This design enables end-to-end training, yet allows the documents to be decoupled at inference time, thereby providing robust extrapolation capability. MSA demonstrates exceptional scalability on the MS MARCO dataset, sustaining consistent performance with less than 9% degradation across an unprecedented memory context range from 16K to 100M tokens. Some curves terminate prematurely due to context length limitations.",
         "figureNumber": 1,
-        "pageIndex": 1
+        "pageIndex": 1,
+        "assetPath": "/paper-summaries-site/data/papers/2603.23516/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -71,7 +73,8 @@
         },
         "caption": "Results on the \"Needle In A Haystack\" (NIAH) evaluation across varying context lengths from 32k to 1M tokens.",
         "figureNumber": 4,
-        "pageIndex": 11
+        "pageIndex": 11,
+        "assetPath": "/paper-summaries-site/data/papers/2603.23516/figures/experiment-2.webp"
       }
     ],
     "keyResultGroups": [
@@ -239,7 +242,7 @@
     "mainTakeaways": [
       "MSA consistently outperforms both same-backbone and best-of-breed RAG systems on long-context QA tasks by a significant margin.",
       "MSA exhibits exceptional robustness and stability in extreme long-context settings (100M tokens), with minimal performance degradation, unlike other LLMs and memory agents that suffer catastrophic drops.",
-      "The proposed components—curriculum learning, memory interleave, continual pre-training, and original text integration—are all crucial for MSA's high performance and scalability, as demonstrated by ablation studies.",
+      "The proposed components\u2014curriculum learning, memory interleave, continual pre-training, and original text integration\u2014are all crucial for MSA's high performance and scalability, as demonstrated by ablation studies.",
       "MSA achieves near-linear computational complexity during both training and inference, making it efficient for massive memory scaling.",
       "The tiered memory storage strategy, with GPU-resident routing keys and CPU-offloaded content KVs, enables 100M-token inference on practical hardware setups (e.g., 2 NVIDIA A800 GPUs)."
     ]

@@ -8,7 +8,8 @@
     },
     "caption": "An overview of our three-stage training pipeline for the domain-adapted reasoning LLM, consisting of Continued Pre-training (CPT), Supervised Fine-tuning (SFT), and preference optimization.",
     "figureNumber": 1,
-    "pageIndex": 2
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2510.11056/figures/architecture.webp"
   },
   "authors": "Runze Xia, Yupeng Ji, Yuxi Zhou, Haodong Liu, Teng Zhang, and Piji Li",
   "breakthroughAssessment": {
@@ -66,7 +67,8 @@
         },
         "caption": "An illustration of the baseline reasoning distillation method.",
         "figureNumber": 2,
-        "pageIndex": 4
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2510.11056/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -77,7 +79,8 @@
         },
         "caption": "Left: Overview of the proposed CRSD framework. Right: Illustration of the $L_{align}$ objective.",
         "figureNumber": 3,
-        "pageIndex": 5
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2510.11056/figures/experiment-2.webp"
       }
     ],
     "keyResultGroups": [

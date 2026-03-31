@@ -8,7 +8,8 @@
     },
     "caption": "Overview of the 3-stage training pipeline: student LLM mid-training on tokenized semantic IDs (up), reasoning data generation with teacher LLM and rejection sampling (middle), and student LLM reasoning enablement by SFT and RL (down)",
     "figureNumber": 1,
-    "pageIndex": 1
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2602.07774/figures/architecture.webp"
   },
   "authors": "Mingfu Liang, Yufei Li, Jay Xu, Kavosh Asadi, Xi Liu, Shuo Gu, Kaushik Rangadurai, Frank Shyu, Shuaiwen Wang, Song Yang, Zhijing Li, Jiang Liu, Mengying Sun, Fei Tian, Xiaohan Wei, Chonglin Sun, Jacob Tao, Shike Mei, Wenlin Chen, Santanu Kolay, Sandeep Pandey, Hamed Firooz, Luke Simon",
   "breakthroughAssessment": {
@@ -53,7 +54,8 @@
         },
         "caption": "Ablation study on techniques for improving codebook uniformity in RQ-VAE. We report unique Uniqueness rate (%) on the Amazon Beauty dataset. Configurations achieving $\\ge 99\\%$ are bolded.",
         "figureNumber": 2,
-        "pageIndex": 11
+        "pageIndex": 11,
+        "assetPath": "/paper-summaries-site/data/papers/2602.07774/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -64,7 +66,8 @@
         },
         "caption": "Ablation study on codebook balancing techniques for RQ-VAE on Amazon Beauty dataset. All configurations use EMA updates and random last level assignment, which are required to achieve $\\ge 99\\%$ unique SID rate. Metrics are evaluated using a TIGER-style sequential recommendation model trained for 50 epochs.",
         "figureNumber": 3,
-        "pageIndex": 12
+        "pageIndex": 12,
+        "assetPath": "/paper-summaries-site/data/papers/2602.07774/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -75,7 +78,8 @@
         },
         "caption": "Performance comparison with the OneRec-Think (ORT) (Liu et al., 2025) on the Amazon Beauty dataset. Our proposed tokenization enhancement and the corresponding mid-training (Section 2) achieve significant improvement over the ORT's results provided by their official GitHub implementation (https://github.com/wangshy31/OneRec-Think). The result of \"Base\" and \"Base+IA\" are cited from the Table 2 of the ORT paper.",
         "figureNumber": 4,
-        "pageIndex": 13
+        "pageIndex": 13,
+        "assetPath": "/paper-summaries-site/data/papers/2602.07774/figures/experiment-3.webp"
       },
       {
         "boundingBox": {
@@ -86,7 +90,8 @@
         },
         "caption": "Re-ranking performance comparison with retriever on the Amazon Beauty dataset. Our post-training achieve significant improvement over pre-ranked results. \"MTL\" denotes mid-training with multi-task. \"RL-zeroshot\" means RL directly from the base model without SFT. \"targeted\" and \"rejection\" correspond to the two reasoning trace generation strategies used to SFT and serve as the reference policies in RL stage. \"KP\" denotes domain knowledge priming in reasoning generation.",
         "figureNumber": 5,
-        "pageIndex": 13
+        "pageIndex": 13,
+        "assetPath": "/paper-summaries-site/data/papers/2602.07774/figures/experiment-4.webp"
       },
       {
         "boundingBox": {
@@ -97,7 +102,8 @@
         },
         "caption": "Re-ranking performance comparison with retriever on the Amazon Sports dataset. \"STL\" denotes mid-training with single-task.",
         "figureNumber": 6,
-        "pageIndex": 14
+        "pageIndex": 14,
+        "assetPath": "/paper-summaries-site/data/papers/2602.07774/figures/experiment-5.webp"
       }
     ],
     "keyResultGroups": [

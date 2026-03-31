@@ -7,7 +7,8 @@
       "xmax": 895
     },
     "caption": "Figure 1: Mine and Refine Overview. Stage 1 trains a shared encoder on the original dataset using supervised contrastive training and a definite relevance target induced by circular decision boundary. Stage 2 continues training on a curriculum based multi-class contrastive loss, to achieve both stable embedding and semantically coherent embeddings space, with strong intra-class compactness.",
-    "pageIndex": 3
+    "pageIndex": 3,
+    "assetPath": "/paper-summaries-site/data/papers/2602.17654/figures/architecture.webp"
   },
   "authors": "Jiaqi Xi, Raghav Saboo, Luming Chen, Martin Wang, Sudeep Das",
   "breakthroughAssessment": {
@@ -58,7 +59,8 @@
           "xmax": 483
         },
         "caption": "Figure 2: Violin plots of similarity score distributions for Stage 1 with SuPCon and Stage 2 with Circle Loss.",
-        "pageIndex": 5
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2602.17654/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -68,7 +70,8 @@
           "xmax": 930
         },
         "caption": "Figure 3: Violin plots of query level average margin: $\\mu(q, d^0) - \\mu(q, d^1)$, $\\mu(q, d^1) - \\mu(q, d^2)$ for $t = j, i, k \\in \\{0, 1, 2\\}$.",
-        "pageIndex": 5
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2602.17654/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -78,7 +81,8 @@
           "xmax": 895
         },
         "caption": "Table 1: Offline Model Evaluation across Metrics",
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2602.17654/figures/experiment-3.webp"
       },
       {
         "boundingBox": {
@@ -88,7 +92,8 @@
           "xmax": 770
         },
         "caption": "Table 2: Side By Side Evaluation",
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2602.17654/figures/experiment-4.webp"
       },
       {
         "boundingBox": {
@@ -98,7 +103,8 @@
           "xmax": 770
         },
         "caption": "Table 3: Online A/B test results: relative improvement (%) of Mine and Refine over the baseline system",
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2602.17654/figures/experiment-5.webp"
       },
       {
         "boundingBox": {
@@ -108,7 +114,8 @@
           "xmax": 895
         },
         "caption": "Table 4: Ablation Studies on Model Architecture and Item Taxonomy Enrichment",
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2602.17654/figures/experiment-6.webp"
       },
       {
         "boundingBox": {
@@ -118,7 +125,8 @@
           "xmax": 895
         },
         "caption": "Table 5: Ablation Study on Synthetic Query Enrichment",
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2602.17654/figures/experiment-7.webp"
       },
       {
         "boundingBox": {
@@ -128,7 +136,8 @@
           "xmax": 895
         },
         "caption": "Table 6: Ablation Study on Spelling Variation Augmentation",
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2602.17654/figures/experiment-8.webp"
       }
     ],
     "keyResults": [

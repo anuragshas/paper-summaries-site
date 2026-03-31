@@ -1,5 +1,4 @@
 {
-  "architectureFigure": {},
   "authors": "Rahul Seetharaman, Aman Bansal, Hamed Zamani, Kaustubh D. Dhole",
   "breakthroughAssessment": {
     "justification": "The paper presents the first systematic study of scaling laws specifically for rerankers, a crucial but underexplored component of multi-stage information retrieval systems. It demonstrates that reranker performance, particularly NDCG@10, follows predictable power laws with model size and data, enabling accurate forecasting of large-model performance from smaller-scale training runs. This offers significant practical value by saving computational resources in training expensive large-scale rerankers. The work also highlights how scaling behavior differs across pointwise, pairwise, and listwise objectives, providing actionable insights for practitioners.",
@@ -52,7 +51,8 @@
         },
         "caption": "Scaling behavior of NDCG@10 (top row) and Contrastive Entropy (bottom row) under model, data, and joint scaling.",
         "figureNumber": 1,
-        "pageIndex": 4
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2603.04816/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -61,9 +61,10 @@
           "ymax": 568,
           "xmax": 916
         },
-        "caption": "Model scaling trends on TREC DL ’19 across NDCG@10, MAP, and MRR.",
+        "caption": "Model scaling trends on TREC DL \u201919 across NDCG@10, MAP, and MRR.",
         "figureNumber": 2,
-        "pageIndex": 5
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2603.04816/figures/experiment-2.webp"
       }
     ],
     "keyResultGroups": [

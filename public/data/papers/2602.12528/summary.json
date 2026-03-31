@@ -8,7 +8,8 @@
     },
     "caption": "Overview of DiffuRank. (a) Pointwise approach that estimates the relevance score of each query-document pair; (b) Logits-based Listwise approach that jointly assesses the relevance scores of multiple documents; (c) and (d) Permutation-based Listwise approach that directly produces the ranking list, including two inference methods: sampling and assignment.",
     "figureNumber": 1,
-    "pageIndex": 3
+    "pageIndex": 3,
+    "assetPath": "/paper-summaries-site/data/papers/2602.12528/figures/architecture.webp"
   },
   "authors": "Qi Liu, Kun Ai, Jiaxin Mao, Yanzhao Zhang, Mingxin Li, Dingkun Long, Pengjun Xie, Fengbin Zhu, Ji-Rong Wen",
   "breakthroughAssessment": {
@@ -52,7 +53,8 @@
         },
         "caption": "Effect of different sampling steps $K$ used for DiffuRank Perm-Samp on TREC DL.",
         "figureNumber": 2,
-        "pageIndex": 6
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2602.12528/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -63,7 +65,8 @@
         },
         "caption": "Iterative filling dynamics of the permutation-based reranker.",
         "figureNumber": 3,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2602.12528/figures/experiment-2.webp"
       },
       {
         "boundingBox": {
@@ -74,7 +77,8 @@
         },
         "caption": "Efficiency analysis of listwise methods on DL20. We report the average latency of reranking top 100 documents per query, and we did not use any acceleration techniques.",
         "figureNumber": 4,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2602.12528/figures/experiment-3.webp"
       }
     ],
     "keyResultGroups": [

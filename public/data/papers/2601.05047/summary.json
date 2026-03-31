@@ -7,7 +7,8 @@
       "xmax": 938
     },
     "caption": "Figure 1. The key processes of inference for the Transformer model that is the foundation of LLMs.",
-    "pageIndex": 1
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2601.05047/figures/architecture.webp"
   },
   "authors": "Xiaoyu Ma and David Patterson",
   "breakthroughAssessment": {
@@ -52,7 +53,8 @@
           "xmax": 852
         },
         "caption": "Figure 3. Cost per capacity and Bandwidth over time with trendlines for HBM (a) vs DDR (b).",
-        "pageIndex": 3
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2601.05047/figures/experiment-1.webp"
       }
     ],
     "keyResults": [

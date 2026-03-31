@@ -6,9 +6,10 @@
       "ymax": 435,
       "xmax": 860
     },
-    "caption": "STATe for argument generation. Tasked with generating persuasive arguments in favor of banning single-use plastics, STATe’s workflow involves the following steps: (1) Define action templates that control output features of interest, such as structural prefixes and content themes. (2) Generate outputs via tree search (Grey nodes indicate pruned branches; the rightmost path illustrates early stopping after a single step). (3) Evaluate outputs on a downstream metric, and study associations between action choices and performance.",
+    "caption": "STATe for argument generation. Tasked with generating persuasive arguments in favor of banning single-use plastics, STATe\u2019s workflow involves the following steps: (1) Define action templates that control output features of interest, such as structural prefixes and content themes. (2) Generate outputs via tree search (Grey nodes indicate pruned branches; the rightmost path illustrates early stopping after a single step). (3) Evaluate outputs on a downstream metric, and study associations between action choices and performance.",
     "figureNumber": 1,
-    "pageIndex": 1
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2602.14265/figures/architecture.webp"
   },
   "authors": "Zachary Bamberger, Till R. Saenger, Gilad Morad, Ofra Amir, Brandon M. Stewart, Amir Feder",
   "breakthroughAssessment": {
@@ -56,7 +57,8 @@
         },
         "caption": "Predictability of argument quality from controller actions. (A) Cross-validation R2 across model variants: M1a (structure presence only), M1b (content presence only), M1c (both), and M2 (full sequential model with position effects and transitions). (B) Held-out test set performance with 95% bootstrap confidence intervals. The sequential model consistently outperforms presence-based baselines, with the largest absolute predictability under strict synthesis.",
         "figureNumber": 3,
-        "pageIndex": 12
+        "pageIndex": 12,
+        "assetPath": "/paper-summaries-site/data/papers/2602.14265/figures/experiment-1.webp"
       }
     ],
     "keyResultGroups": [
@@ -211,7 +213,7 @@
       "The attribution framework allows for targeted generation, enabling STATe to identify and explore promising, previously unseen regions of the action space, consistently outperforming random and topic-based baselines in argument quality win rates."
     ]
   },
-  "institutions": "Technion — Israel Institute of Technology, Princeton University, Independent, Hebrew University of Jerusalem",
+  "institutions": "Technion \u2014 Israel Institute of Technology, Princeton University, Independent, Hebrew University of Jerusalem",
   "keyNovelty": {
     "explanation": [
       "STATe replaces stochastic temperature sampling with discrete, action-guided textual interventions in tree search, where a controller selects high-level reasoning actions and a generator produces steps conditioned on these choices. This leads to greater response diversity and allows exploration of fundamentally different reasoning strategies.",

@@ -8,7 +8,8 @@
     },
     "caption": "Example few-shot prompt for query (query_target) and returned app (app_target).",
     "figureNumber": 1,
-    "pageIndex": 1
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2602.23234/figures/architecture.webp"
   },
   "authors": "Evangelia Christakopoulou, Vivekkumar Patel, Hemanth Velaga, Sandip Gaikwad",
   "breakthroughAssessment": {
@@ -58,7 +59,8 @@
         },
         "caption": "Conversion rate absolute difference of llm-augmented vs prod model vs query frequency bucket. The lower-numbered buckets correspond to lower frequency - more tail queries, while the higher-numbered buckets correspond to higher frequency-more head queries.",
         "figureNumber": 2,
-        "pageIndex": 3
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2602.23234/figures/experiment-1.webp"
       }
     ],
     "keyResultGroups": [

@@ -47,7 +47,8 @@
         },
         "caption": "Heatmap from a grid search on BrowseComp-Plus using the original full queries (not end-to-end), showing the effectiveness (evaluated by evidence judgments) of BM25 under different hyperparameter settings. The red \\times denotes the default parameter setting following [6], while the green + denotes the best parameter setting found by the grid search. The lighter the colour, the higher the retrieval performance.",
         "figureNumber": 1,
-        "pageIndex": 7
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2602.21456/figures/experiment-1.webp"
       }
     ],
     "keyResultGroups": [

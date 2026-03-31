@@ -8,7 +8,8 @@
     },
     "caption": "Overall model architecture for our proposed solution.",
     "figureNumber": 1,
-    "pageIndex": 5
+    "pageIndex": 5,
+    "assetPath": "/paper-summaries-site/data/papers/2601.03211/figures/architecture.webp"
   },
   "authors": "Yue Kang, Zhuoyi Huang, Benji Schussheim, Diana Licon, Dina Atia, Shixing Cao, Jacob Danovitch, Kunho Kim, Billy Norcilien, Jonah Karpman, Mahmound Sayed, Mike Taylor, Tao Sun, Pavel Metrikov, Vipul Agarwal, Chris Quirk, Ye-Yi Wang, Nick Craswell, Irene Shaffer, Tianwei Chen, Sulaiman Vesal, Soundar Srinivasan",
   "breakthroughAssessment": {
@@ -54,7 +55,8 @@
         },
         "caption": "Performance results comparing the vanilla and fine-tuned SLM models against GPT-4o on two key evaluation metrics for the enterprise search test dataset.",
         "figureNumber": 4,
-        "pageIndex": 11
+        "pageIndex": 11,
+        "assetPath": "/paper-summaries-site/data/papers/2601.03211/figures/experiment-1.webp"
       }
     ],
     "keyResultGroups": [
@@ -280,7 +282,7 @@
       },
       {
         "label": "Output",
-        "value": "A relevance score $r(q, d_i) \\in R$ for each $(q, d_i)$ pair, where $R$ is the space of relevance scores. An ordinal 0–4 scale is adopted, with 0 indicating irrelevance and 4 indicating high relevance, designed to approximate human judgments."
+        "value": "A relevance score $r(q, d_i) \\in R$ for each $(q, d_i)$ pair, where $R$ is the space of relevance scores. An ordinal 0\u20134 scale is adopted, with 0 indicating irrelevance and 4 indicating high relevance, designed to approximate human judgments."
       }
     ],
     "reproducibility": "The paper provides a detailed workflow of the synthetic data generation pipeline (Figure 1), outlines prompt structures (Box 3.1, Box 3.2, Box 3.3), and specifies training parameters (epochs, sequence length, batch size, GPU hardware). It mentions using a proprietary human-labeled dataset for final evaluation, but does not disclose full prompt templates due to confidentiality constraints. The approach is described as fully automatic and privacy-preserving, suitable for enterprise settings.",

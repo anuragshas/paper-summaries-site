@@ -8,7 +8,8 @@
     },
     "caption": "A unified trainer interface supports a variety of purposes via modular trainers and configuration changes. Figure 1a shows the MDLM pretraining setup. Figure 1b shows the single-line trainer swap from MDLMTrainer to BD3LMTrainer . Figure 1c shows the minimal changes to use MDLMTrainer for SFT: NoAttentionMaskWrapper keeps padding EOS visible, and label_pad_token_id=eos_token_id trains the model to generate EOS from extra mask tokens in inputs. Figure 1d shows the minimal changes to adapt an autoregressive LM to MDLM: right_shift_logits reuses next-token prediction, and PrependBOSWrapper prepends BOS to provide the predictions for the first mask token.",
     "figureNumber": 1,
-    "pageIndex": 2
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2602.22661/figures/architecture.webp"
   },
   "authors": "Zhanhui Zhou, Lingjie Chen, Hanghang Tong, Dawn Song",
   "breakthroughAssessment": {
@@ -65,7 +66,8 @@
         },
         "caption": "Fast-dLLM evaluation results with max new tokens @ 256 and 512 . Model selection follows the original Fast-dLLM evaluation for consistency and fair comparison. C ACHE uses block-wise approximate KV caching within each decoding block; P ARALLEL uses confidence-based parallel token updates; C ACHE & P ARALLEL combines both. Note that max new tokens determines the number of pre-allocated padding tokens in the bidirec- tional context window, therefore affecting compute and measured performance.",
         "figureNumber": 4,
-        "pageIndex": 4
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2602.22661/figures/experiment-1.webp"
       },
       {
         "boundingBox": {
@@ -76,7 +78,8 @@
         },
         "caption": "Sensitivity to decoding hyperparameters. We vary individual sampling hy- perparameters at inference time and observe that performance can degrade sharply from the optimal configuration. B ASELINE denotes the best-performing setting; S UPPRESS does not suppress <eos> from the beginning of generation; CFG sets cfg=0.5 ; P ARALLEL @ 4 generates four tokens per step; and T EMP @ 0 sets temperature=0.0 .",
         "figureNumber": 5,
-        "pageIndex": 5
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2602.22661/figures/experiment-2.webp"
       }
     ],
     "keyResultGroups": [
