@@ -2,6 +2,28 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2603.25551",
+      "title": "Voxtral TTS",
+      "authors": "Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon, Jaeyoung Kim, John Harvill, Khyathi Raghavi Chandu, Lorenzo Signoretti, Margaret Jennings, Patrick von Platen, Pavankumar Reddy Muddireddy, Rohin Arora, Sanchit Gandhi, Samuel Humeau, Soham Ghosh, Srijan Mishra, Van Phung",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Speech",
+        "Pretraining",
+        "RL"
+      ]
+    },
+    {
+      "paperId": "2603.23516",
+      "title": "MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens",
+      "authors": "Yu Chen, Runkai Chen, Sheng Yi, Xinda Zhao, Xiaohong Li, Jianjin Zhang, Jun Sun, Chuanrui Hu, Yunyun Han, Lidong Bing, Yafeng Deng, Tianqiao Chen",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "RAG",
+        "Memory",
+        "QA"
+      ]
+    },
+    {
       "paperId": "2603.22376",
       "title": "AI Co-Scientist for Ranking: Discovering Novel Search Ranking Models alongside LLM-based AI Agents with Cloud Computing Access",
       "authors": "Liwei Wu, Cho-Jui Hsieh",
@@ -10,6 +32,17 @@
         "Agent",
         "Rec",
         "Pretraining"
+      ]
+    },
+    {
+      "paperId": "2603.12228",
+      "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
+      "authors": "Yulu Gan, Phillip Isola",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Pretraining",
+        "QA",
+        "Reasoning"
       ]
     },
     {
@@ -76,42 +109,6 @@
         "Agent",
         "QA",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2603.04816",
-      "title": "Scaling Laws for Reranking in Information Retrieval",
-      "authors": "Rahul Seetharaman, Aman Bansal, Hamed Zamani, Kaustubh D. Dhole",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "RAG",
-        "Benchmark",
-        "QA"
-      ]
-    },
-    {
-      "paperId": "2603.03251",
-      "title": "Speculative Speculative Decoding",
-      "authors": "Tanishq Kumar, Tri Dao, Avner May",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Large Language Models",
-        "Inference Optimization",
-        "Speculative Decoding",
-        "Parallel Computing",
-        "Algorithm"
-      ]
-    },
-    {
-      "paperId": "2603.01562",
-      "title": "RubricBench: Aligning Model-Generated Rubrics with Human Standards",
-      "authors": "Qiyuan Zhang, Junyi Zhou, Yufei Wang, Fuyuan Lyu, Yidong Ming, Can Xu, Qingfeng Sun, Kai Zheng, Peng Kang, Xue Liu, Chen Ma",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "LLM Evaluation",
-        "Reward Models",
-        "Benchmarks",
-        "AI Alignment"
       ]
     }
   ]

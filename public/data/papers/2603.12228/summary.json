@@ -1,0 +1,332 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 295,
+      "xmin": 91,
+      "ymax": 519,
+      "xmax": 878
+    },
+    "caption": "Schematic of the main effects we observe (see Fig 2 for a version with real data). Left: Small models live in a needle in a haystack regime, where good solutions to downstream tasks occupy a tiny fraction of the surrounding weights. In this regime, it is important to have a smart search algorithm, such as gradient descent or other forms of iterative optimization. Right: Large models are surrounded by a veritable thicket of task-specific solutions. In this regime, random sampling is sufficient to quickly land on promising adaptations, which can then be ensembled to yield strong behavior, an approach we call RandOpt . (b) Solution density – i.e. density of task-improving weights in a Gaussian neighborhood of the pretrained weights – scales with model size. (c) RandOpt is O ( 1 ) in training steps, FLOP-efficient, and competitive in converged accuracy with GRPO and ES. Results are shown on the Countdown task with Olmo-3-7B-Instruct ; RandOpt uses 5000 random weight guesses and ensembles the top K ; K-pass baselines use Test-time Majority Vote (TT-MV). More results are shown in Fig. 6 and Table 4.",
+    "figureNumber": 1,
+    "pageIndex": 0
+  },
+  "authors": "Yulu Gan, Phillip Isola",
+  "breakthroughAssessment": {
+    "justification": "This paper provides strong empirical evidence for the 'neural thicket' hypothesis, showing that large pretrained models possess dense and diverse task-specific experts discoverable via simple random search and ensembling. The proposed RandOpt algorithm is practical, highly parallel, and competitive with more complex sequential post-training methods. This challenges conventional wisdom about adaptation and highlights the emergent properties of large-scale pretraining, offering a new perspective on model fine-tuning and the loss landscape. While impactful, it builds on concepts like ensembling and random search, and its limitations (e.g., initial pretraining, inference cost for K>1) suggest it's a strong contribution rather than a paradigm shift.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "Randomly guessing a billion-dimensional parameter vector from scratch that behaves like ChatGPT has an an astronomically small probability of success, making random search seem hopeless for complex tasks.",
+    "statement": "The traditional view treats a pretrained parameter vector as a starting point for iterative adaptation, often implying that finding good solutions requires structured, multi-step optimization methods.",
+    "whyItMatters": [
+      "Challenging the assumption that finding good solutions requires complex optimization (like gradient descent).",
+      "Opening doors for simpler, fully parallel post-training methods that are computationally efficient.",
+      "Deepening understanding of the loss landscape of large pretrained models."
+    ]
+  },
+  "evaluationHighlights": [
+    "RandOpt is O(1) in training time (wall-clock) due to its fully parallel nature, offering significant speedup over sequential baselines which are O(T).",
+    "Achieves state-of-the-art or competitive results on a wide range of tasks including mathematical reasoning, code generation, creative writing, chemistry, and visual question answering.",
+    "Demonstrates that sufficient pretraining and model scale are essential for the 'thicket' regime to emerge and for RandOpt to be effective.",
+    "Distillation can reduce RandOpt's inference-time cost (K forward passes) to a single model while retaining comparable performance, at a minor training cost (approx. 2%)."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Countdown",
+        "GSM8K",
+        "MATH-500",
+        "OlyBench",
+        "MBPP",
+        "ROCStories",
+        "USPTO",
+        "GQA"
+      ],
+      "metrics": [
+        "Accuracy (%)"
+      ],
+      "setting": "Post-training of LLMs and VLMs across various model scales (0.5B to 8B parameters) and task categories."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 75,
+          "xmin": 91,
+          "ymax": 290,
+          "xmax": 489
+        },
+        "caption": "Scaling laws of solution density and diversity (using Qwen-2.5 instruction tuned models). (a) Solution density increases with model scale, showing that larger models have a higher fraction of good solutions. (b) Spectral discordance across model scales, measuring solution diversity. Together, these results demonstrate that larger models have both denser and more diverse solution landscapes in the neighborhood around their pretrained weights.",
+        "figureNumber": 3,
+        "pageIndex": 3
+      },
+      {
+        "boundingBox": {
+          "ymin": 104,
+          "xmin": 504,
+          "ymax": 289,
+          "xmax": 878
+        },
+        "caption": "Scaling laws of solution density and diversity (using Qwen-2.5 instruction tuned models). (a) Solution density increases with model scale, showing that larger models have a higher fraction of good solutions. (b) Spectral discordance across model scales, measuring solution diversity. Together, these results demonstrate that larger models have both denser and more diverse solution landscapes in the neighborhood around their pretrained weights.",
+        "figureNumber": 3,
+        "pageIndex": 3
+      },
+      {
+        "boundingBox": {
+          "ymin": 44,
+          "xmin": 106,
+          "ymax": 337,
+          "xmax": 877
+        },
+        "caption": "Performance spectra and clustering of random seeds. Sampled vectors possess diverse areas of expertise, with individual seeds specializing in specific tasks. (Left) Performance of 100 random seeds across seven evaluation datasets. Each line represents a specific seed, with four lines highlighted as examples. (Right) PCA visualization of these performance vectors, where seeds with similar behavior cluster together into different groups.",
+        "figureNumber": 4,
+        "pageIndex": 4
+      },
+      {
+        "boundingBox": {
+          "ymin": 90,
+          "xmin": 94,
+          "ymax": 602,
+          "xmax": 880
+        },
+        "caption": "RandOpt vs. baselines on post-training LLMs. Marker size represents model scale (0.5-8B), shape indicates task family, and transparency distinguishes benchmarks within each task family. RandOpt matches or exceeds baselines in most settings. RandOpt is run with K=50 and ES+TT-MV also uses 50 test-time samples ensembled via majority vote. 1-pass PPO/GRPO use a single test-time sample; this setting disadvantages the baseline but reflects current standard usage of these models, in which there is no test-time ensembling. Full experimental results can be found in Appendix Table 4.",
+        "figureNumber": 6,
+        "pageIndex": 8
+      },
+      {
+        "boundingBox": {
+          "ymin": 58,
+          "xmin": 103,
+          "ymax": 298,
+          "xmax": 880
+        },
+        "caption": "Accuracy decomposition on GSM8k using Qwen2.5-3B-Instruct (N=3000, K=50). Grey denotes strictly correct answers (both format and answer correct), light blue denotes the questions originally answered incorrectly that are corrected after training, and purple denotes the gains are just from fixing format. For both GRPO and RandOpt, a large portion of the gains come from format correction, while another portion is from solving the problem correctly.",
+        "figureNumber": 9,
+        "pageIndex": 11
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "31.8%",
+            "benchmark": "Countdown",
+            "delta": "+44.6%",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "76.4%"
+          },
+          {
+            "baseline": "70.2%",
+            "benchmark": "GSM8K",
+            "delta": "+6.2%",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "76.4%"
+          },
+          {
+            "baseline": "53.6%",
+            "benchmark": "MATH-500",
+            "delta": "+6.1%",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "59.7%"
+          },
+          {
+            "baseline": "27.2%",
+            "benchmark": "OlyBench",
+            "delta": "+3.2%",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "30.4%"
+          },
+          {
+            "baseline": "69.9%",
+            "benchmark": "MBPP",
+            "delta": "-0.3%",
+            "isPositive": false,
+            "metric": "Accuracy (%)",
+            "thisPaper": "69.6%"
+          },
+          {
+            "baseline": "60.2%",
+            "benchmark": "ROCStories",
+            "delta": "-11.7%",
+            "isPositive": false,
+            "metric": "Accuracy (%)",
+            "thisPaper": "48.5%"
+          },
+          {
+            "baseline": "32.0%",
+            "benchmark": "USPTO",
+            "delta": "+2.3%",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "34.3%"
+          }
+        ],
+        "title": "Qwen2.5-1.5B-Instruct Model Performance (vs ES baseline)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "56.6%",
+            "benchmark": "GQA",
+            "delta": "+12.4%",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "69.0%"
+          }
+        ],
+        "title": "Vision-Language Model (VLM) Performance on GQA"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "58.8%",
+            "benchmark": "GSM8K (Qwen2.5-1.5B-Inst.)",
+            "delta": "+17.6%",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "76.4%"
+          },
+          {
+            "baseline": "76.4%",
+            "benchmark": "GSM8K (Qwen2.5-1.5B-Inst.)",
+            "delta": "-1.5%",
+            "isPositive": false,
+            "metric": "Accuracy (%)",
+            "thisPaper": "74.9%"
+          },
+          {
+            "baseline": "79.8%",
+            "benchmark": "GSM8K (Qwen2.5-3B-Inst.)",
+            "delta": "+7.3%",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "87.1%"
+          },
+          {
+            "baseline": "87.1%",
+            "benchmark": "GSM8K (Qwen2.5-3B-Inst.)",
+            "delta": "-2.8%",
+            "isPositive": false,
+            "metric": "Accuracy (%)",
+            "thisPaper": "84.3%"
+          }
+        ],
+        "title": "RandOpt Distillation on GSM8K"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "Solution density of task-improving perturbations increases monotonically with model scale, showing that larger pretrained models inhabit 'thickets' of good solutions.",
+      "Local neighborhoods around pretrained weights are diverse, with sampled perturbations acting as specialists for different tasks (Spectral Discordance increases with model size).",
+      "RandOpt, a simple parallel random guessing and ensembling algorithm, achieves competitive or superior accuracy compared to complex sequential post-training methods (PPO, GRPO, ES) across various LLM and VLM tasks.",
+      "Ensembling (K>1) is crucial for RandOpt's performance, significantly boosting accuracy compared to single-perturbation selection (K=1).",
+      "The performance gains observed are partly due to reasoning improvements and partly due to superficial fixes like output formatting."
+    ]
+  },
+  "institutions": "MIT CSAIL",
+  "keyNovelty": {
+    "explanation": [
+      "Demonstrating that as model scale increases, the 'solution density' (proportion of local perturbations that improve performance) around pretrained weights dramatically increases.",
+      "Showing that these task-improving perturbations are 'specialists' rather than 'generalists,' meaning they improve one task while potentially degrading others.",
+      "Proposing RandOpt, a simple, fully parallel algorithm that leverages these dense, diverse thickets by randomly sampling perturbations, selecting the best K, and ensembling their predictions via majority vote."
+    ],
+    "main": "The discovery of 'neural thickets' - dense, diverse clusters of task-improving experts in the weight space neighborhood of large pretrained models, making simple random guessing and ensembling effective for post-training."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A regime in the weight space of large, well-pretrained models where the neighborhood around pretrained weights is dense with diverse task-specific experts that can be found through simple random perturbations.",
+        "term": "Neural Thicket"
+      },
+      {
+        "definition": "The probability that a random perturbation of model parameters improves the base model's score by a given margin.",
+        "term": "Solution Density"
+      },
+      {
+        "definition": "A measure of specialization or diversity among sampled perturbations, quantifying how disjoint their capabilities are across tasks.",
+        "term": "Spectral Discordance"
+      }
+    ],
+    "prerequisites": [
+      "Large Language Models (LLMs)",
+      "Vision-Language Models (VLMs)",
+      "Gradient Descent",
+      "Proximal Policy Optimization (PPO)",
+      "Evolution Strategies (ES)",
+      "Ensembling techniques",
+      "Gaussian distributions"
+    ]
+  },
+  "subTopics": [
+    "Large Language Models",
+    "Loss Landscape Analysis",
+    "Post-training"
+  ],
+  "tags": [
+    {
+      "name": "Pretraining",
+      "type": "primary"
+    },
+    {
+      "name": "QA",
+      "type": "topic"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike gradient-based methods (PPO, GRPO) and iterative search (ES), RandOpt does not involve sequential optimization steps or gradient calculations, operating in a fully parallel fashion.",
+      "RandOpt finds a set of solutions for ensembling, rather than collapsing to a single parameter vector, a characteristic shared with evolutionary methods and quality-diversity algorithms but applied to post-training of LLMs.",
+      "Differs from Bayesian methods that explicitly represent parameter distributions, as RandOpt treats pretrained nets as implicitly defining such distributions.",
+      "While similar to Test-Time Majority Vote (TT-MV) and Best-of-N in ensembling, RandOpt applies perturbation and selection in weight-space rather than output-space."
+    ],
+    "limitations": [
+      "RandOpt is not suitable for training large neural networks from scratch and struggles on small pretrained models due to low solution density.",
+      "The current approach may saturate, suggesting a need for more structured methods to find improvements beyond the local thickets.",
+      "Inference-time cost requires K forward passes, which can be high. While distillation can reduce this, it introduces tradeoffs (no longer fully parallel, additional training flops, specific to categorical reasoning).",
+      "Majority-vote ensembling is not directly applicable to structured prediction tasks (e.g., story generation, image generation) without modification.",
+      "The paper characterizes properties of the pretrained landscape but doesn't fully explain the mechanisms by which thickets emerge or what pretraining objective creates them."
+    ],
+    "modeling": [
+      {
+        "label": "RandOpt Algorithm",
+        "list": [
+          "Random Guessing (Training): Sample N random seeds to generate N perturbed parameter vectors $\\theta_i = \\theta + \\sigma_i \\epsilon(s_i)$, where $\\theta$ is the base model and $\\sigma_i$ are noise scales. Evaluate each $\\theta_i$ on a small training/validation set $D_{train}$ to obtain scores $v_i$. Select the top-K performing models based on these scores: $I_{top} = \\text{arg topK}_{i \\in [N]} (v_i)$.",
+          "Ensembling (Inference): For a test input $x$, generate predictions from the selected top-K models. The final output $\\hat{y}$ is obtained by aggregating individual predictions via majority voting: $\\hat{y} = \\text{mode} (\\text{arg max}_y f_{\\theta_i} (y \\mid x) \\mid i \\in I_{top})$."
+        ],
+        "value": "N/A"
+      }
+    ],
+    "pipelineFlow": [
+      "Start with a pretrained base model.",
+      "Generate N random Gaussian perturbations of the base model's weights.",
+      "Evaluate each perturbed model on a small training/validation dataset to obtain a performance score.",
+      "Select the top K performing perturbed models.",
+      "At inference time, use the top K selected models to generate predictions for a given input.",
+      "Aggregate the predictions from the K models using majority voting to produce the final output."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Solution Density",
+        "value": "Defined as $\\delta (m) = P_{\\epsilon \\sim N(0, \\sigma^2 I)} [s(\\theta + \\epsilon) \\ge s(\\theta) + m]$, where $s$ is the performance metric, $\\theta$ are model parameters, $\\epsilon$ is a random perturbation from a Gaussian distribution, and $m$ is a performance margin."
+      },
+      {
+        "label": "Spectral Discordance",
+        "value": "Defined as $D = 1 - \\frac{1}{M(M-1)} \\sum_{j \\neq k} C_{jk}$, where $C_{jk}$ is the Pearson correlation between task $j$ and $k$ percentile ranks. $D \\to 1$ implies specialists, $D \\to 0$ implies generalists."
+      }
+    ],
+    "reproducibility": "The paper mentions open-source code and provides hyperparameter settings in Appendix E.3 (Table 3) and dataset details in Appendix B. It also provides computational budget normalization details.",
+    "systemModules": []
+  },
+  "thesis": "Pretrained models, especially large ones, possess a 'thicket' regime where the neighborhood around their weights is dense with diverse task-specific experts that can be discovered through simple random perturbations and ensembling, rather than requiring complex sequential optimization.",
+  "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
+  "url": "https://arxiv.org/abs/arXiv:2603.12228",
+  "venue": "N/A",
+  "year": "2026"
+}

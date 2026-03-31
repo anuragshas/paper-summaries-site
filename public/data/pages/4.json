@@ -2,6 +2,41 @@
   "page": 4,
   "papers": [
     {
+      "paperId": "2303.18223",
+      "title": "A Survey of Large Language Models",
+      "authors": "Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen",
+      "publishedDate": "2023-03-01",
+      "tags": [
+        "Pretraining",
+        "QA",
+        "RAG"
+      ]
+    },
+    {
+      "paperId": "2506.06989",
+      "title": "Correcting for Position Bias in Learning to Rank: A Control Function Approach",
+      "authors": "Md Aminul Islam, Kathryn Vasilaky, Elena Zheleva",
+      "publishedDate": "2022-06-01",
+      "tags": [
+        "Learning to Rank",
+        "Position Bias",
+        "Control Function",
+        "Bias Correction",
+        "Information Retrieval"
+      ]
+    },
+    {
+      "paperId": "paper-1773559204996",
+      "title": "Think before Recommendation: Autonomous Reasoning-enhanced Recommender",
+      "authors": "Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang",
+      "publishedDate": null,
+      "tags": [
+        "RL",
+        "Rec",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "paper-1772980095573",
       "title": "GENERATIVE REWARD MODELS",
       "authors": "Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak",

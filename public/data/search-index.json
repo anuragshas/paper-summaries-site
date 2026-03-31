@@ -1,12 +1,39 @@
 {
   "papers": [
     {
+      "paperId": "2603.25551",
+      "title": "Voxtral TTS",
+      "tags": [
+        "Speech",
+        "Pretraining",
+        "RL"
+      ]
+    },
+    {
+      "paperId": "2603.23516",
+      "title": "MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens",
+      "tags": [
+        "RAG",
+        "Memory",
+        "QA"
+      ]
+    },
+    {
       "paperId": "2603.22376",
       "title": "AI Co-Scientist for Ranking: Discovering Novel Search Ranking Models alongside LLM-based AI Agents with Cloud Computing Access",
       "tags": [
         "Agent",
         "Rec",
         "Pretraining"
+      ]
+    },
+    {
+      "paperId": "2603.12228",
+      "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
+      "tags": [
+        "Pretraining",
+        "QA",
+        "Reasoning"
       ]
     },
     {

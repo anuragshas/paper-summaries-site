@@ -1,0 +1,18 @@
+{
+  "paperId": "2603.12228",
+  "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
+  "authors": "Yulu Gan, Phillip Isola",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "Pretraining",
+    "QA",
+    "Reasoning"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2603.12228",
+  "pagePath": "/paper-summaries-site/papers/2603.12228",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.12228/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

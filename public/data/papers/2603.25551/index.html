@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voxtral TTS</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Voxtral TTS</h1>
+      <p class="meta"><strong>Authors:</strong> Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon, Jaeyoung Kim, John Harvill, Khyathi Raghavi Chandu, Lorenzo Signoretti, Margaret Jennings, Patrick von Platen, Pavankumar Reddy Muddireddy, Rohin Arora, Sanchit Gandhi, Samuel Humeau, Soham Ghosh, Srijan Mishra, Van Phung</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2603.25551" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2603.25551</a></p>
+      <p class="muted">Generated summary artifact for 2603.25551</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Voxtral TTS is an expressive multilingual text-to-speech model that generates natural speech from short audio references by combining an auto-regressive semantic token generator with a flow-matching acoustic token generator, leveraging a novel speech tokenizer (Voxtral Codec) and Direct Preference Optimization for improved quality and expressivity, achieving state-of-the-art human preference and efficient production deployment.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Generating natural and expressive text-to-speech, particularly for multilingual zero-shot voice cloning, while maintaining strong intelligibility and accurately capturing speech nuances and expressivity from short audio references.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A multilingual zero-shot TTS system with a novel hybrid architecture (auto-regressive semantic tokens + flow-matching acoustic tokens), a custom speech tokenizer (Voxtral Codec), and adapted Direct Preference Optimization, achieving state-of-the-art performance in human evaluations and production-ready inference.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Voxtral TTS significantly outperforms ElevenLabs Flash v2.5 in human evaluations for multilingual zero-shot voice cloning, achieving an overall 68.4% win rate.</li><li>The model demonstrates competitive performance against strong proprietary systems like ElevenLabs v3 and Gemini 2.5 Flash TTS in flagship-voice evaluations across various emotion steering settings.</li><li>Direct Preference Optimization (DPO) post-training generally improves objective metrics like Word Error Rate (WER) and UTMOS, while qualitatively reducing hallucinations and improving volume consistency.</li><li>CUDA graph acceleration for the flow-matching transformer reduces latency by 47% and improves Real-Time Factor (RTF) by 2.5x, enabling production-ready performance.</li><li>The system achieves high inference throughput (12x increase in characters/second/GPU) and sub-second time to first audio with asynchronous chunked streaming, supporting over 30 concurrent users on a single H200 GPU.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Voxtral Codec outperforms the Mimi codec on objective metrics, demonstrating superior reconstruction quality and intelligibility at similar bitrates.</li><li>Voxtral TTS achieves strong preference in human evaluations for multilingual zero-shot voice cloning, significantly surpassing ElevenLabs Flash v2.5 across multiple languages.</li><li>The adapted Direct Preference Optimization effectively enhances speech quality, reducing artifacts and improving consistency in pretrained models.</li><li>The combination of CUDA graph acceleration and asynchronous chunked streaming enables Voxtral TTS to achieve sub-second first-audio latency and high throughput, making it suitable for production environments.</li><li>The hybrid architecture, combining auto-regressive generation for semantic tokens and flow-matching for acoustic tokens, provides a robust and expressive TTS system.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Automated metrics like UTMOS were found to be loose proxies for naturalness and expressivity, poorly calibrated across languages, and weakly correlated with human preference.</li><li>Higher values of the Classifier-Free Guidance (CFG) scale ($\alpha$) during inference can lead to over-adherence to the provided voice prompt, causing the model to fail in biasing towards implicit emotions from the text prompt.</li><li>Training the Direct Preference Optimization (DPO) model for longer durations on synthetic data was observed to result in more robotic-sounding speech.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 105,
+      &quot;xmin&quot;: 229,
+      &quot;ymax&quot;: 459,
+      &quot;xmax&quot;: 770
+    },
+    &quot;caption&quot;: &quot;Figure 2: Architecture overview of Voxtral TTS. A voice reference ranging from 3s-30s is fed to the Voxtral Codec encoder to obtain audio tokens at a frame rate of 12.5 Hz. Each audio frame (labeled A) consists of a semantic token and acoustic tokens. The voice reference audio tokens along with the text prompt tokens (labeled T) are fed to the decoder backbone. The decoder auto-regressively generates a sequence of semantic tokens until it reaches a special End of Audio token (&lt;EOA&gt;). At each timestep, the semantic token from the decoder backbone is fed to a flow-matching transformer, which is run multiple times to predict the acoustic tokens. The semantic and acoustic tokens are fed to the Voxtral Codec decoder to obtain the generated waveform.&quot;,
+    &quot;figureNumber&quot;: 2,
+    &quot;pageIndex&quot;: 2
+  },
+  &quot;authors&quot;: &quot;Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon, Jaeyoung Kim, John Harvill, Khyathi Raghavi Chandu, Lorenzo Signoretti, Margaret Jennings, Patrick von Platen, Pavankumar Reddy Muddireddy, Rohin Arora, Sanchit Gandhi, Samuel Humeau, Soham Ghosh, Srijan Mishra, Van Phung&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper presents a robust and well-engineered multilingual zero-shot TTS system with a novel hybrid architecture (auto-regressive semantics + flow-matching acoustics) and a custom-designed codec. It demonstrates significant improvements in human evaluations over strong baselines like ElevenLabs Flash v2.5 for voice cloning, and achieves production-ready performance with low latency and high throughput. The adaptation of DPO for this discrete-continuous setting is a strong contribution. While not a paradigm shift, it represents a substantial advancement in practical, high-quality TTS.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Existing TTS systems often struggle to model rich acoustic variation effectively in an autoregressive manner, or require external aligners for semantic token learning, which can hinder the naturalness and expressivity of synthesized speech.&quot;,
+    &quot;statement&quot;: &quot;Generating natural and expressive text-to-speech, particularly for multilingual zero-shot voice cloning, while maintaining strong intelligibility and accurately capturing speech nuances and expressivity from short audio references.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Enables more flexible human-computer interactions.&quot;,
+      &quot;Improves applications such as virtual assistants, audiobooks, and accessibility tools.&quot;,
+      &quot;Facilitates the creation of diverse and expressive synthetic voices for a global audience.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Voxtral TTS significantly outperforms ElevenLabs Flash v2.5 in human evaluations for multilingual zero-shot voice cloning, achieving an overall 68.4% win rate.&quot;,
+    &quot;The model demonstrates competitive performance against strong proprietary systems like ElevenLabs v3 and Gemini 2.5 Flash TTS in flagship-voice evaluations across various emotion steering settings.&quot;,
+    &quot;Direct Preference Optimization (DPO) post-training generally improves objective metrics like Word Error Rate (WER) and UTMOS, while qualitatively reducing hallucinations and improving volume consistency.&quot;,
+    &quot;CUDA graph acceleration for the flow-matching transformer reduces latency by 47% and improves Real-Time Factor (RTF) by 2.5x, enabling production-ready performance.&quot;,
+    &quot;The system achieves high inference throughput (12x increase in characters/second/GPU) and sub-second time to first audio with asynchronous chunked streaming, supporting over 30 concurrent users on a single H200 GPU.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Expresso dataset (for codec evaluation)&quot;,
+        &quot;SEED-TTS&quot;,
+        &quot;MiniMax-TTS&quot;,
+        &quot;ElevenLabs v3&quot;,
+        &quot;ElevenLabs Flash v2.5&quot;,
+        &quot;Human evaluations (Flagship voices: explicit/implicit steering, Zero-shot voice cloning)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Mel distance (\\text{Mel}) \\downarrow&quot;,
+        &quot;STFT distance (\\text{STFT}) \\downarrow&quot;,
+        &quot;Perceptual Evaluation of Speech Quality (PESQ) \\uparrow&quot;,
+        &quot;Extended Short-Time Objective Intelligibility (ESTOI) \\uparrow&quot;,
+        &quot;ASR-WER (\\%) \\downarrow&quot;,
+        &quot;Speaker Similarity (\\text{Speaker Sim}) \\uparrow&quot;,
+        &quot;Word Error Rate (WER) (\\%) \\downarrow&quot;,
+        &quot;UTMOS \\uparrow&quot;,
+        &quot;Voxtral TTS Win Rate (\\%)&quot;
+      ],
+      &quot;setting&quot;: &quot;Multilingual zero-shot voice cloning and text-to-speech with DPO post-training and an optimized codec.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 583,
+          &quot;xmin&quot;: 284,
+          &quot;ymax&quot;: 702,
+          &quot;xmax&quot;: 794
+        },
+        &quot;caption&quot;: &quot;Figure 1: Voxtral TTS is preferred to ElevenLabs Flash v2.5 in human evaluations. We plot the win rate for Voxtral TTS against ElevenLabs Flash v2.5 in human evaluations across two categories. For flagship voices, we use the default voices for each model and 77 unique text examples. In the voice cloning set-up, we provide a short audio reference clip and 60 text prompts. In both categories, human annotators blindly rate which audio is better between the two models. Voxtral TTS is preferred in 58.3 and 68.4% of instances.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 0
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 517,
+          &quot;xmin&quot;: 229,
+          &quot;ymax&quot;: 842,
+          &quot;xmax&quot;: 770
+        },
+        &quot;caption&quot;: &quot;Figure 3: Architecture overview and training of Voxtral Codec. It consists of a split semantic VQ codebook and acoustic FSQ codebooks. Both semantic and acoustic tokens are combined for reconstruction. The semantic token has an additional distillation loss from a supervised ASR model.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 2
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 98,
+          &quot;xmin&quot;: 279,
+          &quot;ymax&quot;: 709,
+          &quot;xmax&quot;: 735
+        },
+        &quot;caption&quot;: &quot;Figure 4: Effect of NFEs and CFG on automatic evaluations. The metrics are averaged over SEED-TTS and the 9 languages in MiniMax. Increasing the NFEs from 2 to 8 improves speaker similarity and UTMOS metrics. There is a slight regression in WER as the NFEs is increased beyond this. The metrics monotonically increase with higher CFG, but human evaluations flagged regressions in text-adherence with high alpha.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 10
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.702&quot;,
+            &quot;benchmark&quot;: &quot;N/A&quot;,
+            &quot;delta&quot;: &quot;-0.157&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Mel&quot;,
+            &quot;thisPaper&quot;: &quot;0.545&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1.177&quot;,
+            &quot;benchmark&quot;: &quot;N/A&quot;,
+            &quot;delta&quot;: &quot;-0.195&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;STFT&quot;,
+            &quot;thisPaper&quot;: &quot;0.982&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;2.07&quot;,
+            &quot;benchmark&quot;: &quot;N/A&quot;,
+            &quot;delta&quot;: &quot;+0.98&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;PESQ&quot;,
+            &quot;thisPaper&quot;: &quot;3.05&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.803&quot;,
+            &quot;benchmark&quot;: &quot;N/A&quot;,
+            &quot;delta&quot;: &quot;+0.079&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;ESTOI&quot;,
+            &quot;thisPaper&quot;: &quot;0.882&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;11.75&quot;,
+            &quot;benchmark&quot;: &quot;N/A&quot;,
+            &quot;delta&quot;: &quot;-1.09&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;ASR-WER (%)&quot;,
+            &quot;thisPaper&quot;: &quot;10.66&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.672&quot;,
+            &quot;benchmark&quot;: &quot;N/A&quot;,
+            &quot;delta&quot;: &quot;+0.171&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Speaker Sim&quot;,
+            &quot;thisPaper&quot;: &quot;0.843&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Voxtral Codec Performance vs. Mimi (16cb)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Arabic&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;72.9&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Dutch&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;49.4&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;English&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;60.8&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;French&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;54.4&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;German&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;72.0&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Hindi&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;79.8&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Italian&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;57.1&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Portuguese&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;74.4&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Spanish&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;87.8&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Overall&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Voxtral TTS Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;68.4&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Zero-Shot Voice Cloning Win Rates (vs. ElevenLabs Flash v2.5)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;2.80&quot;,
+            &quot;benchmark&quot;: &quot;Arabic&quot;,
+            &quot;delta&quot;: &quot;-0.12&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;WER (%)&quot;,
+            &quot;thisPaper&quot;: &quot;2.68&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.01&quot;,
+            &quot;benchmark&quot;: &quot;Arabic&quot;,
+            &quot;delta&quot;: &quot;+0.06&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;UTMOS&quot;,
+            &quot;thisPaper&quot;: &quot;3.07&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.08&quot;,
+            &quot;benchmark&quot;: &quot;German&quot;,
+            &quot;delta&quot;: &quot;-3.25&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;WER (%)&quot;,
+            &quot;thisPaper&quot;: &quot;0.83&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.05&quot;,
+            &quot;benchmark&quot;: &quot;German&quot;,
+            &quot;delta&quot;: &quot;+0.07&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;UTMOS&quot;,
+            &quot;thisPaper&quot;: &quot;3.12&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.39&quot;,
+            &quot;benchmark&quot;: &quot;Hindi&quot;,
+            &quot;delta&quot;: &quot;+1.61&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;WER (%)&quot;,
+            &quot;thisPaper&quot;: &quot;4.99&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.43&quot;,
+            &quot;benchmark&quot;: &quot;Hindi&quot;,
+            &quot;delta&quot;: &quot;+0.13&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;UTMOS&quot;,
+            &quot;thisPaper&quot;: &quot;3.56&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1.58&quot;,
+            &quot;benchmark&quot;: &quot;Seed TTS&quot;,
+            &quot;delta&quot;: &quot;-0.35&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;WER (%)&quot;,
+            &quot;thisPaper&quot;: &quot;1.23&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.07&quot;,
+            &quot;benchmark&quot;: &quot;Seed TTS&quot;,
+            &quot;delta&quot;: &quot;+0.04&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;UTMOS&quot;,
+            &quot;thisPaper&quot;: &quot;4.11&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;DPO Effect on WER and UTMOS&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;133 ms&quot;,
+            &quot;benchmark&quot;: &quot;N/A&quot;,
+            &quot;delta&quot;: &quot;-63 ms&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Latency&quot;,
+            &quot;thisPaper&quot;: &quot;70 ms&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.258&quot;,
+            &quot;benchmark&quot;: &quot;N/A&quot;,
+            &quot;delta&quot;: &quot;-0.155&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RTF&quot;,
+            &quot;thisPaper&quot;: &quot;0.103&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;CUDA Graph Acceleration for Flow-Matching Transformer&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;119.14&quot;,
+            &quot;benchmark&quot;: &quot;Concurrency 1&quot;,
+            &quot;delta&quot;: &quot;+1311.64&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (char/s/GPU)&quot;,
+            &quot;thisPaper&quot;: &quot;1430.78&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.103&quot;,
+            &quot;benchmark&quot;: &quot;Concurrency 1&quot;,
+            &quot;delta&quot;: &quot;+0.199&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;RTF&quot;,
+            &quot;thisPaper&quot;: &quot;0.302&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Serving Performance on NVIDIA H200 (Concurrency 32)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Voxtral Codec outperforms the Mimi codec on objective metrics, demonstrating superior reconstruction quality and intelligibility at similar bitrates.&quot;,
+      &quot;Voxtral TTS achieves strong preference in human evaluations for multilingual zero-shot voice cloning, significantly surpassing ElevenLabs Flash v2.5 across multiple languages.&quot;,
+      &quot;The adapted Direct Preference Optimization effectively enhances speech quality, reducing artifacts and improving consistency in pretrained models.&quot;,
+      &quot;The combination of CUDA graph acceleration and asynchronous chunked streaming enables Voxtral TTS to achieve sub-second first-audio latency and high throughput, making it suitable for production environments.&quot;,
+      &quot;The hybrid architecture, combining auto-regressive generation for semantic tokens and flow-matching for acoustic tokens, provides a robust and expressive TTS system.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Mistral AI&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Voxtral TTS introduces a representation-aware hybrid architecture that combines auto-regressive generation for semantic speech tokens (ensuring long-range consistency) with a lightweight flow-matching model for acoustic tokens (modeling rich acoustic detail with conditional continuous generation).&quot;,
+      &quot;The system utilizes Voxtral Codec, a novel low-bitrate speech tokenizer trained from scratch. This codec employs ASR-distilled semantic tokens and Finite Scalar Quantized (FSQ) acoustic tokens, providing effective and text-aligned semantic representations without external forced aligners.&quot;,
+      &quot;Direct Preference Optimization (DPO) is adapted to the hybrid discrete-continuous TTS setting, combining preference objectives for both semantic token generation and flow-based acoustic prediction to improve word error rate and speaker similarity.&quot;,
+      &quot;The Flow-Matching Transformer for acoustic token prediction offers superior quality, compute, and latency compared to alternative architectures like MaskGIT and Depth Transformer for this task.&quot;,
+      &quot;The system is optimized for inference through CUDA Graph acceleration and an asynchronous chunked streaming protocol, enabling low-latency and high-throughput serving for real-time applications.&quot;
+    ],
+    &quot;main&quot;: &quot;A multilingual zero-shot TTS system with a novel hybrid architecture (auto-regressive semantic tokens + flow-matching acoustic tokens), a custom speech tokenizer (Voxtral Codec), and adapted Direct Preference Optimization, achieving state-of-the-art performance in human evaluations and production-ready inference.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A novel convolutional-transformer autoencoder that compresses 24 kHz mono waveforms into 12.5 Hz frames of 37 discrete tokens (1 semantic + 36 acoustic), achieving a total bitrate of 2.14 kbps. It uses a split semantic VQ codebook and acoustic FSQ codebooks.&quot;,
+        &quot;term&quot;: &quot;Voxtral Codec&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Low-bitrate representations of speech content, learned by distilling information from a supervised ASR model, which helps ensure they are text-aligned and semantically rich.&quot;,
+        &quot;term&quot;: &quot;Semantic Tokens&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Higher-rate representations of acoustic variations, quantized using Finite Scalar Quantization (FSQ), which capture the finer details of speech. These are predicted by a flow-matching transformer.&quot;,
+        &quot;term&quot;: &quot;Acoustic Tokens&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A model based on conditional flow matching that generates acoustic tokens by modeling a continuous velocity field, efficiently transporting Gaussian noise to the target acoustic embeddings. It operates independently for each generation step in the decoder backbone.&quot;,
+        &quot;term&quot;: &quot;Flow-Matching Transformer&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Text-to-Speech (TTS) systems&quot;,
+      &quot;Zero-shot Voice Cloning&quot;,
+      &quot;Auto-regressive models&quot;,
+      &quot;Flow-matching models&quot;,
+      &quot;Vector Quantization (VQ)&quot;,
+      &quot;Finite Scalar Quantization (FSQ)&quot;,
+      &quot;Direct Preference Optimization (DPO)&quot;,
+      &quot;Automatic Speech Recognition (ASR) models&quot;,
+      &quot;Transformer neural network architecture&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Zero-shot Voice Cloning&quot;,
+    &quot;Multilingual Speech Synthesis&quot;,
+    &quot;Flow-Matching for Audio Generation&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Speech&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;RL&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike prior semantic token learning works that distill self-supervised speech representations (which are often more phonetic), Voxtral distills from a supervised ASR model to yield more effective and semantically rich representations.&quot;,
+      &quot;While existing hierarchical generators often use depth-wise autoregressive acoustic generation, Voxtral TTS uses a flow-matching model for conditional continuous acoustic generation, which is shown to be more effective.&quot;,
+      &quot;The Flow-Matching Transformer used for acoustic token generation is demonstrated to be superior in quality, compute, and latency compared to alternative architectures like MaskGIT and Depth Transformer.&quot;,
+      &quot;Voxtral Codec outperforms existing baselines such as Mimi codec on all objective metrics for speech quality and intelligibility at comparable bitrates.&quot;,
+      &quot;The adaptation of Direct Preference Optimization (DPO) to a hybrid discrete-continuous TTS setting is a novel approach compared to its traditional application in language models.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;Automated metrics like UTMOS were found to be loose proxies for naturalness and expressivity, poorly calibrated across languages, and weakly correlated with human preference.&quot;,
+      &quot;Higher values of the Classifier-Free Guidance (CFG) scale ($\\alpha$) during inference can lead to over-adherence to the provided voice prompt, causing the model to fail in biasing towards implicit emotions from the text prompt.&quot;,
+      &quot;Training the Direct Preference Optimization (DPO) model for longer durations on synthetic data was observed to result in more robotic-sounding speech.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;ASR Distillation Loss&quot;,
+        &quot;value&quot;: &quot;$ L_{\\text{ASR}} = 1 - \\frac{1}{L} \\sum_{l=1}^{L} \\frac{\\tilde{z}_l \\cdot h_l}{\\|\\tilde{z}_l\\| \\|h_l\\|} $, where $ \\tilde{z}_l = \\sum_{f=1}^{F} A_{l,f} z_f $. This loss aligns projected post-VQ semantic embeddings ($z_f$) from the Voxtral Codec with the last-layer decoder hidden states ($h_l$) from a frozen Whisper ASR model using a cosine distance and a soft alignment matrix $A$ derived from Whisper&#39;s cross-attention weights.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Feature Matching Loss&quot;,
+        &quot;value&quot;: &quot;$ L_{\\text{feature}}(\\text{x}, \\hat{\\text{x}}) = \\frac{1}{MN} \\sum_{m=1}^{M} \\sum_{n=1}^{N} \\|D^m_n(\\text{x}) - D^m_n(\\hat{\\text{x}})\\|_1 $. This $L_1$-based loss is computed on the activations of every layer of a multi-resolution discriminator ($D^m_n$), providing a discriminative reconstruction signal during adversarial training, replacing the standard GAN generator loss.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Conditional Flow-Matching Objective&quot;,
+        &quot;value&quot;: &quot;$ L_{\\text{acoustic}} = E_{t \\sim U[0,1], x_0 \\sim D, x_1 \\sim N(0,1)} \\|v_\\theta(x_t, t) - u_t(x_t|x_1, x_0)\\|_2^2 $ with $ u_t(x_t|x_1, x_0) = x_1 - x_0 $. This objective is used to train the flow-matching transformer to predict the velocity field ($v_\\theta$) that transports Gaussian noise ($x_0$) to acoustic embeddings ($x_1$), conditioning on the decoder backbone&#39;s hidden state.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Direct Preference Optimization (DPO)&quot;,
+        &quot;value&quot;: &quot;$ L(\\theta) = -E_{t \\sim U(0,1), x^w, x^l} \\log \\sigma \\left( \\beta \\left( \\Delta_\\theta(x^w, x^l, t) - \\Delta_{\\theta_{\\text{ref}}}(x^w, x^l, t) \\right) \\right) $, where $ \\Delta_{\\theta}(x^w, x^l, t) = \\sum_{i=1}^{N_w} \\|v_\\theta(x^w_i, t_i, t_i) - u^w_{i, t_i}\\|_2^2 - \\sum_{i=1}^{N_l} \\|v_\\theta(x^l_i, t_i, t_i) - u^l_{i, t_i}\\|_2^2 $. This objective is adapted for the hybrid discrete-continuous setting to post-train the model, focusing on improving WER and speaker similarity for both semantic (standard DPO) and acoustic (flow-based DPO) codebooks.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;A voice reference (3-30 seconds) is processed by the Voxtral Codec encoder to extract semantic and acoustic audio tokens at a frame rate of 12.5 Hz.&quot;,
+      &quot;The extracted audio tokens and the text prompt tokens are fed as input to the decoder backbone.&quot;,
+      &quot;The decoder backbone, an auto-regressive transformer, generates a sequence of semantic tokens until an End of Audio (&lt;EOA&gt;) token is produced.&quot;,
+      &quot;At each timestep, the semantic token from the decoder backbone is used to condition a flow-matching transformer, which predicts the corresponding acoustic tokens.&quot;,
+      &quot;The generated semantic and acoustic tokens are then fed to the Voxtral Codec decoder to reconstruct the high-fidelity audio waveform.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Input&quot;,
+        &quot;value&quot;: &quot;A short voice reference audio (as little as 3 seconds) and a text prompt.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Output&quot;,
+        &quot;value&quot;: &quot;Natural, expressive, and intelligible speech in the voice of the reference audio, matching the text prompt, in a multilingual zero-shot setting.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The model weights for Voxtral TTS are released under a CC BY-NC license, supporting further research and development.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;A convolutional-transformer autoencoder compressing raw 24 kHz mono waveforms into 12.5 Hz frames, producing 37 discrete tokens (1 semantic + 36 acoustic), achieving 2.14 kbps. It utilizes a split semantic VQ codebook (8192 entries) and acoustic FSQ codebooks (36 dimensions with 21 levels).&quot;,
+        &quot;name&quot;: &quot;Voxtral Codec&quot;,
+        &quot;role&quot;: &quot;Speech tokenizer and encoder/decoder&quot;
+      },
+      {
+        &quot;details&quot;: &quot;An auto-regressive decoder-only transformer, following the Ministral 3B architecture. It takes voice reference audio tokens and text tokens as input and auto-regressively generates a sequence of semantic tokens. It includes embedding lookup tables for semantic and acoustic tokens.&quot;,
+        &quot;name&quot;: &quot;Decoder Backbone&quot;,
+        &quot;role&quot;: &quot;Auto-regressive semantic token generator&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A bidirectional 3-layer transformer that operates independently for each generation step. It models a continuous velocity field to transport Gaussian noise to acoustic embeddings, conditioning on the decoder&#39;s hidden state. It discretizes its float-valued outputs to 21 FSQ levels.&quot;,
+        &quot;name&quot;: &quot;Flow-Matching Transformer&quot;,
+        &quot;role&quot;: &quot;Acoustic token predictor&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A multi-resolution discriminator with 8 STFT sizes. It is trained as a binary classifier between real and reconstructed audios using a hinge loss and an L1-based feature-matching loss on layer activations to provide a discriminative reconstruction signal.&quot;,
+        &quot;name&quot;: &quot;Adversarial Discriminator&quot;,
+        &quot;role&quot;: &quot;Provides adversarial training signal for the codec&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;Voxtral TTS is an expressive multilingual text-to-speech model that generates natural speech from short audio references by combining an auto-regressive semantic token generator with a flow-matching acoustic token generator, leveraging a novel speech tokenizer (Voxtral Codec) and Direct Preference Optimization for improved quality and expressivity, achieving state-of-the-art human preference and efficient production deployment.&quot;,
+  &quot;title&quot;: &quot;Voxtral TTS&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2603.25551&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2603.25551&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2603.25551&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:105,&quot;xmin&quot;:229,&quot;ymax&quot;:459,&quot;xmax&quot;:770},&quot;caption&quot;:&quot;Figure 2: Architecture overview of Voxtral TTS. A voice reference ranging from 3s-30s is fed to the Voxtral Codec encoder to obtain audio tokens at a frame rate of 12.5 Hz. Each audio frame (labeled A) consists of a semantic token and acoustic tokens. The voice reference audio tokens along with the text prompt tokens (labeled T) are fed to the decoder backbone. The decoder auto-regressively generates a sequence of semantic tokens until it reaches a special End of Audio token (&lt;EOA&gt;). At each timestep, the semantic token from the decoder backbone is fed to a flow-matching transformer, which is run multiple times to predict the acoustic tokens. The semantic and acoustic tokens are fed to the Voxtral Codec decoder to obtain the generated waveform.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:2},&quot;authors&quot;:&quot;Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon, Jaeyoung Kim, John Harvill, Khyathi Raghavi Chandu, Lorenzo Signoretti, Margaret Jennings, Patrick von Platen, Pavankumar Reddy Muddireddy, Rohin Arora, Sanchit Gandhi, Samuel Humeau, Soham Ghosh, Srijan Mishra, Van Phung&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper presents a robust and well-engineered multilingual zero-shot TTS system with a novel hybrid architecture (auto-regressive semantics + flow-matching acoustics) and a custom-designed codec. It demonstrates significant improvements in human evaluations over strong baselines like ElevenLabs Flash v2.5 for voice cloning, and achieves production-ready performance with low latency and high throughput. The adaptation of DPO for this discrete-continuous setting is a strong contribution. While not a paradigm shift, it represents a substantial advancement in practical, high-quality TTS.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Existing TTS systems often struggle to model rich acoustic variation effectively in an autoregressive manner, or require external aligners for semantic token learning, which can hinder the naturalness and expressivity of synthesized speech.&quot;,&quot;statement&quot;:&quot;Generating natural and expressive text-to-speech, particularly for multilingual zero-shot voice cloning, while maintaining strong intelligibility and accurately capturing speech nuances and expressivity from short audio references.&quot;,&quot;whyItMatters&quot;:[&quot;Enables more flexible human-computer interactions.&quot;,&quot;Improves applications such as virtual assistants, audiobooks, and accessibility tools.&quot;,&quot;Facilitates the creation of diverse and expressive synthetic voices for a global audience.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Voxtral TTS significantly outperforms ElevenLabs Flash v2.5 in human evaluations for multilingual zero-shot voice cloning, achieving an overall 68.4% win rate.&quot;,&quot;The model demonstrates competitive performance against strong proprietary systems like ElevenLabs v3 and Gemini 2.5 Flash TTS in flagship-voice evaluations across various emotion steering settings.&quot;,&quot;Direct Preference Optimization (DPO) post-training generally improves objective metrics like Word Error Rate (WER) and UTMOS, while qualitatively reducing hallucinations and improving volume consistency.&quot;,&quot;CUDA graph acceleration for the flow-matching transformer reduces latency by 47% and improves Real-Time Factor (RTF) by 2.5x, enabling production-ready performance.&quot;,&quot;The system achieves high inference throughput (12x increase in characters/second/GPU) and sub-second time to first audio with asynchronous chunked streaming, supporting over 30 concurrent users on a single H200 GPU.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Expresso dataset (for codec evaluation)&quot;,&quot;SEED-TTS&quot;,&quot;MiniMax-TTS&quot;,&quot;ElevenLabs v3&quot;,&quot;ElevenLabs Flash v2.5&quot;,&quot;Human evaluations (Flagship voices: explicit/implicit steering, Zero-shot voice cloning)&quot;],&quot;metrics&quot;:[&quot;Mel distance (\\text{Mel}) \\downarrow&quot;,&quot;STFT distance (\\text{STFT}) \\downarrow&quot;,&quot;Perceptual Evaluation of Speech Quality (PESQ) \\uparrow&quot;,&quot;Extended Short-Time Objective Intelligibility (ESTOI) \\uparrow&quot;,&quot;ASR-WER (\\%) \\downarrow&quot;,&quot;Speaker Similarity (\\text{Speaker Sim}) \\uparrow&quot;,&quot;Word Error Rate (WER) (\\%) \\downarrow&quot;,&quot;UTMOS \\uparrow&quot;,&quot;Voxtral TTS Win Rate (\\%)&quot;],&quot;setting&quot;:&quot;Multilingual zero-shot voice cloning and text-to-speech with DPO post-training and an optimized codec.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:583,&quot;xmin&quot;:284,&quot;ymax&quot;:702,&quot;xmax&quot;:794},&quot;caption&quot;:&quot;Figure 1: Voxtral TTS is preferred to ElevenLabs Flash v2.5 in human evaluations. We plot the win rate for Voxtral TTS against ElevenLabs Flash v2.5 in human evaluations across two categories. For flagship voices, we use the default voices for each model and 77 unique text examples. In the voice cloning set-up, we provide a short audio reference clip and 60 text prompts. In both categories, human annotators blindly rate which audio is better between the two models. Voxtral TTS is preferred in 58.3 and 68.4% of instances.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:0},{&quot;boundingBox&quot;:{&quot;ymin&quot;:517,&quot;xmin&quot;:229,&quot;ymax&quot;:842,&quot;xmax&quot;:770},&quot;caption&quot;:&quot;Figure 3: Architecture overview and training of Voxtral Codec. It consists of a split semantic VQ codebook and acoustic FSQ codebooks. Both semantic and acoustic tokens are combined for reconstruction. The semantic token has an additional distillation loss from a supervised ASR model.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:2},{&quot;boundingBox&quot;:{&quot;ymin&quot;:98,&quot;xmin&quot;:279,&quot;ymax&quot;:709,&quot;xmax&quot;:735},&quot;caption&quot;:&quot;Figure 4: Effect of NFEs and CFG on automatic evaluations. The metrics are averaged over SEED-TTS and the 9 languages in MiniMax. Increasing the NFEs from 2 to 8 improves speaker similarity and UTMOS metrics. There is a slight regression in WER as the NFEs is increased beyond this. The metrics monotonically increase with higher CFG, but human evaluations flagged regressions in text-adherence with high alpha.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:10}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.702&quot;,&quot;benchmark&quot;:&quot;N/A&quot;,&quot;delta&quot;:&quot;-0.157&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Mel&quot;,&quot;thisPaper&quot;:&quot;0.545&quot;},{&quot;baseline&quot;:&quot;1.177&quot;,&quot;benchmark&quot;:&quot;N/A&quot;,&quot;delta&quot;:&quot;-0.195&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;STFT&quot;,&quot;thisPaper&quot;:&quot;0.982&quot;},{&quot;baseline&quot;:&quot;2.07&quot;,&quot;benchmark&quot;:&quot;N/A&quot;,&quot;delta&quot;:&quot;+0.98&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;PESQ&quot;,&quot;thisPaper&quot;:&quot;3.05&quot;},{&quot;baseline&quot;:&quot;0.803&quot;,&quot;benchmark&quot;:&quot;N/A&quot;,&quot;delta&quot;:&quot;+0.079&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;ESTOI&quot;,&quot;thisPaper&quot;:&quot;0.882&quot;},{&quot;baseline&quot;:&quot;11.75&quot;,&quot;benchmark&quot;:&quot;N/A&quot;,&quot;delta&quot;:&quot;-1.09&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;ASR-WER (%)&quot;,&quot;thisPaper&quot;:&quot;10.66&quot;},{&quot;baseline&quot;:&quot;0.672&quot;,&quot;benchmark&quot;:&quot;N/A&quot;,&quot;delta&quot;:&quot;+0.171&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Speaker Sim&quot;,&quot;thisPaper&quot;:&quot;0.843&quot;}],&quot;title&quot;:&quot;Voxtral Codec Performance vs. Mimi (16cb)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Arabic&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;72.9&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Dutch&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;49.4&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;English&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;60.8&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;French&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;54.4&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;German&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;72.0&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Hindi&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;79.8&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Italian&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;57.1&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Portuguese&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;74.4&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Spanish&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;87.8&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Overall&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Voxtral TTS Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;68.4&quot;}],&quot;title&quot;:&quot;Zero-Shot Voice Cloning Win Rates (vs. ElevenLabs Flash v2.5)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;2.80&quot;,&quot;benchmark&quot;:&quot;Arabic&quot;,&quot;delta&quot;:&quot;-0.12&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;WER (%)&quot;,&quot;thisPaper&quot;:&quot;2.68&quot;},{&quot;baseline&quot;:&quot;3.01&quot;,&quot;benchmark&quot;:&quot;Arabic&quot;,&quot;delta&quot;:&quot;+0.06&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;UTMOS&quot;,&quot;thisPaper&quot;:&quot;3.07&quot;},{&quot;baseline&quot;:&quot;4.08&quot;,&quot;benchmark&quot;:&quot;German&quot;,&quot;delta&quot;:&quot;-3.25&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;WER (%)&quot;,&quot;thisPaper&quot;:&quot;0.83&quot;},{&quot;baseline&quot;:&quot;3.05&quot;,&quot;benchmark&quot;:&quot;German&quot;,&quot;delta&quot;:&quot;+0.07&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;UTMOS&quot;,&quot;thisPaper&quot;:&quot;3.12&quot;},{&quot;baseline&quot;:&quot;3.39&quot;,&quot;benchmark&quot;:&quot;Hindi&quot;,&quot;delta&quot;:&quot;+1.61&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;WER (%)&quot;,&quot;thisPaper&quot;:&quot;4.99&quot;},{&quot;baseline&quot;:&quot;3.43&quot;,&quot;benchmark&quot;:&quot;Hindi&quot;,&quot;delta&quot;:&quot;+0.13&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;UTMOS&quot;,&quot;thisPaper&quot;:&quot;3.56&quot;},{&quot;baseline&quot;:&quot;1.58&quot;,&quot;benchmark&quot;:&quot;Seed TTS&quot;,&quot;delta&quot;:&quot;-0.35&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;WER (%)&quot;,&quot;thisPaper&quot;:&quot;1.23&quot;},{&quot;baseline&quot;:&quot;4.07&quot;,&quot;benchmark&quot;:&quot;Seed TTS&quot;,&quot;delta&quot;:&quot;+0.04&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;UTMOS&quot;,&quot;thisPaper&quot;:&quot;4.11&quot;}],&quot;title&quot;:&quot;DPO Effect on WER and UTMOS&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;133 ms&quot;,&quot;benchmark&quot;:&quot;N/A&quot;,&quot;delta&quot;:&quot;-63 ms&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Latency&quot;,&quot;thisPaper&quot;:&quot;70 ms&quot;},{&quot;baseline&quot;:&quot;0.258&quot;,&quot;benchmark&quot;:&quot;N/A&quot;,&quot;delta&quot;:&quot;-0.155&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RTF&quot;,&quot;thisPaper&quot;:&quot;0.103&quot;}],&quot;title&quot;:&quot;CUDA Graph Acceleration for Flow-Matching Transformer&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;119.14&quot;,&quot;benchmark&quot;:&quot;Concurrency 1&quot;,&quot;delta&quot;:&quot;+1311.64&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (char/s/GPU)&quot;,&quot;thisPaper&quot;:&quot;1430.78&quot;},{&quot;baseline&quot;:&quot;0.103&quot;,&quot;benchmark&quot;:&quot;Concurrency 1&quot;,&quot;delta&quot;:&quot;+0.199&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;RTF&quot;,&quot;thisPaper&quot;:&quot;0.302&quot;}],&quot;title&quot;:&quot;Serving Performance on NVIDIA H200 (Concurrency 32)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Voxtral Codec outperforms the Mimi codec on objective metrics, demonstrating superior reconstruction quality and intelligibility at similar bitrates.&quot;,&quot;Voxtral TTS achieves strong preference in human evaluations for multilingual zero-shot voice cloning, significantly surpassing ElevenLabs Flash v2.5 across multiple languages.&quot;,&quot;The adapted Direct Preference Optimization effectively enhances speech quality, reducing artifacts and improving consistency in pretrained models.&quot;,&quot;The combination of CUDA graph acceleration and asynchronous chunked streaming enables Voxtral TTS to achieve sub-second first-audio latency and high throughput, making it suitable for production environments.&quot;,&quot;The hybrid architecture, combining auto-regressive generation for semantic tokens and flow-matching for acoustic tokens, provides a robust and expressive TTS system.&quot;]},&quot;institutions&quot;:&quot;Mistral AI&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Voxtral TTS introduces a representation-aware hybrid architecture that combines auto-regressive generation for semantic speech tokens (ensuring long-range consistency) with a lightweight flow-matching model for acoustic tokens (modeling rich acoustic detail with conditional continuous generation).&quot;,&quot;The system utilizes Voxtral Codec, a novel low-bitrate speech tokenizer trained from scratch. This codec employs ASR-distilled semantic tokens and Finite Scalar Quantized (FSQ) acoustic tokens, providing effective and text-aligned semantic representations without external forced aligners.&quot;,&quot;Direct Preference Optimization (DPO) is adapted to the hybrid discrete-continuous TTS setting, combining preference objectives for both semantic token generation and flow-based acoustic prediction to improve word error rate and speaker similarity.&quot;,&quot;The Flow-Matching Transformer for acoustic token prediction offers superior quality, compute, and latency compared to alternative architectures like MaskGIT and Depth Transformer for this task.&quot;,&quot;The system is optimized for inference through CUDA Graph acceleration and an asynchronous chunked streaming protocol, enabling low-latency and high-throughput serving for real-time applications.&quot;],&quot;main&quot;:&quot;A multilingual zero-shot TTS system with a novel hybrid architecture (auto-regressive semantic tokens + flow-matching acoustic tokens), a custom speech tokenizer (Voxtral Codec), and adapted Direct Preference Optimization, achieving state-of-the-art performance in human evaluations and production-ready inference.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A novel convolutional-transformer autoencoder that compresses 24 kHz mono waveforms into 12.5 Hz frames of 37 discrete tokens (1 semantic + 36 acoustic), achieving a total bitrate of 2.14 kbps. It uses a split semantic VQ codebook and acoustic FSQ codebooks.&quot;,&quot;term&quot;:&quot;Voxtral Codec&quot;},{&quot;definition&quot;:&quot;Low-bitrate representations of speech content, learned by distilling information from a supervised ASR model, which helps ensure they are text-aligned and semantically rich.&quot;,&quot;term&quot;:&quot;Semantic Tokens&quot;},{&quot;definition&quot;:&quot;Higher-rate representations of acoustic variations, quantized using Finite Scalar Quantization (FSQ), which capture the finer details of speech. These are predicted by a flow-matching transformer.&quot;,&quot;term&quot;:&quot;Acoustic Tokens&quot;},{&quot;definition&quot;:&quot;A model based on conditional flow matching that generates acoustic tokens by modeling a continuous velocity field, efficiently transporting Gaussian noise to the target acoustic embeddings. It operates independently for each generation step in the decoder backbone.&quot;,&quot;term&quot;:&quot;Flow-Matching Transformer&quot;}],&quot;prerequisites&quot;:[&quot;Text-to-Speech (TTS) systems&quot;,&quot;Zero-shot Voice Cloning&quot;,&quot;Auto-regressive models&quot;,&quot;Flow-matching models&quot;,&quot;Vector Quantization (VQ)&quot;,&quot;Finite Scalar Quantization (FSQ)&quot;,&quot;Direct Preference Optimization (DPO)&quot;,&quot;Automatic Speech Recognition (ASR) models&quot;,&quot;Transformer neural network architecture&quot;]},&quot;subTopics&quot;:[&quot;Zero-shot Voice Cloning&quot;,&quot;Multilingual Speech Synthesis&quot;,&quot;Flow-Matching for Audio Generation&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Speech&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;RL&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike prior semantic token learning works that distill self-supervised speech representations (which are often more phonetic), Voxtral distills from a supervised ASR model to yield more effective and semantically rich representations.&quot;,&quot;While existing hierarchical generators often use depth-wise autoregressive acoustic generation, Voxtral TTS uses a flow-matching model for conditional continuous acoustic generation, which is shown to be more effective.&quot;,&quot;The Flow-Matching Transformer used for acoustic token generation is demonstrated to be superior in quality, compute, and latency compared to alternative architectures like MaskGIT and Depth Transformer.&quot;,&quot;Voxtral Codec outperforms existing baselines such as Mimi codec on all objective metrics for speech quality and intelligibility at comparable bitrates.&quot;,&quot;The adaptation of Direct Preference Optimization (DPO) to a hybrid discrete-continuous TTS setting is a novel approach compared to its traditional application in language models.&quot;],&quot;limitations&quot;:[&quot;Automated metrics like UTMOS were found to be loose proxies for naturalness and expressivity, poorly calibrated across languages, and weakly correlated with human preference.&quot;,&quot;Higher values of the Classifier-Free Guidance (CFG) scale ($\\alpha$) during inference can lead to over-adherence to the provided voice prompt, causing the model to fail in biasing towards implicit emotions from the text prompt.&quot;,&quot;Training the Direct Preference Optimization (DPO) model for longer durations on synthetic data was observed to result in more robotic-sounding speech.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;ASR Distillation Loss&quot;,&quot;value&quot;:&quot;$ L_{\\text{ASR}} = 1 - \\frac{1}{L} \\sum_{l=1}^{L} \\frac{\\tilde{z}_l \\cdot h_l}{\\|\\tilde{z}_l\\| \\|h_l\\|} $, where $ \\tilde{z}_l = \\sum_{f=1}^{F} A_{l,f} z_f $. This loss aligns projected post-VQ semantic embeddings ($z_f$) from the Voxtral Codec with the last-layer decoder hidden states ($h_l$) from a frozen Whisper ASR model using a cosine distance and a soft alignment matrix $A$ derived from Whisper&#39;s cross-attention weights.&quot;},{&quot;label&quot;:&quot;Feature Matching Loss&quot;,&quot;value&quot;:&quot;$ L_{\\text{feature}}(\\text{x}, \\hat{\\text{x}}) = \\frac{1}{MN} \\sum_{m=1}^{M} \\sum_{n=1}^{N} \\|D^m_n(\\text{x}) - D^m_n(\\hat{\\text{x}})\\|_1 $. This $L_1$-based loss is computed on the activations of every layer of a multi-resolution discriminator ($D^m_n$), providing a discriminative reconstruction signal during adversarial training, replacing the standard GAN generator loss.&quot;},{&quot;label&quot;:&quot;Conditional Flow-Matching Objective&quot;,&quot;value&quot;:&quot;$ L_{\\text{acoustic}} = E_{t \\sim U[0,1], x_0 \\sim D, x_1 \\sim N(0,1)} \\|v_\\theta(x_t, t) - u_t(x_t|x_1, x_0)\\|_2^2 $ with $ u_t(x_t|x_1, x_0) = x_1 - x_0 $. This objective is used to train the flow-matching transformer to predict the velocity field ($v_\\theta$) that transports Gaussian noise ($x_0$) to acoustic embeddings ($x_1$), conditioning on the decoder backbone&#39;s hidden state.&quot;},{&quot;label&quot;:&quot;Direct Preference Optimization (DPO)&quot;,&quot;value&quot;:&quot;$ L(\\theta) = -E_{t \\sim U(0,1), x^w, x^l} \\log \\sigma \\left( \\beta \\left( \\Delta_\\theta(x^w, x^l, t) - \\Delta_{\\theta_{\\text{ref}}}(x^w, x^l, t) \\right) \\right) $, where $ \\Delta_{\\theta}(x^w, x^l, t) = \\sum_{i=1}^{N_w} \\|v_\\theta(x^w_i, t_i, t_i) - u^w_{i, t_i}\\|_2^2 - \\sum_{i=1}^{N_l} \\|v_\\theta(x^l_i, t_i, t_i) - u^l_{i, t_i}\\|_2^2 $. This objective is adapted for the hybrid discrete-continuous setting to post-train the model, focusing on improving WER and speaker similarity for both semantic (standard DPO) and acoustic (flow-based DPO) codebooks.&quot;}],&quot;pipelineFlow&quot;:[&quot;A voice reference (3-30 seconds) is processed by the Voxtral Codec encoder to extract semantic and acoustic audio tokens at a frame rate of 12.5 Hz.&quot;,&quot;The extracted audio tokens and the text prompt tokens are fed as input to the decoder backbone.&quot;,&quot;The decoder backbone, an auto-regressive transformer, generates a sequence of semantic tokens until an End of Audio (&lt;EOA&gt;) token is produced.&quot;,&quot;At each timestep, the semantic token from the decoder backbone is used to condition a flow-matching transformer, which predicts the corresponding acoustic tokens.&quot;,&quot;The generated semantic and acoustic tokens are then fed to the Voxtral Codec decoder to reconstruct the high-fidelity audio waveform.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Input&quot;,&quot;value&quot;:&quot;A short voice reference audio (as little as 3 seconds) and a text prompt.&quot;},{&quot;label&quot;:&quot;Output&quot;,&quot;value&quot;:&quot;Natural, expressive, and intelligible speech in the voice of the reference audio, matching the text prompt, in a multilingual zero-shot setting.&quot;}],&quot;reproducibility&quot;:&quot;The model weights for Voxtral TTS are released under a CC BY-NC license, supporting further research and development.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;A convolutional-transformer autoencoder compressing raw 24 kHz mono waveforms into 12.5 Hz frames, producing 37 discrete tokens (1 semantic + 36 acoustic), achieving 2.14 kbps. It utilizes a split semantic VQ codebook (8192 entries) and acoustic FSQ codebooks (36 dimensions with 21 levels).&quot;,&quot;name&quot;:&quot;Voxtral Codec&quot;,&quot;role&quot;:&quot;Speech tokenizer and encoder/decoder&quot;},{&quot;details&quot;:&quot;An auto-regressive decoder-only transformer, following the Ministral 3B architecture. It takes voice reference audio tokens and text tokens as input and auto-regressively generates a sequence of semantic tokens. It includes embedding lookup tables for semantic and acoustic tokens.&quot;,&quot;name&quot;:&quot;Decoder Backbone&quot;,&quot;role&quot;:&quot;Auto-regressive semantic token generator&quot;},{&quot;details&quot;:&quot;A bidirectional 3-layer transformer that operates independently for each generation step. It models a continuous velocity field to transport Gaussian noise to acoustic embeddings, conditioning on the decoder&#39;s hidden state. It discretizes its float-valued outputs to 21 FSQ levels.&quot;,&quot;name&quot;:&quot;Flow-Matching Transformer&quot;,&quot;role&quot;:&quot;Acoustic token predictor&quot;},{&quot;details&quot;:&quot;A multi-resolution discriminator with 8 STFT sizes. It is trained as a binary classifier between real and reconstructed audios using a hinge loss and an L1-based feature-matching loss on layer activations to provide a discriminative reconstruction signal.&quot;,&quot;name&quot;:&quot;Adversarial Discriminator&quot;,&quot;role&quot;:&quot;Provides adversarial training signal for the codec&quot;}]},&quot;thesis&quot;:&quot;Voxtral TTS is an expressive multilingual text-to-speech model that generates natural speech from short audio references by combining an auto-regressive semantic token generator with a flow-matching acoustic token generator, leveraging a novel speech tokenizer (Voxtral Codec) and Direct Preference Optimization for improved quality and expressivity, achieving state-of-the-art human preference and efficient production deployment.&quot;,&quot;title&quot;:&quot;Voxtral TTS&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2603.25551&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

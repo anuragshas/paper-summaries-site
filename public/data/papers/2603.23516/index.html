@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens</h1>
+      <p class="meta"><strong>Authors:</strong> Yu Chen, Runkai Chen, Sheng Yi, Xinda Zhao, Xiaohong Li, Jianjin Zhang, Jun Sun, Chuanrui Hu, Yunyun Han, Lidong Bing, Yafeng Deng, Tianqiao Chen</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2603.23516" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2603.23516</a></p>
+      <p class="muted">Generated summary artifact for 2603.23516</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Memory Sparse Attention (MSA) provides a scalable foundation for general-purpose LLMs to acquire intrinsic, lifetime-scale memory by offering an end-to-end trainable framework with linear complexity that efficiently processes up to 100M tokens with minimal performance degradation, thereby decoupling memory capacity from reasoning capabilities.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Large Language Models (LLMs) are fundamentally constrained by their full-attention architectures, limiting their effective context length and hindering their ability to process lifetime-scale information efficiently and without significant performance degradation.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>MSA (Memory Sparse Attention): An end-to-end trainable, scalable sparse attention framework that integrates sparse attention with document-wise RoPE, KV-cache compression, and Memory Interleave to achieve lifetime-scale memory in LLMs with linear complexity and minimal degradation.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>MSA achieves state-of-the-art performance on a comprehensive suite of nine question answering benchmarks, demonstrating consistent superiority over retrieval-augmented generation (RAG) baselines built on the same Qwen3-4B-Instruct backbone, with average improvements of 16.0%, 11.5%, and 14.8% over standard RAG, RAG with reranking, and HippoRAG2, respectively.</li><li>When compared against best-of-breed RAG systems, MSA achieves top performance on four out of nine datasets and maintains a competitive average score.</li><li>MSA demonstrates exceptional stability on the &#39;Needle-In-A-Haystack&#39; (NIAH) benchmark, retaining 94.84% accuracy at 1M tokens with only a 3.93-percentage-point degradation from 32K tokens, while baseline LLMs and external memory systems suffer catastrophic degradation at this scale.</li><li>Ablation studies confirm the critical impact of curriculum learning (7.6% average gain), memory interleave (5.3% average gain), continual pre-training (31.3% average gain), and original document text integration (37.1% average gain) on MSA&#39;s performance.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>MSA consistently outperforms both same-backbone and best-of-breed RAG systems on long-context QA tasks by a significant margin.</li><li>MSA exhibits exceptional robustness and stability in extreme long-context settings (100M tokens), with minimal performance degradation, unlike other LLMs and memory agents that suffer catastrophic drops.</li><li>The proposed components—curriculum learning, memory interleave, continual pre-training, and original text integration—are all crucial for MSA&#39;s high performance and scalability, as demonstrated by ablation studies.</li><li>MSA achieves near-linear computational complexity during both training and inference, making it efficient for massive memory scaling.</li><li>The tiered memory storage strategy, with GPU-resident routing keys and CPU-offloaded content KVs, enables 100M-token inference on practical hardware setups (e.g., 2 NVIDIA A800 GPUs).</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>While MSA enhances intrinsic latent-state memory for long textual contexts, it remains limited when tasks require modeling strong and tightly coupled dependencies across multiple documents.</li><li>In scenarios where evidence is distributed and highly interlinked across sources, the method struggles to maintain accurate structural alignment purely through intrinsic memory.</li><li>The effectiveness of Memory Interleave depends on more efficient and principled designs that better preserve inter-document relationships, suggesting room for improvement in complex relational reasoning.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 427,
+      &quot;xmin&quot;: 213,
+      &quot;ymax&quot;: 639,
+      &quot;xmax&quot;: 796
+    },
+    &quot;caption&quot;: &quot;Memory Sparse Attention layer. MSA integrates topk selection with sparse attention, achieving strong scalability while remaining differentiable. This design enables end-to-end training, yet allows the documents to be decoupled at inference time, thereby providing robust extrapolation capability. MSA demonstrates exceptional scalability on the MS MARCO dataset, sustaining consistent performance with less than 9% degradation across an unprecedented memory context range from 16K to 100M tokens. Some curves terminate prematurely due to context length limitations.&quot;,
+    &quot;figureNumber&quot;: 2,
+    &quot;pageIndex&quot;: 5
+  },
+  &quot;authors&quot;: &quot;Yu Chen, Runkai Chen, Sheng Yi, Xinda Zhao, Xiaohong Li, Jianjin Zhang, Jun Sun, Chuanrui Hu, Yunyun Han, Lidong Bing, Yafeng Deng, Tianqiao Chen&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper presents a novel, end-to-end trainable Memory Sparse Attention (MSA) framework that addresses the critical challenge of scaling LLMs to lifetime-scale memory contexts (up to 100M tokens) while maintaining high precision and computational efficiency. Its core innovations, including document-wise RoPE, KV-cache compression, and Memory Interleave, enable near-linear complexity and minimal performance degradation, significantly outperforming existing LLMs and RAG systems on long-context QA and Needle-In-A-Haystack benchmarks. The ability to decouple memory capacity from reasoning and achieve SOTA results on such extreme scales marks a substantial advancement in the field.&quot;,
+    &quot;score&quot;: 8
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Existing LLMs struggle with scenarios like large-corpus summarization, maintaining consistent personas in Digital Twins, and long-history agent reasoning due to their limited effective context length (typically 1M tokens), often leading to severe precision degradation or increasing latency when attempting to scale.&quot;,
+    &quot;statement&quot;: &quot;Large Language Models (LLMs) are fundamentally constrained by their full-attention architectures, limiting their effective context length and hindering their ability to process lifetime-scale information efficiently and without significant performance degradation.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Enabling AI to process lifetime-scale information, reaching hundreds of millions of tokens, is crucial for human-level intelligence.&quot;,
+      &quot;Current limitations impede complex applications requiring extensive context, such as large-corpus summarization, Digital Twins with stable personas, and long-history agent reasoning.&quot;,
+      &quot;Bridging the gap towards human-scale memory capacity (estimated 200-300 million tokens) is essential for advancing general-purpose AI models.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;MSA achieves state-of-the-art performance on a comprehensive suite of nine question answering benchmarks, demonstrating consistent superiority over retrieval-augmented generation (RAG) baselines built on the same Qwen3-4B-Instruct backbone, with average improvements of 16.0%, 11.5%, and 14.8% over standard RAG, RAG with reranking, and HippoRAG2, respectively.&quot;,
+    &quot;When compared against best-of-breed RAG systems, MSA achieves top performance on four out of nine datasets and maintains a competitive average score.&quot;,
+    &quot;MSA demonstrates exceptional stability on the &#39;Needle-In-A-Haystack&#39; (NIAH) benchmark, retaining 94.84% accuracy at 1M tokens with only a 3.93-percentage-point degradation from 32K tokens, while baseline LLMs and external memory systems suffer catastrophic degradation at this scale.&quot;,
+    &quot;Ablation studies confirm the critical impact of curriculum learning (7.6% average gain), memory interleave (5.3% average gain), continual pre-training (31.3% average gain), and original document text integration (37.1% average gain) on MSA&#39;s performance.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;MS MARCO v1&quot;,
+        &quot;Natural Questions&quot;,
+        &quot;DuReader&quot;,
+        &quot;TriviaQA (10M)&quot;,
+        &quot;NarrativeQA&quot;,
+        &quot;PopQA&quot;,
+        &quot;2WikiMultiHopQA&quot;,
+        &quot;HotpotQA&quot;,
+        &quot;MuSiQue&quot;,
+        &quot;Needle-In-A-Haystack (NIAH)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;LLM judge score (scale 0-5)&quot;,
+        &quot;Accuracy&quot;
+      ],
+      &quot;setting&quot;: &quot;Long-context Question Answering (QA) and context length extrapolation (Needle-In-A-Haystack) tasks, comparing against same-backbone RAG systems, best-of-breed RAG systems, and linear attention models.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 266,
+          &quot;xmin&quot;: 185,
+          &quot;ymax&quot;: 487,
+          &quot;xmax&quot;: 820
+        },
+        &quot;caption&quot;: &quot;MSA integrates topk selection with sparse attention, achieving strong scalability while remaining differentiable. This design enables end-to-end training, yet allows the documents to be decoupled at inference time, thereby providing robust extrapolation capability. MSA demonstrates exceptional scalability on the MS MARCO dataset, sustaining consistent performance with less than 9% degradation across an unprecedented memory context range from 16K to 100M tokens. Some curves terminate prematurely due to context length limitations.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 264,
+          &quot;xmin&quot;: 185,
+          &quot;ymax&quot;: 724,
+          &quot;xmax&quot;: 819
+        },
+        &quot;caption&quot;: &quot;Results on the \&quot;Needle In A Haystack\&quot; (NIAH) evaluation across varying context lengths from 32k to 1M tokens.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 11
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;3.242&quot;,
+            &quot;benchmark&quot;: &quot;Average&quot;,
+            &quot;delta&quot;: &quot;+0.518&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;3.760&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.017&quot;,
+            &quot;benchmark&quot;: &quot;MS MARCO v1&quot;,
+            &quot;delta&quot;: &quot;+1.124&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;4.141&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.536&quot;,
+            &quot;benchmark&quot;: &quot;NarrativeQA&quot;,
+            &quot;delta&quot;: &quot;-0.141&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;3.395&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.022&quot;,
+            &quot;benchmark&quot;: &quot;HotpotQA&quot;,
+            &quot;delta&quot;: &quot;+0.039&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;4.061&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.330&quot;,
+            &quot;benchmark&quot;: &quot;2WikiMultiHopQA&quot;,
+            &quot;delta&quot;: &quot;+0.950&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;4.280&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Comparison with same-backbone RAG baselines (Qwen3-4B)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;3.580&quot;,
+            &quot;benchmark&quot;: &quot;Average&quot;,
+            &quot;delta&quot;: &quot;+0.180&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;3.760&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.028&quot;,
+            &quot;benchmark&quot;: &quot;MS MARCO v1&quot;,
+            &quot;delta&quot;: &quot;+1.113&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;4.141&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.694&quot;,
+            &quot;benchmark&quot;: &quot;Natural Questions&quot;,
+            &quot;delta&quot;: &quot;-0.149&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;3.545&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.740&quot;,
+            &quot;benchmark&quot;: &quot;TriviaQA (10M)&quot;,
+            &quot;delta&quot;: &quot;-0.119&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;4.621&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.376&quot;,
+            &quot;benchmark&quot;: &quot;PopQA&quot;,
+            &quot;delta&quot;: &quot;+0.057&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;3.433&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.225&quot;,
+            &quot;benchmark&quot;: &quot;HotpotQA&quot;,
+            &quot;delta&quot;: &quot;-0.164&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;4.061&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Comparison with SOTA RAG systems&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;3.694&quot;,
+            &quot;benchmark&quot;: &quot;MSA-S1 (Full) vs MSA-S2 (Full)&quot;,
+            &quot;delta&quot;: &quot;+0.282&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Average LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;3.976&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.694&quot;,
+            &quot;benchmark&quot;: &quot;MSA-S1 (Full) vs w/o memory interleave&quot;,
+            &quot;delta&quot;: &quot;-0.197&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Average LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;3.497&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.694&quot;,
+            &quot;benchmark&quot;: &quot;MSA-S1 (Full) vs w/o continual pre-training&quot;,
+            &quot;delta&quot;: &quot;-1.157&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Average LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;2.537&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.694&quot;,
+            &quot;benchmark&quot;: &quot;MSA-S1 (Full) vs w/o original text&quot;,
+            &quot;delta&quot;: &quot;-1.369&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Average LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;2.325&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.197&quot;,
+            &quot;benchmark&quot;: &quot;MS MARCO v1 (MSA-S1) vs MSA-S2&quot;,
+            &quot;delta&quot;: &quot;+0.944&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;4.141&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.250&quot;,
+            &quot;benchmark&quot;: &quot;HotpotQA (w/o memory interleave) vs MSA-S1 (Full)&quot;,
+            &quot;delta&quot;: &quot;+0.770&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;4.020&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;2.289&quot;,
+            &quot;benchmark&quot;: &quot;HotpotQA (w/o continual pre-training) vs MSA-S1 (Full)&quot;,
+            &quot;delta&quot;: &quot;+1.731&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Judge Score&quot;,
+            &quot;thisPaper&quot;: &quot;4.020&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Ablation Study on QA Benchmarks&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;MSA consistently outperforms both same-backbone and best-of-breed RAG systems on long-context QA tasks by a significant margin.&quot;,
+      &quot;MSA exhibits exceptional robustness and stability in extreme long-context settings (100M tokens), with minimal performance degradation, unlike other LLMs and memory agents that suffer catastrophic drops.&quot;,
+      &quot;The proposed components—curriculum learning, memory interleave, continual pre-training, and original text integration—are all crucial for MSA&#39;s high performance and scalability, as demonstrated by ablation studies.&quot;,
+      &quot;MSA achieves near-linear computational complexity during both training and inference, making it efficient for massive memory scaling.&quot;,
+      &quot;The tiered memory storage strategy, with GPU-resident routing keys and CPU-offloaded content KVs, enables 100M-token inference on practical hardware setups (e.g., 2 NVIDIA A800 GPUs).&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Evermind, Shanda Group, Peking University&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;MSA introduces a scalable sparse attention architecture with a document-wise Rotary Positional Embedding (RoPE). This extends intrinsic LLM memory while preserving representational alignment, achieving near-linear inference cost and less than 9% degradation when scaling from 16K to 100M tokens.&quot;,
+      &quot;KV cache compression is employed to reduce memory footprint and latency. Combined with Memory Parallel (a tailored optimization pipeline with GPU-resident routing keys and CPU-offloaded content KVs), it enables high-throughput processing for 100M tokens on a single 2x A800 GPU node.&quot;,
+      &quot;A Memory Interleave mechanism adaptively facilitates complex multi-hop reasoning. It iteratively synchronizes and integrates KV cache across scattered context segments, preserving cross-document dependencies and enabling robust long-range evidence integration.&quot;
+    ],
+    &quot;main&quot;: &quot;MSA (Memory Sparse Attention): An end-to-end trainable, scalable sparse attention framework that integrates sparse attention with document-wise RoPE, KV-cache compression, and Memory Interleave to achieve lifetime-scale memory in LLMs with linear complexity and minimal degradation.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A technique that uses an external knowledge store (like a database or document corpus) to retrieve relevant information that is then used to augment the input to a language model, improving its ability to generate factual and contextually rich responses.&quot;,
+        &quot;term&quot;: &quot;Retrieval-Augmented Generation (RAG)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The phenomenon where a machine learning model, when trained on new data, tends to forget previously learned information or skills. This is a significant challenge in continual learning and long-term memory systems.&quot;,
+        &quot;term&quot;: &quot;Catastrophic Forgetting&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A type of positional encoding used in Transformer models that applies a rotation matrix to query and key vectors based on their absolute positions, enabling the model to incorporate relative positional information effectively.&quot;,
+        &quot;term&quot;: &quot;Rotary Positional Embedding (RoPE)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A mechanism in transformer architectures where the model focuses on specific parts of the input sequence (or memory) rather than the entire sequence, making computation more efficient, especially for long contexts. Sparse attention specifically computes attention over a subset of key-value pairs.&quot;,
+        &quot;term&quot;: &quot;Sparse Attention&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;In transformer models, the Key (K) and Value (V) matrices are derived from input embeddings and used to compute attention scores. The KV cache stores these pre-computed keys and values for past tokens to accelerate autoregressive decoding, preventing recomputation.&quot;,
+        &quot;term&quot;: &quot;KV Cache&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Familiarity with Large Language Models (LLMs) and their transformer architectures.&quot;,
+      &quot;Understanding of attention mechanisms and their computational complexity (e.g., quadratic complexity of full attention).&quot;,
+      &quot;Basic knowledge of Retrieval-Augmented Generation (RAG) and its limitations.&quot;,
+      &quot;Concepts of pre-training and fine-tuning in LLMs.&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Long-Context LLMs&quot;,
+    &quot;Memory-Augmented Neural Networks&quot;,
+    &quot;Sparse Attention Mechanisms&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;RAG&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Memory&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Parameter-based memory methods (e.g., LoRA, CPT) lack capacity scalability, are vulnerable to catastrophic forgetting, and incur significant training overhead. MSA, being a latent state-based approach, overcomes these limitations by managing memory separately from model parameters.&quot;,
+      &quot;External Storage-Based RAG systems and MemAgent scale naturally to lifetime-sized memory banks and avoid catastrophic forgetting, but rely on discrete semantic representations, limiting end-to-end differentiability and imposing a performance ceiling. MSA offers end-to-end trainability and higher precision by operating in the model&#39;s internal latent space.&quot;,
+      &quot;Latent State-Based Memory approaches like DSA and MemGen incur prohibitive computational costs preventing scaling to 100M-token contexts. Linear attention variants (e.g., RWKV, DeltaNet) achieve $O(L)$ efficiency but suffer from bounded capacity, leading to catastrophic forgetting and precision degradation. MSA achieves $O(L)$ efficiency while maintaining high precision and scalability to 100M tokens.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;While MSA enhances intrinsic latent-state memory for long textual contexts, it remains limited when tasks require modeling strong and tightly coupled dependencies across multiple documents.&quot;,
+      &quot;In scenarios where evidence is distributed and highly interlinked across sources, the method struggles to maintain accurate structural alignment purely through intrinsic memory.&quot;,
+      &quot;The effectiveness of Memory Interleave depends on more efficient and principled designs that better preserve inter-document relationships, suggesting room for improvement in complex relational reasoning.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Sparse Attention Mechanism&quot;,
+        &quot;value&quot;: &quot;MSA replaces standard dense self-attention with a document-based retrieval sparse attention mechanism. For a document $d_i$ with hidden state $H_i$, it generates Key $K_{i,h}$, Value $V_{i,h}$, and Router Key $K^{R}_{i,h}$ using projection weights. Document chunks are compressed via mean pooling to $\\bar{K}_{i,h}$, $\\bar{V}_{i,h}$, and $\\bar{K}^{R}_{i,h}$. For a query $H_q$, a Router Q Projector generates $Q^{R}_{q,h}$. Relevance score $S_{ij}$ for chunk $j$ of document $i$ is cosine similarity between $Q^{R}_{q,h}$ and $\\bar{K}^{R}_{ij,h}$, aggregated across heads and max-pooled over tokens. Top-$k$ documents are selected based on $s_i = \\max_j S_{ij}$. Generation concatenates selected compressed $\\bar{K}$, $\\bar{V}$ with local query $K_q$, $V_q$ to form sparse context $K_{ctx}$, $V_{ctx}$, and applies Attention: $Output = Attention(Q_q, K_{ctx}, V_{ctx})$.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Document-wise and Global RoPE&quot;,
+        &quot;value&quot;: &quot;MSA uses independent RoPE for each document to decouple positional semantics from the total number of documents, enabling extrapolation to massive memory contexts after short-context training. Global RoPE is applied to the active context (user query + autoregressive generation) with position IDs offset by the number of retrieved documents, preserving causal dependency.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Auxiliary Loss for Routing&quot;,
+        &quot;value&quot;: &quot;An auxiliary loss $\\mathcal{L}_{aux}$ is introduced during continuous pre-training to supervise the layer-wise routing process. It uses a supervised contrastive objective to enforce separation between relevant and irrelevant document chunks in the latent routing space: $\\mathcal{L}_{aux} = -\\frac{1}{|P|} \\sum_{i=1}^{|P|} \\log \\frac{\\exp(s^{+}_i / \\tau)}{\\exp(s^{+}_i / \\tau) + \\sum_{j=1}^{|N|} \\exp(s^{-}_{i,j} / \\tau)}$, where $s^{+}_i$ is the relevance score for a positive pair, $s^{-}_{i,j}$ for a negative pair, and $\\tau$ is a temperature parameter.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Computational Complexity&quot;,
+        &quot;value&quot;: &quot;Training complexity: $O_{train} = O(LG) + O(ML/P) + O((M+kG/P)^2) = O(LG)$, where $L$ is memory size, $M$ is query length, $G$ is average document length, $P$ is chunk pooling size. This is dominated by $O(LG)$ when $L \\gg G$. Inference complexity per query: $O_{inference} = O(ML/P) + O(T \\cdot (M+kG/P)^2) = O(L)$, dominated by the routing term $O(ML/P)$ and scales linearly with memory size, with $T$ being answer length. Offline pre-processing $O(LG)$ is amortized.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Stage 1: Global Memory Encoding (Offline): A one-time pre-computation over the entire document corpus. For each document, the model generates standard K/V matrices and Router K Projector generates routing key matrix $\\text{K}^{\\text{R}}$. These are chunked and compressed via mean pooling into $\\bar{\\text{K}}$, $\\bar{\\text{V}}$, $\\bar{\\text{K}}^{\\text{R}}$ and cached in the memory bank, converting raw text into a structured, retrievable latent store.&quot;,
+      &quot;Stage 2: Routing and Context Assembly (Online): Upon receiving a user query, the model computes its hidden states and uses the Router Q Projector to obtain the routing query $\\text{Q}^{\\text{R}}_{\\text{q}}$. This query is matched against the cached global routing keys $\\bar{\\text{K}}^{\\text{R}}$ to calculate relevance scores and identify the Top-$k$ documents. Only the compact $\\bar{\\text{K}}$, $\\bar{\\text{V}}$ of these selected documents are loaded and concatenated with the question&#39;s local $\\text{K}_{\\text{q}}$ and $\\text{V}_{\\text{q}}$ to form the final sparse context.&quot;,
+      &quot;Stage 3: Sparse Generation (Online): The model operates autoregressively on the assembled sparse context, computing interaction between the active token&#39;s query $\\text{Q}_{\\text{q}}$ and the concatenated KV pairs to generate the final answer token by token.&quot;,
+      &quot;Memory Interleave: For multi-hop reasoning, MSA iteratively performs Routing and Context Assembly (Stage 2) and Sparse Generation (Stage 3). Retrieved documents are treated as part of the query for the next iteration. This cycle repeats until sufficient documents are accumulated for the final answer.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Goal&quot;,
+        &quot;value&quot;: &quot;Develop an end-to-end trainable, efficient, and massively scalable memory model framework for LLMs that can process lifetime-scale information (hundreds of millions of tokens) with high precision and minimal performance degradation, achieving linear computational complexity.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The paper provides implementation details for the MSA model (built on Qwen3-4B-Instruct-2507, curriculum learning strategy, hyperparameters like chunk size and top-k documents), pre-training data composition (158.95 billion tokens corpus), and details on how baselines were implemented (UltraRAG v2.0 for RAG systems). This suggests a good level of reproducibility.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Replaces standard dense self-attention with document-based retrieval sparse attention. Generates standard Key, Value, and specialized Router Key matrices for documents. Employs chunk-wise mean pooling for compression. Computes relevance scores using cosine similarity between query&#39;s routing vector and memory&#39;s compressed routing keys. Selects Top-k relevant documents and concatenates their compressed K/V with local query K/V for sparse context. Selectively applied to latter half of model&#39;s layers.&quot;,
+        &quot;name&quot;: &quot;Sparse Attention Mechanism&quot;,
+        &quot;role&quot;: &quot;Core component for efficient and scalable processing of massive memory at the latent state level.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Assigns independent Rotary Positional Embeddings (RoPE) to each document, decoupling positional semantics from the total number of documents. Applies Global RoPE to the active context (user query + generation) with an offset to preserve causal dependency.&quot;,
+        &quot;name&quot;: &quot;Parallel and Global RoPE&quot;,
+        &quot;role&quot;: &quot;Ensures robust generalization and maintains positional information across varying memory scales, enabling extrapolation to massive memory banks.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A specialized inference engine designed for extreme-length memory inference on a single node. Implements a tiered storage strategy: GPU-resident routing keys ($\\bar{\\text{K}}^{\\text{R}}$) for low-latency retrieval, and CPU-offloaded content KVs ($\\bar{\\text{K}}$, $\\bar{\\text{V}}$) fetched asynchronously after Top-k selection. Utilizes Memory-Parallel Retrieval and Distributed Scoring to enhance computational efficiency and prevent OOM errors.&quot;,
+        &quot;name&quot;: &quot;Memory Parallel&quot;,
+        &quot;role&quot;: &quot;Enables 100M tokens inference on practical hardware setups by optimizing memory capacity and computational efficiency.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;An adaptive mechanism that performs iterative routing and context assembly (Stage 2) and Sparse Generation (Stage 3). The model autoregressively generates document IDs, appends corresponding original texts to the query, and repeats the cycle until sufficient documents are accumulated for the final answer.&quot;,
+        &quot;name&quot;: &quot;Memory Interleave&quot;,
+        &quot;role&quot;: &quot;Facilitates complex multi-hop reasoning by iteratively integrating KV cache across scattered context segments and preserving cross-document dependencies.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A continuous pre-training stage on a 158.95 billion token corpus for robust retrieval capabilities, incorporating an auxiliary contrastive loss ($\\mathcal{L}_{aux}$) to supervise layer-wise routing decisions. Followed by a two-stage curriculum learning strategy for SFT on QA tasks, extending memory context length from 8k to 64k tokens.&quot;,
+        &quot;name&quot;: &quot;Training Pipeline (Continuous Pre-training &amp; Post-training)&quot;,
+        &quot;role&quot;: &quot;Endows the model with strong retrieval capabilities and improves its ability to adapt to longer dependencies and extrapolate to massive memory banks.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;Memory Sparse Attention (MSA) provides a scalable foundation for general-purpose LLMs to acquire intrinsic, lifetime-scale memory by offering an end-to-end trainable framework with linear complexity that efficiently processes up to 100M tokens with minimal performance degradation, thereby decoupling memory capacity from reasoning capabilities.&quot;,
+  &quot;title&quot;: &quot;MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2603.23516&quot;,
+  &quot;venue&quot;: &quot;NeurIPS&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2603.23516&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2603.23516&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:427,&quot;xmin&quot;:213,&quot;ymax&quot;:639,&quot;xmax&quot;:796},&quot;caption&quot;:&quot;Memory Sparse Attention layer. MSA integrates topk selection with sparse attention, achieving strong scalability while remaining differentiable. This design enables end-to-end training, yet allows the documents to be decoupled at inference time, thereby providing robust extrapolation capability. MSA demonstrates exceptional scalability on the MS MARCO dataset, sustaining consistent performance with less than 9% degradation across an unprecedented memory context range from 16K to 100M tokens. Some curves terminate prematurely due to context length limitations.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:5},&quot;authors&quot;:&quot;Yu Chen, Runkai Chen, Sheng Yi, Xinda Zhao, Xiaohong Li, Jianjin Zhang, Jun Sun, Chuanrui Hu, Yunyun Han, Lidong Bing, Yafeng Deng, Tianqiao Chen&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper presents a novel, end-to-end trainable Memory Sparse Attention (MSA) framework that addresses the critical challenge of scaling LLMs to lifetime-scale memory contexts (up to 100M tokens) while maintaining high precision and computational efficiency. Its core innovations, including document-wise RoPE, KV-cache compression, and Memory Interleave, enable near-linear complexity and minimal performance degradation, significantly outperforming existing LLMs and RAG systems on long-context QA and Needle-In-A-Haystack benchmarks. The ability to decouple memory capacity from reasoning and achieve SOTA results on such extreme scales marks a substantial advancement in the field.&quot;,&quot;score&quot;:8},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Existing LLMs struggle with scenarios like large-corpus summarization, maintaining consistent personas in Digital Twins, and long-history agent reasoning due to their limited effective context length (typically 1M tokens), often leading to severe precision degradation or increasing latency when attempting to scale.&quot;,&quot;statement&quot;:&quot;Large Language Models (LLMs) are fundamentally constrained by their full-attention architectures, limiting their effective context length and hindering their ability to process lifetime-scale information efficiently and without significant performance degradation.&quot;,&quot;whyItMatters&quot;:[&quot;Enabling AI to process lifetime-scale information, reaching hundreds of millions of tokens, is crucial for human-level intelligence.&quot;,&quot;Current limitations impede complex applications requiring extensive context, such as large-corpus summarization, Digital Twins with stable personas, and long-history agent reasoning.&quot;,&quot;Bridging the gap towards human-scale memory capacity (estimated 200-300 million tokens) is essential for advancing general-purpose AI models.&quot;]},&quot;evaluationHighlights&quot;:[&quot;MSA achieves state-of-the-art performance on a comprehensive suite of nine question answering benchmarks, demonstrating consistent superiority over retrieval-augmented generation (RAG) baselines built on the same Qwen3-4B-Instruct backbone, with average improvements of 16.0%, 11.5%, and 14.8% over standard RAG, RAG with reranking, and HippoRAG2, respectively.&quot;,&quot;When compared against best-of-breed RAG systems, MSA achieves top performance on four out of nine datasets and maintains a competitive average score.&quot;,&quot;MSA demonstrates exceptional stability on the &#39;Needle-In-A-Haystack&#39; (NIAH) benchmark, retaining 94.84% accuracy at 1M tokens with only a 3.93-percentage-point degradation from 32K tokens, while baseline LLMs and external memory systems suffer catastrophic degradation at this scale.&quot;,&quot;Ablation studies confirm the critical impact of curriculum learning (7.6% average gain), memory interleave (5.3% average gain), continual pre-training (31.3% average gain), and original document text integration (37.1% average gain) on MSA&#39;s performance.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;MS MARCO v1&quot;,&quot;Natural Questions&quot;,&quot;DuReader&quot;,&quot;TriviaQA (10M)&quot;,&quot;NarrativeQA&quot;,&quot;PopQA&quot;,&quot;2WikiMultiHopQA&quot;,&quot;HotpotQA&quot;,&quot;MuSiQue&quot;,&quot;Needle-In-A-Haystack (NIAH)&quot;],&quot;metrics&quot;:[&quot;LLM judge score (scale 0-5)&quot;,&quot;Accuracy&quot;],&quot;setting&quot;:&quot;Long-context Question Answering (QA) and context length extrapolation (Needle-In-A-Haystack) tasks, comparing against same-backbone RAG systems, best-of-breed RAG systems, and linear attention models.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:266,&quot;xmin&quot;:185,&quot;ymax&quot;:487,&quot;xmax&quot;:820},&quot;caption&quot;:&quot;MSA integrates topk selection with sparse attention, achieving strong scalability while remaining differentiable. This design enables end-to-end training, yet allows the documents to be decoupled at inference time, thereby providing robust extrapolation capability. MSA demonstrates exceptional scalability on the MS MARCO dataset, sustaining consistent performance with less than 9% degradation across an unprecedented memory context range from 16K to 100M tokens. Some curves terminate prematurely due to context length limitations.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:264,&quot;xmin&quot;:185,&quot;ymax&quot;:724,&quot;xmax&quot;:819},&quot;caption&quot;:&quot;Results on the \&quot;Needle In A Haystack\&quot; (NIAH) evaluation across varying context lengths from 32k to 1M tokens.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:11}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;3.242&quot;,&quot;benchmark&quot;:&quot;Average&quot;,&quot;delta&quot;:&quot;+0.518&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;3.760&quot;},{&quot;baseline&quot;:&quot;3.017&quot;,&quot;benchmark&quot;:&quot;MS MARCO v1&quot;,&quot;delta&quot;:&quot;+1.124&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;4.141&quot;},{&quot;baseline&quot;:&quot;3.536&quot;,&quot;benchmark&quot;:&quot;NarrativeQA&quot;,&quot;delta&quot;:&quot;-0.141&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;3.395&quot;},{&quot;baseline&quot;:&quot;4.022&quot;,&quot;benchmark&quot;:&quot;HotpotQA&quot;,&quot;delta&quot;:&quot;+0.039&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;4.061&quot;},{&quot;baseline&quot;:&quot;3.330&quot;,&quot;benchmark&quot;:&quot;2WikiMultiHopQA&quot;,&quot;delta&quot;:&quot;+0.950&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;4.280&quot;}],&quot;title&quot;:&quot;Comparison with same-backbone RAG baselines (Qwen3-4B)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;3.580&quot;,&quot;benchmark&quot;:&quot;Average&quot;,&quot;delta&quot;:&quot;+0.180&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;3.760&quot;},{&quot;baseline&quot;:&quot;3.028&quot;,&quot;benchmark&quot;:&quot;MS MARCO v1&quot;,&quot;delta&quot;:&quot;+1.113&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;4.141&quot;},{&quot;baseline&quot;:&quot;3.694&quot;,&quot;benchmark&quot;:&quot;Natural Questions&quot;,&quot;delta&quot;:&quot;-0.149&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;3.545&quot;},{&quot;baseline&quot;:&quot;4.740&quot;,&quot;benchmark&quot;:&quot;TriviaQA (10M)&quot;,&quot;delta&quot;:&quot;-0.119&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;4.621&quot;},{&quot;baseline&quot;:&quot;3.376&quot;,&quot;benchmark&quot;:&quot;PopQA&quot;,&quot;delta&quot;:&quot;+0.057&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;3.433&quot;},{&quot;baseline&quot;:&quot;4.225&quot;,&quot;benchmark&quot;:&quot;HotpotQA&quot;,&quot;delta&quot;:&quot;-0.164&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;4.061&quot;}],&quot;title&quot;:&quot;Comparison with SOTA RAG systems&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;3.694&quot;,&quot;benchmark&quot;:&quot;MSA-S1 (Full) vs MSA-S2 (Full)&quot;,&quot;delta&quot;:&quot;+0.282&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Average LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;3.976&quot;},{&quot;baseline&quot;:&quot;3.694&quot;,&quot;benchmark&quot;:&quot;MSA-S1 (Full) vs w/o memory interleave&quot;,&quot;delta&quot;:&quot;-0.197&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Average LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;3.497&quot;},{&quot;baseline&quot;:&quot;3.694&quot;,&quot;benchmark&quot;:&quot;MSA-S1 (Full) vs w/o continual pre-training&quot;,&quot;delta&quot;:&quot;-1.157&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Average LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;2.537&quot;},{&quot;baseline&quot;:&quot;3.694&quot;,&quot;benchmark&quot;:&quot;MSA-S1 (Full) vs w/o original text&quot;,&quot;delta&quot;:&quot;-1.369&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Average LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;2.325&quot;},{&quot;baseline&quot;:&quot;3.197&quot;,&quot;benchmark&quot;:&quot;MS MARCO v1 (MSA-S1) vs MSA-S2&quot;,&quot;delta&quot;:&quot;+0.944&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;4.141&quot;},{&quot;baseline&quot;:&quot;3.250&quot;,&quot;benchmark&quot;:&quot;HotpotQA (w/o memory interleave) vs MSA-S1 (Full)&quot;,&quot;delta&quot;:&quot;+0.770&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;4.020&quot;},{&quot;baseline&quot;:&quot;2.289&quot;,&quot;benchmark&quot;:&quot;HotpotQA (w/o continual pre-training) vs MSA-S1 (Full)&quot;,&quot;delta&quot;:&quot;+1.731&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Judge Score&quot;,&quot;thisPaper&quot;:&quot;4.020&quot;}],&quot;title&quot;:&quot;Ablation Study on QA Benchmarks&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;MSA consistently outperforms both same-backbone and best-of-breed RAG systems on long-context QA tasks by a significant margin.&quot;,&quot;MSA exhibits exceptional robustness and stability in extreme long-context settings (100M tokens), with minimal performance degradation, unlike other LLMs and memory agents that suffer catastrophic drops.&quot;,&quot;The proposed components—curriculum learning, memory interleave, continual pre-training, and original text integration—are all crucial for MSA&#39;s high performance and scalability, as demonstrated by ablation studies.&quot;,&quot;MSA achieves near-linear computational complexity during both training and inference, making it efficient for massive memory scaling.&quot;,&quot;The tiered memory storage strategy, with GPU-resident routing keys and CPU-offloaded content KVs, enables 100M-token inference on practical hardware setups (e.g., 2 NVIDIA A800 GPUs).&quot;]},&quot;institutions&quot;:&quot;Evermind, Shanda Group, Peking University&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;MSA introduces a scalable sparse attention architecture with a document-wise Rotary Positional Embedding (RoPE). This extends intrinsic LLM memory while preserving representational alignment, achieving near-linear inference cost and less than 9% degradation when scaling from 16K to 100M tokens.&quot;,&quot;KV cache compression is employed to reduce memory footprint and latency. Combined with Memory Parallel (a tailored optimization pipeline with GPU-resident routing keys and CPU-offloaded content KVs), it enables high-throughput processing for 100M tokens on a single 2x A800 GPU node.&quot;,&quot;A Memory Interleave mechanism adaptively facilitates complex multi-hop reasoning. It iteratively synchronizes and integrates KV cache across scattered context segments, preserving cross-document dependencies and enabling robust long-range evidence integration.&quot;],&quot;main&quot;:&quot;MSA (Memory Sparse Attention): An end-to-end trainable, scalable sparse attention framework that integrates sparse attention with document-wise RoPE, KV-cache compression, and Memory Interleave to achieve lifetime-scale memory in LLMs with linear complexity and minimal degradation.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A technique that uses an external knowledge store (like a database or document corpus) to retrieve relevant information that is then used to augment the input to a language model, improving its ability to generate factual and contextually rich responses.&quot;,&quot;term&quot;:&quot;Retrieval-Augmented Generation (RAG)&quot;},{&quot;definition&quot;:&quot;The phenomenon where a machine learning model, when trained on new data, tends to forget previously learned information or skills. This is a significant challenge in continual learning and long-term memory systems.&quot;,&quot;term&quot;:&quot;Catastrophic Forgetting&quot;},{&quot;definition&quot;:&quot;A type of positional encoding used in Transformer models that applies a rotation matrix to query and key vectors based on their absolute positions, enabling the model to incorporate relative positional information effectively.&quot;,&quot;term&quot;:&quot;Rotary Positional Embedding (RoPE)&quot;},{&quot;definition&quot;:&quot;A mechanism in transformer architectures where the model focuses on specific parts of the input sequence (or memory) rather than the entire sequence, making computation more efficient, especially for long contexts. Sparse attention specifically computes attention over a subset of key-value pairs.&quot;,&quot;term&quot;:&quot;Sparse Attention&quot;},{&quot;definition&quot;:&quot;In transformer models, the Key (K) and Value (V) matrices are derived from input embeddings and used to compute attention scores. The KV cache stores these pre-computed keys and values for past tokens to accelerate autoregressive decoding, preventing recomputation.&quot;,&quot;term&quot;:&quot;KV Cache&quot;}],&quot;prerequisites&quot;:[&quot;Familiarity with Large Language Models (LLMs) and their transformer architectures.&quot;,&quot;Understanding of attention mechanisms and their computational complexity (e.g., quadratic complexity of full attention).&quot;,&quot;Basic knowledge of Retrieval-Augmented Generation (RAG) and its limitations.&quot;,&quot;Concepts of pre-training and fine-tuning in LLMs.&quot;]},&quot;subTopics&quot;:[&quot;Long-Context LLMs&quot;,&quot;Memory-Augmented Neural Networks&quot;,&quot;Sparse Attention Mechanisms&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Memory&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Parameter-based memory methods (e.g., LoRA, CPT) lack capacity scalability, are vulnerable to catastrophic forgetting, and incur significant training overhead. MSA, being a latent state-based approach, overcomes these limitations by managing memory separately from model parameters.&quot;,&quot;External Storage-Based RAG systems and MemAgent scale naturally to lifetime-sized memory banks and avoid catastrophic forgetting, but rely on discrete semantic representations, limiting end-to-end differentiability and imposing a performance ceiling. MSA offers end-to-end trainability and higher precision by operating in the model&#39;s internal latent space.&quot;,&quot;Latent State-Based Memory approaches like DSA and MemGen incur prohibitive computational costs preventing scaling to 100M-token contexts. Linear attention variants (e.g., RWKV, DeltaNet) achieve $O(L)$ efficiency but suffer from bounded capacity, leading to catastrophic forgetting and precision degradation. MSA achieves $O(L)$ efficiency while maintaining high precision and scalability to 100M tokens.&quot;],&quot;limitations&quot;:[&quot;While MSA enhances intrinsic latent-state memory for long textual contexts, it remains limited when tasks require modeling strong and tightly coupled dependencies across multiple documents.&quot;,&quot;In scenarios where evidence is distributed and highly interlinked across sources, the method struggles to maintain accurate structural alignment purely through intrinsic memory.&quot;,&quot;The effectiveness of Memory Interleave depends on more efficient and principled designs that better preserve inter-document relationships, suggesting room for improvement in complex relational reasoning.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Sparse Attention Mechanism&quot;,&quot;value&quot;:&quot;MSA replaces standard dense self-attention with a document-based retrieval sparse attention mechanism. For a document $d_i$ with hidden state $H_i$, it generates Key $K_{i,h}$, Value $V_{i,h}$, and Router Key $K^{R}_{i,h}$ using projection weights. Document chunks are compressed via mean pooling to $\\bar{K}_{i,h}$, $\\bar{V}_{i,h}$, and $\\bar{K}^{R}_{i,h}$. For a query $H_q$, a Router Q Projector generates $Q^{R}_{q,h}$. Relevance score $S_{ij}$ for chunk $j$ of document $i$ is cosine similarity between $Q^{R}_{q,h}$ and $\\bar{K}^{R}_{ij,h}$, aggregated across heads and max-pooled over tokens. Top-$k$ documents are selected based on $s_i = \\max_j S_{ij}$. Generation concatenates selected compressed $\\bar{K}$, $\\bar{V}$ with local query $K_q$, $V_q$ to form sparse context $K_{ctx}$, $V_{ctx}$, and applies Attention: $Output = Attention(Q_q, K_{ctx}, V_{ctx})$.&quot;},{&quot;label&quot;:&quot;Document-wise and Global RoPE&quot;,&quot;value&quot;:&quot;MSA uses independent RoPE for each document to decouple positional semantics from the total number of documents, enabling extrapolation to massive memory contexts after short-context training. Global RoPE is applied to the active context (user query + autoregressive generation) with position IDs offset by the number of retrieved documents, preserving causal dependency.&quot;},{&quot;label&quot;:&quot;Auxiliary Loss for Routing&quot;,&quot;value&quot;:&quot;An auxiliary loss $\\mathcal{L}_{aux}$ is introduced during continuous pre-training to supervise the layer-wise routing process. It uses a supervised contrastive objective to enforce separation between relevant and irrelevant document chunks in the latent routing space: $\\mathcal{L}_{aux} = -\\frac{1}{|P|} \\sum_{i=1}^{|P|} \\log \\frac{\\exp(s^{+}_i / \\tau)}{\\exp(s^{+}_i / \\tau) + \\sum_{j=1}^{|N|} \\exp(s^{-}_{i,j} / \\tau)}$, where $s^{+}_i$ is the relevance score for a positive pair, $s^{-}_{i,j}$ for a negative pair, and $\\tau$ is a temperature parameter.&quot;},{&quot;label&quot;:&quot;Computational Complexity&quot;,&quot;value&quot;:&quot;Training complexity: $O_{train} = O(LG) + O(ML/P) + O((M+kG/P)^2) = O(LG)$, where $L$ is memory size, $M$ is query length, $G$ is average document length, $P$ is chunk pooling size. This is dominated by $O(LG)$ when $L \\gg G$. Inference complexity per query: $O_{inference} = O(ML/P) + O(T \\cdot (M+kG/P)^2) = O(L)$, dominated by the routing term $O(ML/P)$ and scales linearly with memory size, with $T$ being answer length. Offline pre-processing $O(LG)$ is amortized.&quot;}],&quot;pipelineFlow&quot;:[&quot;Stage 1: Global Memory Encoding (Offline): A one-time pre-computation over the entire document corpus. For each document, the model generates standard K/V matrices and Router K Projector generates routing key matrix $\\text{K}^{\\text{R}}$. These are chunked and compressed via mean pooling into $\\bar{\\text{K}}$, $\\bar{\\text{V}}$, $\\bar{\\text{K}}^{\\text{R}}$ and cached in the memory bank, converting raw text into a structured, retrievable latent store.&quot;,&quot;Stage 2: Routing and Context Assembly (Online): Upon receiving a user query, the model computes its hidden states and uses the Router Q Projector to obtain the routing query $\\text{Q}^{\\text{R}}_{\\text{q}}$. This query is matched against the cached global routing keys $\\bar{\\text{K}}^{\\text{R}}$ to calculate relevance scores and identify the Top-$k$ documents. Only the compact $\\bar{\\text{K}}$, $\\bar{\\text{V}}$ of these selected documents are loaded and concatenated with the question&#39;s local $\\text{K}_{\\text{q}}$ and $\\text{V}_{\\text{q}}$ to form the final sparse context.&quot;,&quot;Stage 3: Sparse Generation (Online): The model operates autoregressively on the assembled sparse context, computing interaction between the active token&#39;s query $\\text{Q}_{\\text{q}}$ and the concatenated KV pairs to generate the final answer token by token.&quot;,&quot;Memory Interleave: For multi-hop reasoning, MSA iteratively performs Routing and Context Assembly (Stage 2) and Sparse Generation (Stage 3). Retrieved documents are treated as part of the query for the next iteration. This cycle repeats until sufficient documents are accumulated for the final answer.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Goal&quot;,&quot;value&quot;:&quot;Develop an end-to-end trainable, efficient, and massively scalable memory model framework for LLMs that can process lifetime-scale information (hundreds of millions of tokens) with high precision and minimal performance degradation, achieving linear computational complexity.&quot;}],&quot;reproducibility&quot;:&quot;The paper provides implementation details for the MSA model (built on Qwen3-4B-Instruct-2507, curriculum learning strategy, hyperparameters like chunk size and top-k documents), pre-training data composition (158.95 billion tokens corpus), and details on how baselines were implemented (UltraRAG v2.0 for RAG systems). This suggests a good level of reproducibility.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Replaces standard dense self-attention with document-based retrieval sparse attention. Generates standard Key, Value, and specialized Router Key matrices for documents. Employs chunk-wise mean pooling for compression. Computes relevance scores using cosine similarity between query&#39;s routing vector and memory&#39;s compressed routing keys. Selects Top-k relevant documents and concatenates their compressed K/V with local query K/V for sparse context. Selectively applied to latter half of model&#39;s layers.&quot;,&quot;name&quot;:&quot;Sparse Attention Mechanism&quot;,&quot;role&quot;:&quot;Core component for efficient and scalable processing of massive memory at the latent state level.&quot;},{&quot;details&quot;:&quot;Assigns independent Rotary Positional Embeddings (RoPE) to each document, decoupling positional semantics from the total number of documents. Applies Global RoPE to the active context (user query + generation) with an offset to preserve causal dependency.&quot;,&quot;name&quot;:&quot;Parallel and Global RoPE&quot;,&quot;role&quot;:&quot;Ensures robust generalization and maintains positional information across varying memory scales, enabling extrapolation to massive memory banks.&quot;},{&quot;details&quot;:&quot;A specialized inference engine designed for extreme-length memory inference on a single node. Implements a tiered storage strategy: GPU-resident routing keys ($\\bar{\\text{K}}^{\\text{R}}$) for low-latency retrieval, and CPU-offloaded content KVs ($\\bar{\\text{K}}$, $\\bar{\\text{V}}$) fetched asynchronously after Top-k selection. Utilizes Memory-Parallel Retrieval and Distributed Scoring to enhance computational efficiency and prevent OOM errors.&quot;,&quot;name&quot;:&quot;Memory Parallel&quot;,&quot;role&quot;:&quot;Enables 100M tokens inference on practical hardware setups by optimizing memory capacity and computational efficiency.&quot;},{&quot;details&quot;:&quot;An adaptive mechanism that performs iterative routing and context assembly (Stage 2) and Sparse Generation (Stage 3). The model autoregressively generates document IDs, appends corresponding original texts to the query, and repeats the cycle until sufficient documents are accumulated for the final answer.&quot;,&quot;name&quot;:&quot;Memory Interleave&quot;,&quot;role&quot;:&quot;Facilitates complex multi-hop reasoning by iteratively integrating KV cache across scattered context segments and preserving cross-document dependencies.&quot;},{&quot;details&quot;:&quot;A continuous pre-training stage on a 158.95 billion token corpus for robust retrieval capabilities, incorporating an auxiliary contrastive loss ($\\mathcal{L}_{aux}$) to supervise layer-wise routing decisions. Followed by a two-stage curriculum learning strategy for SFT on QA tasks, extending memory context length from 8k to 64k tokens.&quot;,&quot;name&quot;:&quot;Training Pipeline (Continuous Pre-training &amp; Post-training)&quot;,&quot;role&quot;:&quot;Endows the model with strong retrieval capabilities and improves its ability to adapt to longer dependencies and extrapolate to massive memory banks.&quot;}]},&quot;thesis&quot;:&quot;Memory Sparse Attention (MSA) provides a scalable foundation for general-purpose LLMs to acquire intrinsic, lifetime-scale memory by offering an end-to-end trainable framework with linear complexity that efficiently processes up to 100M tokens with minimal performance degradation, thereby decoupling memory capacity from reasoning capabilities.&quot;,&quot;title&quot;:&quot;MSA: Memory Sparse Attention for Efficient End-to-End Memory Model Scaling to 100M Tokens&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2603.23516&quot;,&quot;venue&quot;:&quot;NeurIPS&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

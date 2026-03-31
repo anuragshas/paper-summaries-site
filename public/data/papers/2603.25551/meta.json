@@ -1,0 +1,18 @@
+{
+  "paperId": "2603.25551",
+  "title": "Voxtral TTS",
+  "authors": "Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon, Jaeyoung Kim, John Harvill, Khyathi Raghavi Chandu, Lorenzo Signoretti, Margaret Jennings, Patrick von Platen, Pavankumar Reddy Muddireddy, Rohin Arora, Sanchit Gandhi, Samuel Humeau, Soham Ghosh, Srijan Mishra, Van Phung",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "Speech",
+    "Pretraining",
+    "RL"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2603.25551",
+  "pagePath": "/paper-summaries-site/papers/2603.25551",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.25551/summary.json",
+  "assets": {
+    "hasPdfImages": true,
+    "hasStaticHtmlArtifact": true
+  }
+}
