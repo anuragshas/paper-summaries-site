@@ -1,6 +1,24 @@
 {
   "papers": [
     {
+      "paperId": "2603.28052",
+      "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+      "tags": [
+        "Agent",
+        "RAG",
+        "Reasoning"
+      ]
+    },
+    {
+      "paperId": "2603.25723",
+      "title": "Natural-Language Agent Harnesses",
+      "tags": [
+        "Agent",
+        "Reasoning",
+        "QA"
+      ]
+    },
+    {
       "paperId": "2603.25551",
       "title": "Voxtral TTS",
       "tags": [

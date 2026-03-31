@@ -2,6 +2,30 @@
   "page": 4,
   "papers": [
     {
+      "paperId": "2403.00417",
+      "title": "Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models",
+      "authors": "Jinbiao Yang",
+      "publishedDate": "2024-03-01",
+      "tags": [
+        "Pretraining",
+        "Memory",
+        "Benchmark"
+      ]
+    },
+    {
+      "paperId": "2602.17654",
+      "title": "Mine and Refine: Optimizing Graded Relevance in E-commerce Search Retrieval",
+      "authors": "Jiaqi Xi, Raghav Saboo, Luming Chen, Martin Wang, Sudeep Das",
+      "publishedDate": "2024-02-01",
+      "tags": [
+        "Information Retrieval",
+        "E-commerce",
+        "Deep Learning",
+        "Contrastive Learning",
+        "Semantic Search"
+      ]
+    },
+    {
       "paperId": "2303.18223",
       "title": "A Survey of Large Language Models",
       "authors": "Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen",

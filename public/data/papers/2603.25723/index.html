@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Natural-Language Agent Harnesses</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Natural-Language Agent Harnesses</h1>
+      <p class="meta"><strong>Authors:</strong> Linyue Pan, Lexiao Zou, Shuo Guo, Jingchen Ni, Hai-Tao Zheng</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2603.25723" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2603.25723</a></p>
+      <p class="muted">Generated summary artifact for 2603.25723</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>The design-pattern layer inside agent harnesses can be made explicit as an executable natural-language object under shared runtime assumptions.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Agent harness design logic is usually buried in controller code and runtime-specific conventions, making it difficult to transfer, compare, and study as a scientific object.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>Externalizing agent harness logic as explicit, executable natural-language objects (NLAHs) interpreted by a shared Intelligent Harness Runtime (IHR), enabling better study, comparison, and modularity of agent control.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Demonstrated operational viability of Natural-Language Agent Harnesses (NLAHs) executed by an Intelligent Harness Runtime (IHR) across coding (SWE-bench Verified) and computer-use (OSWorld) benchmarks.</li><li>Showed that the shared runtime and harness logic significantly influence agent behavior and process metrics (e.g., prompt tokens, LLM calls, runtime), even if overall performance changes are subtle.</li><li>Provided evidence that harness modules can be composed and ablated, with varying effects on performance and problem-solving strategies, suggesting modules help by tightening solution paths.</li><li>Successfully migrated code-based harnesses to NLAH representations, leading to performance improvements and a shift towards more robust, artifact-backed verification and durable state, especially in OSWorld.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Shared runtime charter and benchmark-specific harness logic materially change agent behavior and process metrics (e.g., tokens, calls, runtime) more than overall performance, indicating real behavioral control.</li><li>Harness modules can be composed and ablated, with their effects concentrating on boundary cases that flip under changed control logic, rather than uniformly shifting benchmark scores.</li><li>Explicit structure provided by modules (e.g., File-backed State, Self-Evolution) helps by tightening the path from intermediate behavior to evaluator acceptance, rather than simply expanding the search space.</li><li>Migration from native code harnesses to reconstructed natural-language harnesses is viable, can improve performance and shifts behavior towards more robust, artifact-backed verification and durable state management.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Natural language is inherently less precise than code, making it difficult to faithfully recover some harness mechanisms, especially those relying on hidden service-side state, proprietary schedulers, or training-induced behaviors not observable from released artifacts.</li><li>Runtime contamination remains a risk, where a strong shared runtime charter might absorb part of the behavior one might otherwise attribute to harness text.</li><li>Module-level ablation studies, while informative, do not strictly establish causal identification; textual representations can introduce confounds like instruction salience and prompt length.</li><li>Externalizing harness modules may lower the barrier to spreading risky workflows, as harnesses mediate tool use and artifact handling, potentially introducing new attack surfaces for prompt injection, malicious tool grafting, or supply-chain contamination.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 75,
+      &quot;xmin&quot;: 63,
+      &quot;ymax&quot;: 420,
+      &quot;xmax&quot;: 914
+    },
+    &quot;caption&quot;: &quot;Framework overview. Intelligent Harness Runtime (IHR), with an in-loop LLM, a backend with tool access and child-agent support, and a runtime charter that specifies policy and semantics, executes a Natural-Language Agent Harness (NLAH), which exposes harness logic, roles, contracts, adapters, and state conventions, over task instances.&quot;,
+    &quot;figureNumber&quot;: 2,
+    &quot;pageIndex&quot;: 2
+  },
+  &quot;authors&quot;: &quot;Linyue Pan, Lexiao Zou, Shuo Guo, Jingchen Ni, Hai-Tao Zheng&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper introduces a novel framework for externalizing agent harness logic into explicit, executable natural-language objects (NLAHs) interpreted by a shared runtime (IHR). This addresses a critical problem in agent systems where control logic is often opaque and difficult to study, compare, or ablate. The proposed approach is well-motivated and provides a structured way to manage complex agent behaviors, offering improvements in auditability, modularity, and potentially performance (e.g., OSWorld results). The controlled experiments provide solid evidence for its operational viability and the behavioral impact of explicit harness components. While not a complete paradigm shift, it represents a strong contribution to the field of agent engineering and design, offering a scientific object for harness research.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Two agent systems that nominally differ by one design choice often differ simultaneously in prompts, tool mediation, artifact conventions, verification gates, and state semantics, making modular evaluation challenging.&quot;,
+    &quot;statement&quot;: &quot;Agent harness design logic is usually buried in controller code and runtime-specific conventions, making it difficult to transfer, compare, and study as a scientific object.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Harness design is crucial for agent performance, including multi-step reasoning, tool use, memory, delegation, and stopping beyond any single model call.&quot;,
+      &quot;The current opacity of harness logic hinders scientific study, transferability, and clean ablation of harness components.&quot;,
+      &quot;Context engineering and long-running harness design are important for achieving robust progress in long-horizon tasks, necessitating explicit and manageable control stacks.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Demonstrated operational viability of Natural-Language Agent Harnesses (NLAHs) executed by an Intelligent Harness Runtime (IHR) across coding (SWE-bench Verified) and computer-use (OSWorld) benchmarks.&quot;,
+    &quot;Showed that the shared runtime and harness logic significantly influence agent behavior and process metrics (e.g., prompt tokens, LLM calls, runtime), even if overall performance changes are subtle.&quot;,
+    &quot;Provided evidence that harness modules can be composed and ablated, with varying effects on performance and problem-solving strategies, suggesting modules help by tightening solution paths.&quot;,
+    &quot;Successfully migrated code-based harnesses to NLAH representations, leading to performance improvements and a shift towards more robust, artifact-backed verification and durable state, especially in OSWorld.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;SWE-bench Verified&quot;,
+        &quot;OSWorld&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Perf.&quot;,
+        &quot;Prompt Tokens&quot;,
+        &quot;Completion Tokens&quot;,
+        &quot;Tool Calls&quot;,
+        &quot;LLM Calls&quot;,
+        &quot;Runtime (min)&quot;,
+        &quot;Agent Calls&quot;
+      ],
+      &quot;setting&quot;: &quot;Controlled experiments on coding and computer-use benchmarks using the same IHR instantiation (Codex CLI 0.114.0, GPT-5.4 model, reasoning effort xhigh) running in Docker containers on Ubuntu 24.04 servers.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 74,
+          &quot;xmin&quot;: 44,
+          &quot;ymax&quot;: 202,
+          &quot;xmax&quot;: 489
+        },
+        &quot;caption&quot;: &quot;Supplementary views for SWE RQ2. Left: resolved rate versus estimated token-based API cost per sample under public GPT-5.4 text pricing.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 15
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 74,
+          &quot;xmin&quot;: 512,
+          &quot;ymax&quot;: 202,
+          &quot;xmax&quot;: 955
+        },
+        &quot;caption&quot;: &quot;Supplementary views for SWE RQ2. Right: standalone solved rate and union solved rate with Basic for each ablated module.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 15
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;76.0&quot;,
+            &quot;benchmark&quot;: &quot;TRAE&quot;,
+            &quot;delta&quot;: &quot;-1.6&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Perf.&quot;,
+            &quot;thisPaper&quot;: &quot;74.4&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;11.1M&quot;,
+            &quot;benchmark&quot;: &quot;TRAE&quot;,
+            &quot;delta&quot;: &quot;+5.2M&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Prompt Tokens&quot;,
+            &quot;thisPaper&quot;: &quot;16.3M&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;137k&quot;,
+            &quot;benchmark&quot;: &quot;TRAE&quot;,
+            &quot;delta&quot;: &quot;+74k&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Completion Tokens&quot;,
+            &quot;thisPaper&quot;: &quot;211k&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;451.9&quot;,
+            &quot;benchmark&quot;: &quot;TRAE&quot;,
+            &quot;delta&quot;: &quot;+190.7&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Tool Calls&quot;,
+            &quot;thisPaper&quot;: &quot;642.6&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;260.5&quot;,
+            &quot;benchmark&quot;: &quot;TRAE&quot;,
+            &quot;delta&quot;: &quot;+153.8&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;LLM Calls&quot;,
+            &quot;thisPaper&quot;: &quot;414.3&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;76.0&quot;,
+            &quot;benchmark&quot;: &quot;Live-SWE&quot;,
+            &quot;delta&quot;: &quot;-3.2&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Perf.&quot;,
+            &quot;thisPaper&quot;: &quot;72.8&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;RQ1: Behavioral Effect on SWE-bench Verified (Full IHR vs. w/o RTS)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;75.2&quot;,
+            &quot;benchmark&quot;: &quot;SWE Verified&quot;,
+            &quot;delta&quot;: &quot;+1.6&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Perf. (File-Backed State)&quot;,
+            &quot;thisPaper&quot;: &quot;76.8&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;75.2&quot;,
+            &quot;benchmark&quot;: &quot;SWE Verified&quot;,
+            &quot;delta&quot;: &quot;+1.6&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Perf. (Evidence-Backed Answering)&quot;,
+            &quot;thisPaper&quot;: &quot;76.8&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;75.2&quot;,
+            &quot;benchmark&quot;: &quot;SWE Verified&quot;,
+            &quot;delta&quot;: &quot;-0.8&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Perf. (Verifier)&quot;,
+            &quot;thisPaper&quot;: &quot;74.4&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;75.2&quot;,
+            &quot;benchmark&quot;: &quot;SWE Verified&quot;,
+            &quot;delta&quot;: &quot;+4.8&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Perf. (Self-Evolution)&quot;,
+            &quot;thisPaper&quot;: &quot;80.0&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;75.2&quot;,
+            &quot;benchmark&quot;: &quot;SWE Verified&quot;,
+            &quot;delta&quot;: &quot;-2.4&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Perf. (Multi-Candidate Search)&quot;,
+            &quot;thisPaper&quot;: &quot;72.8&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;75.2&quot;,
+            &quot;benchmark&quot;: &quot;SWE Verified&quot;,
+            &quot;delta&quot;: &quot;0.0&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Perf. (Dynamic Orchestration)&quot;,
+            &quot;thisPaper&quot;: &quot;75.2&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;RQ2: Module Composition and Ablation (SWE Verified)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;41.7&quot;,
+            &quot;benchmark&quot;: &quot;OSWorld&quot;,
+            &quot;delta&quot;: &quot;+5.5&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Perf. (File-Backed State)&quot;,
+            &quot;thisPaper&quot;: &quot;47.2&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;41.7&quot;,
+            &quot;benchmark&quot;: &quot;OSWorld&quot;,
+            &quot;delta&quot;: &quot;0.0&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Perf. (Evidence-Backed Answering)&quot;,
+            &quot;thisPaper&quot;: &quot;41.7&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;41.7&quot;,
+            &quot;benchmark&quot;: &quot;OSWorld&quot;,
+            &quot;delta&quot;: &quot;-8.4&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Perf. (Verifier)&quot;,
+            &quot;thisPaper&quot;: &quot;33.3&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;41.7&quot;,
+            &quot;benchmark&quot;: &quot;OSWorld&quot;,
+            &quot;delta&quot;: &quot;+2.7&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Perf. (Self-Evolution)&quot;,
+            &quot;thisPaper&quot;: &quot;44.4&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;41.7&quot;,
+            &quot;benchmark&quot;: &quot;OSWorld&quot;,
+            &quot;delta&quot;: &quot;-5.6&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Perf. (Multi-Candidate Search)&quot;,
+            &quot;thisPaper&quot;: &quot;36.1&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;41.7&quot;,
+            &quot;benchmark&quot;: &quot;OSWorld&quot;,
+            &quot;delta&quot;: &quot;+2.7&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Perf. (Dynamic Orchestration)&quot;,
+            &quot;thisPaper&quot;: &quot;44.4&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;RQ2: Module Composition and Ablation (OSWorld)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;30.4&quot;,
+            &quot;benchmark&quot;: &quot;OS-Symphony&quot;,
+            &quot;delta&quot;: &quot;+16.8&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Perf.&quot;,
+            &quot;thisPaper&quot;: &quot;47.2&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;11.4M&quot;,
+            &quot;benchmark&quot;: &quot;OS-Symphony&quot;,
+            &quot;delta&quot;: &quot;+4.3M&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Prompt Tokens&quot;,
+            &quot;thisPaper&quot;: &quot;15.7M&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;147.2k&quot;,
+            &quot;benchmark&quot;: &quot;OS-Symphony&quot;,
+            &quot;delta&quot;: &quot;+81.3k&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Completion Tokens&quot;,
+            &quot;thisPaper&quot;: &quot;228.5k&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;99&quot;,
+            &quot;benchmark&quot;: &quot;OS-Symphony&quot;,
+            &quot;delta&quot;: &quot;-27&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Agent Calls&quot;,
+            &quot;thisPaper&quot;: &quot;72&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;651&quot;,
+            &quot;benchmark&quot;: &quot;OS-Symphony&quot;,
+            &quot;delta&quot;: &quot;+32&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Tool Calls&quot;,
+            &quot;thisPaper&quot;: &quot;683&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1.2k&quot;,
+            &quot;benchmark&quot;: &quot;OS-Symphony&quot;,
+            &quot;delta&quot;: &quot;-1.166k&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;LLM Calls&quot;,
+            &quot;thisPaper&quot;: &quot;34&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;361.5&quot;,
+            &quot;benchmark&quot;: &quot;OS-Symphony&quot;,
+            &quot;delta&quot;: &quot;-220.7&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Runtime (min)&quot;,
+            &quot;thisPaper&quot;: &quot;140.8&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;RQ3: Code-to-text Harness Migration (OSWorld OS-Symphony)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Shared runtime charter and benchmark-specific harness logic materially change agent behavior and process metrics (e.g., tokens, calls, runtime) more than overall performance, indicating real behavioral control.&quot;,
+      &quot;Harness modules can be composed and ablated, with their effects concentrating on boundary cases that flip under changed control logic, rather than uniformly shifting benchmark scores.&quot;,
+      &quot;Explicit structure provided by modules (e.g., File-backed State, Self-Evolution) helps by tightening the path from intermediate behavior to evaluator acceptance, rather than simply expanding the search space.&quot;,
+      &quot;Migration from native code harnesses to reconstructed natural-language harnesses is viable, can improve performance and shifts behavior towards more robust, artifact-backed verification and durable state management.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Shenzhen International Graduate School, Tsinghua University, Harbin Institute of Technology (Shenzhen)&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Natural-Language Agent Harnesses (NLAHs) are introduced as structured natural-language representations of harness control, bound to explicit contracts and artifact carriers, making harness logic editable and inspectable.&quot;,
+      &quot;Intelligent Harness Runtime (IHR) is a shared runtime that directly interprets NLAHs, cleanly separating runtime charter from task-family harness logic, and places an LLM inside the runtime loop for interpretation.&quot;,
+      &quot;The framework formalizes the harness design-pattern layer as an explicit representation object, distinct from runtime policy and low-level execution hooks, and specifies executable components such as contracts, roles, stage structure, adapters, scripts, state semantics, and a failure taxonomy.&quot;,
+      &quot;Controlled experiments are conducted to provide evidence on the shared-runtime behavioral effect, module composition/ablation, and paired code-to-text migration fidelity, demonstrating the operational viability and impact of this approach.&quot;
+    ],
+    &quot;main&quot;: &quot;Externalizing agent harness logic as explicit, executable natural-language objects (NLAHs) interpreted by a shared Intelligent Harness Runtime (IHR), enabling better study, comparison, and modularity of agent control.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;The orchestration layer that governs multiple model or agent calls for a task family, specifying control, contracts, and state management.&quot;,
+        &quot;term&quot;: &quot;Harness&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Designing the immediate prompt and retrieved context for a single LLM call; a harness subsumes this but also manages multi-step structure, tool mediation, verification, and durable state.&quot;,
+        &quot;term&quot;: &quot;Context Engineering&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A structured natural-language representation of harness control bound to explicit contracts and artifact carriers, intended to be executed by IHR.&quot;,
+        &quot;term&quot;: &quot;Natural-Language Agent Harness (NLAH)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A shared runtime that interprets NLAHs directly, placing an LLM inside the runtime loop to read the harness, current state, environment, and runtime charter, and select the next action.&quot;,
+        &quot;term&quot;: &quot;Intelligent Harness Runtime (IHR)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Understanding of Large Language Models (LLMs) and their capabilities.&quot;,
+      &quot;Familiarity with agent systems and common design patterns like reason-act loops, retrieval-augmented generation (RAG), and self-reflection.&quot;,
+      &quot;Basic knowledge of software engineering principles, especially regarding modularity, reusability, and system design.&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Agent Systems&quot;,
+    &quot;Natural Language Processing&quot;,
+    &quot;Workflow Orchestration&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Agent&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Prior agent systems scatter harness logic across controller code, framework defaults, tool adapters, and runtime-specific assumptions, making it opaque, hard to transfer, compare, and ablate cleanly. NLAHs make this logic explicit and executable.&quot;,
+      &quot;Previous work on natural-language artifacts (e.g., AGENTS.md, skill bundles) packages reusable procedures but lacks an explicit executable harness representation with first-class contracts, role boundaries, state semantics, and runtime-facing adapters.&quot;,
+      &quot;Unlike systems that compile natural language into a runtime-owned Intermediate Representation (IR) or workflows, IHR interprets harness logic directly, relying on explicit contracts and durable artifacts.&quot;,
+      &quot;Our work is complementary to existing agent control patterns (e.g., reason-act, RAG, reflection) by externalizing their logic as an executable representation rather than proposing new orchestration algorithms.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;Natural language is inherently less precise than code, making it difficult to faithfully recover some harness mechanisms, especially those relying on hidden service-side state, proprietary schedulers, or training-induced behaviors not observable from released artifacts.&quot;,
+      &quot;Runtime contamination remains a risk, where a strong shared runtime charter might absorb part of the behavior one might otherwise attribute to harness text.&quot;,
+      &quot;Module-level ablation studies, while informative, do not strictly establish causal identification; textual representations can introduce confounds like instruction salience and prompt length.&quot;,
+      &quot;Externalizing harness modules may lower the barrier to spreading risky workflows, as harnesses mediate tool use and artifact handling, potentially introducing new attack surfaces for prompt injection, malicious tool grafting, or supply-chain contamination.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Harness Components&quot;,
+        &quot;list&quot;: [
+          &quot;Contracts: required inputs and outputs, format constraints, validation gates, permission boundaries, retry and stop rules.&quot;,
+          &quot;Roles: role prompts (solver, verifier, researcher, orchestrator) with non-overlapping responsibilities.&quot;,
+          &quot;Stage structure: an explicit workload topology (e.g., plan \\(\\rightarrow\\) execute \\(\\rightarrow\\) verify \\(\\rightarrow\\) repair).&quot;,
+          &quot;Adapters and scripts: named hooks for deterministic actions (tests, verifiers, retrieval, parsing).&quot;,
+          &quot;State semantics: what persists across steps (artifacts, ledgers, child workspaces) and how it is reopened (paths, manifests).&quot;,
+          &quot;Failure taxonomy: named failure modes that drive recovery (missing artifact, wrong path, verifier failure, tool error, timeout).&quot;
+        ],
+        &quot;value&quot;: &quot;N/A&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;The Intelligent Harness Runtime (IHR) places an LLM inside its runtime loop for interpretation of harness logic.&quot;,
+      &quot;At each step, the LLM reads the Natural-Language Agent Harness (NLAH), the current state and environment, and the runtime charter.&quot;,
+      &quot;Based on this information, the LLM selects the next action consistent with explicit contracts and budgets.&quot;,
+      &quot;The IHR&#39;s backend provides terminal tools and a multi-agent interface, allowing for spawning and supervising child agents and ingesting returned artifacts.&quot;,
+      &quot;An optional file-backed state module externalizes durable state into path-addressable artifacts, ensuring state persists across steps and branches for auditability and recovery.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Agent Call&quot;,
+        &quot;value&quot;: &quot;An agent call is defined as $\\text{AgentCall}(\\mathcal{T}, \\Omega^{\\text{in}}_t) = (A_t, \\Delta\\Omega_t, y_t)$, where $\\mathcal{T}=(p, \\mathcal{F}^{\\text{in}}, \\kappa)$ is the task (prompt $p$, input files $\\mathcal{F}^{\\text{in}}$, execution contract $\\kappa$), $\\Omega^{\\text{in}}_t$ is the visible environment and file state at call start, $A_t$ is the designated artifact set, $\\Delta\\Omega_t$ are environment modifications, and $y_t$ is a normalized final response pointing to artifacts and stating success or failure.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;All experiments use the same IHR instantiation (Codex CLI version 0.114.0, model GPT-5.4, reasoning effort xhigh). Runs execute on Ubuntu 24.04 servers with 64 CPU cores and 251 GiB memory in Docker containers, with per-task container caps of 32 vCPUs, 84 GiB memory, and 40 GiB storage. Benchmark subsets were sampled once with a fixed random seed due to budget limits, with plans to rerun full benchmarks in a future revision.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;A structured natural-language representation of harness control, specifying contracts (inputs/outputs, validation, permissions), roles (solver, verifier, orchestrator), stage structure (workflow topology), adapters/scripts (deterministic actions), state semantics, and a failure taxonomy.&quot;,
+        &quot;name&quot;: &quot;Natural-Language Agent Harnesses (NLAHs)&quot;,
+        &quot;role&quot;: &quot;Externalizes and expresses high-level agent harness logic in an editable and inspectable natural language format.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Composed of an in-loop LLM (interprets harness logic), a backend (provides terminal tools and a multi-agent interface for spawning and supervising child agents), and a runtime charter (defines semantics of contracts, state, orchestration, and child lifecycle).&quot;,
+        &quot;name&quot;: &quot;Intelligent Harness Runtime (IHR)&quot;,
+        &quot;role&quot;: &quot;Interprets and executes Natural-Language Agent Harnesses directly, separating runtime charter from task-family harness logic.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;An optional module that externalizes durable state into path-addressable artifacts. It enforces state to be externalized, path-addressable (later stages reopen by path), and compaction-stable (survives truncation, restart, and delegation), improving stability.&quot;,
+        &quot;name&quot;: &quot;File-backed State Module&quot;,
+        &quot;role&quot;: &quot;Manages durable cross-step state as canonical workspace for robustness and auditability.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;The design-pattern layer inside agent harnesses can be made explicit as an executable natural-language object under shared runtime assumptions.&quot;,
+  &quot;title&quot;: &quot;Natural-Language Agent Harnesses&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2603.25723&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2603.25723&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2603.25723&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:75,&quot;xmin&quot;:63,&quot;ymax&quot;:420,&quot;xmax&quot;:914},&quot;caption&quot;:&quot;Framework overview. Intelligent Harness Runtime (IHR), with an in-loop LLM, a backend with tool access and child-agent support, and a runtime charter that specifies policy and semantics, executes a Natural-Language Agent Harness (NLAH), which exposes harness logic, roles, contracts, adapters, and state conventions, over task instances.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:2},&quot;authors&quot;:&quot;Linyue Pan, Lexiao Zou, Shuo Guo, Jingchen Ni, Hai-Tao Zheng&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper introduces a novel framework for externalizing agent harness logic into explicit, executable natural-language objects (NLAHs) interpreted by a shared runtime (IHR). This addresses a critical problem in agent systems where control logic is often opaque and difficult to study, compare, or ablate. The proposed approach is well-motivated and provides a structured way to manage complex agent behaviors, offering improvements in auditability, modularity, and potentially performance (e.g., OSWorld results). The controlled experiments provide solid evidence for its operational viability and the behavioral impact of explicit harness components. While not a complete paradigm shift, it represents a strong contribution to the field of agent engineering and design, offering a scientific object for harness research.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Two agent systems that nominally differ by one design choice often differ simultaneously in prompts, tool mediation, artifact conventions, verification gates, and state semantics, making modular evaluation challenging.&quot;,&quot;statement&quot;:&quot;Agent harness design logic is usually buried in controller code and runtime-specific conventions, making it difficult to transfer, compare, and study as a scientific object.&quot;,&quot;whyItMatters&quot;:[&quot;Harness design is crucial for agent performance, including multi-step reasoning, tool use, memory, delegation, and stopping beyond any single model call.&quot;,&quot;The current opacity of harness logic hinders scientific study, transferability, and clean ablation of harness components.&quot;,&quot;Context engineering and long-running harness design are important for achieving robust progress in long-horizon tasks, necessitating explicit and manageable control stacks.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Demonstrated operational viability of Natural-Language Agent Harnesses (NLAHs) executed by an Intelligent Harness Runtime (IHR) across coding (SWE-bench Verified) and computer-use (OSWorld) benchmarks.&quot;,&quot;Showed that the shared runtime and harness logic significantly influence agent behavior and process metrics (e.g., prompt tokens, LLM calls, runtime), even if overall performance changes are subtle.&quot;,&quot;Provided evidence that harness modules can be composed and ablated, with varying effects on performance and problem-solving strategies, suggesting modules help by tightening solution paths.&quot;,&quot;Successfully migrated code-based harnesses to NLAH representations, leading to performance improvements and a shift towards more robust, artifact-backed verification and durable state, especially in OSWorld.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;SWE-bench Verified&quot;,&quot;OSWorld&quot;],&quot;metrics&quot;:[&quot;Perf.&quot;,&quot;Prompt Tokens&quot;,&quot;Completion Tokens&quot;,&quot;Tool Calls&quot;,&quot;LLM Calls&quot;,&quot;Runtime (min)&quot;,&quot;Agent Calls&quot;],&quot;setting&quot;:&quot;Controlled experiments on coding and computer-use benchmarks using the same IHR instantiation (Codex CLI 0.114.0, GPT-5.4 model, reasoning effort xhigh) running in Docker containers on Ubuntu 24.04 servers.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:74,&quot;xmin&quot;:44,&quot;ymax&quot;:202,&quot;xmax&quot;:489},&quot;caption&quot;:&quot;Supplementary views for SWE RQ2. Left: resolved rate versus estimated token-based API cost per sample under public GPT-5.4 text pricing.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:15},{&quot;boundingBox&quot;:{&quot;ymin&quot;:74,&quot;xmin&quot;:512,&quot;ymax&quot;:202,&quot;xmax&quot;:955},&quot;caption&quot;:&quot;Supplementary views for SWE RQ2. Right: standalone solved rate and union solved rate with Basic for each ablated module.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:15}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;76.0&quot;,&quot;benchmark&quot;:&quot;TRAE&quot;,&quot;delta&quot;:&quot;-1.6&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Perf.&quot;,&quot;thisPaper&quot;:&quot;74.4&quot;},{&quot;baseline&quot;:&quot;11.1M&quot;,&quot;benchmark&quot;:&quot;TRAE&quot;,&quot;delta&quot;:&quot;+5.2M&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Prompt Tokens&quot;,&quot;thisPaper&quot;:&quot;16.3M&quot;},{&quot;baseline&quot;:&quot;137k&quot;,&quot;benchmark&quot;:&quot;TRAE&quot;,&quot;delta&quot;:&quot;+74k&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Completion Tokens&quot;,&quot;thisPaper&quot;:&quot;211k&quot;},{&quot;baseline&quot;:&quot;451.9&quot;,&quot;benchmark&quot;:&quot;TRAE&quot;,&quot;delta&quot;:&quot;+190.7&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Tool Calls&quot;,&quot;thisPaper&quot;:&quot;642.6&quot;},{&quot;baseline&quot;:&quot;260.5&quot;,&quot;benchmark&quot;:&quot;TRAE&quot;,&quot;delta&quot;:&quot;+153.8&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;LLM Calls&quot;,&quot;thisPaper&quot;:&quot;414.3&quot;},{&quot;baseline&quot;:&quot;76.0&quot;,&quot;benchmark&quot;:&quot;Live-SWE&quot;,&quot;delta&quot;:&quot;-3.2&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Perf.&quot;,&quot;thisPaper&quot;:&quot;72.8&quot;}],&quot;title&quot;:&quot;RQ1: Behavioral Effect on SWE-bench Verified (Full IHR vs. w/o RTS)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;75.2&quot;,&quot;benchmark&quot;:&quot;SWE Verified&quot;,&quot;delta&quot;:&quot;+1.6&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Perf. (File-Backed State)&quot;,&quot;thisPaper&quot;:&quot;76.8&quot;},{&quot;baseline&quot;:&quot;75.2&quot;,&quot;benchmark&quot;:&quot;SWE Verified&quot;,&quot;delta&quot;:&quot;+1.6&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Perf. (Evidence-Backed Answering)&quot;,&quot;thisPaper&quot;:&quot;76.8&quot;},{&quot;baseline&quot;:&quot;75.2&quot;,&quot;benchmark&quot;:&quot;SWE Verified&quot;,&quot;delta&quot;:&quot;-0.8&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Perf. (Verifier)&quot;,&quot;thisPaper&quot;:&quot;74.4&quot;},{&quot;baseline&quot;:&quot;75.2&quot;,&quot;benchmark&quot;:&quot;SWE Verified&quot;,&quot;delta&quot;:&quot;+4.8&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Perf. (Self-Evolution)&quot;,&quot;thisPaper&quot;:&quot;80.0&quot;},{&quot;baseline&quot;:&quot;75.2&quot;,&quot;benchmark&quot;:&quot;SWE Verified&quot;,&quot;delta&quot;:&quot;-2.4&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Perf. (Multi-Candidate Search)&quot;,&quot;thisPaper&quot;:&quot;72.8&quot;},{&quot;baseline&quot;:&quot;75.2&quot;,&quot;benchmark&quot;:&quot;SWE Verified&quot;,&quot;delta&quot;:&quot;0.0&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Perf. (Dynamic Orchestration)&quot;,&quot;thisPaper&quot;:&quot;75.2&quot;}],&quot;title&quot;:&quot;RQ2: Module Composition and Ablation (SWE Verified)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;41.7&quot;,&quot;benchmark&quot;:&quot;OSWorld&quot;,&quot;delta&quot;:&quot;+5.5&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Perf. (File-Backed State)&quot;,&quot;thisPaper&quot;:&quot;47.2&quot;},{&quot;baseline&quot;:&quot;41.7&quot;,&quot;benchmark&quot;:&quot;OSWorld&quot;,&quot;delta&quot;:&quot;0.0&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Perf. (Evidence-Backed Answering)&quot;,&quot;thisPaper&quot;:&quot;41.7&quot;},{&quot;baseline&quot;:&quot;41.7&quot;,&quot;benchmark&quot;:&quot;OSWorld&quot;,&quot;delta&quot;:&quot;-8.4&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Perf. (Verifier)&quot;,&quot;thisPaper&quot;:&quot;33.3&quot;},{&quot;baseline&quot;:&quot;41.7&quot;,&quot;benchmark&quot;:&quot;OSWorld&quot;,&quot;delta&quot;:&quot;+2.7&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Perf. (Self-Evolution)&quot;,&quot;thisPaper&quot;:&quot;44.4&quot;},{&quot;baseline&quot;:&quot;41.7&quot;,&quot;benchmark&quot;:&quot;OSWorld&quot;,&quot;delta&quot;:&quot;-5.6&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Perf. (Multi-Candidate Search)&quot;,&quot;thisPaper&quot;:&quot;36.1&quot;},{&quot;baseline&quot;:&quot;41.7&quot;,&quot;benchmark&quot;:&quot;OSWorld&quot;,&quot;delta&quot;:&quot;+2.7&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Perf. (Dynamic Orchestration)&quot;,&quot;thisPaper&quot;:&quot;44.4&quot;}],&quot;title&quot;:&quot;RQ2: Module Composition and Ablation (OSWorld)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;30.4&quot;,&quot;benchmark&quot;:&quot;OS-Symphony&quot;,&quot;delta&quot;:&quot;+16.8&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Perf.&quot;,&quot;thisPaper&quot;:&quot;47.2&quot;},{&quot;baseline&quot;:&quot;11.4M&quot;,&quot;benchmark&quot;:&quot;OS-Symphony&quot;,&quot;delta&quot;:&quot;+4.3M&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Prompt Tokens&quot;,&quot;thisPaper&quot;:&quot;15.7M&quot;},{&quot;baseline&quot;:&quot;147.2k&quot;,&quot;benchmark&quot;:&quot;OS-Symphony&quot;,&quot;delta&quot;:&quot;+81.3k&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Completion Tokens&quot;,&quot;thisPaper&quot;:&quot;228.5k&quot;},{&quot;baseline&quot;:&quot;99&quot;,&quot;benchmark&quot;:&quot;OS-Symphony&quot;,&quot;delta&quot;:&quot;-27&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Agent Calls&quot;,&quot;thisPaper&quot;:&quot;72&quot;},{&quot;baseline&quot;:&quot;651&quot;,&quot;benchmark&quot;:&quot;OS-Symphony&quot;,&quot;delta&quot;:&quot;+32&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Tool Calls&quot;,&quot;thisPaper&quot;:&quot;683&quot;},{&quot;baseline&quot;:&quot;1.2k&quot;,&quot;benchmark&quot;:&quot;OS-Symphony&quot;,&quot;delta&quot;:&quot;-1.166k&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;LLM Calls&quot;,&quot;thisPaper&quot;:&quot;34&quot;},{&quot;baseline&quot;:&quot;361.5&quot;,&quot;benchmark&quot;:&quot;OS-Symphony&quot;,&quot;delta&quot;:&quot;-220.7&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Runtime (min)&quot;,&quot;thisPaper&quot;:&quot;140.8&quot;}],&quot;title&quot;:&quot;RQ3: Code-to-text Harness Migration (OSWorld OS-Symphony)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Shared runtime charter and benchmark-specific harness logic materially change agent behavior and process metrics (e.g., tokens, calls, runtime) more than overall performance, indicating real behavioral control.&quot;,&quot;Harness modules can be composed and ablated, with their effects concentrating on boundary cases that flip under changed control logic, rather than uniformly shifting benchmark scores.&quot;,&quot;Explicit structure provided by modules (e.g., File-backed State, Self-Evolution) helps by tightening the path from intermediate behavior to evaluator acceptance, rather than simply expanding the search space.&quot;,&quot;Migration from native code harnesses to reconstructed natural-language harnesses is viable, can improve performance and shifts behavior towards more robust, artifact-backed verification and durable state management.&quot;]},&quot;institutions&quot;:&quot;Shenzhen International Graduate School, Tsinghua University, Harbin Institute of Technology (Shenzhen)&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Natural-Language Agent Harnesses (NLAHs) are introduced as structured natural-language representations of harness control, bound to explicit contracts and artifact carriers, making harness logic editable and inspectable.&quot;,&quot;Intelligent Harness Runtime (IHR) is a shared runtime that directly interprets NLAHs, cleanly separating runtime charter from task-family harness logic, and places an LLM inside the runtime loop for interpretation.&quot;,&quot;The framework formalizes the harness design-pattern layer as an explicit representation object, distinct from runtime policy and low-level execution hooks, and specifies executable components such as contracts, roles, stage structure, adapters, scripts, state semantics, and a failure taxonomy.&quot;,&quot;Controlled experiments are conducted to provide evidence on the shared-runtime behavioral effect, module composition/ablation, and paired code-to-text migration fidelity, demonstrating the operational viability and impact of this approach.&quot;],&quot;main&quot;:&quot;Externalizing agent harness logic as explicit, executable natural-language objects (NLAHs) interpreted by a shared Intelligent Harness Runtime (IHR), enabling better study, comparison, and modularity of agent control.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;The orchestration layer that governs multiple model or agent calls for a task family, specifying control, contracts, and state management.&quot;,&quot;term&quot;:&quot;Harness&quot;},{&quot;definition&quot;:&quot;Designing the immediate prompt and retrieved context for a single LLM call; a harness subsumes this but also manages multi-step structure, tool mediation, verification, and durable state.&quot;,&quot;term&quot;:&quot;Context Engineering&quot;},{&quot;definition&quot;:&quot;A structured natural-language representation of harness control bound to explicit contracts and artifact carriers, intended to be executed by IHR.&quot;,&quot;term&quot;:&quot;Natural-Language Agent Harness (NLAH)&quot;},{&quot;definition&quot;:&quot;A shared runtime that interprets NLAHs directly, placing an LLM inside the runtime loop to read the harness, current state, environment, and runtime charter, and select the next action.&quot;,&quot;term&quot;:&quot;Intelligent Harness Runtime (IHR)&quot;}],&quot;prerequisites&quot;:[&quot;Understanding of Large Language Models (LLMs) and their capabilities.&quot;,&quot;Familiarity with agent systems and common design patterns like reason-act loops, retrieval-augmented generation (RAG), and self-reflection.&quot;,&quot;Basic knowledge of software engineering principles, especially regarding modularity, reusability, and system design.&quot;]},&quot;subTopics&quot;:[&quot;Agent Systems&quot;,&quot;Natural Language Processing&quot;,&quot;Workflow Orchestration&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Agent&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Prior agent systems scatter harness logic across controller code, framework defaults, tool adapters, and runtime-specific assumptions, making it opaque, hard to transfer, compare, and ablate cleanly. NLAHs make this logic explicit and executable.&quot;,&quot;Previous work on natural-language artifacts (e.g., AGENTS.md, skill bundles) packages reusable procedures but lacks an explicit executable harness representation with first-class contracts, role boundaries, state semantics, and runtime-facing adapters.&quot;,&quot;Unlike systems that compile natural language into a runtime-owned Intermediate Representation (IR) or workflows, IHR interprets harness logic directly, relying on explicit contracts and durable artifacts.&quot;,&quot;Our work is complementary to existing agent control patterns (e.g., reason-act, RAG, reflection) by externalizing their logic as an executable representation rather than proposing new orchestration algorithms.&quot;],&quot;limitations&quot;:[&quot;Natural language is inherently less precise than code, making it difficult to faithfully recover some harness mechanisms, especially those relying on hidden service-side state, proprietary schedulers, or training-induced behaviors not observable from released artifacts.&quot;,&quot;Runtime contamination remains a risk, where a strong shared runtime charter might absorb part of the behavior one might otherwise attribute to harness text.&quot;,&quot;Module-level ablation studies, while informative, do not strictly establish causal identification; textual representations can introduce confounds like instruction salience and prompt length.&quot;,&quot;Externalizing harness modules may lower the barrier to spreading risky workflows, as harnesses mediate tool use and artifact handling, potentially introducing new attack surfaces for prompt injection, malicious tool grafting, or supply-chain contamination.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Harness Components&quot;,&quot;list&quot;:[&quot;Contracts: required inputs and outputs, format constraints, validation gates, permission boundaries, retry and stop rules.&quot;,&quot;Roles: role prompts (solver, verifier, researcher, orchestrator) with non-overlapping responsibilities.&quot;,&quot;Stage structure: an explicit workload topology (e.g., plan \\(\\rightarrow\\) execute \\(\\rightarrow\\) verify \\(\\rightarrow\\) repair).&quot;,&quot;Adapters and scripts: named hooks for deterministic actions (tests, verifiers, retrieval, parsing).&quot;,&quot;State semantics: what persists across steps (artifacts, ledgers, child workspaces) and how it is reopened (paths, manifests).&quot;,&quot;Failure taxonomy: named failure modes that drive recovery (missing artifact, wrong path, verifier failure, tool error, timeout).&quot;],&quot;value&quot;:&quot;N/A&quot;}],&quot;pipelineFlow&quot;:[&quot;The Intelligent Harness Runtime (IHR) places an LLM inside its runtime loop for interpretation of harness logic.&quot;,&quot;At each step, the LLM reads the Natural-Language Agent Harness (NLAH), the current state and environment, and the runtime charter.&quot;,&quot;Based on this information, the LLM selects the next action consistent with explicit contracts and budgets.&quot;,&quot;The IHR&#39;s backend provides terminal tools and a multi-agent interface, allowing for spawning and supervising child agents and ingesting returned artifacts.&quot;,&quot;An optional file-backed state module externalizes durable state into path-addressable artifacts, ensuring state persists across steps and branches for auditability and recovery.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Agent Call&quot;,&quot;value&quot;:&quot;An agent call is defined as $\\text{AgentCall}(\\mathcal{T}, \\Omega^{\\text{in}}_t) = (A_t, \\Delta\\Omega_t, y_t)$, where $\\mathcal{T}=(p, \\mathcal{F}^{\\text{in}}, \\kappa)$ is the task (prompt $p$, input files $\\mathcal{F}^{\\text{in}}$, execution contract $\\kappa$), $\\Omega^{\\text{in}}_t$ is the visible environment and file state at call start, $A_t$ is the designated artifact set, $\\Delta\\Omega_t$ are environment modifications, and $y_t$ is a normalized final response pointing to artifacts and stating success or failure.&quot;}],&quot;reproducibility&quot;:&quot;All experiments use the same IHR instantiation (Codex CLI version 0.114.0, model GPT-5.4, reasoning effort xhigh). Runs execute on Ubuntu 24.04 servers with 64 CPU cores and 251 GiB memory in Docker containers, with per-task container caps of 32 vCPUs, 84 GiB memory, and 40 GiB storage. Benchmark subsets were sampled once with a fixed random seed due to budget limits, with plans to rerun full benchmarks in a future revision.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;A structured natural-language representation of harness control, specifying contracts (inputs/outputs, validation, permissions), roles (solver, verifier, orchestrator), stage structure (workflow topology), adapters/scripts (deterministic actions), state semantics, and a failure taxonomy.&quot;,&quot;name&quot;:&quot;Natural-Language Agent Harnesses (NLAHs)&quot;,&quot;role&quot;:&quot;Externalizes and expresses high-level agent harness logic in an editable and inspectable natural language format.&quot;},{&quot;details&quot;:&quot;Composed of an in-loop LLM (interprets harness logic), a backend (provides terminal tools and a multi-agent interface for spawning and supervising child agents), and a runtime charter (defines semantics of contracts, state, orchestration, and child lifecycle).&quot;,&quot;name&quot;:&quot;Intelligent Harness Runtime (IHR)&quot;,&quot;role&quot;:&quot;Interprets and executes Natural-Language Agent Harnesses directly, separating runtime charter from task-family harness logic.&quot;},{&quot;details&quot;:&quot;An optional module that externalizes durable state into path-addressable artifacts. It enforces state to be externalized, path-addressable (later stages reopen by path), and compaction-stable (survives truncation, restart, and delegation), improving stability.&quot;,&quot;name&quot;:&quot;File-backed State Module&quot;,&quot;role&quot;:&quot;Manages durable cross-step state as canonical workspace for robustness and auditability.&quot;}]},&quot;thesis&quot;:&quot;The design-pattern layer inside agent harnesses can be made explicit as an executable natural-language object under shared runtime assumptions.&quot;,&quot;title&quot;:&quot;Natural-Language Agent Harnesses&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2603.25723&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

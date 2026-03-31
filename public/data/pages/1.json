@@ -2,6 +2,28 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2603.28052",
+      "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+      "authors": "Yoonho Lee, Roshen Nair, Qizheng Zhang, Kangwook Lee, Omar Khattab, Chelsea Finn",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Agent",
+        "RAG",
+        "Reasoning"
+      ]
+    },
+    {
+      "paperId": "2603.25723",
+      "title": "Natural-Language Agent Harnesses",
+      "authors": "Linyue Pan, Lexiao Zou, Shuo Guo, Jingchen Ni, Hai-Tao Zheng",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Agent",
+        "Reasoning",
+        "QA"
+      ]
+    },
+    {
       "paperId": "2603.25551",
       "title": "Voxtral TTS",
       "authors": "Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon, Jaeyoung Kim, John Harvill, Khyathi Raghavi Chandu, Lorenzo Signoretti, Margaret Jennings, Patrick von Platen, Pavankumar Reddy Muddireddy, Rohin Arora, Sanchit Gandhi, Samuel Humeau, Soham Ghosh, Srijan Mishra, Van Phung",
@@ -87,28 +109,6 @@
         "Reasoning",
         "Benchmark",
         "Factuality"
-      ]
-    },
-    {
-      "paperId": "2603.05698",
-      "title": "Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis",
-      "authors": "Hazem Amamou, St\u00e9phane Gagnon, Alan Davoust and Anderson R. Avila",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "RAG",
-        "KG",
-        "QA"
-      ]
-    },
-    {
-      "paperId": "2603.05344",
-      "title": "Building Effective AI Coding Agents for the Terminal: Scaffolding, Harness, Context Engineering, and Lessons Learned",
-      "authors": "Nghi D. Q. Bui",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Agent",
-        "QA",
-        "Reasoning"
       ]
     }
   ]

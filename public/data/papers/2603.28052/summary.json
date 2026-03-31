@@ -1,0 +1,339 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 63,
+      "xmin": 186,
+      "ymax": 228,
+      "xmax": 826
+    },
+    "caption": "Meta-Harness search loop. (1) An agent reads a filesystem containing all prior candidates' source code, execution traces, and scores, and proposes a new harness. (2) We evaluate the proposed harness on evaluation tasks. (3) All logs (proposed code, reasoning traces, evaluation scores) are stored in the filesystem in a new directory, and the loop repeats.",
+    "figureNumber": 2,
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2603.28052/figures/architecture.webp"
+  },
+  "authors": "Yoonho Lee, Roshen Nair, Qizheng Zhang, Kangwook Lee, Omar Khattab, Chelsea Finn",
+  "breakthroughAssessment": {
+    "justification": "This paper presents a significant advancement in automating harness engineering for LLMs. By introducing an outer-loop system with a coding agent that has full filesystem access to prior experience (code, traces, scores), Meta-Harness enables a novel approach to optimizing LLM context management strategies. The method demonstrates strong empirical results across diverse tasks (text classification, math reasoning, agentic coding), consistently outperforming human-designed baselines and prior text optimization methods, often with higher efficiency (less context, faster convergence). The focus on full historical context and algorithmic-level modifications via code-space search addresses key limitations of existing approaches. This represents a major contribution to the field of LLM system development and agentic AI.",
+    "score": 8
+  },
+  "coreProblem": {
+    "concreteExample": "Manually refining prompts, context-management rules, and tool-use logic for large language models (LLMs) to improve their performance on tasks.",
+    "statement": "The performance of large language model (LLM) systems is heavily reliant on their \"harness\" (the code that determines information storage, retrieval, and presentation), yet these harnesses are still largely designed manually. Existing text optimization methods are ill-suited for this task due to overly compressed feedback, memorylessness, or restricted feedback to short templates/summaries.",
+    "whyItMatters": [
+      "Manual harness engineering is time-consuming and prone to errors, often leading to suboptimal LLM system performance.",
+      "The choice of harness can result in a 6x performance gap on the same benchmark, highlighting its critical importance.",
+      "Automating harness engineering is crucial for developing more effective, robust, and generalizable LLM applications."
+    ]
+  },
+  "evaluationHighlights": [
+    "Meta-Harness achieved 7.7 points higher accuracy than the state-of-the-art ACE [59] in online text classification while using 4x fewer context tokens.",
+    "It matched the best prior text optimizers' final accuracy within 4 evaluations and ultimately surpassed them by over 10 points.",
+    "The discovered retrieval strategy for math reasoning improved accuracy by 4.7 points on IMO-level problems over a 'no retriever' baseline across five held-out models.",
+    "Meta-Harness outperformed the strong hand-engineered Terminus-KIRA by 1.7% pass rate and Goose by 2.1% pass rate on TerminalBench-2 for Claude Opus 4.6 and Haiku 4.5 agents respectively.",
+    "Discovered harnesses generalize well to out-of-distribution classification datasets and unseen base models in the math reasoning setting."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Online Text Classification (Search Set: LawBench, Symptom2Disease, USPTO-50k)",
+        "Online Text Classification (OOD Set: SciCite, FiNER-139, Amazon Reviews, Financial PhraseBank, GoEmotions, Banking77, AG News, SciTail, TweetEval)",
+        "Retrieval-Augmented Math Reasoning (200 IMO-level problems: IMO-AnswerBench, IMO-ProofBench, ArXivMath Dec. 2025, ArXivMath Jan. 2026)",
+        "Agentic Coding (TerminalBench-2)"
+      ],
+      "metrics": [
+        "Accuracy",
+        "Context Tokens (Ctx)",
+        "Pass Rate (%)"
+      ],
+      "setting": "Evaluation on three task domains: online text classification, mathematical reasoning, and agentic coding, comparing discovered harnesses against domain-appropriate baselines and program-search methods."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 296,
+          "xmin": 176,
+          "ymax": 439,
+          "xmax": 528
+        },
+        "caption": "(Left) On text classification, Meta-Harness outperforms the best prior hand-designed harnesses (ACE) and existing text optimizers (TTT-Discover, OpenEvolve), matching the next-best method's final accuracy after just 4 evaluations.",
+        "figureNumber": 1,
+        "pageIndex": 0,
+        "assetPath": "/paper-summaries-site/data/papers/2603.28052/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 296,
+          "xmin": 543,
+          "ymax": 439,
+          "xmax": 823
+        },
+        "caption": "(Right) On TerminalBench-2, Meta-Harness outperforms all reported Claude Haiku 4.5 harnesses.",
+        "figureNumber": 1,
+        "pageIndex": 0,
+        "assetPath": "/paper-summaries-site/data/papers/2603.28052/figures/experiment-2.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 282,
+          "xmin": 529,
+          "ymax": 424,
+          "xmax": 808
+        },
+        "caption": "Pareto frontier of accuracy vs. context tokens on online text classification. Meta-Harness achieves a stronger accuracy-context Pareto frontier than all comparison methods.",
+        "figureNumber": 3,
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2603.28052/figures/experiment-3.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 46,
+          "xmin": 176,
+          "ymax": 189,
+          "xmax": 797
+        },
+        "caption": "Search-set accuracy over evaluations for all compared text optimizers on online text classification. Each point is one candidate harness; lines track the best-so-far. Per-dataset curves are shown alongside the aggregate. Meta-Harness reaches the final accuracy of OpenEvolve and TTT-Discover within the first 4 evaluations and continues improving, ending more than 10 points above all baselines.",
+        "figureNumber": 4,
+        "pageIndex": 14,
+        "assetPath": "/paper-summaries-site/data/papers/2603.28052/figures/experiment-4.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 501,
+          "xmin": 174,
+          "ymax": 632,
+          "xmax": 817
+        },
+        "caption": "Search-set vs. test accuracy per dataset for discovered text-classification strategies. Each pink dot is a discovered strategy; baselines are labeled. The dashed diagonal is y = x .",
+        "figureNumber": 7,
+        "pageIndex": 18,
+        "assetPath": "/paper-summaries-site/data/papers/2603.28052/figures/experiment-5.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "ACE [59] (40.9%)",
+            "benchmark": "All datasets (Avg)",
+            "delta": "+7.7%",
+            "isPositive": true,
+            "metric": "Accuracy",
+            "thisPaper": "Meta-Harness (48.6%)"
+          },
+          {
+            "baseline": "ACE [59] (50.8)",
+            "benchmark": "All datasets (Avg)",
+            "delta": "-39.4",
+            "isPositive": true,
+            "metric": "Ctx (thousands)",
+            "thisPaper": "Meta-Harness (11.4)"
+          }
+        ],
+        "title": "Online Text Classification (Search Set)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "ACE [59] (70.2%)",
+            "benchmark": "All datasets (Avg Acc)",
+            "delta": "+2.9%",
+            "isPositive": true,
+            "metric": "Accuracy",
+            "thisPaper": "Meta-Harness (73.1%)"
+          }
+        ],
+        "title": "Online Text Classification (OOD Datasets)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "TTT-Discover [55] (45.6)",
+            "benchmark": "N/A (Text Classification)",
+            "delta": "+11.1",
+            "isPositive": true,
+            "metric": "Best Accuracy",
+            "thisPaper": "Meta-Harness (56.7)"
+          }
+        ],
+        "title": "Text Classification vs Text Optimizers (Search Set, Best Accuracy)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "No Retriever (34.1)",
+            "benchmark": "All models (Avg)",
+            "delta": "+4.7",
+            "isPositive": true,
+            "metric": "Pass@1",
+            "thisPaper": "Meta-Harness (38.8)"
+          },
+          {
+            "baseline": "BM25 Retrieval (37.5)",
+            "benchmark": "All models (Avg)",
+            "delta": "+1.3",
+            "isPositive": true,
+            "metric": "Pass@1",
+            "thisPaper": "Meta-Harness (38.8)"
+          }
+        ],
+        "title": "Retrieval-Augmented Math Problem Solving (Pass@1)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "Terminus-KIRA (74.7%)",
+            "benchmark": "TerminalBench-2",
+            "delta": "+1.7%",
+            "isPositive": true,
+            "metric": "Pass (%)",
+            "thisPaper": "Meta-Harness (76.4%)"
+          }
+        ],
+        "title": "Agentic Coding (TerminalBench-2, Claude Opus 4.6)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "Goose (35.5%)",
+            "benchmark": "TerminalBench-2",
+            "delta": "+2.1%",
+            "isPositive": true,
+            "metric": "Pass (%)",
+            "thisPaper": "Meta-Harness (37.6%)"
+          }
+        ],
+        "title": "Agentic Coding (TerminalBench-2, Claude Haiku 4.5)"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "Meta-Harness significantly outperforms prior hand-designed harnesses and text optimizers in online text classification, achieving higher accuracy with substantially less context.",
+      "The method successfully discovers effective retrieval strategies for math reasoning on IMO-level problems, surpassing various baselines including dense and sparse retrieval.",
+      "Meta-Harness automatically discovers harnesses that outperform strong human-engineered agents on the challenging TerminalBench-2 agentic coding benchmark.",
+      "Providing the coding agent with full filesystem access to raw prior code and execution traces is crucial for enabling effective harness search and performance gains."
+    ]
+  },
+  "institutions": "Stanford, KRAFTON, MIT",
+  "keyNovelty": {
+    "explanation": [
+      "Unlike prior text optimization methods that typically rely on short-horizon or heavily compressed feedback (e.g., scalar scores, short templates, or LLM-generated summaries), Meta-Harness provides full historical context (source code, execution traces, and scores) via a filesystem.",
+      "This full access allows a coding agent to perform in-depth diagnosis of failures, form causal hypotheses from raw traces, and propose targeted code edits at an algorithmic structure level (e.g., changes to retrieval, memory, prompt construction logic, or full program rewrites), rather than being limited to predefined mutation operators or template filling.",
+      "Meta-Harness automates the entire process of harness engineering, a practice that has traditionally been manual, thereby enabling systematic optimization and discovery of superior context management strategies."
+    ],
+    "main": "An end-to-end outer-loop system that automates harness engineering for LLMs by using a coding agent with full filesystem access to prior experience (source code, execution traces, scores) to search and optimize harness code."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "The code that determines what information a large language model (LLM) system stores, retrieves, and presents to the model, acting as a wrapper around the LLM.",
+        "term": "Harness (for LLMs)"
+      },
+      {
+        "definition": "The practice of refining the code around an LLM to improve the overall system's performance, encompassing changes to prompts, context-management rules, and tool-use logic.",
+        "term": "Harness Engineering"
+      },
+      {
+        "definition": "A language-model-based system that can invoke developer tools and modify code, capable of inspecting and interacting with a codebase.",
+        "term": "Coding Agent"
+      }
+    ],
+    "prerequisites": [
+      "Familiarity with Large Language Models (LLMs) and their applications.",
+      "Understanding of agentic systems and prompt engineering concepts.",
+      "Basic knowledge of program search or optimization techniques."
+    ]
+  },
+  "subTopics": [
+    "Large Language Models (LLMs)",
+    "Automated Machine Learning",
+    "Agentic AI"
+  ],
+  "tags": [
+    {
+      "name": "Agent",
+      "type": "primary"
+    },
+    {
+      "name": "RAG",
+      "type": "topic"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Prior text optimization methods (e.g., OPRO, TextGrad, AlphaEvolve, GEPA, TTT-Discover) typically operate with short-horizon or heavily compressed feedback (scalar scores, short templates, LLM-generated summaries). Meta-Harness provides full history (source code, execution traces) via a filesystem, enabling more in-depth diagnosis and algorithmic-level changes.",
+      "Existing harness engineering is largely manual, relying on human engineers and researchers to iteratively refine prompts, context-management rules, and tool-use logic. Meta-Harness automates this process end-to-end.",
+      "Compared to methods that search over executable code (e.g., evolutionary program search, meta-agents, workflow graph search), Meta-Harness provides unrestricted filesystem access to prior experience and searches over full harness implementations, rather than being confined to fixed scaffolds, predefined mutation operators, or limited search spaces."
+    ],
+    "limitations": [
+      "The current study evaluates Meta-Harness with one particularly strong coding-agent proposer (Claude Code); further research is needed to explore how its effectiveness varies across different proposer agents.",
+      "While the discovered harness for TerminalBench-2 is specialized to its regime, the overall methodology is demonstrated to be generally effective, suggesting broader applicability with careful adaptation."
+    ],
+    "modeling": [
+      {
+        "label": "Harness Optimization Objective",
+        "value": "Meta-Harness aims to find the harness $H^*$ that maximizes the expected final reward for a fixed language model $M$ and task distribution $X$, formally defined as $H^* = \\text{arg max}_H E_{x \\sim X, \\tau \\sim p_M(H,x)} r(\\tau,x)$, where $r(\\tau,x)$ is a task-specific reward function for a rollout trajectory $\\tau$ from task instance $x$."
+      },
+      {
+        "label": "Harness Search Strategy",
+        "value": "Meta-Harness maintains a population $H$ and a Pareto frontier over evaluated harnesses, without imposing specific parent-selection rules. The coding-agent proposer is free to inspect any prior harness and its execution trace. The search runs for a fixed number of iterations, with final test-set evaluation performed on the Pareto frontier."
+      },
+      {
+        "label": "Text Classification Harnesses",
+        "list": [
+          "Draft Verification Harness: A lightweight, two-call procedure. It first retrieves 5 similar labeled examples for an initial draft prediction. Then, it re-queries the same memory, conditioned on the draft label, to retrieve 5 confirmers and 5 challengers, asking the model to verify or revise its initial answer. It uses short retrieved contexts to minimize cost.",
+          "Label-Primed Query Harness: A stronger variant that uses a single, larger call constructed from three parts. It includes a label primer (listing valid output labels), a coverage section (one query-relevant example per label), and query-anchored contrastive pairs (highly similar examples with different labels). It employs TF-IDF retrieval for examples."
+        ]
+      },
+      {
+        "label": "Math Retrieval Harness",
+        "value": "A compact four-route BM25 program that assigns each problem to one of four subject-specific routes: combinatorics, geometry, number theory, or a default route (for algebra/other). Each route implements specific retrieval policies, including lexical predicates for routing, deduplication thresholds, reranking terms (lexical score, difficulty), and adaptive example counts. It uses a math-aware tokenizer for BM25."
+      },
+      {
+        "label": "Agentic Coding Harness (TerminalBench-2)",
+        "value": "Builds upon Terminus-KIRA's native tool calling. The main modification is an \"environment bootstrapping\" component: before the agent loop, it runs a shell command to gather a snapshot of the sandbox environment (OS, installed languages, package managers, app contents) and injects this information into the initial prompt, eliminating early exploratory turns."
+      }
+    ],
+    "pipelineFlow": [
+      "Initialize a population of valid harnesses $H$ and an empty filesystem $D$ for storing code, scores, and traces.",
+      "For each initial harness in $H$, evaluate it and store its code and evaluation results in $D$.",
+      "For a fixed number of iterations:",
+      "The coding-agent proposer queries the filesystem $D$ to inspect prior harnesses and scores.",
+      "The proposer generates $k$ new candidate harnesses.",
+      "For each new candidate harness, if it passes interface validation, it is evaluated, and its code and evaluation results are stored in $D$.",
+      "Return the Pareto frontier of harnesses stored in $D$."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Harness Objective",
+        "value": "The objective of harness optimization is to find the harness $H^*$ that maximizes the expected final reward $E_{x \\sim X, \\tau \\sim p_M(H,x)} r(\\tau,x)$, where $M$ is a fixed language model, $X$ is a task distribution, $\\tau$ is a rollout trajectory, and $r(\\tau,x)$ is a task-specific reward function."
+      }
+    ],
+    "reproducibility": "The paper provides a project page with an interactive demo and a link to the optimized harness artifact. Appendix D offers practical implementation tips, including guidelines for writing skills, starting with baselines, comprehensive logging, making logs queryable via CLI, lightweight validation, and automating evaluation outside the proposer. The paper indicates the proposer used was Claude Code with Opus-4.6.",
+    "systemModules": [
+      {
+        "details": "A language-model-based system (e.g., Claude Code with Opus-4.6) that can invoke developer tools and modify code. Its role is to inspect prior code, scores, and execution traces from the filesystem to diagnose failures, form causal hypotheses, and propose targeted code edits for new harnesses.",
+        "name": "Coding-Agent Proposer (P)",
+        "role": "Generates new harness code and diagnoses prior failures."
+      },
+      {
+        "details": "A persistent storage mechanism that functions as the feedback channel for the proposer. It stores the source code, evaluation scores, and detailed execution traces of all prior candidate harnesses. This allows the proposer to selectively access and inspect historical data using standard terminal tools like 'grep' and 'cat'.",
+        "name": "Filesystem (D)",
+        "role": "Serves as the memory and feedback channel for the proposer."
+      },
+      {
+        "details": "A stateful program that wraps a language model ($M$) and determines what context the model sees at each step. It constructs prompts for $M$, processes model responses, and updates its internal state after each interaction. These are the task-specific programs being optimized.",
+        "name": "Harness (H)",
+        "role": "Wraps the LLM and governs its interaction logic and context management."
+      }
+    ]
+  },
+  "thesis": "Meta-Harness, an outer-loop system that automates harness engineering by searching over harness code with full filesystem access to prior experience, can discover more effective, generalizable, and faster-converging context management strategies than manual designs or prior text optimization methods, leading to significant performance gains across diverse LLM applications.",
+  "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+  "url": "https://arxiv.org/abs/arXiv:2603.28052",
+  "venue": "N/A",
+  "year": "2026"
+}
