@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import type { PaperSummaryData } from '../types';
-import { CroppedImage } from './CroppedImage';
+import type { FigureBoundingBox, PaperSummaryData, SummaryFigure } from '../types';
 
 declare global {
   interface Window {
@@ -12,7 +11,7 @@ declare global {
   }
 }
 
-export function PaperSummary({ data, pdfImages }: { data: PaperSummaryData; pdfImages: string[] }) {
+export function PaperSummary({ data }: { data: PaperSummaryData }) {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     technical: false,
     experiments: false,
@@ -36,15 +35,13 @@ export function PaperSummary({ data, pdfImages }: { data: PaperSummaryData; pdfI
     return Number.isFinite(num) ? num : null;
   };
 
-  const resolvePageIndex = (pageIndex?: number): number | null => {
+  const resolvePageNumber = (pageIndex?: number): number | null => {
     if (!Number.isInteger(pageIndex)) return null;
     const idx = Number(pageIndex);
-    return idx >= 0 && idx < pdfImages.length ? idx : null;
+    return idx >= 0 ? idx + 1 : null;
   };
 
-  const hasValidBoundingBox = (
-    bbox?: { ymin: number; xmin: number; ymax: number; xmax: number },
-  ): boolean => {
+  const hasValidBoundingBox = (bbox?: FigureBoundingBox): boolean => {
     if (!bbox || typeof bbox !== 'object') return false;
     return (
       Number.isFinite(bbox.ymin) &&
@@ -54,6 +51,24 @@ export function PaperSummary({ data, pdfImages }: { data: PaperSummaryData; pdfI
       bbox.ymax - bbox.ymin > 0 &&
       bbox.xmax - bbox.xmin > 0
     );
+  };
+
+  const renderFigureImage = (figure: SummaryFigure, alt: string) => {
+    if (!figure.assetPath || !hasValidBoundingBox(figure.boundingBox)) return null;
+    const src = figure.assetPath;
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className="max-w-full h-auto rounded cursor-pointer hover:scale-[1.02] transition-transform mobile-figure"
+        onClick={() => handleImageClick(src, alt)}
+      />
+    );
+  };
+
+  const canRenderFigure = (figure?: SummaryFigure): figure is SummaryFigure => {
+    if (!figure || !hasValidBoundingBox(figure.boundingBox)) return false;
+    return Boolean(figure.assetPath);
   };
 
   const renderTextWithLinks = (text?: string): ReactNode => {
@@ -153,14 +168,14 @@ export function PaperSummary({ data, pdfImages }: { data: PaperSummaryData; pdfI
 
   const pickArchitectureFigure = () => {
     const direct = data.architectureFigure;
-    if (direct && resolvePageIndex(direct.pageIndex) !== null && hasValidBoundingBox(direct.boundingBox)) {
+    if (canRenderFigure(direct)) {
       return direct;
     }
 
     const candidates = data.experiments?.experimentFigures ?? [];
     const byCaption = candidates.find(
       (fig) =>
-        resolvePageIndex(fig.pageIndex) !== null &&
+        canRenderFigure(fig) &&
         hasValidBoundingBox(fig.boundingBox) &&
         architectureCaptionPattern.test(fig.caption || ''),
     );
@@ -170,7 +185,7 @@ export function PaperSummary({ data, pdfImages }: { data: PaperSummaryData; pdfI
   };
 
   const architectureFigure = pickArchitectureFigure();
-  const architecturePageIndex = architectureFigure ? resolvePageIndex(architectureFigure.pageIndex) : null;
+  const architecturePageNumber = architectureFigure ? resolvePageNumber(architectureFigure.pageIndex) : null;
   const architectureFigureNumber =
     architectureFigure?.figureNumber ?? parseFigureNumberFromCaption(architectureFigure?.caption) ?? 1;
 
@@ -278,12 +293,12 @@ export function PaperSummary({ data, pdfImages }: { data: PaperSummaryData; pdfI
         </h2>
         {openSections.technical && (
           <div className="pt-4">
-            {architectureFigure && architecturePageIndex !== null && (
+            {architectureFigure && architecturePageNumber !== null && (
               <div className="mb-5 text-center">
                 <div className="text-xs sm:text-sm font-semibold text-[var(--muted)] mb-2 uppercase tracking-wide text-left">Architecture</div>
                 <div className="bg-[var(--summary-card)] border border-[var(--line)] rounded-lg shadow-sm p-4 inline-block max-w-full">
-                  <div className="text-xs text-[var(--muted)] mb-2 text-left">{`Figure ${architectureFigureNumber} • Page ${architecturePageIndex + 1}`}</div>
-                  <CroppedImage base64Image={pdfImages[architecturePageIndex]} boundingBox={architectureFigure.boundingBox} alt={`Architecture Figure ${architectureFigureNumber}`} className="max-w-full h-auto rounded cursor-pointer hover:scale-[1.02] transition-transform mobile-figure" onClick={(src) => handleImageClick(src, `Architecture Figure ${architectureFigureNumber}`)} />
+                  <div className="text-xs text-[var(--muted)] mb-2 text-left">{`Figure ${architectureFigureNumber} • Page ${architecturePageNumber}`}</div>
+                  {renderFigureImage(architectureFigure, `Architecture Figure ${architectureFigureNumber}`)}
                   <div className="mt-3 text-sm text-[var(--muted)] italic leading-relaxed px-4">{architectureFigure.caption}</div>
                 </div>
               </div>
@@ -307,7 +322,7 @@ export function PaperSummary({ data, pdfImages }: { data: PaperSummaryData; pdfI
           <div className="pt-4">
             <div className="mb-5"><div className="text-xs sm:text-sm font-semibold text-[var(--muted)] mb-2 uppercase tracking-wide">Evaluation Setup</div><div className="bg-[var(--summary-soft)] border-l-4 border-[#40a02b] p-3 mb-4 rounded-r-lg">{data.experiments?.evaluationSetup?.setting}</div><div className="mb-2"><strong>Benchmarks:</strong></div><ul className="m-0 pl-5 list-disc mb-3">{data.experiments?.evaluationSetup?.benchmarks?.map((b, i) => <li key={i}>{b}</li>)}</ul><div className="mb-2"><strong>Metrics:</strong></div><ul className="m-0 pl-5 list-disc">{data.experiments?.evaluationSetup?.metrics?.map((m, i) => <li key={i}>{m}</li>)}</ul></div>
             <div className="mb-5 overflow-x-auto results-table-wrap"><div className="text-xs sm:text-sm font-semibold text-[var(--muted)] mb-2 uppercase tracking-wide">Key Results</div>{renderResultsTable(keyResultsRows)}</div>
-            {data.experiments?.experimentFigures && data.experiments.experimentFigures.length > 0 && <div className="mb-5 mt-5"><div className="text-xs sm:text-sm font-semibold text-[var(--muted)] mb-2 uppercase tracking-wide">Experiment Figures</div><div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">{data.experiments.experimentFigures.map((fig, i) => { const resolvedPageIndex = resolvePageIndex(fig.pageIndex); if (resolvedPageIndex === null || !hasValidBoundingBox(fig.boundingBox)) return null; const figureNumber = fig.figureNumber ?? parseFigureNumberFromCaption(fig.caption) ?? i + 1; const figureLabel = `Experiment Figure ${figureNumber}`; return <div key={i} className="text-center"><div className="bg-[var(--summary-card)] border border-[var(--line)] rounded-lg shadow-sm p-4 inline-block max-w-full"><div className="text-xs text-[var(--muted)] mb-2 text-left">{`Figure ${figureNumber} • Page ${resolvedPageIndex + 1}`}</div><CroppedImage base64Image={pdfImages[resolvedPageIndex]} boundingBox={fig.boundingBox} alt={figureLabel} className="max-w-full h-auto rounded cursor-pointer hover:scale-[1.02] transition-transform mobile-figure" onClick={(src) => handleImageClick(src, figureLabel)} /><div className="mt-3 text-sm text-[var(--muted)] italic leading-relaxed px-4 break-words">{fig.caption}</div></div></div>; })}</div></div>}
+            {data.experiments?.experimentFigures && data.experiments.experimentFigures.length > 0 && <div className="mb-5 mt-5"><div className="text-xs sm:text-sm font-semibold text-[var(--muted)] mb-2 uppercase tracking-wide">Experiment Figures</div><div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">{data.experiments.experimentFigures.map((fig, i) => { const pageNumber = resolvePageNumber(fig.pageIndex); if (!canRenderFigure(fig) || pageNumber === null) return null; const figureNumber = fig.figureNumber ?? parseFigureNumberFromCaption(fig.caption) ?? i + 1; const figureLabel = `Experiment Figure ${figureNumber}`; return <div key={i} className="text-center"><div className="bg-[var(--summary-card)] border border-[var(--line)] rounded-lg shadow-sm p-4 inline-block max-w-full"><div className="text-xs text-[var(--muted)] mb-2 text-left">{`Figure ${figureNumber} • Page ${pageNumber}`}</div>{renderFigureImage(fig, figureLabel)}<div className="mt-3 text-sm text-[var(--muted)] italic leading-relaxed px-4 break-words">{fig.caption}</div></div></div>; })}</div></div>}
             <div className="mb-0"><div className="text-xs sm:text-sm font-semibold text-[var(--muted)] mb-2 uppercase tracking-wide">Main Takeaways</div><ul className="m-0 pl-5 list-disc text-[var(--text)]">{data.experiments?.mainTakeaways?.map((item, i) => <li key={i} className="mb-2">{item}</li>)}</ul></div>
           </div>
         )}

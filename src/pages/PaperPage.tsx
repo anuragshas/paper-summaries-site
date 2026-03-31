@@ -9,15 +9,11 @@ import type { PaperSummaryData } from '../types';
 export function PaperPage() {
   const { paperId = '' } = useParams();
   const [summary, setSummary] = useState<PaperSummaryData | null>(null);
-  const [pdfImages, setPdfImages] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     loadSummary(paperId)
-      .then((result) => {
-        setSummary(result.summary);
-        setPdfImages(result.pdfImages);
-      })
+      .then((result) => setSummary(result))
       .catch((err: Error) => setError(err.message));
   }, [paperId]);
 
@@ -45,7 +41,7 @@ export function PaperPage() {
       </header>
       {error ? <div className="card error-card">{error}</div> : null}
       {!summary && !error ? <div className="card">Loading summary...</div> : null}
-      {summary ? <PaperSummary data={summary} pdfImages={pdfImages} /> : null}
+      {summary ? <PaperSummary data={summary} /> : null}
     </main>
   );
 }

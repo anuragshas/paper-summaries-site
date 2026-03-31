@@ -1,5 +1,13 @@
 export type FigureBoundingBox = { ymin: number; xmin: number; ymax: number; xmax: number };
 
+export interface SummaryFigure {
+  figureNumber?: number;
+  pageIndex: number;
+  boundingBox: FigureBoundingBox;
+  caption: string;
+  assetPath?: string;
+}
+
 export interface SummaryManifestItem {
   paperId: string;
   title: string;
@@ -50,12 +58,7 @@ export interface PaperSummaryData {
     main: string;
     explanation: string[];
   };
-  architectureFigure?: {
-    figureNumber?: number;
-    pageIndex: number;
-    boundingBox: FigureBoundingBox;
-    caption: string;
-  };
+  architectureFigure?: SummaryFigure;
   evaluationHighlights: string[];
   breakthroughAssessment: {
     score: number;
@@ -95,12 +98,7 @@ export interface PaperSummaryData {
         isPositive: boolean;
       }[];
     }[];
-    experimentFigures?: {
-      figureNumber?: number;
-      pageIndex: number;
-      boundingBox: FigureBoundingBox;
-      caption: string;
-    }[];
+    experimentFigures?: SummaryFigure[];
     mainTakeaways: string[];
   };
   prerequisiteKnowledge: {

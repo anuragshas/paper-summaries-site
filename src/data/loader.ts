@@ -2,11 +2,6 @@ import type { PaperSummaryData, SummaryManifest, SummaryPageData, SummarySearchI
 
 const baseUrl = import.meta.env.BASE_URL;
 
-export interface LoadedSummary {
-  summary: PaperSummaryData;
-  pdfImages: string[];
-}
-
 export async function loadManifest(): Promise<SummaryManifest> {
   const response = await fetch(`${baseUrl}data/index.json`);
   if (!response.ok) {
@@ -31,17 +26,11 @@ export async function loadSearchIndex(): Promise<SummarySearchIndex> {
   return response.json() as Promise<SummarySearchIndex>;
 }
 
-export async function loadSummary(paperId: string): Promise<LoadedSummary> {
+export async function loadSummary(paperId: string): Promise<PaperSummaryData> {
   const summaryUrl = `${baseUrl}data/papers/${encodeURIComponent(paperId)}/summary.json`;
-  const imagesUrl = `${baseUrl}data/papers/${encodeURIComponent(paperId)}/pdf-images.json`;
   const summaryResponse = await fetch(summaryUrl);
   if (!summaryResponse.ok) {
     throw new Error('Failed to load paper summary.');
   }
-  const pdfImagesResponse = await fetch(imagesUrl);
-  const pdfImages = pdfImagesResponse.ok ? ((await pdfImagesResponse.json()) as string[]) : [];
-  return {
-    summary: (await summaryResponse.json()) as PaperSummaryData,
-    pdfImages,
-  };
+  return (await summaryResponse.json()) as PaperSummaryData;
 }
