@@ -1,0 +1,19 @@
+{
+  "paperId": "2602.16932",
+  "title": "RankEvolve: Automating the Discovery of Retrieval Algorithms via LLM-Driven Evolution",
+  "authors": "Jinming Nian, Fangchen Li, Dae Hoon Park, Yi Fang",
+  "publishedDate": "2026-02-01",
+  "tags": [
+    "RAG",
+    "Agent",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2602.16932",
+  "pagePath": "/paper-summaries-site/papers/2602.16932",
+  "summaryPath": "/paper-summaries-site/data/papers/2602.16932/summary.json",
+  "assets": {
+    "figureAssetCount": 5,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

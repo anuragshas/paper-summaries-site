@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RankEvolve: Automating the Discovery of Retrieval Algorithms via LLM-Driven Evolution</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>RankEvolve: Automating the Discovery of Retrieval Algorithms via LLM-Driven Evolution</h1>
+      <p class="meta"><strong>Authors:</strong> Jinming Nian, Fangchen Li, Dae Hoon Park, Yi Fang</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/2602.16932" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2602.16932</a></p>
+      <p class="muted">Generated summary artifact for 2602.16932</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Large language models, guided by an evaluator and evolutionary search, can automatically discover novel and improved lexical retrieval algorithms that outperform existing methods and generalize effectively to unseen datasets.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>The development of effective lexical retrieval algorithms has historically relied on human expertise and iterative, intuition-driven parameter tuning, which limits the exploration of novel and potentially more effective scoring functions.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>RankEvolve introduces the first LLM-guided program evolution framework for automatically discovering novel and effective lexical retrieval algorithms from scratch, rather than merely tuning existing ones.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>RankEvolve-evolved algorithms (BM25* and QL-Dir*) consistently and significantly outperform their human-designed seed counterparts and other baselines across various held-out IR benchmarks (BEIR, BRIGHT, TREC DL 19/20).</li><li>The evolved algorithms demonstrate strong generalization capabilities, showing improved performance on datasets not seen during the evolutionary training process.</li><li>The degree of structural freedom afforded to the LLM (e.g., &#39;freeform&#39; seed design) is crucial for discovering highly effective and generalizable algorithms, outperforming constrained or composable approaches.</li><li>While effective, evolved algorithms are often more complex and incur higher query latency (up to 11x slower for BM25* Freeform) compared to the seeds, highlighting a trade-off between effectiveness and efficiency not explicitly optimized for.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>RankEvolve successfully discovers novel lexical retrieval algorithms that surpass traditional methods, demonstrating the efficacy of LLM-guided evolution for Information Retrieval.</li><li>The discovered algorithms show strong generalization capabilities to unseen datasets, indicating robustness beyond the training environment.</li><li>The degree of structural freedom given to the LLM during evolution directly correlates with the ceiling of achievable performance, with &#39;freeform&#39; seeds yielding the best results by allowing broader architectural changes.</li><li>While the evolved algorithms are more effective, they are often more complex and incur higher latency, highlighting the need to include efficiency as an explicit optimization objective in future work.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The evolved algorithms, while more effective, can be significantly more complex and incur substantially higher query latency compared to their simpler, human-designed seed counterparts, as efficiency was not an explicit optimization objective.</li><li>The current framework does not explicitly incorporate or incentivize algorithmic elegance, potentially leading to overly complex solutions when simpler ones might suffice for similar performance.</li><li>The effectiveness of the LLM-guided evolution is influenced by the structural freedom of the seed program, suggesting that initial design choices still play a critical role in the search space exploration.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {},
+  &quot;authors&quot;: &quot;Jinming Nian, Fangchen Li, Dae Hoon Park, Yi Fang&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;RankEvolve represents a significant advancement in automating algorithm discovery for information retrieval. It successfully leverages LLMs to evolve novel and effective lexical retrieval algorithms that outperform strong baselines and generalize well to unseen datasets. The work pioneers LLM-guided program evolution in the IR domain, showcasing the LLM&#39;s capability as a reason-informed mutation operator for complex code, and naturally rediscovers fundamental IR principles. The detailed ablation study on structural freedom further strengthens the contribution. While the increased latency is a limitation, it is a known trade-off when optimizing for effectiveness without explicit efficiency constraints.&quot;,
+    &quot;score&quot;: 8
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Traditional lexical retrieval algorithms like BM25 and query likelihood (QL) have seen improvements largely driven by human intuition and manual parameter tuning, which is a slow and limited discovery process.&quot;,
+    &quot;statement&quot;: &quot;The development of effective lexical retrieval algorithms has historically relied on human expertise and iterative, intuition-driven parameter tuning, which limits the exploration of novel and potentially more effective scoring functions.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Automating algorithm discovery can accelerate research in information retrieval by enabling the exploration of a much larger and more diverse search space.&quot;,
+      &quot;Human-designed algorithms might be bottlenecked by cognitive biases or lack the capacity to find non-obvious combinations of scoring mechanisms that LLM-driven evolution could uncover.&quot;,
+      &quot;The ability to automatically discover algorithms can lead to more robust and generalizable solutions that perform well across a variety of datasets and tasks without extensive manual adaptation.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;RankEvolve-evolved algorithms (BM25* and QL-Dir*) consistently and significantly outperform their human-designed seed counterparts and other baselines across various held-out IR benchmarks (BEIR, BRIGHT, TREC DL 19/20).&quot;,
+    &quot;The evolved algorithms demonstrate strong generalization capabilities, showing improved performance on datasets not seen during the evolutionary training process.&quot;,
+    &quot;The degree of structural freedom afforded to the LLM (e.g., &#39;freeform&#39; seed design) is crucial for discovering highly effective and generalizable algorithms, outperforming constrained or composable approaches.&quot;,
+    &quot;While effective, evolved algorithms are often more complex and incur higher query latency (up to 11x slower for BM25* Freeform) compared to the seeds, highlighting a trade-off between effectiveness and efficiency not explicitly optimized for.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;BEIR&quot;,
+        &quot;BRIGHT&quot;,
+        &quot;TREC DL 2019&quot;,
+        &quot;TREC DL 2020&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;nDCG@10&quot;,
+        &quot;R@100&quot;,
+        &quot;Indexing Latency (ms/doc)&quot;,
+        &quot;Query Latency (ms/query)&quot;
+      ],
+      &quot;setting&quot;: &quot;LLM-guided evolutionary search with GPT-5.2 API (temperature 0.85). Evolution performed for 300 steps (BM25 seed) and 200 steps (QL-Dir seed) on 12 datasets (BEIR: ArguAna, FiQA, NFCorpus, SciFact, SciDocs, TREC-COVID; BRIGHT: Biology, Earth Science, Economics, Pony, StackOverflow, TheoremQA). Final evaluation conducted on 16 held-out datasets and TREC DL 2019/2020.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 307,
+          &quot;xmin&quot;: 519,
+          &quot;ymax&quot;: 478,
+          &quot;xmax&quot;: 906
+        },
+        &quot;caption&quot;: &quot;Combined score over evolution steps for two seed programs. The combined score is the optimization target, defined as $0.8 \\times \\text{Avg Recall@100} + 0.2 \\times \\text{Avg nDCG@10}$, averaged across 12 IR datasets.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 0
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 235,
+          &quot;xmin&quot;: 88,
+          &quot;ymax&quot;: 397,
+          &quot;xmax&quot;: 291
+        },
+        &quot;caption&quot;: &quot;Evolution trajectories for the BM25 seed (left) and Dirichlet seed (right). Recall@100 improves nearly monotonically in both runs, while nDCG@10 occasionally regresses at the same steps, reflecting deliberate trades made by the evolutionary process to maximize the optimization target.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 3
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 235,
+          &quot;xmin&quot;: 310,
+          &quot;ymax&quot;: 397,
+          &quot;xmax&quot;: 511
+        },
+        &quot;caption&quot;: &quot;Evolution trajectories for the BM25 seed (left) and Dirichlet seed (right). Recall@100 improves nearly monotonically in both runs, while nDCG@10 occasionally regresses at the same steps, reflecting deliberate trades made by the evolutionary process to maximize the optimization target.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 3
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 235,
+          &quot;xmin&quot;: 530,
+          &quot;ymax&quot;: 397,
+          &quot;xmax&quot;: 732
+        },
+        &quot;caption&quot;: &quot;Evolution trajectories for the BM25 seed (left) and Dirichlet seed (right). Recall@100 improves nearly monotonically in both runs, while nDCG@10 occasionally regresses at the same steps, reflecting deliberate trades made by the evolutionary process to maximize the optimization target.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 3
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 235,
+          &quot;xmin&quot;: 749,
+          &quot;ymax&quot;: 397,
+          &quot;xmax&quot;: 950
+        },
+        &quot;caption&quot;: &quot;Evolution trajectories for the BM25 seed (left) and Dirichlet seed (right). Recall@100 improves nearly monotonically in both runs, while nDCG@10 occasionally regresses at the same steps, reflecting deliberate trades made by the evolutionary process to maximize the optimization target.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 3
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;10.55&quot;,
+            &quot;benchmark&quot;: &quot;BRIGHT&quot;,
+            &quot;delta&quot;: &quot;+1.24&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;nDCG@10&quot;,
+            &quot;thisPaper&quot;: &quot;11.79&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;32.11&quot;,
+            &quot;benchmark&quot;: &quot;BRIGHT&quot;,
+            &quot;delta&quot;: &quot;+5.40&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@100&quot;,
+            &quot;thisPaper&quot;: &quot;37.51&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;48.16&quot;,
+            &quot;benchmark&quot;: &quot;BEIR&quot;,
+            &quot;delta&quot;: &quot;-0.26&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;nDCG@10&quot;,
+            &quot;thisPaper&quot;: &quot;47.90&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;70.95&quot;,
+            &quot;benchmark&quot;: &quot;BEIR&quot;,
+            &quot;delta&quot;: &quot;+1.48&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@100&quot;,
+            &quot;thisPaper&quot;: &quot;72.43&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;62.16&quot;,
+            &quot;benchmark&quot;: &quot;TREC DL&quot;,
+            &quot;delta&quot;: &quot;+2.41&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;nDCG@10&quot;,
+            &quot;thisPaper&quot;: &quot;64.57&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;46.02&quot;,
+            &quot;benchmark&quot;: &quot;TREC DL&quot;,
+            &quot;delta&quot;: &quot;+1.08&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@100&quot;,
+            &quot;thisPaper&quot;: &quot;47.10&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;9.52&quot;,
+            &quot;benchmark&quot;: &quot;BRIGHT&quot;,
+            &quot;delta&quot;: &quot;+1.90&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;nDCG@10&quot;,
+            &quot;thisPaper&quot;: &quot;11.42&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;32.48&quot;,
+            &quot;benchmark&quot;: &quot;BRIGHT&quot;,
+            &quot;delta&quot;: &quot;+3.85&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@100&quot;,
+            &quot;thisPaper&quot;: &quot;36.33&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;44.15&quot;,
+            &quot;benchmark&quot;: &quot;BEIR&quot;,
+            &quot;delta&quot;: &quot;+2.31&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;nDCG@10&quot;,
+            &quot;thisPaper&quot;: &quot;46.46&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;68.72&quot;,
+            &quot;benchmark&quot;: &quot;BEIR&quot;,
+            &quot;delta&quot;: &quot;+1.50&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@100&quot;,
+            &quot;thisPaper&quot;: &quot;70.22&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;57.03&quot;,
+            &quot;benchmark&quot;: &quot;TREC DL&quot;,
+            &quot;delta&quot;: &quot;+3.65&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;nDCG@10&quot;,
+            &quot;thisPaper&quot;: &quot;60.68&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;46.69&quot;,
+            &quot;benchmark&quot;: &quot;TREC DL&quot;,
+            &quot;delta&quot;: &quot;+1.27&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@100&quot;,
+            &quot;thisPaper&quot;: &quot;47.96&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Macro-averaged results on unseen datasets (Table 1)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;49.77&quot;,
+            &quot;benchmark&quot;: &quot;Optimization Target Unseen (16 datasets)&quot;,
+            &quot;delta&quot;: &quot;+2.45&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Score&quot;,
+            &quot;thisPaper&quot;: &quot;52.22&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.47&quot;,
+            &quot;benchmark&quot;: &quot;Optimization Target Unseen (16 datasets)&quot;,
+            &quot;delta&quot;: &quot;+1.75&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Score&quot;,
+            &quot;thisPaper&quot;: &quot;52.22&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;51.33&quot;,
+            &quot;benchmark&quot;: &quot;Optimization Target Unseen (16 datasets)&quot;,
+            &quot;delta&quot;: &quot;+0.89&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Score&quot;,
+            &quot;thisPaper&quot;: &quot;52.22&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;51.20&quot;,
+            &quot;benchmark&quot;: &quot;Optimization Target Unseen (16 datasets)&quot;,
+            &quot;delta&quot;: &quot;+1.02&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Score&quot;,
+            &quot;thisPaper&quot;: &quot;52.22&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Ablation on code structure design (BM25 family) (Table 2)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;1.79 ms/doc&quot;,
+            &quot;benchmark&quot;: &quot;All 28 datasets&quot;,
+            &quot;delta&quot;: &quot;+1.02 ms/doc&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Indexing&quot;,
+            &quot;thisPaper&quot;: &quot;2.81 ms/doc&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;56.72 ms/query&quot;,
+            &quot;benchmark&quot;: &quot;All 28 datasets&quot;,
+            &quot;delta&quot;: &quot;+592.17 ms/query&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Query&quot;,
+            &quot;thisPaper&quot;: &quot;648.89 ms/query&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;2.02 ms/doc&quot;,
+            &quot;benchmark&quot;: &quot;All 28 datasets&quot;,
+            &quot;delta&quot;: &quot;0.00 ms/doc&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Indexing&quot;,
+            &quot;thisPaper&quot;: &quot;2.02 ms/doc&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;178.26 ms/query&quot;,
+            &quot;benchmark&quot;: &quot;All 28 datasets&quot;,
+            &quot;delta&quot;: &quot;+147.15 ms/query&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Query&quot;,
+            &quot;thisPaper&quot;: &quot;325.41 ms/query&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Average per-document indexing and per-query retrieval latency (Table 3)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;RankEvolve successfully discovers novel lexical retrieval algorithms that surpass traditional methods, demonstrating the efficacy of LLM-guided evolution for Information Retrieval.&quot;,
+      &quot;The discovered algorithms show strong generalization capabilities to unseen datasets, indicating robustness beyond the training environment.&quot;,
+      &quot;The degree of structural freedom given to the LLM during evolution directly correlates with the ceiling of achievable performance, with &#39;freeform&#39; seeds yielding the best results by allowing broader architectural changes.&quot;,
+      &quot;While the evolved algorithms are more effective, they are often more complex and incur higher latency, highlighting the need to include efficiency as an explicit optimization objective in future work.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Santa Clara University, Independent Researcher, Walmart Global Tech&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;RankEvolve is the first framework to apply LLM-guided program evolution to the discovery of entire lexical retrieval algorithms, treating them as executable Python code that can be iteratively mutated, recombined, and selected based on retrieval performance.&quot;,
+      &quot;It demonstrates that LLMs can act as &#39;reason-informed&#39; mutation operators, proposing meaningful edits to code rather than random permutations, thereby exploring a richer search space than traditional genetic programming.&quot;,
+      &quot;The system naturally discovers novel scoring motifs and independently reformulates well-studied IR concepts (e.g., multi-layered IDF weighting, PMI-based specificity, logarithmic length normalization, adaptive term-frequency saturation, layered penalty architectures) without explicit human guidance on these specific features.&quot;,
+      &quot;The evolved algorithms achieve significant and generalized performance improvements over strong human-designed baselines across a diverse set of unseen IR benchmarks.&quot;
+    ],
+    &quot;main&quot;: &quot;RankEvolve introduces the first LLM-guided program evolution framework for automatically discovering novel and effective lexical retrieval algorithms from scratch, rather than merely tuning existing ones.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A ranking function based on the probabilistic relevance framework, widely used in information retrieval, combining term frequency, inverse document frequency, and document length normalization.&quot;,
+        &quot;term&quot;: &quot;BM25&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A retrieval model that ranks documents based on the probability of generating the query given the document&#39;s language model, often smoothed to handle unseen terms.&quot;,
+        &quot;term&quot;: &quot;Query Likelihood (QL)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A technique used in language modeling for information retrieval to smooth term probabilities, preventing zero probabilities for unseen terms and making the estimates more robust.&quot;,
+        &quot;term&quot;: &quot;Dirichlet Smoothing&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;An LLM-driven program evolution framework (upon which RankEvolve is based) designed for automated scientific discovery by evolving executable code.&quot;,
+        &quot;term&quot;: &quot;AlphaEvolve&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A quality-diversity algorithm that searches for a collection of high-performing and diverse solutions by mapping them into a grid based on their behavioral characteristics, used for population management in RankEvolve.&quot;,
+        &quot;term&quot;: &quot;MAP-Elites&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Normalized Discounted Cumulative Gain at 10, a common metric for evaluating ranked search results, accounting for position and relevance of retrieved items.&quot;,
+        &quot;term&quot;: &quot;nDCG@10&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Recall at 100, a metric in information retrieval measuring the proportion of relevant documents retrieved among the top 100 results, emphasizing comprehensive retrieval.&quot;,
+        &quot;term&quot;: &quot;R@100&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Information Retrieval (IR) fundamentals&quot;,
+      &quot;Lexical scoring functions (e.g., TF-IDF, BM25, Query Likelihood)&quot;,
+      &quot;Evolutionary algorithms and genetic programming concepts&quot;,
+      &quot;Large Language Models (LLMs) and their application in code generation/mutation&quot;,
+      &quot;Evaluation metrics for retrieval systems (e.g., Recall, nDCG)&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Lexical Retrieval&quot;,
+    &quot;Evolutionary Search&quot;,
+    &quot;LLM as Optimizer&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;RAG&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Agent&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;RankEvolve differs fundamentally from classical Genetic Programming (GP) by using an LLM as a reason-informed mutation operator that understands program structure and intent, enabling more meaningful edits to Python code rather than random subtree swaps.&quot;,
+      &quot;Unlike Learning-to-Rank (LTR) methods which typically learn to weight existing features, RankEvolve proposes and evolves entirely new scoring features and relevance functions from scratch.&quot;,
+      &quot;While similar to other LLM-guided scientific discovery systems like AlphaEvolve, RankEvolve is the first to apply this paradigm to the complex domain of Information Retrieval algorithm discovery.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The evolved algorithms, while more effective, can be significantly more complex and incur substantially higher query latency compared to their simpler, human-designed seed counterparts, as efficiency was not an explicit optimization objective.&quot;,
+      &quot;The current framework does not explicitly incorporate or incentivize algorithmic elegance, potentially leading to overly complex solutions when simpler ones might suffice for similar performance.&quot;,
+      &quot;The effectiveness of the LLM-guided evolution is influenced by the structural freedom of the seed program, suggesting that initial design choices still play a critical role in the search space exploration.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Baseline BM25 Scoring Function&quot;,
+        &quot;value&quot;: &quot;$ \\text{BM25}(q, d) = \\sum_{t \\in q} \\text{IDF}(t) \\cdot \\frac{\\text{tf}(t, d) \\cdot (k_1 + 1)}{\\text{tf}(t, d) + k_1 \\cdot (1 - b + b \\cdot \\frac{|d|}{\\text{avgdl}})} $&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Baseline QL-Dir Scoring Function&quot;,
+        &quot;value&quot;: &quot;$ \\text{QL-Dir}(q, d) = \\sum_{t \\in q} \\log \\frac{\\text{tf}(t, d) + \\mu \\cdot P(t|C)}{|d| + \\mu} $&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Evolved BM25 Top-Level Scoring Function&quot;,
+        &quot;value&quot;: &quot;$ S(q, d) = R(q_{\\text{base}}, d_{\\text{base}}) + w_{\\text{pfx}} \\cdot R(q_{\\text{pfx}}, d_{\\text{pfx}}) + w_{\\text{bi}} \\cdot R(q_{\\text{bi}}, d_{\\text{bi}}) + w_{\\text{mic}} \\cdot G(q) \\cdot R(q_{\\text{mic}}, d_{\\text{mic}}) $ where $R$ is a shared core scoring function and new channels for prefix, bigram, and micro tokenization are introduced, with micro tokenization gated by $G(q) = \\sigma((\\text{IDF}(q) - 2.2)/1.0)$. Evolved BM25 replaces linear length normalization with a logarithmic form, introduces a multi-layered IDF weighting (soft stopword filter), and a PMI-based specificity multiplier, among other changes.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Evolved QL-Dir Top-Level Scoring Function&quot;,
+        &quot;value&quot;: &quot;$ S(q, d) = \\sum_{t \\in q_u} \\omega(t) \\tilde{s}(t, d) + \\sum_{t \\in q_u} m(t, d) + \\text{AND}(q, d) + \\text{LP}(d) $ which retains an additive architecture but adds components for weighted per-term relevance, missing-term penalty, soft-AND coverage, and log-normal document length prior. Evolved QL-Dir also replaces the standard collection language model $P(t|C)$ with a three-stage enriched estimate and replaces raw term frequency with an adaptive, IDF-dependent exponent $\\text{tf}(t,d)^{\\beta(t)}$. Both evolved algorithms feature term-frequency saturation and incorporate mechanisms for coordination and length normalization, converging on abstract principles despite starting from different seeds.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Initial seed programs (BM25 or QL-Dir) and a system prompt are set up to define the search space and evolvable interfaces for ranking algorithms.&quot;,
+      &quot;A population of candidate programs is maintained using a combination of island-based evolution and MAP-Elites, ensuring diversity and progress.&quot;,
+      &quot;At each iteration, a parent program is selected, and an LLM (GPT-5.2) proposes a mutation to the program&#39;s Python code in a SEARCH/REPLACE diff format, guided by the system prompt and past evaluation results.&quot;,
+      &quot;An evaluator imports the mutated program, executes its full information retrieval pipeline (tokenization, indexing, retrieval) on a set of evaluation datasets, and computes performance metrics (nDCG@10, Recall@100, latency).&quot;,
+      &quot;The computed metrics are used to calculate a combined fitness score ($0.8 \\times \\text{Avg Recall@100} + 0.2 \\times \\text{Avg nDCG@10}$) which guides the selection process for updating the population database.&quot;,
+      &quot;This iterative process of mutation, evaluation, and selection continues for hundreds of steps, leading to the evolution of novel and improved retrieval algorithms.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Objective&quot;,
+        &quot;value&quot;: &quot;To automate the discovery of improved lexical retrieval algorithms by leveraging LLMs and evolutionary search, moving beyond human intuition and manual parameter tuning.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Optimization Target&quot;,
+        &quot;value&quot;: &quot;A single fitness score defined as $0.8 \\times \\text{Avg Recall@100} + 0.2 \\times \\text{Avg nDCG@10}$, macro-averaged across 12 information retrieval datasets used during evolution.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;High. The paper states that the code is available. RankEvolve is built on OpenEvolve, an open-source implementation of AlphaEvolve. It uses GPT-5.2 via API and details the temperature setting (0.85), population management parameters (K=3, B=12, M=20, gamma=0.15, T=4, S=4), evolution steps, and the specific datasets used for both evolution and held-out evaluation.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;The initial BM25 and QL-Dir Python programs (approximately 300 lines) define the evolvable interface. The system prompt guides the LLM to encourage exploration of information-theoretic, probabilistic, and fundamentally novel ideas while discouraging ad-hoc constraints.&quot;,
+        &quot;name&quot;: &quot;Seed Program &amp; System Prompt&quot;,
+        &quot;role&quot;: &quot;Defines Search Space and Initial State&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Manages the population of candidate programs using a combination of island-based evolution and MAP-Elites. Programs are partitioned into K independently evolving islands, each maintaining a MAP-Elites grid (complexity x diversity) to promote diverse high-performing solutions. New programs are accepted if they achieve a strictly higher score or occupy an empty cell, preventing local minima.&quot;,
+        &quot;name&quot;: &quot;Population Database&quot;,
+        &quot;role&quot;: &quot;Manages Diversity and Selection of Algorithms&quot;
+      },
+      {
+        &quot;details&quot;: &quot;The LLM (GPT-5.2) acts as the mutation operator. Given a parent program, its detailed evaluation metrics, and the system prompt, the LLM proposes a &#39;reason-informed&#39; mutation in a SEARCH/REPLACE diff format to generate new candidate algorithms.&quot;,
+        &quot;name&quot;: &quot;Large Language Model (GPT-5.2)&quot;,
+        &quot;role&quot;: &quot;Intelligent Mutation Operator&quot;
+      },
+      {
+        &quot;details&quot;: &quot;This module imports candidate programs, executes their full information retrieval pipeline (tokenization, indexing, and retrieval), and computes per-dataset nDCG@10, Recall@100, and latency measurements. These are aggregated to form the single fitness score used for population management and selection.&quot;,
+        &quot;name&quot;: &quot;Evaluator&quot;,
+        &quot;role&quot;: &quot;Fitness Calculation and Performance Measurement&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;Large language models, guided by an evaluator and evolutionary search, can automatically discover novel and improved lexical retrieval algorithms that outperform existing methods and generalize effectively to unseen datasets.&quot;,
+  &quot;title&quot;: &quot;RankEvolve: Automating the Discovery of Retrieval Algorithms via LLM-Driven Evolution&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/2602.16932&quot;,
+  &quot;venue&quot;: &quot;arXiv&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2602.16932&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/2602.16932&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{},&quot;authors&quot;:&quot;Jinming Nian, Fangchen Li, Dae Hoon Park, Yi Fang&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;RankEvolve represents a significant advancement in automating algorithm discovery for information retrieval. It successfully leverages LLMs to evolve novel and effective lexical retrieval algorithms that outperform strong baselines and generalize well to unseen datasets. The work pioneers LLM-guided program evolution in the IR domain, showcasing the LLM&#39;s capability as a reason-informed mutation operator for complex code, and naturally rediscovers fundamental IR principles. The detailed ablation study on structural freedom further strengthens the contribution. While the increased latency is a limitation, it is a known trade-off when optimizing for effectiveness without explicit efficiency constraints.&quot;,&quot;score&quot;:8},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Traditional lexical retrieval algorithms like BM25 and query likelihood (QL) have seen improvements largely driven by human intuition and manual parameter tuning, which is a slow and limited discovery process.&quot;,&quot;statement&quot;:&quot;The development of effective lexical retrieval algorithms has historically relied on human expertise and iterative, intuition-driven parameter tuning, which limits the exploration of novel and potentially more effective scoring functions.&quot;,&quot;whyItMatters&quot;:[&quot;Automating algorithm discovery can accelerate research in information retrieval by enabling the exploration of a much larger and more diverse search space.&quot;,&quot;Human-designed algorithms might be bottlenecked by cognitive biases or lack the capacity to find non-obvious combinations of scoring mechanisms that LLM-driven evolution could uncover.&quot;,&quot;The ability to automatically discover algorithms can lead to more robust and generalizable solutions that perform well across a variety of datasets and tasks without extensive manual adaptation.&quot;]},&quot;evaluationHighlights&quot;:[&quot;RankEvolve-evolved algorithms (BM25* and QL-Dir*) consistently and significantly outperform their human-designed seed counterparts and other baselines across various held-out IR benchmarks (BEIR, BRIGHT, TREC DL 19/20).&quot;,&quot;The evolved algorithms demonstrate strong generalization capabilities, showing improved performance on datasets not seen during the evolutionary training process.&quot;,&quot;The degree of structural freedom afforded to the LLM (e.g., &#39;freeform&#39; seed design) is crucial for discovering highly effective and generalizable algorithms, outperforming constrained or composable approaches.&quot;,&quot;While effective, evolved algorithms are often more complex and incur higher query latency (up to 11x slower for BM25* Freeform) compared to the seeds, highlighting a trade-off between effectiveness and efficiency not explicitly optimized for.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;BEIR&quot;,&quot;BRIGHT&quot;,&quot;TREC DL 2019&quot;,&quot;TREC DL 2020&quot;],&quot;metrics&quot;:[&quot;nDCG@10&quot;,&quot;R@100&quot;,&quot;Indexing Latency (ms/doc)&quot;,&quot;Query Latency (ms/query)&quot;],&quot;setting&quot;:&quot;LLM-guided evolutionary search with GPT-5.2 API (temperature 0.85). Evolution performed for 300 steps (BM25 seed) and 200 steps (QL-Dir seed) on 12 datasets (BEIR: ArguAna, FiQA, NFCorpus, SciFact, SciDocs, TREC-COVID; BRIGHT: Biology, Earth Science, Economics, Pony, StackOverflow, TheoremQA). Final evaluation conducted on 16 held-out datasets and TREC DL 2019/2020.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:307,&quot;xmin&quot;:519,&quot;ymax&quot;:478,&quot;xmax&quot;:906},&quot;caption&quot;:&quot;Combined score over evolution steps for two seed programs. The combined score is the optimization target, defined as $0.8 \\times \\text{Avg Recall@100} + 0.2 \\times \\text{Avg nDCG@10}$, averaged across 12 IR datasets.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:0},{&quot;boundingBox&quot;:{&quot;ymin&quot;:235,&quot;xmin&quot;:88,&quot;ymax&quot;:397,&quot;xmax&quot;:291},&quot;caption&quot;:&quot;Evolution trajectories for the BM25 seed (left) and Dirichlet seed (right). Recall@100 improves nearly monotonically in both runs, while nDCG@10 occasionally regresses at the same steps, reflecting deliberate trades made by the evolutionary process to maximize the optimization target.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:3},{&quot;boundingBox&quot;:{&quot;ymin&quot;:235,&quot;xmin&quot;:310,&quot;ymax&quot;:397,&quot;xmax&quot;:511},&quot;caption&quot;:&quot;Evolution trajectories for the BM25 seed (left) and Dirichlet seed (right). Recall@100 improves nearly monotonically in both runs, while nDCG@10 occasionally regresses at the same steps, reflecting deliberate trades made by the evolutionary process to maximize the optimization target.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:3},{&quot;boundingBox&quot;:{&quot;ymin&quot;:235,&quot;xmin&quot;:530,&quot;ymax&quot;:397,&quot;xmax&quot;:732},&quot;caption&quot;:&quot;Evolution trajectories for the BM25 seed (left) and Dirichlet seed (right). Recall@100 improves nearly monotonically in both runs, while nDCG@10 occasionally regresses at the same steps, reflecting deliberate trades made by the evolutionary process to maximize the optimization target.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:3},{&quot;boundingBox&quot;:{&quot;ymin&quot;:235,&quot;xmin&quot;:749,&quot;ymax&quot;:397,&quot;xmax&quot;:950},&quot;caption&quot;:&quot;Evolution trajectories for the BM25 seed (left) and Dirichlet seed (right). Recall@100 improves nearly monotonically in both runs, while nDCG@10 occasionally regresses at the same steps, reflecting deliberate trades made by the evolutionary process to maximize the optimization target.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:3}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;10.55&quot;,&quot;benchmark&quot;:&quot;BRIGHT&quot;,&quot;delta&quot;:&quot;+1.24&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;nDCG@10&quot;,&quot;thisPaper&quot;:&quot;11.79&quot;},{&quot;baseline&quot;:&quot;32.11&quot;,&quot;benchmark&quot;:&quot;BRIGHT&quot;,&quot;delta&quot;:&quot;+5.40&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@100&quot;,&quot;thisPaper&quot;:&quot;37.51&quot;},{&quot;baseline&quot;:&quot;48.16&quot;,&quot;benchmark&quot;:&quot;BEIR&quot;,&quot;delta&quot;:&quot;-0.26&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;nDCG@10&quot;,&quot;thisPaper&quot;:&quot;47.90&quot;},{&quot;baseline&quot;:&quot;70.95&quot;,&quot;benchmark&quot;:&quot;BEIR&quot;,&quot;delta&quot;:&quot;+1.48&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@100&quot;,&quot;thisPaper&quot;:&quot;72.43&quot;},{&quot;baseline&quot;:&quot;62.16&quot;,&quot;benchmark&quot;:&quot;TREC DL&quot;,&quot;delta&quot;:&quot;+2.41&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;nDCG@10&quot;,&quot;thisPaper&quot;:&quot;64.57&quot;},{&quot;baseline&quot;:&quot;46.02&quot;,&quot;benchmark&quot;:&quot;TREC DL&quot;,&quot;delta&quot;:&quot;+1.08&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@100&quot;,&quot;thisPaper&quot;:&quot;47.10&quot;},{&quot;baseline&quot;:&quot;9.52&quot;,&quot;benchmark&quot;:&quot;BRIGHT&quot;,&quot;delta&quot;:&quot;+1.90&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;nDCG@10&quot;,&quot;thisPaper&quot;:&quot;11.42&quot;},{&quot;baseline&quot;:&quot;32.48&quot;,&quot;benchmark&quot;:&quot;BRIGHT&quot;,&quot;delta&quot;:&quot;+3.85&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@100&quot;,&quot;thisPaper&quot;:&quot;36.33&quot;},{&quot;baseline&quot;:&quot;44.15&quot;,&quot;benchmark&quot;:&quot;BEIR&quot;,&quot;delta&quot;:&quot;+2.31&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;nDCG@10&quot;,&quot;thisPaper&quot;:&quot;46.46&quot;},{&quot;baseline&quot;:&quot;68.72&quot;,&quot;benchmark&quot;:&quot;BEIR&quot;,&quot;delta&quot;:&quot;+1.50&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@100&quot;,&quot;thisPaper&quot;:&quot;70.22&quot;},{&quot;baseline&quot;:&quot;57.03&quot;,&quot;benchmark&quot;:&quot;TREC DL&quot;,&quot;delta&quot;:&quot;+3.65&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;nDCG@10&quot;,&quot;thisPaper&quot;:&quot;60.68&quot;},{&quot;baseline&quot;:&quot;46.69&quot;,&quot;benchmark&quot;:&quot;TREC DL&quot;,&quot;delta&quot;:&quot;+1.27&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@100&quot;,&quot;thisPaper&quot;:&quot;47.96&quot;}],&quot;title&quot;:&quot;Macro-averaged results on unseen datasets (Table 1)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;49.77&quot;,&quot;benchmark&quot;:&quot;Optimization Target Unseen (16 datasets)&quot;,&quot;delta&quot;:&quot;+2.45&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Score&quot;,&quot;thisPaper&quot;:&quot;52.22&quot;},{&quot;baseline&quot;:&quot;50.47&quot;,&quot;benchmark&quot;:&quot;Optimization Target Unseen (16 datasets)&quot;,&quot;delta&quot;:&quot;+1.75&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Score&quot;,&quot;thisPaper&quot;:&quot;52.22&quot;},{&quot;baseline&quot;:&quot;51.33&quot;,&quot;benchmark&quot;:&quot;Optimization Target Unseen (16 datasets)&quot;,&quot;delta&quot;:&quot;+0.89&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Score&quot;,&quot;thisPaper&quot;:&quot;52.22&quot;},{&quot;baseline&quot;:&quot;51.20&quot;,&quot;benchmark&quot;:&quot;Optimization Target Unseen (16 datasets)&quot;,&quot;delta&quot;:&quot;+1.02&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Score&quot;,&quot;thisPaper&quot;:&quot;52.22&quot;}],&quot;title&quot;:&quot;Ablation on code structure design (BM25 family) (Table 2)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;1.79 ms/doc&quot;,&quot;benchmark&quot;:&quot;All 28 datasets&quot;,&quot;delta&quot;:&quot;+1.02 ms/doc&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Indexing&quot;,&quot;thisPaper&quot;:&quot;2.81 ms/doc&quot;},{&quot;baseline&quot;:&quot;56.72 ms/query&quot;,&quot;benchmark&quot;:&quot;All 28 datasets&quot;,&quot;delta&quot;:&quot;+592.17 ms/query&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Query&quot;,&quot;thisPaper&quot;:&quot;648.89 ms/query&quot;},{&quot;baseline&quot;:&quot;2.02 ms/doc&quot;,&quot;benchmark&quot;:&quot;All 28 datasets&quot;,&quot;delta&quot;:&quot;0.00 ms/doc&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Indexing&quot;,&quot;thisPaper&quot;:&quot;2.02 ms/doc&quot;},{&quot;baseline&quot;:&quot;178.26 ms/query&quot;,&quot;benchmark&quot;:&quot;All 28 datasets&quot;,&quot;delta&quot;:&quot;+147.15 ms/query&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Query&quot;,&quot;thisPaper&quot;:&quot;325.41 ms/query&quot;}],&quot;title&quot;:&quot;Average per-document indexing and per-query retrieval latency (Table 3)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;RankEvolve successfully discovers novel lexical retrieval algorithms that surpass traditional methods, demonstrating the efficacy of LLM-guided evolution for Information Retrieval.&quot;,&quot;The discovered algorithms show strong generalization capabilities to unseen datasets, indicating robustness beyond the training environment.&quot;,&quot;The degree of structural freedom given to the LLM during evolution directly correlates with the ceiling of achievable performance, with &#39;freeform&#39; seeds yielding the best results by allowing broader architectural changes.&quot;,&quot;While the evolved algorithms are more effective, they are often more complex and incur higher latency, highlighting the need to include efficiency as an explicit optimization objective in future work.&quot;]},&quot;institutions&quot;:&quot;Santa Clara University, Independent Researcher, Walmart Global Tech&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;RankEvolve is the first framework to apply LLM-guided program evolution to the discovery of entire lexical retrieval algorithms, treating them as executable Python code that can be iteratively mutated, recombined, and selected based on retrieval performance.&quot;,&quot;It demonstrates that LLMs can act as &#39;reason-informed&#39; mutation operators, proposing meaningful edits to code rather than random permutations, thereby exploring a richer search space than traditional genetic programming.&quot;,&quot;The system naturally discovers novel scoring motifs and independently reformulates well-studied IR concepts (e.g., multi-layered IDF weighting, PMI-based specificity, logarithmic length normalization, adaptive term-frequency saturation, layered penalty architectures) without explicit human guidance on these specific features.&quot;,&quot;The evolved algorithms achieve significant and generalized performance improvements over strong human-designed baselines across a diverse set of unseen IR benchmarks.&quot;],&quot;main&quot;:&quot;RankEvolve introduces the first LLM-guided program evolution framework for automatically discovering novel and effective lexical retrieval algorithms from scratch, rather than merely tuning existing ones.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A ranking function based on the probabilistic relevance framework, widely used in information retrieval, combining term frequency, inverse document frequency, and document length normalization.&quot;,&quot;term&quot;:&quot;BM25&quot;},{&quot;definition&quot;:&quot;A retrieval model that ranks documents based on the probability of generating the query given the document&#39;s language model, often smoothed to handle unseen terms.&quot;,&quot;term&quot;:&quot;Query Likelihood (QL)&quot;},{&quot;definition&quot;:&quot;A technique used in language modeling for information retrieval to smooth term probabilities, preventing zero probabilities for unseen terms and making the estimates more robust.&quot;,&quot;term&quot;:&quot;Dirichlet Smoothing&quot;},{&quot;definition&quot;:&quot;An LLM-driven program evolution framework (upon which RankEvolve is based) designed for automated scientific discovery by evolving executable code.&quot;,&quot;term&quot;:&quot;AlphaEvolve&quot;},{&quot;definition&quot;:&quot;A quality-diversity algorithm that searches for a collection of high-performing and diverse solutions by mapping them into a grid based on their behavioral characteristics, used for population management in RankEvolve.&quot;,&quot;term&quot;:&quot;MAP-Elites&quot;},{&quot;definition&quot;:&quot;Normalized Discounted Cumulative Gain at 10, a common metric for evaluating ranked search results, accounting for position and relevance of retrieved items.&quot;,&quot;term&quot;:&quot;nDCG@10&quot;},{&quot;definition&quot;:&quot;Recall at 100, a metric in information retrieval measuring the proportion of relevant documents retrieved among the top 100 results, emphasizing comprehensive retrieval.&quot;,&quot;term&quot;:&quot;R@100&quot;}],&quot;prerequisites&quot;:[&quot;Information Retrieval (IR) fundamentals&quot;,&quot;Lexical scoring functions (e.g., TF-IDF, BM25, Query Likelihood)&quot;,&quot;Evolutionary algorithms and genetic programming concepts&quot;,&quot;Large Language Models (LLMs) and their application in code generation/mutation&quot;,&quot;Evaluation metrics for retrieval systems (e.g., Recall, nDCG)&quot;]},&quot;subTopics&quot;:[&quot;Lexical Retrieval&quot;,&quot;Evolutionary Search&quot;,&quot;LLM as Optimizer&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Agent&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;RankEvolve differs fundamentally from classical Genetic Programming (GP) by using an LLM as a reason-informed mutation operator that understands program structure and intent, enabling more meaningful edits to Python code rather than random subtree swaps.&quot;,&quot;Unlike Learning-to-Rank (LTR) methods which typically learn to weight existing features, RankEvolve proposes and evolves entirely new scoring features and relevance functions from scratch.&quot;,&quot;While similar to other LLM-guided scientific discovery systems like AlphaEvolve, RankEvolve is the first to apply this paradigm to the complex domain of Information Retrieval algorithm discovery.&quot;],&quot;limitations&quot;:[&quot;The evolved algorithms, while more effective, can be significantly more complex and incur substantially higher query latency compared to their simpler, human-designed seed counterparts, as efficiency was not an explicit optimization objective.&quot;,&quot;The current framework does not explicitly incorporate or incentivize algorithmic elegance, potentially leading to overly complex solutions when simpler ones might suffice for similar performance.&quot;,&quot;The effectiveness of the LLM-guided evolution is influenced by the structural freedom of the seed program, suggesting that initial design choices still play a critical role in the search space exploration.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Baseline BM25 Scoring Function&quot;,&quot;value&quot;:&quot;$ \\text{BM25}(q, d) = \\sum_{t \\in q} \\text{IDF}(t) \\cdot \\frac{\\text{tf}(t, d) \\cdot (k_1 + 1)}{\\text{tf}(t, d) + k_1 \\cdot (1 - b + b \\cdot \\frac{|d|}{\\text{avgdl}})} $&quot;},{&quot;label&quot;:&quot;Baseline QL-Dir Scoring Function&quot;,&quot;value&quot;:&quot;$ \\text{QL-Dir}(q, d) = \\sum_{t \\in q} \\log \\frac{\\text{tf}(t, d) + \\mu \\cdot P(t|C)}{|d| + \\mu} $&quot;},{&quot;label&quot;:&quot;Evolved BM25 Top-Level Scoring Function&quot;,&quot;value&quot;:&quot;$ S(q, d) = R(q_{\\text{base}}, d_{\\text{base}}) + w_{\\text{pfx}} \\cdot R(q_{\\text{pfx}}, d_{\\text{pfx}}) + w_{\\text{bi}} \\cdot R(q_{\\text{bi}}, d_{\\text{bi}}) + w_{\\text{mic}} \\cdot G(q) \\cdot R(q_{\\text{mic}}, d_{\\text{mic}}) $ where $R$ is a shared core scoring function and new channels for prefix, bigram, and micro tokenization are introduced, with micro tokenization gated by $G(q) = \\sigma((\\text{IDF}(q) - 2.2)/1.0)$. Evolved BM25 replaces linear length normalization with a logarithmic form, introduces a multi-layered IDF weighting (soft stopword filter), and a PMI-based specificity multiplier, among other changes.&quot;},{&quot;label&quot;:&quot;Evolved QL-Dir Top-Level Scoring Function&quot;,&quot;value&quot;:&quot;$ S(q, d) = \\sum_{t \\in q_u} \\omega(t) \\tilde{s}(t, d) + \\sum_{t \\in q_u} m(t, d) + \\text{AND}(q, d) + \\text{LP}(d) $ which retains an additive architecture but adds components for weighted per-term relevance, missing-term penalty, soft-AND coverage, and log-normal document length prior. Evolved QL-Dir also replaces the standard collection language model $P(t|C)$ with a three-stage enriched estimate and replaces raw term frequency with an adaptive, IDF-dependent exponent $\\text{tf}(t,d)^{\\beta(t)}$. Both evolved algorithms feature term-frequency saturation and incorporate mechanisms for coordination and length normalization, converging on abstract principles despite starting from different seeds.&quot;}],&quot;pipelineFlow&quot;:[&quot;Initial seed programs (BM25 or QL-Dir) and a system prompt are set up to define the search space and evolvable interfaces for ranking algorithms.&quot;,&quot;A population of candidate programs is maintained using a combination of island-based evolution and MAP-Elites, ensuring diversity and progress.&quot;,&quot;At each iteration, a parent program is selected, and an LLM (GPT-5.2) proposes a mutation to the program&#39;s Python code in a SEARCH/REPLACE diff format, guided by the system prompt and past evaluation results.&quot;,&quot;An evaluator imports the mutated program, executes its full information retrieval pipeline (tokenization, indexing, retrieval) on a set of evaluation datasets, and computes performance metrics (nDCG@10, Recall@100, latency).&quot;,&quot;The computed metrics are used to calculate a combined fitness score ($0.8 \\times \\text{Avg Recall@100} + 0.2 \\times \\text{Avg nDCG@10}$) which guides the selection process for updating the population database.&quot;,&quot;This iterative process of mutation, evaluation, and selection continues for hundreds of steps, leading to the evolution of novel and improved retrieval algorithms.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Objective&quot;,&quot;value&quot;:&quot;To automate the discovery of improved lexical retrieval algorithms by leveraging LLMs and evolutionary search, moving beyond human intuition and manual parameter tuning.&quot;},{&quot;label&quot;:&quot;Optimization Target&quot;,&quot;value&quot;:&quot;A single fitness score defined as $0.8 \\times \\text{Avg Recall@100} + 0.2 \\times \\text{Avg nDCG@10}$, macro-averaged across 12 information retrieval datasets used during evolution.&quot;}],&quot;reproducibility&quot;:&quot;High. The paper states that the code is available. RankEvolve is built on OpenEvolve, an open-source implementation of AlphaEvolve. It uses GPT-5.2 via API and details the temperature setting (0.85), population management parameters (K=3, B=12, M=20, gamma=0.15, T=4, S=4), evolution steps, and the specific datasets used for both evolution and held-out evaluation.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;The initial BM25 and QL-Dir Python programs (approximately 300 lines) define the evolvable interface. The system prompt guides the LLM to encourage exploration of information-theoretic, probabilistic, and fundamentally novel ideas while discouraging ad-hoc constraints.&quot;,&quot;name&quot;:&quot;Seed Program &amp; System Prompt&quot;,&quot;role&quot;:&quot;Defines Search Space and Initial State&quot;},{&quot;details&quot;:&quot;Manages the population of candidate programs using a combination of island-based evolution and MAP-Elites. Programs are partitioned into K independently evolving islands, each maintaining a MAP-Elites grid (complexity x diversity) to promote diverse high-performing solutions. New programs are accepted if they achieve a strictly higher score or occupy an empty cell, preventing local minima.&quot;,&quot;name&quot;:&quot;Population Database&quot;,&quot;role&quot;:&quot;Manages Diversity and Selection of Algorithms&quot;},{&quot;details&quot;:&quot;The LLM (GPT-5.2) acts as the mutation operator. Given a parent program, its detailed evaluation metrics, and the system prompt, the LLM proposes a &#39;reason-informed&#39; mutation in a SEARCH/REPLACE diff format to generate new candidate algorithms.&quot;,&quot;name&quot;:&quot;Large Language Model (GPT-5.2)&quot;,&quot;role&quot;:&quot;Intelligent Mutation Operator&quot;},{&quot;details&quot;:&quot;This module imports candidate programs, executes their full information retrieval pipeline (tokenization, indexing, and retrieval), and computes per-dataset nDCG@10, Recall@100, and latency measurements. These are aggregated to form the single fitness score used for population management and selection.&quot;,&quot;name&quot;:&quot;Evaluator&quot;,&quot;role&quot;:&quot;Fitness Calculation and Performance Measurement&quot;}]},&quot;thesis&quot;:&quot;Large language models, guided by an evaluator and evolutionary search, can automatically discover novel and improved lexical retrieval algorithms that outperform existing methods and generalize effectively to unseen datasets.&quot;,&quot;title&quot;:&quot;RankEvolve: Automating the Discovery of Retrieval Algorithms via LLM-Driven Evolution&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/2602.16932&quot;,&quot;venue&quot;:&quot;arXiv&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

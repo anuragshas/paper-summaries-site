@@ -238,6 +238,15 @@
       ]
     },
     {
+      "paperId": "2602.16932",
+      "title": "RankEvolve: Automating the Discovery of Retrieval Algorithms via LLM-Driven Evolution",
+      "tags": [
+        "RAG",
+        "Agent",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2602.14265",
       "title": "STATe-of-Thoughts: Structured Action Templates for Tree-of-Thoughts",
       "tags": [
