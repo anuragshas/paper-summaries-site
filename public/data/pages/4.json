@@ -2,6 +2,19 @@
   "page": 4,
   "papers": [
     {
+      "paperId": "2509.05486",
+      "title": "The Token Tax: Systematic Bias in Multilingual Tokenization",
+      "authors": "Jessica M. Lundin, Ada Zhang, Nihal Karim, Hamza Louzan, Victor Wei, David Adelani, Cody Carroll",
+      "publishedDate": "2025-09-01",
+      "tags": [
+        "Multilingual NLP",
+        "Tokenization Bias",
+        "African Languages",
+        "AI Ethics",
+        "LLM Scaling Laws"
+      ]
+    },
+    {
       "paperId": "2403.00417",
       "title": "Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models",
       "authors": "Jinbiao Yang",

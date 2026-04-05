@@ -1,0 +1,19 @@
+{
+  "paperId": "2603.18573",
+  "title": "Interplay: Training Independent Simulators for Reference-Free Conversational Recommendation",
+  "authors": "Jerome Ramos, Feng Xia, Xi Wang, Shubham Chatterjee, Xiao Fu, Hossein A. Rahmani, and Aldo Lipani",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "Rec",
+    "Pretraining",
+    "Agent"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2603.18573",
+  "pagePath": "/paper-summaries-site/papers/2603.18573",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.18573/summary.json",
+  "assets": {
+    "figureAssetCount": 2,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

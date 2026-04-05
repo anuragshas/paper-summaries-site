@@ -46,6 +46,15 @@
       ]
     },
     {
+      "paperId": "2603.18573",
+      "title": "Interplay: Training Independent Simulators for Reference-Free Conversational Recommendation",
+      "tags": [
+        "Rec",
+        "Pretraining",
+        "Agent"
+      ]
+    },
+    {
       "paperId": "2603.12228",
       "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
       "tags": [

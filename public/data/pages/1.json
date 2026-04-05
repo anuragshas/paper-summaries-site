@@ -57,6 +57,17 @@
       ]
     },
     {
+      "paperId": "2603.18573",
+      "title": "Interplay: Training Independent Simulators for Reference-Free Conversational Recommendation",
+      "authors": "Jerome Ramos, Feng Xia, Xi Wang, Shubham Chatterjee, Xiao Fu, Hossein A. Rahmani, and Aldo Lipani",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Rec",
+        "Pretraining",
+        "Agent"
+      ]
+    },
+    {
       "paperId": "2603.12228",
       "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
       "authors": "Yulu Gan, Phillip Isola",
@@ -98,17 +109,6 @@
         "Agent",
         "QA",
         "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2603.05706",
-      "title": "Reasoning Models Struggle to Control their Chains of Thought",
-      "authors": "Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Reasoning",
-        "Benchmark",
-        "Factuality"
       ]
     }
   ]

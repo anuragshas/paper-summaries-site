@@ -2,6 +2,17 @@
   "page": 2,
   "papers": [
     {
+      "paperId": "2603.05706",
+      "title": "Reasoning Models Struggle to Control their Chains of Thought",
+      "authors": "Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Reasoning",
+        "Benchmark",
+        "Factuality"
+      ]
+    },
+    {
       "paperId": "2603.05698",
       "title": "Towards Robust Retrieval-Augmented Generation Based on Knowledge Graph: A Comparative Analysis",
       "authors": "Hazem Amamou, St\u00e9phane Gagnon, Alan Davoust and Anderson R. Avila",
@@ -109,21 +120,6 @@
         "Model Training",
         "Model Inference",
         "Reproducibility"
-      ]
-    },
-    {
-      "paperId": "2602.22219",
-      "title": "Comparative Analysis of Neural Retriever-Reranker Pipelines for Retrieval-Augmented Generation over Knowledge Graphs in E-commerce Applications",
-      "authors": "Teri Rumble, Zbyn\u011bk Gazd\u00edk, Javad Zarrin, and Jagdeep Ahluwalia",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "Retrieval-Augmented Generation (RAG)",
-        "Knowledge Graphs",
-        "E-commerce",
-        "Information Retrieval",
-        "Large Language Models (LLMs)",
-        "Cross-encoders",
-        "Semi-structured Data"
       ]
     }
   ]
