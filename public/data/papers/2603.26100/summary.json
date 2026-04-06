@@ -1,0 +1,220 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 76,
+      "xmin": 182,
+      "ymax": 328,
+      "xmax": 819
+    },
+    "caption": "Figure 3: The architecure of agentic recommender systems.",
+    "figureNumber": 3,
+    "pageIndex": 3,
+    "assetPath": "/paper-summaries-site/data/papers/2603.26100/figures/architecture.webp"
+  },
+  "authors": "Jinxin Hu, Hao Deng, Lingyu Mu, Hao Zhang, Shizhun Wang, Yu Zhang, Xiaoyi Zeng",
+  "breakthroughAssessment": {
+    "justification": "This paper proposes a strong conceptual framework for a new paradigm in recommender systems, moving beyond static pipelines to self-evolving agentic systems. While purely conceptual with no empirical results, it addresses fundamental limitations of current industrial recommenders and offers a coherent blueprint for future research and development. The integration of LLMs and RL for autonomous evolution, coupled with a layered architecture, represents a significant step forward in thinking about system design for adaptive and scalable recommenders. Its impact could be substantial in guiding future research and system implementations, warranting a score higher than average.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "Current recommender systems typically involve sequential stages like recall, ranking, and re-ranking, where models are individually optimized but the overall system lacks autonomous evolution mechanisms, requiring constant manual adjustment and A/B testing for improvements.",
+    "statement": "Large-scale industrial recommender systems currently rely on fixed multi-stage pipelines and 'One Model' designs, which are static, black boxes, and challenging to scale due to heterogeneous data, multi-objective constraints, and high manual iteration costs.",
+    "whyItMatters": [
+      "Static systems struggle with diverse users, items, and scenarios, often neglecting niche segments.",
+      "Balancing multiple entangled objectives (e.g., short-term engagement, long-term value, risk) is difficult with current ad hoc rules.",
+      "The increasing complexity of production systems and manual iteration costs hinder rapid adaptation and continuous improvement.",
+      "Lack of self-improvement mechanisms prevents the system from autonomously evolving and adapting to changing conditions."
+    ]
+  },
+  "evaluationHighlights": [
+    "The paper introduces a novel conceptual framework for Agentic Recommender Systems, proposing a paradigm shift towards self-evolving, multi-agent architectures.",
+    "It clearly articulates the limitations of current static recommender pipelines in handling heterogeneity, multi-objective optimization, and autonomous improvement.",
+    "The framework details how individual modules can be reframed as agents with functional closed loops, independent evaluability, and evolvable decision spaces.",
+    "It outlines specific evolution mechanisms, including RL- and LLM-based approaches, for both individual agent refinement and compositional system restructuring.",
+    "The proposed layered architecture (Decision, Evolution, Infrastructure) and hierarchical reward design offer a structured approach to managing complexity and aligning local agent objectives with global system goals."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [],
+      "metrics": [],
+      "setting": "The paper presents a conceptual framework and theoretical design principles for Agentic Recommender Systems. It does not include an experimental evaluation or specific benchmarks and metrics."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 692,
+          "xmin": 189,
+          "ymax": 801,
+          "xmax": 810
+        },
+        "caption": "Figure 1: Technological Evolution of Recommendation Systems",
+        "figureNumber": 1,
+        "pageIndex": 0,
+        "assetPath": "/paper-summaries-site/data/papers/2603.26100/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 339,
+          "xmin": 194,
+          "ymax": 535,
+          "xmax": 820
+        },
+        "caption": "Figure 2: The Agentic Recommender Systems paradigm.",
+        "figureNumber": 2,
+        "pageIndex": 1,
+        "assetPath": "/paper-summaries-site/data/papers/2603.26100/figures/experiment-2.webp"
+      }
+    ],
+    "keyResultGroups": [],
+    "keyResults": [],
+    "mainTakeaways": [
+      "N/A (No experimental results are presented as this is a conceptual paper)."
+    ]
+  },
+  "institutions": "Alibaba International Digital Commerce Group, Beijing, China; University of Chinese Academy, Beijing, China",
+  "keyNovelty": {
+    "explanation": [
+      "Redefines recommender system modules as 'agents' based on three criteria: functional closed loop, independent evaluability, and an evolvable decision space.",
+      "Proposes two axes for agent evolution: methodological (RL-style optimization for well-defined action spaces and LLM-based generation for open-ended design spaces) and structural (individual agent evolution vs. compositional evolution of agent networks).",
+      "Introduces a hierarchical, layered reward design (Inner/Outer Rewards) to balance local agent optimization with global business objectives.",
+      "Outlines a layered architecture for AgenticRS, comprising Decision, Evolution, and Infrastructure layers, to organize and coordinate agents effectively."
+    ],
+    "main": "The paper introduces Agentic Recommender Systems (AgenticRS), a paradigm shift from static pipelines to self-evolving multi-agent decision systems, where key modules are reframed as autonomous agents capable of independent evolution."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A technique used by recommender systems that predicts a user's interest in items by collecting preferences from many users (collaborating) and finding similar users or items.",
+        "term": "Collaborative Filtering"
+      },
+      {
+        "definition": "The use of deep neural networks (e.g., Wide&Deep, DeepFM, DIN, DIEN) to learn complex non-linear relationships and representations for improved recommendation accuracy.",
+        "term": "Deep Learning Models in RecSys"
+      },
+      {
+        "definition": "A common architecture for industrial recommender systems involving sequential steps such as recall (candidate generation), ranking, and re-ranking to filter and order items for a user.",
+        "term": "Multi-stage Pipeline in RecSys"
+      },
+      {
+        "definition": "A machine learning paradigm where an agent learns to make decisions by performing actions in an environment and receiving rewards or penalties, aiming to maximize cumulative reward.",
+        "term": "Reinforcement Learning (RL)"
+      },
+      {
+        "definition": "AI models trained on vast amounts of text data, capable of understanding, generating, and processing human language, which can be applied to tasks like design assistance or structural innovation.",
+        "term": "Large Language Models (LLM)"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of traditional recommender system architectures and algorithms (e.g., collaborative filtering, matrix factorization, deep learning models).",
+      "Familiarity with the challenges of deploying and maintaining large-scale industrial recommender systems.",
+      "Basic knowledge of multi-agent systems and reinforcement learning concepts.",
+      "Understanding of large language model capabilities in design and generation tasks."
+    ]
+  },
+  "subTopics": [
+    "Recommender Systems Architectures",
+    "Multi-Agent Systems",
+    "Autonomous Systems"
+  ],
+  "tags": [
+    {
+      "name": "RAG",
+      "type": "primary"
+    },
+    {
+      "name": "Agent",
+      "type": "topic"
+    },
+    {
+      "name": "Rec",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Prior work focuses on static, manually tuned architectures and multi-stage pipelines, where models are black boxes and system improvement relies on manual hypotheses and engineering.",
+      "Unlike traditional approaches where system evolution is manual and costly (diagnosing failures, designing changes, A/B tests), AgenticRS proposes autonomous evolution mechanisms leveraging RL and LLMs.",
+      "Traditional systems often entangle multi-objectives within large models or ad hoc rules, making responsibility attribution difficult; AgenticRS assigns agents to different subspaces and objectives, enabling principled trade-off adjustments.",
+      "Instead of monolithic models, AgenticRS decentralizes model intelligence by promoting key functional units to independently evaluable and evolvable agents within a closed-loop feedback mechanism."
+    ],
+    "limitations": [
+      "The paper is a conceptual framework and does not present empirical results or a specific algorithm, but rather a blueprint for future development.",
+      "Implementing and evaluating such an agentic system in a real-world industrial setting poses significant engineering challenges."
+    ],
+    "modeling": [
+      {
+        "label": "Agent Evolution Mechanisms",
+        "list": [
+          "RL- and Search-Based Local Optimization: For model-centric agents with parameterizable design spaces (e.g., backbone, loss weights, learning rates), evolution is cast as reinforcement learning or black-box search. A controller learns to propose configurations maximizing expected reward.",
+          "LLM-Driven Structural Innovation: For agents with high-dimensional, structured, and less parameterizable action spaces (e.g., multi-tower structures, multi-task objectives), Large Language Models act as design assistants. They propose candidate architectures, training procedures, or routing strategies in natural language and code, which are then instantiated and evaluated."
+        ]
+      },
+      {
+        "label": "Evolution Granularities",
+        "list": [
+          "Individual Evolution: Improves a single agent assuming a fixed system graph, using RL/search for fine-grained tuning or LLMs for architectural edits.",
+          "Compositional Evolution: Changes which agents exist and how they are connected (e.g., selecting recall agents, reconfiguring ranking ensembles). Driven by search, RL, or LLM proposals, evaluated against global objectives."
+        ]
+      },
+      {
+        "label": "Reward Design",
+        "value": "A hierarchical reward design where sub-agents primarily optimize Inner Rewards for stable local competence, while key coordination agents are driven by Outer Rewards to align the overall system with global business objectives."
+      }
+    ],
+    "pipelineFlow": [
+      "Each agent operates within a perception-decision-execution-feedback loop: it observes a well-defined state, produces an action (e.g., candidate set, ranked list, or configuration), the system executes this action, and the resulting feedback is used to update the agent.",
+      "At the system level, agents are organized into three cooperative layers (Decision, Evolution, Infrastructure) that interact to generate recommendations and facilitate system-wide evolution.",
+      "Decision layer agents generate recommendations, providing logs and reward signals to Evolution layer agents.",
+      "Evolution layer agents propose improvements (architectures, hyperparameters) for Decision layer agents, which are validated and rolled out.",
+      "Infrastructure layer agents provide shared state, knowledge, and orchestration services across all agents."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Traditional RecSys Paradigm",
+        "value": "Fixed multi-stage pipeline (recall, ranking, re-ranking) and 'One Model' designs, leading to static, black-box systems with manual improvement cycles."
+      },
+      {
+        "label": "Limitations of Traditional RecSys",
+        "value": "Difficulty in scaling under heterogeneous data and multi-objective constraints, high manual iteration costs, and lack of autonomous self-improvement mechanisms for the system as a whole."
+      }
+    ],
+    "reproducibility": "The paper provides a conceptual framework and design principles. It does not include specific algorithms or experimental setups that would typically allow for direct reproducibility of results.",
+    "systemModules": [
+      {
+        "details": "Modules are promoted to agents if they participate in a functional closed loop, can be independently evaluated, and have an evolvable decision space. Agents exist in two classes: Functional agents and Model-centric agents.",
+        "name": "Agents",
+        "role": "Core building blocks of AgenticRS"
+      },
+      {
+        "details": "Defined by a closed-loop business function, spanning multiple underlying models or tools. Examples include traffic orchestration, strategy/experiment design, and re-ranking policy agents. They decide how models are used rather than perform predictions.",
+        "name": "Functional Agents",
+        "role": "Manage business functions and orchestrate models"
+      },
+      {
+        "details": "Focus on improving local prediction quality under stable input-output interfaces and local evaluation metrics. Examples include specific recall agents, ranking agents, or fusion/calibration agents.",
+        "name": "Model-centric Agents",
+        "role": "Encapsulate predictive or representation capabilities"
+      },
+      {
+        "details": "Contains agents responsible for traditional recall, ranking, re-ranking, and strategy-control. Produces actions like candidate sets, ranked lists, or policy adjustments based on user requests and shared state.",
+        "name": "Decision Layer",
+        "role": "Directly makes recommendation decisions"
+      },
+      {
+        "details": "Consumes logs and reward signals from the Decision Layer, proposing and updating new versions of decision agents, including revised architectures, hyperparameters, or routing rules.",
+        "name": "Evolution Layer",
+        "role": "Hosts agents responsible for system improvement"
+      },
+      {
+        "details": "Offers infrastructure for task orchestration and knowledge storage. Maintains unified state, experience, user/item profiles, interaction histories, global constraints, and meta-knowledge about past experiments. Supports task scheduling and conflict resolution.",
+        "name": "Infrastructure Layer",
+        "role": "Provides foundational services for agents"
+      }
+    ]
+  },
+  "thesis": "This paper proposes Agentic Recommender Systems (AgenticRS) as a conceptual framework and design principles to move from static, manually tuned architectures to self-evolving ecosystems for large-scale industrial recommender systems.",
+  "title": "Rethinking Recommendation Paradigms: From Pipelines to Agentic Recommender Systems",
+  "url": "https://arxiv.org/abs/arXiv:2603.26100",
+  "venue": "N/A",
+  "year": "2026"
+}

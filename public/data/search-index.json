@@ -10,6 +10,15 @@
       ]
     },
     {
+      "paperId": "2603.26100",
+      "title": "Rethinking Recommendation Paradigms: From Pipelines to Agentic Recommender Systems",
+      "tags": [
+        "RAG",
+        "Agent",
+        "Rec"
+      ]
+    },
+    {
       "paperId": "2603.25723",
       "title": "Natural-Language Agent Harnesses",
       "tags": [

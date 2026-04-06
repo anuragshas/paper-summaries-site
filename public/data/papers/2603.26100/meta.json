@@ -1,0 +1,19 @@
+{
+  "paperId": "2603.26100",
+  "title": "Rethinking Recommendation Paradigms: From Pipelines to Agentic Recommender Systems",
+  "authors": "Jinxin Hu, Hao Deng, Lingyu Mu, Hao Zhang, Shizhun Wang, Yu Zhang, Xiaoyi Zeng",
+  "publishedDate": "2026-03-01",
+  "tags": [
+    "RAG",
+    "Agent",
+    "Rec"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2603.26100",
+  "pagePath": "/paper-summaries-site/papers/2603.26100",
+  "summaryPath": "/paper-summaries-site/data/papers/2603.26100/summary.json",
+  "assets": {
+    "figureAssetCount": 3,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}
