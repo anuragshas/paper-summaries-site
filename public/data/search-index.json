@@ -1,6 +1,23 @@
 {
   "papers": [
     {
+      "paperId": "2604.07930",
+      "title": "Unified Supervision for Walmart\u2019s Sponsored Search Retrieval via Joint Semantic Relevance and Behavioral Engagement Modeling",
+      "tags": [
+        "RAG",
+        "Rec"
+      ]
+    },
+    {
+      "paperId": "2604.07420",
+      "title": "Dual-Rerank: Fusing Sequential Dependencies and Utility for Generative Reranking",
+      "tags": [
+        "Rec",
+        "RL",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2603.28052",
       "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
       "tags": [

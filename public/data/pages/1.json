@@ -2,6 +2,27 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2604.07930",
+      "title": "Unified Supervision for Walmart\u2019s Sponsored Search Retrieval via Joint Semantic Relevance and Behavioral Engagement Modeling",
+      "authors": "Shasvat Desai, Md Omar Faruk Rokon, Jhalak Nilesh Acharya, Isha Shah, Hong Yao, Utkarsh Porwal, Kuang-chih Lee",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "RAG",
+        "Rec"
+      ]
+    },
+    {
+      "paperId": "2604.07420",
+      "title": "Dual-Rerank: Fusing Sequential Dependencies and Utility for Generative Reranking",
+      "authors": "Chao Zhang, Shuai Lin, Chenglei Dai, Ye Qian, Mingyang Fan, Yi Zhang, Yi Wang, Jingwei Zhuo",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "Rec",
+        "RL",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2603.28052",
       "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
       "authors": "Yoonho Lee, Roshen Nair, Qizheng Zhang, Kangwook Lee, Omar Khattab, Chelsea Finn",
@@ -87,28 +108,6 @@
         "Pretraining",
         "QA",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2603.10775",
-      "title": "Large Language Models as Annotators for Machine Translation Quality Estimation",
-      "authors": "Sidi Wang, Sophie Arnoult, Amir Kamran",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "QA",
-        "Reasoning",
-        "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2603.09938",
-      "title": "Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions",
-      "authors": "Mingyang Song & Mao Zheng",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Pretraining",
-        "QA",
-        "Benchmark"
       ]
     }
   ]

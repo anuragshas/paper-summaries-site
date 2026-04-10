@@ -1,0 +1,19 @@
+{
+  "paperId": "2604.07420",
+  "title": "Dual-Rerank: Fusing Sequential Dependencies and Utility for Generative Reranking",
+  "authors": "Chao Zhang, Shuai Lin, Chenglei Dai, Ye Qian, Mingyang Fan, Yi Zhang, Yi Wang, Jingwei Zhuo",
+  "publishedDate": "2026-04-01",
+  "tags": [
+    "Rec",
+    "RL",
+    "Reasoning"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2604.07420",
+  "pagePath": "/paper-summaries-site/papers/2604.07420",
+  "summaryPath": "/paper-summaries-site/data/papers/2604.07420/summary.json",
+  "assets": {
+    "figureAssetCount": 3,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

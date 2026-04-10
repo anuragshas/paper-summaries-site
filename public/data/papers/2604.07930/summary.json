@@ -1,0 +1,247 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 104,
+      "xmin": 122,
+      "ymax": 242,
+      "xmax": 876
+    },
+    "caption": "Figure 1: Overview of the unified supervision framework for large-scale e-commerce retrieval. The system integrates human and relevance cross encoder labeled relevance scores, item ranks from existing retrieval channels, and user engagement signals to generate a context-rich supervision target to train bi-encoder model.",
+    "figureNumber": 1,
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2604.07930/figures/architecture.webp"
+  },
+  "authors": "Shasvat Desai, Md Omar Faruk Rokon, Jhalak Nilesh Acharya, Isha Shah, Hong Yao, Utkarsh Porwal, Kuang-chih Lee",
+  "breakthroughAssessment": {
+    "justification": "The paper provides a robust industrial solution for the common problem of sparse and noisy engagement data in sponsored search by synthesizing LLM-distilled relevance labels with production rank priors and engagement signals into a unified training target.",
+    "score": 6
+  },
+  "coreProblem": {
+    "concreteExample": "In Walmart's sponsored search, a highly relevant ad for organic milk might not receive clicks (engagement) simply because the advertiser's budget ran out or it lost the auction for a prominent slot, leading a model trained only on engagement to incorrectly learn that the ad is irrelevant.",
+    "statement": "Standard engagement-based supervision for retrieval is noisy and structurally sparse in sponsored search due to ad-slot auctions, budgets, and limited display positions.",
+    "whyItMatters": [
+      "Biases models towards popular but weakly relevant items",
+      "Limits the learnability of cold-start and long-tail items",
+      "Engagement signals do not perfectly align with semantic relevance"
+    ]
+  },
+  "evaluationHighlights": [
+    "Offline evaluation on 30,303 queries covering head and long-tail traffic",
+    "Online A/B testing on live Walmart production traffic",
+    "Ablation study comparing relevance-only vs. relevance-plus-engagement supervision"
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Walmart Production Query Dataset (30,303 queries)"
+      ],
+      "metrics": [
+        "Precision@25",
+        "NDCG@25",
+        "Avg relevance@25"
+      ],
+      "setting": "Retrieval of top-25 items from the full catalog indexed using FAISS"
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 278,
+          "xmin": 89,
+          "ymax": 468,
+          "xmax": 471
+        },
+        "caption": "Figure 2: Engagement supervision increases the share of highly engaged items in the Top 25 retrieved set without degrading relevance.",
+        "figureNumber": 2,
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2604.07930/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 108,
+          "xmin": 127,
+          "ymax": 291,
+          "xmax": 872
+        },
+        "caption": "Figure 3: Qualitative Results showing comparison between unified supervision (Variation-2) and relevance only scoring (Variation-1).",
+        "figureNumber": 3,
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2604.07930/figures/experiment-2.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "3.040",
+            "benchmark": "Offline (Table 1)",
+            "delta": "+7.8%",
+            "isPositive": true,
+            "metric": "Avg relevance@25",
+            "thisPaper": "3.277"
+          },
+          {
+            "baseline": "0.794",
+            "benchmark": "Offline (Table 1)",
+            "delta": "+10.5%",
+            "isPositive": true,
+            "metric": "P@25",
+            "thisPaper": "0.877"
+          },
+          {
+            "baseline": "0.867",
+            "benchmark": "Offline (Table 1)",
+            "delta": "+5.7%",
+            "isPositive": true,
+            "metric": "NDCG@25",
+            "thisPaper": "0.916"
+          }
+        ],
+        "title": "Offline Retrieval Evaluation at K=25"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.0%",
+            "benchmark": "Online A/B Test (Table 2)",
+            "delta": "+0.60%",
+            "isPositive": true,
+            "metric": "Sponsored Ad Impressions",
+            "thisPaper": "+0.60%"
+          },
+          {
+            "baseline": "0.0%",
+            "benchmark": "Online A/B Test (Table 2)",
+            "delta": "+0.99%",
+            "isPositive": true,
+            "metric": "Add to Cart Rate",
+            "thisPaper": "+0.99%"
+          },
+          {
+            "baseline": "0.0%",
+            "benchmark": "Online A/B Test (Table 2)",
+            "delta": "+0.63%",
+            "isPositive": true,
+            "metric": "Total Search Page Views per Session",
+            "thisPaper": "+0.63%"
+          }
+        ],
+        "title": "A/B Test Results: Business and Engagement Metrics"
+      }
+    ],
+    "mainTakeaways": [
+      "Semantic relevance should define retrieval eligibility, while engagement should refine preference among relevant items.",
+      "Unified supervision significantly outperforms production systems using only engagement signals.",
+      "Incorporating production rank priors helps the model identify and learn from hard negatives."
+    ]
+  },
+  "institutions": "Walmart Global Tech",
+  "keyNovelty": {
+    "explanation": [
+      "Uses a multi-stage LLM cascade (Gemma-1B, Gemma-2B, Llama-3 8B) for efficient high-quality relevance labeling.",
+      "Synthesizes three heterogeneous signals (graded relevance, retrieval priors, and engagement) into a single continuous training target.",
+      "Formulates an Irrelevant QIP Difficulty Score to prioritize hard negatives based on retrieval rank and lexical overlap."
+    ],
+    "main": "A unified supervision framework that makes semantic relevance the primary signal for bi-encoder training while using engagement only to refine ordering among relevant candidates."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A retrieval architecture that independently encodes queries and items into a vector space for fast similarity search.",
+        "term": "Bi-encoder"
+      },
+      {
+        "definition": "Historical user interactions such as clicks, views, and add-to-carts.",
+        "term": "Engagement Signals"
+      },
+      {
+        "definition": "The process of selecting difficult negative examples (items not relevant to the query but highly ranked) to improve model discriminative power.",
+        "term": "Hard Negative Mining"
+      }
+    ],
+    "prerequisites": [
+      "Basic understanding of neural information retrieval",
+      "Familiarity with cross-encoder and bi-encoder architectures",
+      "Knowledge of e-commerce search ranking metrics like NDCG and Precision"
+    ]
+  },
+  "subTopics": [
+    "Bi-Encoder Retrieval",
+    "Sponsored Search",
+    "Learning to Rank"
+  ],
+  "tags": [
+    {
+      "name": "RAG",
+      "type": "primary"
+    },
+    {
+      "name": "Rec",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Prior methods usually treat engagement as the primary signal and use relevance for filtering; this work reverses the hierarchy.",
+      "Integrates production rank priors as a signal for hard negative mining, which is rarely done in standard distillation frameworks."
+    ],
+    "limitations": [
+      "Reliance on LLM-based labeling might introduce teacher biases into the bi-encoder.",
+      "The framework is optimized for sponsored search and may require tuning for organic search."
+    ],
+    "modeling": [
+      {
+        "label": "Architecture",
+        "value": "MiniLM-based Bi-encoder"
+      },
+      {
+        "label": "Loss Function",
+        "value": "Cosine Similarity Loss and Cached Multiple Negatives Ranking (MNR) Loss"
+      },
+      {
+        "label": "Training Target",
+        "value": "$y_{rel-rank-eng}(q, i) = \\text{clip}(\\mu_{rel} \\cdot y_{rel-rank}(q, i) + \\lambda_{eng} \\cdot \\tilde{E}(q, i), 0, 1)$"
+      }
+    ],
+    "pipelineFlow": [
+      "1. Candidate Generation: Sample Query-Item Pairs (QIPs) from various traffic segments.",
+      "2. Relevance Labeling: Apply a cascaded LLM (Gemma/Llama) teacher model to generate graded relevance scores.",
+      "3. Prior Computation: Extract rank positions and channel consensus from production retrieval logs.",
+      "4. Engagement Aggregation: Compute log-compressed, weighted interaction counts for QIPs.",
+      "5. Unified Scoring: Combine relevance, prior, and engagement into a single target score using a weighted fusion.",
+      "6. Model Training: Fine-tune MiniLM bi-encoder via contrastive learning and curriculum-based negative sampling."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Target",
+        "value": "Minimize retrieval errors in sponsored search by defining a training objective that is robust to sparse engagement data."
+      },
+      {
+        "label": "Unified Score",
+        "value": "$y_{rel-rank}(q, i) = \\alpha \\cdot rel\\_score(q, i) + \\beta \\cdot \\pi(q, i) + \\gamma \\cdot C(q, i)$"
+      }
+    ],
+    "reproducibility": "The methodology is described in detail, including specific LLM models used (Gemma, Llama-3) and hyperparameter values for weights (alpha, beta, gamma). Internal Walmart data prevents direct replication.",
+    "systemModules": [
+      {
+        "details": "Annotates QIPs on a 5-point scale using a cascade of Gemma-1B, Gemma-2B, and Llama-3 8B.",
+        "name": "Relevance Cascade",
+        "role": "Provides the primary semantic supervision signal."
+      },
+      {
+        "details": "Maps rank positions from multiple production channels into a normalized monotonic prior.",
+        "name": "Multi-channel Prior",
+        "role": "Identifies established system strengths and facilitates hard negative mining."
+      },
+      {
+        "details": "Aggregates orders, clicks, and views into a weighted, log-compressed score.",
+        "name": "Engagement Module",
+        "role": "Refines ordering among semantically relevant candidates."
+      }
+    ]
+  },
+  "thesis": "In sponsored search, bi-encoder retrievers should be trained with semantic relevance as the foundation of the objective, using behavioral engagement only to refine preferences among relevant candidates to overcome data sparsity and noise.",
+  "title": "Unified Supervision for Walmart\u2019s Sponsored Search Retrieval via Joint Semantic Relevance and Behavioral Engagement Modeling",
+  "url": "https://arxiv.org/abs/arXiv:2604.07930",
+  "venue": "SIGIR '26",
+  "year": "2026"
+}
