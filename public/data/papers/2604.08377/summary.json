@@ -1,0 +1,298 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 119,
+      "xmin": 118,
+      "ymax": 401,
+      "xmax": 879
+    },
+    "caption": "Overview of SkillClaw. SkillClaw enables collective skill evolution in a multi-user agent ecosystem through a closed-loop pipeline. Independent agents interact with their environments and produce structured session trajectories that preserve full action-feedback causal chains. These trajectories are aggregated across users and grouped by referenced skills, forming a shared evidence base that exposes consistent success patterns and recurring failure modes. An agentic evolver analyzes each skill-specific group and performs evidence-driven updates via refinement or creation, while preserving validated behaviors from successful executions. The updated skill repository is then synchronized back to all agents, allowing improvements discovered in one user's interaction to benefit others and continuously accumulate over time.",
+    "figureNumber": 1,
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2604.08377/figures/architecture.webp"
+  },
+  "authors": "Ziyu Ma, Shidong Yang, Yuxiang Ji, Xucong Wang, Yong Wang, Yiming Hu, Tongwen Huang, Xiangxiang Chu",
+  "breakthroughAssessment": {
+    "justification": "SkillClaw addresses a critical limitation in LLM agent systems by enabling continuous, collective, and automatic skill evolution across multiple users, moving beyond static skill libraries or isolated self-improvement. The agentic evolver, which uses open-ended reasoning over aggregated interaction trajectories, is a significant step towards more adaptable and robust agents in real-world environments. The empirical results on WildClawBench demonstrate substantial performance improvements across various complex tasks, validating the framework's effectiveness. While the core idea of agent self-improvement exists, the collective, multi-user, automatic, and validated evolution loop with an agentic evolver is a strong advancement.",
+    "score": 8
+  },
+  "coreProblem": {
+    "concreteExample": "Users often ask agents to complete multi-step tasks like automating data processing workflows. Failures frequently arise from subtle issues (e.g., incorrect argument formats), but even if an agent finds a solution after trial and error, these improvements remain confined to the current session and are not consolidated into a shared skill set for future use.",
+    "statement": "Large language model (LLM) agents that rely on reusable skills for complex tasks often have static skill sets, leading to repeated rediscovery of solutions and failure modes across different users and over time, preventing the system from improving with experience.",
+    "whyItMatters": [
+      "Prevents knowledge from accumulating at the system level, forcing each user to rediscover solutions independently.",
+      "Limits the system's ability to achieve continuous, system-wide improvement and adaptive capability growth.",
+      "Results in fragmented skills rather than a collective, continuously improving skill ecosystem."
+    ]
+  },
+  "evaluationHighlights": [
+    "SkillClaw achieves consistent performance gains across diverse real-world agent tasks on WildClawBench, demonstrating the effectiveness of collective skill evolution.",
+    "Significant relative gains observed over 6 days: +11.72% for Social Interaction, +52.00% for Search & Retrieval, +88.41% for Creative Synthesis, and +33.33% for Safety & Alignment.",
+    "Controlled validation showed an average performance gain of +42.1% on tasks specifically designed to isolate common failure modes and resolve procedural knowledge deficiencies.",
+    "The system enables monotonic improvement, where only validated skill updates demonstrating better performance are accepted, preventing skill pool degradation over time."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "WildClawBench"
+      ],
+      "metrics": [
+        "Performance (%)",
+        "Abs. Gain",
+        "Rel. Gain"
+      ],
+      "setting": "Simulated continuous day-night skill evolution over 6 days with 8 concurrent users, powered by Qwen3-Max."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 158,
+          "xmin": 136,
+          "ymax": 459,
+          "xmax": 859
+        },
+        "caption": "Case study on Slack message analysis. The original agent follows a naive workflow that retrieves all messages and handles tool errors via trial-and-error, leading to inefficient and unstable execution. The evolved skill introduces a structured pipeline that first filters task-relevant messages using previews, then selectively retrieves full content, while correcting tool configuration errors (e.g., API port). This results in more efficient, reliable, and accurate task completion.",
+        "figureNumber": 2,
+        "pageIndex": 10,
+        "assetPath": "/paper-summaries-site/data/papers/2604.08377/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 487,
+          "xmin": 136,
+          "ymax": 764,
+          "xmax": 859
+        },
+        "caption": "Case study on ICCV 2025 oral paper analysis. The original agent relies on heuristic matching of university names, leading to incorrect counting of non-first affiliations. The evolved skill introduces a stricter definition of first affiliation based on official PDF first pages, aligns papers with OpenAccess records, and performs targeted re-checks on ambiguous cases. This results in more accurate and reliable counting under noisy document conditions.",
+        "figureNumber": 3,
+        "pageIndex": 11,
+        "assetPath": "/paper-summaries-site/data/papers/2604.08377/figures/experiment-2.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 165,
+          "xmin": 136,
+          "ymax": 474,
+          "xmax": 859
+        },
+        "caption": "Case study on SAM3 inference under incomplete execution environments. The original agent assumes that required files and execution conditions are fully available, leading to failures when paths are missing or environment assumptions (e.g., CUDA support) are violated. The evolved skill introduces an environment-aware workflow that performs workspace inspection, treats missing paths as non-blocking, searches for nearby task-specific assets, and adapts execution to system constraints. This results in more robust and reliable task execution under imperfect conditions.",
+        "figureNumber": 4,
+        "pageIndex": 12,
+        "assetPath": "/paper-summaries-site/data/papers/2604.08377/figures/experiment-3.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 493,
+          "xmin": 136,
+          "ymax": 804,
+          "xmax": 859
+        },
+        "caption": "Case study on multi-criteria product selection. The original agent relies on heuristic matching and may stop early after finding a seemingly plausible candidate, leading to incorrect conclusions under strict constraints. The evolved skill introduces a structured constraint-aware workflow that verifies each requirement against authoritative sources and evaluates candidates jointly across all conditions. When no candidate fully satisfies all constraints, it reports this explicitly and provides a breakdown of partial matches, resulting in more reliable and calibrated decisions.",
+        "figureNumber": 5,
+        "pageIndex": 13,
+        "assetPath": "/paper-summaries-site/data/papers/2604.08377/figures/experiment-4.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "54.01%",
+            "benchmark": "Social Interaction",
+            "delta": "+6.33%",
+            "isPositive": true,
+            "metric": "Performance",
+            "thisPaper": "60.34%"
+          },
+          {
+            "baseline": "22.73%",
+            "benchmark": "Search & Retrieval",
+            "delta": "+11.82%",
+            "isPositive": true,
+            "metric": "Performance",
+            "thisPaper": "34.55%"
+          },
+          {
+            "baseline": "11.57%",
+            "benchmark": "Creative Synthesis",
+            "delta": "+10.23%",
+            "isPositive": true,
+            "metric": "Performance",
+            "thisPaper": "21.80%"
+          },
+          {
+            "baseline": "24.00%",
+            "benchmark": "Safety & Alignment",
+            "delta": "+8.00%",
+            "isPositive": true,
+            "metric": "Performance",
+            "thisPaper": "32.00%"
+          }
+        ],
+        "title": "WildClawBench Performance Over 6 Days"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "21.7%",
+            "benchmark": "basic extraction",
+            "delta": "+47.8%",
+            "isPositive": true,
+            "metric": "Performance",
+            "thisPaper": "69.6%"
+          },
+          {
+            "baseline": "41.1%",
+            "benchmark": "deadline parsing",
+            "delta": "+6.9%",
+            "isPositive": true,
+            "metric": "Performance",
+            "thisPaper": "48.0%"
+          },
+          {
+            "baseline": "28.3%",
+            "benchmark": "save report",
+            "delta": "+71.7%",
+            "isPositive": true,
+            "metric": "Performance",
+            "thisPaper": "100.0%"
+          },
+          {
+            "baseline": "30.4%",
+            "benchmark": "Average",
+            "delta": "+42.1%",
+            "isPositive": true,
+            "metric": "Performance",
+            "thisPaper": "72.5%"
+          }
+        ],
+        "title": "Controlled Validation of Skill Evolution"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "SkillClaw consistently improved performance across all four evaluated categories on WildClawBench over 6 days, demonstrating a stable evolution pattern.",
+      "The system effectively resolves primary bottlenecks and progressively consolidates locally effective updates into a stable skill set.",
+      "Social Interaction showed early and sharp improvements, Search & Retrieval exhibited a staged improvement trajectory, Creative Synthesis had a large early jump, and Safety & Alignment improved reliability under real-world constraints.",
+      "Controlled validation experiments confirmed that skill evolution is particularly effective when failures arise from missing or incorrect procedural knowledge, showing an average gain of +42.1%."
+    ]
+  },
+  "institutions": "DreamX Team",
+  "keyNovelty": {
+    "explanation": [
+      "SkillClaw enables collective skill evolution by aggregating interaction trajectories from multiple users and over time into a shared evidence base.",
+      "It features an autonomous agentic evolver that uses open-ended reasoning to analyze recurring success and failure patterns and performs evidence-driven updates (refine, create, skip) to the skill set.",
+      "The system incorporates a closed-loop pipeline for continuous evolution, including validation of candidate skill updates in real environments before deployment, ensuring monotonic improvement without manual intervention."
+    ],
+    "main": "Collective skill evolution in multi-user agent ecosystems, driven by an agentic evolver and a closed-loop validation process."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "AI systems that use large language models to perceive environments, reason, and act, often by using tools or skills.",
+        "term": "LLM Agents"
+      },
+      {
+        "definition": "Structured procedures or SOP-like guidance that encode standardized ways for an agent to interact with tools and solve tasks.",
+        "term": "Skills (in AI agents)"
+      },
+      {
+        "definition": "An autonomous LLM agent within SkillClaw responsible for analyzing interaction evidence and updating the shared skill repository using open-ended reasoning, rather than predefined rules.",
+        "term": "Agentic Evolver"
+      },
+      {
+        "definition": "The process where knowledge derived from multiple users' interactions with agents contributes to a continuously improving, shared skill ecosystem, with updates propagating system-wide.",
+        "term": "Collective Skill Evolution"
+      }
+    ],
+    "prerequisites": [
+      "Large Language Models (LLMs)",
+      "Agent-based systems",
+      "Skill-based AI",
+      "Reinforcement Learning (RL) concepts for agent self-improvement"
+    ]
+  },
+  "subTopics": [
+    "Multi-agent systems",
+    "Skill learning",
+    "Agentic AI"
+  ],
+  "tags": [
+    {
+      "name": "Agent",
+      "type": "primary"
+    },
+    {
+      "name": "QA",
+      "type": "topic"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Existing agent adaptation approaches, such as memory-based methods, typically store past trajectories for retrieval but struggle with generalization and remain tied to specific instances, unlike SkillClaw's collective evolution.",
+      "Prior skill-based methods treat skill libraries as static resources that do not evolve through usage, and local refinements improve individual agents but fail to accumulate across users, leading to fragmented skills.",
+      "SkillClaw distinguishes itself by enabling collective evolution (knowledge from individual interactions contributes to a shared, continuously improving skill ecosystem) and being fully automatic (skill evolution driven by runtime interaction without manual curation or explicit user intervention).",
+      "Unlike previous systems, SkillClaw adopts an agentic evolution paradigm, where skill updates are produced through open-ended reasoning rather than predefined update rules, allowing for flexible and context-aware improvements."
+    ],
+    "limitations": [
+      "The study represents a small-scale test of collective skill evolution with limited user queries, feedback signals, and interaction depth.",
+      "Future work is needed to explore scaling up the number of users, extending the time horizon, and introducing more diverse tasks and validation conditions to further enrich the evolution trajectory and system performance."
+    ],
+    "modeling": [
+      {
+        "label": "Skill Set Update Function",
+        "value": "Given a shared skill set $S = \\{s_1, ..., s_M\\}$ and a set of trajectories $T = \\{\\tau_i\\}$ collected across users, the goal is to update the shared skill set as $S' = \\Phi(S, T)$, where $\\Phi$ represents the evolution function."
+      },
+      {
+        "label": "Session Trajectory",
+        "value": "Each user interaction generates a session trajectory $\\tau$, which records the full interaction loop: the user prompt, the agent's actions (including tool calls), feedback from the environment or the user, and the final agent response."
+      },
+      {
+        "label": "Skill-specific Grouping",
+        "value": "Sessions are grouped by the skills they reference: $G(s) = \\{\\tau_i \\mid s \\in K_i\\}$, where $K_i$ is the set of skills invoked in trajectory $\\tau_i$. Sessions not referencing any skill are grouped into $G(\\emptyset)$."
+      }
+    ],
+    "pipelineFlow": [
+      "Multi-user agents independently interact with environments, generating interaction sessions and structured session trajectories.",
+      "Session trajectories are aggregated across users and over time, forming a shared evidence base.",
+      "A centralized evolution engine processes the collected sessions and groups them by referenced skills (or no skill).",
+      "An agentic evolver analyzes these grouped sessions, diagnosing root causes of successes and failures through open-ended reasoning.",
+      "The evolver selects an action (refine existing skills, create new skills, or skip) and generates candidate skill updates.",
+      "Candidate updates are validated in real deployment conditions during a nighttime phase, ensuring superior performance compared to the current best skill.",
+      "Accepted, validated skill updates are merged into the shared skill repository and synchronized back to all agents for the next day, forming a continuous Interaction \\$\\rightarrow\\$ Evidence \\$\\rightarrow\\$ Evolution \\$\\rightarrow\\$ Validation \\$\\rightarrow\\$ Deployment loop."
+    ],
+    "problemDefinition": [],
+    "reproducibility": "The authors provide a GitHub repository for SkillClaw at https://github.com/AMAP-ML/SkillClaw. They state that experiments were conducted using qwen3-max as the backbone model and simulating a multi-user deployment setting on WildClawBench.",
+    "systemModules": [
+      {
+        "details": "A large language model (LLM) agent (Qwen3-Max) equipped with a structured harness that provides grouped session evidence, current skill definitions, and permitted evolution actions. It performs open-ended reasoning to diagnose root causes and decide on skill updates (refine, create, skip).",
+        "name": "Agentic Evolver",
+        "role": "Analyzes aggregated evidence, identifies recurring patterns, and autonomously updates the shared skill repository."
+      },
+      {
+        "details": "A centralized repository that stores and maintains the evolving skill set. It is accessed by all agents and updated by the agentic evolver.",
+        "name": "Shared Skill Repository",
+        "role": "Enables collective evolution by providing a common, continuously improving skill pool that is synchronized across all deployed agents."
+      },
+      {
+        "details": "Performs nightly validation of candidate skill updates by deploying them to available user environments and comparing their performance against the currently deployed best skill using the full toolchain and intermediate feedback.",
+        "name": "Validation Mechanism",
+        "role": "Ensures monotonic improvement of the skill pool by only accepting updates that demonstrate better performance, preventing degradation."
+      },
+      {
+        "details": "Independent LLM agents interacting with their environments to complete tasks, generating structured interaction trajectories (prompt, actions, feedback, response) that serve as evidence.",
+        "name": "Deployed OpenClaw Agents",
+        "role": "Generate the raw interaction data that fuels the collective skill evolution process."
+      }
+    ]
+  },
+  "thesis": "SkillClaw introduces a framework for collective skill evolution in multi-user agent ecosystems by transforming ordinary interaction trajectories into shared evidence, enabling an agentic evolver to autonomously update skills through refinement and creation, thereby allowing knowledge to accumulate and propagate across users over time in a continuous evolution loop.",
+  "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
+  "url": "https://arxiv.org/abs/arXiv:2604.08377",
+  "venue": "N/A",
+  "year": "2026"
+}

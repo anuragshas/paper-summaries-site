@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2604.08377",
+      "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
+      "tags": [
+        "Agent",
+        "QA",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2604.07930",
       "title": "Unified Supervision for Walmart\u2019s Sponsored Search Retrieval via Joint Semantic Relevance and Behavioral Engagement Modeling",
       "tags": [

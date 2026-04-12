@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2604.08377",
+      "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
+      "authors": "Ziyu Ma, Shidong Yang, Yuxiang Ji, Xucong Wang, Yong Wang, Yiming Hu, Tongwen Huang, Xiangxiang Chu",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "Agent",
+        "QA",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2604.07930",
       "title": "Unified Supervision for Walmart\u2019s Sponsored Search Retrieval via Joint Semantic Relevance and Behavioral Engagement Modeling",
       "authors": "Shasvat Desai, Md Omar Faruk Rokon, Jhalak Nilesh Acharya, Isha Shah, Hong Yao, Utkarsh Porwal, Kuang-chih Lee",
@@ -98,17 +109,6 @@
         "Rec",
         "Pretraining",
         "Agent"
-      ]
-    },
-    {
-      "paperId": "2603.12228",
-      "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
-      "authors": "Yulu Gan, Phillip Isola",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Pretraining",
-        "QA",
-        "Reasoning"
       ]
     }
   ]

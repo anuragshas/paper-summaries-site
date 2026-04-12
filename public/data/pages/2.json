@@ -2,6 +2,17 @@
   "page": 2,
   "papers": [
     {
+      "paperId": "2603.12228",
+      "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
+      "authors": "Yulu Gan, Phillip Isola",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Pretraining",
+        "QA",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2603.10775",
       "title": "Large Language Models as Annotators for Machine Translation Quality Estimation",
       "authors": "Sidi Wang, Sophie Arnoult, Amir Kamran",
@@ -101,17 +112,6 @@
         "Reward Models",
         "Benchmarks",
         "AI Alignment"
-      ]
-    },
-    {
-      "paperId": "2603.00077",
-      "title": "Autorubric: A Unified Framework for Rubric-Based LLM Evaluation",
-      "authors": "Delip Rao, Chris Callison-Burch",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "QA",
-        "Benchmark",
-        "Reasoning"
       ]
     }
   ]

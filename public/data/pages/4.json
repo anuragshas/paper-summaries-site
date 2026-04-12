@@ -2,6 +2,17 @@
   "page": 4,
   "papers": [
     {
+      "paperId": "2602.12528",
+      "title": "DiffuRank: Effective Document Reranking with Diffusion Language Models",
+      "authors": "Qi Liu, Kun Ai, Jiaxin Mao, Yanzhao Zhang, Mingxin Li, Dingkun Long, Pengjun Xie, Fengbin Zhu, Ji-Rong Wen",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Document Reranking",
+        "Diffusion Models",
+        "Large Language Models"
+      ]
+    },
+    {
       "paperId": "2602.11298",
       "title": "2602.11298",
       "authors": "Mistral AI Team",
@@ -109,17 +120,6 @@
         "Control Function",
         "Bias Correction",
         "Information Retrieval"
-      ]
-    },
-    {
-      "paperId": "paper-1773559204996",
-      "title": "Think before Recommendation: Autonomous Reasoning-enhanced Recommender",
-      "authors": "Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang",
-      "publishedDate": null,
-      "tags": [
-        "RL",
-        "Rec",
-        "Reasoning"
       ]
     }
   ]
