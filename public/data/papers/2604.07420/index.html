@@ -34,33 +34,33 @@
     <div class="grid">
       <div class="card">
         <h2>Thesis</h2>
-        <p>Dual-Rerank is a unified framework for industrial reranking that bridges the structural gap between accurate autoregressive modeling and efficient non-autoregressive generation through sequential knowledge distillation, while stabilizing list-wise reinforcement learning for whole-page utility via a novel double-decoupling mechanism.</p>
+        <p>Dual-Rerank effectively resolves the accuracy-latency and imitation-evolution dualities in industrial reranking by combining sequential knowledge distillation from an AR teacher to a NAR student with stable online reinforcement learning (LDRO) for whole-page utility optimization, achieving state-of-the-art performance with reduced latency.</p>
       </div>
       <div class="card">
         <h2>Core Problem</h2>
-        <p>Industrial reranking faces a fundamental duality: the structural trade-off between the high accuracy of slow autoregressive models and the efficiency of inaccurate non-autoregressive models, compounded by an optimization gap where supervised learning suffers from exposure bias and reinforcement learning is unstable in high-throughput streaming environments.</p>
+        <p>Industrial reranking faces a fundamental &#39;dual dilemma&#39;: 1) a structural trade-off where Autoregressive (AR) models offer superior sequential modeling but suffer from prohibitive O(L) latency, while Non-Autoregressive (NAR) models offer O(1) efficiency but lack dependency capturing. 2) An optimization gap where Supervised Learning (SL) struggles to directly optimize whole-page utility, while Reinforcement Learning (RL) suffers from instability in high-throughput data streams.</p>
       </div>
     </div>
 
     <div class="card">
       <h2>Key Novelty</h2>
-      <p>Dual-Rerank is the first unified framework to reconcile the accuracy-latency tension in industrial generative reranking by jointly updating an AR Teacher and a NAR Student through sequential distillation and stable, decoupled online reinforcement learning.</p>
+      <p>A unified online framework named Dual-Rerank that resolves the accuracy-latency tension and optimization gap in industrial reranking by combining Sequential Knowledge Distillation and List-wise Decoupled Reranking Optimization (LDRO).</p>
     </div>
 
     <div class="grid">
       <div class="card">
         <h2>Key Contributions</h2>
-        <ul><li>Evaluated on a public benchmark (Avito) and a massive industrial dataset from Kuaishou with 1 billion interaction logs.</li><li>Dual-Rerank reduces average P99 latency by 43.7% compared to autoregressive production baselines.</li><li>Online A/B testing on 5% of production traffic showed a 1.107% increase in Long-View Rate and a 0.714% increase in Whole-Page CTR.</li><li>Demonstrated successful transfer of sequential dependency logic from an AR teacher to a NAR student, preventing Ranking Collapse.</li></ul>
+        <ul><li>Achieved State-of-the-Art performance on both public (Avito Context Ad Clicks) and industrial (Kuaishou Production Dataset) benchmarks, outperforming NAR baselines by a substantial margin and matching/exceeding AR teachers.</li><li>Drastically reduced average inference latency by 43.7% (from 21.5ms for Production AR to 12.1ms for Dual-Rerank), converting &#39;saved latency&#39; into expanded &#39;search breadth&#39; for better global optimality.</li><li>Demonstrated statistically significant gains in crucial online business metrics during A/B testing on the Kuaishou App, including +1.107% Long-View Rate, +0.714% Whole-Page CTR, and -1.309% Query Reformulation Rate.</li><li>Provided theoretical justification via the &#39;Unimodal Concentration Hypothesis&#39; and the &#39;epsilon-Bound Ranking Stability Theorem&#39; for the feasibility and stability of transferring sequential knowledge from AR to NAR models in reranking tasks.</li></ul>
       </div>
       <div class="card">
         <h2>Results</h2>
-        <ul><li>Dual-Rerank breaks the accuracy-latency trade-off by achieving higher AUC than the best AR baselines with significantly lower latency.</li><li>Sequential Knowledge Distillation is foundational; without it, NAR models suffer from structural Ranking Collapse.</li><li>The LDRO algorithm effectively stabilizes reinforcement learning against the massive reward shifts found in real-world traffic logs.</li><li>The Unimodal Concentration Hypothesis is empirically validated: reranking is far more deterministic than open-ended natural language generation.</li></ul>
+        <ul><li>Dual-Rerank significantly outperforms existing NAR baselines and matches or exceeds the strongest AR teachers on AUC and NDCG metrics across diverse datasets.</li><li>Sequential Knowledge Distillation (Phase 1) is foundational for transferring AR&#39;s sequential dependency logic to the NAR student, effectively preventing &#39;Ranking Collapse&#39; and ensuring structural fidelity.</li><li>List-wise Decoupled Reranking Optimization (LDRO) (Phase 2) is crucial for stable online RL, effectively handling non-stationary reward shifts and leading to superior performance compared to standard GRPO.</li><li>The framework drastically reduces inference latency (43.7% reduction) while simultaneously improving core business metrics and user satisfaction in real-world online A/B tests.</li></ul>
       </div>
     </div>
 
     <div class="card">
       <h2>Limitations</h2>
-      <ul><li>The framework relies on the Unimodal Concentration Hypothesis, which may not hold for highly ambiguous or non-hierarchical ranking tasks.</li><li>Inference-time reward scoring depends on the accuracy of the multi-task Reward Network ($R_{net}$).</li></ul>
+      <ul><li>The paper does not explicitly list limitations, but suggests that future work should explore scaling this paradigm to foundation models to exploit emergent list-wise reasoning abilities, implying a current scope limitation regarding advanced reasoning.</li></ul>
     </div>
 
     <div class="card">
@@ -68,34 +68,34 @@
       <div class="raw">{
   &quot;architectureFigure&quot;: {
     &quot;boundingBox&quot;: {
-      &quot;ymin&quot;: 104,
-      &quot;xmin&quot;: 88,
-      &quot;ymax&quot;: 334,
-      &quot;xmax&quot;: 911
+      &quot;ymin&quot;: 70,
+      &quot;xmin&quot;: 90,
+      &quot;ymax&quot;: 295,
+      &quot;xmax&quot;: 910
     },
-    &quot;caption&quot;: &quot;Figure 2: Overview of Dual-Rerank: joint online updates of an autoregressive Teacher and a non-autoregressive Student via (i) sequential distillation and (ii) online RL optimization (LDRO) under strict latency.&quot;,
+    &quot;caption&quot;: &quot;Overview of Dual-Rerank: joint online updates of an autoregressive Teacher and a non-autoregressive Student via (i) sequential distillation and (ii) online RL optimization (LDRO) under strict latency.&quot;,
     &quot;figureNumber&quot;: 2,
     &quot;pageIndex&quot;: 3
   },
   &quot;authors&quot;: &quot;Chao Zhang, Shuai Lin, Chenglei Dai, Ye Qian, Mingyang Fan, Yi Zhang, Yi Wang, Jingwei Zhuo&quot;,
   &quot;breakthroughAssessment&quot;: {
-    &quot;justification&quot;: &quot;The paper provides a significant advancement in reranking by successfully bridging the performance gap between autoregressive and non-autoregressive models. It introduces a novel theoretical hypothesis (Unimodal Concentration) and a robust optimization framework (LDRO) that achieves state-of-the-art results on billion-scale production data while meeting strict industrial latency constraints.&quot;,
+    &quot;justification&quot;: &quot;Dual-Rerank introduces a novel unified framework that effectively resolves two critical industrial reranking challenges: the accuracy-latency structural trade-off between AR and NAR models, and the optimization gap between stable supervised learning and unstable reinforcement learning. It provides theoretical justification for its distillation approach and demonstrates significant, measurable improvements in both offline performance (SOTA AUC/NDCG) and online business metrics (Long-View Rate, CTR) while drastically reducing inference latency (43.7%). This represents a strong advancement for large-scale industrial recommender systems.&quot;,
     &quot;score&quot;: 8
   },
   &quot;coreProblem&quot;: {
-    &quot;concreteExample&quot;: &quot;In a dual-column short-video feed, an Autoregressive model can perfectly capture the sequential dependency (e.g., ensuring variety after a user sees a specific genre), but it must predict each video one by one, leading to 21.5ms latency. A Non-Autoregressive model can predict all videos at once in 12.1ms, but it ignores these dependencies, potentially resulting in repetitive or incoherent video lists.&quot;,
-    &quot;statement&quot;: &quot;Industrial reranking faces a fundamental duality: the structural trade-off between the high accuracy of slow autoregressive models and the efficiency of inaccurate non-autoregressive models, compounded by an optimization gap where supervised learning suffers from exposure bias and reinforcement learning is unstable in high-throughput streaming environments.&quot;,
+    &quot;concreteExample&quot;: &quot;In Kuaishou&#39;s short-video search, the reranking stage needs to optimize whole-page utility, but traditional score-and-sort methods fail to capture dynamic inter-item dependencies, leading to suboptimal permutations.&quot;,
+    &quot;statement&quot;: &quot;Industrial reranking faces a fundamental &#39;dual dilemma&#39;: 1) a structural trade-off where Autoregressive (AR) models offer superior sequential modeling but suffer from prohibitive O(L) latency, while Non-Autoregressive (NAR) models offer O(1) efficiency but lack dependency capturing. 2) An optimization gap where Supervised Learning (SL) struggles to directly optimize whole-page utility, while Reinforcement Learning (RL) suffers from instability in high-throughput data streams.&quot;,
     &quot;whyItMatters&quot;: [
-      &quot;Reranking is the final decision layer that directly determines user satisfaction and whole-page utility.&quot;,
-      &quot;Strict industrial latency constraints (often &lt; 20ms) prevent the use of many advanced generative models.&quot;,
-      &quot;Traditional score-and-sort methods fail to capture combinatorial dependencies and bundle effects between items.&quot;
+      &quot;Reranking serves as the final decision layer in recommender systems, critically determining user experience by optimizing whole-page utility.&quot;,
+      &quot;Existing generative reranking models (AR/NAR) present a trade-off between accuracy and latency, hindering their deployment in latency-sensitive industrial settings.&quot;,
+      &quot;Current optimization strategies (SL/RL) also face challenges in achieving both stability and effective optimization for complex, long-term utility in dynamic industrial streams.&quot;
     ]
   },
   &quot;evaluationHighlights&quot;: [
-    &quot;Evaluated on a public benchmark (Avito) and a massive industrial dataset from Kuaishou with 1 billion interaction logs.&quot;,
-    &quot;Dual-Rerank reduces average P99 latency by 43.7% compared to autoregressive production baselines.&quot;,
-    &quot;Online A/B testing on 5% of production traffic showed a 1.107% increase in Long-View Rate and a 0.714% increase in Whole-Page CTR.&quot;,
-    &quot;Demonstrated successful transfer of sequential dependency logic from an AR teacher to a NAR student, preventing Ranking Collapse.&quot;
+    &quot;Achieved State-of-the-Art performance on both public (Avito Context Ad Clicks) and industrial (Kuaishou Production Dataset) benchmarks, outperforming NAR baselines by a substantial margin and matching/exceeding AR teachers.&quot;,
+    &quot;Drastically reduced average inference latency by 43.7% (from 21.5ms for Production AR to 12.1ms for Dual-Rerank), converting &#39;saved latency&#39; into expanded &#39;search breadth&#39; for better global optimality.&quot;,
+    &quot;Demonstrated statistically significant gains in crucial online business metrics during A/B testing on the Kuaishou App, including +1.107% Long-View Rate, +0.714% Whole-Page CTR, and -1.309% Query Reformulation Rate.&quot;,
+    &quot;Provided theoretical justification via the &#39;Unimodal Concentration Hypothesis&#39; and the &#39;epsilon-Bound Ranking Stability Theorem&#39; for the feasibility and stability of transferring sequential knowledge from AR to NAR models in reranking tasks.&quot;
   ],
   &quot;experiments&quot;: {
     &quot;evaluationSetup&quot;: {
@@ -106,33 +106,91 @@
       &quot;metrics&quot;: [
         &quot;AUC&quot;,
         &quot;NDCG&quot;,
+        &quot;Ranking Flip Rate (RFR)&quot;,
+        &quot;Position-wise Top-1 Agreement Rate (PTAR)&quot;,
+        &quot;Average Latency&quot;,
+        &quot;Speedup&quot;,
         &quot;Long-View Rate&quot;,
-        &quot;CTR&quot;,
-        &quot;Latency (ms)&quot;,
-        &quot;Ranking Flip Rate (RFR)&quot;
+        &quot;Whole-Page CTR&quot;,
+        &quot;Query Reformulation Rate&quot;
       ],
-      &quot;setting&quot;: &quot;Offline evaluation on historical logs and online A/B testing on live production traffic with 400M+ DAUs.&quot;
+      &quot;setting&quot;: &quot;Industrial reranking in a large-scale production system (e.g., Kuaishou short-video search)&quot;
     },
     &quot;experimentFigures&quot;: [
       {
         &quot;boundingBox&quot;: {
-          &quot;ymin&quot;: 112,
-          &quot;xmin&quot;: 543,
-          &quot;ymax&quot;: 395,
-          &quot;xmax&quot;: 900
+          &quot;ymin&quot;: 107,
+          &quot;xmin&quot;: 114,
+          &quot;ymax&quot;: 280,
+          &quot;xmax&quot;: 440
         },
-        &quot;caption&quot;: &quot;Figure 4: Stability under streaming drift. (a) &amp; (b): Real-world logs reveal significant drifts in different time. (c): Comparison of Total Reward during training.&quot;,
+        &quot;caption&quot;: &quot;Comparison of Distribution Characteristics between NLP (Qwen2.5) and Industrial Reranking Tasks. (a) Distribution Shape Analysis: The curves plot the probability of the top-k tokens at each decoding step, averaged over 100 samples from the Alpaca dataset (NLP) and one day of production logs (Reranking). Unlike the high-entropy, long-tail distribution observed in NLP (Red), reranking exhibits a sharp Unimodal Concentration (Blue). (b) Quantitative metrics reveal a significant &#39;Entropy-Consistency Gap,&#39; validating the quasi-deterministic nature of ranking. Detailed explanation of the metrics are showed in Appendix C.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 300,
+          &quot;xmin&quot;: 113,
+          &quot;ymax&quot;: 460,
+          &quot;xmax&quot;: 440
+        },
+        &quot;caption&quot;: &quot;Comparison of Distribution Characteristics between NLP (Qwen2.5) and Industrial Reranking Tasks. (a) Distribution Shape Analysis: The curves plot the probability of the top-k tokens at each decoding step, averaged over 100 samples from the Alpaca dataset (NLP) and one day of production logs (Reranking). Unlike the high-entropy, long-tail distribution observed in NLP (Red), reranking exhibits a sharp Unimodal Concentration (Blue). (b) Quantitative metrics reveal a significant &#39;Entropy-Consistency Gap,&#39; validating the quasi-deterministic nature of ranking. Detailed explanation of the metrics are showed in Appendix C.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 132,
+          &quot;xmin&quot;: 115,
+          &quot;ymax&quot;: 365,
+          &quot;xmax&quot;: 480
+        },
+        &quot;caption&quot;: &quot;Teacher–Student PTAR during training. Distillation improves agreement and stability over a pure NAR baseline.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 4
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 128,
+          &quot;xmin&quot;: 524,
+          &quot;ymax&quot;: 202,
+          &quot;xmax&quot;: 865
+        },
+        &quot;caption&quot;: &quot;Stability under streaming drift. (a) &amp; (b): Real-world logs reveal significant drifts in different time. (c): Comparison of Total Reward during training.&quot;,
         &quot;figureNumber&quot;: 4,
         &quot;pageIndex&quot;: 4
       },
       {
         &quot;boundingBox&quot;: {
-          &quot;ymin&quot;: 110,
-          &quot;xmin&quot;: 110,
-          &quot;ymax&quot;: 288,
-          &quot;xmax&quot;: 462
+          &quot;ymin&quot;: 218,
+          &quot;xmin&quot;: 524,
+          &quot;ymax&quot;: 292,
+          &quot;xmax&quot;: 865
         },
-        &quot;caption&quot;: &quot;Figure 6: Structural Fidelity Analysis (Ranking Flip Rate). Unlike PTAR which measures pointwise memorization, RFR evaluates the pairwise ranking logic.&quot;,
+        &quot;caption&quot;: &quot;Stability under streaming drift. (a) &amp; (b): Real-world logs reveal significant drifts in different time. (c): Comparison of Total Reward during training.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 4
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 308,
+          &quot;xmin&quot;: 524,
+          &quot;ymax&quot;: 492,
+          &quot;xmax&quot;: 865
+        },
+        &quot;caption&quot;: &quot;Stability under streaming drift. (a) &amp; (b): Real-world logs reveal significant drifts in different time. (c): Comparison of Total Reward during training.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 4
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 88,
+          &quot;xmin&quot;: 105,
+          &quot;ymax&quot;: 355,
+          &quot;xmax&quot;: 475
+        },
+        &quot;caption&quot;: &quot;Structural Fidelity Analysis (Ranking Flip Rate). unlike PTAR which measures pointwise memorization, RFR evaluates the pairwise ranking logic. The divergence of the &#39;Pure NAR&#39; baseline reveals a Ranking Collapse phenomenon (loss of global order), while Dual-Rerank maintains structural consistency.&quot;,
         &quot;figureNumber&quot;: 6,
         &quot;pageIndex&quot;: 7
       }
@@ -149,6 +207,14 @@
             &quot;thisPaper&quot;: &quot;0.7441&quot;
           },
           {
+            &quot;baseline&quot;: &quot;0.7478&quot;,
+            &quot;benchmark&quot;: &quot;Avito (Public)&quot;,
+            &quot;delta&quot;: &quot;+0.0039&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;NDCG&quot;,
+            &quot;thisPaper&quot;: &quot;0.7517&quot;
+          },
+          {
             &quot;baseline&quot;: &quot;0.7387&quot;,
             &quot;benchmark&quot;: &quot;Kuaishou (Industrial)&quot;,
             &quot;delta&quot;: &quot;+0.0061&quot;,
@@ -163,15 +229,60 @@
             &quot;isPositive&quot;: true,
             &quot;metric&quot;: &quot;NDCG&quot;,
             &quot;thisPaper&quot;: &quot;0.7565&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.7254&quot;,
+            &quot;benchmark&quot;: &quot;Kuaishou (Industrial) vs NAR4Rec&quot;,
+            &quot;delta&quot;: &quot;+0.0194&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AUC&quot;,
+            &quot;thisPaper&quot;: &quot;0.7448&quot;
           }
         ],
-        &quot;title&quot;: &quot;Offline Performance Comparison&quot;
+        &quot;title&quot;: &quot;Overall Performance Comparison&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.7448&quot;,
+            &quot;benchmark&quot;: &quot;Dual-Rerank (Full)&quot;,
+            &quot;delta&quot;: &quot;-0.0053&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;AUC w/ GRPO&quot;,
+            &quot;thisPaper&quot;: &quot;0.7395&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.7448&quot;,
+            &quot;benchmark&quot;: &quot;Dual-Rerank (Full)&quot;,
+            &quot;delta&quot;: &quot;-0.0194&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;AUC w/o Distillation&quot;,
+            &quot;thisPaper&quot;: &quot;0.7254&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.7448&quot;,
+            &quot;benchmark&quot;: &quot;Dual-Rerank (Full)&quot;,
+            &quot;delta&quot;: &quot;-0.0046&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;AUC w/o Double-Decoupling&quot;,
+            &quot;thisPaper&quot;: &quot;0.7402&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.7448&quot;,
+            &quot;benchmark&quot;: &quot;Dual-Rerank (Full)&quot;,
+            &quot;delta&quot;: &quot;-0.0019&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;AUC w/o Rank-Weighting&quot;,
+            &quot;thisPaper&quot;: &quot;0.7429&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Ablation Study (Kuaishou)&quot;
       },
       {
         &quot;keyResults&quot;: [
           {
             &quot;baseline&quot;: &quot;21.5 ms&quot;,
-            &quot;benchmark&quot;: &quot;Kuaishou Production&quot;,
+            &quot;benchmark&quot;: &quot;Production AR&quot;,
             &quot;delta&quot;: &quot;-9.4 ms&quot;,
             &quot;isPositive&quot;: true,
             &quot;metric&quot;: &quot;Avg. Latency&quot;,
@@ -179,91 +290,106 @@
           },
           {
             &quot;baseline&quot;: &quot;1.0x&quot;,
-            &quot;benchmark&quot;: &quot;Kuaishou Production&quot;,
-            &quot;delta&quot;: &quot;0.8x&quot;,
+            &quot;benchmark&quot;: &quot;Production AR&quot;,
+            &quot;delta&quot;: &quot;+0.8x&quot;,
             &quot;isPositive&quot;: true,
             &quot;metric&quot;: &quot;Speedup&quot;,
             &quot;thisPaper&quot;: &quot;1.8x&quot;
           }
         ],
-        &quot;title&quot;: &quot;System Inference Efficiency&quot;
+        &quot;title&quot;: &quot;System Inference Efficiency Comparison&quot;
       },
       {
         &quot;keyResults&quot;: [
           {
-            &quot;baseline&quot;: &quot;0.0%&quot;,
-            &quot;benchmark&quot;: &quot;Online A/B Test&quot;,
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Online A/B Testing&quot;,
             &quot;delta&quot;: &quot;+1.107%&quot;,
             &quot;isPositive&quot;: true,
             &quot;metric&quot;: &quot;Long-View Rate&quot;,
-            &quot;thisPaper&quot;: &quot;+1.107%&quot;
+            &quot;thisPaper&quot;: &quot;+1.107%*&quot;
           },
           {
-            &quot;baseline&quot;: &quot;0.0%&quot;,
-            &quot;benchmark&quot;: &quot;Online A/B Test&quot;,
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Online A/B Testing&quot;,
             &quot;delta&quot;: &quot;+0.714%&quot;,
             &quot;isPositive&quot;: true,
             &quot;metric&quot;: &quot;Whole-Page CTR&quot;,
-            &quot;thisPaper&quot;: &quot;+0.714%&quot;
+            &quot;thisPaper&quot;: &quot;+0.714%*&quot;
           },
           {
-            &quot;baseline&quot;: &quot;0.0%&quot;,
-            &quot;benchmark&quot;: &quot;Online A/B Test&quot;,
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Online A/B Testing&quot;,
             &quot;delta&quot;: &quot;-1.309%&quot;,
-            &quot;isPositive&quot;: true,
+            &quot;isPositive&quot;: false,
             &quot;metric&quot;: &quot;Query Reformulation Rate&quot;,
-            &quot;thisPaper&quot;: &quot;-1.309%&quot;
+            &quot;thisPaper&quot;: &quot;-1.309%*&quot;
           }
         ],
-        &quot;title&quot;: &quot;Online Business Impact&quot;
+        &quot;title&quot;: &quot;Online A/B Testing Results&quot;
       }
     ],
+    &quot;keyResults&quot;: [],
     &quot;mainTakeaways&quot;: [
-      &quot;Dual-Rerank breaks the accuracy-latency trade-off by achieving higher AUC than the best AR baselines with significantly lower latency.&quot;,
-      &quot;Sequential Knowledge Distillation is foundational; without it, NAR models suffer from structural Ranking Collapse.&quot;,
-      &quot;The LDRO algorithm effectively stabilizes reinforcement learning against the massive reward shifts found in real-world traffic logs.&quot;,
-      &quot;The Unimodal Concentration Hypothesis is empirically validated: reranking is far more deterministic than open-ended natural language generation.&quot;
+      &quot;Dual-Rerank significantly outperforms existing NAR baselines and matches or exceeds the strongest AR teachers on AUC and NDCG metrics across diverse datasets.&quot;,
+      &quot;Sequential Knowledge Distillation (Phase 1) is foundational for transferring AR&#39;s sequential dependency logic to the NAR student, effectively preventing &#39;Ranking Collapse&#39; and ensuring structural fidelity.&quot;,
+      &quot;List-wise Decoupled Reranking Optimization (LDRO) (Phase 2) is crucial for stable online RL, effectively handling non-stationary reward shifts and leading to superior performance compared to standard GRPO.&quot;,
+      &quot;The framework drastically reduces inference latency (43.7% reduction) while simultaneously improving core business metrics and user satisfaction in real-world online A/B tests.&quot;
     ]
   },
-  &quot;institutions&quot;: &quot;Kuaishou Technology&quot;,
+  &quot;institutions&quot;: &quot;Kuaishou Technology, Unaffiliated&quot;,
   &quot;keyNovelty&quot;: {
     &quot;explanation&quot;: [
-      &quot;The Unimodal Concentration Hypothesis: Observes that reranking is quasi-deterministic ($H(Y|X) \\approx 0$), allowing AR dependency logic to degenerate into parallelizable marginal distributions.&quot;,
-      &quot;Sequential Knowledge Distillation: A mechanism to transfer sequential logic from a robust AR Teacher to an efficient NAR Student without serial decoding latency.&quot;,
-      &quot;List-wise Decoupled Reranking Optimization (LDRO): A dual-normalization RL algorithm that handles non-stationary reward shifts through group-wise and batch-wise standardization.&quot;,
-      &quot;View-Port Aware Rank Modulation: Aligns policy optimization with the cascading attention model of real users by weighting prime visibility zones higher.&quot;
+      &quot;Dual-Rerank bridges the structural gap between autoregressive (AR) models (high accuracy, high latency) and non-autoregressive (NAR) models (low latency, low dependency capturing) via Sequential Knowledge Distillation, which transfers AR&#39;s sequential wisdom to a parallel NAR student.&quot;,
+      &quot;It addresses the optimization gap between Supervised Learning (stable, past-exposure biased) and Reinforcement Learning (unstable, future-utility focused) using List-wise Decoupled Reranking Optimization (LDRO), which provides stable online RL for whole-page utility optimization.&quot;,
+      &quot;The theoretical feasibility is justified by the Unimodal Concentration Hypothesis and the epsilon-Bound Ranking Stability Theorem, validating the approximation that sequential dependencies can be effectively compressed for reranking tasks.&quot;
     ],
-    &quot;main&quot;: &quot;Dual-Rerank is the first unified framework to reconcile the accuracy-latency tension in industrial generative reranking by jointly updating an AR Teacher and a NAR Student through sequential distillation and stable, decoupled online reinforcement learning.&quot;
+    &quot;main&quot;: &quot;A unified online framework named Dual-Rerank that resolves the accuracy-latency tension and optimization gap in industrial reranking by combining Sequential Knowledge Distillation and List-wise Decoupled Reranking Optimization (LDRO).&quot;
   },
   &quot;prerequisiteKnowledge&quot;: {
     &quot;keyTerms&quot;: [
       {
-        &quot;definition&quot;: &quot;The phenomenon where a non-autoregressive model&#39;s preference order diverges from the ground truth due to lack of sequential guidance, leading to loss of global order.&quot;,
-        &quot;term&quot;: &quot;Ranking Collapse&quot;
+        &quot;definition&quot;: &quot;Models that generate sequences token by token, conditioning on all previously generated tokens, allowing them to capture sequential dependencies but incurring O(L) latency.&quot;,
+        &quot;term&quot;: &quot;Autoregressive (AR) Models&quot;
       },
       {
-        &quot;definition&quot;: &quot;A technique using Gumbel noise to transform stochastic categorical sampling into a deterministic argmax operation, enabling vectorized parallel exploration.&quot;,
-        &quot;term&quot;: &quot;Vectorized Gumbel-Max&quot;
+        &quot;definition&quot;: &quot;Models that generate all tokens in a sequence in parallel, typically assuming conditional independence between tokens, offering O(1) latency but struggling to capture complex sequential dependencies.&quot;,
+        &quot;term&quot;: &quot;Non-Autoregressive (NAR) Models&quot;
       },
       {
-        &quot;definition&quot;: &quot;A phenomenon in dynamic systems where the baseline reward (e.g., CTR) fluctuates significantly over time, causing instability in standard RL updates.&quot;,
-        &quot;term&quot;: &quot;Reward Shift&quot;
+        &quot;definition&quot;: &quot;A technique where a smaller, less complex &#39;student&#39; model learns to mimic the behavior of a larger, more powerful &#39;teacher&#39; model, often by minimizing the KL-divergence between their output distributions.&quot;,
+        &quot;term&quot;: &quot;Knowledge Distillation&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A machine learning paradigm where an agent learns to make decisions by performing actions in an environment and receiving rewards or penalties, aiming to maximize cumulative reward.&quot;,
+        &quot;term&quot;: &quot;Reinforcement Learning (RL)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The process of reordering a given list of candidate items to optimize for a specific objective, often considering inter-item dependencies and holistic list utility.&quot;,
+        &quot;term&quot;: &quot;Reranking&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A holistic measure of user satisfaction or engagement that considers the overall quality and arrangement of all items presented on a page or slate, rather than just individual item relevance.&quot;,
+        &quot;term&quot;: &quot;Whole-Page Utility&quot;
       }
     ],
     &quot;prerequisites&quot;: [
-      &quot;Deep understanding of Learning to Rank (LTR) and Generative Reranking paradigms.&quot;,
-      &quot;Familiarity with Autoregressive (AR) vs. Non-Autoregressive (NAR) decoding architectures.&quot;,
-      &quot;Knowledge of Reinforcement Learning concepts, specifically Policy Gradients and reward normalization techniques like GRPO.&quot;
+      &quot;Transformer architectures (Encoders, Decoders)&quot;,
+      &quot;Pointer Networks&quot;,
+      &quot;Gumbel-Max trick&quot;,
+      &quot;Kullback-Leibler (KL) Divergence&quot;,
+      &quot;Information Theory concepts (e.g., Entropy, Mutual Information)&quot;,
+      &quot;Policy Gradient methods in Reinforcement Learning&quot;
     ]
   },
   &quot;subTopics&quot;: [
-    &quot;Generative Reranking&quot;,
-    &quot;Sequential Knowledge Distillation&quot;,
-    &quot;Online Reinforcement Learning&quot;
+    &quot;Recommender Systems&quot;,
+    &quot;Generative Models&quot;,
+    &quot;Knowledge Distillation&quot;
   ],
   &quot;tags&quot;: [
     {
-      &quot;name&quot;: &quot;Rec&quot;,
+      &quot;name&quot;: &quot;RAG&quot;,
       &quot;type&quot;: &quot;primary&quot;
     },
     {
@@ -271,74 +397,118 @@
       &quot;type&quot;: &quot;topic&quot;
     },
     {
-      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;name&quot;: &quot;Rec&quot;,
       &quot;type&quot;: &quot;topic&quot;
     }
   ],
   &quot;technicalDetails&quot;: {
     &quot;comparisonToPriorWork&quot;: [
-      &quot;Unlike NAR4Rec, which uses inference-time heuristics to solve the lack of sequential modeling, Dual-Rerank explicitly distills sequential dependencies during training.&quot;,
-      &quot;Unlike GReF, which uses serial decoding ($O(L)$), Dual-Rerank uses parallel decoding ($O(1)$) to reduce latency by 43.7%.&quot;,
-      &quot;Unlike standard GRPO, LDRO introduces double-decoupling to survive real-world tidal reward drifts in industrial streams.&quot;
+      &quot;Traditional Discriminative Methods (e.g., DNN, DCN, PRM, Edge-rerank, PIER) score items independently or with limited interaction, failing to capture the combinatorial nature and dynamic inter-item dependencies essential for whole-page utility.&quot;,
+      &quot;Generative Autoregressive (AR) models (e.g., Seq2Slate, GReF) explicitly capture sequential dependencies but suffer from prohibitive O(L) latency due to their serial decoding nature, making them unsuitable for high-throughput industrial settings and prone to exposure bias.&quot;,
+      &quot;Generative Non-Autoregressive (NAR) models (e.g., NAR4Rec, MG-E) offer O(1) parallel generation efficiency but are limited by the Conditional Independence Assumption, leading to the &#39;multi-modality problem&#39; and incoherent lists without explicit sequential guidance.&quot;,
+      &quot;Dual-Rerank distinguishes itself by using Sequential Knowledge Distillation to endow the efficient NAR student with AR teacher&#39;s sequential dependency modeling capabilities, thereby overcoming the &#39;Conditional Independence&#39; bottleneck of NAR without incurring AR&#39;s latency.&quot;,
+      &quot;Unlike prior RL-based reranking which struggles with instability in high-throughput streams, Dual-Rerank&#39;s LDRO component provides stable online RL optimization, effectively handling &#39;Reward Shift&#39; and &#39;Position Insensitivity&#39; dilemmas via Double-Decoupling and Rank-Decay Modulation.&quot;
     ],
     &quot;limitations&quot;: [
-      &quot;The framework relies on the Unimodal Concentration Hypothesis, which may not hold for highly ambiguous or non-hierarchical ranking tasks.&quot;,
-      &quot;Inference-time reward scoring depends on the accuracy of the multi-task Reward Network ($R_{net}$).&quot;
+      &quot;The paper does not explicitly list limitations, but suggests that future work should explore scaling this paradigm to foundation models to exploit emergent list-wise reasoning abilities, implying a current scope limitation regarding advanced reasoning.&quot;
     ],
     &quot;modeling&quot;: [
       {
-        &quot;label&quot;: &quot;AR Teacher Objective&quot;,
-        &quot;value&quot;: &quot;$\\mathcal{L}_{Teacher} = \\mathcal{L}_{MLE} + \\lambda_{bpr} \\mathcal{L}_{BPR}$&quot;
+        &quot;label&quot;: &quot;Total AR Objective&quot;,
+        &quot;value&quot;: &quot;$L_{Teacher} = L_{MLE} + \\lambda_{bpr} L_{BPR}$&quot;
       },
       {
-        &quot;label&quot;: &quot;Distillation Loss&quot;,
-        &quot;value&quot;: &quot;$\\mathcal{L}_{KD} = \\sum_{t=1}^{L} D_{KL}(\\text{stop\\_grad}(\\pi_{\\theta^T}(y_t|y_{&lt;t}, x)) \\parallel \\pi_{\\theta^S}(y_t|x))$&quot;
+        &quot;label&quot;: &quot;Sequence-Level Knowledge Distillation&quot;,
+        &quot;value&quot;: &quot;$L_{KD} = \\sum_{t=1}^L D_{KL}(\\text{stop_grad}(\\pi_{\\theta_T}(\\cdot|y_{&lt;t},x)) \\| \\pi_{\\theta_S}(\\cdot|x))$&quot;
       },
       {
-        &quot;label&quot;: &quot;Ranking Stability Bound&quot;,
-        &quot;value&quot;: &quot;$P(\\text{Flip}) \\leq \\frac{\\sqrt{2}\\epsilon}{\\delta}$&quot;
+        &quot;label&quot;: &quot;epsilon-Bound Ranking Stability (Condition for No Flip)&quot;,
+        &quot;value&quot;: &quot;$\\delta \\geq \\sqrt{2 \\epsilon}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Group Advantage Normalization&quot;,
+        &quot;value&quot;: &quot;$A^{(j)}_m = \\frac{r^{(j)}_m - \\mu_{group,m}}{\\sigma_{group,m} + \\epsilon}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Batch-wise Advantage Standardization&quot;,
+        &quot;value&quot;: &quot;$\\hat{A}^{(j)}_m = \\frac{A^{(j)}_m - \\mu_{B,m}}{\\sigma_{B,m} + \\epsilon}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Piecewise Decay Function (Rank-Weighting)&quot;,
+        &quot;value&quot;: &quot;$w_t = \\begin{cases} 1.0, &amp; \\text{if } 1 \\leq t \\leq K \\text{ (Prime Visibility Zone)} \\\\ \\frac{1}{\\log_2(t-K+2)}, &amp; \\text{if } t &gt; K \\text{ (Tail Zone)} \\end{cases}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Total Student Objective&quot;,
+        &quot;value&quot;: &quot;$L_{Total} = L_{Teacher} + \\lambda_{KD} \\cdot L_{KD} - \\lambda_{RL} \\cdot \\frac{1}{G} \\sum_{j=1}^G A^{(j)}_{total} \\sum_{t=1}^L w_t \\log \\pi_{\\theta_S}(y^{(j)}_t | x)$&quot;
       }
     ],
     &quot;pipelineFlow&quot;: [
-      &quot;1. AR Teacher training on exposure and preference signals (Sequential Anchor).&quot;,
-      &quot;2. Sequential Knowledge Distillation from AR Teacher to NAR Student (Structural Bridge).&quot;,
-      &quot;3. Online RL exploration via Vectorized Gumbel-Max and LDRO (Utility Optimization).&quot;,
-      &quot;4. Unified Gradient Update for joint co-evolution of Teacher and Student.&quot;,
-      &quot;5. Online Inference using a Sample-and-Rank (Best-of-N) strategy for global optimality.&quot;
+      &quot;Training Phase: Jointly update an AR Teacher and a NAR Student on streaming interactions.&quot;,
+      &quot;AR Teacher Learning (AR Path): Compute maximum likelihood estimation (MLE) on exposure logs and Pairwise Ranking Loss (BPR) on feedback to train the AR Teacher.&quot;,
+      &quot;Sequential Distillation (Bridge): Compute KL-divergence loss from the AR Teacher&#39;s soft labels to the NAR Student&#39;s predictions to transfer sequential dependency logic.&quot;,
+      &quot;Online Exploration (RL Path): NAR Student generates K candidate slates via Vectorized Gumbel-Max sampling, computes Hybrid Rewards (Reward Network + Priori Constraints + Posterior Feedback), and applies List-wise Decoupled Reranking Optimization (LDRO) with Double-Decoupling and Rank-Weighting.&quot;,
+      &quot;Unified Gradient Update: Compute total gradients from a combined loss (AR Teacher Loss + Distillation Loss + LDRO Loss) and update both Teacher and Student parameters simultaneously.&quot;,
+      &quot;Inference Phase: Leverage the computational surplus of NAR architecture for a Sample-and-Rank strategy.&quot;,
+      &quot;One-Step Decoding: Encoder processes context, NAR Decoder predicts item probability distribution for all ranking positions simultaneously in O(1).&quot;,
+      &quot;Vectorized Sampling: Employ Vectorized Gumbel-Max to generate N diverse candidate slates in parallel.&quot;,
+      &quot;Reward Scoring: Score candidate slates immediately using the inference-time Reward System (Reward Network and Priori Rules).&quot;,
+      &quot;Best-of-N Selection: Select the sequence with the highest estimated score for exposure.&quot;
     ],
     &quot;problemDefinition&quot;: [
       {
-        &quot;label&quot;: &quot;Reranking Optimization Goal&quot;,
-        &quot;value&quot;: &quot;$Y^* = \\arg \\max_{Y \\in \\mathcal{P}(\\mathcal{C})} \\mathbb{E}[R(Y)|x]$&quot;
+        &quot;label&quot;: &quot;Reranking Problem Formulation&quot;,
+        &quot;value&quot;: &quot;Given context $x$ (user profile, query, recent interactions) and candidate set $C$, reranking aims to output an ordered slate $Y = [y_1, ..., y_L]$ that maximizes the expected Whole-Page Utility $R(Y)$: $Y^* = \\text{arg max}_{Y \\in P(C)} E[R(Y)|x]$, where $P(C)$ is the set of all permutations.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Exposure Learning (MLE)&quot;,
+        &quot;value&quot;: &quot;$L_{MLE} = - \\sum_{t=1}^L \\log \\pi_{\\theta_T}(y_t | y_{&lt;t}, x)$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Preference Injection (BPR)&quot;,
+        &quot;value&quot;: &quot;$S(y) = 1.0 \\cdot I(\\text{click}) + 2.0 \\cdot I(\\text{long_view}) + 0.1 \\cdot I(\\text{exposure})$ and $L_{BPR} = - \\sum_{(y_i,y_j) \\in D_{pair}} \\ln \\sigma (s_{\\theta_T}(y_i | x) - s_{\\theta_T}(y_j | x))$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Sequence-Level Knowledge Distillation&quot;,
+        &quot;value&quot;: &quot;$L_{KD} = \\sum_{t=1}^L D_{KL}(\\text{stop_grad}(\\pi_{\\theta_T}(\\cdot|y_{&lt;t},x)) \\| \\pi_{\\theta_S}(\\cdot|x))$&quot;
       }
     ],
-    &quot;reproducibility&quot;: &quot;The paper provides detailed hyperparameters in Table 6, including learning rates ($9.0 \\times 10^{-6}$), batch sizes (1024), and layer counts (4 for teacher, 1 for student). Implementation uses TensorFlow on a high-performance cluster.&quot;,
+    &quot;reproducibility&quot;: &quot;The models are implemented in TensorFlow and trained on a high-performance computing cluster. Details about model architecture (e.g., encoder layers, attention heads, dimensions) and training configuration (optimizer, loss weights, LDRO hyperparameters like mini-batch size, group size, KL coefficient, entropy bonus, objective standardization) are provided in the appendix. Both a public benchmark (Avito) and an industrial dataset (Kuaishou Production) are used.&quot;,
     &quot;systemModules&quot;: [
       {
-        &quot;details&quot;: &quot;A 4-layer Transformer Decoder trained with MLE and BPR to capture sequential causality.&quot;,
-        &quot;name&quot;: &quot;AR Teacher&quot;,
-        &quot;role&quot;: &quot;Sequential Anchor&quot;
+        &quot;details&quot;: &quot;A Transformer-based architecture with 4 layers, 3 attention heads, hidden dimension of 256, and feed-forward dimension of 256. Responsible for extracting rich representations from user behavior sequences and candidate items.&quot;,
+        &quot;name&quot;: &quot;Shared Encoder&quot;,
+        &quot;role&quot;: &quot;Feature extraction and contextual embedding&quot;
       },
       {
-        &quot;details&quot;: &quot;A lightweight 1-layer Transformer distilled from the teacher for high-throughput parallel generation.&quot;,
-        &quot;name&quot;: &quot;NAR Student&quot;,
-        &quot;role&quot;: &quot;Efficient Generator&quot;
+        &quot;details&quot;: &quot;A Pointer Network-based Transformer Decoder with 4 layers, employing causal masking. It provides the &#39;sequential anchor&#39; by modeling the generative probability of the optimal sequence and furnishes soft labels for student distillation.&quot;,
+        &quot;name&quot;: &quot;AR Teacher Model&quot;,
+        &quot;role&quot;: &quot;Sequential dependency modeling and knowledge source for distillation&quot;
       },
       {
-        &quot;details&quot;: &quot;A multi-objective module combining predicted rewards ($R_{net}$), prior business rules ($R_{prior}$), and real-time feedback ($R_{post}$).&quot;,
-        &quot;name&quot;: &quot;Hybrid Reward System&quot;,
-        &quot;role&quot;: &quot;Utility Evaluator&quot;
+        &quot;details&quot;: &quot;A lightweight Transformer Decoder with only 1 layer, incorporating causal self-attention and cross-attention mechanisms. Efficiently learns from the Teacher and optimizes for whole-page utility, significantly reducing inference latency.&quot;,
+        &quot;name&quot;: &quot;NAR Student Model (Generator)&quot;,
+        &quot;role&quot;: &quot;Efficient parallel sequence generation and whole-page utility optimization&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A multi-component system including: (1) a pre-trained Reward Network for estimating immediate/long-term satisfaction, (2) Priori Constraints for business layouts (e.g., NDCG for visible windows), and (3) Posterior Feedback from real-time user actions to correct biases. It constructs stable reward signals for RL.&quot;,
+        &quot;name&quot;: &quot;Reward System&quot;,
+        &quot;role&quot;: &quot;Provides robust reward signals for RL optimization and online evaluation&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Comprises three tailored components: 1) High-Throughput Parallel Exploration (Vectorized Gumbel-Max for efficient candidate generation), 2) Online Double-Decoupling (Group-wise Normalization and Batch-wise Standardization) for stable reward signals, and 3) Rank-Weighted Policy Optimization (Piecewise Decay Function) to align with user cascading attention.&quot;,
+        &quot;name&quot;: &quot;List-wise Decoupled Reranking Optimization (LDRO)&quot;,
+        &quot;role&quot;: &quot;Stable online Reinforcement Learning for whole-page utility optimization&quot;
       }
     ]
   },
-  &quot;thesis&quot;: &quot;Dual-Rerank is a unified framework for industrial reranking that bridges the structural gap between accurate autoregressive modeling and efficient non-autoregressive generation through sequential knowledge distillation, while stabilizing list-wise reinforcement learning for whole-page utility via a novel double-decoupling mechanism.&quot;,
+  &quot;thesis&quot;: &quot;Dual-Rerank effectively resolves the accuracy-latency and imitation-evolution dualities in industrial reranking by combining sequential knowledge distillation from an AR teacher to a NAR student with stable online reinforcement learning (LDRO) for whole-page utility optimization, achieving state-of-the-art performance with reduced latency.&quot;,
   &quot;title&quot;: &quot;Dual-Rerank: Fusing Sequential Dependencies and Utility for Generative Reranking&quot;,
   &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2604.07420&quot;,
-  &quot;venue&quot;: &quot;ArXiv&quot;,
-  &quot;year&quot;: &quot;2026&quot;
+  &quot;venue&quot;: &quot;Conference acronym &#39;XX&quot;,
+  &quot;year&quot;: &quot;2018&quot;
 }</div>
     </div>
   </div>
-  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2604.07420&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2604.07420&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:104,&quot;xmin&quot;:88,&quot;ymax&quot;:334,&quot;xmax&quot;:911},&quot;caption&quot;:&quot;Figure 2: Overview of Dual-Rerank: joint online updates of an autoregressive Teacher and a non-autoregressive Student via (i) sequential distillation and (ii) online RL optimization (LDRO) under strict latency.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:3},&quot;authors&quot;:&quot;Chao Zhang, Shuai Lin, Chenglei Dai, Ye Qian, Mingyang Fan, Yi Zhang, Yi Wang, Jingwei Zhuo&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper provides a significant advancement in reranking by successfully bridging the performance gap between autoregressive and non-autoregressive models. It introduces a novel theoretical hypothesis (Unimodal Concentration) and a robust optimization framework (LDRO) that achieves state-of-the-art results on billion-scale production data while meeting strict industrial latency constraints.&quot;,&quot;score&quot;:8},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;In a dual-column short-video feed, an Autoregressive model can perfectly capture the sequential dependency (e.g., ensuring variety after a user sees a specific genre), but it must predict each video one by one, leading to 21.5ms latency. A Non-Autoregressive model can predict all videos at once in 12.1ms, but it ignores these dependencies, potentially resulting in repetitive or incoherent video lists.&quot;,&quot;statement&quot;:&quot;Industrial reranking faces a fundamental duality: the structural trade-off between the high accuracy of slow autoregressive models and the efficiency of inaccurate non-autoregressive models, compounded by an optimization gap where supervised learning suffers from exposure bias and reinforcement learning is unstable in high-throughput streaming environments.&quot;,&quot;whyItMatters&quot;:[&quot;Reranking is the final decision layer that directly determines user satisfaction and whole-page utility.&quot;,&quot;Strict industrial latency constraints (often &lt; 20ms) prevent the use of many advanced generative models.&quot;,&quot;Traditional score-and-sort methods fail to capture combinatorial dependencies and bundle effects between items.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Evaluated on a public benchmark (Avito) and a massive industrial dataset from Kuaishou with 1 billion interaction logs.&quot;,&quot;Dual-Rerank reduces average P99 latency by 43.7% compared to autoregressive production baselines.&quot;,&quot;Online A/B testing on 5% of production traffic showed a 1.107% increase in Long-View Rate and a 0.714% increase in Whole-Page CTR.&quot;,&quot;Demonstrated successful transfer of sequential dependency logic from an AR teacher to a NAR student, preventing Ranking Collapse.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Avito Context Ad Clicks&quot;,&quot;Kuaishou Production Dataset&quot;],&quot;metrics&quot;:[&quot;AUC&quot;,&quot;NDCG&quot;,&quot;Long-View Rate&quot;,&quot;CTR&quot;,&quot;Latency (ms)&quot;,&quot;Ranking Flip Rate (RFR)&quot;],&quot;setting&quot;:&quot;Offline evaluation on historical logs and online A/B testing on live production traffic with 400M+ DAUs.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:112,&quot;xmin&quot;:543,&quot;ymax&quot;:395,&quot;xmax&quot;:900},&quot;caption&quot;:&quot;Figure 4: Stability under streaming drift. (a) &amp; (b): Real-world logs reveal significant drifts in different time. (c): Comparison of Total Reward during training.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:4},{&quot;boundingBox&quot;:{&quot;ymin&quot;:110,&quot;xmin&quot;:110,&quot;ymax&quot;:288,&quot;xmax&quot;:462},&quot;caption&quot;:&quot;Figure 6: Structural Fidelity Analysis (Ranking Flip Rate). Unlike PTAR which measures pointwise memorization, RFR evaluates the pairwise ranking logic.&quot;,&quot;figureNumber&quot;:6,&quot;pageIndex&quot;:7}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.7384&quot;,&quot;benchmark&quot;:&quot;Avito (Public)&quot;,&quot;delta&quot;:&quot;+0.0057&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.7441&quot;},{&quot;baseline&quot;:&quot;0.7387&quot;,&quot;benchmark&quot;:&quot;Kuaishou (Industrial)&quot;,&quot;delta&quot;:&quot;+0.0061&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.7448&quot;},{&quot;baseline&quot;:&quot;0.7498&quot;,&quot;benchmark&quot;:&quot;Kuaishou (Industrial)&quot;,&quot;delta&quot;:&quot;+0.0067&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG&quot;,&quot;thisPaper&quot;:&quot;0.7565&quot;}],&quot;title&quot;:&quot;Offline Performance Comparison&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;21.5 ms&quot;,&quot;benchmark&quot;:&quot;Kuaishou Production&quot;,&quot;delta&quot;:&quot;-9.4 ms&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Avg. Latency&quot;,&quot;thisPaper&quot;:&quot;12.1 ms&quot;},{&quot;baseline&quot;:&quot;1.0x&quot;,&quot;benchmark&quot;:&quot;Kuaishou Production&quot;,&quot;delta&quot;:&quot;0.8x&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Speedup&quot;,&quot;thisPaper&quot;:&quot;1.8x&quot;}],&quot;title&quot;:&quot;System Inference Efficiency&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.0%&quot;,&quot;benchmark&quot;:&quot;Online A/B Test&quot;,&quot;delta&quot;:&quot;+1.107%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Long-View Rate&quot;,&quot;thisPaper&quot;:&quot;+1.107%&quot;},{&quot;baseline&quot;:&quot;0.0%&quot;,&quot;benchmark&quot;:&quot;Online A/B Test&quot;,&quot;delta&quot;:&quot;+0.714%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Whole-Page CTR&quot;,&quot;thisPaper&quot;:&quot;+0.714%&quot;},{&quot;baseline&quot;:&quot;0.0%&quot;,&quot;benchmark&quot;:&quot;Online A/B Test&quot;,&quot;delta&quot;:&quot;-1.309%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Query Reformulation Rate&quot;,&quot;thisPaper&quot;:&quot;-1.309%&quot;}],&quot;title&quot;:&quot;Online Business Impact&quot;}],&quot;mainTakeaways&quot;:[&quot;Dual-Rerank breaks the accuracy-latency trade-off by achieving higher AUC than the best AR baselines with significantly lower latency.&quot;,&quot;Sequential Knowledge Distillation is foundational; without it, NAR models suffer from structural Ranking Collapse.&quot;,&quot;The LDRO algorithm effectively stabilizes reinforcement learning against the massive reward shifts found in real-world traffic logs.&quot;,&quot;The Unimodal Concentration Hypothesis is empirically validated: reranking is far more deterministic than open-ended natural language generation.&quot;]},&quot;institutions&quot;:&quot;Kuaishou Technology&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;The Unimodal Concentration Hypothesis: Observes that reranking is quasi-deterministic ($H(Y|X) \\approx 0$), allowing AR dependency logic to degenerate into parallelizable marginal distributions.&quot;,&quot;Sequential Knowledge Distillation: A mechanism to transfer sequential logic from a robust AR Teacher to an efficient NAR Student without serial decoding latency.&quot;,&quot;List-wise Decoupled Reranking Optimization (LDRO): A dual-normalization RL algorithm that handles non-stationary reward shifts through group-wise and batch-wise standardization.&quot;,&quot;View-Port Aware Rank Modulation: Aligns policy optimization with the cascading attention model of real users by weighting prime visibility zones higher.&quot;],&quot;main&quot;:&quot;Dual-Rerank is the first unified framework to reconcile the accuracy-latency tension in industrial generative reranking by jointly updating an AR Teacher and a NAR Student through sequential distillation and stable, decoupled online reinforcement learning.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;The phenomenon where a non-autoregressive model&#39;s preference order diverges from the ground truth due to lack of sequential guidance, leading to loss of global order.&quot;,&quot;term&quot;:&quot;Ranking Collapse&quot;},{&quot;definition&quot;:&quot;A technique using Gumbel noise to transform stochastic categorical sampling into a deterministic argmax operation, enabling vectorized parallel exploration.&quot;,&quot;term&quot;:&quot;Vectorized Gumbel-Max&quot;},{&quot;definition&quot;:&quot;A phenomenon in dynamic systems where the baseline reward (e.g., CTR) fluctuates significantly over time, causing instability in standard RL updates.&quot;,&quot;term&quot;:&quot;Reward Shift&quot;}],&quot;prerequisites&quot;:[&quot;Deep understanding of Learning to Rank (LTR) and Generative Reranking paradigms.&quot;,&quot;Familiarity with Autoregressive (AR) vs. Non-Autoregressive (NAR) decoding architectures.&quot;,&quot;Knowledge of Reinforcement Learning concepts, specifically Policy Gradients and reward normalization techniques like GRPO.&quot;]},&quot;subTopics&quot;:[&quot;Generative Reranking&quot;,&quot;Sequential Knowledge Distillation&quot;,&quot;Online Reinforcement Learning&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Rec&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;RL&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike NAR4Rec, which uses inference-time heuristics to solve the lack of sequential modeling, Dual-Rerank explicitly distills sequential dependencies during training.&quot;,&quot;Unlike GReF, which uses serial decoding ($O(L)$), Dual-Rerank uses parallel decoding ($O(1)$) to reduce latency by 43.7%.&quot;,&quot;Unlike standard GRPO, LDRO introduces double-decoupling to survive real-world tidal reward drifts in industrial streams.&quot;],&quot;limitations&quot;:[&quot;The framework relies on the Unimodal Concentration Hypothesis, which may not hold for highly ambiguous or non-hierarchical ranking tasks.&quot;,&quot;Inference-time reward scoring depends on the accuracy of the multi-task Reward Network ($R_{net}$).&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;AR Teacher Objective&quot;,&quot;value&quot;:&quot;$\\mathcal{L}_{Teacher} = \\mathcal{L}_{MLE} + \\lambda_{bpr} \\mathcal{L}_{BPR}$&quot;},{&quot;label&quot;:&quot;Distillation Loss&quot;,&quot;value&quot;:&quot;$\\mathcal{L}_{KD} = \\sum_{t=1}^{L} D_{KL}(\\text{stop\\_grad}(\\pi_{\\theta^T}(y_t|y_{&lt;t}, x)) \\parallel \\pi_{\\theta^S}(y_t|x))$&quot;},{&quot;label&quot;:&quot;Ranking Stability Bound&quot;,&quot;value&quot;:&quot;$P(\\text{Flip}) \\leq \\frac{\\sqrt{2}\\epsilon}{\\delta}$&quot;}],&quot;pipelineFlow&quot;:[&quot;1. AR Teacher training on exposure and preference signals (Sequential Anchor).&quot;,&quot;2. Sequential Knowledge Distillation from AR Teacher to NAR Student (Structural Bridge).&quot;,&quot;3. Online RL exploration via Vectorized Gumbel-Max and LDRO (Utility Optimization).&quot;,&quot;4. Unified Gradient Update for joint co-evolution of Teacher and Student.&quot;,&quot;5. Online Inference using a Sample-and-Rank (Best-of-N) strategy for global optimality.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Reranking Optimization Goal&quot;,&quot;value&quot;:&quot;$Y^* = \\arg \\max_{Y \\in \\mathcal{P}(\\mathcal{C})} \\mathbb{E}[R(Y)|x]$&quot;}],&quot;reproducibility&quot;:&quot;The paper provides detailed hyperparameters in Table 6, including learning rates ($9.0 \\times 10^{-6}$), batch sizes (1024), and layer counts (4 for teacher, 1 for student). Implementation uses TensorFlow on a high-performance cluster.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;A 4-layer Transformer Decoder trained with MLE and BPR to capture sequential causality.&quot;,&quot;name&quot;:&quot;AR Teacher&quot;,&quot;role&quot;:&quot;Sequential Anchor&quot;},{&quot;details&quot;:&quot;A lightweight 1-layer Transformer distilled from the teacher for high-throughput parallel generation.&quot;,&quot;name&quot;:&quot;NAR Student&quot;,&quot;role&quot;:&quot;Efficient Generator&quot;},{&quot;details&quot;:&quot;A multi-objective module combining predicted rewards ($R_{net}$), prior business rules ($R_{prior}$), and real-time feedback ($R_{post}$).&quot;,&quot;name&quot;:&quot;Hybrid Reward System&quot;,&quot;role&quot;:&quot;Utility Evaluator&quot;}]},&quot;thesis&quot;:&quot;Dual-Rerank is a unified framework for industrial reranking that bridges the structural gap between accurate autoregressive modeling and efficient non-autoregressive generation through sequential knowledge distillation, while stabilizing list-wise reinforcement learning for whole-page utility via a novel double-decoupling mechanism.&quot;,&quot;title&quot;:&quot;Dual-Rerank: Fusing Sequential Dependencies and Utility for Generative Reranking&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2604.07420&quot;,&quot;venue&quot;:&quot;ArXiv&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2604.07420&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2604.07420&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:70,&quot;xmin&quot;:90,&quot;ymax&quot;:295,&quot;xmax&quot;:910},&quot;caption&quot;:&quot;Overview of Dual-Rerank: joint online updates of an autoregressive Teacher and a non-autoregressive Student via (i) sequential distillation and (ii) online RL optimization (LDRO) under strict latency.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:3},&quot;authors&quot;:&quot;Chao Zhang, Shuai Lin, Chenglei Dai, Ye Qian, Mingyang Fan, Yi Zhang, Yi Wang, Jingwei Zhuo&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;Dual-Rerank introduces a novel unified framework that effectively resolves two critical industrial reranking challenges: the accuracy-latency structural trade-off between AR and NAR models, and the optimization gap between stable supervised learning and unstable reinforcement learning. It provides theoretical justification for its distillation approach and demonstrates significant, measurable improvements in both offline performance (SOTA AUC/NDCG) and online business metrics (Long-View Rate, CTR) while drastically reducing inference latency (43.7%). This represents a strong advancement for large-scale industrial recommender systems.&quot;,&quot;score&quot;:8},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;In Kuaishou&#39;s short-video search, the reranking stage needs to optimize whole-page utility, but traditional score-and-sort methods fail to capture dynamic inter-item dependencies, leading to suboptimal permutations.&quot;,&quot;statement&quot;:&quot;Industrial reranking faces a fundamental &#39;dual dilemma&#39;: 1) a structural trade-off where Autoregressive (AR) models offer superior sequential modeling but suffer from prohibitive O(L) latency, while Non-Autoregressive (NAR) models offer O(1) efficiency but lack dependency capturing. 2) An optimization gap where Supervised Learning (SL) struggles to directly optimize whole-page utility, while Reinforcement Learning (RL) suffers from instability in high-throughput data streams.&quot;,&quot;whyItMatters&quot;:[&quot;Reranking serves as the final decision layer in recommender systems, critically determining user experience by optimizing whole-page utility.&quot;,&quot;Existing generative reranking models (AR/NAR) present a trade-off between accuracy and latency, hindering their deployment in latency-sensitive industrial settings.&quot;,&quot;Current optimization strategies (SL/RL) also face challenges in achieving both stability and effective optimization for complex, long-term utility in dynamic industrial streams.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Achieved State-of-the-Art performance on both public (Avito Context Ad Clicks) and industrial (Kuaishou Production Dataset) benchmarks, outperforming NAR baselines by a substantial margin and matching/exceeding AR teachers.&quot;,&quot;Drastically reduced average inference latency by 43.7% (from 21.5ms for Production AR to 12.1ms for Dual-Rerank), converting &#39;saved latency&#39; into expanded &#39;search breadth&#39; for better global optimality.&quot;,&quot;Demonstrated statistically significant gains in crucial online business metrics during A/B testing on the Kuaishou App, including +1.107% Long-View Rate, +0.714% Whole-Page CTR, and -1.309% Query Reformulation Rate.&quot;,&quot;Provided theoretical justification via the &#39;Unimodal Concentration Hypothesis&#39; and the &#39;epsilon-Bound Ranking Stability Theorem&#39; for the feasibility and stability of transferring sequential knowledge from AR to NAR models in reranking tasks.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Avito Context Ad Clicks&quot;,&quot;Kuaishou Production Dataset&quot;],&quot;metrics&quot;:[&quot;AUC&quot;,&quot;NDCG&quot;,&quot;Ranking Flip Rate (RFR)&quot;,&quot;Position-wise Top-1 Agreement Rate (PTAR)&quot;,&quot;Average Latency&quot;,&quot;Speedup&quot;,&quot;Long-View Rate&quot;,&quot;Whole-Page CTR&quot;,&quot;Query Reformulation Rate&quot;],&quot;setting&quot;:&quot;Industrial reranking in a large-scale production system (e.g., Kuaishou short-video search)&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:107,&quot;xmin&quot;:114,&quot;ymax&quot;:280,&quot;xmax&quot;:440},&quot;caption&quot;:&quot;Comparison of Distribution Characteristics between NLP (Qwen2.5) and Industrial Reranking Tasks. (a) Distribution Shape Analysis: The curves plot the probability of the top-k tokens at each decoding step, averaged over 100 samples from the Alpaca dataset (NLP) and one day of production logs (Reranking). Unlike the high-entropy, long-tail distribution observed in NLP (Red), reranking exhibits a sharp Unimodal Concentration (Blue). (b) Quantitative metrics reveal a significant &#39;Entropy-Consistency Gap,&#39; validating the quasi-deterministic nature of ranking. Detailed explanation of the metrics are showed in Appendix C.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:300,&quot;xmin&quot;:113,&quot;ymax&quot;:460,&quot;xmax&quot;:440},&quot;caption&quot;:&quot;Comparison of Distribution Characteristics between NLP (Qwen2.5) and Industrial Reranking Tasks. (a) Distribution Shape Analysis: The curves plot the probability of the top-k tokens at each decoding step, averaged over 100 samples from the Alpaca dataset (NLP) and one day of production logs (Reranking). Unlike the high-entropy, long-tail distribution observed in NLP (Red), reranking exhibits a sharp Unimodal Concentration (Blue). (b) Quantitative metrics reveal a significant &#39;Entropy-Consistency Gap,&#39; validating the quasi-deterministic nature of ranking. Detailed explanation of the metrics are showed in Appendix C.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:132,&quot;xmin&quot;:115,&quot;ymax&quot;:365,&quot;xmax&quot;:480},&quot;caption&quot;:&quot;Teacher–Student PTAR during training. Distillation improves agreement and stability over a pure NAR baseline.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:4},{&quot;boundingBox&quot;:{&quot;ymin&quot;:128,&quot;xmin&quot;:524,&quot;ymax&quot;:202,&quot;xmax&quot;:865},&quot;caption&quot;:&quot;Stability under streaming drift. (a) &amp; (b): Real-world logs reveal significant drifts in different time. (c): Comparison of Total Reward during training.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:4},{&quot;boundingBox&quot;:{&quot;ymin&quot;:218,&quot;xmin&quot;:524,&quot;ymax&quot;:292,&quot;xmax&quot;:865},&quot;caption&quot;:&quot;Stability under streaming drift. (a) &amp; (b): Real-world logs reveal significant drifts in different time. (c): Comparison of Total Reward during training.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:4},{&quot;boundingBox&quot;:{&quot;ymin&quot;:308,&quot;xmin&quot;:524,&quot;ymax&quot;:492,&quot;xmax&quot;:865},&quot;caption&quot;:&quot;Stability under streaming drift. (a) &amp; (b): Real-world logs reveal significant drifts in different time. (c): Comparison of Total Reward during training.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:4},{&quot;boundingBox&quot;:{&quot;ymin&quot;:88,&quot;xmin&quot;:105,&quot;ymax&quot;:355,&quot;xmax&quot;:475},&quot;caption&quot;:&quot;Structural Fidelity Analysis (Ranking Flip Rate). unlike PTAR which measures pointwise memorization, RFR evaluates the pairwise ranking logic. The divergence of the &#39;Pure NAR&#39; baseline reveals a Ranking Collapse phenomenon (loss of global order), while Dual-Rerank maintains structural consistency.&quot;,&quot;figureNumber&quot;:6,&quot;pageIndex&quot;:7}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.7384&quot;,&quot;benchmark&quot;:&quot;Avito (Public)&quot;,&quot;delta&quot;:&quot;+0.0057&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.7441&quot;},{&quot;baseline&quot;:&quot;0.7478&quot;,&quot;benchmark&quot;:&quot;Avito (Public)&quot;,&quot;delta&quot;:&quot;+0.0039&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG&quot;,&quot;thisPaper&quot;:&quot;0.7517&quot;},{&quot;baseline&quot;:&quot;0.7387&quot;,&quot;benchmark&quot;:&quot;Kuaishou (Industrial)&quot;,&quot;delta&quot;:&quot;+0.0061&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.7448&quot;},{&quot;baseline&quot;:&quot;0.7498&quot;,&quot;benchmark&quot;:&quot;Kuaishou (Industrial)&quot;,&quot;delta&quot;:&quot;+0.0067&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG&quot;,&quot;thisPaper&quot;:&quot;0.7565&quot;},{&quot;baseline&quot;:&quot;0.7254&quot;,&quot;benchmark&quot;:&quot;Kuaishou (Industrial) vs NAR4Rec&quot;,&quot;delta&quot;:&quot;+0.0194&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.7448&quot;}],&quot;title&quot;:&quot;Overall Performance Comparison&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.7448&quot;,&quot;benchmark&quot;:&quot;Dual-Rerank (Full)&quot;,&quot;delta&quot;:&quot;-0.0053&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;AUC w/ GRPO&quot;,&quot;thisPaper&quot;:&quot;0.7395&quot;},{&quot;baseline&quot;:&quot;0.7448&quot;,&quot;benchmark&quot;:&quot;Dual-Rerank (Full)&quot;,&quot;delta&quot;:&quot;-0.0194&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;AUC w/o Distillation&quot;,&quot;thisPaper&quot;:&quot;0.7254&quot;},{&quot;baseline&quot;:&quot;0.7448&quot;,&quot;benchmark&quot;:&quot;Dual-Rerank (Full)&quot;,&quot;delta&quot;:&quot;-0.0046&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;AUC w/o Double-Decoupling&quot;,&quot;thisPaper&quot;:&quot;0.7402&quot;},{&quot;baseline&quot;:&quot;0.7448&quot;,&quot;benchmark&quot;:&quot;Dual-Rerank (Full)&quot;,&quot;delta&quot;:&quot;-0.0019&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;AUC w/o Rank-Weighting&quot;,&quot;thisPaper&quot;:&quot;0.7429&quot;}],&quot;title&quot;:&quot;Ablation Study (Kuaishou)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;21.5 ms&quot;,&quot;benchmark&quot;:&quot;Production AR&quot;,&quot;delta&quot;:&quot;-9.4 ms&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Avg. Latency&quot;,&quot;thisPaper&quot;:&quot;12.1 ms&quot;},{&quot;baseline&quot;:&quot;1.0x&quot;,&quot;benchmark&quot;:&quot;Production AR&quot;,&quot;delta&quot;:&quot;+0.8x&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Speedup&quot;,&quot;thisPaper&quot;:&quot;1.8x&quot;}],&quot;title&quot;:&quot;System Inference Efficiency Comparison&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Online A/B Testing&quot;,&quot;delta&quot;:&quot;+1.107%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Long-View Rate&quot;,&quot;thisPaper&quot;:&quot;+1.107%*&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Online A/B Testing&quot;,&quot;delta&quot;:&quot;+0.714%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Whole-Page CTR&quot;,&quot;thisPaper&quot;:&quot;+0.714%*&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Online A/B Testing&quot;,&quot;delta&quot;:&quot;-1.309%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Query Reformulation Rate&quot;,&quot;thisPaper&quot;:&quot;-1.309%*&quot;}],&quot;title&quot;:&quot;Online A/B Testing Results&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Dual-Rerank significantly outperforms existing NAR baselines and matches or exceeds the strongest AR teachers on AUC and NDCG metrics across diverse datasets.&quot;,&quot;Sequential Knowledge Distillation (Phase 1) is foundational for transferring AR&#39;s sequential dependency logic to the NAR student, effectively preventing &#39;Ranking Collapse&#39; and ensuring structural fidelity.&quot;,&quot;List-wise Decoupled Reranking Optimization (LDRO) (Phase 2) is crucial for stable online RL, effectively handling non-stationary reward shifts and leading to superior performance compared to standard GRPO.&quot;,&quot;The framework drastically reduces inference latency (43.7% reduction) while simultaneously improving core business metrics and user satisfaction in real-world online A/B tests.&quot;]},&quot;institutions&quot;:&quot;Kuaishou Technology, Unaffiliated&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Dual-Rerank bridges the structural gap between autoregressive (AR) models (high accuracy, high latency) and non-autoregressive (NAR) models (low latency, low dependency capturing) via Sequential Knowledge Distillation, which transfers AR&#39;s sequential wisdom to a parallel NAR student.&quot;,&quot;It addresses the optimization gap between Supervised Learning (stable, past-exposure biased) and Reinforcement Learning (unstable, future-utility focused) using List-wise Decoupled Reranking Optimization (LDRO), which provides stable online RL for whole-page utility optimization.&quot;,&quot;The theoretical feasibility is justified by the Unimodal Concentration Hypothesis and the epsilon-Bound Ranking Stability Theorem, validating the approximation that sequential dependencies can be effectively compressed for reranking tasks.&quot;],&quot;main&quot;:&quot;A unified online framework named Dual-Rerank that resolves the accuracy-latency tension and optimization gap in industrial reranking by combining Sequential Knowledge Distillation and List-wise Decoupled Reranking Optimization (LDRO).&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;Models that generate sequences token by token, conditioning on all previously generated tokens, allowing them to capture sequential dependencies but incurring O(L) latency.&quot;,&quot;term&quot;:&quot;Autoregressive (AR) Models&quot;},{&quot;definition&quot;:&quot;Models that generate all tokens in a sequence in parallel, typically assuming conditional independence between tokens, offering O(1) latency but struggling to capture complex sequential dependencies.&quot;,&quot;term&quot;:&quot;Non-Autoregressive (NAR) Models&quot;},{&quot;definition&quot;:&quot;A technique where a smaller, less complex &#39;student&#39; model learns to mimic the behavior of a larger, more powerful &#39;teacher&#39; model, often by minimizing the KL-divergence between their output distributions.&quot;,&quot;term&quot;:&quot;Knowledge Distillation&quot;},{&quot;definition&quot;:&quot;A machine learning paradigm where an agent learns to make decisions by performing actions in an environment and receiving rewards or penalties, aiming to maximize cumulative reward.&quot;,&quot;term&quot;:&quot;Reinforcement Learning (RL)&quot;},{&quot;definition&quot;:&quot;The process of reordering a given list of candidate items to optimize for a specific objective, often considering inter-item dependencies and holistic list utility.&quot;,&quot;term&quot;:&quot;Reranking&quot;},{&quot;definition&quot;:&quot;A holistic measure of user satisfaction or engagement that considers the overall quality and arrangement of all items presented on a page or slate, rather than just individual item relevance.&quot;,&quot;term&quot;:&quot;Whole-Page Utility&quot;}],&quot;prerequisites&quot;:[&quot;Transformer architectures (Encoders, Decoders)&quot;,&quot;Pointer Networks&quot;,&quot;Gumbel-Max trick&quot;,&quot;Kullback-Leibler (KL) Divergence&quot;,&quot;Information Theory concepts (e.g., Entropy, Mutual Information)&quot;,&quot;Policy Gradient methods in Reinforcement Learning&quot;]},&quot;subTopics&quot;:[&quot;Recommender Systems&quot;,&quot;Generative Models&quot;,&quot;Knowledge Distillation&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;RL&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Rec&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Traditional Discriminative Methods (e.g., DNN, DCN, PRM, Edge-rerank, PIER) score items independently or with limited interaction, failing to capture the combinatorial nature and dynamic inter-item dependencies essential for whole-page utility.&quot;,&quot;Generative Autoregressive (AR) models (e.g., Seq2Slate, GReF) explicitly capture sequential dependencies but suffer from prohibitive O(L) latency due to their serial decoding nature, making them unsuitable for high-throughput industrial settings and prone to exposure bias.&quot;,&quot;Generative Non-Autoregressive (NAR) models (e.g., NAR4Rec, MG-E) offer O(1) parallel generation efficiency but are limited by the Conditional Independence Assumption, leading to the &#39;multi-modality problem&#39; and incoherent lists without explicit sequential guidance.&quot;,&quot;Dual-Rerank distinguishes itself by using Sequential Knowledge Distillation to endow the efficient NAR student with AR teacher&#39;s sequential dependency modeling capabilities, thereby overcoming the &#39;Conditional Independence&#39; bottleneck of NAR without incurring AR&#39;s latency.&quot;,&quot;Unlike prior RL-based reranking which struggles with instability in high-throughput streams, Dual-Rerank&#39;s LDRO component provides stable online RL optimization, effectively handling &#39;Reward Shift&#39; and &#39;Position Insensitivity&#39; dilemmas via Double-Decoupling and Rank-Decay Modulation.&quot;],&quot;limitations&quot;:[&quot;The paper does not explicitly list limitations, but suggests that future work should explore scaling this paradigm to foundation models to exploit emergent list-wise reasoning abilities, implying a current scope limitation regarding advanced reasoning.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Total AR Objective&quot;,&quot;value&quot;:&quot;$L_{Teacher} = L_{MLE} + \\lambda_{bpr} L_{BPR}$&quot;},{&quot;label&quot;:&quot;Sequence-Level Knowledge Distillation&quot;,&quot;value&quot;:&quot;$L_{KD} = \\sum_{t=1}^L D_{KL}(\\text{stop_grad}(\\pi_{\\theta_T}(\\cdot|y_{&lt;t},x)) \\| \\pi_{\\theta_S}(\\cdot|x))$&quot;},{&quot;label&quot;:&quot;epsilon-Bound Ranking Stability (Condition for No Flip)&quot;,&quot;value&quot;:&quot;$\\delta \\geq \\sqrt{2 \\epsilon}$&quot;},{&quot;label&quot;:&quot;Group Advantage Normalization&quot;,&quot;value&quot;:&quot;$A^{(j)}_m = \\frac{r^{(j)}_m - \\mu_{group,m}}{\\sigma_{group,m} + \\epsilon}$&quot;},{&quot;label&quot;:&quot;Batch-wise Advantage Standardization&quot;,&quot;value&quot;:&quot;$\\hat{A}^{(j)}_m = \\frac{A^{(j)}_m - \\mu_{B,m}}{\\sigma_{B,m} + \\epsilon}$&quot;},{&quot;label&quot;:&quot;Piecewise Decay Function (Rank-Weighting)&quot;,&quot;value&quot;:&quot;$w_t = \\begin{cases} 1.0, &amp; \\text{if } 1 \\leq t \\leq K \\text{ (Prime Visibility Zone)} \\\\ \\frac{1}{\\log_2(t-K+2)}, &amp; \\text{if } t &gt; K \\text{ (Tail Zone)} \\end{cases}$&quot;},{&quot;label&quot;:&quot;Total Student Objective&quot;,&quot;value&quot;:&quot;$L_{Total} = L_{Teacher} + \\lambda_{KD} \\cdot L_{KD} - \\lambda_{RL} \\cdot \\frac{1}{G} \\sum_{j=1}^G A^{(j)}_{total} \\sum_{t=1}^L w_t \\log \\pi_{\\theta_S}(y^{(j)}_t | x)$&quot;}],&quot;pipelineFlow&quot;:[&quot;Training Phase: Jointly update an AR Teacher and a NAR Student on streaming interactions.&quot;,&quot;AR Teacher Learning (AR Path): Compute maximum likelihood estimation (MLE) on exposure logs and Pairwise Ranking Loss (BPR) on feedback to train the AR Teacher.&quot;,&quot;Sequential Distillation (Bridge): Compute KL-divergence loss from the AR Teacher&#39;s soft labels to the NAR Student&#39;s predictions to transfer sequential dependency logic.&quot;,&quot;Online Exploration (RL Path): NAR Student generates K candidate slates via Vectorized Gumbel-Max sampling, computes Hybrid Rewards (Reward Network + Priori Constraints + Posterior Feedback), and applies List-wise Decoupled Reranking Optimization (LDRO) with Double-Decoupling and Rank-Weighting.&quot;,&quot;Unified Gradient Update: Compute total gradients from a combined loss (AR Teacher Loss + Distillation Loss + LDRO Loss) and update both Teacher and Student parameters simultaneously.&quot;,&quot;Inference Phase: Leverage the computational surplus of NAR architecture for a Sample-and-Rank strategy.&quot;,&quot;One-Step Decoding: Encoder processes context, NAR Decoder predicts item probability distribution for all ranking positions simultaneously in O(1).&quot;,&quot;Vectorized Sampling: Employ Vectorized Gumbel-Max to generate N diverse candidate slates in parallel.&quot;,&quot;Reward Scoring: Score candidate slates immediately using the inference-time Reward System (Reward Network and Priori Rules).&quot;,&quot;Best-of-N Selection: Select the sequence with the highest estimated score for exposure.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Reranking Problem Formulation&quot;,&quot;value&quot;:&quot;Given context $x$ (user profile, query, recent interactions) and candidate set $C$, reranking aims to output an ordered slate $Y = [y_1, ..., y_L]$ that maximizes the expected Whole-Page Utility $R(Y)$: $Y^* = \\text{arg max}_{Y \\in P(C)} E[R(Y)|x]$, where $P(C)$ is the set of all permutations.&quot;},{&quot;label&quot;:&quot;Exposure Learning (MLE)&quot;,&quot;value&quot;:&quot;$L_{MLE} = - \\sum_{t=1}^L \\log \\pi_{\\theta_T}(y_t | y_{&lt;t}, x)$&quot;},{&quot;label&quot;:&quot;Preference Injection (BPR)&quot;,&quot;value&quot;:&quot;$S(y) = 1.0 \\cdot I(\\text{click}) + 2.0 \\cdot I(\\text{long_view}) + 0.1 \\cdot I(\\text{exposure})$ and $L_{BPR} = - \\sum_{(y_i,y_j) \\in D_{pair}} \\ln \\sigma (s_{\\theta_T}(y_i | x) - s_{\\theta_T}(y_j | x))$&quot;},{&quot;label&quot;:&quot;Sequence-Level Knowledge Distillation&quot;,&quot;value&quot;:&quot;$L_{KD} = \\sum_{t=1}^L D_{KL}(\\text{stop_grad}(\\pi_{\\theta_T}(\\cdot|y_{&lt;t},x)) \\| \\pi_{\\theta_S}(\\cdot|x))$&quot;}],&quot;reproducibility&quot;:&quot;The models are implemented in TensorFlow and trained on a high-performance computing cluster. Details about model architecture (e.g., encoder layers, attention heads, dimensions) and training configuration (optimizer, loss weights, LDRO hyperparameters like mini-batch size, group size, KL coefficient, entropy bonus, objective standardization) are provided in the appendix. Both a public benchmark (Avito) and an industrial dataset (Kuaishou Production) are used.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;A Transformer-based architecture with 4 layers, 3 attention heads, hidden dimension of 256, and feed-forward dimension of 256. Responsible for extracting rich representations from user behavior sequences and candidate items.&quot;,&quot;name&quot;:&quot;Shared Encoder&quot;,&quot;role&quot;:&quot;Feature extraction and contextual embedding&quot;},{&quot;details&quot;:&quot;A Pointer Network-based Transformer Decoder with 4 layers, employing causal masking. It provides the &#39;sequential anchor&#39; by modeling the generative probability of the optimal sequence and furnishes soft labels for student distillation.&quot;,&quot;name&quot;:&quot;AR Teacher Model&quot;,&quot;role&quot;:&quot;Sequential dependency modeling and knowledge source for distillation&quot;},{&quot;details&quot;:&quot;A lightweight Transformer Decoder with only 1 layer, incorporating causal self-attention and cross-attention mechanisms. Efficiently learns from the Teacher and optimizes for whole-page utility, significantly reducing inference latency.&quot;,&quot;name&quot;:&quot;NAR Student Model (Generator)&quot;,&quot;role&quot;:&quot;Efficient parallel sequence generation and whole-page utility optimization&quot;},{&quot;details&quot;:&quot;A multi-component system including: (1) a pre-trained Reward Network for estimating immediate/long-term satisfaction, (2) Priori Constraints for business layouts (e.g., NDCG for visible windows), and (3) Posterior Feedback from real-time user actions to correct biases. It constructs stable reward signals for RL.&quot;,&quot;name&quot;:&quot;Reward System&quot;,&quot;role&quot;:&quot;Provides robust reward signals for RL optimization and online evaluation&quot;},{&quot;details&quot;:&quot;Comprises three tailored components: 1) High-Throughput Parallel Exploration (Vectorized Gumbel-Max for efficient candidate generation), 2) Online Double-Decoupling (Group-wise Normalization and Batch-wise Standardization) for stable reward signals, and 3) Rank-Weighted Policy Optimization (Piecewise Decay Function) to align with user cascading attention.&quot;,&quot;name&quot;:&quot;List-wise Decoupled Reranking Optimization (LDRO)&quot;,&quot;role&quot;:&quot;Stable online Reinforcement Learning for whole-page utility optimization&quot;}]},&quot;thesis&quot;:&quot;Dual-Rerank effectively resolves the accuracy-latency and imitation-evolution dualities in industrial reranking by combining sequential knowledge distillation from an AR teacher to a NAR student with stable online reinforcement learning (LDRO) for whole-page utility optimization, achieving state-of-the-art performance with reduced latency.&quot;,&quot;title&quot;:&quot;Dual-Rerank: Fusing Sequential Dependencies and Utility for Generative Reranking&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2604.07420&quot;,&quot;venue&quot;:&quot;Conference acronym &#39;XX&quot;,&quot;year&quot;:&quot;2018&quot;}}</script>
 </body>
 </html>

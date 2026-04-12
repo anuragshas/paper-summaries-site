@@ -4,8 +4,9 @@
   "authors": "Shasvat Desai, Md Omar Faruk Rokon, Jhalak Nilesh Acharya, Isha Shah, Hong Yao, Utkarsh Porwal, Kuang-chih Lee",
   "publishedDate": "2026-04-01",
   "tags": [
-    "RAG",
-    "Rec"
+    "Rec",
+    "Pretraining",
+    "Benchmark"
   ],
   "sourceUrl": "https://arxiv.org/abs/arXiv:2604.07930",
   "pagePath": "/paper-summaries-site/papers/2604.07930",

@@ -4,17 +4,18 @@
       "paperId": "2604.07930",
       "title": "Unified Supervision for Walmart\u2019s Sponsored Search Retrieval via Joint Semantic Relevance and Behavioral Engagement Modeling",
       "tags": [
-        "RAG",
-        "Rec"
+        "Rec",
+        "Pretraining",
+        "Benchmark"
       ]
     },
     {
       "paperId": "2604.07420",
       "title": "Dual-Rerank: Fusing Sequential Dependencies and Utility for Generative Reranking",
       "tags": [
-        "Rec",
+        "RAG",
         "RL",
-        "Reasoning"
+        "Rec"
       ]
     },
     {
