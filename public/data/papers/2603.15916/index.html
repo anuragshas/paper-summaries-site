@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2603.15916</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>2603.15916</h1>
+      <p class="meta"><strong>Authors:</strong> Xiaoyi Li</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2603.15916" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2603.15916</a></p>
+      <p class="muted">Generated summary artifact for 2603.15916</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>LLM agents, when guided by a formal framework for combinatorial experiment search, perform genuine architecture discovery rather than mere hyperparameter tuning, with architectural choices explaining the dominant portion of performance variance. Their search dynamics follow predictable power-law convergence patterns, enabling the identification of qualitatively better architectural regions compared to random or Bayesian baselines through systematic exploration-exploitation cycles and emergent specialization.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>When LLM agents autonomously design ML experiments, do they perform genuine architecture search—or do they default to hyperparameter tuning within a narrow region of the design space?</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>Formalized empirical framework and convergence analysis for LLM-guided combinatorial ML experiment search, quantifying architectural vs. hyperparameter contributions and multi-agent dynamics.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Architectural choices (backbone \times encoder) explain 94% of performance variance on the Nexar dataset and 75% on the FedEx dataset, confirming genuine architecture discovery.</li><li>LLM-guided search achieves 0.9852 AP at N=50 experiments, outperforming a from-scratch random baseline (0.9648 AP) and converging to a higher asymptote (0.994 AP vs. 0.976 AP for random).</li><li>The power-law convergence exponent for LLM-guided search is c=0.11, which is lower than pool-based random (0.99) and TPE (1.12) baselines, reflecting the cost of broad exploration that leads to qualitatively better architectural regions.</li><li>Multi-agent dynamics show exploration-exploitation cycles in configuration entropy and emergent specialization, with agents converging on the winning VJepa2 backbone, demonstrating adaptive behavior.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>LLM agents perform genuine architecture search, with architectural choices (backbone and encoder) explaining the vast majority (94%) of performance variance, rather than merely tuning hyperparameters.</li><li>The LLM-guided search process follows a power-law convergence model, with a convergence exponent of c=0.11, demonstrating the cost of broad architectural exploration leading to higher asymptotic performance compared to random baselines.</li><li>The multi-agent system exhibits dynamic exploration-exploitation cycles, emergent specialization (e.g., convergence on VJepa2 backbone), and a power-law decline in innovation rate.</li><li>The framework discovers task-specific winning architectures (e.g., VJepa2 for Nexar, SigLIP2 for FedEx), demonstrating adaptability beyond memorizing a single configuration.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The architecture-dominance finding is validated on two collision detection tasks, but convergence exponents are measured on only one; replication on diverse task types (NLP, tabular) is needed for broader generalization.</li><li>The convergence hypothesis is empirical, not a formal theorem, and proving regret bounds would require assumptions about LLM generalization that current tools cannot formalize.</li><li>Pool-based baselines (random, TPE) inherit the LLM&#39;s initial selection bias. The from-scratch random baseline is relatively small (172 configs) compared to the 108K-cell space.</li><li>The LLM search policy is non-reproducible, and reported statistics are aggregate. The LLM explored only 2.4% of the discrete configuration space.</li><li>A &#39;configuration verification gap&#39; exists where LLM agents operate at the specification layer but cannot verify code execution, leading to silent misconfigurations that were resolved by human debugging.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 111,
+      &quot;xmin&quot;: 247,
+      &quot;ymax&quot;: 226,
+      &quot;xmax&quot;: 752
+    },
+    &quot;caption&quot;: &quot;System overview. Two LLM agents observe the shared leaderboard and propose configurations $c_t \\in C$. The orchestrator deduplicates proposals, schedules execution on a GPU cluster, and updates the history $H_t$. Self-healing handles runtime failures via LLM-assisted diagnosis.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 2
+  },
+  &quot;authors&quot;: &quot;Xiaoyi Li&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper offers a rigorous empirical framework for analyzing LLM agents&#39; capabilities in autonomous ML research. It formally defines the search space, quantifies the impact of architectural decisions, characterizes multi-agent dynamics, and demonstrates that LLMs perform genuine architecture discovery rather than mere hyperparameter tuning. The large-scale experimentation (10,000+ experiments) and the release of the dataset provide substantial value and a foundation for future research in automated scientific discovery with LLMs. While not a paradigm shift, it significantly advances the understanding of LLM agents&#39; research efficacy.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;LLM agents are tasked with autonomously designing machine learning experiments across a combinatorial configuration space involving choices like backbones, temporal encoders, loss formulations, and training schedules for dashcam collision detection. The question is whether they truly explore this vast design space for novel architectures or merely fine-tune parameters within existing ones.&quot;,
+    &quot;statement&quot;: &quot;When LLM agents autonomously design ML experiments, do they perform genuine architecture search—or do they default to hyperparameter tuning within a narrow region of the design space?&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Understanding the true value of LLM-based research agents is critical; if they only optimize numeric hyperparameters, their utility is limited compared to classical HPO tools.&quot;,
+      &quot;A formal framework is needed to characterize the search dynamics of LLM agents, enabling quantitative comparisons (e.g., sample efficiency, convergence rate) that are currently lacking in prior work.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Architectural choices (backbone \\times encoder) explain 94% of performance variance on the Nexar dataset and 75% on the FedEx dataset, confirming genuine architecture discovery.&quot;,
+    &quot;LLM-guided search achieves 0.9852 AP at N=50 experiments, outperforming a from-scratch random baseline (0.9648 AP) and converging to a higher asymptote (0.994 AP vs. 0.976 AP for random).&quot;,
+    &quot;The power-law convergence exponent for LLM-guided search is c=0.11, which is lower than pool-based random (0.99) and TPE (1.12) baselines, reflecting the cost of broad exploration that leads to qualitatively better architectural regions.&quot;,
+    &quot;Multi-agent dynamics show exploration-exploitation cycles in configuration entropy and emergent specialization, with agents converging on the winning VJepa2 backbone, demonstrating adaptive behavior.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Nexar dashcam collision prediction dataset&quot;,
+        &quot;FedEx collision detection task&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Average Precision (AP)&quot;,
+        &quot;Configuration-Space Entropy ($H(t)$)&quot;,
+        &quot;Agent Specialization ($D_{JSD}$)&quot;,
+        &quot;Innovation Rate&quot;
+      ],
+      &quot;setting&quot;: &quot;Autonomous ML experiment search for dashcam video collision detection using 10,469 experiments across 27 days on 16 H100 GPUs.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 147,
+          &quot;xmin&quot;: 167,
+          &quot;ymax&quot;: 323,
+          &quot;xmax&quot;: 846
+        },
+        &quot;caption&quot;: &quot;Convergence of cumulative best AP. Left: full campaign (10,469 experiments) showing discrete jumps at bug-fix events (vertical dashed lines). Right: post-bugfix subset (3,003 experiments) with a cleaner power-law fit ($R^2 = 0.93$). Both $\\pi^{rand}_{pool}$ and $\\pi^{TPE}_{pool}$ operate on the LLM-curated pool; their faster convergence reflects sampling from an already-curated set, not superior configuration generation (see text).&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 6
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 93,
+          &quot;xmin&quot;: 171,
+          &quot;ymax&quot;: 395,
+          &quot;xmax&quot;: 835
+        },
+        &quot;caption&quot;: &quot;Multi-agent dynamics. (a) Configuration-space entropy exhibits exploration-exploitation cycles rather than monotonic decay, with architectural entropy changing faster than training entropy. (b) Backbone distribution shift over the campaign, showing convergence from diverse backbones toward VJepa2 dominance.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 7
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 377,
+          &quot;xmin&quot;: 172,
+          &quot;ymax&quot;: 692,
+          &quot;xmax&quot;: 844
+        },
+        &quot;caption&quot;: &quot;AP trajectory over the 27-day campaign, showing discrete jumps at bug fixes.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 13
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 73,
+          &quot;xmin&quot;: 191,
+          &quot;ymax&quot;: 400,
+          &quot;xmax&quot;: 809
+        },
+        &quot;caption&quot;: &quot;Mean AP heatmap for backbone \\times encoder combinations. VJepa2 dominates across all encoder types, with Zipformer and Hybrid R-M performing best within VJepa2. DINOv3-B performs poorly across all encoders, suggesting the base-size model lacks capacity for this task.&quot;,
+        &quot;figureNumber&quot;: 5,
+        &quot;pageIndex&quot;: 14
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Nexar validation set&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;AP&quot;,
+            &quot;thisPaper&quot;: &quot;0.9245&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Nexar validation set&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;AP (Rank 2)&quot;,
+            &quot;thisPaper&quot;: &quot;0.9206&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Nexar validation set&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;AP (Rank 3)&quot;,
+            &quot;thisPaper&quot;: &quot;0.9203&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Nexar validation set&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;AP (Rank 4)&quot;,
+            &quot;thisPaper&quot;: &quot;0.9132&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Nexar validation set&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;AP (Rank 5)&quot;,
+            &quot;thisPaper&quot;: &quot;0.9054&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Top LLM-Guided Configurations&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.9648&quot;,
+            &quot;benchmark&quot;: &quot;N=50 (from-scratch generation)&quot;,
+            &quot;delta&quot;: &quot;+0.0204&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AP@50&quot;,
+            &quot;thisPaper&quot;: &quot;0.9852&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.99&quot;,
+            &quot;benchmark&quot;: &quot;Post-bugfix data&quot;,
+            &quot;delta&quot;: &quot;-0.88&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;c (convergence exponent)&quot;,
+            &quot;thisPaper&quot;: &quot;0.11&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1.12&quot;,
+            &quot;benchmark&quot;: &quot;Post-bugfix data&quot;,
+            &quot;delta&quot;: &quot;-1.01&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;c (convergence exponent)&quot;,
+            &quot;thisPaper&quot;: &quot;0.11&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.77&quot;,
+            &quot;benchmark&quot;: &quot;From-scratch generation&quot;,
+            &quot;delta&quot;: &quot;-0.66&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;c (convergence exponent)&quot;,
+            &quot;thisPaper&quot;: &quot;0.11&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.976&quot;,
+            &quot;benchmark&quot;: &quot;Asymptotic AP (from-scratch generation)&quot;,
+            &quot;delta&quot;: &quot;+0.018&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AP*&quot;,
+            &quot;thisPaper&quot;: &quot;0.994&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Convergence Comparison Across Policies&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Post-bugfix&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Architecture \\times encoder variance ($\\eta^2$)&quot;,
+            &quot;thisPaper&quot;: &quot;0.94&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Full campaign&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Architecture \\times encoder variance ($\\eta^2$)&quot;,
+            &quot;thisPaper&quot;: &quot;0.79&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;VJepa2-only experiments&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Encoder choice variance&quot;,
+            &quot;thisPaper&quot;: &quot;3.5%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;FedEx collision detection&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Backbone variance&quot;,
+            &quot;thisPaper&quot;: &quot;33%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;FedEx collision detection&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Encoder variance&quot;,
+            &quot;thisPaper&quot;: &quot;16%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;ANOVA Decomposition of AP Variance&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;LLM agents perform genuine architecture search, with architectural choices (backbone and encoder) explaining the vast majority (94%) of performance variance, rather than merely tuning hyperparameters.&quot;,
+      &quot;The LLM-guided search process follows a power-law convergence model, with a convergence exponent of c=0.11, demonstrating the cost of broad architectural exploration leading to higher asymptotic performance compared to random baselines.&quot;,
+      &quot;The multi-agent system exhibits dynamic exploration-exploitation cycles, emergent specialization (e.g., convergence on VJepa2 backbone), and a power-law decline in innovation rate.&quot;,
+      &quot;The framework discovers task-specific winning architectures (e.g., VJepa2 for Nexar, SigLIP2 for FedEx), demonstrating adaptability beyond memorizing a single configuration.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;orze.ai@hotmail.com&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;The paper introduces an empirical framework to formalize autonomous ML research as a combinatorial black-box optimization problem over a structured configuration space, enabling quantitative analysis of LLM agent search dynamics.&quot;,
+      &quot;It provides the first large-scale convergence analysis of LLM-guided experiment search, demonstrating a power-law convergence model and comparing it rigorously against random and TPE baselines.&quot;,
+      &quot;The work quantifies the relative contributions of architectural choices versus hyperparameter tuning to performance variance, finding that architectural decisions are overwhelmingly dominant.&quot;,
+      &quot;It characterizes multi-agent dynamics using information-theoretic metrics like configuration-space entropy, agent specialization (JSD), and innovation rate, revealing exploration-exploitation cycles and emergent specialization.&quot;,
+      &quot;The authors release a novel, large-scale dataset of 10,469 LLM-guided experiments, serving as a benchmark for future research in autonomous ML.&quot;
+    ],
+    &quot;main&quot;: &quot;Formalized empirical framework and convergence analysis for LLM-guided combinatorial ML experiment search, quantifying architectural vs. hyperparameter contributions and multi-agent dynamics.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A structured product space ($\\mathcal{C}_{arch} \\times \\mathcal{C}_{loss} \\times \\mathcal{C}_{train} \\times \\mathcal{C}_{data}$) representing all possible configurations for ML experiments, including architectural components, loss functions, training parameters, and data augmentations.&quot;,
+        &quot;term&quot;: &quot;Configuration Space (C)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The primary performance metric used, defined as the cumulative best Average Precision after N experiments, $AP^*(N) = \\max_{i \\le N} y_i$.&quot;,
+        &quot;term&quot;: &quot;Cumulative Best AP ($AP^*(N)$)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A measure of the diversity of configurations explored by an agent over time, calculated as $H(t) = - \\sum_c p_t(c) \\log p_t(c)$. High entropy indicates exploration, while low entropy indicates exploitation.&quot;,
+        &quot;term&quot;: &quot;Configuration-Space Entropy ($H(t)$)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A measure of how differently two agents explore the configuration space, defined as the Jensen-Shannon divergence ($D_{JSD}$) between their configuration distributions.&quot;,
+        &quot;term&quot;: &quot;Agent Specialization ($D_{spec}$)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;An indicator (or its smoothed average) that a search step results in an improvement over the previously best-known performance, $\\iota_t = 1[y_t &gt; AP^*(t-1)]$.&quot;,
+        &quot;term&quot;: &quot;Innovation Rate ($\\iota_t$)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Hyperparameter Optimization (HPO)&quot;,
+      &quot;Neural Architecture Search (NAS)&quot;,
+      &quot;Bayesian Optimization&quot;,
+      &quot;Multi-armed bandit theory&quot;,
+      &quot;Information theory (e.g., entropy, Jensen-Shannon divergence)&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Automated Machine Learning&quot;,
+    &quot;Neural Architecture Search&quot;,
+    &quot;LLM Agents&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Agent&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Classical HPO and NAS methods typically operate within narrow, predefined search spaces (e.g., optimizing numeric hyperparameters or cell topologies) and do not jointly optimize across all ML design dimensions (architecture, loss, training, data). This work searches across a much richer combinatorial space.&quot;,
+      &quot;Previous LLM-based research agents for scientific discovery often lack formal convergence analysis, information-theoretic characterization of search dynamics, or large-scale empirical validation, which this paper directly addresses.&quot;,
+      &quot;The framework extends the \&quot;LLMs as optimizers\&quot; paradigm by applying it to high-dimensional combinatorial ML design spaces with extensive convergence analysis and direct comparisons to classical baselines like random search and TPE.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The architecture-dominance finding is validated on two collision detection tasks, but convergence exponents are measured on only one; replication on diverse task types (NLP, tabular) is needed for broader generalization.&quot;,
+      &quot;The convergence hypothesis is empirical, not a formal theorem, and proving regret bounds would require assumptions about LLM generalization that current tools cannot formalize.&quot;,
+      &quot;Pool-based baselines (random, TPE) inherit the LLM&#39;s initial selection bias. The from-scratch random baseline is relatively small (172 configs) compared to the 108K-cell space.&quot;,
+      &quot;The LLM search policy is non-reproducible, and reported statistics are aggregate. The LLM explored only 2.4% of the discrete configuration space.&quot;,
+      &quot;A &#39;configuration verification gap&#39; exists where LLM agents operate at the specification layer but cannot verify code execution, leading to silent misconfigurations that were resolved by human debugging.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Configuration Space&quot;,
+        &quot;list&quot;: [
+          &quot;$\\mathcal{C}_{arch}$ (architecture subspace, comprising backbone, encoder, pooling choices)&quot;,
+          &quot;$\\mathcal{C}_{loss}$ (loss subspace, comprising loss type, focal $\\gamma$, focal $\\alpha$)&quot;,
+          &quot;$\\mathcal{C}_{train}$ (training subspace, comprising learning rate, weight decay, batch size, scheduler, sequence length, epochs)&quot;,
+          &quot;$\\mathcal{C}_{data}$ (data subspace, comprising oversampling ratio, mixup $\\alpha$, feature noise $\\sigma$)&quot;
+        ],
+        &quot;value&quot;: &quot;The configuration space $\\mathcal{C}$ is a structured product $\\mathcal{C} = \\mathcal{C}_{arch} \\times \\mathcal{C}_{loss} \\times \\mathcal{C}_{train} \\times \\mathcal{C}_{data}$, with a discrete component cardinality of $|\\mathcal{C}_{discrete}| = 108,000$ cells, each containing a continuous hyperparameter volume of dimension 6-8.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Optimization Objective&quot;,
+        &quot;value&quot;: &quot;The objective is to find $c^* = \\text{arg max}_{c \\in \\mathcal{C}} E[f(c)]$, where $f(c)$ maps a configuration to its validation AP, observed as $y = f(c) + \\epsilon$ (training noise).&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Convergence Model&quot;,
+        &quot;value&quot;: &quot;The cumulative best AP after $N$ experiments, $AP^*(N)$, is hypothesized to follow a power-law model: $AP^*(N) = a - b \\cdot N^{-c}$, where $a$ is the asymptotic optimum, $b$ is the initial gap, and $c &gt; 0$ is the convergence exponent (larger $c$ indicates faster convergence).&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;The LLM agent observes the history $H_{t-1}$ (leaderboard, recent configurations).&quot;,
+      &quot;The agent selects a new configuration $c_t \\sim \\pi(c \\mid H_{t-1})$ by generating a structured YAML configuration.&quot;,
+      &quot;The system evaluates $y_t = f(c_t) + \\epsilon$ by training the specified model on GPU and measuring validation AP.&quot;,
+      &quot;The history is updated: $H_t = H_{t-1} \\cup \\{(c_t, y_t)\\}$.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Configuration Space&quot;,
+        &quot;value&quot;: &quot;$C = C_{arch} \\times C_{loss} \\times C_{train} \\times C_{data}$ with $|C_{discrete}| = 108,000$ cells.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Optimization Objective&quot;,
+        &quot;value&quot;: &quot;$c^* = \\text{arg max}_{c \\in C} E[f(c)]$, where $y = f(c) + \\epsilon$ is observed validation AP.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;Hardware: Experiments were run on 2 \\times 8 NVIDIA H100 80GB GPUs on two nodes, totaling 3,227 GPU-hours. Software: Python 3.10, PyTorch 2.x, scikit-learn. Pre-extracted features from V-JEPA 2, DINOv2, DINOv3, SigLIP2. LLM Agents: Claude Opus (819 research cycles) and Gemini 2.5 Pro (864 research cycles) were used, with a total LLM API cost of ~$2,000. Training details: Temporal encoders trained for 5-30 epochs (3-10 minutes on a single H100) using AdamW optimizer with cosine, linear, or step learning rate schedules. Evaluation metric: AP on validation split. Dataset: Nexar dashcam collision prediction dataset (1,500 videos), split 80/10/10 for train/validation/test.&quot;
+  },
+  &quot;thesis&quot;: &quot;LLM agents, when guided by a formal framework for combinatorial experiment search, perform genuine architecture discovery rather than mere hyperparameter tuning, with architectural choices explaining the dominant portion of performance variance. Their search dynamics follow predictable power-law convergence patterns, enabling the identification of qualitatively better architectural regions compared to random or Bayesian baselines through systematic exploration-exploitation cycles and emergent specialization.&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2603.15916&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2603.15916&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2603.15916&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:111,&quot;xmin&quot;:247,&quot;ymax&quot;:226,&quot;xmax&quot;:752},&quot;caption&quot;:&quot;System overview. Two LLM agents observe the shared leaderboard and propose configurations $c_t \\in C$. The orchestrator deduplicates proposals, schedules execution on a GPU cluster, and updates the history $H_t$. Self-healing handles runtime failures via LLM-assisted diagnosis.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:2},&quot;authors&quot;:&quot;Xiaoyi Li&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper offers a rigorous empirical framework for analyzing LLM agents&#39; capabilities in autonomous ML research. It formally defines the search space, quantifies the impact of architectural decisions, characterizes multi-agent dynamics, and demonstrates that LLMs perform genuine architecture discovery rather than mere hyperparameter tuning. The large-scale experimentation (10,000+ experiments) and the release of the dataset provide substantial value and a foundation for future research in automated scientific discovery with LLMs. While not a paradigm shift, it significantly advances the understanding of LLM agents&#39; research efficacy.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;LLM agents are tasked with autonomously designing machine learning experiments across a combinatorial configuration space involving choices like backbones, temporal encoders, loss formulations, and training schedules for dashcam collision detection. The question is whether they truly explore this vast design space for novel architectures or merely fine-tune parameters within existing ones.&quot;,&quot;statement&quot;:&quot;When LLM agents autonomously design ML experiments, do they perform genuine architecture search—or do they default to hyperparameter tuning within a narrow region of the design space?&quot;,&quot;whyItMatters&quot;:[&quot;Understanding the true value of LLM-based research agents is critical; if they only optimize numeric hyperparameters, their utility is limited compared to classical HPO tools.&quot;,&quot;A formal framework is needed to characterize the search dynamics of LLM agents, enabling quantitative comparisons (e.g., sample efficiency, convergence rate) that are currently lacking in prior work.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Architectural choices (backbone \\times encoder) explain 94% of performance variance on the Nexar dataset and 75% on the FedEx dataset, confirming genuine architecture discovery.&quot;,&quot;LLM-guided search achieves 0.9852 AP at N=50 experiments, outperforming a from-scratch random baseline (0.9648 AP) and converging to a higher asymptote (0.994 AP vs. 0.976 AP for random).&quot;,&quot;The power-law convergence exponent for LLM-guided search is c=0.11, which is lower than pool-based random (0.99) and TPE (1.12) baselines, reflecting the cost of broad exploration that leads to qualitatively better architectural regions.&quot;,&quot;Multi-agent dynamics show exploration-exploitation cycles in configuration entropy and emergent specialization, with agents converging on the winning VJepa2 backbone, demonstrating adaptive behavior.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Nexar dashcam collision prediction dataset&quot;,&quot;FedEx collision detection task&quot;],&quot;metrics&quot;:[&quot;Average Precision (AP)&quot;,&quot;Configuration-Space Entropy ($H(t)$)&quot;,&quot;Agent Specialization ($D_{JSD}$)&quot;,&quot;Innovation Rate&quot;],&quot;setting&quot;:&quot;Autonomous ML experiment search for dashcam video collision detection using 10,469 experiments across 27 days on 16 H100 GPUs.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:147,&quot;xmin&quot;:167,&quot;ymax&quot;:323,&quot;xmax&quot;:846},&quot;caption&quot;:&quot;Convergence of cumulative best AP. Left: full campaign (10,469 experiments) showing discrete jumps at bug-fix events (vertical dashed lines). Right: post-bugfix subset (3,003 experiments) with a cleaner power-law fit ($R^2 = 0.93$). Both $\\pi^{rand}_{pool}$ and $\\pi^{TPE}_{pool}$ operate on the LLM-curated pool; their faster convergence reflects sampling from an already-curated set, not superior configuration generation (see text).&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:6},{&quot;boundingBox&quot;:{&quot;ymin&quot;:93,&quot;xmin&quot;:171,&quot;ymax&quot;:395,&quot;xmax&quot;:835},&quot;caption&quot;:&quot;Multi-agent dynamics. (a) Configuration-space entropy exhibits exploration-exploitation cycles rather than monotonic decay, with architectural entropy changing faster than training entropy. (b) Backbone distribution shift over the campaign, showing convergence from diverse backbones toward VJepa2 dominance.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:7},{&quot;boundingBox&quot;:{&quot;ymin&quot;:377,&quot;xmin&quot;:172,&quot;ymax&quot;:692,&quot;xmax&quot;:844},&quot;caption&quot;:&quot;AP trajectory over the 27-day campaign, showing discrete jumps at bug fixes.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:13},{&quot;boundingBox&quot;:{&quot;ymin&quot;:73,&quot;xmin&quot;:191,&quot;ymax&quot;:400,&quot;xmax&quot;:809},&quot;caption&quot;:&quot;Mean AP heatmap for backbone \\times encoder combinations. VJepa2 dominates across all encoder types, with Zipformer and Hybrid R-M performing best within VJepa2. DINOv3-B performs poorly across all encoders, suggesting the base-size model lacks capacity for this task.&quot;,&quot;figureNumber&quot;:5,&quot;pageIndex&quot;:14}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Nexar validation set&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;AP&quot;,&quot;thisPaper&quot;:&quot;0.9245&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Nexar validation set&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;AP (Rank 2)&quot;,&quot;thisPaper&quot;:&quot;0.9206&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Nexar validation set&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;AP (Rank 3)&quot;,&quot;thisPaper&quot;:&quot;0.9203&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Nexar validation set&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;AP (Rank 4)&quot;,&quot;thisPaper&quot;:&quot;0.9132&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Nexar validation set&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;AP (Rank 5)&quot;,&quot;thisPaper&quot;:&quot;0.9054&quot;}],&quot;title&quot;:&quot;Top LLM-Guided Configurations&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.9648&quot;,&quot;benchmark&quot;:&quot;N=50 (from-scratch generation)&quot;,&quot;delta&quot;:&quot;+0.0204&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AP@50&quot;,&quot;thisPaper&quot;:&quot;0.9852&quot;},{&quot;baseline&quot;:&quot;0.99&quot;,&quot;benchmark&quot;:&quot;Post-bugfix data&quot;,&quot;delta&quot;:&quot;-0.88&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;c (convergence exponent)&quot;,&quot;thisPaper&quot;:&quot;0.11&quot;},{&quot;baseline&quot;:&quot;1.12&quot;,&quot;benchmark&quot;:&quot;Post-bugfix data&quot;,&quot;delta&quot;:&quot;-1.01&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;c (convergence exponent)&quot;,&quot;thisPaper&quot;:&quot;0.11&quot;},{&quot;baseline&quot;:&quot;0.77&quot;,&quot;benchmark&quot;:&quot;From-scratch generation&quot;,&quot;delta&quot;:&quot;-0.66&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;c (convergence exponent)&quot;,&quot;thisPaper&quot;:&quot;0.11&quot;},{&quot;baseline&quot;:&quot;0.976&quot;,&quot;benchmark&quot;:&quot;Asymptotic AP (from-scratch generation)&quot;,&quot;delta&quot;:&quot;+0.018&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AP*&quot;,&quot;thisPaper&quot;:&quot;0.994&quot;}],&quot;title&quot;:&quot;Convergence Comparison Across Policies&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Post-bugfix&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Architecture \\times encoder variance ($\\eta^2$)&quot;,&quot;thisPaper&quot;:&quot;0.94&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Full campaign&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Architecture \\times encoder variance ($\\eta^2$)&quot;,&quot;thisPaper&quot;:&quot;0.79&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;VJepa2-only experiments&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Encoder choice variance&quot;,&quot;thisPaper&quot;:&quot;3.5%&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;FedEx collision detection&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Backbone variance&quot;,&quot;thisPaper&quot;:&quot;33%&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;FedEx collision detection&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Encoder variance&quot;,&quot;thisPaper&quot;:&quot;16%&quot;}],&quot;title&quot;:&quot;ANOVA Decomposition of AP Variance&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;LLM agents perform genuine architecture search, with architectural choices (backbone and encoder) explaining the vast majority (94%) of performance variance, rather than merely tuning hyperparameters.&quot;,&quot;The LLM-guided search process follows a power-law convergence model, with a convergence exponent of c=0.11, demonstrating the cost of broad architectural exploration leading to higher asymptotic performance compared to random baselines.&quot;,&quot;The multi-agent system exhibits dynamic exploration-exploitation cycles, emergent specialization (e.g., convergence on VJepa2 backbone), and a power-law decline in innovation rate.&quot;,&quot;The framework discovers task-specific winning architectures (e.g., VJepa2 for Nexar, SigLIP2 for FedEx), demonstrating adaptability beyond memorizing a single configuration.&quot;]},&quot;institutions&quot;:&quot;orze.ai@hotmail.com&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;The paper introduces an empirical framework to formalize autonomous ML research as a combinatorial black-box optimization problem over a structured configuration space, enabling quantitative analysis of LLM agent search dynamics.&quot;,&quot;It provides the first large-scale convergence analysis of LLM-guided experiment search, demonstrating a power-law convergence model and comparing it rigorously against random and TPE baselines.&quot;,&quot;The work quantifies the relative contributions of architectural choices versus hyperparameter tuning to performance variance, finding that architectural decisions are overwhelmingly dominant.&quot;,&quot;It characterizes multi-agent dynamics using information-theoretic metrics like configuration-space entropy, agent specialization (JSD), and innovation rate, revealing exploration-exploitation cycles and emergent specialization.&quot;,&quot;The authors release a novel, large-scale dataset of 10,469 LLM-guided experiments, serving as a benchmark for future research in autonomous ML.&quot;],&quot;main&quot;:&quot;Formalized empirical framework and convergence analysis for LLM-guided combinatorial ML experiment search, quantifying architectural vs. hyperparameter contributions and multi-agent dynamics.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A structured product space ($\\mathcal{C}_{arch} \\times \\mathcal{C}_{loss} \\times \\mathcal{C}_{train} \\times \\mathcal{C}_{data}$) representing all possible configurations for ML experiments, including architectural components, loss functions, training parameters, and data augmentations.&quot;,&quot;term&quot;:&quot;Configuration Space (C)&quot;},{&quot;definition&quot;:&quot;The primary performance metric used, defined as the cumulative best Average Precision after N experiments, $AP^*(N) = \\max_{i \\le N} y_i$.&quot;,&quot;term&quot;:&quot;Cumulative Best AP ($AP^*(N)$)&quot;},{&quot;definition&quot;:&quot;A measure of the diversity of configurations explored by an agent over time, calculated as $H(t) = - \\sum_c p_t(c) \\log p_t(c)$. High entropy indicates exploration, while low entropy indicates exploitation.&quot;,&quot;term&quot;:&quot;Configuration-Space Entropy ($H(t)$)&quot;},{&quot;definition&quot;:&quot;A measure of how differently two agents explore the configuration space, defined as the Jensen-Shannon divergence ($D_{JSD}$) between their configuration distributions.&quot;,&quot;term&quot;:&quot;Agent Specialization ($D_{spec}$)&quot;},{&quot;definition&quot;:&quot;An indicator (or its smoothed average) that a search step results in an improvement over the previously best-known performance, $\\iota_t = 1[y_t &gt; AP^*(t-1)]$.&quot;,&quot;term&quot;:&quot;Innovation Rate ($\\iota_t$)&quot;}],&quot;prerequisites&quot;:[&quot;Hyperparameter Optimization (HPO)&quot;,&quot;Neural Architecture Search (NAS)&quot;,&quot;Bayesian Optimization&quot;,&quot;Multi-armed bandit theory&quot;,&quot;Information theory (e.g., entropy, Jensen-Shannon divergence)&quot;]},&quot;subTopics&quot;:[&quot;Automated Machine Learning&quot;,&quot;Neural Architecture Search&quot;,&quot;LLM Agents&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Agent&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Classical HPO and NAS methods typically operate within narrow, predefined search spaces (e.g., optimizing numeric hyperparameters or cell topologies) and do not jointly optimize across all ML design dimensions (architecture, loss, training, data). This work searches across a much richer combinatorial space.&quot;,&quot;Previous LLM-based research agents for scientific discovery often lack formal convergence analysis, information-theoretic characterization of search dynamics, or large-scale empirical validation, which this paper directly addresses.&quot;,&quot;The framework extends the \&quot;LLMs as optimizers\&quot; paradigm by applying it to high-dimensional combinatorial ML design spaces with extensive convergence analysis and direct comparisons to classical baselines like random search and TPE.&quot;],&quot;limitations&quot;:[&quot;The architecture-dominance finding is validated on two collision detection tasks, but convergence exponents are measured on only one; replication on diverse task types (NLP, tabular) is needed for broader generalization.&quot;,&quot;The convergence hypothesis is empirical, not a formal theorem, and proving regret bounds would require assumptions about LLM generalization that current tools cannot formalize.&quot;,&quot;Pool-based baselines (random, TPE) inherit the LLM&#39;s initial selection bias. The from-scratch random baseline is relatively small (172 configs) compared to the 108K-cell space.&quot;,&quot;The LLM search policy is non-reproducible, and reported statistics are aggregate. The LLM explored only 2.4% of the discrete configuration space.&quot;,&quot;A &#39;configuration verification gap&#39; exists where LLM agents operate at the specification layer but cannot verify code execution, leading to silent misconfigurations that were resolved by human debugging.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Configuration Space&quot;,&quot;list&quot;:[&quot;$\\mathcal{C}_{arch}$ (architecture subspace, comprising backbone, encoder, pooling choices)&quot;,&quot;$\\mathcal{C}_{loss}$ (loss subspace, comprising loss type, focal $\\gamma$, focal $\\alpha$)&quot;,&quot;$\\mathcal{C}_{train}$ (training subspace, comprising learning rate, weight decay, batch size, scheduler, sequence length, epochs)&quot;,&quot;$\\mathcal{C}_{data}$ (data subspace, comprising oversampling ratio, mixup $\\alpha$, feature noise $\\sigma$)&quot;],&quot;value&quot;:&quot;The configuration space $\\mathcal{C}$ is a structured product $\\mathcal{C} = \\mathcal{C}_{arch} \\times \\mathcal{C}_{loss} \\times \\mathcal{C}_{train} \\times \\mathcal{C}_{data}$, with a discrete component cardinality of $|\\mathcal{C}_{discrete}| = 108,000$ cells, each containing a continuous hyperparameter volume of dimension 6-8.&quot;},{&quot;label&quot;:&quot;Optimization Objective&quot;,&quot;value&quot;:&quot;The objective is to find $c^* = \\text{arg max}_{c \\in \\mathcal{C}} E[f(c)]$, where $f(c)$ maps a configuration to its validation AP, observed as $y = f(c) + \\epsilon$ (training noise).&quot;},{&quot;label&quot;:&quot;Convergence Model&quot;,&quot;value&quot;:&quot;The cumulative best AP after $N$ experiments, $AP^*(N)$, is hypothesized to follow a power-law model: $AP^*(N) = a - b \\cdot N^{-c}$, where $a$ is the asymptotic optimum, $b$ is the initial gap, and $c &gt; 0$ is the convergence exponent (larger $c$ indicates faster convergence).&quot;}],&quot;pipelineFlow&quot;:[&quot;The LLM agent observes the history $H_{t-1}$ (leaderboard, recent configurations).&quot;,&quot;The agent selects a new configuration $c_t \\sim \\pi(c \\mid H_{t-1})$ by generating a structured YAML configuration.&quot;,&quot;The system evaluates $y_t = f(c_t) + \\epsilon$ by training the specified model on GPU and measuring validation AP.&quot;,&quot;The history is updated: $H_t = H_{t-1} \\cup \\{(c_t, y_t)\\}$.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Configuration Space&quot;,&quot;value&quot;:&quot;$C = C_{arch} \\times C_{loss} \\times C_{train} \\times C_{data}$ with $|C_{discrete}| = 108,000$ cells.&quot;},{&quot;label&quot;:&quot;Optimization Objective&quot;,&quot;value&quot;:&quot;$c^* = \\text{arg max}_{c \\in C} E[f(c)]$, where $y = f(c) + \\epsilon$ is observed validation AP.&quot;}],&quot;reproducibility&quot;:&quot;Hardware: Experiments were run on 2 \\times 8 NVIDIA H100 80GB GPUs on two nodes, totaling 3,227 GPU-hours. Software: Python 3.10, PyTorch 2.x, scikit-learn. Pre-extracted features from V-JEPA 2, DINOv2, DINOv3, SigLIP2. LLM Agents: Claude Opus (819 research cycles) and Gemini 2.5 Pro (864 research cycles) were used, with a total LLM API cost of ~$2,000. Training details: Temporal encoders trained for 5-30 epochs (3-10 minutes on a single H100) using AdamW optimizer with cosine, linear, or step learning rate schedules. Evaluation metric: AP on validation split. Dataset: Nexar dashcam collision prediction dataset (1,500 videos), split 80/10/10 for train/validation/test.&quot;},&quot;thesis&quot;:&quot;LLM agents, when guided by a formal framework for combinatorial experiment search, perform genuine architecture discovery rather than mere hyperparameter tuning, with architectural choices explaining the dominant portion of performance variance. Their search dynamics follow predictable power-law convergence patterns, enabling the identification of qualitatively better architectural regions compared to random or Bayesian baselines through systematic exploration-exploitation cycles and emergent specialization.&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2603.15916&quot;}}</script>
+</body>
+</html>

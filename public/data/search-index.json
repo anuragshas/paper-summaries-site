@@ -91,6 +91,15 @@
       ]
     },
     {
+      "paperId": "2603.15916",
+      "title": "2603.15916",
+      "tags": [
+        "Agent",
+        "Reasoning",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2603.12228",
       "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
       "tags": [
