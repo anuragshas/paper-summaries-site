@@ -2,6 +2,19 @@
   "page": 3,
   "papers": [
     {
+      "paperId": "2603.03251",
+      "title": "Speculative Speculative Decoding",
+      "authors": "Tanishq Kumar, Tri Dao, Avner May",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Large Language Models",
+        "Inference Optimization",
+        "Speculative Decoding",
+        "Parallel Computing",
+        "Algorithm"
+      ]
+    },
+    {
       "paperId": "2603.01562",
       "title": "RubricBench: Aligning Model-Generated Rubrics with Human Standards",
       "authors": "Qiyuan Zhang, Junyi Zhou, Yufei Wang, Fuyuan Lyu, Yidong Ming, Can Xu, Qingfeng Sun, Kai Zheng, Peng Kang, Xue Liu, Chen Ma",
@@ -117,17 +130,6 @@
         "Large Language Models",
         "Question Answering",
         "Natural Language Processing"
-      ]
-    },
-    {
-      "paperId": "2602.16932",
-      "title": "RankEvolve: Automating the Discovery of Retrieval Algorithms via LLM-Driven Evolution",
-      "authors": "Jinming Nian, Fangchen Li, Dae Hoon Park, Yi Fang",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "RAG",
-        "Agent",
-        "Benchmark"
       ]
     }
   ]

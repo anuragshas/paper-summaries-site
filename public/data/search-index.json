@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2604.12965",
+      "title": "Efficient Retrieval Scaling with Hierarchical Indexing for Large Scale Recommendation",
+      "tags": [
+        "Rec",
+        "Pretraining",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2604.08377",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
       "tags": [

@@ -2,6 +2,17 @@
   "page": 5,
   "papers": [
     {
+      "paperId": "2303.18223",
+      "title": "A Survey of Large Language Models",
+      "authors": "Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen",
+      "publishedDate": "2023-03-01",
+      "tags": [
+        "Pretraining",
+        "QA",
+        "RAG"
+      ]
+    },
+    {
       "paperId": "2506.06989",
       "title": "Correcting for Position Bias in Learning to Rank: A Control Function Approach",
       "authors": "Md Aminul Islam, Kathryn Vasilaky, Elena Zheleva",

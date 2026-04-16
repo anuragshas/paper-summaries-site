@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2604.12965",
+      "title": "Efficient Retrieval Scaling with Hierarchical Indexing for Large Scale Recommendation",
+      "authors": "Dongqi Fu, Kaushik Rangadurai, Haiyu Lu, Yunchen Pu, Siyang Yuan, Minhui Huang, Yiqun Liu, Golnaz Ghasemiesfeh, Xingfeng He, Fangzhou Xu, Andrew Cui, Vidhoon Viswanathan, Lin Yang, Liang Wang, Jiyan Yang, Chonglin Sun",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "Rec",
+        "Pretraining",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2604.08377",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
       "authors": "Ziyu Ma, Shidong Yang, Yuxiang Ji, Xucong Wang, Yong Wang, Yiming Hu, Tongwen Huang, Xiangxiang Chu",
@@ -98,17 +109,6 @@
         "Agent",
         "Rec",
         "Pretraining"
-      ]
-    },
-    {
-      "paperId": "2603.18573",
-      "title": "Interplay: Training Independent Simulators for Reference-Free Conversational Recommendation",
-      "authors": "Jerome Ramos, Feng Xia, Xi Wang, Shubham Chatterjee, Xiao Fu, Hossein A. Rahmani, and Aldo Lipani",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Rec",
-        "Pretraining",
-        "Agent"
       ]
     }
   ]

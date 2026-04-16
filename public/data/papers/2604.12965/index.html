@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Efficient Retrieval Scaling with Hierarchical Indexing for Large Scale Recommendation</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Efficient Retrieval Scaling with Hierarchical Indexing for Large Scale Recommendation</h1>
+      <p class="meta"><strong>Authors:</strong> Dongqi Fu, Kaushik Rangadurai, Haiyu Lu, Yunchen Pu, Siyang Yuan, Minhui Huang, Yiqun Liu, Golnaz Ghasemiesfeh, Xingfeng He, Fangzhou Xu, Andrew Cui, Vidhoon Viswanathan, Lin Yang, Liang Wang, Jiyan Yang, Chonglin Sun</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2604.12965" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2604.12965</a></p>
+      <p class="muted">Generated summary artifact for 2604.12965</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>It is possible to efficiently scale large-scale foundation retrieval models for recommendation by jointly learning a hierarchical index (HILL) using cross-attention and residual quantization over the model&#39;s memory (MoNN), and by leveraging high-quality data from intermediate index nodes for &#39;test-time training&#39; to improve inference performance.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Effectively and efficiently deploying large-scale foundation retrieval models, which leverage deep and complex neural networks, remains a critical challenge for recommendation tasks. Existing quick-win solutions like offline pre-computation or model distillation fail to fully utilize the models&#39; representational and inference capabilities, primarily due to high inference and retrieval costs.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A novel Hierarchical Index Learning (HILL) method that jointly learns a hierarchical index for large-scale foundation retrieval models (MoNN) to enable efficient, exactness-aware retrieval and generate high-quality data for test-time training.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>The MoNN Large model, combined with HILL, achieved a -1.70% reduction in Normalized Entropy (NE) and a +9.4% increase in Recall on internal Meta Ads data, demonstrating significant performance gains.</li><li>Stacked 2-layer MoNN architectures with HILL were shown to provide an effective-efficiency balance, reducing infrastructure costs while maintaining competitive performance.</li><li>On public benchmark datasets (Gowalla, Yelp2018, Amazon-Book), HILL (Ours) consistently outperformed strong baselines like NESCL across Recall@20 and NDCG@20 metrics.</li><li>Online A/B tests in Meta Ads production confirmed significant gains, with a 2-Layer MoNN (L1: MoNN Large, L2: MoNN Small) leading to a +2.57% improvement in the online ads metric.</li><li>Ablation studies verified the importance of all proposed training optimization tricks for HILL: Softmax Temperature Scheduler, Balanced Index Distribution, and Warmup Strategy.</li><li>The Expectation-Maximization (EM) approximation for HILL achieved competitive performance, offering a resource-efficient alternative to the full version.</li><li>Parameter analysis showed that a small amount of precisely selected test-time data, filtered by $\phi_{\text{DEP}}$ and $\phi_{\text{IR}}$, is sufficient to achieve leading performance.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>The proposed Hierarchical Index Learning (HILL) method, integrated with MoNN foundation models, consistently achieves significant improvements in retrieval performance (NE, Recall, NDCG) across both internal Meta Ads data and public benchmarks.</li><li>The work demonstrates an effective-efficiency balance for large-scale foundational retrieval models, enabling high performance while managing infrastructure costs through model stacking.</li><li>Online A/B tests at Meta confirm the practical utility and substantial gains of the proposed approach in a real-world production environment for advertisement recommendations.</li><li>Intermediate nodes in the learned hierarchical index provide a valuable source of high-quality data for &#39;test-time training,&#39; which further boosts inference performance.</li><li>The study reveals that a small amount of precisely filtered test-time data is sufficient for achieving leading performance, indicating efficiency in data utilization.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The paper suggests that future work could explore weighing new data pairs with weak signals and even negative signals for fine-tuning, implying that the current approach primarily focuses on positive strong signals.</li><li>Adding contrastive learning loss functions during the fine-tuning process is also mentioned as a promising future direction, suggesting it&#39;s not fully explored in the current method.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 78,
+      &quot;xmin&quot;: 167,
+      &quot;ymax&quot;: 288,
+      &quot;xmax&quot;: 810
+    },
+    &quot;caption&quot;: &quot;Overall Pipeline of MoNN Foundation Retrieval Model with HILL Index.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 1
+  },
+  &quot;authors&quot;: &quot;Dongqi Fu, Kaushik Rangadurai, Haiyu Lu, Yunchen Pu, Siyang Yuan, Minhui Huang, Yiqun Liu, Golnaz Ghasemiesfeh, Xingfeng He, Fangzhou Xu, Andrew Cui, Vidhoon Viswanathan, Lin Yang, Liang Wang, Jiyan Yang, Chonglin Sun&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper presents a strong practical contribution by tackling the critical challenge of efficiently scaling foundation retrieval models for large-scale industrial recommendation systems. The proposed Hierarchical Index Learning (HILL) method, integrated with the Modular Neural Network (MoNN) architecture, offers a novel and effective solution, validated by extensive offline benchmarks and real-world online deployment at Meta. The key novelty lies in the joint learning of a hierarchical index with cross-attention and residual quantization, and the discovery of high-quality data from intermediate index nodes for test-time fine-tuning. While not a paradigm shift, it significantly advances the state-of-the-art for large-scale industrial applications.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;At Meta Ads Platform, serving daily advertisement recommendations for billions of Facebook and Instagram users from a vast item corpus requires efficient and exact retrieval. Existing methods struggle with the inference and retrieval costs of large-scale foundation models, making real-world deployment challenging.&quot;,
+    &quot;statement&quot;: &quot;Effectively and efficiently deploying large-scale foundation retrieval models, which leverage deep and complex neural networks, remains a critical challenge for recommendation tasks. Existing quick-win solutions like offline pre-computation or model distillation fail to fully utilize the models&#39; representational and inference capabilities, primarily due to high inference and retrieval costs.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Enables the practical deployment of advanced foundation retrieval models in high-frequency, heavy-load industrial scenarios.&quot;,
+      &quot;Significantly improves recommendation quality and efficiency for platforms with massive user bases and item inventories.&quot;,
+      &quot;Reduces computational overhead during retrieval while maintaining the exactness of recommendations.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;The MoNN Large model, combined with HILL, achieved a -1.70% reduction in Normalized Entropy (NE) and a +9.4% increase in Recall on internal Meta Ads data, demonstrating significant performance gains.&quot;,
+    &quot;Stacked 2-layer MoNN architectures with HILL were shown to provide an effective-efficiency balance, reducing infrastructure costs while maintaining competitive performance.&quot;,
+    &quot;On public benchmark datasets (Gowalla, Yelp2018, Amazon-Book), HILL (Ours) consistently outperformed strong baselines like NESCL across Recall@20 and NDCG@20 metrics.&quot;,
+    &quot;Online A/B tests in Meta Ads production confirmed significant gains, with a 2-Layer MoNN (L1: MoNN Large, L2: MoNN Small) leading to a +2.57% improvement in the online ads metric.&quot;,
+    &quot;Ablation studies verified the importance of all proposed training optimization tricks for HILL: Softmax Temperature Scheduler, Balanced Index Distribution, and Warmup Strategy.&quot;,
+    &quot;The Expectation-Maximization (EM) approximation for HILL achieved competitive performance, offering a resource-efficient alternative to the full version.&quot;,
+    &quot;Parameter analysis showed that a small amount of precisely selected test-time data, filtered by $\\phi_{\\text{DEP}}$ and $\\phi_{\\text{IR}}$, is sufficient to achieve leading performance.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Internal Meta Ads Production Data&quot;,
+        &quot;Gowalla&quot;,
+        &quot;Yelp2018&quot;,
+        &quot;Amazon-Book&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Normalized Entropy (NE)&quot;,
+        &quot;Recall@K&quot;,
+        &quot;NDCG@K&quot;,
+        &quot;Online Metric&quot;
+      ],
+      &quot;setting&quot;: &quot;Offline evaluation on internal and public datasets, and online A/B testing in Meta Ads production.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 554,
+          &quot;xmin&quot;: 574,
+          &quot;ymax&quot;: 699,
+          &quot;xmax&quot;: 815
+        },
+        &quot;caption&quot;: &quot;A Hierarchical Index Example Learnt by HILL.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 3
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 636,
+          &quot;xmin&quot;: 624,
+          &quot;ymax&quot;: 719,
+          &quot;xmax&quot;: 887
+        },
+        &quot;caption&quot;: &quot;3-Layer MoNN Illustration Example.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 8
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0% (TTSN)&quot;,
+            &quot;benchmark&quot;: &quot;Internal Data&quot;,
+            &quot;delta&quot;: &quot;-1.70%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Eval NE (↓)&quot;,
+            &quot;thisPaper&quot;: &quot;-1.70% (MoNN Large)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0% (TTSN)&quot;,
+            &quot;benchmark&quot;: &quot;Internal Data&quot;,
+            &quot;delta&quot;: &quot;+9.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall (↑)&quot;,
+            &quot;thisPaper&quot;: &quot;+9.4% (MoNN Large)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1x (TTSN)&quot;,
+            &quot;benchmark&quot;: &quot;Internal Data&quot;,
+            &quot;delta&quot;: &quot;+23.6x&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Infra Cost (↓)&quot;,
+            &quot;thisPaper&quot;: &quot;24.6x (MoNN Large)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;-0.23% (2-layer MoNN (L1: MoNN Small, L2: TTSN))&quot;,
+            &quot;benchmark&quot;: &quot;Internal Data&quot;,
+            &quot;delta&quot;: &quot;-0.74%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Eval NE (↓)&quot;,
+            &quot;thisPaper&quot;: &quot;-0.97% (2-layer MoNN (L1: MoNN Large, L2: MoNN Small))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;+2.2% (2-layer MoNN (L1: MoNN Small, L2: TTSN))&quot;,
+            &quot;benchmark&quot;: &quot;Internal Data&quot;,
+            &quot;delta&quot;: &quot;+3.8%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall (↑)&quot;,
+            &quot;thisPaper&quot;: &quot;+6.0% (2-layer MoNN (L1: MoNN Large, L2: MoNN Small))&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Internal Data Performance (Table 1)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.1908 (NESCL [47])&quot;,
+            &quot;benchmark&quot;: &quot;Gowalla&quot;,
+            &quot;delta&quot;: &quot;+0.0016&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall@20&quot;,
+            &quot;thisPaper&quot;: &quot;0.1924 (HILL (Ours))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.1614 (NESCL [47])&quot;,
+            &quot;benchmark&quot;: &quot;Gowalla&quot;,
+            &quot;delta&quot;: &quot;+0.0014&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;NDCG@20&quot;,
+            &quot;thisPaper&quot;: &quot;0.1628 (HILL (Ours))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.0740 (NESCL [47])&quot;,
+            &quot;benchmark&quot;: &quot;Yelp 2018&quot;,
+            &quot;delta&quot;: &quot;+0.0005&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall@20&quot;,
+            &quot;thisPaper&quot;: &quot;0.0745 (HILL (Ours))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.0609 (NESCL [47])&quot;,
+            &quot;benchmark&quot;: &quot;Yelp 2018&quot;,
+            &quot;delta&quot;: &quot;+0.0003&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;NDCG@20&quot;,
+            &quot;thisPaper&quot;: &quot;0.0612 (HILL (Ours))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.0623 (NESCL [47])&quot;,
+            &quot;benchmark&quot;: &quot;Amazon-Book&quot;,
+            &quot;delta&quot;: &quot;+0.0002&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Recall@20&quot;,
+            &quot;thisPaper&quot;: &quot;0.0625 (HILL (Ours))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.0509 (NESCL [47])&quot;,
+            &quot;benchmark&quot;: &quot;Amazon-Book&quot;,
+            &quot;delta&quot;: &quot;+0.0004&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;NDCG@20&quot;,
+            &quot;thisPaper&quot;: &quot;0.0513 (HILL (Ours))&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Public Benchmark Performance (Table 3)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;MoNN Small&quot;,
+            &quot;benchmark&quot;: &quot;Meta Ads Production&quot;,
+            &quot;delta&quot;: &quot;+1.22%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Online Metric (↑)&quot;,
+            &quot;thisPaper&quot;: &quot;+1.22% (2-Layer MoNN (L1: MoNN Medium, L2: MoNN Small))&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;MoNN Small&quot;,
+            &quot;benchmark&quot;: &quot;Meta Ads Production&quot;,
+            &quot;delta&quot;: &quot;+2.57%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Online Metric (↑)&quot;,
+            &quot;thisPaper&quot;: &quot;+2.57% (2-Layer MoNN (L1: MoNN Large, L2: MoNN Small))&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Online Service Report (Table 8)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;The proposed Hierarchical Index Learning (HILL) method, integrated with MoNN foundation models, consistently achieves significant improvements in retrieval performance (NE, Recall, NDCG) across both internal Meta Ads data and public benchmarks.&quot;,
+      &quot;The work demonstrates an effective-efficiency balance for large-scale foundational retrieval models, enabling high performance while managing infrastructure costs through model stacking.&quot;,
+      &quot;Online A/B tests at Meta confirm the practical utility and substantial gains of the proposed approach in a real-world production environment for advertisement recommendations.&quot;,
+      &quot;Intermediate nodes in the learned hierarchical index provide a valuable source of high-quality data for &#39;test-time training,&#39; which further boosts inference performance.&quot;,
+      &quot;The study reveals that a small amount of precisely filtered test-time data is sufficient for achieving leading performance, indicating efficiency in data utilization.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Meta USA&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;The paper introduces the Hierarchical Index Learning (HILL) method, which jointly learns a hierarchical organization over the memory of large-scale foundation retrieval models using cross-attention and residual quantization. This enables efficient, exactness-aware search by reducing retrieval costs while preserving accuracy.&quot;,
+      &quot;It systematically deciphers Meta&#39;s Modular Neural Network (MoNN), a foundation retrieval model currently in service, providing details on its architecture, training procedures, and loss functions to emphasize reproducibility.&quot;,
+      &quot;The work discovers that the intermediate nodes generated by the learned hierarchical index form a small yet high-quality dataset. This dataset is then utilized for &#39;test-time training&#39; to fine-tune the pre-trained retrieval model, leading to further improvements in inference performance and concretizing the TTT concept in recommendation systems.&quot;
+    ],
+    &quot;main&quot;: &quot;A novel Hierarchical Index Learning (HILL) method that jointly learns a hierarchical index for large-scale foundation retrieval models (MoNN) to enable efficient, exactness-aware retrieval and generate high-quality data for test-time training.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A foundation retrieval model deployed at Meta for user advertisement retrieval, characterized by a modular design (User Tower, Item Tower, Interaction Tower, OverArch) to handle complex user-item interactions and operate under various infrastructure constraints.&quot;,
+        &quot;term&quot;: &quot;MoNN (Modular Neural Network)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The proposed method to hierarchically organize the memory of a foundation retrieval model. It uses one-layer attention learning and cross-layer residual learning, along with optimization techniques, to build an exactness-aware index structure for efficient search.&quot;,
+        &quot;term&quot;: &quot;HILL (Hierarchical Index Learning)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Methods that update model parameters during inference time, typically without requiring ground-truth labels. In this paper, it refers to fine-tuning the foundation model using high-quality data extracted from the intermediate nodes of the hierarchical index.&quot;,
+        &quot;term&quot;: &quot;Test-Time Training (TTT)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Foundation Models&quot;,
+      &quot;Large-Scale Recommendation Systems&quot;,
+      &quot;Information Retrieval Models&quot;,
+      &quot;Cross-Attention Mechanisms&quot;,
+      &quot;Residual Quantization&quot;,
+      &quot;Expectation-Maximization (EM) algorithm&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Recommendation Systems&quot;,
+    &quot;Information Retrieval&quot;,
+    &quot;Neural Network Architectures&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Rec&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Prior index structures for retrieval models are often inadequate for modern industrial-scale foundation models, which utilize deep and complex neural networks to capture sophisticated user-item interactions. These methods typically fail to meet the exactness and scalability demands of such models.&quot;,
+      &quot;Unlike previous approaches, this work focuses on designing a learning-based hierarchical index method specifically tailored for large-scale foundation retrieval models, ensuring both efficiency and exactness-aware search.&quot;,
+      &quot;The paper systematically deciphers the Modular Neural Network (MoNN) architecture, a foundation retrieval model deployed at Meta, which is a key contribution to reproducibility and understanding industrial-scale systems, distinguishing it from works that focus solely on theoretical advancements without deployment details.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The paper suggests that future work could explore weighing new data pairs with weak signals and even negative signals for fine-tuning, implying that the current approach primarily focuses on positive strong signals.&quot;,
+      &quot;Adding contrastive learning loss functions during the fine-tuning process is also mentioned as a promising future direction, suggesting it&#39;s not fully explored in the current method.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Problem Definition - Objective Function&quot;,
+        &quot;value&quot;: &quot;The MoNN model is optimized using a multi-task cross-entropy loss $L = L_{\\text{sup}} + L_{\\text{unsup}}$, where $L_{\\text{sup}} = -\\frac{1}{S} \\sum_{i=1}^S \\sum_{t=1}^T w_t (y_{ti} \\log(\\hat{y}_{ti}) + (1-y_{ti}) \\log(1-\\hat{y}_{ti}))$ (supervised loss) and $L_{\\text{unsup}} = -\\frac{1}{S} \\sum_{i=1}^S \\sum_{t=1}^T \\text{distill}(\\hat{y}_{ti}, y^{\\text{model}}_{ti})$ (unsupervised loss, e.g., cross-entropy distillation from a teacher model).&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Problem Definition - Reconstruction Loss&quot;,
+        &quot;value&quot;: &quot;The reconstruction loss $L_{\\text{recon}}$ for cross-layer residual learning is computed as $L_{\\text{recon}} = \\sum_{j} \\|q^N_j - v\\|^2$, where $q^N_j$ is the final quantized embedding vector for item $j$ and $v$ is its initial embedding vector.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;One-Layer Attention Learning&quot;,
+        &quot;list&quot;: [
+          &quot;The one-layer attention learning algorithm (Algorithm 1) takes MoNN&#39;s embedding vectors as input and learns coarse index node embeddings. It minimizes the L2 distance between item embedding $v_j$ and index node embedding $c_k$: $d(j,k) = \\|v_j - c_k\\|^2$.&quot;,
+          &quot;Attention scores $a_k = e^{-\\alpha * d(j,k)} / \\sum_{k&#39;} e^{-\\alpha * d(j,k&#39;)}$ are used to compute a pseudo item embedding $\\bar{c} = \\sum_k a_k c_k$, which is then used to update MoNN optimization.&quot;
+        ]
+      },
+      {
+        &quot;label&quot;: &quot;Cross-Layer Residual Learning&quot;,
+        &quot;value&quot;: &quot;To build a hierarchical index, residual vectors are recursively quantized. The initial residual vector for item $j$ at layer 1 is $r^1_j = v_j$. At each subsequent level $n$, the recursive quantization of the residual vector is $r^n_j = r^{n-1}_j - \\bar{c}^{n-1}_j$, where $\\bar{c}^{n-1}_j$ is the pseudo item embedding from the previous layer.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Optimization Techniques for HILL&quot;,
+        &quot;list&quot;: [
+          &quot;Softmax Temperature Scheduler: Gradually increases temperature $\\alpha$ during training ($\\alpha = max\\_alpha * (current\\_iter / max\\_iters)^{exp}$) to transition from soft to hard item-to-index assignments, mitigating discrepancy.&quot;,
+          &quot;Balanced Index Distribution: Employs a FLOPs regularizer to prevent cluster collapse and ensure index nodes are utilized uniformly.&quot;,
+          &quot;Warmup Strategy: A linear warmup strategy for the index loss weight is used to stabilize learning and prevent oscillations during initial training.&quot;
+        ]
+      },
+      {
+        &quot;label&quot;: &quot;EM Approximation for HILL&quot;,
+        &quot;value&quot;: &quot;When computing resources are limited, the hierarchical index learning can be approximated using the Expectation-Maximization (EM) algorithm. This views index nodes as item clusters, where the E-step assigns items to their closest cluster (e.g., K-Means with FAISS) and the M-step trains the foundation model based on current index embeddings.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Test-Time Training Data Filtering&quot;,
+        &quot;list&quot;: [
+          &quot;$\\phi_{\\text{DEP}}$ (depth parameter): Controls how deep to traverse back from leaf nodes in the hierarchical index to extract new data pairs. Higher-level nodes are considered too general and are excluded.&quot;,
+          &quot;$\\phi_{\\text{IR}}$ (interest rate parameter): Filters index nodes based on concentrated user interest, calculated as $\\phi_{\\text{IR}}(u, i_n) = |Int(u, n-1) \\cap Child(i_n)| / |Child(i_n)|$, ensuring that only index nodes highly relevant to the user are selected.&quot;
+        ]
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;The MoNN Foundation Retrieval Model (Meta&#39;s deployed model) is used to generate user and item embeddings for recommendation tasks.&quot;,
+      &quot;The Hierarchical Index Learning (HILL) method is applied to learn a hierarchical structure over the MoNN&#39;s memory, organizing items into an index tree.&quot;,
+      &quot;During serving, a search algorithm (e.g., beam search) traverses the learned hierarchical index to efficiently retrieve the most relevant items for a given user, bypassing redundant computations.&quot;,
+      &quot;New, high-quality training data pairs (user, intermediate index node) are extracted from the learned hierarchical index, filtered by parameters like $\\phi_{\\text{DEP}}$ and $\\phi_{\\text{IR}}$.&quot;,
+      &quot;This extracted data is then used to fine-tune the foundation model during &#39;test-time training,&#39; further boosting inference performance.&quot;,
+      &quot;The combined system of MoNN with the HILL index and TTT fine-tuning is deployed for online recommendation services, such as daily advertisement recommendations at Meta.&quot;
+    ],
+    &quot;problemDefinition&quot;: [],
+    &quot;reproducibility&quot;: &quot;The paper explicitly states it systematically deciphers Meta&#39;s Modular Neural Network (MoNN) for the first time, detailing its neural architecture, training procedures, and loss functions. It utilizes public benchmark datasets (Gowalla, Yelp2018, Amazon-Book) with provided links. While specific code is not provided, the detailed methodology and explicit discussion of hyperparameters and training strategies support reproducibility efforts.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;The foundation retrieval model deployed at Meta for user advertisement retrieval. It has a modularized design comprising: User Tower (generates fixed-size user embeddings from dense and sparse user features), Item Tower (generates item embeddings from dense and sparse item features), Interaction Tower (computes user-item interaction features, utilizes Inverted Index Based Interaction Features (I2IF) to minimize computation cost), and OverArch (aggregates information and produces preference scores). MoNN is trained using multi-task cross-entropy loss and can be stacked (e.g., 2-layer, 3-layer) for different granularity levels.&quot;,
+        &quot;name&quot;: &quot;MoNN (Modular Neural Network)&quot;,
+        &quot;role&quot;: &quot;Foundation Retrieval Model&quot;
+      },
+      {
+        &quot;details&quot;: &quot;The core method proposed for learning a hierarchical index over the memory of foundation retrieval models. It involves One-Layer Attention Learning to map items to index nodes, Cross-Layer Residual Learning to stack layers hierarchically, and various optimization techniques including Softmax Temperature Scheduler, Balanced Index Distribution (with FLOPs regularizer), and Warmup Strategy. It can also be approximated using an Expectation-Maximization (EM) algorithm (e.g., K-Means with FAISS) for resource-constrained scenarios.&quot;,
+        &quot;name&quot;: &quot;HILL (Hierarchical Index Learning)&quot;,
+        &quot;role&quot;: &quot;Hierarchical Index Construction and Optimization&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A process to extract new, high-quality data pairs (user, intermediate index node) from the learned HILL hierarchical index. This is done by traversing back from leaf nodes, identifying relevant intermediate nodes, and filtering them using parameters like $\\phi_{\\text{DEP}}$ (depth) and $\\phi_{\\text{IR}}$ (interest rate). This data is then used to fine-tune the MoNN model during test-time training.&quot;,
+        &quot;name&quot;: &quot;Test-Time Training Data Extraction Module&quot;,
+        &quot;role&quot;: &quot;Data Generation for Model Fine-tuning&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;It is possible to efficiently scale large-scale foundation retrieval models for recommendation by jointly learning a hierarchical index (HILL) using cross-attention and residual quantization over the model&#39;s memory (MoNN), and by leveraging high-quality data from intermediate index nodes for &#39;test-time training&#39; to improve inference performance.&quot;,
+  &quot;title&quot;: &quot;Efficient Retrieval Scaling with Hierarchical Indexing for Large Scale Recommendation&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2604.12965&quot;,
+  &quot;venue&quot;: &quot;EDBT &#39;26, Tampere (Finland)&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2604.12965&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2604.12965&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:78,&quot;xmin&quot;:167,&quot;ymax&quot;:288,&quot;xmax&quot;:810},&quot;caption&quot;:&quot;Overall Pipeline of MoNN Foundation Retrieval Model with HILL Index.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},&quot;authors&quot;:&quot;Dongqi Fu, Kaushik Rangadurai, Haiyu Lu, Yunchen Pu, Siyang Yuan, Minhui Huang, Yiqun Liu, Golnaz Ghasemiesfeh, Xingfeng He, Fangzhou Xu, Andrew Cui, Vidhoon Viswanathan, Lin Yang, Liang Wang, Jiyan Yang, Chonglin Sun&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper presents a strong practical contribution by tackling the critical challenge of efficiently scaling foundation retrieval models for large-scale industrial recommendation systems. The proposed Hierarchical Index Learning (HILL) method, integrated with the Modular Neural Network (MoNN) architecture, offers a novel and effective solution, validated by extensive offline benchmarks and real-world online deployment at Meta. The key novelty lies in the joint learning of a hierarchical index with cross-attention and residual quantization, and the discovery of high-quality data from intermediate index nodes for test-time fine-tuning. While not a paradigm shift, it significantly advances the state-of-the-art for large-scale industrial applications.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;At Meta Ads Platform, serving daily advertisement recommendations for billions of Facebook and Instagram users from a vast item corpus requires efficient and exact retrieval. Existing methods struggle with the inference and retrieval costs of large-scale foundation models, making real-world deployment challenging.&quot;,&quot;statement&quot;:&quot;Effectively and efficiently deploying large-scale foundation retrieval models, which leverage deep and complex neural networks, remains a critical challenge for recommendation tasks. Existing quick-win solutions like offline pre-computation or model distillation fail to fully utilize the models&#39; representational and inference capabilities, primarily due to high inference and retrieval costs.&quot;,&quot;whyItMatters&quot;:[&quot;Enables the practical deployment of advanced foundation retrieval models in high-frequency, heavy-load industrial scenarios.&quot;,&quot;Significantly improves recommendation quality and efficiency for platforms with massive user bases and item inventories.&quot;,&quot;Reduces computational overhead during retrieval while maintaining the exactness of recommendations.&quot;]},&quot;evaluationHighlights&quot;:[&quot;The MoNN Large model, combined with HILL, achieved a -1.70% reduction in Normalized Entropy (NE) and a +9.4% increase in Recall on internal Meta Ads data, demonstrating significant performance gains.&quot;,&quot;Stacked 2-layer MoNN architectures with HILL were shown to provide an effective-efficiency balance, reducing infrastructure costs while maintaining competitive performance.&quot;,&quot;On public benchmark datasets (Gowalla, Yelp2018, Amazon-Book), HILL (Ours) consistently outperformed strong baselines like NESCL across Recall@20 and NDCG@20 metrics.&quot;,&quot;Online A/B tests in Meta Ads production confirmed significant gains, with a 2-Layer MoNN (L1: MoNN Large, L2: MoNN Small) leading to a +2.57% improvement in the online ads metric.&quot;,&quot;Ablation studies verified the importance of all proposed training optimization tricks for HILL: Softmax Temperature Scheduler, Balanced Index Distribution, and Warmup Strategy.&quot;,&quot;The Expectation-Maximization (EM) approximation for HILL achieved competitive performance, offering a resource-efficient alternative to the full version.&quot;,&quot;Parameter analysis showed that a small amount of precisely selected test-time data, filtered by $\\phi_{\\text{DEP}}$ and $\\phi_{\\text{IR}}$, is sufficient to achieve leading performance.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Internal Meta Ads Production Data&quot;,&quot;Gowalla&quot;,&quot;Yelp2018&quot;,&quot;Amazon-Book&quot;],&quot;metrics&quot;:[&quot;Normalized Entropy (NE)&quot;,&quot;Recall@K&quot;,&quot;NDCG@K&quot;,&quot;Online Metric&quot;],&quot;setting&quot;:&quot;Offline evaluation on internal and public datasets, and online A/B testing in Meta Ads production.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:554,&quot;xmin&quot;:574,&quot;ymax&quot;:699,&quot;xmax&quot;:815},&quot;caption&quot;:&quot;A Hierarchical Index Example Learnt by HILL.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:3},{&quot;boundingBox&quot;:{&quot;ymin&quot;:636,&quot;xmin&quot;:624,&quot;ymax&quot;:719,&quot;xmax&quot;:887},&quot;caption&quot;:&quot;3-Layer MoNN Illustration Example.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:8}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0% (TTSN)&quot;,&quot;benchmark&quot;:&quot;Internal Data&quot;,&quot;delta&quot;:&quot;-1.70%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Eval NE (↓)&quot;,&quot;thisPaper&quot;:&quot;-1.70% (MoNN Large)&quot;},{&quot;baseline&quot;:&quot;0% (TTSN)&quot;,&quot;benchmark&quot;:&quot;Internal Data&quot;,&quot;delta&quot;:&quot;+9.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall (↑)&quot;,&quot;thisPaper&quot;:&quot;+9.4% (MoNN Large)&quot;},{&quot;baseline&quot;:&quot;1x (TTSN)&quot;,&quot;benchmark&quot;:&quot;Internal Data&quot;,&quot;delta&quot;:&quot;+23.6x&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Infra Cost (↓)&quot;,&quot;thisPaper&quot;:&quot;24.6x (MoNN Large)&quot;},{&quot;baseline&quot;:&quot;-0.23% (2-layer MoNN (L1: MoNN Small, L2: TTSN))&quot;,&quot;benchmark&quot;:&quot;Internal Data&quot;,&quot;delta&quot;:&quot;-0.74%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Eval NE (↓)&quot;,&quot;thisPaper&quot;:&quot;-0.97% (2-layer MoNN (L1: MoNN Large, L2: MoNN Small))&quot;},{&quot;baseline&quot;:&quot;+2.2% (2-layer MoNN (L1: MoNN Small, L2: TTSN))&quot;,&quot;benchmark&quot;:&quot;Internal Data&quot;,&quot;delta&quot;:&quot;+3.8%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall (↑)&quot;,&quot;thisPaper&quot;:&quot;+6.0% (2-layer MoNN (L1: MoNN Large, L2: MoNN Small))&quot;}],&quot;title&quot;:&quot;Internal Data Performance (Table 1)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.1908 (NESCL [47])&quot;,&quot;benchmark&quot;:&quot;Gowalla&quot;,&quot;delta&quot;:&quot;+0.0016&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall@20&quot;,&quot;thisPaper&quot;:&quot;0.1924 (HILL (Ours))&quot;},{&quot;baseline&quot;:&quot;0.1614 (NESCL [47])&quot;,&quot;benchmark&quot;:&quot;Gowalla&quot;,&quot;delta&quot;:&quot;+0.0014&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG@20&quot;,&quot;thisPaper&quot;:&quot;0.1628 (HILL (Ours))&quot;},{&quot;baseline&quot;:&quot;0.0740 (NESCL [47])&quot;,&quot;benchmark&quot;:&quot;Yelp 2018&quot;,&quot;delta&quot;:&quot;+0.0005&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall@20&quot;,&quot;thisPaper&quot;:&quot;0.0745 (HILL (Ours))&quot;},{&quot;baseline&quot;:&quot;0.0609 (NESCL [47])&quot;,&quot;benchmark&quot;:&quot;Yelp 2018&quot;,&quot;delta&quot;:&quot;+0.0003&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG@20&quot;,&quot;thisPaper&quot;:&quot;0.0612 (HILL (Ours))&quot;},{&quot;baseline&quot;:&quot;0.0623 (NESCL [47])&quot;,&quot;benchmark&quot;:&quot;Amazon-Book&quot;,&quot;delta&quot;:&quot;+0.0002&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Recall@20&quot;,&quot;thisPaper&quot;:&quot;0.0625 (HILL (Ours))&quot;},{&quot;baseline&quot;:&quot;0.0509 (NESCL [47])&quot;,&quot;benchmark&quot;:&quot;Amazon-Book&quot;,&quot;delta&quot;:&quot;+0.0004&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;NDCG@20&quot;,&quot;thisPaper&quot;:&quot;0.0513 (HILL (Ours))&quot;}],&quot;title&quot;:&quot;Public Benchmark Performance (Table 3)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;MoNN Small&quot;,&quot;benchmark&quot;:&quot;Meta Ads Production&quot;,&quot;delta&quot;:&quot;+1.22%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Online Metric (↑)&quot;,&quot;thisPaper&quot;:&quot;+1.22% (2-Layer MoNN (L1: MoNN Medium, L2: MoNN Small))&quot;},{&quot;baseline&quot;:&quot;MoNN Small&quot;,&quot;benchmark&quot;:&quot;Meta Ads Production&quot;,&quot;delta&quot;:&quot;+2.57%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Online Metric (↑)&quot;,&quot;thisPaper&quot;:&quot;+2.57% (2-Layer MoNN (L1: MoNN Large, L2: MoNN Small))&quot;}],&quot;title&quot;:&quot;Online Service Report (Table 8)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;The proposed Hierarchical Index Learning (HILL) method, integrated with MoNN foundation models, consistently achieves significant improvements in retrieval performance (NE, Recall, NDCG) across both internal Meta Ads data and public benchmarks.&quot;,&quot;The work demonstrates an effective-efficiency balance for large-scale foundational retrieval models, enabling high performance while managing infrastructure costs through model stacking.&quot;,&quot;Online A/B tests at Meta confirm the practical utility and substantial gains of the proposed approach in a real-world production environment for advertisement recommendations.&quot;,&quot;Intermediate nodes in the learned hierarchical index provide a valuable source of high-quality data for &#39;test-time training,&#39; which further boosts inference performance.&quot;,&quot;The study reveals that a small amount of precisely filtered test-time data is sufficient for achieving leading performance, indicating efficiency in data utilization.&quot;]},&quot;institutions&quot;:&quot;Meta USA&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;The paper introduces the Hierarchical Index Learning (HILL) method, which jointly learns a hierarchical organization over the memory of large-scale foundation retrieval models using cross-attention and residual quantization. This enables efficient, exactness-aware search by reducing retrieval costs while preserving accuracy.&quot;,&quot;It systematically deciphers Meta&#39;s Modular Neural Network (MoNN), a foundation retrieval model currently in service, providing details on its architecture, training procedures, and loss functions to emphasize reproducibility.&quot;,&quot;The work discovers that the intermediate nodes generated by the learned hierarchical index form a small yet high-quality dataset. This dataset is then utilized for &#39;test-time training&#39; to fine-tune the pre-trained retrieval model, leading to further improvements in inference performance and concretizing the TTT concept in recommendation systems.&quot;],&quot;main&quot;:&quot;A novel Hierarchical Index Learning (HILL) method that jointly learns a hierarchical index for large-scale foundation retrieval models (MoNN) to enable efficient, exactness-aware retrieval and generate high-quality data for test-time training.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A foundation retrieval model deployed at Meta for user advertisement retrieval, characterized by a modular design (User Tower, Item Tower, Interaction Tower, OverArch) to handle complex user-item interactions and operate under various infrastructure constraints.&quot;,&quot;term&quot;:&quot;MoNN (Modular Neural Network)&quot;},{&quot;definition&quot;:&quot;The proposed method to hierarchically organize the memory of a foundation retrieval model. It uses one-layer attention learning and cross-layer residual learning, along with optimization techniques, to build an exactness-aware index structure for efficient search.&quot;,&quot;term&quot;:&quot;HILL (Hierarchical Index Learning)&quot;},{&quot;definition&quot;:&quot;Methods that update model parameters during inference time, typically without requiring ground-truth labels. In this paper, it refers to fine-tuning the foundation model using high-quality data extracted from the intermediate nodes of the hierarchical index.&quot;,&quot;term&quot;:&quot;Test-Time Training (TTT)&quot;}],&quot;prerequisites&quot;:[&quot;Foundation Models&quot;,&quot;Large-Scale Recommendation Systems&quot;,&quot;Information Retrieval Models&quot;,&quot;Cross-Attention Mechanisms&quot;,&quot;Residual Quantization&quot;,&quot;Expectation-Maximization (EM) algorithm&quot;]},&quot;subTopics&quot;:[&quot;Recommendation Systems&quot;,&quot;Information Retrieval&quot;,&quot;Neural Network Architectures&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Rec&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Prior index structures for retrieval models are often inadequate for modern industrial-scale foundation models, which utilize deep and complex neural networks to capture sophisticated user-item interactions. These methods typically fail to meet the exactness and scalability demands of such models.&quot;,&quot;Unlike previous approaches, this work focuses on designing a learning-based hierarchical index method specifically tailored for large-scale foundation retrieval models, ensuring both efficiency and exactness-aware search.&quot;,&quot;The paper systematically deciphers the Modular Neural Network (MoNN) architecture, a foundation retrieval model deployed at Meta, which is a key contribution to reproducibility and understanding industrial-scale systems, distinguishing it from works that focus solely on theoretical advancements without deployment details.&quot;],&quot;limitations&quot;:[&quot;The paper suggests that future work could explore weighing new data pairs with weak signals and even negative signals for fine-tuning, implying that the current approach primarily focuses on positive strong signals.&quot;,&quot;Adding contrastive learning loss functions during the fine-tuning process is also mentioned as a promising future direction, suggesting it&#39;s not fully explored in the current method.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Problem Definition - Objective Function&quot;,&quot;value&quot;:&quot;The MoNN model is optimized using a multi-task cross-entropy loss $L = L_{\\text{sup}} + L_{\\text{unsup}}$, where $L_{\\text{sup}} = -\\frac{1}{S} \\sum_{i=1}^S \\sum_{t=1}^T w_t (y_{ti} \\log(\\hat{y}_{ti}) + (1-y_{ti}) \\log(1-\\hat{y}_{ti}))$ (supervised loss) and $L_{\\text{unsup}} = -\\frac{1}{S} \\sum_{i=1}^S \\sum_{t=1}^T \\text{distill}(\\hat{y}_{ti}, y^{\\text{model}}_{ti})$ (unsupervised loss, e.g., cross-entropy distillation from a teacher model).&quot;},{&quot;label&quot;:&quot;Problem Definition - Reconstruction Loss&quot;,&quot;value&quot;:&quot;The reconstruction loss $L_{\\text{recon}}$ for cross-layer residual learning is computed as $L_{\\text{recon}} = \\sum_{j} \\|q^N_j - v\\|^2$, where $q^N_j$ is the final quantized embedding vector for item $j$ and $v$ is its initial embedding vector.&quot;},{&quot;label&quot;:&quot;One-Layer Attention Learning&quot;,&quot;list&quot;:[&quot;The one-layer attention learning algorithm (Algorithm 1) takes MoNN&#39;s embedding vectors as input and learns coarse index node embeddings. It minimizes the L2 distance between item embedding $v_j$ and index node embedding $c_k$: $d(j,k) = \\|v_j - c_k\\|^2$.&quot;,&quot;Attention scores $a_k = e^{-\\alpha * d(j,k)} / \\sum_{k&#39;} e^{-\\alpha * d(j,k&#39;)}$ are used to compute a pseudo item embedding $\\bar{c} = \\sum_k a_k c_k$, which is then used to update MoNN optimization.&quot;]},{&quot;label&quot;:&quot;Cross-Layer Residual Learning&quot;,&quot;value&quot;:&quot;To build a hierarchical index, residual vectors are recursively quantized. The initial residual vector for item $j$ at layer 1 is $r^1_j = v_j$. At each subsequent level $n$, the recursive quantization of the residual vector is $r^n_j = r^{n-1}_j - \\bar{c}^{n-1}_j$, where $\\bar{c}^{n-1}_j$ is the pseudo item embedding from the previous layer.&quot;},{&quot;label&quot;:&quot;Optimization Techniques for HILL&quot;,&quot;list&quot;:[&quot;Softmax Temperature Scheduler: Gradually increases temperature $\\alpha$ during training ($\\alpha = max\\_alpha * (current\\_iter / max\\_iters)^{exp}$) to transition from soft to hard item-to-index assignments, mitigating discrepancy.&quot;,&quot;Balanced Index Distribution: Employs a FLOPs regularizer to prevent cluster collapse and ensure index nodes are utilized uniformly.&quot;,&quot;Warmup Strategy: A linear warmup strategy for the index loss weight is used to stabilize learning and prevent oscillations during initial training.&quot;]},{&quot;label&quot;:&quot;EM Approximation for HILL&quot;,&quot;value&quot;:&quot;When computing resources are limited, the hierarchical index learning can be approximated using the Expectation-Maximization (EM) algorithm. This views index nodes as item clusters, where the E-step assigns items to their closest cluster (e.g., K-Means with FAISS) and the M-step trains the foundation model based on current index embeddings.&quot;},{&quot;label&quot;:&quot;Test-Time Training Data Filtering&quot;,&quot;list&quot;:[&quot;$\\phi_{\\text{DEP}}$ (depth parameter): Controls how deep to traverse back from leaf nodes in the hierarchical index to extract new data pairs. Higher-level nodes are considered too general and are excluded.&quot;,&quot;$\\phi_{\\text{IR}}$ (interest rate parameter): Filters index nodes based on concentrated user interest, calculated as $\\phi_{\\text{IR}}(u, i_n) = |Int(u, n-1) \\cap Child(i_n)| / |Child(i_n)|$, ensuring that only index nodes highly relevant to the user are selected.&quot;]}],&quot;pipelineFlow&quot;:[&quot;The MoNN Foundation Retrieval Model (Meta&#39;s deployed model) is used to generate user and item embeddings for recommendation tasks.&quot;,&quot;The Hierarchical Index Learning (HILL) method is applied to learn a hierarchical structure over the MoNN&#39;s memory, organizing items into an index tree.&quot;,&quot;During serving, a search algorithm (e.g., beam search) traverses the learned hierarchical index to efficiently retrieve the most relevant items for a given user, bypassing redundant computations.&quot;,&quot;New, high-quality training data pairs (user, intermediate index node) are extracted from the learned hierarchical index, filtered by parameters like $\\phi_{\\text{DEP}}$ and $\\phi_{\\text{IR}}$.&quot;,&quot;This extracted data is then used to fine-tune the foundation model during &#39;test-time training,&#39; further boosting inference performance.&quot;,&quot;The combined system of MoNN with the HILL index and TTT fine-tuning is deployed for online recommendation services, such as daily advertisement recommendations at Meta.&quot;],&quot;problemDefinition&quot;:[],&quot;reproducibility&quot;:&quot;The paper explicitly states it systematically deciphers Meta&#39;s Modular Neural Network (MoNN) for the first time, detailing its neural architecture, training procedures, and loss functions. It utilizes public benchmark datasets (Gowalla, Yelp2018, Amazon-Book) with provided links. While specific code is not provided, the detailed methodology and explicit discussion of hyperparameters and training strategies support reproducibility efforts.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;The foundation retrieval model deployed at Meta for user advertisement retrieval. It has a modularized design comprising: User Tower (generates fixed-size user embeddings from dense and sparse user features), Item Tower (generates item embeddings from dense and sparse item features), Interaction Tower (computes user-item interaction features, utilizes Inverted Index Based Interaction Features (I2IF) to minimize computation cost), and OverArch (aggregates information and produces preference scores). MoNN is trained using multi-task cross-entropy loss and can be stacked (e.g., 2-layer, 3-layer) for different granularity levels.&quot;,&quot;name&quot;:&quot;MoNN (Modular Neural Network)&quot;,&quot;role&quot;:&quot;Foundation Retrieval Model&quot;},{&quot;details&quot;:&quot;The core method proposed for learning a hierarchical index over the memory of foundation retrieval models. It involves One-Layer Attention Learning to map items to index nodes, Cross-Layer Residual Learning to stack layers hierarchically, and various optimization techniques including Softmax Temperature Scheduler, Balanced Index Distribution (with FLOPs regularizer), and Warmup Strategy. It can also be approximated using an Expectation-Maximization (EM) algorithm (e.g., K-Means with FAISS) for resource-constrained scenarios.&quot;,&quot;name&quot;:&quot;HILL (Hierarchical Index Learning)&quot;,&quot;role&quot;:&quot;Hierarchical Index Construction and Optimization&quot;},{&quot;details&quot;:&quot;A process to extract new, high-quality data pairs (user, intermediate index node) from the learned HILL hierarchical index. This is done by traversing back from leaf nodes, identifying relevant intermediate nodes, and filtering them using parameters like $\\phi_{\\text{DEP}}$ (depth) and $\\phi_{\\text{IR}}$ (interest rate). This data is then used to fine-tune the MoNN model during test-time training.&quot;,&quot;name&quot;:&quot;Test-Time Training Data Extraction Module&quot;,&quot;role&quot;:&quot;Data Generation for Model Fine-tuning&quot;}]},&quot;thesis&quot;:&quot;It is possible to efficiently scale large-scale foundation retrieval models for recommendation by jointly learning a hierarchical index (HILL) using cross-attention and residual quantization over the model&#39;s memory (MoNN), and by leveraging high-quality data from intermediate index nodes for &#39;test-time training&#39; to improve inference performance.&quot;,&quot;title&quot;:&quot;Efficient Retrieval Scaling with Hierarchical Indexing for Large Scale Recommendation&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2604.12965&quot;,&quot;venue&quot;:&quot;EDBT &#39;26, Tampere (Finland)&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

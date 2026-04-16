@@ -2,6 +2,17 @@
   "page": 2,
   "papers": [
     {
+      "paperId": "2603.18573",
+      "title": "Interplay: Training Independent Simulators for Reference-Free Conversational Recommendation",
+      "authors": "Jerome Ramos, Feng Xia, Xi Wang, Shubham Chatterjee, Xiao Fu, Hossein A. Rahmani, and Aldo Lipani",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Rec",
+        "Pretraining",
+        "Agent"
+      ]
+    },
+    {
       "paperId": "2603.15916",
       "title": "2603.15916",
       "authors": "Xiaoyi Li",
@@ -98,19 +109,6 @@
         "RAG",
         "Benchmark",
         "QA"
-      ]
-    },
-    {
-      "paperId": "2603.03251",
-      "title": "Speculative Speculative Decoding",
-      "authors": "Tanishq Kumar, Tri Dao, Avner May",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Large Language Models",
-        "Inference Optimization",
-        "Speculative Decoding",
-        "Parallel Computing",
-        "Algorithm"
       ]
     }
   ]

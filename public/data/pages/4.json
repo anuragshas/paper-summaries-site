@@ -2,6 +2,17 @@
   "page": 4,
   "papers": [
     {
+      "paperId": "2602.16932",
+      "title": "RankEvolve: Automating the Discovery of Retrieval Algorithms via LLM-Driven Evolution",
+      "authors": "Jinming Nian, Fangchen Li, Dae Hoon Park, Yi Fang",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "RAG",
+        "Agent",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2602.14265",
       "title": "STATe-of-Thoughts: Structured Action Templates for Tree-of-Thoughts",
       "authors": "Zachary Bamberger, Till R. Saenger, Gilad Morad, Ofra Amir, Brandon M. Stewart, Amir Feder",
@@ -107,17 +118,6 @@
         "Deep Learning",
         "Contrastive Learning",
         "Semantic Search"
-      ]
-    },
-    {
-      "paperId": "2303.18223",
-      "title": "A Survey of Large Language Models",
-      "authors": "Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen",
-      "publishedDate": "2023-03-01",
-      "tags": [
-        "Pretraining",
-        "QA",
-        "RAG"
       ]
     }
   ]
