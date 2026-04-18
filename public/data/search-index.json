@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2604.15034",
+      "title": "Autogenesis: A Self-Evolving Agent Protocol",
+      "tags": [
+        "Agent",
+        "Pretraining",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2604.12965",
       "title": "Efficient Retrieval Scaling with Hierarchical Indexing for Large Scale Recommendation",
       "tags": [

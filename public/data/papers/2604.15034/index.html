@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Autogenesis: A Self-Evolving Agent Protocol</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Autogenesis: A Self-Evolving Agent Protocol</h1>
+      <p class="meta"><strong>Authors:</strong> Wentao Zhang</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2604.15034" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2604.15034</a></p>
+      <p class="muted">Generated summary artifact for 2604.15034</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>The Autogenesis Protocol (AGP) is a two-layer self-evolution protocol that decouples &quot;what evolves&quot; from &quot;how evolution occurs&quot; to provide a principled foundation for building modular, traceable, and safely improvable agentic systems, demonstrated by the Autogenesis System (AGS) which achieves significant performance improvements across diverse benchmarks.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Existing LLM-based agent systems under-specify cross-entity lifecycle and context management, version tracking, and evolution-safe update interfaces, leading to monolithic compositions, brittle glue code, and difficulties in achieving robust autonomy. Self-evolving agent implementations are fragmented and ad hoc, lacking shared standards for composable and auditable evolution.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A two-layer self-evolution protocol (Autogenesis Protocol - AGP) that rigorously decouples the definition of evolvable resources from the mechanisms governing their evolution.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Achieved state-of-the-art performance on the GAIA Test split (89.04% average Pass@1), outperforming ToolOrchestra by 1.66 percentage points, with a 33.34% improvement on Level 3 tasks.</li><li>Demonstrated relative pass-rate improvements ranging from 10.1% (Python3) to 26.7% (Kotlin) on the LeetCode benchmark, along with significant reductions in execution-blocking errors.</li><li>Showed up to 100% improvement on AIME benchmarks for weaker models (gpt-4o, gpt-4.1) and reliable improvements for stronger models (gemini-3-flash-preview, grok-4.1-fast).</li><li>Consistently reduced runtime for accepted solutions across all five coding languages, with reductions up to 46.4% in C++.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Self-evolution significantly improves performance across diverse models and benchmarks, with weaker models gaining more and stronger models showing reliable but modest gains.</li><li>Combining prompt+solution evolution consistently outperforms single-strategy evolution (prompt-only or solution-only).</li><li>Math benchmarks (AIME) show larger relative gains from evolution compared to science QA (GPQA-Diamond), as reflection can target more intermediate failure points.</li><li>Tool evolution yields substantial gains on general agent tasks, especially on harder task tiers (GAIA Level 3), where complex multi-step tool chains are required.</li><li>On algorithmic coding, self-evolution consistently improves pass rates (PR) and runtime efficiency (AR) across all languages, with largest gains in compiled languages like C++ and Java.</li><li>The evolving agent becomes more competitive against human submissions (ARB, AMB) in terms of runtime and memory.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Not specified</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 91,
+      &quot;xmin&quot;: 116,
+      &quot;ymax&quot;: 386,
+      &quot;xmax&quot;: 887
+    },
+    &quot;caption&quot;: &quot;The Autogenesis architecture.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 3
+  },
+  &quot;authors&quot;: &quot;Wentao Zhang&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;Autogenesis introduces a novel, rigorous two-layer protocol for self-evolving agents, addressing fundamental limitations in existing agent frameworks regarding modularity, traceability, and safe evolution of internal components. By decoupling \&quot;what evolves\&quot; from \&quot;how evolution occurs\&quot; and formalizing the process with explicit lifecycle management, versioning, and operator algebra, it provides a principled foundation missing in prior work. The empirical results demonstrate consistent and significant performance improvements across diverse benchmarks (scientific reasoning, general agent tasks, algorithmic coding), showcasing its practical efficacy and generalizability. The explicit focus on auditability and rollback for self-modifying systems is a critical advancement for robust agent development. This work significantly advances the state-of-the-art in agentic systems by enabling structured, safe, and scalable self-evolution.&quot;,
+    &quot;score&quot;: 8
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;When an agent needs to dynamically adjust strategies, refine instructions, or update tools based on environmental feedback, current systems lack the structured protocols for safe and traceable self-modification, leading to runtime instability and irrecoverable errors from erroneous updates due to missing version tracking.&quot;,
+    &quot;statement&quot;: &quot;Existing LLM-based agent systems under-specify cross-entity lifecycle and context management, version tracking, and evolution-safe update interfaces, leading to monolithic compositions, brittle glue code, and difficulties in achieving robust autonomy. Self-evolving agent implementations are fragmented and ad hoc, lacking shared standards for composable and auditable evolution.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Enables agents to automatically adjust strategies, refine instructions, and update tools based on environmental feedback, crucial for robust autonomy.&quot;,
+      &quot;Addresses issues of monolithic architectures, brittle glue code, and lack of maintainability in current agent systems.&quot;,
+      &quot;Ensures modular, traceable, and safe evolution by moving from ad hoc engineering to a protocol level.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Achieved state-of-the-art performance on the GAIA Test split (89.04% average Pass@1), outperforming ToolOrchestra by 1.66 percentage points, with a 33.34% improvement on Level 3 tasks.&quot;,
+    &quot;Demonstrated relative pass-rate improvements ranging from 10.1% (Python3) to 26.7% (Kotlin) on the LeetCode benchmark, along with significant reductions in execution-blocking errors.&quot;,
+    &quot;Showed up to 100% improvement on AIME benchmarks for weaker models (gpt-4o, gpt-4.1) and reliable improvements for stronger models (gemini-3-flash-preview, grok-4.1-fast).&quot;,
+    &quot;Consistently reduced runtime for accepted solutions across all five coding languages, with reductions up to 46.4% in C++.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;GPQA-Diamond&quot;,
+        &quot;AIME24&quot;,
+        &quot;AIME25&quot;,
+        &quot;GAIA Test split&quot;,
+        &quot;LeetCode multi-language programming benchmark&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Exact-match accuracy&quot;,
+        &quot;Task success (completion)&quot;,
+        &quot;Capability metrics (PR, TLE, MLE, CE, RE, WA, TO, RpE)&quot;,
+        &quot;Efficiency metrics (AR (ms), AM (MB), APC)&quot;,
+        &quot;Human-referenced metrics (ARB (%), AMB (%))&quot;
+      ],
+      &quot;setting&quot;: &quot;Evaluation of AGS with AGP protocol across scientific/mathematical and general agent benchmarks, focusing on evolving prompts, agent outputs, and tools. The self-evolution algorithm primarily employs the reflection optimizer with a maximum of 3 optimization rounds.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 236,
+          &quot;xmin&quot;: 125,
+          &quot;ymax&quot;: 829,
+          &quot;xmax&quot;: 875
+        },
+        &quot;caption&quot;: &quot;Performance comparison of evolving and vanilla agents within-inference.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 10
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;47.98&quot;,
+            &quot;benchmark&quot;: &quot;GPQA-Diamond (gpt-4o)&quot;,
+            &quot;delta&quot;: &quot;+10.10&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;58.08&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;13.34&quot;,
+            &quot;benchmark&quot;: &quot;AIME24 (gpt-4o)&quot;,
+            &quot;delta&quot;: &quot;+3.33&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;16.67&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;6.67&quot;,
+            &quot;benchmark&quot;: &quot;AIME25 (gpt-4o)&quot;,
+            &quot;delta&quot;: &quot;+6.67&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;13.34&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;23.34&quot;,
+            &quot;benchmark&quot;: &quot;AIME24 (gpt-4.1)&quot;,
+            &quot;delta&quot;: &quot;+16.66&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;40.00&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;20.00&quot;,
+            &quot;benchmark&quot;: &quot;AIME25 (gpt-4.1)&quot;,
+            &quot;delta&quot;: &quot;+13.33&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;33.33&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;83.33&quot;,
+            &quot;benchmark&quot;: &quot;GPQA-Diamond (grok-4.1-fast)&quot;,
+            &quot;delta&quot;: &quot;+6.01&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;89.34&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;96.67&quot;,
+            &quot;benchmark&quot;: &quot;AIME24 (grok-4.1-fast)&quot;,
+            &quot;delta&quot;: &quot;+0.00&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;96.67&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;90.00&quot;,
+            &quot;benchmark&quot;: &quot;AIME25 (grok-4.1-fast)&quot;,
+            &quot;delta&quot;: &quot;+6.67&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;96.67&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;88.38&quot;,
+            &quot;benchmark&quot;: &quot;GPQA-Diamond (gemini-3-flash-preview)&quot;,
+            &quot;delta&quot;: &quot;+2.02&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;90.40&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;83.33&quot;,
+            &quot;benchmark&quot;: &quot;AIME24 (gemini-3-flash-preview)&quot;,
+            &quot;delta&quot;: &quot;+10.00&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;93.33&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;83.33&quot;,
+            &quot;benchmark&quot;: &quot;AIME25 (gemini-3-flash-preview)&quot;,
+            &quot;delta&quot;: &quot;+10.00&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;exact-match accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;93.33&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Scientific and Mathematical Benchmarks&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;91.40&quot;,
+            &quot;benchmark&quot;: &quot;GAIA (Level1)&quot;,
+            &quot;delta&quot;: &quot;+7.52&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Pass@1 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;98.92&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;77.36&quot;,
+            &quot;benchmark&quot;: &quot;GAIA (Level2)&quot;,
+            &quot;delta&quot;: &quot;+8.17&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Pass@1 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;85.53&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;61.22&quot;,
+            &quot;benchmark&quot;: &quot;GAIA (Level3)&quot;,
+            &quot;delta&quot;: &quot;+20.41&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Pass@1 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;81.63&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;79.07&quot;,
+            &quot;benchmark&quot;: &quot;GAIA (Average)&quot;,
+            &quot;delta&quot;: &quot;+9.97&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Pass@1 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;89.04&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;87.38&quot;,
+            &quot;benchmark&quot;: &quot;GAIA (Average)&quot;,
+            &quot;delta&quot;: &quot;+1.66&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Pass@1 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;89.04&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;General Agent Benchmark&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;79&quot;,
+            &quot;benchmark&quot;: &quot;Python3&quot;,
+            &quot;delta&quot;: &quot;+8&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;PR (%)&quot;,
+            &quot;thisPaper&quot;: &quot;87&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1376.19&quot;,
+            &quot;benchmark&quot;: &quot;Python3&quot;,
+            &quot;delta&quot;: &quot;-106.80&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AR (ms)&quot;,
+            &quot;thisPaper&quot;: &quot;1269.39&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;84&quot;,
+            &quot;benchmark&quot;: &quot;C++&quot;,
+            &quot;delta&quot;: &quot;+15&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;PR (%)&quot;,
+            &quot;thisPaper&quot;: &quot;99&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;266.04&quot;,
+            &quot;benchmark&quot;: &quot;C++&quot;,
+            &quot;delta&quot;: &quot;-123.44&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AR (ms)&quot;,
+            &quot;thisPaper&quot;: &quot;142.60&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;84&quot;,
+            &quot;benchmark&quot;: &quot;Java&quot;,
+            &quot;delta&quot;: &quot;+14&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;PR (%)&quot;,
+            &quot;thisPaper&quot;: &quot;98&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;125.04&quot;,
+            &quot;benchmark&quot;: &quot;Java&quot;,
+            &quot;delta&quot;: &quot;-28.74&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AR (ms)&quot;,
+            &quot;thisPaper&quot;: &quot;96.30&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;82&quot;,
+            &quot;benchmark&quot;: &quot;Go&quot;,
+            &quot;delta&quot;: &quot;+13&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;PR (%)&quot;,
+            &quot;thisPaper&quot;: &quot;95&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;139.22&quot;,
+            &quot;benchmark&quot;: &quot;Go&quot;,
+            &quot;delta&quot;: &quot;-27.58&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AR (ms)&quot;,
+            &quot;thisPaper&quot;: &quot;111.64&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;75&quot;,
+            &quot;benchmark&quot;: &quot;Kotlin&quot;,
+            &quot;delta&quot;: &quot;+20&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;PR (%)&quot;,
+            &quot;thisPaper&quot;: &quot;95&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;171.99&quot;,
+            &quot;benchmark&quot;: &quot;Kotlin&quot;,
+            &quot;delta&quot;: &quot;-49.16&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AR (ms)&quot;,
+            &quot;thisPaper&quot;: &quot;122.83&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Algorithmic Coding Benchmark (gemini-3-flash-preview)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Self-evolution significantly improves performance across diverse models and benchmarks, with weaker models gaining more and stronger models showing reliable but modest gains.&quot;,
+      &quot;Combining prompt+solution evolution consistently outperforms single-strategy evolution (prompt-only or solution-only).&quot;,
+      &quot;Math benchmarks (AIME) show larger relative gains from evolution compared to science QA (GPQA-Diamond), as reflection can target more intermediate failure points.&quot;,
+      &quot;Tool evolution yields substantial gains on general agent tasks, especially on harder task tiers (GAIA Level 3), where complex multi-step tool chains are required.&quot;,
+      &quot;On algorithmic coding, self-evolution consistently improves pass rates (PR) and runtime efficiency (AR) across all languages, with largest gains in compiled languages like C++ and Java.&quot;,
+      &quot;The evolving agent becomes more competitive against human submissions (ARB, AMB) in terms of runtime and memory.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Nanyang Technological University, Singapore&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Introduces the Resource Substrate Protocol Layer (RSPL) to model prompts, agents, tools, environments, and memory as first-class, protocol-registered resources with explicit state, lifecycle, and versioned interfaces, enabling standardized management and manipulation.&quot;,
+      &quot;Introduces the Self-Evolution Protocol Layer (SEPL) which defines a closed-loop operator interface for proposing, assessing, and committing improvements with auditable lineage and rollback, formally executing the evolution cycle.&quot;,
+      &quot;Unlike prior connectivity protocols (A2A, MCP) that focus on invocation, AGP specifically addresses state mutation and management for self-evolving agents.&quot;
+    ],
+    &quot;main&quot;: &quot;A two-layer self-evolution protocol (Autogenesis Protocol - AGP) that rigorously decouples the definition of evolvable resources from the mechanisms governing their evolution.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;The layer defining the substrate of evolution, modeling Prompts, Agents, Tools, Environments, and Memory as protocol-registered resources with explicit state, lifecycle, and versioned interfaces.&quot;,
+        &quot;term&quot;: &quot;Resource Substrate Protocol Layer (RSPL)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The layer establishing a closed-loop operator interface grounded in control theory, defining atomic operations (Reflect, Select, Improve, Evaluate, Commit) to formally execute the evolution cycle.&quot;,
+        &quot;term&quot;: &quot;Self-Evolution Protocol Layer (SEPL)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A unified representation that projects discrete, heterogeneous RSPL resources (e.g., tool code, system prompts) into a common interface for all evolution operators, defined by `$V_{\\text{evo}}$`.&quot;,
+        &quot;term&quot;: &quot;Evolvable Variables&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The two-layer self-evolution protocol consisting of RSPL and SEPL, designed to decouple \&quot;what evolves\&quot; from \&quot;how evolution occurs.\&quot;&quot;,
+        &quot;term&quot;: &quot;Autogenesis Protocol (AGP)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A self-evolving multi-agent system built on the AGP protocol that dynamically instantiates, retrieves, and refines protocol-registered resources during execution.&quot;,
+        &quot;term&quot;: &quot;Autogenesis System (AGS)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Model (LLM) based agent systems&quot;,
+      &quot;Closed-loop control systems&quot;,
+      &quot;Protocol design and software architecture&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;LLM Agents&quot;,
+    &quot;Self-Evolution&quot;,
+    &quot;Protocol Engineering&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Agent&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Existing LLM-based agent systems often embed prompts, tools, and memory as tightly coupled internal components, limiting systematic reuse and controlled adaptation, unlike Autogenesis which treats them as protocol-registered RSPL resources with explicit interfaces and state representations.&quot;,
+      &quot;Protocols like Anthropic&#39;s Model Context Protocol (MCP) and Google&#39;s Agent-to-Agent (A2A) primarily address interoperability for model-tool invocation or inter-agent communication, but largely leave internal state management, resource lifecycles, version lineage, and state mutations opaque. Autogenesis specifically targets these aspects for self-evolution.&quot;,
+      &quot;A2A focuses on multi-agent collaboration, treating agents as service endpoints without unified lifecycle/version lineage; MCP does not define agents as protocol components. Autogenesis supports agents as first-class RSPL resources with explicit schemas and lifecycle hooks.&quot;,
+      &quot;Neither A2A nor MCP provide native mechanisms for recording execution traces for debugging or learning; Autogenesis includes protocol-level tracing for auditable evolution.&quot;,
+      &quot;A2A and MCP do not explicitly model memory as a protocol-level component; Autogenesis treats memory as a first-class RSPL resource.&quot;,
+      &quot;Neither A2A nor MCP natively support version lineage or comprehensive lifecycle management for protocol-managed components, making systematic evolution difficult. Autogenesis integrates version management and lifecycle operations as core protocol capabilities.&quot;,
+      &quot;Neither A2A nor MCP provide a native self-evolution loop or operator-mediated updates, unlike Autogenesis which is explicitly designed around an iterative improvement loop and typed operator interfaces.&quot;
+    ],
+    &quot;limitations&quot;: [],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;SEPL Operator Algebra&quot;,
+        &quot;list&quot;: [
+          &quot;Reflect: `$\\rho: Z \\times V_{\\text{evo}} \\to \\wp(H)$` - maps execution traces to causal failure hypotheses.&quot;,
+          &quot;Select: `$\\sigma: V_{\\text{evo}} \\times \\wp(H) \\to \\wp(D)$` - translates diagnostic hypotheses into update proposals.&quot;,
+          &quot;Improve: `$\\iota: V_{\\text{evo}} \\times \\wp(D) \\to V&#39;_{\\text{evo}}$` - executes physical state transition, applies discrete updates.&quot;,
+          &quot;Evaluate: `$\\varepsilon: V&#39;_{\\text{evo}} \\times G \\to S$` - maps candidate state and goal specification to evaluation space.&quot;,
+          &quot;Commit: `$\\kappa: V&#39;_{\\text{evo}} \\times S \\to V_{\\text{evo}}$` - conditional gating mechanism based on evaluation signals.&quot;
+        ],
+        &quot;value&quot;: &quot;N/A&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;AGP is a two-layer protocol: RSPL (Resource Substrate) and SEPL (Self-Evolution).&quot;,
+      &quot;RSPL models Prompts, Agents, Tools, Environments, Memory as first-class, protocol-registered resources with explicit state, lifecycle, and versioned interfaces. These resources are passive.&quot;,
+      &quot;SEPL establishes a closed-loop operator interface (Reflect, Select, Improve, Evaluate, Commit) for self-improvement.&quot;,
+      &quot;The AGS system, built on AGP, uses an Agent Bus architecture for coordination.&quot;,
+      &quot;An Orchestrator receives a task, generates a `plan.md` (versioned RSPL resource), and broadcasts subtasks to sub-agents.&quot;,
+      &quot;Sub-agents concurrently retrieve resources from RSPL, execute, and write traces to shared memory.&quot;,
+      &quot;The Orchestrator collects outputs, summarizes results, and updates `plan.md`. This collect-and-replan loop repeats until the task is complete.&quot;,
+      &quot;During this process, the SEPL evolutionary loop is triggered when observational traces signal correctable failures or suboptimal performance.&quot;,
+      &quot;The SEPL loop (e.g., Reflection Optimizer) performs: (i) Reflect on execution traces `Z` to derive causal hypotheses `H`, (ii) Select targeted modification proposals `D` over evolvable variables, (iii) Improve by applying updates to produce candidate state `e V&#39;evo`, (iv) Evaluate candidate against objective `G` to get `S`, and (v) Commit accepted modifications as versioned transitions with audit trail and rollback capability. Failed attempts are rolled back.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Resource Entity&quot;,
+        &quot;value&quot;: &quot;A resource entity of type `$\\tau$` and its type-level collection can be represented as: `$e_{\\tau,i} = (n_{\\tau,i}, d_{\\tau,i}, \\phi_{\\tau,i}, g_{\\tau,i}, m_{\\tau,i})$`, `$E_{\\tau} = \\{e_{\\tau,i} \\mid i \\in I_{\\tau}\\}$` where `T` = {PROMPT, AGENT, TOOL, ENV, MEM} is the set of RSPL entity types.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Resource Registration Record&quot;,
+        &quot;value&quot;: &quot;A resource registration record and its type-level collection: `$c_{\\tau,i} = (e_{\\tau,i}, v_{\\tau,i}, \\eta_{\\tau,i}, \\theta_{\\tau,i}, F_{\\tau,i})$`, `$C_{\\tau} = \\{c_{\\tau,i} \\mid i \\in I_{\\tau}\\}$`.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Protocol-registered Resource&quot;,
+        &quot;value&quot;: &quot;For each entity type `$\\tau$`, let `$R_{\\tau}$` denote the type-specific registry of protocol-registered resources, and let `$R = \\cup_{\\tau} R_{\\tau}$` denote the global registry. RSPL binds each entity type `$\\tau$` to a dedicated context manager `$M_{\\tau}$` and a server-exposed interface `$A_{\\tau}$`. Represented as `$r_{\\tau} = (C_{\\tau}, M_{\\tau}, A_{\\tau})$`.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Evolvable Variable Set&quot;,
+        &quot;value&quot;: &quot;The universal set of evolvable variables, `$V_{\\text{evo}}$`, is defined as the union of all managed resource entities and execution artifacts: `$V_{\\text{evo}} = \\cup_{\\tau \\in T} E_{\\tau} \\cup \\{y\\}$`. Each variable `$v \\in V_{\\text{evo}}$` has a binary learnability constraint `$g_v \\in \\{0, 1\\}$` defining the trainable subspace `$\\Theta = \\{v \\in V_{\\text{evo}} \\mid g_v = 1\\}$`.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;Autogenesis is designed with auditability and reproducibility as core tenets. Its version management system maintains immutable snapshots of configurations and artifacts, enabling auditable lineage and rollback. The LeetCode benchmark evaluation protocol is standardized for multi-language evaluation to ensure consistent and reproducible results. The protocol-level approach provides a principled foundation for building modular, traceable, and safely improvable agentic systems.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Models Prompts, Agents, Tools, Environments, and Memory as protocol-registered resources with explicit state, lifecycle, and versioned interfaces. Resources in RSPL are passive, encapsulating no optimization logic and cannot self-modify directly.&quot;,
+        &quot;name&quot;: &quot;Resource Substrate Protocol Layer (RSPL)&quot;,
+        &quot;role&quot;: &quot;Defines the evolvable substrate.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Establishes a closed-loop operator interface grounded in control theory, defining atomic operations (Reflect, Select, Improve, Evaluate, Commit) to formally execute the evolution cycle, ensuring traceable, reversible, and safe self-modification.&quot;,
+        &quot;name&quot;: &quot;Self-Evolution Protocol Layer (SEPL)&quot;,
+        &quot;role&quot;: &quot;Defines the evolution logic.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Implements the management plane for each resource type, including lifecycle control, dependency constraints, active registry of materialized resources, and versioned history for restoration. Supports contract generation.&quot;,
+        &quot;name&quot;: &quot;Context Manager&quot;,
+        &quot;role&quot;: &quot;Manages resources for each type and maintains version lineage.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Encapsulates the context manager&#39;s internal complexity, presenting a stable API with consistent request/response semantics, isolating clients from internal design changes.&quot;,
+        &quot;name&quot;: &quot;Server Interface&quot;,
+        &quot;role&quot;: &quot;Exposes a unified external interface for resource management.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Unified model-API layer supporting routing, fallback, and cost-aware selection across providers (e.g., OpenAI, Anthropic, Google, OpenRouter).&quot;,
+        &quot;name&quot;: &quot;Model Manager&quot;,
+        &quot;role&quot;: &quot;Standardizes calls across different LLM providers.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Enables rollback, branching, and diffing by assigning auto-incremented identifiers to versions, referencing immutable snapshots of the configuration record and associated artifacts.&quot;,
+        &quot;name&quot;: &quot;Version Manager&quot;,
+        &quot;role&quot;: &quot;Maintains version lineage for resources.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Handles serialization or deserialization of resource configurations for persistence and transfer, enabling safe hot-swapping of resources at runtime.&quot;,
+        &quot;name&quot;: &quot;Dynamic Manager&quot;,
+        &quot;role&quot;: &quot;Handles serialization/deserialization for resource persistence.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Records inputs, outputs, intermediate decisions, tool interactions for interpretability, debugging, and as training signals for dataset synthesis and retrospective improvement.&quot;,
+        &quot;name&quot;: &quot;Tracer Module&quot;,
+        &quot;role&quot;: &quot;Captures fine-grained execution traces.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Prompts LLM to analyze failures, generate diagnostic hypotheses, translate hypotheses into modification proposals, apply updates via RSPL interfaces, re-execute, evaluate, and conditionally commit updates.&quot;,
+        &quot;name&quot;: &quot;Reflection Optimizer&quot;,
+        &quot;role&quot;: &quot;Default SEPL optimizer using natural-language reflection.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Produces a structured `plan.md` artifact (workflow, subtasks, assignments to sub-agents) as a versioned RSPL resource, then broadcasts subtasks to sub-agents via the Agent Bus.&quot;,
+        &quot;name&quot;: &quot;Orchestrator (in AGS)&quot;,
+        &quot;role&quot;: &quot;Plans and coordinates tasks in the multi-agent system.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Independently retrieve prompts and tool resources from the RSPL registry, execute tool calls, and write intermediate results and reasoning traces to shared memory.&quot;,
+        &quot;name&quot;: &quot;Sub-agents (in AGS)&quot;,
+        &quot;role&quot;: &quot;Execute subtasks and interact with the environment.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;The Autogenesis Protocol (AGP) is a two-layer self-evolution protocol that decouples \&quot;what evolves\&quot; from \&quot;how evolution occurs\&quot; to provide a principled foundation for building modular, traceable, and safely improvable agentic systems, demonstrated by the Autogenesis System (AGS) which achieves significant performance improvements across diverse benchmarks.&quot;,
+  &quot;title&quot;: &quot;Autogenesis: A Self-Evolving Agent Protocol&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2604.15034&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2604.15034&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2604.15034&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:91,&quot;xmin&quot;:116,&quot;ymax&quot;:386,&quot;xmax&quot;:887},&quot;caption&quot;:&quot;The Autogenesis architecture.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:3},&quot;authors&quot;:&quot;Wentao Zhang&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;Autogenesis introduces a novel, rigorous two-layer protocol for self-evolving agents, addressing fundamental limitations in existing agent frameworks regarding modularity, traceability, and safe evolution of internal components. By decoupling \&quot;what evolves\&quot; from \&quot;how evolution occurs\&quot; and formalizing the process with explicit lifecycle management, versioning, and operator algebra, it provides a principled foundation missing in prior work. The empirical results demonstrate consistent and significant performance improvements across diverse benchmarks (scientific reasoning, general agent tasks, algorithmic coding), showcasing its practical efficacy and generalizability. The explicit focus on auditability and rollback for self-modifying systems is a critical advancement for robust agent development. This work significantly advances the state-of-the-art in agentic systems by enabling structured, safe, and scalable self-evolution.&quot;,&quot;score&quot;:8},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;When an agent needs to dynamically adjust strategies, refine instructions, or update tools based on environmental feedback, current systems lack the structured protocols for safe and traceable self-modification, leading to runtime instability and irrecoverable errors from erroneous updates due to missing version tracking.&quot;,&quot;statement&quot;:&quot;Existing LLM-based agent systems under-specify cross-entity lifecycle and context management, version tracking, and evolution-safe update interfaces, leading to monolithic compositions, brittle glue code, and difficulties in achieving robust autonomy. Self-evolving agent implementations are fragmented and ad hoc, lacking shared standards for composable and auditable evolution.&quot;,&quot;whyItMatters&quot;:[&quot;Enables agents to automatically adjust strategies, refine instructions, and update tools based on environmental feedback, crucial for robust autonomy.&quot;,&quot;Addresses issues of monolithic architectures, brittle glue code, and lack of maintainability in current agent systems.&quot;,&quot;Ensures modular, traceable, and safe evolution by moving from ad hoc engineering to a protocol level.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Achieved state-of-the-art performance on the GAIA Test split (89.04% average Pass@1), outperforming ToolOrchestra by 1.66 percentage points, with a 33.34% improvement on Level 3 tasks.&quot;,&quot;Demonstrated relative pass-rate improvements ranging from 10.1% (Python3) to 26.7% (Kotlin) on the LeetCode benchmark, along with significant reductions in execution-blocking errors.&quot;,&quot;Showed up to 100% improvement on AIME benchmarks for weaker models (gpt-4o, gpt-4.1) and reliable improvements for stronger models (gemini-3-flash-preview, grok-4.1-fast).&quot;,&quot;Consistently reduced runtime for accepted solutions across all five coding languages, with reductions up to 46.4% in C++.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;GPQA-Diamond&quot;,&quot;AIME24&quot;,&quot;AIME25&quot;,&quot;GAIA Test split&quot;,&quot;LeetCode multi-language programming benchmark&quot;],&quot;metrics&quot;:[&quot;Exact-match accuracy&quot;,&quot;Task success (completion)&quot;,&quot;Capability metrics (PR, TLE, MLE, CE, RE, WA, TO, RpE)&quot;,&quot;Efficiency metrics (AR (ms), AM (MB), APC)&quot;,&quot;Human-referenced metrics (ARB (%), AMB (%))&quot;],&quot;setting&quot;:&quot;Evaluation of AGS with AGP protocol across scientific/mathematical and general agent benchmarks, focusing on evolving prompts, agent outputs, and tools. The self-evolution algorithm primarily employs the reflection optimizer with a maximum of 3 optimization rounds.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:236,&quot;xmin&quot;:125,&quot;ymax&quot;:829,&quot;xmax&quot;:875},&quot;caption&quot;:&quot;Performance comparison of evolving and vanilla agents within-inference.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:10}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;47.98&quot;,&quot;benchmark&quot;:&quot;GPQA-Diamond (gpt-4o)&quot;,&quot;delta&quot;:&quot;+10.10&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;58.08&quot;},{&quot;baseline&quot;:&quot;13.34&quot;,&quot;benchmark&quot;:&quot;AIME24 (gpt-4o)&quot;,&quot;delta&quot;:&quot;+3.33&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;16.67&quot;},{&quot;baseline&quot;:&quot;6.67&quot;,&quot;benchmark&quot;:&quot;AIME25 (gpt-4o)&quot;,&quot;delta&quot;:&quot;+6.67&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;13.34&quot;},{&quot;baseline&quot;:&quot;23.34&quot;,&quot;benchmark&quot;:&quot;AIME24 (gpt-4.1)&quot;,&quot;delta&quot;:&quot;+16.66&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;40.00&quot;},{&quot;baseline&quot;:&quot;20.00&quot;,&quot;benchmark&quot;:&quot;AIME25 (gpt-4.1)&quot;,&quot;delta&quot;:&quot;+13.33&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;33.33&quot;},{&quot;baseline&quot;:&quot;83.33&quot;,&quot;benchmark&quot;:&quot;GPQA-Diamond (grok-4.1-fast)&quot;,&quot;delta&quot;:&quot;+6.01&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;89.34&quot;},{&quot;baseline&quot;:&quot;96.67&quot;,&quot;benchmark&quot;:&quot;AIME24 (grok-4.1-fast)&quot;,&quot;delta&quot;:&quot;+0.00&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;96.67&quot;},{&quot;baseline&quot;:&quot;90.00&quot;,&quot;benchmark&quot;:&quot;AIME25 (grok-4.1-fast)&quot;,&quot;delta&quot;:&quot;+6.67&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;96.67&quot;},{&quot;baseline&quot;:&quot;88.38&quot;,&quot;benchmark&quot;:&quot;GPQA-Diamond (gemini-3-flash-preview)&quot;,&quot;delta&quot;:&quot;+2.02&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;90.40&quot;},{&quot;baseline&quot;:&quot;83.33&quot;,&quot;benchmark&quot;:&quot;AIME24 (gemini-3-flash-preview)&quot;,&quot;delta&quot;:&quot;+10.00&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;93.33&quot;},{&quot;baseline&quot;:&quot;83.33&quot;,&quot;benchmark&quot;:&quot;AIME25 (gemini-3-flash-preview)&quot;,&quot;delta&quot;:&quot;+10.00&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;exact-match accuracy&quot;,&quot;thisPaper&quot;:&quot;93.33&quot;}],&quot;title&quot;:&quot;Scientific and Mathematical Benchmarks&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;91.40&quot;,&quot;benchmark&quot;:&quot;GAIA (Level1)&quot;,&quot;delta&quot;:&quot;+7.52&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Pass@1 (%)&quot;,&quot;thisPaper&quot;:&quot;98.92&quot;},{&quot;baseline&quot;:&quot;77.36&quot;,&quot;benchmark&quot;:&quot;GAIA (Level2)&quot;,&quot;delta&quot;:&quot;+8.17&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Pass@1 (%)&quot;,&quot;thisPaper&quot;:&quot;85.53&quot;},{&quot;baseline&quot;:&quot;61.22&quot;,&quot;benchmark&quot;:&quot;GAIA (Level3)&quot;,&quot;delta&quot;:&quot;+20.41&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Pass@1 (%)&quot;,&quot;thisPaper&quot;:&quot;81.63&quot;},{&quot;baseline&quot;:&quot;79.07&quot;,&quot;benchmark&quot;:&quot;GAIA (Average)&quot;,&quot;delta&quot;:&quot;+9.97&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Pass@1 (%)&quot;,&quot;thisPaper&quot;:&quot;89.04&quot;},{&quot;baseline&quot;:&quot;87.38&quot;,&quot;benchmark&quot;:&quot;GAIA (Average)&quot;,&quot;delta&quot;:&quot;+1.66&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Pass@1 (%)&quot;,&quot;thisPaper&quot;:&quot;89.04&quot;}],&quot;title&quot;:&quot;General Agent Benchmark&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;79&quot;,&quot;benchmark&quot;:&quot;Python3&quot;,&quot;delta&quot;:&quot;+8&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;PR (%)&quot;,&quot;thisPaper&quot;:&quot;87&quot;},{&quot;baseline&quot;:&quot;1376.19&quot;,&quot;benchmark&quot;:&quot;Python3&quot;,&quot;delta&quot;:&quot;-106.80&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AR (ms)&quot;,&quot;thisPaper&quot;:&quot;1269.39&quot;},{&quot;baseline&quot;:&quot;84&quot;,&quot;benchmark&quot;:&quot;C++&quot;,&quot;delta&quot;:&quot;+15&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;PR (%)&quot;,&quot;thisPaper&quot;:&quot;99&quot;},{&quot;baseline&quot;:&quot;266.04&quot;,&quot;benchmark&quot;:&quot;C++&quot;,&quot;delta&quot;:&quot;-123.44&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AR (ms)&quot;,&quot;thisPaper&quot;:&quot;142.60&quot;},{&quot;baseline&quot;:&quot;84&quot;,&quot;benchmark&quot;:&quot;Java&quot;,&quot;delta&quot;:&quot;+14&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;PR (%)&quot;,&quot;thisPaper&quot;:&quot;98&quot;},{&quot;baseline&quot;:&quot;125.04&quot;,&quot;benchmark&quot;:&quot;Java&quot;,&quot;delta&quot;:&quot;-28.74&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AR (ms)&quot;,&quot;thisPaper&quot;:&quot;96.30&quot;},{&quot;baseline&quot;:&quot;82&quot;,&quot;benchmark&quot;:&quot;Go&quot;,&quot;delta&quot;:&quot;+13&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;PR (%)&quot;,&quot;thisPaper&quot;:&quot;95&quot;},{&quot;baseline&quot;:&quot;139.22&quot;,&quot;benchmark&quot;:&quot;Go&quot;,&quot;delta&quot;:&quot;-27.58&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AR (ms)&quot;,&quot;thisPaper&quot;:&quot;111.64&quot;},{&quot;baseline&quot;:&quot;75&quot;,&quot;benchmark&quot;:&quot;Kotlin&quot;,&quot;delta&quot;:&quot;+20&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;PR (%)&quot;,&quot;thisPaper&quot;:&quot;95&quot;},{&quot;baseline&quot;:&quot;171.99&quot;,&quot;benchmark&quot;:&quot;Kotlin&quot;,&quot;delta&quot;:&quot;-49.16&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AR (ms)&quot;,&quot;thisPaper&quot;:&quot;122.83&quot;}],&quot;title&quot;:&quot;Algorithmic Coding Benchmark (gemini-3-flash-preview)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Self-evolution significantly improves performance across diverse models and benchmarks, with weaker models gaining more and stronger models showing reliable but modest gains.&quot;,&quot;Combining prompt+solution evolution consistently outperforms single-strategy evolution (prompt-only or solution-only).&quot;,&quot;Math benchmarks (AIME) show larger relative gains from evolution compared to science QA (GPQA-Diamond), as reflection can target more intermediate failure points.&quot;,&quot;Tool evolution yields substantial gains on general agent tasks, especially on harder task tiers (GAIA Level 3), where complex multi-step tool chains are required.&quot;,&quot;On algorithmic coding, self-evolution consistently improves pass rates (PR) and runtime efficiency (AR) across all languages, with largest gains in compiled languages like C++ and Java.&quot;,&quot;The evolving agent becomes more competitive against human submissions (ARB, AMB) in terms of runtime and memory.&quot;]},&quot;institutions&quot;:&quot;Nanyang Technological University, Singapore&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Introduces the Resource Substrate Protocol Layer (RSPL) to model prompts, agents, tools, environments, and memory as first-class, protocol-registered resources with explicit state, lifecycle, and versioned interfaces, enabling standardized management and manipulation.&quot;,&quot;Introduces the Self-Evolution Protocol Layer (SEPL) which defines a closed-loop operator interface for proposing, assessing, and committing improvements with auditable lineage and rollback, formally executing the evolution cycle.&quot;,&quot;Unlike prior connectivity protocols (A2A, MCP) that focus on invocation, AGP specifically addresses state mutation and management for self-evolving agents.&quot;],&quot;main&quot;:&quot;A two-layer self-evolution protocol (Autogenesis Protocol - AGP) that rigorously decouples the definition of evolvable resources from the mechanisms governing their evolution.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;The layer defining the substrate of evolution, modeling Prompts, Agents, Tools, Environments, and Memory as protocol-registered resources with explicit state, lifecycle, and versioned interfaces.&quot;,&quot;term&quot;:&quot;Resource Substrate Protocol Layer (RSPL)&quot;},{&quot;definition&quot;:&quot;The layer establishing a closed-loop operator interface grounded in control theory, defining atomic operations (Reflect, Select, Improve, Evaluate, Commit) to formally execute the evolution cycle.&quot;,&quot;term&quot;:&quot;Self-Evolution Protocol Layer (SEPL)&quot;},{&quot;definition&quot;:&quot;A unified representation that projects discrete, heterogeneous RSPL resources (e.g., tool code, system prompts) into a common interface for all evolution operators, defined by `$V_{\\text{evo}}$`.&quot;,&quot;term&quot;:&quot;Evolvable Variables&quot;},{&quot;definition&quot;:&quot;The two-layer self-evolution protocol consisting of RSPL and SEPL, designed to decouple \&quot;what evolves\&quot; from \&quot;how evolution occurs.\&quot;&quot;,&quot;term&quot;:&quot;Autogenesis Protocol (AGP)&quot;},{&quot;definition&quot;:&quot;A self-evolving multi-agent system built on the AGP protocol that dynamically instantiates, retrieves, and refines protocol-registered resources during execution.&quot;,&quot;term&quot;:&quot;Autogenesis System (AGS)&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Model (LLM) based agent systems&quot;,&quot;Closed-loop control systems&quot;,&quot;Protocol design and software architecture&quot;]},&quot;subTopics&quot;:[&quot;LLM Agents&quot;,&quot;Self-Evolution&quot;,&quot;Protocol Engineering&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Agent&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Existing LLM-based agent systems often embed prompts, tools, and memory as tightly coupled internal components, limiting systematic reuse and controlled adaptation, unlike Autogenesis which treats them as protocol-registered RSPL resources with explicit interfaces and state representations.&quot;,&quot;Protocols like Anthropic&#39;s Model Context Protocol (MCP) and Google&#39;s Agent-to-Agent (A2A) primarily address interoperability for model-tool invocation or inter-agent communication, but largely leave internal state management, resource lifecycles, version lineage, and state mutations opaque. Autogenesis specifically targets these aspects for self-evolution.&quot;,&quot;A2A focuses on multi-agent collaboration, treating agents as service endpoints without unified lifecycle/version lineage; MCP does not define agents as protocol components. Autogenesis supports agents as first-class RSPL resources with explicit schemas and lifecycle hooks.&quot;,&quot;Neither A2A nor MCP provide native mechanisms for recording execution traces for debugging or learning; Autogenesis includes protocol-level tracing for auditable evolution.&quot;,&quot;A2A and MCP do not explicitly model memory as a protocol-level component; Autogenesis treats memory as a first-class RSPL resource.&quot;,&quot;Neither A2A nor MCP natively support version lineage or comprehensive lifecycle management for protocol-managed components, making systematic evolution difficult. Autogenesis integrates version management and lifecycle operations as core protocol capabilities.&quot;,&quot;Neither A2A nor MCP provide a native self-evolution loop or operator-mediated updates, unlike Autogenesis which is explicitly designed around an iterative improvement loop and typed operator interfaces.&quot;],&quot;limitations&quot;:[],&quot;modeling&quot;:[{&quot;label&quot;:&quot;SEPL Operator Algebra&quot;,&quot;list&quot;:[&quot;Reflect: `$\\rho: Z \\times V_{\\text{evo}} \\to \\wp(H)$` - maps execution traces to causal failure hypotheses.&quot;,&quot;Select: `$\\sigma: V_{\\text{evo}} \\times \\wp(H) \\to \\wp(D)$` - translates diagnostic hypotheses into update proposals.&quot;,&quot;Improve: `$\\iota: V_{\\text{evo}} \\times \\wp(D) \\to V&#39;_{\\text{evo}}$` - executes physical state transition, applies discrete updates.&quot;,&quot;Evaluate: `$\\varepsilon: V&#39;_{\\text{evo}} \\times G \\to S$` - maps candidate state and goal specification to evaluation space.&quot;,&quot;Commit: `$\\kappa: V&#39;_{\\text{evo}} \\times S \\to V_{\\text{evo}}$` - conditional gating mechanism based on evaluation signals.&quot;],&quot;value&quot;:&quot;N/A&quot;}],&quot;pipelineFlow&quot;:[&quot;AGP is a two-layer protocol: RSPL (Resource Substrate) and SEPL (Self-Evolution).&quot;,&quot;RSPL models Prompts, Agents, Tools, Environments, Memory as first-class, protocol-registered resources with explicit state, lifecycle, and versioned interfaces. These resources are passive.&quot;,&quot;SEPL establishes a closed-loop operator interface (Reflect, Select, Improve, Evaluate, Commit) for self-improvement.&quot;,&quot;The AGS system, built on AGP, uses an Agent Bus architecture for coordination.&quot;,&quot;An Orchestrator receives a task, generates a `plan.md` (versioned RSPL resource), and broadcasts subtasks to sub-agents.&quot;,&quot;Sub-agents concurrently retrieve resources from RSPL, execute, and write traces to shared memory.&quot;,&quot;The Orchestrator collects outputs, summarizes results, and updates `plan.md`. This collect-and-replan loop repeats until the task is complete.&quot;,&quot;During this process, the SEPL evolutionary loop is triggered when observational traces signal correctable failures or suboptimal performance.&quot;,&quot;The SEPL loop (e.g., Reflection Optimizer) performs: (i) Reflect on execution traces `Z` to derive causal hypotheses `H`, (ii) Select targeted modification proposals `D` over evolvable variables, (iii) Improve by applying updates to produce candidate state `e V&#39;evo`, (iv) Evaluate candidate against objective `G` to get `S`, and (v) Commit accepted modifications as versioned transitions with audit trail and rollback capability. Failed attempts are rolled back.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Resource Entity&quot;,&quot;value&quot;:&quot;A resource entity of type `$\\tau$` and its type-level collection can be represented as: `$e_{\\tau,i} = (n_{\\tau,i}, d_{\\tau,i}, \\phi_{\\tau,i}, g_{\\tau,i}, m_{\\tau,i})$`, `$E_{\\tau} = \\{e_{\\tau,i} \\mid i \\in I_{\\tau}\\}$` where `T` = {PROMPT, AGENT, TOOL, ENV, MEM} is the set of RSPL entity types.&quot;},{&quot;label&quot;:&quot;Resource Registration Record&quot;,&quot;value&quot;:&quot;A resource registration record and its type-level collection: `$c_{\\tau,i} = (e_{\\tau,i}, v_{\\tau,i}, \\eta_{\\tau,i}, \\theta_{\\tau,i}, F_{\\tau,i})$`, `$C_{\\tau} = \\{c_{\\tau,i} \\mid i \\in I_{\\tau}\\}$`.&quot;},{&quot;label&quot;:&quot;Protocol-registered Resource&quot;,&quot;value&quot;:&quot;For each entity type `$\\tau$`, let `$R_{\\tau}$` denote the type-specific registry of protocol-registered resources, and let `$R = \\cup_{\\tau} R_{\\tau}$` denote the global registry. RSPL binds each entity type `$\\tau$` to a dedicated context manager `$M_{\\tau}$` and a server-exposed interface `$A_{\\tau}$`. Represented as `$r_{\\tau} = (C_{\\tau}, M_{\\tau}, A_{\\tau})$`.&quot;},{&quot;label&quot;:&quot;Evolvable Variable Set&quot;,&quot;value&quot;:&quot;The universal set of evolvable variables, `$V_{\\text{evo}}$`, is defined as the union of all managed resource entities and execution artifacts: `$V_{\\text{evo}} = \\cup_{\\tau \\in T} E_{\\tau} \\cup \\{y\\}$`. Each variable `$v \\in V_{\\text{evo}}$` has a binary learnability constraint `$g_v \\in \\{0, 1\\}$` defining the trainable subspace `$\\Theta = \\{v \\in V_{\\text{evo}} \\mid g_v = 1\\}$`.&quot;}],&quot;reproducibility&quot;:&quot;Autogenesis is designed with auditability and reproducibility as core tenets. Its version management system maintains immutable snapshots of configurations and artifacts, enabling auditable lineage and rollback. The LeetCode benchmark evaluation protocol is standardized for multi-language evaluation to ensure consistent and reproducible results. The protocol-level approach provides a principled foundation for building modular, traceable, and safely improvable agentic systems.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Models Prompts, Agents, Tools, Environments, and Memory as protocol-registered resources with explicit state, lifecycle, and versioned interfaces. Resources in RSPL are passive, encapsulating no optimization logic and cannot self-modify directly.&quot;,&quot;name&quot;:&quot;Resource Substrate Protocol Layer (RSPL)&quot;,&quot;role&quot;:&quot;Defines the evolvable substrate.&quot;},{&quot;details&quot;:&quot;Establishes a closed-loop operator interface grounded in control theory, defining atomic operations (Reflect, Select, Improve, Evaluate, Commit) to formally execute the evolution cycle, ensuring traceable, reversible, and safe self-modification.&quot;,&quot;name&quot;:&quot;Self-Evolution Protocol Layer (SEPL)&quot;,&quot;role&quot;:&quot;Defines the evolution logic.&quot;},{&quot;details&quot;:&quot;Implements the management plane for each resource type, including lifecycle control, dependency constraints, active registry of materialized resources, and versioned history for restoration. Supports contract generation.&quot;,&quot;name&quot;:&quot;Context Manager&quot;,&quot;role&quot;:&quot;Manages resources for each type and maintains version lineage.&quot;},{&quot;details&quot;:&quot;Encapsulates the context manager&#39;s internal complexity, presenting a stable API with consistent request/response semantics, isolating clients from internal design changes.&quot;,&quot;name&quot;:&quot;Server Interface&quot;,&quot;role&quot;:&quot;Exposes a unified external interface for resource management.&quot;},{&quot;details&quot;:&quot;Unified model-API layer supporting routing, fallback, and cost-aware selection across providers (e.g., OpenAI, Anthropic, Google, OpenRouter).&quot;,&quot;name&quot;:&quot;Model Manager&quot;,&quot;role&quot;:&quot;Standardizes calls across different LLM providers.&quot;},{&quot;details&quot;:&quot;Enables rollback, branching, and diffing by assigning auto-incremented identifiers to versions, referencing immutable snapshots of the configuration record and associated artifacts.&quot;,&quot;name&quot;:&quot;Version Manager&quot;,&quot;role&quot;:&quot;Maintains version lineage for resources.&quot;},{&quot;details&quot;:&quot;Handles serialization or deserialization of resource configurations for persistence and transfer, enabling safe hot-swapping of resources at runtime.&quot;,&quot;name&quot;:&quot;Dynamic Manager&quot;,&quot;role&quot;:&quot;Handles serialization/deserialization for resource persistence.&quot;},{&quot;details&quot;:&quot;Records inputs, outputs, intermediate decisions, tool interactions for interpretability, debugging, and as training signals for dataset synthesis and retrospective improvement.&quot;,&quot;name&quot;:&quot;Tracer Module&quot;,&quot;role&quot;:&quot;Captures fine-grained execution traces.&quot;},{&quot;details&quot;:&quot;Prompts LLM to analyze failures, generate diagnostic hypotheses, translate hypotheses into modification proposals, apply updates via RSPL interfaces, re-execute, evaluate, and conditionally commit updates.&quot;,&quot;name&quot;:&quot;Reflection Optimizer&quot;,&quot;role&quot;:&quot;Default SEPL optimizer using natural-language reflection.&quot;},{&quot;details&quot;:&quot;Produces a structured `plan.md` artifact (workflow, subtasks, assignments to sub-agents) as a versioned RSPL resource, then broadcasts subtasks to sub-agents via the Agent Bus.&quot;,&quot;name&quot;:&quot;Orchestrator (in AGS)&quot;,&quot;role&quot;:&quot;Plans and coordinates tasks in the multi-agent system.&quot;},{&quot;details&quot;:&quot;Independently retrieve prompts and tool resources from the RSPL registry, execute tool calls, and write intermediate results and reasoning traces to shared memory.&quot;,&quot;name&quot;:&quot;Sub-agents (in AGS)&quot;,&quot;role&quot;:&quot;Execute subtasks and interact with the environment.&quot;}]},&quot;thesis&quot;:&quot;The Autogenesis Protocol (AGP) is a two-layer self-evolution protocol that decouples \&quot;what evolves\&quot; from \&quot;how evolution occurs\&quot; to provide a principled foundation for building modular, traceable, and safely improvable agentic systems, demonstrated by the Autogenesis System (AGS) which achieves significant performance improvements across diverse benchmarks.&quot;,&quot;title&quot;:&quot;Autogenesis: A Self-Evolving Agent Protocol&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2604.15034&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

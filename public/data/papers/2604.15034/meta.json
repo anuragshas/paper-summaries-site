@@ -1,0 +1,19 @@
+{
+  "paperId": "2604.15034",
+  "title": "Autogenesis: A Self-Evolving Agent Protocol",
+  "authors": "Wentao Zhang",
+  "publishedDate": "2026-04-01",
+  "tags": [
+    "Agent",
+    "Pretraining",
+    "Reasoning"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2604.15034",
+  "pagePath": "/paper-summaries-site/papers/2604.15034",
+  "summaryPath": "/paper-summaries-site/data/papers/2604.15034/summary.json",
+  "assets": {
+    "figureAssetCount": 2,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}
