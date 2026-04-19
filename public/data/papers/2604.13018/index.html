@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toward Autonomous Long-horizon Engineering for ML Research</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Toward Autonomous Long-horizon Engineering for ML Research</h1>
+      <p class="meta"><strong>Authors:</strong> Guoxin Chen, Jie Chen, Lei Chen, Jiale Zhao, Fanzhe Meng, Wayne Xin Zhao, Ruihua Song, Cheng Chen, Ji-Rong Wen and Kai Jia</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2604.13018" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2604.13018</a></p>
+      <p class="muted">Generated summary artifact for 2604.13018</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>AiScientist addresses the challenge of autonomous long-horizon ML research engineering by combining hierarchical orchestration with a permission-scoped File-as-Bus workspace, enabling agents to sustain coherent progress across complex, multi-stage iterative tasks through structured coordination and durable state continuity.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Long-horizon ML research engineering remains difficult for autonomous AI agents, as they must sustain coherent progress across task comprehension, environment setup, implementation, experimentation, and debugging over hours or days.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>AiScientist introduces a novel system design for autonomous long-horizon ML research engineering, combining hierarchical orchestration with artifact-mediated coordination via a &quot;thin control over thick state&quot; principle to ensure durable state continuity.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>AiScientist improves PaperBench average score by 10.54 points over the best matched baseline.</li><li>AiScientist achieves 81.82 Any Medal% on MLE-Bench Lite, exceeding all reported leaderboard results.</li><li>The File-as-Bus protocol is a key driver of performance, with its removal reducing PaperBench score by 6.41 points and MLE-Bench Lite Any Medal% by 31.82 points.</li><li>Hierarchical orchestration, alongside durable state continuity, is crucial for strong long-horizon performance.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>AiScientist achieves substantial gains on PaperBench (33.73 average score, +11.15 points over baseline) and MLE-Bench Lite (81.82% Any Medal%, +18.18% over baseline), narrowing the gap to human performance.</li><li>The system is more cost-effective than IterativeAgent, achieving higher scores at significantly lower costs per task.</li><li>Durable state continuity, mediated by the File-as-Bus protocol, is critical for long-horizon ML research engineering performance, particularly for later-round refinement.</li><li>Hierarchical orchestration, beyond simple agent interaction, plays a material role in improving performance for complex, multi-stage tasks.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Not specified</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 90,
+      &quot;xmin&quot;: 100,
+      &quot;ymax&quot;: 388,
+      &quot;xmax&quot;: 890
+    },
+    &quot;caption&quot;: &quot;Architecture of AiScientist, an artifact-mediated research lab. A Tier-0 Orchestrator keeps thin control through stage-level directives, concise summaries, and a workspace map, while Tier-1 specialists and optional Tier-2 subagents coordinate through a permission-scoped workspace that serves as the system of record. This File-as-Bus design enables progressive disclosure: agents start from the map, read task-relevant artifacts on demand, and write back durable analyses, code, and logs, preserving continuity across long-horizon research-engineering loops.&quot;,
+    &quot;figureNumber&quot;: 2,
+    &quot;pageIndex&quot;: 3
+  },
+  &quot;authors&quot;: &quot;Guoxin Chen, Jie Chen, Lei Chen, Jiale Zhao, Fanzhe Meng, Wayne Xin Zhao, Ruihua Song, Cheng Chen, Ji-Rong Wen and Kai Jia&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;AiScientist provides a robust framework for autonomous long-horizon ML research engineering by effectively combining hierarchical orchestration with artifact-mediated state continuity via its File-as-Bus protocol. The system demonstrates significant improvements on demanding benchmarks like PaperBench and MLE-Bench Lite, outperforming strong baselines and narrowing the gap to human performance. Its design principle of \&quot;thin control over thick state\&quot; offers a crucial insight into managing complex, multi-stage, iterative tasks by ensuring durable project state and structured coordination across specialized agents, which is highly valuable for advancing autonomous AI research.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;On PaperBench, one of the most demanding benchmarks for from-scratch paper reproduction, the best reported agent achieves only 21% of the replication rubric, compared with 41% achieved by top ML PhDs under a 48-hour budget.&quot;,
+    &quot;statement&quot;: &quot;Long-horizon ML research engineering remains difficult for autonomous AI agents, as they must sustain coherent progress across task comprehension, environment setup, implementation, experimentation, and debugging over hours or days.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Substantially accelerate the pace of scientific discovery.&quot;,
+      &quot;Improve reproducibility in research workflows.&quot;,
+      &quot;Broaden access to high-quality research workflows for AI development.&quot;,
+      &quot;Enable the creation of increasingly capable autonomous AI research systems.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;AiScientist improves PaperBench average score by 10.54 points over the best matched baseline.&quot;,
+    &quot;AiScientist achieves 81.82 Any Medal% on MLE-Bench Lite, exceeding all reported leaderboard results.&quot;,
+    &quot;The File-as-Bus protocol is a key driver of performance, with its removal reducing PaperBench score by 6.41 points and MLE-Bench Lite Any Medal% by 31.82 points.&quot;,
+    &quot;Hierarchical orchestration, alongside durable state continuity, is crucial for strong long-horizon performance.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;PaperBench (from-scratch replication of top-tier conference papers)&quot;,
+        &quot;MLE-Bench Lite (sustained experiment improvement on top-tier competition-style ML tasks)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Average Score (PaperBench)&quot;,
+        &quot;Any Medal% (MLE-Bench Lite)&quot;
+      ],
+      &quot;setting&quot;: &quot;Long-horizon ML research engineering&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 579,
+          &quot;xmin&quot;: 125,
+          &quot;ymax&quot;: 837,
+          &quot;xmax&quot;: 846
+        },
+        &quot;caption&quot;: &quot;AiScientist autonomously improving performance on a competition-style ML task over 23 hours. On MLE-Bench Lite&#39;s Detecting Insults task, it conducted 74 experiment cycles without human intervention, raising validation AUC from 0.903 to 0.982 through 18 best-so-far updates.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 0
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 67,
+          &quot;xmin&quot;: 125,
+          &quot;ymax&quot;: 337,
+          &quot;xmax&quot;: 875
+        },
+        &quot;caption&quot;: &quot;Mechanism analysis of AiScientist under GLM-5. Left: AiScientist outperforms both a simpler agent baseline and the variant without File-as-Bus. Right: File-as-Bus matters more for later-round refinement than for establishing a minimally competitive starting point.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 8
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;IterAgent (Gemini-3-Flash): 20.60&quot;,
+            &quot;benchmark&quot;: &quot;PaperBench&quot;,
+            &quot;delta&quot;: &quot;+9.92&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Average Score&quot;,
+            &quot;thisPaper&quot;: &quot;AiScientist (Gemini-3-Flash): 30.52&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;IterAgent (GLM-5): 22.37&quot;,
+            &quot;benchmark&quot;: &quot;PaperBench&quot;,
+            &quot;delta&quot;: &quot;+11.15&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Average Score&quot;,
+            &quot;thisPaper&quot;: &quot;AiScientist (GLM-5): 33.73&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;PaperBench Full Evaluation (Average Score)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;LoongFlow (Gemini-3-Flash): 77.27%&quot;,
+            &quot;benchmark&quot;: &quot;MLE-Bench Lite (Controlled Evaluation)&quot;,
+            &quot;delta&quot;: &quot;+4.55%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Any Medal%&quot;,
+            &quot;thisPaper&quot;: &quot;AiScientist (Gemini-3-Flash): 81.82%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;ML-Master 2.0 (GLM-5): 63.64%&quot;,
+            &quot;benchmark&quot;: &quot;MLE-Bench Lite (Controlled Evaluation)&quot;,
+            &quot;delta&quot;: &quot;+18.18%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Any Medal%&quot;,
+            &quot;thisPaper&quot;: &quot;AiScientist (GLM-5): 81.82%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;MLE-Bench Lite Controlled Evaluation (Any Medal%)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;AiScientist (Full): 30.52 points&quot;,
+            &quot;benchmark&quot;: &quot;PaperBench&quot;,
+            &quot;delta&quot;: &quot;-6.41 points&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Average Score&quot;,
+            &quot;thisPaper&quot;: &quot;AiScientist w/o File-as-Bus: 24.11 points&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;AiScientist (Full): 81.82%&quot;,
+            &quot;benchmark&quot;: &quot;MLE-Bench Lite&quot;,
+            &quot;delta&quot;: &quot;-31.82%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Any Medal%&quot;,
+            &quot;thisPaper&quot;: &quot;AiScientist w/o File-as-Bus: 50.00%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Ablation Study: File-as-Bus Protocol&quot;
+      }
+    ],
+    &quot;mainTakeaways&quot;: [
+      &quot;AiScientist achieves substantial gains on PaperBench (33.73 average score, +11.15 points over baseline) and MLE-Bench Lite (81.82% Any Medal%, +18.18% over baseline), narrowing the gap to human performance.&quot;,
+      &quot;The system is more cost-effective than IterativeAgent, achieving higher scores at significantly lower costs per task.&quot;,
+      &quot;Durable state continuity, mediated by the File-as-Bus protocol, is critical for long-horizon ML research engineering performance, particularly for later-round refinement.&quot;,
+      &quot;Hierarchical orchestration, beyond simple agent interaction, plays a material role in improving performance for complex, multi-stage tasks.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Gaoling School of Artificial Intelligence, Renmin University of China, Independent Researcher, AweAI Team&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;AiScientist combines hierarchical orchestration, where a top-level Orchestrator manages stage-level control through concise summaries and a workspace map, delegating to specialized agents.&quot;,
+      &quot;It uses a permission-scoped File-as-Bus workspace for artifact-mediated coordination, allowing agents to coordinate through durable artifacts (analyses, plans, code, experimental evidence) rather than lossy conversational handoffs.&quot;,
+      &quot;This design enables \&quot;thin control over thick state,\&quot; keeping top-level control lightweight while maintaining a thick, durable, and externalized project state for continuity across iterations.&quot;
+    ],
+    &quot;main&quot;: &quot;AiScientist introduces a novel system design for autonomous long-horizon ML research engineering, combining hierarchical orchestration with artifact-mediated coordination via a \&quot;thin control over thick state\&quot; principle to ensure durable state continuity.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A coordination design where a top-level Orchestrator maintains stage-level control using concise summaries, while specialized agents repeatedly re-ground on durable artifacts in a shared workspace, rather than relying on transient conversational context.&quot;,
+        &quot;term&quot;: &quot;Thin control over thick state&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A protocol for artifact-mediated coordination where the shared workspace itself, populated with file-valued intermediate states (analyses, scripts, code, logs, results), serves as the substrate for preserving and propagating project state across stages and iterations.&quot;,
+        &quot;term&quot;: &quot;File-as-Bus protocol&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A system architecture involving a top-level Orchestrator delegating work to specialized Tier-1 agents (Paper Comprehension, Prioritization, Implementation, Experimentation Specialists), which may further spawn Tier-2 subagents for focused subtasks.&quot;,
+        &quot;term&quot;: &quot;Hierarchical orchestration&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs) and their capabilities in code generation and reasoning.&quot;,
+      &quot;Multi-agent systems and their coordination mechanisms.&quot;,
+      &quot;Machine learning engineering workflows, including experimentation, debugging, and iterative refinement.&quot;,
+      &quot;Familiarity with containerization technologies like Docker for environment setup.&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Multi-agent systems&quot;,
+    &quot;Autonomous scientific discovery&quot;,
+    &quot;Machine learning research engineering&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Agent&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike prior multi-agent systems that primarily rely on conversational handoffs for context transfer, AiScientist externalizes project state into durable artifacts within a permission-scoped File-as-Bus workspace, ensuring continuity and re-grounding.&quot;,
+      &quot;AiScientist&#39;s \&quot;thin control over thick state\&quot; contrasts with approaches that either overload the control interface with full project history or lose fidelity of state across agent interactions.&quot;,
+      &quot;The system enforces permission-scoped coordination, giving specialists write access only to their relevant regions, reducing cross-agent interference and improving traceability, which is a key differentiator from less structured multi-agent setups.&quot;,
+      &quot;The hierarchical orchestration, with Agent-as-Tool delegation, provides selective rather than mandatory invocation of specialists, allowing the Orchestrator to handle lightweight operations directly and only delegate when necessary, optimizing coordination costs.&quot;
+    ],
+    &quot;limitations&quot;: [],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Workspace Map Function&quot;,
+        &quot;value&quot;: &quot;$m_t = M(W_t)$ where $m_t$ is a lightweight textual index of major artifact regions at time $t$, and $W_t$ is the full workspace state.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Orchestrator Action Selection&quot;,
+        &quot;value&quot;: &quot;$a_t = \\pi_0(c_t, m_t, G; W_t), a_t \\in T_0 \\cup A_1$ where $a_t$ is the action selected by Orchestrator $\\pi_0$ based on control context $c_t$, workspace map $m_t$, global goal $G$, and full workspace $W_t$. $T_0$ is the Orchestrator&#39;s native tool set, and $A_1 = \\{ \\pi_j \\}^K_{j=1} $ is the set of Tier-1 specialists.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Specialist Execution and State Update&quot;,
+        &quot;value&quot;: &quot;$(s_t, \\Delta W_t) = \\pi_j(d_t, m_t; W_t), c_{t+1} = c_t \\oplus s_t, W_{t+1} = U(W_t, \\Delta W_t)$ where specialist $\\pi_j$ executes directive $d_t$ using $m_t$ and $W_t$, returning summary $s_t$ and workspace updates $\\Delta W_t$. The control context $c_{t+1}$ is updated with $s_t$, and the workspace $W_{t+1}$ is updated with $\\Delta W_t$.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;The process starts with a Tier-0 Orchestrator maintaining thin control through stage-level directives and a workspace map.&quot;,
+      &quot;The Orchestrator delegates higher-fidelity work to specialized Tier-1 agents (Paper Comprehension, Prioritization, Implementation, Experimentation Specialists) and optional Tier-2 subagents using an Agent-as-Tool mechanism.&quot;,
+      &quot;Agents coordinate through a permission-scoped File-as-Bus workspace, which acts as the system of record by storing durable artifacts (analyses, plans, code, logs, and experiment records).&quot;,
+      &quot;This artifact-mediated coordination ensures progressive disclosure of the workspace state, allowing agents to read task-relevant artifacts on demand and write back durable outputs.&quot;,
+      &quot;The system operates in an evidence-driven research-engineering loop, where experimental feedback (failure traces, partial successes, metrics) informs subsequent implementation and refinement rounds.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Task Goal&quot;,
+        &quot;value&quot;: &quot;Given a research paper ($P$), a bare Docker environment ($E$) with GPU access, and a time budget ($T$), the agent must produce a runnable submission that reproduces the paper&#39;s core empirical contributions from scratch.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Key Challenges&quot;,
+        &quot;value&quot;: &quot;Underspecification of research specifications, substantial system setup burden, delayed and often confounded experimental feedback, and the critical need to maintain state continuity across heterogeneous stages and repeated iterations over long horizons.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The paper implies strong reproducibility as it focuses on autonomous agents producing runnable submissions that reproduce paper&#39;s core empirical contributions. The evaluation uses a standard 24-hour budget and a single H20 GPU per task.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;The top-level component that maintains stage-level control through concise summaries and a workspace map, delegating tasks to specialized agents. Operates on the principle of thin control.&quot;,
+        &quot;name&quot;: &quot;Orchestrator (Tier-0)&quot;,
+        &quot;role&quot;: &quot;Central Control and Delegation&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Transforms the research paper into detailed implementation specifics, target metrics, and uncertainty notes. Can coordinate multiple subagents for parallel analysis.&quot;,
+        &quot;name&quot;: &quot;Paper Comprehension Specialist (Tier-1)&quot;,
+        &quot;role&quot;: &quot;Research Analysis and Interpretation&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Converts paper understanding into an ordered execution contract, identifying dependencies, ranking milestones, and writing the plan to `prioritized_tasks.md`.&quot;,
+        &quot;name&quot;: &quot;Prioritization Specialist (Tier-1)&quot;,
+        &quot;role&quot;: &quot;Task Planning and Sequencing&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Turns plans and failure reports into code. Responsible for building or patching the reproduction repository and recording major code-side decisions in `impl_log.md`.&quot;,
+        &quot;name&quot;: &quot;Implementation Specialist (Tier-1)&quot;,
+        &quot;role&quot;: &quot;Code Development and Environment Setup&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Executes the end-to-end pipeline, compares produced metrics against targets, and records results and unresolved issues in `exp_log.md`.&quot;,
+        &quot;name&quot;: &quot;Experimentation Specialist (Tier-1)&quot;,
+        &quot;role&quot;: &quot;Experiment Execution and Evaluation&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Creates lightweight helpers for auxiliary subtasks like exploration, planning, or one-off operations that do not warrant a dedicated specialist workflow.&quot;,
+        &quot;name&quot;: &quot;Generic Helper Interface (Tier-1)&quot;,
+        &quot;role&quot;: &quot;Auxiliary Task Support&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Tightly scoped leaf workers created within a specialist&#39;s local horizon for focused subtasks such as structure extraction, algorithm analysis, or resource download.&quot;,
+        &quot;name&quot;: &quot;Tier-2 Subagents&quot;,
+        &quot;role&quot;: &quot;Focused Sub-task Execution&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;AiScientist addresses the challenge of autonomous long-horizon ML research engineering by combining hierarchical orchestration with a permission-scoped File-as-Bus workspace, enabling agents to sustain coherent progress across complex, multi-stage iterative tasks through structured coordination and durable state continuity.&quot;,
+  &quot;title&quot;: &quot;Toward Autonomous Long-horizon Engineering for ML Research&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2604.13018&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2604.13018&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2604.13018&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:90,&quot;xmin&quot;:100,&quot;ymax&quot;:388,&quot;xmax&quot;:890},&quot;caption&quot;:&quot;Architecture of AiScientist, an artifact-mediated research lab. A Tier-0 Orchestrator keeps thin control through stage-level directives, concise summaries, and a workspace map, while Tier-1 specialists and optional Tier-2 subagents coordinate through a permission-scoped workspace that serves as the system of record. This File-as-Bus design enables progressive disclosure: agents start from the map, read task-relevant artifacts on demand, and write back durable analyses, code, and logs, preserving continuity across long-horizon research-engineering loops.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:3},&quot;authors&quot;:&quot;Guoxin Chen, Jie Chen, Lei Chen, Jiale Zhao, Fanzhe Meng, Wayne Xin Zhao, Ruihua Song, Cheng Chen, Ji-Rong Wen and Kai Jia&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;AiScientist provides a robust framework for autonomous long-horizon ML research engineering by effectively combining hierarchical orchestration with artifact-mediated state continuity via its File-as-Bus protocol. The system demonstrates significant improvements on demanding benchmarks like PaperBench and MLE-Bench Lite, outperforming strong baselines and narrowing the gap to human performance. Its design principle of \&quot;thin control over thick state\&quot; offers a crucial insight into managing complex, multi-stage, iterative tasks by ensuring durable project state and structured coordination across specialized agents, which is highly valuable for advancing autonomous AI research.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;On PaperBench, one of the most demanding benchmarks for from-scratch paper reproduction, the best reported agent achieves only 21% of the replication rubric, compared with 41% achieved by top ML PhDs under a 48-hour budget.&quot;,&quot;statement&quot;:&quot;Long-horizon ML research engineering remains difficult for autonomous AI agents, as they must sustain coherent progress across task comprehension, environment setup, implementation, experimentation, and debugging over hours or days.&quot;,&quot;whyItMatters&quot;:[&quot;Substantially accelerate the pace of scientific discovery.&quot;,&quot;Improve reproducibility in research workflows.&quot;,&quot;Broaden access to high-quality research workflows for AI development.&quot;,&quot;Enable the creation of increasingly capable autonomous AI research systems.&quot;]},&quot;evaluationHighlights&quot;:[&quot;AiScientist improves PaperBench average score by 10.54 points over the best matched baseline.&quot;,&quot;AiScientist achieves 81.82 Any Medal% on MLE-Bench Lite, exceeding all reported leaderboard results.&quot;,&quot;The File-as-Bus protocol is a key driver of performance, with its removal reducing PaperBench score by 6.41 points and MLE-Bench Lite Any Medal% by 31.82 points.&quot;,&quot;Hierarchical orchestration, alongside durable state continuity, is crucial for strong long-horizon performance.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;PaperBench (from-scratch replication of top-tier conference papers)&quot;,&quot;MLE-Bench Lite (sustained experiment improvement on top-tier competition-style ML tasks)&quot;],&quot;metrics&quot;:[&quot;Average Score (PaperBench)&quot;,&quot;Any Medal% (MLE-Bench Lite)&quot;],&quot;setting&quot;:&quot;Long-horizon ML research engineering&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:579,&quot;xmin&quot;:125,&quot;ymax&quot;:837,&quot;xmax&quot;:846},&quot;caption&quot;:&quot;AiScientist autonomously improving performance on a competition-style ML task over 23 hours. On MLE-Bench Lite&#39;s Detecting Insults task, it conducted 74 experiment cycles without human intervention, raising validation AUC from 0.903 to 0.982 through 18 best-so-far updates.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:0},{&quot;boundingBox&quot;:{&quot;ymin&quot;:67,&quot;xmin&quot;:125,&quot;ymax&quot;:337,&quot;xmax&quot;:875},&quot;caption&quot;:&quot;Mechanism analysis of AiScientist under GLM-5. Left: AiScientist outperforms both a simpler agent baseline and the variant without File-as-Bus. Right: File-as-Bus matters more for later-round refinement than for establishing a minimally competitive starting point.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:8}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;IterAgent (Gemini-3-Flash): 20.60&quot;,&quot;benchmark&quot;:&quot;PaperBench&quot;,&quot;delta&quot;:&quot;+9.92&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Average Score&quot;,&quot;thisPaper&quot;:&quot;AiScientist (Gemini-3-Flash): 30.52&quot;},{&quot;baseline&quot;:&quot;IterAgent (GLM-5): 22.37&quot;,&quot;benchmark&quot;:&quot;PaperBench&quot;,&quot;delta&quot;:&quot;+11.15&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Average Score&quot;,&quot;thisPaper&quot;:&quot;AiScientist (GLM-5): 33.73&quot;}],&quot;title&quot;:&quot;PaperBench Full Evaluation (Average Score)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;LoongFlow (Gemini-3-Flash): 77.27%&quot;,&quot;benchmark&quot;:&quot;MLE-Bench Lite (Controlled Evaluation)&quot;,&quot;delta&quot;:&quot;+4.55%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Any Medal%&quot;,&quot;thisPaper&quot;:&quot;AiScientist (Gemini-3-Flash): 81.82%&quot;},{&quot;baseline&quot;:&quot;ML-Master 2.0 (GLM-5): 63.64%&quot;,&quot;benchmark&quot;:&quot;MLE-Bench Lite (Controlled Evaluation)&quot;,&quot;delta&quot;:&quot;+18.18%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Any Medal%&quot;,&quot;thisPaper&quot;:&quot;AiScientist (GLM-5): 81.82%&quot;}],&quot;title&quot;:&quot;MLE-Bench Lite Controlled Evaluation (Any Medal%)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;AiScientist (Full): 30.52 points&quot;,&quot;benchmark&quot;:&quot;PaperBench&quot;,&quot;delta&quot;:&quot;-6.41 points&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Average Score&quot;,&quot;thisPaper&quot;:&quot;AiScientist w/o File-as-Bus: 24.11 points&quot;},{&quot;baseline&quot;:&quot;AiScientist (Full): 81.82%&quot;,&quot;benchmark&quot;:&quot;MLE-Bench Lite&quot;,&quot;delta&quot;:&quot;-31.82%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Any Medal%&quot;,&quot;thisPaper&quot;:&quot;AiScientist w/o File-as-Bus: 50.00%&quot;}],&quot;title&quot;:&quot;Ablation Study: File-as-Bus Protocol&quot;}],&quot;mainTakeaways&quot;:[&quot;AiScientist achieves substantial gains on PaperBench (33.73 average score, +11.15 points over baseline) and MLE-Bench Lite (81.82% Any Medal%, +18.18% over baseline), narrowing the gap to human performance.&quot;,&quot;The system is more cost-effective than IterativeAgent, achieving higher scores at significantly lower costs per task.&quot;,&quot;Durable state continuity, mediated by the File-as-Bus protocol, is critical for long-horizon ML research engineering performance, particularly for later-round refinement.&quot;,&quot;Hierarchical orchestration, beyond simple agent interaction, plays a material role in improving performance for complex, multi-stage tasks.&quot;]},&quot;institutions&quot;:&quot;Gaoling School of Artificial Intelligence, Renmin University of China, Independent Researcher, AweAI Team&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;AiScientist combines hierarchical orchestration, where a top-level Orchestrator manages stage-level control through concise summaries and a workspace map, delegating to specialized agents.&quot;,&quot;It uses a permission-scoped File-as-Bus workspace for artifact-mediated coordination, allowing agents to coordinate through durable artifacts (analyses, plans, code, experimental evidence) rather than lossy conversational handoffs.&quot;,&quot;This design enables \&quot;thin control over thick state,\&quot; keeping top-level control lightweight while maintaining a thick, durable, and externalized project state for continuity across iterations.&quot;],&quot;main&quot;:&quot;AiScientist introduces a novel system design for autonomous long-horizon ML research engineering, combining hierarchical orchestration with artifact-mediated coordination via a \&quot;thin control over thick state\&quot; principle to ensure durable state continuity.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A coordination design where a top-level Orchestrator maintains stage-level control using concise summaries, while specialized agents repeatedly re-ground on durable artifacts in a shared workspace, rather than relying on transient conversational context.&quot;,&quot;term&quot;:&quot;Thin control over thick state&quot;},{&quot;definition&quot;:&quot;A protocol for artifact-mediated coordination where the shared workspace itself, populated with file-valued intermediate states (analyses, scripts, code, logs, results), serves as the substrate for preserving and propagating project state across stages and iterations.&quot;,&quot;term&quot;:&quot;File-as-Bus protocol&quot;},{&quot;definition&quot;:&quot;A system architecture involving a top-level Orchestrator delegating work to specialized Tier-1 agents (Paper Comprehension, Prioritization, Implementation, Experimentation Specialists), which may further spawn Tier-2 subagents for focused subtasks.&quot;,&quot;term&quot;:&quot;Hierarchical orchestration&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs) and their capabilities in code generation and reasoning.&quot;,&quot;Multi-agent systems and their coordination mechanisms.&quot;,&quot;Machine learning engineering workflows, including experimentation, debugging, and iterative refinement.&quot;,&quot;Familiarity with containerization technologies like Docker for environment setup.&quot;]},&quot;subTopics&quot;:[&quot;Multi-agent systems&quot;,&quot;Autonomous scientific discovery&quot;,&quot;Machine learning research engineering&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Agent&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike prior multi-agent systems that primarily rely on conversational handoffs for context transfer, AiScientist externalizes project state into durable artifacts within a permission-scoped File-as-Bus workspace, ensuring continuity and re-grounding.&quot;,&quot;AiScientist&#39;s \&quot;thin control over thick state\&quot; contrasts with approaches that either overload the control interface with full project history or lose fidelity of state across agent interactions.&quot;,&quot;The system enforces permission-scoped coordination, giving specialists write access only to their relevant regions, reducing cross-agent interference and improving traceability, which is a key differentiator from less structured multi-agent setups.&quot;,&quot;The hierarchical orchestration, with Agent-as-Tool delegation, provides selective rather than mandatory invocation of specialists, allowing the Orchestrator to handle lightweight operations directly and only delegate when necessary, optimizing coordination costs.&quot;],&quot;limitations&quot;:[],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Workspace Map Function&quot;,&quot;value&quot;:&quot;$m_t = M(W_t)$ where $m_t$ is a lightweight textual index of major artifact regions at time $t$, and $W_t$ is the full workspace state.&quot;},{&quot;label&quot;:&quot;Orchestrator Action Selection&quot;,&quot;value&quot;:&quot;$a_t = \\pi_0(c_t, m_t, G; W_t), a_t \\in T_0 \\cup A_1$ where $a_t$ is the action selected by Orchestrator $\\pi_0$ based on control context $c_t$, workspace map $m_t$, global goal $G$, and full workspace $W_t$. $T_0$ is the Orchestrator&#39;s native tool set, and $A_1 = \\{ \\pi_j \\}^K_{j=1} $ is the set of Tier-1 specialists.&quot;},{&quot;label&quot;:&quot;Specialist Execution and State Update&quot;,&quot;value&quot;:&quot;$(s_t, \\Delta W_t) = \\pi_j(d_t, m_t; W_t), c_{t+1} = c_t \\oplus s_t, W_{t+1} = U(W_t, \\Delta W_t)$ where specialist $\\pi_j$ executes directive $d_t$ using $m_t$ and $W_t$, returning summary $s_t$ and workspace updates $\\Delta W_t$. The control context $c_{t+1}$ is updated with $s_t$, and the workspace $W_{t+1}$ is updated with $\\Delta W_t$.&quot;}],&quot;pipelineFlow&quot;:[&quot;The process starts with a Tier-0 Orchestrator maintaining thin control through stage-level directives and a workspace map.&quot;,&quot;The Orchestrator delegates higher-fidelity work to specialized Tier-1 agents (Paper Comprehension, Prioritization, Implementation, Experimentation Specialists) and optional Tier-2 subagents using an Agent-as-Tool mechanism.&quot;,&quot;Agents coordinate through a permission-scoped File-as-Bus workspace, which acts as the system of record by storing durable artifacts (analyses, plans, code, logs, and experiment records).&quot;,&quot;This artifact-mediated coordination ensures progressive disclosure of the workspace state, allowing agents to read task-relevant artifacts on demand and write back durable outputs.&quot;,&quot;The system operates in an evidence-driven research-engineering loop, where experimental feedback (failure traces, partial successes, metrics) informs subsequent implementation and refinement rounds.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Task Goal&quot;,&quot;value&quot;:&quot;Given a research paper ($P$), a bare Docker environment ($E$) with GPU access, and a time budget ($T$), the agent must produce a runnable submission that reproduces the paper&#39;s core empirical contributions from scratch.&quot;},{&quot;label&quot;:&quot;Key Challenges&quot;,&quot;value&quot;:&quot;Underspecification of research specifications, substantial system setup burden, delayed and often confounded experimental feedback, and the critical need to maintain state continuity across heterogeneous stages and repeated iterations over long horizons.&quot;}],&quot;reproducibility&quot;:&quot;The paper implies strong reproducibility as it focuses on autonomous agents producing runnable submissions that reproduce paper&#39;s core empirical contributions. The evaluation uses a standard 24-hour budget and a single H20 GPU per task.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;The top-level component that maintains stage-level control through concise summaries and a workspace map, delegating tasks to specialized agents. Operates on the principle of thin control.&quot;,&quot;name&quot;:&quot;Orchestrator (Tier-0)&quot;,&quot;role&quot;:&quot;Central Control and Delegation&quot;},{&quot;details&quot;:&quot;Transforms the research paper into detailed implementation specifics, target metrics, and uncertainty notes. Can coordinate multiple subagents for parallel analysis.&quot;,&quot;name&quot;:&quot;Paper Comprehension Specialist (Tier-1)&quot;,&quot;role&quot;:&quot;Research Analysis and Interpretation&quot;},{&quot;details&quot;:&quot;Converts paper understanding into an ordered execution contract, identifying dependencies, ranking milestones, and writing the plan to `prioritized_tasks.md`.&quot;,&quot;name&quot;:&quot;Prioritization Specialist (Tier-1)&quot;,&quot;role&quot;:&quot;Task Planning and Sequencing&quot;},{&quot;details&quot;:&quot;Turns plans and failure reports into code. Responsible for building or patching the reproduction repository and recording major code-side decisions in `impl_log.md`.&quot;,&quot;name&quot;:&quot;Implementation Specialist (Tier-1)&quot;,&quot;role&quot;:&quot;Code Development and Environment Setup&quot;},{&quot;details&quot;:&quot;Executes the end-to-end pipeline, compares produced metrics against targets, and records results and unresolved issues in `exp_log.md`.&quot;,&quot;name&quot;:&quot;Experimentation Specialist (Tier-1)&quot;,&quot;role&quot;:&quot;Experiment Execution and Evaluation&quot;},{&quot;details&quot;:&quot;Creates lightweight helpers for auxiliary subtasks like exploration, planning, or one-off operations that do not warrant a dedicated specialist workflow.&quot;,&quot;name&quot;:&quot;Generic Helper Interface (Tier-1)&quot;,&quot;role&quot;:&quot;Auxiliary Task Support&quot;},{&quot;details&quot;:&quot;Tightly scoped leaf workers created within a specialist&#39;s local horizon for focused subtasks such as structure extraction, algorithm analysis, or resource download.&quot;,&quot;name&quot;:&quot;Tier-2 Subagents&quot;,&quot;role&quot;:&quot;Focused Sub-task Execution&quot;}]},&quot;thesis&quot;:&quot;AiScientist addresses the challenge of autonomous long-horizon ML research engineering by combining hierarchical orchestration with a permission-scoped File-as-Bus workspace, enabling agents to sustain coherent progress across complex, multi-stage iterative tasks through structured coordination and durable state continuity.&quot;,&quot;title&quot;:&quot;Toward Autonomous Long-horizon Engineering for ML Research&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2604.13018&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>
