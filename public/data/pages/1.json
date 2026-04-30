@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2604.24594",
+      "title": "Skill Retrieval Augmentation for Agentic AI",
+      "authors": "Weihang Su, Jianming Long, Qingyao Ai, Yichen Tang, Changyue Wang, Yiteng Tu, Yiqun Liu",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "Agent",
+        "RAG",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2604.15034",
       "title": "Autogenesis: A Self-Evolving Agent Protocol",
       "authors": "Wentao Zhang",
@@ -98,17 +109,6 @@
         "Agent",
         "Reasoning",
         "QA"
-      ]
-    },
-    {
-      "paperId": "2603.25551",
-      "title": "Voxtral TTS",
-      "authors": "Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon, Jaeyoung Kim, John Harvill, Khyathi Raghavi Chandu, Lorenzo Signoretti, Margaret Jennings, Patrick von Platen, Pavankumar Reddy Muddireddy, Rohin Arora, Sanchit Gandhi, Samuel Humeau, Soham Ghosh, Srijan Mishra, Van Phung",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Speech",
-        "Pretraining",
-        "RL"
       ]
     }
   ]

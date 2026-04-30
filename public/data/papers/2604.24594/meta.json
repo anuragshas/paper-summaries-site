@@ -1,0 +1,19 @@
+{
+  "paperId": "2604.24594",
+  "title": "Skill Retrieval Augmentation for Agentic AI",
+  "authors": "Weihang Su, Jianming Long, Qingyao Ai, Yichen Tang, Changyue Wang, Yiteng Tu, Yiqun Liu",
+  "publishedDate": "2026-04-01",
+  "tags": [
+    "Agent",
+    "RAG",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2604.24594",
+  "pagePath": "/paper-summaries-site/papers/2604.24594",
+  "summaryPath": "/paper-summaries-site/data/papers/2604.24594/summary.json",
+  "assets": {
+    "figureAssetCount": 2,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

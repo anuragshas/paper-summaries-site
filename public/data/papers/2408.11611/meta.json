@@ -1,0 +1,19 @@
+{
+  "paperId": "2408.11611",
+  "title": "DTN: Deep Multiple Task-specific Feature Interactions Network for Multi-Task Recommendation",
+  "authors": "Yaowen Bi, Yuteng Lian, Jie Cui, Jun Liu, Peijian Wang, Guanghui Li, Xuejun Chen, Jinglin Zhao, Hao Wen, Jing Zhang, Zhaoqi Zhang, Wenzhuo Song, Yang Sun, Weiwei Zhang, Mingchen Cai, Jian Dong, Guanxing Zhang",
+  "publishedDate": "2024-08-01",
+  "tags": [
+    "Rec",
+    "Reasoning",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/pdf/2408.11611",
+  "pagePath": "/paper-summaries-site/papers/2408.11611",
+  "summaryPath": "/paper-summaries-site/data/papers/2408.11611/summary.json",
+  "assets": {
+    "figureAssetCount": 4,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

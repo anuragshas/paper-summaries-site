@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skill Retrieval Augmentation for Agentic AI</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Skill Retrieval Augmentation for Agentic AI</h1>
+      <p class="meta"><strong>Authors:</strong> Weihang Su, Jianming Long, Qingyao Ai, Yichen Tang, Changyue Wang, Yiteng Tu, Yiqun Liu</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2604.24594" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2604.24594</a></p>
+      <p class="muted">Generated summary artifact for 2604.24594</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>The paper proposes Skill Retrieval Augmentation (SRA) as a new paradigm for augmenting agentic LLMs with external capabilities at scale, moving beyond fixed in-context skill injection. It argues that effective SRA requires addressing not only skill retrieval but also robust skill incorporation and application, establishing a research agenda for scalable capability augmentation.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Existing agent systems using Large Language Models (LLMs) struggle to scale external skill usage because explicitly enumerating available skills in the context window consumes context budgets rapidly and degrades reasoning and selection accuracy as skill corpora grow.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>Formulation of Skill Retrieval Augmentation (SRA) as a new paradigm for scalable capability augmentation in agentic AI and introduction of SRA-Bench, the first benchmark for decomposed evaluation of the SRA pipeline.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>SRA-Bench, a new large-scale benchmark for Skill Retrieval Augmentation, includes 5,400 test instances and 26,262 skills, supporting decomposed evaluation across skill retrieval, incorporation, and application.</li><li>Experiments show that external skills significantly improve agent performance over skill-free baselines, with Oracle Skill (perfect skill access) consistently outperforming LLM Direct by large margins (e.g., +16.6% average for Llama-3.3-70B).</li><li>LLM Selection consistently outperforms other practical SRA methods (Full-Skill Injection, Progressive Disclosure) in end-task performance, demonstrating its effectiveness and stability in utilizing retrieved skills.</li><li>LLM-based reranking significantly boosts skill retrieval quality (e.g., +61.9% R@1 on MedCalc-Bench for Qwen3-32B over BM25) and subsequently improves end-task performance.</li><li>Findings highlight a critical bottleneck in skill incorporation: current LLMs are often not relevance-aware (loading skills even without gold skills) or need-aware (loading skills indiscriminately regardless of native competence), severely limiting scalable skill augmentation.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>External skills can substantially improve agent performance when correctly accessed and used, validating the SRA paradigm&#39;s promise.</li><li>Practical retrieval-based SRA methods can yield meaningful gains, but these are uneven and remain substantially below the Oracle Skill upper bound, indicating a need for robust practical inference settings.</li><li>The effectiveness of SRA critically depends on how retrieved skills are exposed and utilized, with LLM Selection generally outperforming Full-Skill Injection and Progressive Disclosure in terms of effectiveness and stability.</li><li>LLM-based reranking provides the strongest overall retrieval performance, indicating that skill retrieval involves more than just topical similarity, but also recognizing actionable capabilities.</li><li>Retrieval quality is a necessary but insufficient condition for strong SRA performance; improvements are mediated by downstream skill incorporation and execution.</li><li>Current LLMs lack reliable relevance-awareness and need-awareness in skill loading, often loading skills indiscriminately or regardless of native capability gaps, leading to skill-loading hallucination.</li><li>Frontier models (GLM-5.1, GPT-5.4) show stronger relevance-awareness than open-source models, but still fall short of ideal behavior, suggesting a fundamental bottleneck in controlled skill utilization.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Current LLM agents tend to load skills at similar rates regardless of whether a gold skill is retrieved or the task requires external capabilities, indicating a fundamental absence of need-aware skill invocation.</li><li>Scalable skill augmentation is bottlenecked not only by retrieval quality but also by the base model&#39;s ability to determine which skill to load and when external loading is actually needed.</li><li>SR-Agents are highly brittle to retrieval noise; performance degrades sharply as distractors accumulate, especially under Full Skill Injection, suggesting poor robustness.</li><li>Most current LLMs are not reliably relevance-aware when incorporating skills, often loading skills at substantial rates even when no gold skill is present (skill-loading hallucination).</li><li>Current LLMs generally lack need-awareness, showing similar skill-loading rates for tasks they can solve natively and tasks that exceed their native capabilities.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 93,
+      &quot;xmin&quot;: 153,
+      &quot;ymax&quot;: 279,
+      &quot;xmax&quot;: 825
+    },
+    &quot;caption&quot;: &quot;An illustration of the Skill Retrieval Augmentation (SRA) paradigm. The agent retrieves candidate skills from a large external skill corpus, selectively incorporates useful skills into context, and applies them for downstream reasoning and acting. Black arrows denote the standard SRA workflow, while blue arrows represent iterative skill retrieval during reasoning and acting.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 2
+  },
+  &quot;authors&quot;: &quot;Weihang Su, Jianming Long, Qingyao Ai, Yichen Tang, Changyue Wang, Yiteng Tu, Yiqun Liu&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;This paper introduces Skill Retrieval Augmentation (SRA) as a distinct and crucial research paradigm for agentic AI, moving beyond traditional RAG and tool use by focusing on scalable, dynamic skill access and utilization. The creation of SRA-Bench is a significant contribution, providing a structured benchmark for decomposed evaluation across the entire SRA pipeline. The systematic empirical analysis identifies key bottlenecks in skill incorporation (relevance- and need-awareness) that were previously underappreciated, establishing a clear research agenda. While the gains are not earth-shattering and highlight current model limitations, the formulation of the problem and the diagnostic benchmark are highly valuable and will likely influence future research in agentic LLMs.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Platforms like SkillsMP host over one million distinct skills, making it impractical to expose all candidate skills in the LLM&#39;s context window due to architectural limits and performance degradation, which current in-context skill injection methods cannot handle at scale.&quot;,
+    &quot;statement&quot;: &quot;Existing agent systems using Large Language Models (LLMs) struggle to scale external skill usage because explicitly enumerating available skills in the context window consumes context budgets rapidly and degrades reasoning and selection accuracy as skill corpora grow.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;LLMs are increasingly relied upon as agentic problem solvers, requiring external, reusable skills to handle tasks beyond their native parametric capabilities.&quot;,
+      &quot;Conventional methods of in-context skill injection fail to scale, leading to a bottleneck in effectively extending agent capabilities.&quot;,
+      &quot;Scalable skill augmentation is crucial for enabling agents to solve broader and more complex, open-ended tasks.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;SRA-Bench, a new large-scale benchmark for Skill Retrieval Augmentation, includes 5,400 test instances and 26,262 skills, supporting decomposed evaluation across skill retrieval, incorporation, and application.&quot;,
+    &quot;Experiments show that external skills significantly improve agent performance over skill-free baselines, with Oracle Skill (perfect skill access) consistently outperforming LLM Direct by large margins (e.g., +16.6% average for Llama-3.3-70B).&quot;,
+    &quot;LLM Selection consistently outperforms other practical SRA methods (Full-Skill Injection, Progressive Disclosure) in end-task performance, demonstrating its effectiveness and stability in utilizing retrieved skills.&quot;,
+    &quot;LLM-based reranking significantly boosts skill retrieval quality (e.g., +61.9% R@1 on MedCalc-Bench for Qwen3-32B over BM25) and subsequently improves end-task performance.&quot;,
+    &quot;Findings highlight a critical bottleneck in skill incorporation: current LLMs are often not relevance-aware (loading skills even without gold skills) or need-aware (loading skills indiscriminately regardless of native competence), severely limiting scalable skill augmentation.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;TheoremQA&quot;,
+        &quot;LogicBench&quot;,
+        &quot;ToolQA&quot;,
+        &quot;CHAMP&quot;,
+        &quot;MedCalc-Bench&quot;,
+        &quot;BigCodeBench&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Recall@K&quot;,
+        &quot;nDCG@K&quot;,
+        &quot;End-task Accuracy&quot;,
+        &quot;Pass@1&quot;
+      ],
+      &quot;setting&quot;: &quot;Multi-stage SRA pipeline evaluation, decomposed across retrieval, incorporation, and end-task execution, using various LLMs (Qwen3-4B, Qwen3-32B, Qwen3-235B, Llama-3.1-8B-Instruct, Llama-3.3-70B-Instruct, Mistral-Small-3.1-24B-Instruct) and skill-use strategies (LLM Direct, Oracle Skill, Full-Skill Injection, LLM Selection, Progressive Disclosure).&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 87,
+          &quot;xmin&quot;: 168,
+          &quot;ymax&quot;: 569,
+          &quot;xmax&quot;: 815
+        },
+        &quot;caption&quot;: &quot;End-task accuracy as the number of hard-negative distractor skills increases, with the gold skill always included. Full Skill Injection is consistently more brittle to noise, while Progressive Disclosure remains more robust across models.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 10
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;47.8%&quot;,
+            &quot;benchmark&quot;: &quot;Llama-3.3-70B (Average)&quot;,
+            &quot;delta&quot;: &quot;+11.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;End-task Performance (%)&quot;,
+            &quot;thisPaper&quot;: &quot;59.2%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;47.8%&quot;,
+            &quot;benchmark&quot;: &quot;Llama-3.3-70B (Average)&quot;,
+            &quot;delta&quot;: &quot;+16.6%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;End-task Performance (%)&quot;,
+            &quot;thisPaper&quot;: &quot;64.4%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;53.3%&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-235B (Average)&quot;,
+            &quot;delta&quot;: &quot;+9.5%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;End-task Performance (%)&quot;,
+            &quot;thisPaper&quot;: &quot;62.8%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;53.3%&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-235B (Average)&quot;,
+            &quot;delta&quot;: &quot;+14.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;End-task Performance (%)&quot;,
+            &quot;thisPaper&quot;: &quot;67.5%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;29.8%&quot;,
+            &quot;benchmark&quot;: &quot;Llama-3.1-8B (Average)&quot;,
+            &quot;delta&quot;: &quot;+7.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;End-task Performance (%)&quot;,
+            &quot;thisPaper&quot;: &quot;37.0%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;End-Task Performance with Different Skill-Use Methods&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;29.3%&quot;,
+            &quot;benchmark&quot;: &quot;Average&quot;,
+            &quot;delta&quot;: &quot;+15.7%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@1 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;45.0%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;61.1%&quot;,
+            &quot;benchmark&quot;: &quot;Average&quot;,
+            &quot;delta&quot;: &quot;+18.6%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@10 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;79.7%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;57.2%&quot;,
+            &quot;benchmark&quot;: &quot;TheoremQA&quot;,
+            &quot;delta&quot;: &quot;+20.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@1 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;77.4%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;12.0%&quot;,
+            &quot;benchmark&quot;: &quot;LogicBench&quot;,
+            &quot;delta&quot;: &quot;+19.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@1 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;31.4%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;29.3%&quot;,
+            &quot;benchmark&quot;: &quot;MedCalc-Bench&quot;,
+            &quot;delta&quot;: &quot;+61.9%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;R@1 (%)&quot;,
+            &quot;thisPaper&quot;: &quot;91.2%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Skill Retrieval Performance (R@1/R@10)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;52.7%&quot;,
+            &quot;benchmark&quot;: &quot;Llama-3.3-70B (Average)&quot;,
+            &quot;delta&quot;: &quot;+5.6%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;End-task Performance (%)&quot;,
+            &quot;thisPaper&quot;: &quot;58.3%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;56.2%&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-235B (Average)&quot;,
+            &quot;delta&quot;: &quot;+6.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;End-task Performance (%)&quot;,
+            &quot;thisPaper&quot;: &quot;62.6%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;54.3%&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-32B (Average)&quot;,
+            &quot;delta&quot;: &quot;+7.5%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;End-task Performance (%)&quot;,
+            &quot;thisPaper&quot;: &quot;61.8%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;45.5%&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-4B (Average)&quot;,
+            &quot;delta&quot;: &quot;+8.3%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;End-task Performance (%)&quot;,
+            &quot;thisPaper&quot;: &quot;53.8%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;End-Task Performance with Different Retrievers (Full-Skill Injection)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;21.0%&quot;,
+            &quot;benchmark&quot;: &quot;Overall&quot;,
+            &quot;delta&quot;: &quot;+51.1%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Skill Loading Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;72.1%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;11.1%&quot;,
+            &quot;benchmark&quot;: &quot;Overall&quot;,
+            &quot;delta&quot;: &quot;+43.0%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Skill Loading Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;54.1%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;8.2%&quot;,
+            &quot;benchmark&quot;: &quot;GLM-5.1&quot;,
+            &quot;delta&quot;: &quot;+35.4pp&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Gold in Top-50 Load Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;43.5%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3.6%&quot;,
+            &quot;benchmark&quot;: &quot;GPT-5.4&quot;,
+            &quot;delta&quot;: &quot;+33.0pp&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Gold in Top-50 Load Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;36.6%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;16.9%&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-4B&quot;,
+            &quot;delta&quot;: &quot;+4.9pp&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Gold in Top-50 Load Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;21.8%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Skill Loading Rate&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;23.6%&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-4B&quot;,
+            &quot;delta&quot;: &quot;-2.8pp&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Load Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;20.8%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;34.4%&quot;,
+            &quot;benchmark&quot;: &quot;GPT-5.4&quot;,
+            &quot;delta&quot;: &quot;+5.8pp&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Load Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;40.2%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;36.9%&quot;,
+            &quot;benchmark&quot;: &quot;Overall&quot;,
+            &quot;delta&quot;: &quot;+0.1pp&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Load Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;36.9%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Need-Aware Skill Loading&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;External skills can substantially improve agent performance when correctly accessed and used, validating the SRA paradigm&#39;s promise.&quot;,
+      &quot;Practical retrieval-based SRA methods can yield meaningful gains, but these are uneven and remain substantially below the Oracle Skill upper bound, indicating a need for robust practical inference settings.&quot;,
+      &quot;The effectiveness of SRA critically depends on how retrieved skills are exposed and utilized, with LLM Selection generally outperforming Full-Skill Injection and Progressive Disclosure in terms of effectiveness and stability.&quot;,
+      &quot;LLM-based reranking provides the strongest overall retrieval performance, indicating that skill retrieval involves more than just topical similarity, but also recognizing actionable capabilities.&quot;,
+      &quot;Retrieval quality is a necessary but insufficient condition for strong SRA performance; improvements are mediated by downstream skill incorporation and execution.&quot;,
+      &quot;Current LLMs lack reliable relevance-awareness and need-awareness in skill loading, often loading skills indiscriminately or regardless of native capability gaps, leading to skill-loading hallucination.&quot;,
+      &quot;Frontier models (GLM-5.1, GPT-5.4) show stronger relevance-awareness than open-source models, but still fall short of ideal behavior, suggesting a fundamental bottleneck in controlled skill utilization.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Department of Computer Science and Technology, Tsinghua University&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;SRA treats skills as entries in a large external capability corpus, requiring agents to dynamically retrieve, load, and apply relevant skills on demand, unlike prior methods that rely on fixed, small skill sets.&quot;,
+      &quot;SRA-Bench is a large-scale skill corpus with 5,400 capability-intensive test instances and 636 manually constructed gold skills, designed for fine-grained evaluation of skill retrieval, incorporation, and application.&quot;,
+      &quot;The paper establishes SR-Agents as a baseline family and provides systematic empirical analysis to uncover promises and bottlenecks of scalable skill use.&quot;
+    ],
+    &quot;main&quot;: &quot;Formulation of Skill Retrieval Augmentation (SRA) as a new paradigm for scalable capability augmentation in agentic AI and introduction of SRA-Bench, the first benchmark for decomposed evaluation of the SRA pipeline.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A new paradigm in which LLM-based agents dynamically retrieve, incorporate, and apply relevant, reusable external skills from large-scale skill corpora on demand to augment their problem-solving capabilities.&quot;,
+        &quot;term&quot;: &quot;Skill Retrieval Augmentation (SRA)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Agents that implement the Skill Retrieval Augmentation paradigm, dynamically retrieving and using skills from large-scale corpora.&quot;,
+        &quot;term&quot;: &quot;SR-Agents&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The first large-scale benchmark for decomposed evaluation of the full SRA pipeline, covering skill retrieval, skill incorporation, and end-task execution, featuring 5,400 capability-intensive test instances and 26,262 skills.&quot;,
+        &quot;term&quot;: &quot;SRA-Bench&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The stage in SRA where an agent determines which retrieved candidate skills to use, prepares their representations, and integrates them into its active problem-solving state.&quot;,
+        &quot;term&quot;: &quot;Skill Incorporation&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The final stage in SRA where the agent leverages the incorporated skills during task solving to improve its behavior and achieve end-task success.&quot;,
+        &quot;term&quot;: &quot;Skill Application&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Agentic AI&quot;,
+      &quot;Retrieval-Augmented Generation (RAG)&quot;,
+      &quot;Tool Use/Function Calling&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Agentic AI&quot;,
+    &quot;Information Retrieval&quot;,
+    &quot;Benchmarking&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Agent&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;RAG&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike traditional RAG, SRA retrieves executable and operational capabilities instead of static knowledge, requiring evaluation beyond semantic relevance to include downstream utility.&quot;,
+      &quot;Unlike conventional tool use, which assumes a visible, limited set of APIs, SRA retrieves from an open-ended corpus of modular packages, necessitating a more complex pipeline for evaluating retrieval, incorporation, and application.&quot;,
+      &quot;SRA departs from the primary focus of prior work (e.g., Voyager, Toolformer) on skill acquisition or code synthesis by addressing the critical bottleneck of scalability for agent skills at retrieval-time access.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;Current LLM agents tend to load skills at similar rates regardless of whether a gold skill is retrieved or the task requires external capabilities, indicating a fundamental absence of need-aware skill invocation.&quot;,
+      &quot;Scalable skill augmentation is bottlenecked not only by retrieval quality but also by the base model&#39;s ability to determine which skill to load and when external loading is actually needed.&quot;,
+      &quot;SR-Agents are highly brittle to retrieval noise; performance degrades sharply as distractors accumulate, especially under Full Skill Injection, suggesting poor robustness.&quot;,
+      &quot;Most current LLMs are not reliably relevance-aware when incorporating skills, often loading skills at substantial rates even when no gold skill is present (skill-loading hallucination).&quot;,
+      &quot;Current LLMs generally lack need-awareness, showing similar skill-loading rates for tasks they can solve natively and tasks that exceed their native capabilities.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Skill Retrieval&quot;,
+        &quot;value&quot;: &quot;A retriever R maps user query q and skill corpus C to a ranked list of k candidate skills: L_k = R(q, C) = [s^(1), s^(2), ..., s^(k)], s^(j) \\in C, k \\ll N.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Skill Incorporation&quot;,
+        &quot;value&quot;: &quot;Given retrieved candidates L_k, the agent determines which skills to incorporate. This stage is denoted as \\tilde{S} = G(q, L_k; M), where M is the underlying base language model and \\tilde{S} are the prepared skill representations that are made available for downstream task solving.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Skill Application&quot;,
+        &quot;value&quot;: &quot;Conditioned on incorporated skills \\tilde{S}, the agent applies the corresponding capabilities during task solving and produces a final response: \\hat{A} = F(q, \\tilde{S}; M).&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;User provides an instruction/query to the agent.&quot;,
+      &quot;A Skill Retrieval System retrieves top-K candidate skills from a large external Skill Library based on the query.&quot;,
+      &quot;The Agent, through a &#39;Refine/Adapt&#39; mechanism, incorporates relevant skills from the retrieved candidates into its &#39;Activated Skills&#39; set within its Context Window.&quot;,
+      &quot;Conditioned on the Activated Skills, the Agent performs Reasoning and Acting to produce a Final Result.&quot;,
+      &quot;The process can involve iterative skill retrieval during reasoning and acting, allowing for dynamic skill access.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Skill Corpus&quot;,
+        &quot;value&quot;: &quot;A set of N skills, C = \\{s_1, s_2, ..., s_N\\}.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Agent Skill&quot;,
+        &quot;value&quot;: &quot;Each skill s_i \\in C is represented as a tuple: s_i = (n_i, r_i, c_i, \\pi_i), where n_i is the name, r_i is a short description, c_i is the main content (instructions, constraints, procedural guidance), and \\pi_i is the executable payload (code, tools, resources).&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;All code and data for the SRA skill corpus and SRA-Bench are released at https://github.com/oneal2000/SR-Agents.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Maps a user query and a large external skill corpus to a ranked list of candidate skills.&quot;,
+        &quot;name&quot;: &quot;Skill Retrieval System&quot;,
+        &quot;role&quot;: &quot;Retriever&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Determines which retrieved skills to incorporate into its active problem-solving state and then applies them for downstream task solving, also managing iterative retrieval.&quot;,
+        &quot;name&quot;: &quot;Agent&quot;,
+        &quot;role&quot;: &quot;Incorporator &amp; Applier&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A vast, open-ended collection of modular capability packages that includes skill names, descriptions, content, and executable payloads.&quot;,
+        &quot;name&quot;: &quot;Skill Library&quot;,
+        &quot;role&quot;: &quot;External Skill Corpus&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;The paper proposes Skill Retrieval Augmentation (SRA) as a new paradigm for augmenting agentic LLMs with external capabilities at scale, moving beyond fixed in-context skill injection. It argues that effective SRA requires addressing not only skill retrieval but also robust skill incorporation and application, establishing a research agenda for scalable capability augmentation.&quot;,
+  &quot;title&quot;: &quot;Skill Retrieval Augmentation for Agentic AI&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2604.24594&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2604.24594&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2604.24594&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:93,&quot;xmin&quot;:153,&quot;ymax&quot;:279,&quot;xmax&quot;:825},&quot;caption&quot;:&quot;An illustration of the Skill Retrieval Augmentation (SRA) paradigm. The agent retrieves candidate skills from a large external skill corpus, selectively incorporates useful skills into context, and applies them for downstream reasoning and acting. Black arrows denote the standard SRA workflow, while blue arrows represent iterative skill retrieval during reasoning and acting.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:2},&quot;authors&quot;:&quot;Weihang Su, Jianming Long, Qingyao Ai, Yichen Tang, Changyue Wang, Yiteng Tu, Yiqun Liu&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;This paper introduces Skill Retrieval Augmentation (SRA) as a distinct and crucial research paradigm for agentic AI, moving beyond traditional RAG and tool use by focusing on scalable, dynamic skill access and utilization. The creation of SRA-Bench is a significant contribution, providing a structured benchmark for decomposed evaluation across the entire SRA pipeline. The systematic empirical analysis identifies key bottlenecks in skill incorporation (relevance- and need-awareness) that were previously underappreciated, establishing a clear research agenda. While the gains are not earth-shattering and highlight current model limitations, the formulation of the problem and the diagnostic benchmark are highly valuable and will likely influence future research in agentic LLMs.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Platforms like SkillsMP host over one million distinct skills, making it impractical to expose all candidate skills in the LLM&#39;s context window due to architectural limits and performance degradation, which current in-context skill injection methods cannot handle at scale.&quot;,&quot;statement&quot;:&quot;Existing agent systems using Large Language Models (LLMs) struggle to scale external skill usage because explicitly enumerating available skills in the context window consumes context budgets rapidly and degrades reasoning and selection accuracy as skill corpora grow.&quot;,&quot;whyItMatters&quot;:[&quot;LLMs are increasingly relied upon as agentic problem solvers, requiring external, reusable skills to handle tasks beyond their native parametric capabilities.&quot;,&quot;Conventional methods of in-context skill injection fail to scale, leading to a bottleneck in effectively extending agent capabilities.&quot;,&quot;Scalable skill augmentation is crucial for enabling agents to solve broader and more complex, open-ended tasks.&quot;]},&quot;evaluationHighlights&quot;:[&quot;SRA-Bench, a new large-scale benchmark for Skill Retrieval Augmentation, includes 5,400 test instances and 26,262 skills, supporting decomposed evaluation across skill retrieval, incorporation, and application.&quot;,&quot;Experiments show that external skills significantly improve agent performance over skill-free baselines, with Oracle Skill (perfect skill access) consistently outperforming LLM Direct by large margins (e.g., +16.6% average for Llama-3.3-70B).&quot;,&quot;LLM Selection consistently outperforms other practical SRA methods (Full-Skill Injection, Progressive Disclosure) in end-task performance, demonstrating its effectiveness and stability in utilizing retrieved skills.&quot;,&quot;LLM-based reranking significantly boosts skill retrieval quality (e.g., +61.9% R@1 on MedCalc-Bench for Qwen3-32B over BM25) and subsequently improves end-task performance.&quot;,&quot;Findings highlight a critical bottleneck in skill incorporation: current LLMs are often not relevance-aware (loading skills even without gold skills) or need-aware (loading skills indiscriminately regardless of native competence), severely limiting scalable skill augmentation.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;TheoremQA&quot;,&quot;LogicBench&quot;,&quot;ToolQA&quot;,&quot;CHAMP&quot;,&quot;MedCalc-Bench&quot;,&quot;BigCodeBench&quot;],&quot;metrics&quot;:[&quot;Recall@K&quot;,&quot;nDCG@K&quot;,&quot;End-task Accuracy&quot;,&quot;Pass@1&quot;],&quot;setting&quot;:&quot;Multi-stage SRA pipeline evaluation, decomposed across retrieval, incorporation, and end-task execution, using various LLMs (Qwen3-4B, Qwen3-32B, Qwen3-235B, Llama-3.1-8B-Instruct, Llama-3.3-70B-Instruct, Mistral-Small-3.1-24B-Instruct) and skill-use strategies (LLM Direct, Oracle Skill, Full-Skill Injection, LLM Selection, Progressive Disclosure).&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:87,&quot;xmin&quot;:168,&quot;ymax&quot;:569,&quot;xmax&quot;:815},&quot;caption&quot;:&quot;End-task accuracy as the number of hard-negative distractor skills increases, with the gold skill always included. Full Skill Injection is consistently more brittle to noise, while Progressive Disclosure remains more robust across models.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:10}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;47.8%&quot;,&quot;benchmark&quot;:&quot;Llama-3.3-70B (Average)&quot;,&quot;delta&quot;:&quot;+11.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;End-task Performance (%)&quot;,&quot;thisPaper&quot;:&quot;59.2%&quot;},{&quot;baseline&quot;:&quot;47.8%&quot;,&quot;benchmark&quot;:&quot;Llama-3.3-70B (Average)&quot;,&quot;delta&quot;:&quot;+16.6%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;End-task Performance (%)&quot;,&quot;thisPaper&quot;:&quot;64.4%&quot;},{&quot;baseline&quot;:&quot;53.3%&quot;,&quot;benchmark&quot;:&quot;Qwen3-235B (Average)&quot;,&quot;delta&quot;:&quot;+9.5%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;End-task Performance (%)&quot;,&quot;thisPaper&quot;:&quot;62.8%&quot;},{&quot;baseline&quot;:&quot;53.3%&quot;,&quot;benchmark&quot;:&quot;Qwen3-235B (Average)&quot;,&quot;delta&quot;:&quot;+14.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;End-task Performance (%)&quot;,&quot;thisPaper&quot;:&quot;67.5%&quot;},{&quot;baseline&quot;:&quot;29.8%&quot;,&quot;benchmark&quot;:&quot;Llama-3.1-8B (Average)&quot;,&quot;delta&quot;:&quot;+7.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;End-task Performance (%)&quot;,&quot;thisPaper&quot;:&quot;37.0%&quot;}],&quot;title&quot;:&quot;End-Task Performance with Different Skill-Use Methods&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;29.3%&quot;,&quot;benchmark&quot;:&quot;Average&quot;,&quot;delta&quot;:&quot;+15.7%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@1 (%)&quot;,&quot;thisPaper&quot;:&quot;45.0%&quot;},{&quot;baseline&quot;:&quot;61.1%&quot;,&quot;benchmark&quot;:&quot;Average&quot;,&quot;delta&quot;:&quot;+18.6%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@10 (%)&quot;,&quot;thisPaper&quot;:&quot;79.7%&quot;},{&quot;baseline&quot;:&quot;57.2%&quot;,&quot;benchmark&quot;:&quot;TheoremQA&quot;,&quot;delta&quot;:&quot;+20.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@1 (%)&quot;,&quot;thisPaper&quot;:&quot;77.4%&quot;},{&quot;baseline&quot;:&quot;12.0%&quot;,&quot;benchmark&quot;:&quot;LogicBench&quot;,&quot;delta&quot;:&quot;+19.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@1 (%)&quot;,&quot;thisPaper&quot;:&quot;31.4%&quot;},{&quot;baseline&quot;:&quot;29.3%&quot;,&quot;benchmark&quot;:&quot;MedCalc-Bench&quot;,&quot;delta&quot;:&quot;+61.9%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;R@1 (%)&quot;,&quot;thisPaper&quot;:&quot;91.2%&quot;}],&quot;title&quot;:&quot;Skill Retrieval Performance (R@1/R@10)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;52.7%&quot;,&quot;benchmark&quot;:&quot;Llama-3.3-70B (Average)&quot;,&quot;delta&quot;:&quot;+5.6%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;End-task Performance (%)&quot;,&quot;thisPaper&quot;:&quot;58.3%&quot;},{&quot;baseline&quot;:&quot;56.2%&quot;,&quot;benchmark&quot;:&quot;Qwen3-235B (Average)&quot;,&quot;delta&quot;:&quot;+6.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;End-task Performance (%)&quot;,&quot;thisPaper&quot;:&quot;62.6%&quot;},{&quot;baseline&quot;:&quot;54.3%&quot;,&quot;benchmark&quot;:&quot;Qwen3-32B (Average)&quot;,&quot;delta&quot;:&quot;+7.5%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;End-task Performance (%)&quot;,&quot;thisPaper&quot;:&quot;61.8%&quot;},{&quot;baseline&quot;:&quot;45.5%&quot;,&quot;benchmark&quot;:&quot;Qwen3-4B (Average)&quot;,&quot;delta&quot;:&quot;+8.3%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;End-task Performance (%)&quot;,&quot;thisPaper&quot;:&quot;53.8%&quot;}],&quot;title&quot;:&quot;End-Task Performance with Different Retrievers (Full-Skill Injection)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;21.0%&quot;,&quot;benchmark&quot;:&quot;Overall&quot;,&quot;delta&quot;:&quot;+51.1%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Skill Loading Rate (%)&quot;,&quot;thisPaper&quot;:&quot;72.1%&quot;},{&quot;baseline&quot;:&quot;11.1%&quot;,&quot;benchmark&quot;:&quot;Overall&quot;,&quot;delta&quot;:&quot;+43.0%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Skill Loading Rate (%)&quot;,&quot;thisPaper&quot;:&quot;54.1%&quot;},{&quot;baseline&quot;:&quot;8.2%&quot;,&quot;benchmark&quot;:&quot;GLM-5.1&quot;,&quot;delta&quot;:&quot;+35.4pp&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Gold in Top-50 Load Rate (%)&quot;,&quot;thisPaper&quot;:&quot;43.5%&quot;},{&quot;baseline&quot;:&quot;3.6%&quot;,&quot;benchmark&quot;:&quot;GPT-5.4&quot;,&quot;delta&quot;:&quot;+33.0pp&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Gold in Top-50 Load Rate (%)&quot;,&quot;thisPaper&quot;:&quot;36.6%&quot;},{&quot;baseline&quot;:&quot;16.9%&quot;,&quot;benchmark&quot;:&quot;Qwen3-4B&quot;,&quot;delta&quot;:&quot;+4.9pp&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Gold in Top-50 Load Rate (%)&quot;,&quot;thisPaper&quot;:&quot;21.8%&quot;}],&quot;title&quot;:&quot;Skill Loading Rate&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;23.6%&quot;,&quot;benchmark&quot;:&quot;Qwen3-4B&quot;,&quot;delta&quot;:&quot;-2.8pp&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Load Rate (%)&quot;,&quot;thisPaper&quot;:&quot;20.8%&quot;},{&quot;baseline&quot;:&quot;34.4%&quot;,&quot;benchmark&quot;:&quot;GPT-5.4&quot;,&quot;delta&quot;:&quot;+5.8pp&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Load Rate (%)&quot;,&quot;thisPaper&quot;:&quot;40.2%&quot;},{&quot;baseline&quot;:&quot;36.9%&quot;,&quot;benchmark&quot;:&quot;Overall&quot;,&quot;delta&quot;:&quot;+0.1pp&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Load Rate (%)&quot;,&quot;thisPaper&quot;:&quot;36.9%&quot;}],&quot;title&quot;:&quot;Need-Aware Skill Loading&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;External skills can substantially improve agent performance when correctly accessed and used, validating the SRA paradigm&#39;s promise.&quot;,&quot;Practical retrieval-based SRA methods can yield meaningful gains, but these are uneven and remain substantially below the Oracle Skill upper bound, indicating a need for robust practical inference settings.&quot;,&quot;The effectiveness of SRA critically depends on how retrieved skills are exposed and utilized, with LLM Selection generally outperforming Full-Skill Injection and Progressive Disclosure in terms of effectiveness and stability.&quot;,&quot;LLM-based reranking provides the strongest overall retrieval performance, indicating that skill retrieval involves more than just topical similarity, but also recognizing actionable capabilities.&quot;,&quot;Retrieval quality is a necessary but insufficient condition for strong SRA performance; improvements are mediated by downstream skill incorporation and execution.&quot;,&quot;Current LLMs lack reliable relevance-awareness and need-awareness in skill loading, often loading skills indiscriminately or regardless of native capability gaps, leading to skill-loading hallucination.&quot;,&quot;Frontier models (GLM-5.1, GPT-5.4) show stronger relevance-awareness than open-source models, but still fall short of ideal behavior, suggesting a fundamental bottleneck in controlled skill utilization.&quot;]},&quot;institutions&quot;:&quot;Department of Computer Science and Technology, Tsinghua University&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;SRA treats skills as entries in a large external capability corpus, requiring agents to dynamically retrieve, load, and apply relevant skills on demand, unlike prior methods that rely on fixed, small skill sets.&quot;,&quot;SRA-Bench is a large-scale skill corpus with 5,400 capability-intensive test instances and 636 manually constructed gold skills, designed for fine-grained evaluation of skill retrieval, incorporation, and application.&quot;,&quot;The paper establishes SR-Agents as a baseline family and provides systematic empirical analysis to uncover promises and bottlenecks of scalable skill use.&quot;],&quot;main&quot;:&quot;Formulation of Skill Retrieval Augmentation (SRA) as a new paradigm for scalable capability augmentation in agentic AI and introduction of SRA-Bench, the first benchmark for decomposed evaluation of the SRA pipeline.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A new paradigm in which LLM-based agents dynamically retrieve, incorporate, and apply relevant, reusable external skills from large-scale skill corpora on demand to augment their problem-solving capabilities.&quot;,&quot;term&quot;:&quot;Skill Retrieval Augmentation (SRA)&quot;},{&quot;definition&quot;:&quot;Agents that implement the Skill Retrieval Augmentation paradigm, dynamically retrieving and using skills from large-scale corpora.&quot;,&quot;term&quot;:&quot;SR-Agents&quot;},{&quot;definition&quot;:&quot;The first large-scale benchmark for decomposed evaluation of the full SRA pipeline, covering skill retrieval, skill incorporation, and end-task execution, featuring 5,400 capability-intensive test instances and 26,262 skills.&quot;,&quot;term&quot;:&quot;SRA-Bench&quot;},{&quot;definition&quot;:&quot;The stage in SRA where an agent determines which retrieved candidate skills to use, prepares their representations, and integrates them into its active problem-solving state.&quot;,&quot;term&quot;:&quot;Skill Incorporation&quot;},{&quot;definition&quot;:&quot;The final stage in SRA where the agent leverages the incorporated skills during task solving to improve its behavior and achieve end-task success.&quot;,&quot;term&quot;:&quot;Skill Application&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Agentic AI&quot;,&quot;Retrieval-Augmented Generation (RAG)&quot;,&quot;Tool Use/Function Calling&quot;]},&quot;subTopics&quot;:[&quot;Agentic AI&quot;,&quot;Information Retrieval&quot;,&quot;Benchmarking&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Agent&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike traditional RAG, SRA retrieves executable and operational capabilities instead of static knowledge, requiring evaluation beyond semantic relevance to include downstream utility.&quot;,&quot;Unlike conventional tool use, which assumes a visible, limited set of APIs, SRA retrieves from an open-ended corpus of modular packages, necessitating a more complex pipeline for evaluating retrieval, incorporation, and application.&quot;,&quot;SRA departs from the primary focus of prior work (e.g., Voyager, Toolformer) on skill acquisition or code synthesis by addressing the critical bottleneck of scalability for agent skills at retrieval-time access.&quot;],&quot;limitations&quot;:[&quot;Current LLM agents tend to load skills at similar rates regardless of whether a gold skill is retrieved or the task requires external capabilities, indicating a fundamental absence of need-aware skill invocation.&quot;,&quot;Scalable skill augmentation is bottlenecked not only by retrieval quality but also by the base model&#39;s ability to determine which skill to load and when external loading is actually needed.&quot;,&quot;SR-Agents are highly brittle to retrieval noise; performance degrades sharply as distractors accumulate, especially under Full Skill Injection, suggesting poor robustness.&quot;,&quot;Most current LLMs are not reliably relevance-aware when incorporating skills, often loading skills at substantial rates even when no gold skill is present (skill-loading hallucination).&quot;,&quot;Current LLMs generally lack need-awareness, showing similar skill-loading rates for tasks they can solve natively and tasks that exceed their native capabilities.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Skill Retrieval&quot;,&quot;value&quot;:&quot;A retriever R maps user query q and skill corpus C to a ranked list of k candidate skills: L_k = R(q, C) = [s^(1), s^(2), ..., s^(k)], s^(j) \\in C, k \\ll N.&quot;},{&quot;label&quot;:&quot;Skill Incorporation&quot;,&quot;value&quot;:&quot;Given retrieved candidates L_k, the agent determines which skills to incorporate. This stage is denoted as \\tilde{S} = G(q, L_k; M), where M is the underlying base language model and \\tilde{S} are the prepared skill representations that are made available for downstream task solving.&quot;},{&quot;label&quot;:&quot;Skill Application&quot;,&quot;value&quot;:&quot;Conditioned on incorporated skills \\tilde{S}, the agent applies the corresponding capabilities during task solving and produces a final response: \\hat{A} = F(q, \\tilde{S}; M).&quot;}],&quot;pipelineFlow&quot;:[&quot;User provides an instruction/query to the agent.&quot;,&quot;A Skill Retrieval System retrieves top-K candidate skills from a large external Skill Library based on the query.&quot;,&quot;The Agent, through a &#39;Refine/Adapt&#39; mechanism, incorporates relevant skills from the retrieved candidates into its &#39;Activated Skills&#39; set within its Context Window.&quot;,&quot;Conditioned on the Activated Skills, the Agent performs Reasoning and Acting to produce a Final Result.&quot;,&quot;The process can involve iterative skill retrieval during reasoning and acting, allowing for dynamic skill access.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Skill Corpus&quot;,&quot;value&quot;:&quot;A set of N skills, C = \\{s_1, s_2, ..., s_N\\}.&quot;},{&quot;label&quot;:&quot;Agent Skill&quot;,&quot;value&quot;:&quot;Each skill s_i \\in C is represented as a tuple: s_i = (n_i, r_i, c_i, \\pi_i), where n_i is the name, r_i is a short description, c_i is the main content (instructions, constraints, procedural guidance), and \\pi_i is the executable payload (code, tools, resources).&quot;}],&quot;reproducibility&quot;:&quot;All code and data for the SRA skill corpus and SRA-Bench are released at https://github.com/oneal2000/SR-Agents.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Maps a user query and a large external skill corpus to a ranked list of candidate skills.&quot;,&quot;name&quot;:&quot;Skill Retrieval System&quot;,&quot;role&quot;:&quot;Retriever&quot;},{&quot;details&quot;:&quot;Determines which retrieved skills to incorporate into its active problem-solving state and then applies them for downstream task solving, also managing iterative retrieval.&quot;,&quot;name&quot;:&quot;Agent&quot;,&quot;role&quot;:&quot;Incorporator &amp; Applier&quot;},{&quot;details&quot;:&quot;A vast, open-ended collection of modular capability packages that includes skill names, descriptions, content, and executable payloads.&quot;,&quot;name&quot;:&quot;Skill Library&quot;,&quot;role&quot;:&quot;External Skill Corpus&quot;}]},&quot;thesis&quot;:&quot;The paper proposes Skill Retrieval Augmentation (SRA) as a new paradigm for augmenting agentic LLMs with external capabilities at scale, moving beyond fixed in-context skill injection. It argues that effective SRA requires addressing not only skill retrieval but also robust skill incorporation and application, establishing a research agenda for scalable capability augmentation.&quot;,&quot;title&quot;:&quot;Skill Retrieval Augmentation for Agentic AI&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2604.24594&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

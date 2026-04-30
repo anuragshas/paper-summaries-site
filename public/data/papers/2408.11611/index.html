@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DTN: Deep Multiple Task-specific Feature Interactions Network for Multi-Task Recommendation</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>DTN: Deep Multiple Task-specific Feature Interactions Network for Multi-Task Recommendation</h1>
+      <p class="meta"><strong>Authors:</strong> Yaowen Bi, Yuteng Lian, Jie Cui, Jun Liu, Peijian Wang, Guanghui Li, Xuejun Chen, Jinglin Zhao, Hao Wen, Jing Zhang, Zhaoqi Zhang, Wenzhuo Song, Yang Sun, Weiwei Zhang, Mingchen Cai, Jian Dong, Guanxing Zhang</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/pdf/2408.11611" target="_blank" rel="noopener noreferrer">https://arxiv.org/pdf/2408.11611</a></p>
+      <p class="muted">Generated summary artifact for 2408.11611</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>The Deep Multiple Task-specific Feature Interactions Network (DTN), by integrating diversified task-specific feature interaction methods and a task-sensitive network, can effectively learn nuanced task-specific feature interaction representations, thereby enhancing the efficiency of joint representation learning and outperforming state-of-the-art Multi-Task Learning models in recommendation system performance.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Existing Multi-Task Learning (MTL) models for recommender systems (e.g., MMoE, PLE) fail to explicitly consider feature interactions during optimization, which are crucial for capturing complex high-order features. Furthermore, the importance of the same feature can diverge significantly across different tasks in MTL, leading to suboptimal performance.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A novel Deep Multiple Task-specific Feature Interactions Network (DTN) that incorporates diversified task-specific feature interaction methods and a task-sensitive network to learn nuanced task-specific representations in Multi-Task Learning for recommendation.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>DTN achieved significant improvements in online A/B testing on Shopee&#39;s E-commerce recommender system, with +3.28% in clicks, +3.10% in orders, and +2.70% in Gross Merchandise Value (GMV) compared to state-of-the-art MTL models.</li><li>DTN consistently outperformed strong MTL baselines like MMoE and PLE across industrial (Shopee) and various public benchmark datasets (Census-Income, AE, Ali-CCP) in terms of AUC and LogLoss metrics.</li><li>The model demonstrated the highest metric uplifts (RelaImp) for CTR, ATC, and CVR prediction tasks on the Shopee industrial dataset (e.g., +6.06% RelaImp for CTR).</li><li>Visualization experiments confirmed that DTN effectively learns diversified task-specific feature interaction representations, enhancing the model&#39;s ability to capture nuanced relationships.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>The proposed DTN model consistently outperforms state-of-the-art MTL models (MMoE, PLE) across various industrial and public benchmark datasets, demonstrating its effectiveness in recommendation tasks.</li><li>DTN achieves significant uplifts in real-world online A/B tests on Shopee&#39;s E-commerce platform, indicating its practical utility and impact on key business metrics like clicks, orders, and GMV.</li><li>The integration of diversified task-specific feature interaction modules and a task-sensitive network within DTN successfully addresses the challenge of varying feature importance across tasks, leading to improved and more efficient joint representation learning.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The DTN model, while powerful, still has the potential to incorporate more additional effective feature interaction methods for further improvement.</li><li>The &#39;DTN-trim&#39; version, which reduces about 9% of parameters compared to the full DTN, implies that the full model might be parameter-heavy, although overall parameter size was controlled for fair comparison (1.6E8 for various models).</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 78,
+      &quot;xmin&quot;: 104,
+      &quot;ymax&quot;: 382,
+      &quot;xmax&quot;: 902
+    },
+    &quot;caption&quot;: &quot;(A) Architecture overview of DTN, which utilizes Multiple Feature Interaction (MFI) module and Task-Sensitive Network (TSN) to learn task-specific feature interaction representations. (B) TSN takes into account the sequential nature of tasks and leverages the representations of preceding tasks more effectively. (C) Gating Network (GN) is employed to compute the weighted sum of feature interaction representations.&quot;,
+    &quot;figureNumber&quot;: 3,
+    &quot;pageIndex&quot;: 4
+  },
+  &quot;authors&quot;: &quot;Yaowen Bi, Yuteng Lian, Jie Cui, Jun Liu, Peijian Wang, Guanghui Li, Xuejun Chen, Jinglin Zhao, Hao Wen, Jing Zhang, Zhaoqi Zhang, Wenzhuo Song, Yang Sun, Weiwei Zhang, Mingchen Cai, Jian Dong, Guanxing Zhang&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper introduces DTN, a novel architecture for Multi-Task Learning in recommendation systems, which effectively addresses the critical issue of task-specific feature interactions and their divergence phenomenon. By incorporating diversified task-specific feature interaction modules and a task-sensitive network, DTN consistently outperforms state-of-the-art MTL models. The extensive evaluation, including online A/B testing on a large-scale industrial recommender system, demonstrates significant real-world impact and practical improvements across key business metrics (clicks, orders, GMV). This is a strong contribution to both MTL and recommender systems.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;In an e-commerce recommender system, features like &#39;item_ctr_48h&#39; might be highly important for predicting click-through rate (CTR) but less important for conversion rate (CVR), while &#39;order_cnt_24h&#39; might show the opposite importance across these two tasks, a phenomenon called divergence of feature importance.&quot;,
+    &quot;statement&quot;: &quot;Existing Multi-Task Learning (MTL) models for recommender systems (e.g., MMoE, PLE) fail to explicitly consider feature interactions during optimization, which are crucial for capturing complex high-order features. Furthermore, the importance of the same feature can diverge significantly across different tasks in MTL, leading to suboptimal performance.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Feature interactions are a key factor in state-of-the-art ranking models and are essential for capturing complex relationships.&quot;,
+      &quot;MTL is widely adopted in industrial recommender systems to optimize multiple objectives (CTR, ATC, CVR), making efficient and effective models crucial.&quot;,
+      &quot;Ignoring task-specific feature importance and interactions in MTL can lead to suboptimal learning representations and hinder overall model performance and generalization.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;DTN achieved significant improvements in online A/B testing on Shopee&#39;s E-commerce recommender system, with +3.28% in clicks, +3.10% in orders, and +2.70% in Gross Merchandise Value (GMV) compared to state-of-the-art MTL models.&quot;,
+    &quot;DTN consistently outperformed strong MTL baselines like MMoE and PLE across industrial (Shopee) and various public benchmark datasets (Census-Income, AE, Ali-CCP) in terms of AUC and LogLoss metrics.&quot;,
+    &quot;The model demonstrated the highest metric uplifts (RelaImp) for CTR, ATC, and CVR prediction tasks on the Shopee industrial dataset (e.g., +6.06% RelaImp for CTR).&quot;,
+    &quot;Visualization experiments confirmed that DTN effectively learns diversified task-specific feature interaction representations, enhancing the model&#39;s ability to capture nuanced relationships.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Shopee E-commerce recommender system (industrial dataset)&quot;,
+        &quot;Census-Income Dataset&quot;,
+        &quot;Public AE Dataset (AliExpress)&quot;,
+        &quot;Ali-CCP Dataset (Taobao)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;AUC (Area Under ROC)&quot;,
+        &quot;LogLoss&quot;,
+        &quot;RelaImp (Relative AUC Improvement)&quot;,
+        &quot;Clicks (%)&quot;,
+        &quot;Orders (%)&quot;,
+        &quot;GMV (Gross Merchandise Value) (%)&quot;
+      ],
+      &quot;setting&quot;: &quot;Offline experiments on industrial and public benchmark datasets, and online A/B testing on a large-scale E-commerce recommender system.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 191,
+          &quot;xmin&quot;: 88,
+          &quot;ymax&quot;: 387,
+          &quot;xmax&quot;: 489
+        },
+        &quot;caption&quot;: &quot;The Divergence Phenomenon: same feature have significantly different feature importance across CTR, CVR task in MTL, such as $order_cnt_24h$ and $item_ctr_48h$.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 3
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 78,
+          &quot;xmin&quot;: 88,
+          &quot;ymax&quot;: 298,
+          &quot;xmax&quot;: 489
+        },
+        &quot;caption&quot;: &quot;Visualization of FIM Weights for CTR, ATC, and CVR Tasks in DTN.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 7
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 310,
+          &quot;xmin&quot;: 88,
+          &quot;ymax&quot;: 562,
+          &quot;xmax&quot;: 494
+        },
+        &quot;caption&quot;: &quot;Visualization of DTN: (a) DTN can learn task-specific representations with same FIM method. (b) Different FIM learn diversified representatioins for same task.&quot;,
+        &quot;figureNumber&quot;: 5,
+        &quot;pageIndex&quot;: 7
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.7401&quot;,
+            &quot;benchmark&quot;: &quot;Shopee, CTR&quot;,
+            &quot;delta&quot;: &quot;+0.0082&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AUC&quot;,
+            &quot;thisPaper&quot;: &quot;0.7483&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;+2.56%&quot;,
+            &quot;benchmark&quot;: &quot;Shopee, CTR&quot;,
+            &quot;delta&quot;: &quot;+3.50%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RelaImpr&quot;,
+            &quot;thisPaper&quot;: &quot;+6.06%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.7800&quot;,
+            &quot;benchmark&quot;: &quot;Shopee, ATC&quot;,
+            &quot;delta&quot;: &quot;+0.0050&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AUC&quot;,
+            &quot;thisPaper&quot;: &quot;0.7850&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;+1.48%&quot;,
+            &quot;benchmark&quot;: &quot;Shopee, ATC&quot;,
+            &quot;delta&quot;: &quot;+1.81%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RelaImpr&quot;,
+            &quot;thisPaper&quot;: &quot;+3.29%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.8052&quot;,
+            &quot;benchmark&quot;: &quot;Shopee, CVR&quot;,
+            &quot;delta&quot;: &quot;+0.0101&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AUC&quot;,
+            &quot;thisPaper&quot;: &quot;0.8153&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;+0.75%&quot;,
+            &quot;benchmark&quot;: &quot;Shopee, CVR&quot;,
+            &quot;delta&quot;: &quot;+3.34%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RelaImpr&quot;,
+            &quot;thisPaper&quot;: &quot;+4.09%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Offline Evaluation on Shopee Dataset (vs. PLE)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Online A/B Test&quot;,
+            &quot;delta&quot;: &quot;+3.28%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Clicks&quot;,
+            &quot;thisPaper&quot;: &quot;N/A&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Online A/B Test&quot;,
+            &quot;delta&quot;: &quot;+3.10%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Orders&quot;,
+            &quot;thisPaper&quot;: &quot;N/A&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Online A/B Test&quot;,
+            &quot;delta&quot;: &quot;+2.70%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GMV&quot;,
+            &quot;thisPaper&quot;: &quot;N/A&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Online A/B Testing on Shopee (vs. PLE)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;+3.6%&quot;,
+            &quot;benchmark&quot;: &quot;Census Task1&quot;,
+            &quot;delta&quot;: &quot;+0.96%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RelaImpr&quot;,
+            &quot;thisPaper&quot;: &quot;+4.56%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;+1.75%&quot;,
+            &quot;benchmark&quot;: &quot;AE CTR&quot;,
+            &quot;delta&quot;: &quot;+1.47%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RelaImpr&quot;,
+            &quot;thisPaper&quot;: &quot;+3.22%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;+5.5%&quot;,
+            &quot;benchmark&quot;: &quot;Ali-CCP CVR&quot;,
+            &quot;delta&quot;: &quot;+4.3%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;RelaImpr&quot;,
+            &quot;thisPaper&quot;: &quot;+9.8%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Offline Evaluation on Public Datasets (vs. PLE)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;The proposed DTN model consistently outperforms state-of-the-art MTL models (MMoE, PLE) across various industrial and public benchmark datasets, demonstrating its effectiveness in recommendation tasks.&quot;,
+      &quot;DTN achieves significant uplifts in real-world online A/B tests on Shopee&#39;s E-commerce platform, indicating its practical utility and impact on key business metrics like clicks, orders, and GMV.&quot;,
+      &quot;The integration of diversified task-specific feature interaction modules and a task-sensitive network within DTN successfully addresses the challenge of varying feature importance across tasks, leading to improved and more efficient joint representation learning.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Shopee Pte. Ltd., Singapore&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;DTN addresses the &#39;divergence phenomenon&#39; of feature importance, where the significance of a single feature varies greatly across different MTL tasks. This is tackled by learning task-specific diversified feature interaction representations.&quot;,
+      &quot;The model introduces Multiple diversified Feature Interactions (MFI) modules that leverage various feature interaction methods (e.g., MaskNet, GDCN, MemoNet) to learn diverse representations for each task.&quot;,
+      &quot;A Task-Sensitive Network (TSN) is proposed to select different feature interaction approaches for each task using gating networks and to explicitly model sequential task dependencies, allowing representations from preceding tasks to influence subsequent ones.&quot;,
+      &quot;Unlike prior MTL models that build networks on input embeddings, DTN integrates task-specific feature interaction directly into MTL networks, enhancing the efficiency of joint representation learning.&quot;
+    ],
+    &quot;main&quot;: &quot;A novel Deep Multiple Task-specific Feature Interactions Network (DTN) that incorporates diversified task-specific feature interaction methods and a task-sensitive network to learn nuanced task-specific representations in Multi-Task Learning for recommendation.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A machine learning paradigm where a single model is trained to solve multiple tasks simultaneously, often leveraging shared representations to improve learning efficiency and generalization.&quot;,
+        &quot;term&quot;: &quot;Multi-task Learning (MTL)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The combination of two or more input features to create new, often more expressive, features that capture complex relationships in the data, crucial for deep learning models in ranking.&quot;,
+        &quot;term&quot;: &quot;Feature Interaction&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A technique that evaluates the importance of a feature by randomly permuting its values in the test data and measuring the resulting change in the model&#39;s performance (e.g., AUC).&quot;,
+        &quot;term&quot;: &quot;Permutation Feature Importance (FI)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The observation that the relative importance or effectiveness of a specific feature can differ significantly across various tasks within a Multi-Task Learning framework.&quot;,
+        &quot;term&quot;: &quot;Divergence Phenomenon of Feature Importance&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A metric that measures the ratio of clicks on an item or advertisement to the total number of times it was viewed (impressions), commonly used in recommender systems.&quot;,
+        &quot;term&quot;: &quot;Click-Through Rate (CTR)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A metric representing the proportion of users who add an item to their shopping cart after viewing it, indicating user interest and purchase intent.&quot;,
+        &quot;term&quot;: &quot;Add-To-Cart Rate (ATC)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A metric that measures the percentage of users who complete a desired action, such as making a purchase, after interacting with a recommendation.&quot;,
+        &quot;term&quot;: &quot;Conversion Rate (CVR)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The total value of sales transactions over a specific period. In e-commerce, it&#39;s a key indicator of business performance.&quot;,
+        &quot;term&quot;: &quot;Gross Merchandise Value (GMV)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Recommender Systems (RS) architectures and evaluation metrics&quot;,
+      &quot;Fundamentals of Multi-Task Learning (MTL) models like MMoE and PLE&quot;,
+      &quot;Deep Learning concepts including neural networks, embeddings, and attention mechanisms&quot;,
+      &quot;Feature engineering and selection techniques&quot;,
+      &quot;Understanding of evaluation metrics such as Area Under the Receiver Operating Characteristic (AUC) and LogLoss&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Recommender Systems&quot;,
+    &quot;Multi-task Learning&quot;,
+    &quot;Feature Interaction&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Rec&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Existing MTL models like MMoE and PLE primarily focus on sharing or segregating experts but do not explicitly consider feature interactions during the optimization process, which DTN directly addresses through its specialized modules.&quot;,
+      &quot;Most prior feature interaction methods are designed for single-task prediction scenarios (e.g., CTR prediction) and do not consider combining diversified interaction methods in an MTL setting, whereas DTN integrates multiple diversified methods for task-specific learning.&quot;,
+      &quot;Compared to the Serial Feature Interaction (SFM) approach, which performs feature interaction serially based on input embeddings, DTN employs dedicated Feature Interaction Modules (FIMs) and a Task-Sensitive Network (TSN) for more effective and task-specific interaction learning.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The DTN model, while powerful, still has the potential to incorporate more additional effective feature interaction methods for further improvement.&quot;,
+      &quot;The &#39;DTN-trim&#39; version, which reduces about 9% of parameters compared to the full DTN, implies that the full model might be parameter-heavy, although overall parameter size was controlled for fair comparison (1.6E8 for various models).&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Permutation Feature Importance (FI) for task $k$&quot;,
+        &quot;value&quot;: &quot;$FI_k(X_i) = AUC_k^{base} - AUC_k^p(X_i)$, where $AUC_k^{base}$ is the baseline AUC of task $k$ when no feature is permuted, and $AUC_k^p(X_i)$ is the AUC of task $k$ when feature $X_i$ is permuted.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;MFI module for task CVR&quot;,
+        &quot;value&quot;: &quot;$M_V(x) = [F_{V,F1,1}, ..., F_{V,F1,j}, ..., F_{V,Fi,j}]$, where $x$ is the input representation, and $F_{V,Fi,j}$ represents the output vector of the $j$-th module of the $i$-th feature interaction method for task CVR.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Output $S_O$ for shared and other task&#39;s MFI components (for task V)&quot;,
+        &quot;value&quot;: &quot;$S_O = \\sum_{i}^{m} g_i^O A_i^O$, where $g_i^O$ are weights from gating network and $A_i^O$ are outputs from MFI modules.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Output $S_V$ for task V&#39;s task-specific MFI components&quot;,
+        &quot;value&quot;: &quot;$S_V = \\sum_{i}^{n} g_i^V M_V(x)$, where $g_i^V$ are weights from gating network and $M_V(x)$ are outputs from task-specific MFI modules for task V.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Final combined representation for task V&quot;,
+        &quot;value&quot;: &quot;$C_V = Concat[S_O, S_V]$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Prediction for task $V$&quot;,
+        &quot;value&quot;: &quot;$y_V = t_V C_V$, where $t_V$ denotes the tower unit of task V.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Prediction for task $T$ (first task)&quot;,
+        &quot;value&quot;: &quot;$y_T = t_T C_T$, where $t_T$ denotes the tower unit of task T, and $C_T$ is the combined representation for task T (which only uses the gating network).&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Input features are processed into embeddings.&quot;,
+      &quot;Multiple diversified Feature Interactions (MFI) modules are applied to learn task-specific and task-shared feature interaction representations, leveraging various interaction methods.&quot;,
+      &quot;A Task-Sensitive Network (TSN) utilizes gating networks to dynamically learn precise weights for each feature interaction approach for each task.&quot;,
+      &quot;For subsequent tasks, TSN incorporates the predicted score of preceding tasks as an explicit signal, multiplying it with the MFI output of the preceding task to capture interdependencies.&quot;,
+      &quot;The weighted and sequential MFI outputs are concatenated and fed into multi-layer tower networks specific to each task.&quot;,
+      &quot;Each tower network produces the final prediction for its respective task.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Permutation Feature Importance (FI) for feature $X_i$&quot;,
+        &quot;value&quot;: &quot;$FI(X_i) = AUC_{base} - AUC_p(X_i)$, where $AUC_{base}$ is the AUC of the base model, and $AUC_p(X_i)$ is the AUC when feature $X_i$ is permuted.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The paper provides implementation details including the use of Tensorflow, Adam optimizer (learning rate 1e-3), batch size 2048, embedding dimensions of 16, specific configurations for GDCN (2-layer gated cross layers), MemoNet (part of user/item features, 2 HCNets, 2-order interactions), and MaskNet (640 hidden layer, layer normalization). It states that the overall parameter size of different models (around 1.6E8) was controlled for fair comparison, except for DTN-trim (9% fewer parameters).&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Comprises task-specific and task-shared modules. It can incorporate various feature interaction methods such as SENet, DCN-M, MaskNet, MemoNet, and GDCN to generate diversified high-order representations.&quot;,
+        &quot;name&quot;: &quot;Multiple diversified Feature Interactions (MFI) modules&quot;,
+        &quot;role&quot;: &quot;To learn diversified and task-specific feature interaction representations.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Composed of gating networks and a mechanism to integrate representations from preceding tasks. It uses gating networks (single-layer feed-forward with softmax) to compute weights for different feature interaction methods and leverages the sequential nature of tasks by multiplying preceding task predictions with their MFI outputs.&quot;,
+        &quot;name&quot;: &quot;Task-Sensitive Network (TSN)&quot;,
+        &quot;role&quot;: &quot;To select the most suitable feature interaction approaches for each task and effectively leverage interdependencies between tasks.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A single-layer feed-forward network with a softmax activation function, used within the TSN to calculate the precise weights for the selected feature interaction modules.&quot;,
+        &quot;name&quot;: &quot;Gating Network (GN)&quot;,
+        &quot;role&quot;: &quot;To compute weighted sums of feature interaction representations based on their importance for a given task.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;The Deep Multiple Task-specific Feature Interactions Network (DTN), by integrating diversified task-specific feature interaction methods and a task-sensitive network, can effectively learn nuanced task-specific feature interaction representations, thereby enhancing the efficiency of joint representation learning and outperforming state-of-the-art Multi-Task Learning models in recommendation system performance.&quot;,
+  &quot;title&quot;: &quot;DTN: Deep Multiple Task-specific Feature Interactions Network for Multi-Task Recommendation&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/pdf/2408.11611&quot;,
+  &quot;venue&quot;: &quot;KDD &#39;26, August, 2026, TBA&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2408.11611&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/pdf/2408.11611&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:78,&quot;xmin&quot;:104,&quot;ymax&quot;:382,&quot;xmax&quot;:902},&quot;caption&quot;:&quot;(A) Architecture overview of DTN, which utilizes Multiple Feature Interaction (MFI) module and Task-Sensitive Network (TSN) to learn task-specific feature interaction representations. (B) TSN takes into account the sequential nature of tasks and leverages the representations of preceding tasks more effectively. (C) Gating Network (GN) is employed to compute the weighted sum of feature interaction representations.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:4},&quot;authors&quot;:&quot;Yaowen Bi, Yuteng Lian, Jie Cui, Jun Liu, Peijian Wang, Guanghui Li, Xuejun Chen, Jinglin Zhao, Hao Wen, Jing Zhang, Zhaoqi Zhang, Wenzhuo Song, Yang Sun, Weiwei Zhang, Mingchen Cai, Jian Dong, Guanxing Zhang&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper introduces DTN, a novel architecture for Multi-Task Learning in recommendation systems, which effectively addresses the critical issue of task-specific feature interactions and their divergence phenomenon. By incorporating diversified task-specific feature interaction modules and a task-sensitive network, DTN consistently outperforms state-of-the-art MTL models. The extensive evaluation, including online A/B testing on a large-scale industrial recommender system, demonstrates significant real-world impact and practical improvements across key business metrics (clicks, orders, GMV). This is a strong contribution to both MTL and recommender systems.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;In an e-commerce recommender system, features like &#39;item_ctr_48h&#39; might be highly important for predicting click-through rate (CTR) but less important for conversion rate (CVR), while &#39;order_cnt_24h&#39; might show the opposite importance across these two tasks, a phenomenon called divergence of feature importance.&quot;,&quot;statement&quot;:&quot;Existing Multi-Task Learning (MTL) models for recommender systems (e.g., MMoE, PLE) fail to explicitly consider feature interactions during optimization, which are crucial for capturing complex high-order features. Furthermore, the importance of the same feature can diverge significantly across different tasks in MTL, leading to suboptimal performance.&quot;,&quot;whyItMatters&quot;:[&quot;Feature interactions are a key factor in state-of-the-art ranking models and are essential for capturing complex relationships.&quot;,&quot;MTL is widely adopted in industrial recommender systems to optimize multiple objectives (CTR, ATC, CVR), making efficient and effective models crucial.&quot;,&quot;Ignoring task-specific feature importance and interactions in MTL can lead to suboptimal learning representations and hinder overall model performance and generalization.&quot;]},&quot;evaluationHighlights&quot;:[&quot;DTN achieved significant improvements in online A/B testing on Shopee&#39;s E-commerce recommender system, with +3.28% in clicks, +3.10% in orders, and +2.70% in Gross Merchandise Value (GMV) compared to state-of-the-art MTL models.&quot;,&quot;DTN consistently outperformed strong MTL baselines like MMoE and PLE across industrial (Shopee) and various public benchmark datasets (Census-Income, AE, Ali-CCP) in terms of AUC and LogLoss metrics.&quot;,&quot;The model demonstrated the highest metric uplifts (RelaImp) for CTR, ATC, and CVR prediction tasks on the Shopee industrial dataset (e.g., +6.06% RelaImp for CTR).&quot;,&quot;Visualization experiments confirmed that DTN effectively learns diversified task-specific feature interaction representations, enhancing the model&#39;s ability to capture nuanced relationships.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Shopee E-commerce recommender system (industrial dataset)&quot;,&quot;Census-Income Dataset&quot;,&quot;Public AE Dataset (AliExpress)&quot;,&quot;Ali-CCP Dataset (Taobao)&quot;],&quot;metrics&quot;:[&quot;AUC (Area Under ROC)&quot;,&quot;LogLoss&quot;,&quot;RelaImp (Relative AUC Improvement)&quot;,&quot;Clicks (%)&quot;,&quot;Orders (%)&quot;,&quot;GMV (Gross Merchandise Value) (%)&quot;],&quot;setting&quot;:&quot;Offline experiments on industrial and public benchmark datasets, and online A/B testing on a large-scale E-commerce recommender system.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:191,&quot;xmin&quot;:88,&quot;ymax&quot;:387,&quot;xmax&quot;:489},&quot;caption&quot;:&quot;The Divergence Phenomenon: same feature have significantly different feature importance across CTR, CVR task in MTL, such as $order_cnt_24h$ and $item_ctr_48h$.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:3},{&quot;boundingBox&quot;:{&quot;ymin&quot;:78,&quot;xmin&quot;:88,&quot;ymax&quot;:298,&quot;xmax&quot;:489},&quot;caption&quot;:&quot;Visualization of FIM Weights for CTR, ATC, and CVR Tasks in DTN.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:7},{&quot;boundingBox&quot;:{&quot;ymin&quot;:310,&quot;xmin&quot;:88,&quot;ymax&quot;:562,&quot;xmax&quot;:494},&quot;caption&quot;:&quot;Visualization of DTN: (a) DTN can learn task-specific representations with same FIM method. (b) Different FIM learn diversified representatioins for same task.&quot;,&quot;figureNumber&quot;:5,&quot;pageIndex&quot;:7}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.7401&quot;,&quot;benchmark&quot;:&quot;Shopee, CTR&quot;,&quot;delta&quot;:&quot;+0.0082&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.7483&quot;},{&quot;baseline&quot;:&quot;+2.56%&quot;,&quot;benchmark&quot;:&quot;Shopee, CTR&quot;,&quot;delta&quot;:&quot;+3.50%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RelaImpr&quot;,&quot;thisPaper&quot;:&quot;+6.06%&quot;},{&quot;baseline&quot;:&quot;0.7800&quot;,&quot;benchmark&quot;:&quot;Shopee, ATC&quot;,&quot;delta&quot;:&quot;+0.0050&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.7850&quot;},{&quot;baseline&quot;:&quot;+1.48%&quot;,&quot;benchmark&quot;:&quot;Shopee, ATC&quot;,&quot;delta&quot;:&quot;+1.81%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RelaImpr&quot;,&quot;thisPaper&quot;:&quot;+3.29%&quot;},{&quot;baseline&quot;:&quot;0.8052&quot;,&quot;benchmark&quot;:&quot;Shopee, CVR&quot;,&quot;delta&quot;:&quot;+0.0101&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.8153&quot;},{&quot;baseline&quot;:&quot;+0.75%&quot;,&quot;benchmark&quot;:&quot;Shopee, CVR&quot;,&quot;delta&quot;:&quot;+3.34%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RelaImpr&quot;,&quot;thisPaper&quot;:&quot;+4.09%&quot;}],&quot;title&quot;:&quot;Offline Evaluation on Shopee Dataset (vs. PLE)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Online A/B Test&quot;,&quot;delta&quot;:&quot;+3.28%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Clicks&quot;,&quot;thisPaper&quot;:&quot;N/A&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Online A/B Test&quot;,&quot;delta&quot;:&quot;+3.10%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Orders&quot;,&quot;thisPaper&quot;:&quot;N/A&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Online A/B Test&quot;,&quot;delta&quot;:&quot;+2.70%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GMV&quot;,&quot;thisPaper&quot;:&quot;N/A&quot;}],&quot;title&quot;:&quot;Online A/B Testing on Shopee (vs. PLE)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;+3.6%&quot;,&quot;benchmark&quot;:&quot;Census Task1&quot;,&quot;delta&quot;:&quot;+0.96%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RelaImpr&quot;,&quot;thisPaper&quot;:&quot;+4.56%&quot;},{&quot;baseline&quot;:&quot;+1.75%&quot;,&quot;benchmark&quot;:&quot;AE CTR&quot;,&quot;delta&quot;:&quot;+1.47%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RelaImpr&quot;,&quot;thisPaper&quot;:&quot;+3.22%&quot;},{&quot;baseline&quot;:&quot;+5.5%&quot;,&quot;benchmark&quot;:&quot;Ali-CCP CVR&quot;,&quot;delta&quot;:&quot;+4.3%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;RelaImpr&quot;,&quot;thisPaper&quot;:&quot;+9.8%&quot;}],&quot;title&quot;:&quot;Offline Evaluation on Public Datasets (vs. PLE)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;The proposed DTN model consistently outperforms state-of-the-art MTL models (MMoE, PLE) across various industrial and public benchmark datasets, demonstrating its effectiveness in recommendation tasks.&quot;,&quot;DTN achieves significant uplifts in real-world online A/B tests on Shopee&#39;s E-commerce platform, indicating its practical utility and impact on key business metrics like clicks, orders, and GMV.&quot;,&quot;The integration of diversified task-specific feature interaction modules and a task-sensitive network within DTN successfully addresses the challenge of varying feature importance across tasks, leading to improved and more efficient joint representation learning.&quot;]},&quot;institutions&quot;:&quot;Shopee Pte. Ltd., Singapore&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;DTN addresses the &#39;divergence phenomenon&#39; of feature importance, where the significance of a single feature varies greatly across different MTL tasks. This is tackled by learning task-specific diversified feature interaction representations.&quot;,&quot;The model introduces Multiple diversified Feature Interactions (MFI) modules that leverage various feature interaction methods (e.g., MaskNet, GDCN, MemoNet) to learn diverse representations for each task.&quot;,&quot;A Task-Sensitive Network (TSN) is proposed to select different feature interaction approaches for each task using gating networks and to explicitly model sequential task dependencies, allowing representations from preceding tasks to influence subsequent ones.&quot;,&quot;Unlike prior MTL models that build networks on input embeddings, DTN integrates task-specific feature interaction directly into MTL networks, enhancing the efficiency of joint representation learning.&quot;],&quot;main&quot;:&quot;A novel Deep Multiple Task-specific Feature Interactions Network (DTN) that incorporates diversified task-specific feature interaction methods and a task-sensitive network to learn nuanced task-specific representations in Multi-Task Learning for recommendation.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A machine learning paradigm where a single model is trained to solve multiple tasks simultaneously, often leveraging shared representations to improve learning efficiency and generalization.&quot;,&quot;term&quot;:&quot;Multi-task Learning (MTL)&quot;},{&quot;definition&quot;:&quot;The combination of two or more input features to create new, often more expressive, features that capture complex relationships in the data, crucial for deep learning models in ranking.&quot;,&quot;term&quot;:&quot;Feature Interaction&quot;},{&quot;definition&quot;:&quot;A technique that evaluates the importance of a feature by randomly permuting its values in the test data and measuring the resulting change in the model&#39;s performance (e.g., AUC).&quot;,&quot;term&quot;:&quot;Permutation Feature Importance (FI)&quot;},{&quot;definition&quot;:&quot;The observation that the relative importance or effectiveness of a specific feature can differ significantly across various tasks within a Multi-Task Learning framework.&quot;,&quot;term&quot;:&quot;Divergence Phenomenon of Feature Importance&quot;},{&quot;definition&quot;:&quot;A metric that measures the ratio of clicks on an item or advertisement to the total number of times it was viewed (impressions), commonly used in recommender systems.&quot;,&quot;term&quot;:&quot;Click-Through Rate (CTR)&quot;},{&quot;definition&quot;:&quot;A metric representing the proportion of users who add an item to their shopping cart after viewing it, indicating user interest and purchase intent.&quot;,&quot;term&quot;:&quot;Add-To-Cart Rate (ATC)&quot;},{&quot;definition&quot;:&quot;A metric that measures the percentage of users who complete a desired action, such as making a purchase, after interacting with a recommendation.&quot;,&quot;term&quot;:&quot;Conversion Rate (CVR)&quot;},{&quot;definition&quot;:&quot;The total value of sales transactions over a specific period. In e-commerce, it&#39;s a key indicator of business performance.&quot;,&quot;term&quot;:&quot;Gross Merchandise Value (GMV)&quot;}],&quot;prerequisites&quot;:[&quot;Recommender Systems (RS) architectures and evaluation metrics&quot;,&quot;Fundamentals of Multi-Task Learning (MTL) models like MMoE and PLE&quot;,&quot;Deep Learning concepts including neural networks, embeddings, and attention mechanisms&quot;,&quot;Feature engineering and selection techniques&quot;,&quot;Understanding of evaluation metrics such as Area Under the Receiver Operating Characteristic (AUC) and LogLoss&quot;]},&quot;subTopics&quot;:[&quot;Recommender Systems&quot;,&quot;Multi-task Learning&quot;,&quot;Feature Interaction&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Rec&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Existing MTL models like MMoE and PLE primarily focus on sharing or segregating experts but do not explicitly consider feature interactions during the optimization process, which DTN directly addresses through its specialized modules.&quot;,&quot;Most prior feature interaction methods are designed for single-task prediction scenarios (e.g., CTR prediction) and do not consider combining diversified interaction methods in an MTL setting, whereas DTN integrates multiple diversified methods for task-specific learning.&quot;,&quot;Compared to the Serial Feature Interaction (SFM) approach, which performs feature interaction serially based on input embeddings, DTN employs dedicated Feature Interaction Modules (FIMs) and a Task-Sensitive Network (TSN) for more effective and task-specific interaction learning.&quot;],&quot;limitations&quot;:[&quot;The DTN model, while powerful, still has the potential to incorporate more additional effective feature interaction methods for further improvement.&quot;,&quot;The &#39;DTN-trim&#39; version, which reduces about 9% of parameters compared to the full DTN, implies that the full model might be parameter-heavy, although overall parameter size was controlled for fair comparison (1.6E8 for various models).&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Permutation Feature Importance (FI) for task $k$&quot;,&quot;value&quot;:&quot;$FI_k(X_i) = AUC_k^{base} - AUC_k^p(X_i)$, where $AUC_k^{base}$ is the baseline AUC of task $k$ when no feature is permuted, and $AUC_k^p(X_i)$ is the AUC of task $k$ when feature $X_i$ is permuted.&quot;},{&quot;label&quot;:&quot;MFI module for task CVR&quot;,&quot;value&quot;:&quot;$M_V(x) = [F_{V,F1,1}, ..., F_{V,F1,j}, ..., F_{V,Fi,j}]$, where $x$ is the input representation, and $F_{V,Fi,j}$ represents the output vector of the $j$-th module of the $i$-th feature interaction method for task CVR.&quot;},{&quot;label&quot;:&quot;Output $S_O$ for shared and other task&#39;s MFI components (for task V)&quot;,&quot;value&quot;:&quot;$S_O = \\sum_{i}^{m} g_i^O A_i^O$, where $g_i^O$ are weights from gating network and $A_i^O$ are outputs from MFI modules.&quot;},{&quot;label&quot;:&quot;Output $S_V$ for task V&#39;s task-specific MFI components&quot;,&quot;value&quot;:&quot;$S_V = \\sum_{i}^{n} g_i^V M_V(x)$, where $g_i^V$ are weights from gating network and $M_V(x)$ are outputs from task-specific MFI modules for task V.&quot;},{&quot;label&quot;:&quot;Final combined representation for task V&quot;,&quot;value&quot;:&quot;$C_V = Concat[S_O, S_V]$&quot;},{&quot;label&quot;:&quot;Prediction for task $V$&quot;,&quot;value&quot;:&quot;$y_V = t_V C_V$, where $t_V$ denotes the tower unit of task V.&quot;},{&quot;label&quot;:&quot;Prediction for task $T$ (first task)&quot;,&quot;value&quot;:&quot;$y_T = t_T C_T$, where $t_T$ denotes the tower unit of task T, and $C_T$ is the combined representation for task T (which only uses the gating network).&quot;}],&quot;pipelineFlow&quot;:[&quot;Input features are processed into embeddings.&quot;,&quot;Multiple diversified Feature Interactions (MFI) modules are applied to learn task-specific and task-shared feature interaction representations, leveraging various interaction methods.&quot;,&quot;A Task-Sensitive Network (TSN) utilizes gating networks to dynamically learn precise weights for each feature interaction approach for each task.&quot;,&quot;For subsequent tasks, TSN incorporates the predicted score of preceding tasks as an explicit signal, multiplying it with the MFI output of the preceding task to capture interdependencies.&quot;,&quot;The weighted and sequential MFI outputs are concatenated and fed into multi-layer tower networks specific to each task.&quot;,&quot;Each tower network produces the final prediction for its respective task.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Permutation Feature Importance (FI) for feature $X_i$&quot;,&quot;value&quot;:&quot;$FI(X_i) = AUC_{base} - AUC_p(X_i)$, where $AUC_{base}$ is the AUC of the base model, and $AUC_p(X_i)$ is the AUC when feature $X_i$ is permuted.&quot;}],&quot;reproducibility&quot;:&quot;The paper provides implementation details including the use of Tensorflow, Adam optimizer (learning rate 1e-3), batch size 2048, embedding dimensions of 16, specific configurations for GDCN (2-layer gated cross layers), MemoNet (part of user/item features, 2 HCNets, 2-order interactions), and MaskNet (640 hidden layer, layer normalization). It states that the overall parameter size of different models (around 1.6E8) was controlled for fair comparison, except for DTN-trim (9% fewer parameters).&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Comprises task-specific and task-shared modules. It can incorporate various feature interaction methods such as SENet, DCN-M, MaskNet, MemoNet, and GDCN to generate diversified high-order representations.&quot;,&quot;name&quot;:&quot;Multiple diversified Feature Interactions (MFI) modules&quot;,&quot;role&quot;:&quot;To learn diversified and task-specific feature interaction representations.&quot;},{&quot;details&quot;:&quot;Composed of gating networks and a mechanism to integrate representations from preceding tasks. It uses gating networks (single-layer feed-forward with softmax) to compute weights for different feature interaction methods and leverages the sequential nature of tasks by multiplying preceding task predictions with their MFI outputs.&quot;,&quot;name&quot;:&quot;Task-Sensitive Network (TSN)&quot;,&quot;role&quot;:&quot;To select the most suitable feature interaction approaches for each task and effectively leverage interdependencies between tasks.&quot;},{&quot;details&quot;:&quot;A single-layer feed-forward network with a softmax activation function, used within the TSN to calculate the precise weights for the selected feature interaction modules.&quot;,&quot;name&quot;:&quot;Gating Network (GN)&quot;,&quot;role&quot;:&quot;To compute weighted sums of feature interaction representations based on their importance for a given task.&quot;}]},&quot;thesis&quot;:&quot;The Deep Multiple Task-specific Feature Interactions Network (DTN), by integrating diversified task-specific feature interaction methods and a task-sensitive network, can effectively learn nuanced task-specific feature interaction representations, thereby enhancing the efficiency of joint representation learning and outperforming state-of-the-art Multi-Task Learning models in recommendation system performance.&quot;,&quot;title&quot;:&quot;DTN: Deep Multiple Task-specific Feature Interactions Network for Multi-Task Recommendation&quot;,&quot;url&quot;:&quot;https://arxiv.org/pdf/2408.11611&quot;,&quot;venue&quot;:&quot;KDD &#39;26, August, 2026, TBA&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>
