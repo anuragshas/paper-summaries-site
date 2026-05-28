@@ -13,6 +13,17 @@
       ]
     },
     {
+      "paperId": "2604.24026",
+      "title": "From Skill Text to Skill Structure: The Scheduling-Structural-Logical Representation for Agent Skills",
+      "authors": "Qiliang Liang, Hansi Wang, Zhong Liang, and Yang Liu",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "Agent",
+        "Reasoning",
+        "QA"
+      ]
+    },
+    {
       "paperId": "2604.15034",
       "title": "Autogenesis: A Self-Evolving Agent Protocol",
       "authors": "Wentao Zhang",
@@ -98,17 +109,6 @@
         "RAG",
         "Agent",
         "Rec"
-      ]
-    },
-    {
-      "paperId": "2603.25723",
-      "title": "Natural-Language Agent Harnesses",
-      "authors": "Linyue Pan, Lexiao Zou, Shuo Guo, Jingchen Ni, Hai-Tao Zheng",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Agent",
-        "Reasoning",
-        "QA"
       ]
     }
   ]

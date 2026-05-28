@@ -2,6 +2,17 @@
   "page": 5,
   "papers": [
     {
+      "paperId": "2510.11056",
+      "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
+      "authors": "Runze Xia, Yupeng Ji, Yuxi Zhou, Haodong Liu, Teng Zhang, and Piji Li",
+      "publishedDate": "2025-10-01",
+      "tags": [
+        "QA",
+        "Pretraining",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2509.05486",
       "title": "The Token Tax: Systematic Bias in Multilingual Tokenization",
       "authors": "Jessica M. Lundin, Ada Zhang, Nihal Karim, Hamza Louzan, Victor Wei, David Adelani, Cody Carroll",
@@ -107,18 +118,6 @@
         "Dialogue Coherence",
         "Context Tracking",
         "LLM Evaluation"
-      ]
-    },
-    {
-      "paperId": "2601.08345",
-      "title": "MLPlatt: Simple Calibration Framework for Ranking Models",
-      "authors": "Piotr Bajger, Roman Dusek, Krzysztof Galias, Pawel Mlynicek, Aleksander Wawer, and Pawel Zawistowski",
-      "publishedDate": null,
-      "tags": [
-        "Ranking Model Calibration",
-        "E-commerce",
-        "CTR Prediction",
-        "Machine Learning"
       ]
     }
   ]

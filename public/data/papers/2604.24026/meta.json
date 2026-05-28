@@ -1,0 +1,19 @@
+{
+  "paperId": "2604.24026",
+  "title": "From Skill Text to Skill Structure: The Scheduling-Structural-Logical Representation for Agent Skills",
+  "authors": "Qiliang Liang, Hansi Wang, Zhong Liang, and Yang Liu",
+  "publishedDate": "2026-04-01",
+  "tags": [
+    "Agent",
+    "Reasoning",
+    "QA"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2604.24026",
+  "pagePath": "/paper-summaries-site/papers/2604.24026",
+  "summaryPath": "/paper-summaries-site/data/papers/2604.24026/summary.json",
+  "assets": {
+    "figureAssetCount": 1,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 91,
+      "xmin": 178,
+      "ymax": 284,
+      "xmax": 825
+    },
+    "caption": "Overview of the SSL representation. A text-heavy skill artifact is converted by a normalizer into three layers: a scheduling record for invocation-level signals, a structural graph of execution scenes, and a logical graph of atomic actions and resource-use evidence. The structured view remains paired with the original source document and supports downstream tasks such as Skill Discovery and Risk Assessment.",
+    "figureNumber": 1,
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2604.24026/figures/architecture.webp"
+  },
+  "authors": "Qiliang Liang, Hansi Wang, Zhong Liang, and Yang Liu",
+  "breakthroughAssessment": {
+    "justification": "The paper proposes a novel structured representation (SSL) for LLM agent skills, directly addressing the limitations of text-heavy skill descriptions. By disentangling skill aspects into three layers and formalizing them, it significantly improves performance in crucial downstream tasks like skill discovery and risk assessment. The approach is well-grounded in cognitive linguistics and validated with thorough experiments. It is a strong practical step towards more inspectable and reusable agent skills, highly useful for building robust agent systems.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "A single skill artifact can entangle a skill's invocation interface, execution phases, and action/resource-use evidence, forcing downstream components to infer these properties from long, noisy, or potentially incomplete text. For skill discovery, large overlapping registries require signals beyond sparse metadata, including implementation-level cues. For pre-execution risk assessment, third-party skills might have broad or persistent access, but their instructions and configuration files obscure risks like data exfiltration or privilege escalation.",
+    "statement": "Current agent systems represent skills as text-heavy artifacts (e.g., SKILL.md files) where machine-usable evidence is largely embedded in natural-language descriptions, leading to a representational bottleneck where semantically distinct properties are collapsed into a single textual surface.",
+    "whyItMatters": [
+      "Difficulty in managing skill collections and using skills during agent execution requires reasoning over invocation interfaces, execution structure, and concrete side effects, which are entangled in text.",
+      "Existing representations make skills difficult for automated systems to analyze, validate, and reuse reliably.",
+      "Impedes effective skill retrieval, risk assessment, and general skill management (selection, composition, adaptation)."
+    ]
+  },
+  "evaluationHighlights": [
+    "In Skill Discovery, MRR@50 improved by +0.080 (from 0.649 to 0.729) over the strongest text-only baseline (Desc + Source Outline).",
+    "In Risk Assessment, macro F1 improved by +0.100 (from 0.409 to 0.509) over the complete source document baseline (Full SKILL.md).",
+    "SSL provides useful evidence across distinct skill-centered tasks (interface-level for discovery, action/resource-level for risk) while complementing the original source document."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Skill Discovery benchmark (6,184-skill corpus, 431 intent-level queries)",
+        "Risk Assessment benchmark (252 gold-labeled skills with six artifact-level risk dimensions)"
+      ],
+      "metrics": [
+        "Skill Discovery: MRR@50, NDCG@5, NDCG@10, Recall@10",
+        "Risk Assessment: Macro F1, Macro Accuracy, Macro Precision, Macro Recall (across six dimensions)"
+      ],
+      "setting": "Evaluation of SSL as an intermediate representation for skill-centered agent systems through two downstream tasks: Skill Discovery and Risk Assessment."
+    },
+    "experimentFigures": [],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "0.649",
+            "benchmark": "431 intent-level queries",
+            "delta": "+0.080",
+            "isPositive": true,
+            "metric": "MRR@50",
+            "thisPaper": "0.729"
+          },
+          {
+            "baseline": "0.670",
+            "benchmark": "431 intent-level queries",
+            "delta": "+0.078",
+            "isPositive": true,
+            "metric": "NDCG@5",
+            "thisPaper": "0.748"
+          },
+          {
+            "baseline": "0.689",
+            "benchmark": "431 intent-level queries",
+            "delta": "+0.081",
+            "isPositive": true,
+            "metric": "NDCG@10",
+            "thisPaper": "0.770"
+          },
+          {
+            "baseline": "0.833",
+            "benchmark": "431 intent-level queries",
+            "delta": "+0.072",
+            "isPositive": true,
+            "metric": "Recall@10",
+            "thisPaper": "0.905"
+          }
+        ],
+        "title": "Skill Discovery Performance"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.409",
+            "benchmark": "252 skills",
+            "delta": "+0.100",
+            "isPositive": true,
+            "metric": "Macro F1",
+            "thisPaper": "0.509"
+          },
+          {
+            "baseline": "0.765",
+            "benchmark": "252 skills",
+            "delta": "+0.036",
+            "isPositive": true,
+            "metric": "Macro Acc.",
+            "thisPaper": "0.801"
+          },
+          {
+            "baseline": "0.828",
+            "benchmark": "252 skills",
+            "delta": "+0.056",
+            "isPositive": true,
+            "metric": "Macro Prec.",
+            "thisPaper": "0.884"
+          },
+          {
+            "baseline": "0.283",
+            "benchmark": "252 skills",
+            "delta": "+0.099",
+            "isPositive": true,
+            "metric": "Macro Rec.",
+            "thisPaper": "0.382"
+          }
+        ],
+        "title": "Aggregate Risk Assessment Results"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.511",
+            "benchmark": "Data Exfiltration",
+            "delta": "+0.188",
+            "isPositive": true,
+            "metric": "F1",
+            "thisPaper": "0.699"
+          },
+          {
+            "baseline": "0.695",
+            "benchmark": "Credential Access",
+            "delta": "+0.085",
+            "isPositive": true,
+            "metric": "F1",
+            "thisPaper": "0.780"
+          },
+          {
+            "baseline": "0.271",
+            "benchmark": "Resource Abuse",
+            "delta": "+0.148",
+            "isPositive": true,
+            "metric": "F1",
+            "thisPaper": "0.419"
+          }
+        ],
+        "title": "Risk Assessment F1 per Dimension"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "SSL-derived representations significantly outperform text-only baselines in both Skill Discovery and Risk Assessment.",
+      "The best performance in Skill Discovery is achieved by combining description with rich SSL-derived fields (Desc + SSL-Rich).",
+      "For Risk Assessment, combining the complete source document with SSL (MD + SSL) yields the best macro F1, improving over using the full document alone.",
+      "SSL makes task-relevant evidence explicit, aiding downstream systems in selecting and assessing skills without losing access to the original source artifact's context.",
+      "SSL is not a replacement for the source document but acts as an effective evidence interface."
+    ]
+  },
+  "institutions": "Peking University",
+  "keyNovelty": {
+    "explanation": [
+      "SSL separates skill-level scheduling signals (invocation), scene-level execution structure (workflow), and logic-level action/resource-use evidence (atomic operations).",
+      "It draws analogies from Schank and Abelson\u2019s cognitive linguistic theories: Memory Organization Packets (Scheduling layer), Script Theory (Structural layer), and Conceptual Dependency (Logical layer).",
+      "Instantiated with an LLM-based normalizer to convert existing SKILL.md files into the SSL schema.",
+      "Evaluated through two downstream tasks, Skill Discovery and Risk Assessment, showing significant outperformance over text-only baselines."
+    ],
+    "main": "The first structured representation (Scheduling-Structural-Logical, SSL) designed specifically for disentangling agent skill artifacts into three layers."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A package of instructions, control flow, constraints, and callable operations that LLM agents use.",
+        "term": "Skill artifact"
+      },
+      {
+        "definition": "A three-layer structured representation for agent skills that disentangles skill-level invocation signals, scene-level execution structure, and logic-level action/resource-use evidence.",
+        "term": "Scheduling-Structural-Logical (SSL) representation"
+      },
+      {
+        "definition": "The task of matching user requests to relevant skills in a large registry.",
+        "term": "Skill Discovery"
+      },
+      {
+        "definition": "The task of identifying operational risks (e.g., data exfiltration, privilege escalation) from skill artifacts.",
+        "term": "Risk Assessment"
+      },
+      {
+        "definition": "A system that converts unstructured skill documents (e.g., SKILL.md) into the structured SSL representation using an LLM.",
+        "term": "LLM-based Normalizer"
+      }
+    ],
+    "prerequisites": [
+      "Large Language Models (LLMs)",
+      "LLM Agents",
+      "Tool use in LLMs",
+      "Cognitive Linguistics (e.g., Memory Organization Packets, Script Theory, Conceptual Dependency)",
+      "Information Retrieval (e.g., MRR@50, NDCG)",
+      "Natural Language Processing (NLP)"
+    ]
+  },
+  "subTopics": [
+    "Agent Systems",
+    "Knowledge Representation",
+    "Information Retrieval"
+  ],
+  "tags": [
+    {
+      "name": "Agent",
+      "type": "primary"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    },
+    {
+      "name": "QA",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Existing LLM agent systems mostly treat individual skills as an implicit substrate (repository entry, learned unit, routing target), leaving open how to expose skill evidence in a machine-usable form that disentangles interface, execution, and action/resource-use.",
+      "SSL specifically addresses this representational gap by providing explicit structure, unlike text-only descriptions or generic source-document compression."
+    ],
+    "limitations": [
+      "Static runtime actions: SSL is extracted from static artifacts and cannot determine dynamic actions (e.g., downloaded payloads, constructed commands, conditional resource access).",
+      "Normalizer fidelity: LLM-based normalization may omit relevant facts, over-regularize the source, map ambiguous behavior to coarse enums, or infer hidden intent.",
+      "Evaluation scope: Experiments cover Skill Discovery and Risk Assessment, not actual agent use during planning, execution, monitoring, or post-hoc refinement.",
+      "Skill Discovery benchmark: Uses automatically generated candidates filtered by a realism annotation protocol, not fully human-authored requests.",
+      "Model-mediated Risk Assessment: Current risk labels cover 252 skills and come from a multi-model binary voting pipeline with second-pass review for disagreed dimensions. Results should be interpreted as static risk-identification performance, not a substitute for expert security audit or runtime safety evaluation."
+    ],
+    "modeling": [],
+    "pipelineFlow": [
+      "The SSL Normalizer is an LLM-based pipeline (DeepSeek-V3.2) that converts raw SKILL.md files into the SSL representation.",
+      "It follows four main stages: 1) Skill record extraction, 2) Scene decomposition, 3) Logic-step expansion, and 4) Verification and validation.",
+      "The process is constrained to produce grounded, typed JSON outputs using restricted vocabularies, with a retry mechanism for parsing or hard validation failures."
+    ],
+    "problemDefinition": [
+      {
+        "label": "SSL representation formalization",
+        "value": "Let $d$ denote a skill artifact. SSL maps $d$ into a typed representation: $G_d = (r_{\\text{sch}}, G_{\\text{str}}, G_{\\text{log}}, R_{\\text{cont}}, R_{\\text{entry}})$, where $r_{\\text{sch}}$ is the Scheduling layer (skill-level interface), $G_{\\text{str}}$ is the Structural layer (scene-level graph), $G_{\\text{log}}$ is the Logical layer (logic-step graph), $R_{\\text{cont}}$ records containment, and $R_{\\text{entry}}$ records entry pointers."
+      }
+    ],
+    "reproducibility": "All reported experiments are inference-only, depending on hosted-model inference (LLM calls for normalization, query generation, risk assessment gold construction, fixed-judge evaluation). The paper plans to release SSL schema, prompting guidelines, normalized SSL records, Skill Discovery queries/labels, Risk Assessment rubrics/labels, and scripts for rebuilding tables.",
+    "systemModules": [
+      {
+        "details": "Exposes the skill's routing and invocation interface without requiring downstream systems to embed or parse the full source document. Captures supported intents, input/output contracts, and coarse dependencies/control-flow properties (e.g., skill_goal, tags, expected_inputs, control_flow_features).",
+        "name": "Scheduling Layer",
+        "role": "Skill-Level Interface"
+      },
+      {
+        "details": "Represents the skill as a sequence or graph of typed execution phases. Nodes are scenes (e.g., PREPARE, ACQUIRE, ACT), and edges represent phase-level transitions, making multistep workflows inspectable. Includes fields like scene_type, scene_goal, entry/exit_conditions, and next_scene_rules.",
+        "name": "Structural Layer",
+        "role": "Scene-Level Execution Phases"
+      },
+      {
+        "details": "Records bounded action and resource-use facts useful for data-flow inspection and Risk Assessment. Nodes are logic steps, and edges represent micro-level transitions among source-grounded atomic actions. Specifies act_type (e.g., READ, WRITE, CALL_TOOL), actor, object, resource_scope (e.g., MEMORY, LOCAL_FS), and next_step_rules.",
+        "name": "Logical Layer",
+        "role": "Atomic Actions and Resource Evidence"
+      }
+    ]
+  },
+  "thesis": "LLM agents currently rely on text-heavy skill representations (e.g., SKILL.md files), which entangle invocation interfaces, execution structure, and resource use, making skill management and execution difficult for machines. Introducing a structured, three-layer Scheduling-Structural-Logical (SSL) representation, derived from cognitive linguistic theories and instantiated with an LLM-based normalizer, significantly outperforms text-only baselines in Skill Discovery and Risk Assessment, enabling more inspectable, reusable, and operationally actionable skill representations.",
+  "title": "From Skill Text to Skill Structure: The Scheduling-Structural-Logical Representation for Agent Skills",
+  "url": "https://arxiv.org/abs/arXiv:2604.24026",
+  "venue": "arXiv preprint",
+  "year": "2026"
+}
