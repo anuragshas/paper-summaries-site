@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2604.27488",
+      "title": "Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO",
+      "authors": "Yu Tian, Jiawei Chen, Lifan Zheng, Mingxiang Tao, Xinyi Zeng, Zhaoxia Yin, Hang Su, Xian Sun",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "Agent",
+        "Reasoning",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2604.24594",
       "title": "Skill Retrieval Augmentation for Agentic AI",
       "authors": "Weihang Su, Jianming Long, Qingyao Ai, Yichen Tang, Changyue Wang, Yiteng Tu, Yiqun Liu",
@@ -98,17 +109,6 @@
         "Agent",
         "RAG",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2603.26100",
-      "title": "Rethinking Recommendation Paradigms: From Pipelines to Agentic Recommender Systems",
-      "authors": "Jinxin Hu, Hao Deng, Lingyu Mu, Hao Zhang, Shizhun Wang, Yu Zhang, Xiaoyi Zeng",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "RAG",
-        "Agent",
-        "Rec"
       ]
     }
   ]

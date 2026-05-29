@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2604.27488",
+      "title": "Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO",
+      "tags": [
+        "Agent",
+        "Reasoning",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2604.24594",
       "title": "Skill Retrieval Augmentation for Agentic AI",
       "tags": [

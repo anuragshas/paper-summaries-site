@@ -2,6 +2,17 @@
   "page": 3,
   "papers": [
     {
+      "paperId": "2603.09004",
+      "title": "Can AI Agents Generate Microservices? How Far are We?",
+      "authors": "Bassam Adnan, Matteo Esposito, Davide Taibi, Karthik Vaidhyanathan",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Agent",
+        "QA",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2603.05706",
       "title": "Reasoning Models Struggle to Control their Chains of Thought",
       "authors": "Chen Yueh-Han, Robert McCarthy, Bruce W. Lee, He He, Ian Kivlichan, Bowen Baker, Micah Carroll, Tomek Korbak",
@@ -106,20 +117,6 @@
         "Exploration",
         "Memory-Augmented Agents",
         "Policy Optimization"
-      ]
-    },
-    {
-      "paperId": "2602.22661",
-      "title": "dLLM : Simple Diffusion Language Modeling",
-      "authors": "Zhanhui Zhou, Lingjie Chen, Hanghang Tong, Dawn Song",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "Diffusion Language Models",
-        "Open-source Frameworks",
-        "Natural Language Processing",
-        "Model Training",
-        "Model Inference",
-        "Reproducibility"
       ]
     }
   ]

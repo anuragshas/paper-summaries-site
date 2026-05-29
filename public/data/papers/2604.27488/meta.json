@@ -1,0 +1,19 @@
+{
+  "paperId": "2604.27488",
+  "title": "Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO",
+  "authors": "Yu Tian, Jiawei Chen, Lifan Zheng, Mingxiang Tao, Xinyi Zeng, Zhaoxia Yin, Hang Su, Xian Sun",
+  "publishedDate": "2026-04-01",
+  "tags": [
+    "Agent",
+    "Reasoning",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2604.27488",
+  "pagePath": "/paper-summaries-site/papers/2604.27488",
+  "summaryPath": "/paper-summaries-site/data/papers/2604.27488/summary.json",
+  "assets": {
+    "figureAssetCount": 3,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

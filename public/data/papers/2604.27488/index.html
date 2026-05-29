@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO</h1>
+      <p class="meta"><strong>Authors:</strong> Yu Tian, Jiawei Chen, Lifan Zheng, Mingxiang Tao, Xinyi Zeng, Zhaoxia Yin, Hang Su, Xian Sun</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2604.27488" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2604.27488</a></p>
+      <p class="muted">Generated summary artifact for 2604.27488</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Skills-Coach is a novel automated framework that significantly enhances the self-evolution capabilities of skills within Large Language Model (LLM)-based agents by systematically exploring skill boundaries, optimizing skill prompts and code, and rigorously evaluating performance, thereby addressing the current fragmentation of the skill ecosystem and fostering the development of more robust and adaptable LLM-based agents.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>The current skill ecosystem for LLM-based agents is fragmented, characterized by abundant skills designed for localized use cases that struggle to systematically cover comprehensive functional requirements, leading to functional gaps and integration bottlenecks.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>Skills-Coach introduces a novel automated framework for Skill Self-Evolution in LLM-based agents, employing a training-free optimization approach to enhance skill capabilities and address the fragmented skill ecosystem.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Overall average score increased from 0.37 to 0.84, representing a substantial 127% relative growth.</li><li>Overall pass rate dramatically improved from 33.59% to 88.02%, indicating a robust increase of 54.43%.</li><li>For skills in the &#39;Exceptional Improvement&#39; category, some experienced dramatic improvements, with scores leaping from 0.0 to 1.0 and pass rates rising from 0% or lower levels to 100%.</li><li>Both instruction-only and code-inclusive skills achieved over a 50% increase in pass rate, with code-inclusive skills showing the largest relative improvement.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Skills-Coach significantly improves skill performance across all evaluation metrics on the Skill-X benchmark.</li><li>The framework is effective for both instruction-only and code-inclusive skills, with code-inclusive skills showing the largest relative improvement.</li><li>Performance gains are consistently observed across all task difficulties, with advanced tasks demonstrating an even greater magnitude of improvement.</li><li>The optimization yields transformative improvements for underperforming skills but shows diminishing returns for already high-performing skills, suggesting strategic allocation of optimization resources is crucial.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Not specified</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 442,
+      &quot;xmin&quot;: 119,
+      &quot;ymax&quot;: 757,
+      &quot;xmax&quot;: 878
+    },
+    &quot;caption&quot;: &quot;Overview of Skills-Coach.&quot;,
+    &quot;figureNumber&quot;: 2,
+    &quot;pageIndex&quot;: 2
+  },
+  &quot;authors&quot;: &quot;Yu Tian, Jiawei Chen, Lifan Zheng, Mingxiang Tao, Xinyi Zeng, Zhaoxia Yin, Hang Su, Xian Sun&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;Skills-Coach introduces a novel, fully automated framework for self-evolving skills in LLM-based agents, which is a significant step towards more robust and adaptable agents. The use of Training-Free GRPO is an efficient alternative to conventional methods, and the creation of the Skill-X benchmark is valuable. The framework addresses a critical problem of fragmented skill ecosystems, showing substantial performance improvements across diverse skill categories and task complexities.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;LLM-based agents, despite having access to over 56,000 skills on platforms like Clawhub, still grapple with functional gaps and integration bottlenecks when tackling multifaceted tasks.&quot;,
+    &quot;statement&quot;: &quot;The current skill ecosystem for LLM-based agents is fragmented, characterized by abundant skills designed for localized use cases that struggle to systematically cover comprehensive functional requirements, leading to functional gaps and integration bottlenecks.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;It hinders the robust and scalable deployment of LLM-based agents.&quot;,
+      &quot;It limits the full potential of LLM-based agents in diverse industries.&quot;,
+      &quot;It increases the burden on skill developers and maintainers due to the lack of autonomous skill optimization.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Overall average score increased from 0.37 to 0.84, representing a substantial 127% relative growth.&quot;,
+    &quot;Overall pass rate dramatically improved from 33.59% to 88.02%, indicating a robust increase of 54.43%.&quot;,
+    &quot;For skills in the &#39;Exceptional Improvement&#39; category, some experienced dramatic improvements, with scores leaping from 0.0 to 1.0 and pass rates rising from 0% or lower levels to 100%.&quot;,
+    &quot;Both instruction-only and code-inclusive skills achieved over a 50% increase in pass rate, with code-inclusive skills showing the largest relative improvement.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Skill-X (All skills)&quot;,
+        &quot;Skill-X (Instruction-only skills)&quot;,
+        &quot;Skill-X (Code-inclusive skills)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Average score&quot;,
+        &quot;Pass rate&quot;,
+        &quot;Standard Task score&quot;,
+        &quot;Advanced Task score&quot;
+      ],
+      &quot;setting&quot;: &quot;Evaluation on Skill-X, a benchmark dataset of 48 diverse skills (29 instruction-only, 19 code-inclusive) sourced from Anthropics, Clawhub, and Vercel Labs. Each task&#39;s execution result is evaluated against predefined criteria, scoring one point for each satisfied condition. A task passes if its score meets or exceeds a predefined threshold (70%).&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 104,
+          &quot;xmin&quot;: 135,
+          &quot;ymax&quot;: 395,
+          &quot;xmax&quot;: 879
+        },
+        &quot;caption&quot;: &quot;Performance Comparison of Original vs. Optimized Skills across Skill-X.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 651,
+          &quot;xmin&quot;: 172,
+          &quot;ymax&quot;: 760,
+          &quot;xmax&quot;: 825
+        },
+        &quot;caption&quot;: &quot;Key Contents from the Pollyreach Summary Report.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 8
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.378&quot;,
+            &quot;benchmark&quot;: &quot;All skills&quot;,
+            &quot;delta&quot;: &quot;+0.47&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Average score&quot;,
+            &quot;thisPaper&quot;: &quot;0.84&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;33.59%&quot;,
+            &quot;benchmark&quot;: &quot;All skills&quot;,
+            &quot;delta&quot;: &quot;+54.43%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Pass rate&quot;,
+            &quot;thisPaper&quot;: &quot;88.02%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;43.00%&quot;,
+            &quot;benchmark&quot;: &quot;All skills&quot;,
+            &quot;delta&quot;: &quot;+44.43%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Standard Task score&quot;,
+            &quot;thisPaper&quot;: &quot;87.43%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;32.71%&quot;,
+            &quot;benchmark&quot;: &quot;All skills&quot;,
+            &quot;delta&quot;: &quot;+48.90%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Advanced Task score&quot;,
+            &quot;thisPaper&quot;: &quot;81.61%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;37.93%&quot;,
+            &quot;benchmark&quot;: &quot;Instruction-only skills&quot;,
+            &quot;delta&quot;: &quot;+53.45%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Pass rate&quot;,
+            &quot;thisPaper&quot;: &quot;91.38%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;26.97%&quot;,
+            &quot;benchmark&quot;: &quot;Code-inclusive skills&quot;,
+            &quot;delta&quot;: &quot;+55.92%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Pass rate&quot;,
+            &quot;thisPaper&quot;: &quot;82.89%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Overall Performance on Skill-X&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Skills-Coach significantly improves skill performance across all evaluation metrics on the Skill-X benchmark.&quot;,
+      &quot;The framework is effective for both instruction-only and code-inclusive skills, with code-inclusive skills showing the largest relative improvement.&quot;,
+      &quot;Performance gains are consistently observed across all task difficulties, with advanced tasks demonstrating an even greater magnitude of improvement.&quot;,
+      &quot;The optimization yields transformative improvements for underperforming skills but shows diminishing returns for already high-performing skills, suggesting strategic allocation of optimization resources is crucial.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;University of Chinese Academy of Sciences, East China Normal University, Zhongguancun Academy, Southeast University, Hainan University, Tsinghua University&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;It systematically explores skill capability boundaries and identifies potential optimization spaces for LLM agents.&quot;,
+      &quot;It automatically generates improved skill versions (instruction and code) without continuous human intervention, forming a closed-loop iterative refinement process.&quot;,
+      &quot;It leverages Training-Free Group Relative Policy Optimization (GRPO) for efficient and data-light iterative refinement, reducing computational costs and data requirements compared to conventional gradient-based methods.&quot;,
+      &quot;It introduces Skill-X, a comprehensive benchmark dataset comprising 48 diverse skills, and a multi-dimensional, traceable evaluation framework to rigorously assess skill performance.&quot;
+    ],
+    &quot;main&quot;: &quot;Skills-Coach introduces a novel automated framework for Skill Self-Evolution in LLM-based agents, employing a training-free optimization approach to enhance skill capabilities and address the fragmented skill ecosystem.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;Autonomous entities powered by Large Language Models capable of executing tasks and interacting with environments using skills.&quot;,
+        &quot;term&quot;: &quot;LLM-based agents&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The ability of an agent to autonomously explore, refine, and expand its capabilities without continuous human intervention, aiming for continuous improvement.&quot;,
+        &quot;term&quot;: &quot;Skill self-evolution&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;An efficient optimization approach grounded in Training-Free GRPO that iteratively refines skill instructions and code, significantly reducing computational costs and data requirements compared to conventional gradient-based methods.&quot;,
+        &quot;term&quot;: &quot;Lightweight Optimization Module&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;LLM-based Agents&quot;,
+      &quot;Group Relative Policy Optimization (GRPO)&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;LLM Agents&quot;,
+    &quot;Skill Optimization&quot;,
+    &quot;Automated Evaluation&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Agent&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike conventional gradient-based parameter optimization, Skills-Coach utilizes Training-Free GRPO, achieving competitive results in minutes rather than hours, dramatically reducing data requirements, and mitigating overfitting risks.&quot;,
+      &quot;Skills-Coach contrasts with early agent evaluations that often rely on isolated, synthetic environments by introducing Skill-X, a comprehensive benchmark that systematically evaluates capabilities under diverse real-world application scenarios and complex task requirements.&quot;,
+      &quot;The framework supports both virtual and real execution modes, providing more flexible and comprehensive evaluation than systems limited to simulated environments.&quot;
+    ],
+    &quot;limitations&quot;: [],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Optimization Strategy&quot;,
+        &quot;value&quot;: &quot;Training-Free Group Relative Policy Optimization (GRPO)&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;A target skill is provided as input to Skills-Coach.&quot;,
+      &quot;The Diverse Task Generation Module analyzes skill specifications to automatically create a comprehensive test suite (training and test tasks).&quot;,
+      &quot;The Lightweight Optimization Module leverages Training-Free GRPO to iteratively refine the skill&#39;s instruction and corresponding code.&quot;,
+      &quot;The Comparative Execution Module runs both the original and optimized skill versions on identical test tasks in a controlled and reproducible environment, capturing outputs and execution logs.&quot;,
+      &quot;The Traceable Evaluation Module objectively assesses performance using multi-dimensional criteria, conducts comparative analysis, and informs data-driven retention decisions, providing feedback for subsequent iterative optimization.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Main Question&quot;,
+        &quot;value&quot;: &quot;Can an agent autonomously explore the capability boundaries of its existing skills and proactively expand them to achieve skill self-evolution?&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Sub-Question 1&quot;,
+        &quot;value&quot;: &quot;How can boundary-probing tasks be generated automatically?&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Sub-Question 2&quot;,
+        &quot;value&quot;: &quot;How can skills achieve self-evolution?&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Sub-Question 3&quot;,
+        &quot;value&quot;: &quot;How can skill capabilities be effectively evaluated?&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;Code for Skills-Coach is available at https://github.com/T1aNS1R/Skills-Coach. The paper introduces Skill-X, a comprehensive benchmark dataset, and details evaluation criteria and setup to enable reproducibility.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Systematically creates comprehensive test suites spanning standard to complex edge-case scenarios by analyzing target skill specifications. Ensures sufficient diversity, realistic boundary representation, and real-world applicability. Parses skill instruction files to extract functional instructions, commands/parameters, I/O formats, constraints, and usage examples. Employs a hierarchical generation strategy (Standard, Advanced, Boundary tasks) with automated validation criteria.&quot;,
+        &quot;name&quot;: &quot;Diverse Task Generation Module&quot;,
+        &quot;role&quot;: &quot;Task Generation&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Core optimization engine grounded in Training-Free GRPO, continuously enhancing instruction quality and code performance through automated processes. Refines skill instruction and code via a multi-driven mechanism, accelerating training time and reducing data requirements. Includes an Instruction Optimization Pathway (generates and scores instruction variants) and a Code Optimization Pathway (rule-driven optimizer, LLM-based command optimizer, auto-fixer).&quot;,
+        &quot;name&quot;: &quot;Lightweight Optimization Module&quot;,
+        &quot;role&quot;: &quot;Skill Optimization&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Core engine for unbiased execution and comparison of original and optimized skills on identical test tasks. Establishes a controlled, isolated, and reproducible execution environment. Captures all outputs, side effects, errors, and performance metrics. Integrates an Environment Checker and Skill Executor. Enforces stringent isolation strategies (temporary directories, sequential execution for original/optimized skills) and supports parallel execution for efficiency. Operates in virtual and real modes.&quot;,
+        &quot;name&quot;: &quot;Comparative Execution Module&quot;,
+        &quot;role&quot;: &quot;Skill Execution and Comparison&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Objectively and quantitatively assesses performance differentials. Performs multi-dimensional scoring, computes normalized metrics, conducts comparative analysis, and renders data-driven retention decisions. Adheres to principles of Scoring Objectivity, Criterion Consistency, Analysis Depth, Decision Rigor, and Interpretability. Comprises a Criterion Parser, Task Evaluator, Metrics Computer, and Decision Engine. Employs a dual-mode strategy (LLM-based deep evaluation and heuristic fallback).&quot;,
+        &quot;name&quot;: &quot;Traceable Evaluation Module&quot;,
+        &quot;role&quot;: &quot;Performance Assessment&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;Skills-Coach is a novel automated framework that significantly enhances the self-evolution capabilities of skills within Large Language Model (LLM)-based agents by systematically exploring skill boundaries, optimizing skill prompts and code, and rigorously evaluating performance, thereby addressing the current fragmentation of the skill ecosystem and fostering the development of more robust and adaptable LLM-based agents.&quot;,
+  &quot;title&quot;: &quot;Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2604.27488&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2604.27488&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2604.27488&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:442,&quot;xmin&quot;:119,&quot;ymax&quot;:757,&quot;xmax&quot;:878},&quot;caption&quot;:&quot;Overview of Skills-Coach.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:2},&quot;authors&quot;:&quot;Yu Tian, Jiawei Chen, Lifan Zheng, Mingxiang Tao, Xinyi Zeng, Zhaoxia Yin, Hang Su, Xian Sun&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;Skills-Coach introduces a novel, fully automated framework for self-evolving skills in LLM-based agents, which is a significant step towards more robust and adaptable agents. The use of Training-Free GRPO is an efficient alternative to conventional methods, and the creation of the Skill-X benchmark is valuable. The framework addresses a critical problem of fragmented skill ecosystems, showing substantial performance improvements across diverse skill categories and task complexities.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;LLM-based agents, despite having access to over 56,000 skills on platforms like Clawhub, still grapple with functional gaps and integration bottlenecks when tackling multifaceted tasks.&quot;,&quot;statement&quot;:&quot;The current skill ecosystem for LLM-based agents is fragmented, characterized by abundant skills designed for localized use cases that struggle to systematically cover comprehensive functional requirements, leading to functional gaps and integration bottlenecks.&quot;,&quot;whyItMatters&quot;:[&quot;It hinders the robust and scalable deployment of LLM-based agents.&quot;,&quot;It limits the full potential of LLM-based agents in diverse industries.&quot;,&quot;It increases the burden on skill developers and maintainers due to the lack of autonomous skill optimization.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Overall average score increased from 0.37 to 0.84, representing a substantial 127% relative growth.&quot;,&quot;Overall pass rate dramatically improved from 33.59% to 88.02%, indicating a robust increase of 54.43%.&quot;,&quot;For skills in the &#39;Exceptional Improvement&#39; category, some experienced dramatic improvements, with scores leaping from 0.0 to 1.0 and pass rates rising from 0% or lower levels to 100%.&quot;,&quot;Both instruction-only and code-inclusive skills achieved over a 50% increase in pass rate, with code-inclusive skills showing the largest relative improvement.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Skill-X (All skills)&quot;,&quot;Skill-X (Instruction-only skills)&quot;,&quot;Skill-X (Code-inclusive skills)&quot;],&quot;metrics&quot;:[&quot;Average score&quot;,&quot;Pass rate&quot;,&quot;Standard Task score&quot;,&quot;Advanced Task score&quot;],&quot;setting&quot;:&quot;Evaluation on Skill-X, a benchmark dataset of 48 diverse skills (29 instruction-only, 19 code-inclusive) sourced from Anthropics, Clawhub, and Vercel Labs. Each task&#39;s execution result is evaluated against predefined criteria, scoring one point for each satisfied condition. A task passes if its score meets or exceeds a predefined threshold (70%).&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:104,&quot;xmin&quot;:135,&quot;ymax&quot;:395,&quot;xmax&quot;:879},&quot;caption&quot;:&quot;Performance Comparison of Original vs. Optimized Skills across Skill-X.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:651,&quot;xmin&quot;:172,&quot;ymax&quot;:760,&quot;xmax&quot;:825},&quot;caption&quot;:&quot;Key Contents from the Pollyreach Summary Report.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:8}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.378&quot;,&quot;benchmark&quot;:&quot;All skills&quot;,&quot;delta&quot;:&quot;+0.47&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Average score&quot;,&quot;thisPaper&quot;:&quot;0.84&quot;},{&quot;baseline&quot;:&quot;33.59%&quot;,&quot;benchmark&quot;:&quot;All skills&quot;,&quot;delta&quot;:&quot;+54.43%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Pass rate&quot;,&quot;thisPaper&quot;:&quot;88.02%&quot;},{&quot;baseline&quot;:&quot;43.00%&quot;,&quot;benchmark&quot;:&quot;All skills&quot;,&quot;delta&quot;:&quot;+44.43%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Standard Task score&quot;,&quot;thisPaper&quot;:&quot;87.43%&quot;},{&quot;baseline&quot;:&quot;32.71%&quot;,&quot;benchmark&quot;:&quot;All skills&quot;,&quot;delta&quot;:&quot;+48.90%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Advanced Task score&quot;,&quot;thisPaper&quot;:&quot;81.61%&quot;},{&quot;baseline&quot;:&quot;37.93%&quot;,&quot;benchmark&quot;:&quot;Instruction-only skills&quot;,&quot;delta&quot;:&quot;+53.45%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Pass rate&quot;,&quot;thisPaper&quot;:&quot;91.38%&quot;},{&quot;baseline&quot;:&quot;26.97%&quot;,&quot;benchmark&quot;:&quot;Code-inclusive skills&quot;,&quot;delta&quot;:&quot;+55.92%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Pass rate&quot;,&quot;thisPaper&quot;:&quot;82.89%&quot;}],&quot;title&quot;:&quot;Overall Performance on Skill-X&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Skills-Coach significantly improves skill performance across all evaluation metrics on the Skill-X benchmark.&quot;,&quot;The framework is effective for both instruction-only and code-inclusive skills, with code-inclusive skills showing the largest relative improvement.&quot;,&quot;Performance gains are consistently observed across all task difficulties, with advanced tasks demonstrating an even greater magnitude of improvement.&quot;,&quot;The optimization yields transformative improvements for underperforming skills but shows diminishing returns for already high-performing skills, suggesting strategic allocation of optimization resources is crucial.&quot;]},&quot;institutions&quot;:&quot;University of Chinese Academy of Sciences, East China Normal University, Zhongguancun Academy, Southeast University, Hainan University, Tsinghua University&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;It systematically explores skill capability boundaries and identifies potential optimization spaces for LLM agents.&quot;,&quot;It automatically generates improved skill versions (instruction and code) without continuous human intervention, forming a closed-loop iterative refinement process.&quot;,&quot;It leverages Training-Free Group Relative Policy Optimization (GRPO) for efficient and data-light iterative refinement, reducing computational costs and data requirements compared to conventional gradient-based methods.&quot;,&quot;It introduces Skill-X, a comprehensive benchmark dataset comprising 48 diverse skills, and a multi-dimensional, traceable evaluation framework to rigorously assess skill performance.&quot;],&quot;main&quot;:&quot;Skills-Coach introduces a novel automated framework for Skill Self-Evolution in LLM-based agents, employing a training-free optimization approach to enhance skill capabilities and address the fragmented skill ecosystem.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;Autonomous entities powered by Large Language Models capable of executing tasks and interacting with environments using skills.&quot;,&quot;term&quot;:&quot;LLM-based agents&quot;},{&quot;definition&quot;:&quot;The ability of an agent to autonomously explore, refine, and expand its capabilities without continuous human intervention, aiming for continuous improvement.&quot;,&quot;term&quot;:&quot;Skill self-evolution&quot;},{&quot;definition&quot;:&quot;An efficient optimization approach grounded in Training-Free GRPO that iteratively refines skill instructions and code, significantly reducing computational costs and data requirements compared to conventional gradient-based methods.&quot;,&quot;term&quot;:&quot;Lightweight Optimization Module&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;LLM-based Agents&quot;,&quot;Group Relative Policy Optimization (GRPO)&quot;]},&quot;subTopics&quot;:[&quot;LLM Agents&quot;,&quot;Skill Optimization&quot;,&quot;Automated Evaluation&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Agent&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike conventional gradient-based parameter optimization, Skills-Coach utilizes Training-Free GRPO, achieving competitive results in minutes rather than hours, dramatically reducing data requirements, and mitigating overfitting risks.&quot;,&quot;Skills-Coach contrasts with early agent evaluations that often rely on isolated, synthetic environments by introducing Skill-X, a comprehensive benchmark that systematically evaluates capabilities under diverse real-world application scenarios and complex task requirements.&quot;,&quot;The framework supports both virtual and real execution modes, providing more flexible and comprehensive evaluation than systems limited to simulated environments.&quot;],&quot;limitations&quot;:[],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Optimization Strategy&quot;,&quot;value&quot;:&quot;Training-Free Group Relative Policy Optimization (GRPO)&quot;}],&quot;pipelineFlow&quot;:[&quot;A target skill is provided as input to Skills-Coach.&quot;,&quot;The Diverse Task Generation Module analyzes skill specifications to automatically create a comprehensive test suite (training and test tasks).&quot;,&quot;The Lightweight Optimization Module leverages Training-Free GRPO to iteratively refine the skill&#39;s instruction and corresponding code.&quot;,&quot;The Comparative Execution Module runs both the original and optimized skill versions on identical test tasks in a controlled and reproducible environment, capturing outputs and execution logs.&quot;,&quot;The Traceable Evaluation Module objectively assesses performance using multi-dimensional criteria, conducts comparative analysis, and informs data-driven retention decisions, providing feedback for subsequent iterative optimization.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Main Question&quot;,&quot;value&quot;:&quot;Can an agent autonomously explore the capability boundaries of its existing skills and proactively expand them to achieve skill self-evolution?&quot;},{&quot;label&quot;:&quot;Sub-Question 1&quot;,&quot;value&quot;:&quot;How can boundary-probing tasks be generated automatically?&quot;},{&quot;label&quot;:&quot;Sub-Question 2&quot;,&quot;value&quot;:&quot;How can skills achieve self-evolution?&quot;},{&quot;label&quot;:&quot;Sub-Question 3&quot;,&quot;value&quot;:&quot;How can skill capabilities be effectively evaluated?&quot;}],&quot;reproducibility&quot;:&quot;Code for Skills-Coach is available at https://github.com/T1aNS1R/Skills-Coach. The paper introduces Skill-X, a comprehensive benchmark dataset, and details evaluation criteria and setup to enable reproducibility.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Systematically creates comprehensive test suites spanning standard to complex edge-case scenarios by analyzing target skill specifications. Ensures sufficient diversity, realistic boundary representation, and real-world applicability. Parses skill instruction files to extract functional instructions, commands/parameters, I/O formats, constraints, and usage examples. Employs a hierarchical generation strategy (Standard, Advanced, Boundary tasks) with automated validation criteria.&quot;,&quot;name&quot;:&quot;Diverse Task Generation Module&quot;,&quot;role&quot;:&quot;Task Generation&quot;},{&quot;details&quot;:&quot;Core optimization engine grounded in Training-Free GRPO, continuously enhancing instruction quality and code performance through automated processes. Refines skill instruction and code via a multi-driven mechanism, accelerating training time and reducing data requirements. Includes an Instruction Optimization Pathway (generates and scores instruction variants) and a Code Optimization Pathway (rule-driven optimizer, LLM-based command optimizer, auto-fixer).&quot;,&quot;name&quot;:&quot;Lightweight Optimization Module&quot;,&quot;role&quot;:&quot;Skill Optimization&quot;},{&quot;details&quot;:&quot;Core engine for unbiased execution and comparison of original and optimized skills on identical test tasks. Establishes a controlled, isolated, and reproducible execution environment. Captures all outputs, side effects, errors, and performance metrics. Integrates an Environment Checker and Skill Executor. Enforces stringent isolation strategies (temporary directories, sequential execution for original/optimized skills) and supports parallel execution for efficiency. Operates in virtual and real modes.&quot;,&quot;name&quot;:&quot;Comparative Execution Module&quot;,&quot;role&quot;:&quot;Skill Execution and Comparison&quot;},{&quot;details&quot;:&quot;Objectively and quantitatively assesses performance differentials. Performs multi-dimensional scoring, computes normalized metrics, conducts comparative analysis, and renders data-driven retention decisions. Adheres to principles of Scoring Objectivity, Criterion Consistency, Analysis Depth, Decision Rigor, and Interpretability. Comprises a Criterion Parser, Task Evaluator, Metrics Computer, and Decision Engine. Employs a dual-mode strategy (LLM-based deep evaluation and heuristic fallback).&quot;,&quot;name&quot;:&quot;Traceable Evaluation Module&quot;,&quot;role&quot;:&quot;Performance Assessment&quot;}]},&quot;thesis&quot;:&quot;Skills-Coach is a novel automated framework that significantly enhances the self-evolution capabilities of skills within Large Language Model (LLM)-based agents by systematically exploring skill boundaries, optimizing skill prompts and code, and rigorously evaluating performance, thereby addressing the current fragmentation of the skill ecosystem and fostering the development of more robust and adaptable LLM-based agents.&quot;,&quot;title&quot;:&quot;Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2604.27488&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

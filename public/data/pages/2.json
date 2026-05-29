@@ -2,6 +2,17 @@
   "page": 2,
   "papers": [
     {
+      "paperId": "2603.26100",
+      "title": "Rethinking Recommendation Paradigms: From Pipelines to Agentic Recommender Systems",
+      "authors": "Jinxin Hu, Hao Deng, Lingyu Mu, Hao Zhang, Shizhun Wang, Yu Zhang, Xiaoyi Zeng",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "RAG",
+        "Agent",
+        "Rec"
+      ]
+    },
+    {
       "paperId": "2603.25723",
       "title": "Natural-Language Agent Harnesses",
       "authors": "Linyue Pan, Lexiao Zou, Shuo Guo, Jingchen Ni, Hai-Tao Zheng",
@@ -96,17 +107,6 @@
       "publishedDate": "2026-03-01",
       "tags": [
         "Pretraining",
-        "QA",
-        "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2603.09004",
-      "title": "Can AI Agents Generate Microservices? How Far are We?",
-      "authors": "Bassam Adnan, Matteo Esposito, Davide Taibi, Karthik Vaidhyanathan",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Agent",
         "QA",
         "Benchmark"
       ]
