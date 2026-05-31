@@ -2,6 +2,17 @@
   "page": 3,
   "papers": [
     {
+      "paperId": "2603.09938",
+      "title": "Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions",
+      "authors": "Mingyang Song & Mao Zheng",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Pretraining",
+        "QA",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2603.09004",
       "title": "Can AI Agents Generate Microservices? How Far are We?",
       "authors": "Bassam Adnan, Matteo Esposito, Davide Taibi, Karthik Vaidhyanathan",
@@ -104,19 +115,6 @@
         "Multi-Objective Learning",
         "Data Augmentation",
         "App Store"
-      ]
-    },
-    {
-      "paperId": "2602.23008",
-      "title": "Exploratory Memory-Augmented LLM Agent via Hybrid On- and Off-Policy Optimization",
-      "authors": "Zeyuan Liu, Jeonghye Kim, Xufang Luo, Dongsheng Li, Yuqing Yang",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "Reinforcement Learning",
-        "Large Language Models",
-        "Exploration",
-        "Memory-Augmented Agents",
-        "Policy Optimization"
       ]
     }
   ]

@@ -1,0 +1,19 @@
+{
+  "paperId": "2605.23904",
+  "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
+  "authors": "Yifan Yang, Ziyang Gong, Weiquan Huang, Qihao Yang, Ziwei Zhou, Zisu Huang, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo",
+  "publishedDate": "2026-05-01",
+  "tags": [
+    "Agent",
+    "QA",
+    "RAG"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2605.23904",
+  "pagePath": "/paper-summaries-site/papers/2605.23904",
+  "summaryPath": "/paper-summaries-site/data/papers/2605.23904/summary.json",
+  "assets": {
+    "figureAssetCount": 2,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

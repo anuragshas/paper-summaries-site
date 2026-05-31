@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2605.23904",
+      "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
+      "tags": [
+        "Agent",
+        "QA",
+        "RAG"
+      ]
+    },
+    {
       "paperId": "2604.27488",
       "title": "Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO",
       "tags": [

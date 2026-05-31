@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SkillOpt: Executive Strategy for Self-Evolving Agent Skills</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>SkillOpt: Executive Strategy for Self-Evolving Agent Skills</h1>
+      <p class="meta"><strong>Authors:</strong> Yifan Yang, Ziyang Gong, Weiquan Huang, Qihao Yang, Ziwei Zhou, Zisu Huang, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2605.23904" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2605.23904</a></p>
+      <p class="muted">Generated summary artifact for 2605.23904</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Agent skills should be trained as the external state of a frozen agent, with the same discipline that makes weight-space optimization reproducible, rather than through ad-hoc, brittle self-revision, to reliably improve performance under feedback.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>How can agent skills, which are natural-language procedural knowledge, be systematically optimized in a stable and reproducible manner, similar to weight-space optimization, to enable robust domain adaptation for frozen Large Language Model (LLM) agents?</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A systematic, controllable text-space optimizer for LLM agent skills that trains natural-language skill documents as external states, using deep-learning-like controls for stable, reproducible, and transferable improvements without modifying model weights.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>SkillOpt achieves best or tied-best performance on all 52 evaluated (model, benchmark, harness) cells across a diverse set of experiments.</li><li>It significantly boosts GPT-5.5&#39;s average no-skill accuracy by +23.5 points in direct chat, +24.8 in the Codex harness, and +19.1 in the Claude Code harness.</li><li>SkillOpt outperforms the strongest per-cell competitor (including human, one-shot LLM, and various prompt optimization/skill evolution methods) by an average of +5.4 points.</li><li>Optimized skills are compact (300-2000 tokens) and interpretable, typically arising from only 1 to 4 accepted edits.</li><li>The learned skills demonstrate strong transferability across different model scales, execution harnesses, and nearby benchmarks without further optimization or model weight changes.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>SkillOpt consistently outperforms or ties with all baselines (no-skill, human-skill, one-shot LLM, prompt-optimization, and skill-evolution methods) across all 52 evaluated model-benchmark-harness combinations.</li><li>The method demonstrates significant performance gains over the no-skill baseline and the strongest per-cell competitors across various frontier and smaller LLM agents.</li><li>Optimized skills are compact (300-2000 tokens), interpretable (assembled from 1-4 accepted edits), and encode procedural, generalizable knowledge rather than instance-specific formatting.</li><li>The learned skill artifacts show strong transferability across different model scales, execution harnesses, and related benchmarks, highlighting their reusability without modifying model weights.</li><li>Key design choices like bounded textual learning, validation gating, rejected-edit feedback, and epoch-wise slow/meta updates are crucial for the observed gains, indicating a robust, controlled training loop.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>The optimization loop relies on scored trajectories and reliable feedback signals (e.g., automatic verifiers, exact-match metrics), making it less suitable for open-ended domains where success is subjective, multi-dimensional, or costly to judge.</li><li>Training skills requires additional rollout computation and optimizer model calls, incurring a cost that is amortized over reuse but may be less attractive for one-off tasks.</li><li>SkillOpt intentionally optimizes a single portable skill for a target domain, which might be insufficient for highly heterogeneous domains requiring many disjoint procedures or a large skill library.</li><li>Optimized skills can encode domain-specific heuristics from the training distribution, necessitating careful held-out evaluation before transferring them to substantially different models, harnesses, or task settings.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 121,
+      &quot;xmin&quot;: 111,
+      &quot;ymax&quot;: 326,
+      &quot;xmax&quot;: 887
+    },
+    &quot;caption&quot;: &quot;Overview of SkillOpt. The target model executes tasks with a current skill, an additional frontier optimizer model converts trajectories into bounded add/delete/replace skill edits, and a held-out gate accepts only edits that improve validation performance. Accepted edits are exported as a reusable skill artifact, while rejected edits become negative feedback for later updates.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 1
+  },
+  &quot;authors&quot;: &quot;Yifan Yang, Ziyang Gong, Weiquan Huang, Qihao Yang, Ziwei Zhou, Zisu Huang, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;SkillOpt introduces a novel and systematic approach to optimizing LLM agent skills by treating them as trainable external states, leveraging deep-learning-style controls. This significantly enhances performance and transferability across various models and tasks. The method&#39;s ability to produce compact, interpretable, and reusable skill artifacts addresses a critical challenge in making LLM agents more adaptable and robust, moving beyond brittle prompt engineering. The comprehensive empirical evaluation across numerous models, benchmarks, and harnesses strongly supports its claims and demonstrates a substantial advancement for the field of agentic LLMs.&quot;,
+    &quot;score&quot;: 8
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Current agent skills, which are crucial for domain adaptation (e.g., following domain conventions or using tools), are often hand-crafted or evolved through loosely controlled self-revision, leading to brittleness under new target domains or harnesses. Weight adaptation for skills is often unavailable for closed frontier models or too expensive for open ones.&quot;,
+    &quot;statement&quot;: &quot;How can agent skills, which are natural-language procedural knowledge, be systematically optimized in a stable and reproducible manner, similar to weight-space optimization, to enable robust domain adaptation for frozen Large Language Model (LLM) agents?&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Agent skills are a natural interface for procedural adaptation, enabling LLM agents to effectively gather evidence, call tools, follow domain conventions, and format outputs.&quot;,
+      &quot;Existing skill adaptation methods are often brittle, lack reproducibility, and do not reliably improve agent performance over starting points.&quot;,
+      &quot;The inability to systematically optimize skills limits the adaptability and robustness of LLM agents, hindering their deployment in diverse and complex real-world scenarios.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;SkillOpt achieves best or tied-best performance on all 52 evaluated (model, benchmark, harness) cells across a diverse set of experiments.&quot;,
+    &quot;It significantly boosts GPT-5.5&#39;s average no-skill accuracy by +23.5 points in direct chat, +24.8 in the Codex harness, and +19.1 in the Claude Code harness.&quot;,
+    &quot;SkillOpt outperforms the strongest per-cell competitor (including human, one-shot LLM, and various prompt optimization/skill evolution methods) by an average of +5.4 points.&quot;,
+    &quot;Optimized skills are compact (300-2000 tokens) and interpretable, typically arising from only 1 to 4 accepted edits.&quot;,
+    &quot;The learned skills demonstrate strong transferability across different model scales, execution harnesses, and nearby benchmarks without further optimization or model weight changes.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;SearchQA&quot;,
+        &quot;SpreadsheetBench&quot;,
+        &quot;OfficeQA&quot;,
+        &quot;DocVQA&quot;,
+        &quot;LiveMathematicianBench&quot;,
+        &quot;ALFWorld&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Hard score&quot;,
+        &quot;Exact-match accuracy&quot;
+      ],
+      &quot;setting&quot;: &quot;Evaluated across seven target models (GPT-5.5, GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-5.2, Qwen3.5-4B, Qwen3.6-35B-A3B) and three execution harnesses (direct chat, Codex harness, Claude Code harness).&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 95,
+          &quot;xmin&quot;: 110,
+          &quot;ymax&quot;: 322,
+          &quot;xmax&quot;: 887
+        },
+        &quot;caption&quot;: &quot;Performance trends across epoch checkpoints on three benchmarks: (a) SpreadsheetBench, (b) SearchQA, and (c) LiveMath. For each checkpoint, we report the training rollout score, the selection-best score on the validation set, and the final performance on the unseen test set. The results show how skill quality evolves during optimization and whether the checkpoint preferred by validation selection aligns with the checkpoint that yields the best generalization to the test set.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 11
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;84.8%&quot;,
+            &quot;benchmark&quot;: &quot;SearchQA&quot;,
+            &quot;delta&quot;: &quot;+2.5%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;87.3%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;73.6%&quot;,
+            &quot;benchmark&quot;: &quot;SpreadsheetBench&quot;,
+            &quot;delta&quot;: &quot;+7.1%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;80.7%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;63.9%&quot;,
+            &quot;benchmark&quot;: &quot;OfficeQA&quot;,
+            &quot;delta&quot;: &quot;+8.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;72.1%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;90.6%&quot;,
+            &quot;benchmark&quot;: &quot;DocVQA&quot;,
+            &quot;delta&quot;: &quot;+0.6%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;91.2%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;52.0%&quot;,
+            &quot;benchmark&quot;: &quot;LiveMathematicianBench&quot;,
+            &quot;delta&quot;: &quot;+14.9%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;66.9%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;91.8%&quot;,
+            &quot;benchmark&quot;: &quot;ALFWorld&quot;,
+            &quot;delta&quot;: &quot;+3.7%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;95.5%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;GPT-5.5 Direct Chat Performance&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;84.1%&quot;,
+            &quot;benchmark&quot;: &quot;SearchQA&quot;,
+            &quot;delta&quot;: &quot;+3.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;87.3%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;67.5%&quot;,
+            &quot;benchmark&quot;: &quot;SpreadsheetBench&quot;,
+            &quot;delta&quot;: &quot;+17.5%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;85.0%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;40.0%&quot;,
+            &quot;benchmark&quot;: &quot;OfficeQA&quot;,
+            &quot;delta&quot;: &quot;+11.1%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;51.1%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;88.8%&quot;,
+            &quot;benchmark&quot;: &quot;DocVQA&quot;,
+            &quot;delta&quot;: &quot;+3.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;92.2%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;63.2%&quot;,
+            &quot;benchmark&quot;: &quot;LiveMathematicianBench&quot;,
+            &quot;delta&quot;: &quot;+15.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;78.4%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;GPT-5.5 Codex Harness Performance&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;83.7%&quot;,
+            &quot;benchmark&quot;: &quot;SearchQA&quot;,
+            &quot;delta&quot;: &quot;+2.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;85.9%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;75.0%&quot;,
+            &quot;benchmark&quot;: &quot;SpreadsheetBench&quot;,
+            &quot;delta&quot;: &quot;+5.4%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;80.4%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;66.3%&quot;,
+            &quot;benchmark&quot;: &quot;OfficeQA&quot;,
+            &quot;delta&quot;: &quot;+5.2%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;71.5%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;89.6%&quot;,
+            &quot;benchmark&quot;: &quot;DocVQA&quot;,
+            &quot;delta&quot;: &quot;+0.5%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;90.1%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;52.0%&quot;,
+            &quot;benchmark&quot;: &quot;LiveMathematicianBench&quot;,
+            &quot;delta&quot;: &quot;+4.5%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy&quot;,
+            &quot;thisPaper&quot;: &quot;56.5%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;GPT-5.5 Claude Code Harness Performance&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;SkillOpt consistently outperforms or ties with all baselines (no-skill, human-skill, one-shot LLM, prompt-optimization, and skill-evolution methods) across all 52 evaluated model-benchmark-harness combinations.&quot;,
+      &quot;The method demonstrates significant performance gains over the no-skill baseline and the strongest per-cell competitors across various frontier and smaller LLM agents.&quot;,
+      &quot;Optimized skills are compact (300-2000 tokens), interpretable (assembled from 1-4 accepted edits), and encode procedural, generalizable knowledge rather than instance-specific formatting.&quot;,
+      &quot;The learned skill artifacts show strong transferability across different model scales, execution harnesses, and related benchmarks, highlighting their reusability without modifying model weights.&quot;,
+      &quot;Key design choices like bounded textual learning, validation gating, rejected-edit feedback, and epoch-wise slow/meta updates are crucial for the observed gains, indicating a robust, controlled training loop.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Microsoft, Shanghai Jiao Tong University, Tongji University, Fudan University&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;SkillOpt introduces a text-space optimizer for agent skills that operates by treating the agent&#39;s natural-language skill document as an external, trainable state. This contrasts with traditional methods that modify model weights or rely on ad-hoc prompt engineering.&quot;,
+      &quot;It employs deep-learning-style controls for skill optimization, including rollout batches for evidence, minibatch reflection for edit proposals, a textual learning-rate budget for bounding edits, a held-out validation gate for edit acceptance, a rejected-edit buffer for negative feedback, and epoch-wise slow/meta updates for long-horizon stability.&quot;,
+      &quot;The system decouples the frozen target agent and its execution harness from the optimizer. The optimizer model proposes structured add/delete/replace edits, and only validation-gated improvements are exported as a compact, reusable skill artifact, which can be deployed without inference-time optimizer calls.&quot;
+    ],
+    &quot;main&quot;: &quot;A systematic, controllable text-space optimizer for LLM agent skills that trains natural-language skill documents as external states, using deep-learning-like controls for stable, reproducible, and transferable improvements without modifying model weights.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A portable natural-language artifact that packages procedures, domain heuristics, tool policies, output constraints, and failure modes, allowing a frozen agent to adapt through external text.&quot;,
+        &quot;term&quot;: &quot;Agent Skill&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;An additional frontier model used to analyze agent trajectories and propose structured add/delete/replace edits to the skill document.&quot;,
+        &quot;term&quot;: &quot;Optimizer Model&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A mechanism that accepts a candidate skill only if it strictly improves performance on a held-out validation set, preventing harmful or overfitting edits.&quot;,
+        &quot;term&quot;: &quot;Validation Gate&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A textual learning-rate analogue that defines the maximum number of skill edits allowed at each optimization step, preserving continuity and preventing unbounded rewrites.&quot;,
+        &quot;term&quot;: &quot;Edit Budget&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Familiarity with Large Language Models (LLMs) and their capabilities.&quot;,
+      &quot;Understanding of agentic systems and their architectures (e.g., tool-use agents, multi-step execution).&quot;,
+      &quot;Basic concepts of machine learning optimization, including loss functions, validation, and learning rates (analogously applied to text).&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Agentic LLMs&quot;,
+    &quot;Skill Optimization&quot;,
+    &quot;Text-Space Optimization&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Agent&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;RAG&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike previous prompt auto-tuning or agent-configuration search methods (e.g., GEPA, ABSTRAL, EvoTest) that primarily target prompts, system designs, or full configurations, SkillOpt directly optimizes a persistent skill document for reusable domain adaptation.&quot;,
+      &quot;In contrast to skill construction and evolution methods (e.g., SkillsBench, Trace2Skill, EvoSkill) that focus on skill discovery, repository growth, or policy optimization, SkillOpt emphasizes training a single compact domain skill with controlled, deep-learning-style processes for reproducibility.&quot;,
+      &quot;SkillOpt keeps the target model, harness, and evaluator fixed, focusing solely on optimizing the reusable skill artifact, thereby serving as a no-weight-update adaptation strategy, different from methods that fine-tune model weights.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;The optimization loop relies on scored trajectories and reliable feedback signals (e.g., automatic verifiers, exact-match metrics), making it less suitable for open-ended domains where success is subjective, multi-dimensional, or costly to judge.&quot;,
+      &quot;Training skills requires additional rollout computation and optimizer model calls, incurring a cost that is amortized over reuse but may be less attractive for one-off tasks.&quot;,
+      &quot;SkillOpt intentionally optimizes a single portable skill for a target domain, which might be insufficient for highly heterogeneous domains requiring many disjoint procedures or a large skill library.&quot;,
+      &quot;Optimized skills can encode domain-specific heuristics from the training distribution, necessitating careful held-out evaluation before transferring them to substantially different models, harnesses, or task settings.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Skill Representation&quot;,
+        &quot;value&quot;: &quot;Agent skills are represented as compact natural-language text documents, typically Markdown files (`best_skill.md`).&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Edit Mechanism&quot;,
+        &quot;value&quot;: &quot;The optimizer proposes structured add/delete/replace edits (patch mode) to the skill document. These edits are merged, ranked by expected utility, and clipped to a textual learning-rate budget $L_t$.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Optimization Process&quot;,
+        &quot;list&quot;: [
+          &quot;Forward Pass: Rollout batches from the target model with the current skill generate execution evidence (trajectories, scores, metadata).&quot;,
+          &quot;Backward Pass: An optimizer model performs &#39;minibatch reflection&#39; on successes and failures from the evidence to propose skill edits.&quot;,
+          &quot;Validation Gate: Candidate skills are accepted only if they strictly improve a held-out validation score ($D_{\\text{sel}}$) over the current skill.&quot;,
+          &quot;Rejected-Edit Buffer: Rejected edits and observed failure patterns are stored to provide negative feedback to the optimizer, preventing repeated failures.&quot;,
+          &quot;Epoch-Wise Slow/Meta Update: A protected region of the skill document is updated with longitudinal guidance, and an optimizer-side meta skill summarizes edit patterns across epochs for stability and long-horizon learning.&quot;
+        ]
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Initialize current skill ($s_{\\text{cur}}$), best validation-gated skill ($s_{\\text{best}}$), score cache, rejected-edit buffer, and optimizer-side meta skill.&quot;,
+      &quot;Evaluate the initial skill on the selection split ($D_{\\text{sel}}$) to set initial $score_{\\text{cur}}$ and $score_{\\text{best}}$.&quot;,
+      &quot;For each epoch (e): shuffle training data ($D_{\\text{train}}$) into rollout batches.&quot;,
+      &quot;For each optimization step in the epoch: collect A rollout batches by executing the target model with $s_{\\text{cur}}$ on sampled tasks.&quot;,
+      &quot;Split rollout evidence into failures and successes, then into minibatches for reflection.&quot;,
+      &quot;The optimizer model generates failure patch proposals from failure minibatches and success patch proposals from success minibatches.&quot;,
+      &quot;Merge failure and success proposals, performing a final failure-prioritized merge.&quot;,
+      &quot;Rank merged edits and keep at most $L_t$ edits (textual learning-rate budget).&quot;,
+      &quot;Apply selected edits to form a candidate skill ($\\tilde{s}$).&quot;,
+      &quot;If $\\tilde{s}$ has been seen before (hash in cache), retrieve its score; otherwise, evaluate $\\tilde{s}$ on $D_{\\text{sel}}$ and cache the score.&quot;,
+      &quot;If the candidate score ($score_{\\text{cand}}$) is strictly greater than $score_{\\text{cur}}$: update $s_{\\text{cur}}$ and $score_{\\text{cur}}$.&quot;,
+      &quot;If $score_{\\text{cand}}$ is also strictly greater than $score_{\\text{best}}$: update $s_{\\text{best}}$ and $score_{\\text{best}}$.&quot;,
+      &quot;If $\\tilde{s}$ is rejected: add rejected edits and observed failure patterns to the buffer B.&quot;,
+      &quot;After epoch 2, if slow update is enabled, compare epoch-end skills and ask the optimizer for protected longitudinal guidance, validating it through $D_{\\text{sel}}$.&quot;,
+      &quot;After epoch 2, if optimizer memory is enabled, ask the optimizer to update $m_{\\text{meta}}$ for future edit generation.&quot;,
+      &quot;Finally, evaluate $s_{\\text{best}}$ on the test split ($D_{\\text{test}}$) and return $s_{\\text{best}}$ and its test score.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Skill Formulation&quot;,
+        &quot;value&quot;: &quot;A skill $s$ is a natural-language policy inserted into the agent context. For a harness $h$, task $x$, and frozen target model $M$, execution produces a trajectory $\\tau$ and a scalar score $r$: $(\\tau(s), r(s)) = h(M, x, s)$, where $r(s) \\in [0, 1]$.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Skill Optimization Goal&quot;,
+        &quot;value&quot;: &quot;Given train, selection, and test splits $D_{\\text{tr}}$, $D_{\\text{sel}}$, $D_{\\text{test}}$, SkillOpt uses $D_{\\text{tr}}$ to generate a set of candidate skills $C(D_{\\text{tr}})$, selects the best skill $s^{\\star}_{\\text{sel}}$ on $D_{\\text{sel}}$: $s^{\\star}_{\\text{sel}} = \\text{arg max}_{s \\in C(D_{\\text{tr}})} \\frac{1}{|D_{\\text{sel}}|} \\sum_{x \\in D_{\\text{sel}}} r(s)$, and reports the final performance on $D_{\\text{test}}$: $\\text{Test}(s^{\\star}_{\\text{sel}}) = \\frac{1}{|D_{\\text{test}}|} \\sum_{x \\in D_{\\text{test}}} r(s^{\\star}_{\\text{sel}})$. The best accepted skill is exported as `best_skill.md`.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;Code for SkillOpt is publicly available at https://aka.ms/SkillOpt. Dataset-backed experiments use deterministic train/selection/test splits derived from the same dataset seed (split_seed = 42). Default optimizer hyperparameters and ablation protocols are described in detail.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;The base LLM agent (e.g., GPT models, Qwen) whose behavior is adapted. It remains frozen during the skill optimization process.&quot;,
+        &quot;name&quot;: &quot;Target Model (M)&quot;,
+        &quot;role&quot;: &quot;Executes tasks using the current skill, generating trajectories and scalar scores as rollout evidence.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A separate frontier LLM (e.g., GPT-5.5) that analyzes rollout evidence (successes and failures) and proposes structured add/delete/replace edits to the skill document in JSON format.&quot;,
+        &quot;name&quot;: &quot;Optimizer Model (O)&quot;,
+        &quot;role&quot;: &quot;Performs minibatch reflection, merges and ranks proposed edits under a budget, and generates epoch-wise guidance.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A natural-language text file (`best_skill.md`) representing the agent&#39;s procedural knowledge. It is the external state that is optimized and eventually deployed.&quot;,
+        &quot;name&quot;: &quot;Skill Document (s)&quot;,
+        &quot;role&quot;: &quot;The trainable artifact that packages domain heuristics, tool policies, and failure modes, enabling agent adaptation.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A mechanism that strictly accepts a candidate skill only if its score on a held-out selection split ($D_{\\text{sel}}$) is greater than the current skill&#39;s score. Ties are rejected.&quot;,
+        &quot;name&quot;: &quot;Validation Gate&quot;,
+        &quot;role&quot;: &quot;Ensures that accepted edits genuinely improve performance and generalize, preventing harmful or overfitting updates.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;An epoch-local buffer that stores observed failure patterns and the edits that caused score drops for rejected steps.&quot;,
+        &quot;name&quot;: &quot;Rejected-Edit Buffer&quot;,
+        &quot;role&quot;: &quot;Provides negative feedback to the optimizer model, allowing it to avoid repeating failed edits and focus on unresolved issues in later steps.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A mechanism that captures durable domain lessons and long-horizon regularities by comparing epoch-end skills and writing concise longitudinal guidance into a protected region of the skill document. The optimizer-side meta skill summarizes edit patterns.&quot;,
+        &quot;name&quot;: &quot;Epoch-Wise Slow/Meta Update&quot;,
+        &quot;role&quot;: &quot;Stabilizes skill training by maintaining consistent editing directions across epochs and provides a richer record of the editing process to the optimizer.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A lightweight adapter interface that constructs train/evaluation batches, injects the current skill, runs the native harness, and returns scored trajectories.&quot;,
+        &quot;name&quot;: &quot;Harness Adapter&quot;,
+        &quot;role&quot;: &quot;Enables SkillOpt to be harness-agnostic, supporting direct chat, Codex-style, and Claude Code-style execution loops with the same optimizer.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;Agent skills should be trained as the external state of a frozen agent, with the same discipline that makes weight-space optimization reproducible, rather than through ad-hoc, brittle self-revision, to reliably improve performance under feedback.&quot;,
+  &quot;title&quot;: &quot;SkillOpt: Executive Strategy for Self-Evolving Agent Skills&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2605.23904&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2605.23904&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2605.23904&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:121,&quot;xmin&quot;:111,&quot;ymax&quot;:326,&quot;xmax&quot;:887},&quot;caption&quot;:&quot;Overview of SkillOpt. The target model executes tasks with a current skill, an additional frontier optimizer model converts trajectories into bounded add/delete/replace skill edits, and a held-out gate accepts only edits that improve validation performance. Accepted edits are exported as a reusable skill artifact, while rejected edits become negative feedback for later updates.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},&quot;authors&quot;:&quot;Yifan Yang, Ziyang Gong, Weiquan Huang, Qihao Yang, Ziwei Zhou, Zisu Huang, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;SkillOpt introduces a novel and systematic approach to optimizing LLM agent skills by treating them as trainable external states, leveraging deep-learning-style controls. This significantly enhances performance and transferability across various models and tasks. The method&#39;s ability to produce compact, interpretable, and reusable skill artifacts addresses a critical challenge in making LLM agents more adaptable and robust, moving beyond brittle prompt engineering. The comprehensive empirical evaluation across numerous models, benchmarks, and harnesses strongly supports its claims and demonstrates a substantial advancement for the field of agentic LLMs.&quot;,&quot;score&quot;:8},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Current agent skills, which are crucial for domain adaptation (e.g., following domain conventions or using tools), are often hand-crafted or evolved through loosely controlled self-revision, leading to brittleness under new target domains or harnesses. Weight adaptation for skills is often unavailable for closed frontier models or too expensive for open ones.&quot;,&quot;statement&quot;:&quot;How can agent skills, which are natural-language procedural knowledge, be systematically optimized in a stable and reproducible manner, similar to weight-space optimization, to enable robust domain adaptation for frozen Large Language Model (LLM) agents?&quot;,&quot;whyItMatters&quot;:[&quot;Agent skills are a natural interface for procedural adaptation, enabling LLM agents to effectively gather evidence, call tools, follow domain conventions, and format outputs.&quot;,&quot;Existing skill adaptation methods are often brittle, lack reproducibility, and do not reliably improve agent performance over starting points.&quot;,&quot;The inability to systematically optimize skills limits the adaptability and robustness of LLM agents, hindering their deployment in diverse and complex real-world scenarios.&quot;]},&quot;evaluationHighlights&quot;:[&quot;SkillOpt achieves best or tied-best performance on all 52 evaluated (model, benchmark, harness) cells across a diverse set of experiments.&quot;,&quot;It significantly boosts GPT-5.5&#39;s average no-skill accuracy by +23.5 points in direct chat, +24.8 in the Codex harness, and +19.1 in the Claude Code harness.&quot;,&quot;SkillOpt outperforms the strongest per-cell competitor (including human, one-shot LLM, and various prompt optimization/skill evolution methods) by an average of +5.4 points.&quot;,&quot;Optimized skills are compact (300-2000 tokens) and interpretable, typically arising from only 1 to 4 accepted edits.&quot;,&quot;The learned skills demonstrate strong transferability across different model scales, execution harnesses, and nearby benchmarks without further optimization or model weight changes.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;SearchQA&quot;,&quot;SpreadsheetBench&quot;,&quot;OfficeQA&quot;,&quot;DocVQA&quot;,&quot;LiveMathematicianBench&quot;,&quot;ALFWorld&quot;],&quot;metrics&quot;:[&quot;Hard score&quot;,&quot;Exact-match accuracy&quot;],&quot;setting&quot;:&quot;Evaluated across seven target models (GPT-5.5, GPT-5.4, GPT-5.4-mini, GPT-5.4-nano, GPT-5.2, Qwen3.5-4B, Qwen3.6-35B-A3B) and three execution harnesses (direct chat, Codex harness, Claude Code harness).&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:95,&quot;xmin&quot;:110,&quot;ymax&quot;:322,&quot;xmax&quot;:887},&quot;caption&quot;:&quot;Performance trends across epoch checkpoints on three benchmarks: (a) SpreadsheetBench, (b) SearchQA, and (c) LiveMath. For each checkpoint, we report the training rollout score, the selection-best score on the validation set, and the final performance on the unseen test set. The results show how skill quality evolves during optimization and whether the checkpoint preferred by validation selection aligns with the checkpoint that yields the best generalization to the test set.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:11}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;84.8%&quot;,&quot;benchmark&quot;:&quot;SearchQA&quot;,&quot;delta&quot;:&quot;+2.5%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;87.3%&quot;},{&quot;baseline&quot;:&quot;73.6%&quot;,&quot;benchmark&quot;:&quot;SpreadsheetBench&quot;,&quot;delta&quot;:&quot;+7.1%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;80.7%&quot;},{&quot;baseline&quot;:&quot;63.9%&quot;,&quot;benchmark&quot;:&quot;OfficeQA&quot;,&quot;delta&quot;:&quot;+8.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;72.1%&quot;},{&quot;baseline&quot;:&quot;90.6%&quot;,&quot;benchmark&quot;:&quot;DocVQA&quot;,&quot;delta&quot;:&quot;+0.6%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;91.2%&quot;},{&quot;baseline&quot;:&quot;52.0%&quot;,&quot;benchmark&quot;:&quot;LiveMathematicianBench&quot;,&quot;delta&quot;:&quot;+14.9%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;66.9%&quot;},{&quot;baseline&quot;:&quot;91.8%&quot;,&quot;benchmark&quot;:&quot;ALFWorld&quot;,&quot;delta&quot;:&quot;+3.7%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;95.5%&quot;}],&quot;title&quot;:&quot;GPT-5.5 Direct Chat Performance&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;84.1%&quot;,&quot;benchmark&quot;:&quot;SearchQA&quot;,&quot;delta&quot;:&quot;+3.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;87.3%&quot;},{&quot;baseline&quot;:&quot;67.5%&quot;,&quot;benchmark&quot;:&quot;SpreadsheetBench&quot;,&quot;delta&quot;:&quot;+17.5%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;85.0%&quot;},{&quot;baseline&quot;:&quot;40.0%&quot;,&quot;benchmark&quot;:&quot;OfficeQA&quot;,&quot;delta&quot;:&quot;+11.1%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;51.1%&quot;},{&quot;baseline&quot;:&quot;88.8%&quot;,&quot;benchmark&quot;:&quot;DocVQA&quot;,&quot;delta&quot;:&quot;+3.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;92.2%&quot;},{&quot;baseline&quot;:&quot;63.2%&quot;,&quot;benchmark&quot;:&quot;LiveMathematicianBench&quot;,&quot;delta&quot;:&quot;+15.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;78.4%&quot;}],&quot;title&quot;:&quot;GPT-5.5 Codex Harness Performance&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;83.7%&quot;,&quot;benchmark&quot;:&quot;SearchQA&quot;,&quot;delta&quot;:&quot;+2.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;85.9%&quot;},{&quot;baseline&quot;:&quot;75.0%&quot;,&quot;benchmark&quot;:&quot;SpreadsheetBench&quot;,&quot;delta&quot;:&quot;+5.4%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;80.4%&quot;},{&quot;baseline&quot;:&quot;66.3%&quot;,&quot;benchmark&quot;:&quot;OfficeQA&quot;,&quot;delta&quot;:&quot;+5.2%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;71.5%&quot;},{&quot;baseline&quot;:&quot;89.6%&quot;,&quot;benchmark&quot;:&quot;DocVQA&quot;,&quot;delta&quot;:&quot;+0.5%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;90.1%&quot;},{&quot;baseline&quot;:&quot;52.0%&quot;,&quot;benchmark&quot;:&quot;LiveMathematicianBench&quot;,&quot;delta&quot;:&quot;+4.5%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy&quot;,&quot;thisPaper&quot;:&quot;56.5%&quot;}],&quot;title&quot;:&quot;GPT-5.5 Claude Code Harness Performance&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;SkillOpt consistently outperforms or ties with all baselines (no-skill, human-skill, one-shot LLM, prompt-optimization, and skill-evolution methods) across all 52 evaluated model-benchmark-harness combinations.&quot;,&quot;The method demonstrates significant performance gains over the no-skill baseline and the strongest per-cell competitors across various frontier and smaller LLM agents.&quot;,&quot;Optimized skills are compact (300-2000 tokens), interpretable (assembled from 1-4 accepted edits), and encode procedural, generalizable knowledge rather than instance-specific formatting.&quot;,&quot;The learned skill artifacts show strong transferability across different model scales, execution harnesses, and related benchmarks, highlighting their reusability without modifying model weights.&quot;,&quot;Key design choices like bounded textual learning, validation gating, rejected-edit feedback, and epoch-wise slow/meta updates are crucial for the observed gains, indicating a robust, controlled training loop.&quot;]},&quot;institutions&quot;:&quot;Microsoft, Shanghai Jiao Tong University, Tongji University, Fudan University&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;SkillOpt introduces a text-space optimizer for agent skills that operates by treating the agent&#39;s natural-language skill document as an external, trainable state. This contrasts with traditional methods that modify model weights or rely on ad-hoc prompt engineering.&quot;,&quot;It employs deep-learning-style controls for skill optimization, including rollout batches for evidence, minibatch reflection for edit proposals, a textual learning-rate budget for bounding edits, a held-out validation gate for edit acceptance, a rejected-edit buffer for negative feedback, and epoch-wise slow/meta updates for long-horizon stability.&quot;,&quot;The system decouples the frozen target agent and its execution harness from the optimizer. The optimizer model proposes structured add/delete/replace edits, and only validation-gated improvements are exported as a compact, reusable skill artifact, which can be deployed without inference-time optimizer calls.&quot;],&quot;main&quot;:&quot;A systematic, controllable text-space optimizer for LLM agent skills that trains natural-language skill documents as external states, using deep-learning-like controls for stable, reproducible, and transferable improvements without modifying model weights.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A portable natural-language artifact that packages procedures, domain heuristics, tool policies, output constraints, and failure modes, allowing a frozen agent to adapt through external text.&quot;,&quot;term&quot;:&quot;Agent Skill&quot;},{&quot;definition&quot;:&quot;An additional frontier model used to analyze agent trajectories and propose structured add/delete/replace edits to the skill document.&quot;,&quot;term&quot;:&quot;Optimizer Model&quot;},{&quot;definition&quot;:&quot;A mechanism that accepts a candidate skill only if it strictly improves performance on a held-out validation set, preventing harmful or overfitting edits.&quot;,&quot;term&quot;:&quot;Validation Gate&quot;},{&quot;definition&quot;:&quot;A textual learning-rate analogue that defines the maximum number of skill edits allowed at each optimization step, preserving continuity and preventing unbounded rewrites.&quot;,&quot;term&quot;:&quot;Edit Budget&quot;}],&quot;prerequisites&quot;:[&quot;Familiarity with Large Language Models (LLMs) and their capabilities.&quot;,&quot;Understanding of agentic systems and their architectures (e.g., tool-use agents, multi-step execution).&quot;,&quot;Basic concepts of machine learning optimization, including loss functions, validation, and learning rates (analogously applied to text).&quot;]},&quot;subTopics&quot;:[&quot;Agentic LLMs&quot;,&quot;Skill Optimization&quot;,&quot;Text-Space Optimization&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Agent&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;RAG&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike previous prompt auto-tuning or agent-configuration search methods (e.g., GEPA, ABSTRAL, EvoTest) that primarily target prompts, system designs, or full configurations, SkillOpt directly optimizes a persistent skill document for reusable domain adaptation.&quot;,&quot;In contrast to skill construction and evolution methods (e.g., SkillsBench, Trace2Skill, EvoSkill) that focus on skill discovery, repository growth, or policy optimization, SkillOpt emphasizes training a single compact domain skill with controlled, deep-learning-style processes for reproducibility.&quot;,&quot;SkillOpt keeps the target model, harness, and evaluator fixed, focusing solely on optimizing the reusable skill artifact, thereby serving as a no-weight-update adaptation strategy, different from methods that fine-tune model weights.&quot;],&quot;limitations&quot;:[&quot;The optimization loop relies on scored trajectories and reliable feedback signals (e.g., automatic verifiers, exact-match metrics), making it less suitable for open-ended domains where success is subjective, multi-dimensional, or costly to judge.&quot;,&quot;Training skills requires additional rollout computation and optimizer model calls, incurring a cost that is amortized over reuse but may be less attractive for one-off tasks.&quot;,&quot;SkillOpt intentionally optimizes a single portable skill for a target domain, which might be insufficient for highly heterogeneous domains requiring many disjoint procedures or a large skill library.&quot;,&quot;Optimized skills can encode domain-specific heuristics from the training distribution, necessitating careful held-out evaluation before transferring them to substantially different models, harnesses, or task settings.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Skill Representation&quot;,&quot;value&quot;:&quot;Agent skills are represented as compact natural-language text documents, typically Markdown files (`best_skill.md`).&quot;},{&quot;label&quot;:&quot;Edit Mechanism&quot;,&quot;value&quot;:&quot;The optimizer proposes structured add/delete/replace edits (patch mode) to the skill document. These edits are merged, ranked by expected utility, and clipped to a textual learning-rate budget $L_t$.&quot;},{&quot;label&quot;:&quot;Optimization Process&quot;,&quot;list&quot;:[&quot;Forward Pass: Rollout batches from the target model with the current skill generate execution evidence (trajectories, scores, metadata).&quot;,&quot;Backward Pass: An optimizer model performs &#39;minibatch reflection&#39; on successes and failures from the evidence to propose skill edits.&quot;,&quot;Validation Gate: Candidate skills are accepted only if they strictly improve a held-out validation score ($D_{\\text{sel}}$) over the current skill.&quot;,&quot;Rejected-Edit Buffer: Rejected edits and observed failure patterns are stored to provide negative feedback to the optimizer, preventing repeated failures.&quot;,&quot;Epoch-Wise Slow/Meta Update: A protected region of the skill document is updated with longitudinal guidance, and an optimizer-side meta skill summarizes edit patterns across epochs for stability and long-horizon learning.&quot;]}],&quot;pipelineFlow&quot;:[&quot;Initialize current skill ($s_{\\text{cur}}$), best validation-gated skill ($s_{\\text{best}}$), score cache, rejected-edit buffer, and optimizer-side meta skill.&quot;,&quot;Evaluate the initial skill on the selection split ($D_{\\text{sel}}$) to set initial $score_{\\text{cur}}$ and $score_{\\text{best}}$.&quot;,&quot;For each epoch (e): shuffle training data ($D_{\\text{train}}$) into rollout batches.&quot;,&quot;For each optimization step in the epoch: collect A rollout batches by executing the target model with $s_{\\text{cur}}$ on sampled tasks.&quot;,&quot;Split rollout evidence into failures and successes, then into minibatches for reflection.&quot;,&quot;The optimizer model generates failure patch proposals from failure minibatches and success patch proposals from success minibatches.&quot;,&quot;Merge failure and success proposals, performing a final failure-prioritized merge.&quot;,&quot;Rank merged edits and keep at most $L_t$ edits (textual learning-rate budget).&quot;,&quot;Apply selected edits to form a candidate skill ($\\tilde{s}$).&quot;,&quot;If $\\tilde{s}$ has been seen before (hash in cache), retrieve its score; otherwise, evaluate $\\tilde{s}$ on $D_{\\text{sel}}$ and cache the score.&quot;,&quot;If the candidate score ($score_{\\text{cand}}$) is strictly greater than $score_{\\text{cur}}$: update $s_{\\text{cur}}$ and $score_{\\text{cur}}$.&quot;,&quot;If $score_{\\text{cand}}$ is also strictly greater than $score_{\\text{best}}$: update $s_{\\text{best}}$ and $score_{\\text{best}}$.&quot;,&quot;If $\\tilde{s}$ is rejected: add rejected edits and observed failure patterns to the buffer B.&quot;,&quot;After epoch 2, if slow update is enabled, compare epoch-end skills and ask the optimizer for protected longitudinal guidance, validating it through $D_{\\text{sel}}$.&quot;,&quot;After epoch 2, if optimizer memory is enabled, ask the optimizer to update $m_{\\text{meta}}$ for future edit generation.&quot;,&quot;Finally, evaluate $s_{\\text{best}}$ on the test split ($D_{\\text{test}}$) and return $s_{\\text{best}}$ and its test score.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Skill Formulation&quot;,&quot;value&quot;:&quot;A skill $s$ is a natural-language policy inserted into the agent context. For a harness $h$, task $x$, and frozen target model $M$, execution produces a trajectory $\\tau$ and a scalar score $r$: $(\\tau(s), r(s)) = h(M, x, s)$, where $r(s) \\in [0, 1]$.&quot;},{&quot;label&quot;:&quot;Skill Optimization Goal&quot;,&quot;value&quot;:&quot;Given train, selection, and test splits $D_{\\text{tr}}$, $D_{\\text{sel}}$, $D_{\\text{test}}$, SkillOpt uses $D_{\\text{tr}}$ to generate a set of candidate skills $C(D_{\\text{tr}})$, selects the best skill $s^{\\star}_{\\text{sel}}$ on $D_{\\text{sel}}$: $s^{\\star}_{\\text{sel}} = \\text{arg max}_{s \\in C(D_{\\text{tr}})} \\frac{1}{|D_{\\text{sel}}|} \\sum_{x \\in D_{\\text{sel}}} r(s)$, and reports the final performance on $D_{\\text{test}}$: $\\text{Test}(s^{\\star}_{\\text{sel}}) = \\frac{1}{|D_{\\text{test}}|} \\sum_{x \\in D_{\\text{test}}} r(s^{\\star}_{\\text{sel}})$. The best accepted skill is exported as `best_skill.md`.&quot;}],&quot;reproducibility&quot;:&quot;Code for SkillOpt is publicly available at https://aka.ms/SkillOpt. Dataset-backed experiments use deterministic train/selection/test splits derived from the same dataset seed (split_seed = 42). Default optimizer hyperparameters and ablation protocols are described in detail.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;The base LLM agent (e.g., GPT models, Qwen) whose behavior is adapted. It remains frozen during the skill optimization process.&quot;,&quot;name&quot;:&quot;Target Model (M)&quot;,&quot;role&quot;:&quot;Executes tasks using the current skill, generating trajectories and scalar scores as rollout evidence.&quot;},{&quot;details&quot;:&quot;A separate frontier LLM (e.g., GPT-5.5) that analyzes rollout evidence (successes and failures) and proposes structured add/delete/replace edits to the skill document in JSON format.&quot;,&quot;name&quot;:&quot;Optimizer Model (O)&quot;,&quot;role&quot;:&quot;Performs minibatch reflection, merges and ranks proposed edits under a budget, and generates epoch-wise guidance.&quot;},{&quot;details&quot;:&quot;A natural-language text file (`best_skill.md`) representing the agent&#39;s procedural knowledge. It is the external state that is optimized and eventually deployed.&quot;,&quot;name&quot;:&quot;Skill Document (s)&quot;,&quot;role&quot;:&quot;The trainable artifact that packages domain heuristics, tool policies, and failure modes, enabling agent adaptation.&quot;},{&quot;details&quot;:&quot;A mechanism that strictly accepts a candidate skill only if its score on a held-out selection split ($D_{\\text{sel}}$) is greater than the current skill&#39;s score. Ties are rejected.&quot;,&quot;name&quot;:&quot;Validation Gate&quot;,&quot;role&quot;:&quot;Ensures that accepted edits genuinely improve performance and generalize, preventing harmful or overfitting updates.&quot;},{&quot;details&quot;:&quot;An epoch-local buffer that stores observed failure patterns and the edits that caused score drops for rejected steps.&quot;,&quot;name&quot;:&quot;Rejected-Edit Buffer&quot;,&quot;role&quot;:&quot;Provides negative feedback to the optimizer model, allowing it to avoid repeating failed edits and focus on unresolved issues in later steps.&quot;},{&quot;details&quot;:&quot;A mechanism that captures durable domain lessons and long-horizon regularities by comparing epoch-end skills and writing concise longitudinal guidance into a protected region of the skill document. The optimizer-side meta skill summarizes edit patterns.&quot;,&quot;name&quot;:&quot;Epoch-Wise Slow/Meta Update&quot;,&quot;role&quot;:&quot;Stabilizes skill training by maintaining consistent editing directions across epochs and provides a richer record of the editing process to the optimizer.&quot;},{&quot;details&quot;:&quot;A lightweight adapter interface that constructs train/evaluation batches, injects the current skill, runs the native harness, and returns scored trajectories.&quot;,&quot;name&quot;:&quot;Harness Adapter&quot;,&quot;role&quot;:&quot;Enables SkillOpt to be harness-agnostic, supporting direct chat, Codex-style, and Claude Code-style execution loops with the same optimizer.&quot;}]},&quot;thesis&quot;:&quot;Agent skills should be trained as the external state of a frozen agent, with the same discipline that makes weight-space optimization reproducible, rather than through ad-hoc, brittle self-revision, to reliably improve performance under feedback.&quot;,&quot;title&quot;:&quot;SkillOpt: Executive Strategy for Self-Evolving Agent Skills&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2605.23904&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

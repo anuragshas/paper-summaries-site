@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2605.23904",
+      "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
+      "authors": "Yifan Yang, Ziyang Gong, Weiquan Huang, Qihao Yang, Ziwei Zhou, Zisu Huang, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo",
+      "publishedDate": "2026-05-01",
+      "tags": [
+        "Agent",
+        "QA",
+        "RAG"
+      ]
+    },
+    {
       "paperId": "2604.27488",
       "title": "Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO",
       "authors": "Yu Tian, Jiawei Chen, Lifan Zheng, Mingxiang Tao, Xinyi Zeng, Zhaoxia Yin, Hang Su, Xian Sun",
@@ -98,17 +109,6 @@
         "RAG",
         "RL",
         "Rec"
-      ]
-    },
-    {
-      "paperId": "2603.28052",
-      "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
-      "authors": "Yoonho Lee, Roshen Nair, Qizheng Zhang, Kangwook Lee, Omar Khattab, Chelsea Finn",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Agent",
-        "RAG",
-        "Reasoning"
       ]
     }
   ]

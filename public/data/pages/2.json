@@ -2,6 +2,17 @@
   "page": 2,
   "papers": [
     {
+      "paperId": "2603.28052",
+      "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+      "authors": "Yoonho Lee, Roshen Nair, Qizheng Zhang, Kangwook Lee, Omar Khattab, Chelsea Finn",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Agent",
+        "RAG",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2603.26100",
       "title": "Rethinking Recommendation Paradigms: From Pipelines to Agentic Recommender Systems",
       "authors": "Jinxin Hu, Hao Deng, Lingyu Mu, Hao Zhang, Shizhun Wang, Yu Zhang, Xiaoyi Zeng",
@@ -97,17 +108,6 @@
       "tags": [
         "QA",
         "Reasoning",
-        "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2603.09938",
-      "title": "Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions",
-      "authors": "Mingyang Song & Mao Zheng",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Pretraining",
-        "QA",
         "Benchmark"
       ]
     }
