@@ -2,6 +2,17 @@
   "page": 3,
   "papers": [
     {
+      "paperId": "2603.10775",
+      "title": "Large Language Models as Annotators for Machine Translation Quality Estimation",
+      "authors": "Sidi Wang, Sophie Arnoult, Amir Kamran",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "QA",
+        "Reasoning",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2603.09938",
       "title": "Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions",
       "authors": "Mingyang Song & Mao Zheng",
@@ -101,20 +112,6 @@
         "QA",
         "Benchmark",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2602.23234",
-      "title": "Scaling Search Relevance: Augmenting App Store Ranking with LLM-Generated Judgments",
-      "authors": "Evangelia Christakopoulou, Vivekkumar Patel, Hemanth Velaga, Sandip Gaikwad",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "Information Retrieval",
-        "Large Language Models",
-        "Search Ranking",
-        "Multi-Objective Learning",
-        "Data Augmentation",
-        "App Store"
       ]
     }
   ]

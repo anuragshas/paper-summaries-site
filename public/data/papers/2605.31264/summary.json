@@ -1,0 +1,255 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 433,
+      "xmin": 110,
+      "ymax": 760,
+      "xmax": 885
+    },
+    "caption": "COLLEAGUE.SKILL architecture for automated person-grounded skill generation. The shared distillation core renders portable agent-skill artifacts; domain presets add source requirements, evidence checks, consent assumptions, and lifecycle or gallery metadata.",
+    "figureNumber": 1,
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2605.31264/figures/architecture.webp"
+  },
+  "authors": "Tianyi Zhou, Dongrui Liu, Leitao Yuan, Jing Shao, Xia Hu",
+  "breakthroughAssessment": {
+    "justification": "The paper presents a well-defined and implemented system for an emerging critical problem: grounding LLM agents with human expertise in a robust, accountable, and transparent manner. Its novelty lies in framing skill generation as an artifact problem, producing inspectable, versioned, and governable skill packages with a dual capability/behavior representation. The open-source release and community engagement demonstrate its practical utility and impact, positioning it as a strong contribution that significantly advances the engineering and conceptual framework for AI agent skill distillation.",
+    "score": 6
+  },
+  "coreProblem": {
+    "concreteExample": "When a teammate leaves, their valuable local judgment, review standards, incident heuristics, and communication norms often disappear because this expert knowledge is embedded in heterogeneous traces rather than being distilled into inspectable, portable, and reusable skill packages.",
+    "statement": "Building person-grounded AI agents with human expertise, judgment, and interaction style is difficult because this knowledge is often dispersed across heterogeneous data traces (e.g., code comments, chat decisions, interviews) instead of being clean instructions. There is no end-to-end workflow to distill these traces into inspectable, correctable, and agent-usable skills.",
+    "whyItMatters": [
+      "LLM agents increasingly need to carry reusable context about how work and interaction should be performed, requiring bounded representations of human expertise rather than opaque simulations.",
+      "Existing memory and persona systems often capture only fragments of this evidence, while skill frameworks lack a comprehensive workflow for transforming these traces into actionable, governable units.",
+      "The absence of inspectable and correctable skill artifacts hinders accountability, transparency, and reliable deployment of grounded AI agents."
+    ]
+  },
+  "evaluationHighlights": [
+    "The system successfully distills heterogeneous human traces into structured, versioned, and inspectable skill packages with a dual capability and behavior representation.",
+    "Correction and rollback mechanisms are implemented, allowing skills to be improved over time through natural-language feedback while preserving prior states.",
+    "COLLEAGUE.SKILL's open-source deployment includes a public gallery listing over 200 skills from 165 contributors and more than 100k cumulative stars, demonstrating a strong community ecosystem and public distribution surface.",
+    "The framework is adaptable to diverse, sensitive domains (colleague, celebrity/public-figure, relationship) through application presets that manage source requirements, consent, and governance.",
+    "The artifact-level claims focus on inspectability, portability, and governance rather than behavioral fidelity, enabling clearer evaluation protocols for future work."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [],
+      "metrics": [],
+      "setting": "The paper focuses on system design, implementation, and deployment, with no traditional performance benchmarks comparing against baselines. Evaluation is primarily qualitative, focusing on artifact properties, workflow, and open-source community adoption."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 273,
+          "xmin": 169,
+          "ymax": 381,
+          "xmax": 822
+        },
+        "caption": "Application presets layered on the COLLEAGUE.SKILL person-grounded skill pipeline. The shared artifact workflow branches into colleague, celebrity, and relationship presets with different evidence scopes, governance requirements, and invocation aliases.",
+        "figureNumber": 2,
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2605.31264/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 139,
+          "xmin": 122,
+          "ymax": 395,
+          "xmax": 877
+        },
+        "caption": "Lifecycle loop for generated skills. Corrections and patches create new versions while preserving rollback points.",
+        "figureNumber": 3,
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2605.31264/figures/experiment-2.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 128,
+          "xmin": 138,
+          "ymax": 302,
+          "xmax": 860
+        },
+        "caption": "Observed public deployment counters on 2026-05-28. Counts summarize repository activity, gallery scale, and cumulative public signals; they indicate deployment and distribution surface rather than task performance, behavioral fidelity, or adoption-quality metrics.",
+        "figureNumber": 4,
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2605.31264/figures/experiment-3.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "N/A",
+            "benchmark": "GitHub Repository",
+            "delta": "N/A",
+            "isPositive": false,
+            "metric": "Stars",
+            "thisPaper": "~18.5k"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "GitHub Repository",
+            "delta": "N/A",
+            "isPositive": false,
+            "metric": "Forks",
+            "thisPaper": "~1.8k"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "GitHub Repository",
+            "delta": "N/A",
+            "isPositive": false,
+            "metric": "Commits",
+            "thisPaper": "104"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Public Gallery",
+            "delta": "N/A",
+            "isPositive": false,
+            "metric": "Skills",
+            "thisPaper": "215"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Public Gallery",
+            "delta": "N/A",
+            "isPositive": false,
+            "metric": "Meta-skills",
+            "thisPaper": "55"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Public Gallery",
+            "delta": "N/A",
+            "isPositive": false,
+            "metric": "Community Contributors",
+            "thisPaper": "165"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Public Gallery",
+            "delta": "N/A",
+            "isPositive": false,
+            "metric": "Cumulative Gallery Stars",
+            "thisPaper": ">100k"
+          }
+        ],
+        "title": "Public Deployment Surface (as of 2026-05-28)"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "COLLEAGUE.SKILL provides an automated workflow to distill human traces into inspectable, correctable, and portable AI skill packages, addressing a critical gap in current LLM agent capabilities.",
+      "The dual representation (capability and behavior tracks) in the generated artifacts allows for clear separation and independent invocation of functional knowledge and interaction style, enhancing transparency and control.",
+      "The system is designed for a full lifecycle, including creation, correction, versioning, and deployment across multiple agent hosts and sharing surfaces, supported by an open-source community ecosystem.",
+      "Application presets for 'colleague', 'celebrity/public-figure', and 'relationship' domains demonstrate the framework's versatility and its ability to handle different source, consent, and governance requirements."
+    ]
+  },
+  "institutions": "Shanghai Artificial Intelligence Laboratory",
+  "keyNovelty": {
+    "explanation": [
+      "COLLEAGUE.SKILL redefines the problem of grounding AI agents with human expertise as an 'artifact problem,' where the output is a versioned, inspectable, and editable technical artifact rather than an opaque model or prompt. This shift emphasizes governance, auditability, and controlled deployment.",
+      "It introduces a novel 'dual representation' for skills, separating 'capability' (work.md for procedures, standards, heuristics) from 'behavior' (persona.md for style, interaction rules, correction records). This allows independent inspection and invocation, preventing conflation of factual knowledge with surface style.",
+      "The system provides an end-to-end workflow for trace-to-skill distillation, including mechanisms for collecting heterogeneous sources, generating structured skill packages, handling natural-language corrections, managing versions with rollback, and supporting various deployment contexts (local, agent hosts, public gallery)."
+    ],
+    "main": "COLLEAGUE.SKILL formulates person-grounded trace-to-skill distillation as an artifact problem, producing inspectable, correctable, and portable AI skill packages with a dual representation of capability and behavior, and supporting a full lifecycle for governance and deployment."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A skill whose instructions are grounded in evidence about a person or role, while remaining bounded by explicit source, usage, and governance constraints. It is an editable technical artifact rather than an unrestricted person simulation.",
+        "term": "Person-grounded skill"
+      },
+      {
+        "definition": "One of the two tracks in COLLEAGUE.SKILL's dual representation. It captures durable work methods, expert heuristics, technical standards, review criteria, and decision heuristics, typically rendered as 'work.md'.",
+        "term": "Capability track"
+      },
+      {
+        "definition": "One of the two tracks in COLLEAGUE.SKILL's dual representation. It stores bounded behavior constraints, expression preferences, interaction rules, and correction records, typically rendered as 'persona.md'. Its role is narrower than open-ended impersonation.",
+        "term": "Behavior track"
+      },
+      {
+        "definition": "Framing the generation of AI skills as producing an editable, inspectable, versioned software object with explicit files, metadata, entrypoints, correction records, and lifecycle operations, rather than a hidden model or temporary prompt text.",
+        "term": "Artifact problem"
+      }
+    ],
+    "prerequisites": [
+      "Large Language Models (LLMs)",
+      "AI Agents",
+      "Skill frameworks and specifications for agents (e.g., Agent Skills standard)",
+      "Knowledge distillation techniques"
+    ]
+  },
+  "subTopics": [
+    "AI Agent Systems",
+    "Knowledge Distillation",
+    "Explainable AI"
+  ],
+  "tags": [
+    {
+      "name": "Agent",
+      "type": "primary"
+    },
+    {
+      "name": "KG",
+      "type": "topic"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike existing memory and personalization systems that keep representations opaque (e.g., in retrieval stores or model behavior), COLLEAGUE.SKILL makes person-grounded skills explicit, inspectable artifacts with visible provenance and correction history.",
+      "COLLEAGUE.SKILL distinguishes itself from behavioral cloning by not claiming to faithfully reproduce a person, but rather to distill selected traces into a bounded artifact, emphasizing governance and explicit limitations.",
+      "While prior work on skill libraries (e.g., Voyager, SkillX, SkillGen, AutoSkill) focuses on accumulating or synthesizing skills from trajectories, COLLEAGUE.SKILL specifically addresses the 'how to create' person-grounded skills from heterogeneous human traces with an emphasis on inspectability, correctability, and deployment across diverse contexts.",
+      "It fills a gap in existing agent skill specifications (e.g., Agent Skills, Claude Code) by providing an end-to-end workflow for generating such skills, rather than merely defining their abstraction."
+    ],
+    "limitations": [
+      "The paper focuses on the artifact format, workflow, implementation, and public deployment surface, leaving open questions regarding source quality, extraction quality, model behavior, emotional safety, and user trust calibration.",
+      "Real deployments will necessitate explicit participation, scoped source collection, access controls, retention limits, and non-mandatory use, as well as separate review for lawful source use, consent, and full redaction.",
+      "Corrections, while improving artifacts, could introduce editor bias or make contested traces appear more settled than they are."
+    ],
+    "modeling": [
+      {
+        "label": "Problem Definition",
+        "value": "Given a lightweight profile $p$, a source scope $c$, and a set of source materials $D = \\{d_1, \\dots, d_n\\}$, the system produces a skill package $S = (A, M, L)$, where $A$ is a set of generated files, $M$ is machine-readable metadata and installation information, and $L$ is lifecycle state (version, update time, correction count, rollback history)."
+      },
+      {
+        "label": "Dual Representation",
+        "value": "Generated COLLEAGUE.SKILL artifacts use a dual representation: a 'capability track' (work.md) capturing responsibilities, workflows, technical standards, and decision heuristics, and a 'behavior track' (persona.md) storing bounded behavior constraints, expression preferences, interaction rules, and correction records. This separation makes both aspects inspectable and separately invocable."
+      },
+      {
+        "label": "Operational Properties",
+        "list": [
+          "Portable: Skills-compatible agents can load the package.",
+          "Inspectable: Users can read extracted rules, examples, limitations, and metadata.",
+          "Composable: Full, work-only, and persona-only entrypoints can be invoked separately.",
+          "Correctable: New evidence or user feedback can update the package while preserving prior state.",
+          "Governable: Metadata, source boundaries, and disclaimers support deletion, sharing decisions, and safety review."
+        ]
+      },
+      {
+        "label": "Artifact Schema",
+        "value": "The writer normalizes metadata into a versioned schema (current v3) containing identity, preset family, source context, classification, artifact names, engine/toolchain metadata, generation provenance, lifecycle state, and compatibility fields."
+      }
+    ],
+    "pipelineFlow": [
+      "Trace Intake: Heterogeneous source materials (e.g., documents, emails, chats, screenshots, public research) are collected and parsed into local knowledge directories.",
+      "Preset Router: Based on the target person/role, an application preset (colleague, celebrity, or relationship) is selected to specialize the creation path, including prompt bundles, storage, and command semantics.",
+      "Dual Distill: Analyzers extract evidence, and generation prompts run two conceptual tracks: a capability track for work methods/mental models and a behavior track for expression/interaction patterns.",
+      "Artifact Writer: Builders render structured Markdown, and a shared writer produces the versioned skill package, including SKILL.md (combined skill), work.md (capability), persona.md (behavior), manifest.json, and meta.json.",
+      "Productization: The generated skill package is prepared for installation into agent hosts, direct invocation, and optional distribution via a public gallery, with support for correction and rollback."
+    ],
+    "problemDefinition": [],
+    "reproducibility": "The COLLEAGUE.SKILL system is deployed as an open-source repository (https://github.com/titanwings/colleague-skill) with a public site and gallery (https://titanwings.github.io/colleague-skill-site/). The paper details the artifact format, generation workflow, and lifecycle operations."
+  },
+  "thesis": "COLLEAGUE.SKILL proposes an automated trace-to-skill distillation system that transforms heterogeneous human traces into portable, inspectable, correctable, and agent-usable AI skill packages, framed as an artifact problem to enable governance, auditability, and controlled deployment rather than opaque identity simulation.",
+  "title": "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation",
+  "url": "https://arxiv.org/abs/arXiv:2605.31264",
+  "venue": "N/A",
+  "year": "2026"
+}

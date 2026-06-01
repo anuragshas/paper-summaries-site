@@ -2,6 +2,17 @@
   "page": 6,
   "papers": [
     {
+      "paperId": "paper-1773559204996",
+      "title": "Think before Recommendation: Autonomous Reasoning-enhanced Recommender",
+      "authors": "Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang",
+      "publishedDate": null,
+      "tags": [
+        "RL",
+        "Rec",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "paper-1772980095573",
       "title": "GENERATIVE REWARD MODELS",
       "authors": "Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak",

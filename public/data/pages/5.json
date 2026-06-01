@@ -2,6 +2,19 @@
   "page": 5,
   "papers": [
     {
+      "paperId": "2602.11298",
+      "title": "2602.11298",
+      "authors": "Mistral AI Team",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Automatic Speech Recognition",
+        "Streaming ASR",
+        "Deep Learning",
+        "Transformers",
+        "Low-Latency Systems"
+      ]
+    },
+    {
       "paperId": "2602.07774",
       "title": "Generative Reasoning Re-ranker",
       "authors": "Mingfu Liang, Yufei Li, Jay Xu, Kavosh Asadi, Xi Liu, Shuo Gu, Kaushik Rangadurai, Frank Shyu, Shuaiwen Wang, Song Yang, Zhijing Li, Jiang Liu, Mengying Sun, Fei Tian, Xiaohan Wei, Chonglin Sun, Jacob Tao, Shike Mei, Wenlin Chen, Santanu Kolay, Sandeep Pandey, Hamed Firooz, Luke Simon",
@@ -107,17 +120,6 @@
         "Control Function",
         "Bias Correction",
         "Information Retrieval"
-      ]
-    },
-    {
-      "paperId": "paper-1773559204996",
-      "title": "Think before Recommendation: Autonomous Reasoning-enhanced Recommender",
-      "authors": "Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang",
-      "publishedDate": null,
-      "tags": [
-        "RL",
-        "Rec",
-        "Reasoning"
       ]
     }
   ]

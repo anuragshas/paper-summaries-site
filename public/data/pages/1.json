@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2605.31264",
+      "title": "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation",
+      "authors": "Tianyi Zhou, Dongrui Liu, Leitao Yuan, Jing Shao, Xia Hu",
+      "publishedDate": "2026-05-01",
+      "tags": [
+        "Agent",
+        "KG",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2605.23904",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
       "authors": "Yifan Yang, Ziyang Gong, Weiquan Huang, Qihao Yang, Ziwei Zhou, Zisu Huang, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo",
@@ -98,17 +109,6 @@
         "Rec",
         "Pretraining",
         "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2604.07420",
-      "title": "Dual-Rerank: Fusing Sequential Dependencies and Utility for Generative Reranking",
-      "authors": "Chao Zhang, Shuai Lin, Chenglei Dai, Ye Qian, Mingyang Fan, Yi Zhang, Yi Wang, Jingwei Zhuo",
-      "publishedDate": "2026-04-01",
-      "tags": [
-        "RAG",
-        "RL",
-        "Rec"
       ]
     }
   ]

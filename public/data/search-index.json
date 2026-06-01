@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2605.31264",
+      "title": "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation",
+      "tags": [
+        "Agent",
+        "KG",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2605.23904",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
       "tags": [

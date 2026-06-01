@@ -1,0 +1,19 @@
+{
+  "paperId": "2605.31264",
+  "title": "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation",
+  "authors": "Tianyi Zhou, Dongrui Liu, Leitao Yuan, Jing Shao, Xia Hu",
+  "publishedDate": "2026-05-01",
+  "tags": [
+    "Agent",
+    "KG",
+    "Reasoning"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2605.31264",
+  "pagePath": "/paper-summaries-site/papers/2605.31264",
+  "summaryPath": "/paper-summaries-site/data/papers/2605.31264/summary.json",
+  "assets": {
+    "figureAssetCount": 4,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

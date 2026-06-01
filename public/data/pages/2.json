@@ -2,6 +2,17 @@
   "page": 2,
   "papers": [
     {
+      "paperId": "2604.07420",
+      "title": "Dual-Rerank: Fusing Sequential Dependencies and Utility for Generative Reranking",
+      "authors": "Chao Zhang, Shuai Lin, Chenglei Dai, Ye Qian, Mingyang Fan, Yi Zhang, Yi Wang, Jingwei Zhuo",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "RAG",
+        "RL",
+        "Rec"
+      ]
+    },
+    {
       "paperId": "2603.28052",
       "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
       "authors": "Yoonho Lee, Roshen Nair, Qizheng Zhang, Kangwook Lee, Omar Khattab, Chelsea Finn",
@@ -98,17 +109,6 @@
         "Pretraining",
         "QA",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2603.10775",
-      "title": "Large Language Models as Annotators for Machine Translation Quality Estimation",
-      "authors": "Sidi Wang, Sophie Arnoult, Amir Kamran",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "QA",
-        "Reasoning",
-        "Benchmark"
       ]
     }
   ]
