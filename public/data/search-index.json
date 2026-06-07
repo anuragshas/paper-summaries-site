@@ -19,6 +19,15 @@
       ]
     },
     {
+      "paperId": "2605.21318",
+      "title": "TextReg: Mitigating Prompt Distributional Overfitting via Regularized Text-Space Optimization",
+      "tags": [
+        "Reasoning",
+        "QA",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2604.27488",
       "title": "Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO",
       "tags": [

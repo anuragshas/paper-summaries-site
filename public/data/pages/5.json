@@ -2,6 +2,17 @@
   "page": 5,
   "papers": [
     {
+      "paperId": "2602.12528",
+      "title": "DiffuRank: Effective Document Reranking with Diffusion Language Models",
+      "authors": "Qi Liu, Kun Ai, Jiaxin Mao, Yanzhao Zhang, Mingxin Li, Dingkun Long, Pengjun Xie, Fengbin Zhu, Ji-Rong Wen",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Document Reranking",
+        "Diffusion Models",
+        "Large Language Models"
+      ]
+    },
+    {
       "paperId": "2602.11298",
       "title": "2602.11298",
       "authors": "Mistral AI Team",
@@ -107,19 +118,6 @@
         "Pretraining",
         "QA",
         "RAG"
-      ]
-    },
-    {
-      "paperId": "2506.06989",
-      "title": "Correcting for Position Bias in Learning to Rank: A Control Function Approach",
-      "authors": "Md Aminul Islam, Kathryn Vasilaky, Elena Zheleva",
-      "publishedDate": "2022-06-01",
-      "tags": [
-        "Learning to Rank",
-        "Position Bias",
-        "Control Function",
-        "Bias Correction",
-        "Information Retrieval"
       ]
     }
   ]

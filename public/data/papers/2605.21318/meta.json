@@ -1,0 +1,19 @@
+{
+  "paperId": "2605.21318",
+  "title": "TextReg: Mitigating Prompt Distributional Overfitting via Regularized Text-Space Optimization",
+  "authors": "Lucheng Fu, Ye Yu, Yiyang Wang, Yiqiao Jin, Haibo Jin, B. Aditya Prakash, Haohan Wang",
+  "publishedDate": "2026-05-01",
+  "tags": [
+    "Reasoning",
+    "QA",
+    "Pretraining"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2605.21318",
+  "pagePath": "/paper-summaries-site/papers/2605.21318",
+  "summaryPath": "/paper-summaries-site/data/papers/2605.21318/summary.json",
+  "assets": {
+    "figureAssetCount": 3,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

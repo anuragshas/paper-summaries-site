@@ -24,6 +24,17 @@
       ]
     },
     {
+      "paperId": "2605.21318",
+      "title": "TextReg: Mitigating Prompt Distributional Overfitting via Regularized Text-Space Optimization",
+      "authors": "Lucheng Fu, Ye Yu, Yiyang Wang, Yiqiao Jin, Haibo Jin, B. Aditya Prakash, Haohan Wang",
+      "publishedDate": "2026-05-01",
+      "tags": [
+        "Reasoning",
+        "QA",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2604.27488",
       "title": "Skills-Coach: A Self-Evolving Skill Optimizer via Training-Free GRPO",
       "authors": "Yu Tian, Jiawei Chen, Lifan Zheng, Mingxiang Tao, Xinyi Zeng, Zhaoxia Yin, Hang Su, Xian Sun",
@@ -98,17 +109,6 @@
         "Agent",
         "QA",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2604.07930",
-      "title": "Unified Supervision for Walmart\u2019s Sponsored Search Retrieval via Joint Semantic Relevance and Behavioral Engagement Modeling",
-      "authors": "Shasvat Desai, Md Omar Faruk Rokon, Jhalak Nilesh Acharya, Isha Shah, Hong Yao, Utkarsh Porwal, Kuang-chih Lee",
-      "publishedDate": "2026-04-01",
-      "tags": [
-        "Rec",
-        "Pretraining",
-        "Benchmark"
       ]
     }
   ]

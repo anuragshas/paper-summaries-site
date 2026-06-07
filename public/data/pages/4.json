@@ -2,6 +2,17 @@
   "page": 4,
   "papers": [
     {
+      "paperId": "2603.00077",
+      "title": "Autorubric: A Unified Framework for Rubric-Based LLM Evaluation",
+      "authors": "Delip Rao, Chris Callison-Burch",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "QA",
+        "Benchmark",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2602.23234",
       "title": "Scaling Search Relevance: Augmenting App Store Ranking with LLM-Generated Judgments",
       "authors": "Evangelia Christakopoulou, Vivekkumar Patel, Hemanth Velaga, Sandip Gaikwad",
@@ -116,17 +127,6 @@
         "Reasoning",
         "Agent",
         "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2602.12528",
-      "title": "DiffuRank: Effective Document Reranking with Diffusion Language Models",
-      "authors": "Qi Liu, Kun Ai, Jiaxin Mao, Yanzhao Zhang, Mingxin Li, Dingkun Long, Pengjun Xie, Fengbin Zhu, Ji-Rong Wen",
-      "publishedDate": "2026-02-01",
-      "tags": [
-        "Document Reranking",
-        "Diffusion Models",
-        "Large Language Models"
       ]
     }
   ]

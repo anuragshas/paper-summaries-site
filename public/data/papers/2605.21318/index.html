@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TextReg: Mitigating Prompt Distributional Overfitting via Regularized Text-Space Optimization</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>TextReg: Mitigating Prompt Distributional Overfitting via Regularized Text-Space Optimization</h1>
+      <p class="meta"><strong>Authors:</strong> Lucheng Fu, Ye Yu, Yiyang Wang, Yiqiao Jin, Haibo Jin, B. Aditya Prakash, Haohan Wang</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2605.21318" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2605.21318</a></p>
+      <p class="muted">Generated summary artifact for 2605.21318</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Prompt distributional overfitting, characterized by increasing prompt length (capacity cost) and narrow sample-specific rules (scope narrowness), can be effectively mitigated by a regularization framework, TextReg, that explicitly controls representational inefficiency during discrete text-space optimization, leading to improved out-of-distribution generalization for LLMs.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Existing prompt optimization methods for Large Language Models (LLMs) suffer from &#39;prompt distributional overfitting,&#39; where iteratively refined prompts become overly long, accumulate narrow sample-specific rules, and generalize poorly beyond the training distribution (out-of-distribution generalization). This failure mode reflects a lack of representation control in discrete text-space optimization.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>TextReg is a regularization framework that mitigates prompt distributional overfitting in discrete text-space optimization by explicitly controlling &#39;representational inefficiency&#39; (prompt length and rule narrowness) through a regularized textual-gradient approach.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>TextReg consistently outperforms existing prompt optimization methods (TextGrad, REVOLVE) on out-of-distribution (OOD) generalization across multiple reasoning benchmarks and LLM test engines.</li><li>Achieves accuracy gains of up to +11.8% over TextGrad and +16.5% over REVOLVE on challenging tasks like Tracking Shuffled Objects.</li><li>Preserves and extends the generalization benefits of Chain-of-Thought (CoT) reasoning, unlike baselines that often degrade OOD accuracy below CoT&#39;s performance.</li><li>All three core components of TextReg (Dual-Evidence Gradient Purification, Semantic Edit Regularization, Regularization-Guided Prompt Update) are jointly necessary for its strong performance.</li><li>TextReg demonstrates robustness to individual LLM-driven component degradation, indicating its regularization signal is structural rather than capability-bound.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>TextReg consistently outperforms existing prompt optimization methods like TextGrad and REVOLVE in terms of out-of-distribution (OOD) generalization across diverse reasoning benchmarks and LLM test engines.</li><li>The method achieves substantial accuracy gains, particularly on more challenging task variants, with improvements up to +10.0% over TextGrad and +9.9% over REVOLVE on Tracking Shuffled Objects.</li><li>Unlike baseline methods which often degrade OOD accuracy below zero-shot Chain-of-Thought (CoT) performance, TextReg consistently preserves and extends the generalization benefits of CoT.</li><li>Ablation studies confirm that all three components of TextReg (Dual-Evidence Gradient Purification, Semantic Edit Regularization, and Regularization-Guided Prompt Update) are essential and jointly contribute to mitigating prompt distributional overfitting.</li><li>TextReg demonstrates robustness to using weaker LLM components within its optimization pipeline, suggesting its regularization signal captures structural aspects rather than being solely dependent on strong LLM capabilities for every module.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>TextReg currently targets single-turn reasoning tasks with well-defined behavioral rules.</li><li>Future work is needed to extend TextReg to open-ended generation, multi-turn prompts, and agent instructions, where rule structure may be less distinct and capacity costs might be shared across turns.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 43,
+      &quot;xmin&quot;: 114,
+      &quot;ymax&quot;: 423,
+      &quot;xmax&quot;: 868
+    },
+    &quot;caption&quot;: &quot;Overview of TextReg, which proceeds in three stages. (a) Left: Dual-Evidence Gradient Purification filters the raw task gradient via local batch and RuleBank recurrence evidence, yielding `$\\tilde{g}_{\\text{task}}$`. (b) Middle: Semantic Edit Regularization diagnoses capacity and scope degradation and synthesizes the regularization gradient `$\\text{g}_{\\text{reg}}$`. (c) Right: Regularization-Guided Prompt Update rewrites `$\\text{p}_t$` into `$\\text{p}_{t+1}$` by selecting the task-faithful candidate most compatible with `$\\text{g}_{\\text{reg}}$`.&quot;,
+    &quot;figureNumber&quot;: 2,
+    &quot;pageIndex&quot;: 4
+  },
+  &quot;authors&quot;: &quot;Lucheng Fu, Ye Yu, Yiyang Wang, Yiqiao Jin, Haibo Jin, B. Aditya Prakash, Haohan Wang&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper provides a novel formalization of prompt distributional overfitting as &#39;representational inefficiency&#39; and introduces a principled, three-stage regularization framework, TextReg, to mitigate it. It demonstrates strong empirical improvements on out-of-distribution generalization across various reasoning benchmarks and LLM backends, significantly advancing the state-of-the-art in prompt optimization by controlling prompt representation. The framework&#39;s modularity and robustness are also positive aspects, making it a strong contribution to the field.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Conventional prompt optimization methods often produce long prompts saturated with narrow rules, which degrade on out-of-distribution (OOD) inputs. This leads to prompts that expand in length with case-specific instructions and narrow in scope, drifting towards fragmented sample-dependent patches rather than general principles.&quot;,
+    &quot;statement&quot;: &quot;Existing prompt optimization methods for Large Language Models (LLMs) suffer from &#39;prompt distributional overfitting,&#39; where iteratively refined prompts become overly long, accumulate narrow sample-specific rules, and generalize poorly beyond the training distribution (out-of-distribution generalization). This failure mode reflects a lack of representation control in discrete text-space optimization.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Poor generalization on out-of-distribution inputs hinders the broader applicability and reliability of LLM-based systems.&quot;,
+      &quot;Longer prompts consume more context budget, making it harder for LLMs to reliably locate and leverage relevant instructions within their limited effective context windows.&quot;,
+      &quot;Narrow rules act as ad hoc patches rather than reusable task principles, leading to inefficient representation of knowledge.&quot;,
+      &quot;An increasing fraction of prompt capacity is wasted on information that contributes little to generalization, reducing overall efficiency.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;TextReg consistently outperforms existing prompt optimization methods (TextGrad, REVOLVE) on out-of-distribution (OOD) generalization across multiple reasoning benchmarks and LLM test engines.&quot;,
+    &quot;Achieves accuracy gains of up to +11.8% over TextGrad and +16.5% over REVOLVE on challenging tasks like Tracking Shuffled Objects.&quot;,
+    &quot;Preserves and extends the generalization benefits of Chain-of-Thought (CoT) reasoning, unlike baselines that often degrade OOD accuracy below CoT&#39;s performance.&quot;,
+    &quot;All three core components of TextReg (Dual-Evidence Gradient Purification, Semantic Edit Regularization, Regularization-Guided Prompt Update) are jointly necessary for its strong performance.&quot;,
+    &quot;TextReg demonstrates robustness to individual LLM-driven component degradation, indicating its regularization signal is structural rather than capability-bound.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Logical Deduction (3/5/7 Objects) from Big Bench Hard (BBH)&quot;,
+        &quot;Tracking Shuffled Objects (3/5/7 Objects) from BBH&quot;,
+        &quot;GSM8K&quot;,
+        &quot;SVAMP&quot;,
+        &quot;MultiArith&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Accuracy (Acc)&quot;
+      ],
+      &quot;setting&quot;: &quot;Out-of-distribution (OOD) generalization across datasets and test engines. Prompts optimized on 3-object variants of BBH tasks and GSM8K, evaluated on 5/7-object variants of BBH, SVAMP, and MultiArith. Four LLM backends (Qwen2-7B-Instruct, Phi-3.5-Mini-Instruct, Llama-3-8B-Instruct, Llama-3.1-8B-Instruct) used as test engines.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 220,
+          &quot;xmin&quot;: 521,
+          &quot;ymax&quot;: 383,
+          &quot;xmax&quot;: 831
+        },
+        &quot;caption&quot;: &quot;Ablation study of the three core components of TextReg: Gradient Purification, Semantic Edit Regularization, and Regularization-Guided Update. Each bar reports mean out-of-distribution accuracy (%) across four OOD tasks (Tracking Shuffled Objects 5/7 obj, Logical Deduction 5/7 obj) on each test engine. See Section 5.3 for analysis.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 9
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 69,
+          &quot;xmin&quot;: 120,
+          &quot;ymax&quot;: 196,
+          &quot;xmax&quot;: 888
+        },
+        &quot;caption&quot;: &quot;Resilience analysis of TextReg under role-wise engine degradation, where each of the three LLM-driven roles in the optimization pipeline is replaced one at a time with a weaker Qwen2.5-7B-Instruct model. For an in-depth analysis, please refer to Section 5.4.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 9
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;54.4&quot;,
+            &quot;benchmark&quot;: &quot;Logical Ded. 5obj&quot;,
+            &quot;delta&quot;: &quot;+0.9&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;55.3&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;47.6&quot;,
+            &quot;benchmark&quot;: &quot;Logical Ded. 7obj&quot;,
+            &quot;delta&quot;: &quot;+0.2&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;47.8&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;40.3&quot;,
+            &quot;benchmark&quot;: &quot;Tracking Shuf. 5obj&quot;,
+            &quot;delta&quot;: &quot;+5.1&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;45.4&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;33.9&quot;,
+            &quot;benchmark&quot;: &quot;Tracking Shuf. 7obj&quot;,
+            &quot;delta&quot;: &quot;+5.2&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;39.1&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;89.3&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K&quot;,
+            &quot;delta&quot;: &quot;+0.8&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;90.1&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;96.2&quot;,
+            &quot;benchmark&quot;: &quot;MultiArith&quot;,
+            &quot;delta&quot;: &quot;+0.3&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;96.5&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Qwen2-7B-Instruct Results&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;59.8&quot;,
+            &quot;benchmark&quot;: &quot;Logical Ded. 5obj&quot;,
+            &quot;delta&quot;: &quot;+1.3&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;61.1&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.6&quot;,
+            &quot;benchmark&quot;: &quot;Logical Ded. 7obj&quot;,
+            &quot;delta&quot;: &quot;+0.4&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;51.0&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;69.7&quot;,
+            &quot;benchmark&quot;: &quot;Tracking Shuf. 5obj&quot;,
+            &quot;delta&quot;: &quot;+10.0&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;79.7&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;66.7&quot;,
+            &quot;benchmark&quot;: &quot;Tracking Shuf. 7obj&quot;,
+            &quot;delta&quot;: &quot;+9.9&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;76.6&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;85.5&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K&quot;,
+            &quot;delta&quot;: &quot;+0.0&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;85.5&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;96.0&quot;,
+            &quot;benchmark&quot;: &quot;MultiArith&quot;,
+            &quot;delta&quot;: &quot;+0.7&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;96.7&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Llama-3.1-8B-Instruct Results&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;52.6&quot;,
+            &quot;benchmark&quot;: &quot;Logical Ded. 5obj&quot;,
+            &quot;delta&quot;: &quot;+0.7&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;53.3&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;48.8&quot;,
+            &quot;benchmark&quot;: &quot;Logical Ded. 7obj&quot;,
+            &quot;delta&quot;: &quot;+3.2&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;52.0&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;46.1&quot;,
+            &quot;benchmark&quot;: &quot;Tracking Shuf. 5obj&quot;,
+            &quot;delta&quot;: &quot;+8.2&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;54.3&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;41.8&quot;,
+            &quot;benchmark&quot;: &quot;Tracking Shuf. 7obj&quot;,
+            &quot;delta&quot;: &quot;+6.5&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;48.3&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;83.9&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K&quot;,
+            &quot;delta&quot;: &quot;+0.0&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;83.9&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;94.7&quot;,
+            &quot;benchmark&quot;: &quot;MultiArith&quot;,
+            &quot;delta&quot;: &quot;+0.2&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;94.9&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Llama-3-8B-Instruct Results&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;57.0&quot;,
+            &quot;benchmark&quot;: &quot;Logical Ded. 5obj&quot;,
+            &quot;delta&quot;: &quot;+0.9&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;57.9&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.5&quot;,
+            &quot;benchmark&quot;: &quot;Logical Ded. 7obj&quot;,
+            &quot;delta&quot;: &quot;+4.7&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;55.2&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;89.6&quot;,
+            &quot;benchmark&quot;: &quot;Tracking Shuf. 5obj&quot;,
+            &quot;delta&quot;: &quot;+4.5&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;94.1&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;92.8&quot;,
+            &quot;benchmark&quot;: &quot;Tracking Shuf. 7obj&quot;,
+            &quot;delta&quot;: &quot;-0.6&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;92.2&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;90.4&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K&quot;,
+            &quot;delta&quot;: &quot;-1.9&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;88.5&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;97.0&quot;,
+            &quot;benchmark&quot;: &quot;MultiArith&quot;,
+            &quot;delta&quot;: &quot;-2.3&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Accuracy (%)&quot;,
+            &quot;thisPaper&quot;: &quot;94.7&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Phi-3.5-Mini-Instruct Results&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;TextReg consistently outperforms existing prompt optimization methods like TextGrad and REVOLVE in terms of out-of-distribution (OOD) generalization across diverse reasoning benchmarks and LLM test engines.&quot;,
+      &quot;The method achieves substantial accuracy gains, particularly on more challenging task variants, with improvements up to +10.0% over TextGrad and +9.9% over REVOLVE on Tracking Shuffled Objects.&quot;,
+      &quot;Unlike baseline methods which often degrade OOD accuracy below zero-shot Chain-of-Thought (CoT) performance, TextReg consistently preserves and extends the generalization benefits of CoT.&quot;,
+      &quot;Ablation studies confirm that all three components of TextReg (Dual-Evidence Gradient Purification, Semantic Edit Regularization, and Regularization-Guided Prompt Update) are essential and jointly contribute to mitigating prompt distributional overfitting.&quot;,
+      &quot;TextReg demonstrates robustness to using weaker LLM components within its optimization pipeline, suggesting its regularization signal captures structural aspects rather than being solely dependent on strong LLM capabilities for every module.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Georgia Institute of Technology, University of Illinois Urbana-Champaign&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Formalizing Representational Inefficiency: The paper introduces &#39;representational inefficiency&#39; as a dual-factor measure that quantifies prompt distributional overfitting. It decomposes inefficiency into &#39;capacity cost&#39; (prompt length) and &#39;scope narrowness&#39; (generalizability of rules), highlighting their coupled growth during optimization.&quot;,
+      &quot;Regularized Text-Space Prompt Optimization: TextReg proposes a novel three-stage regularization framework to directly control the growth of representational inefficiency in discrete text space. This framework includes Dual-Evidence Gradient Purification, Semantic Edit Regularization, and Regularization-Guided Prompt Update, which together realize a soft-penalty objective.&quot;,
+      &quot;Improved Out-of-Distribution Generalization: Through extensive experiments, TextReg is shown to consistently and substantially outperform existing prompt optimization methods on out-of-distribution generalization across various reasoning benchmarks and LLM backends, providing a principled mechanism to mitigate prompt distributional overfitting.&quot;
+    ],
+    &quot;main&quot;: &quot;TextReg is a regularization framework that mitigates prompt distributional overfitting in discrete text-space optimization by explicitly controlling &#39;representational inefficiency&#39; (prompt length and rule narrowness) through a regularized textual-gradient approach.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A failure mode in prompt optimization where prompts improve on training data but accumulate narrow, sample-specific rules and excessive length, leading to poor generalization on out-of-distribution (OOD) inputs.&quot;,
+        &quot;term&quot;: &quot;Prompt distributional overfitting&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A dual-factor measure of prompt inefficiency, decomposing into capacity cost (prompt length) and scope narrowness (generalizability of rules).&quot;,
+        &quot;term&quot;: &quot;Representational inefficiency&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The consumption of an LLM&#39;s context budget incurred by the length of a prompt.&quot;,
+        &quot;term&quot;: &quot;Capacity cost&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The fraction of rules within a prompt that are narrow and fail to contribute broadly useful guidance, making them act as ad hoc patches rather than general principles.&quot;,
+        &quot;term&quot;: &quot;Scope narrowness&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Prompt Engineering&quot;,
+      &quot;Prompt Optimization&quot;,
+      &quot;Out-of-Distribution (OOD) Generalization&quot;,
+      &quot;Regularization in Machine Learning&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Prompt Optimization&quot;,
+    &quot;Generalization in LLMs&quot;,
+    &quot;Natural Language Processing&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Existing prompt optimization methods (e.g., Chain-of-Thought, TextGrad, REVOLVE) primarily rely on training feedback to improve prompt performance but do not explicitly regulate the evolution of prompt representation, often leading to overfitting.&quot;,
+      &quot;Prior methods allow prompts to grow longer and accumulate case-specific instructions, making them fragile to wording changes, distribution shifts, and long contexts, which degrades out-of-distribution generalization.&quot;,
+      &quot;Unlike methods that constrain model parameters or optimize continuous prompt embeddings, TextReg directly regularizes the representational inefficiency of natural-language prompts in discrete text space by controlling prompt length and rule generalizability.&quot;,
+      &quot;TextReg addresses prompt overfitting as a representation-control problem, whereas prior work views it more as an artifact of optimization dynamics or mitigates it through static simplification instructions or external memory.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;TextReg currently targets single-turn reasoning tasks with well-defined behavioral rules.&quot;,
+      &quot;Future work is needed to extend TextReg to open-ended generation, multi-turn prompts, and agent instructions, where rule structure may be less distinct and capacity costs might be shared across turns.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Empirical Task Risk&quot;,
+        &quot;value&quot;: &quot;$L_{\\mathcal{D}}(p) = \\frac{1}{|\\mathcal{D}|} \\sum_{(x,y) \\in \\mathcal{D}} \\ell( \\mathcal{M}(p, x), y )$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Generalization Quantification&quot;,
+        &quot;value&quot;: &quot;$\\Delta(p; \\mathcal{D}&#39;) = L_{\\mathcal{D}&#39;}(p) - L_{\\mathcal{D}_{\\text{train}}}(p)$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Generalization Scope of a Rule&quot;,
+        &quot;value&quot;: &quot;$s(r_i) \\triangleq E_{x \\sim \\mathcal{X}} [\\rho_{r_i}(x)] \\in [0, 1]$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Representational Inefficiency Measure&quot;,
+        &quot;value&quot;: &quot;$I(p) = |p|_{\\text{tok}} \\cdot (1 - \\bar{s}(p))$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Regularized Objective for Prompt Optimization&quot;,
+        &quot;value&quot;: &quot;$\\min_{p \\in \\mathcal{P}} L_{\\mathcal{D}_{\\text{train}}}(p) + \\lambda I(p)$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Prompt Update Decomposition&quot;,
+        &quot;value&quot;: &quot;$g_{\\text{text}}(p_t) = \\tilde{g}_{\\text{task}}(p_t) + g_{\\text{reg}}(p_t)$&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Stage 1 (Dual-Evidence Gradient Purification): Raw task gradients from the LLM evaluator are filtered using local batch evidence (case-attribution score) and global RuleBank recurrence evidence to identify generalizable update directions. Harmful gradients (narrow scope, redundant tokens) are discarded or rewritten into concise, broadly applicable forms, yielding a purified task gradient `$\\tilde{g}_{\\text{task}}$`.&quot;,
+      &quot;Stage 2 (Semantic Edit Regularization - SER): This stage diagnoses the impact of recent prompt edits on &#39;representational inefficiency&#39; by estimating changes in capacity cost and scope narrowness. It uses a semantic diff analyzer and an LLM-based generator to synthesize a textual regularization gradient `$\\text{g}_{\\text{reg}}$` that opposes increases in inefficiency.&quot;,
+      &quot;Stage 3 (Regularization-Guided Prompt Update): The purified task gradient `$\\tilde{g}_{\\text{task}}$` and the regularization gradient `$\\text{g}_{\\text{reg}}$` are combined. TextReg selects from a set of task-faithful candidate prompts (those that faithfully implement `$\\tilde{g}_{\\text{task}}$`) the one whose edit is most compatible with `$\\text{g}_{\\text{reg}}$`, thereby preserving task performance while discouraging increases in representational inefficiency.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Prompt Representation&quot;,
+        &quot;value&quot;: &quot;A prompt `p` is viewed as a structured representation of task knowledge, composed of a set of behavioral rules `R(p) = {r1, ..., rk}`, where each `ri` is a semantically distinct instruction.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Prompt Distributional Overfitting&quot;,
+        &quot;value&quot;: &quot;Occurs when optimization reduces `L_Dtrain(p)` while increasing `Delta(p; D&#39;)`, empirically accompanied by structural growth (increased length, accumulation of narrow rules).&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The code for TextReg is publicly available at https://github.com/luchengfu6/TextReg. Detailed experimental setup, including datasets, LLM backends (Qwen2.5-7B-Instruct for forward, GPT-4o for backward), training budget, batch size, optimization iterations, and hyperparameters (e.g., `$\\tau_C = 0.2$`), are provided. All experiments were conducted on a server with six NVIDIA A100 80GB GPUs.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Filters raw task gradients from the LLM evaluator. It employs local case evidence (case-attribution score) to detect idiosyncratic batch examples and global recurrence evidence from a RuleBank to support generalizability. Gradients are retained only if not strongly batch-attributable and have sufficient recurrence support, then rewritten into concise, broadly applicable instructions.&quot;,
+        &quot;name&quot;: &quot;Dual-Evidence Gradient Purification ($\\Pi_{\\text{gen}}$)&quot;,
+        &quot;role&quot;: &quot;Source-level hard projection; filters harmful gradients (narrow patches, redundant tokens) at the gradient source.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;A cross-step memory that stores canonical descriptions of accepted generalized rules and their recurrence frequencies. It&#39;s updated by canonicalizing accepted gradients and either incrementing existing entries or inserting new canonical descriptions.&quot;,
+        &quot;name&quot;: &quot;RuleBank&quot;,
+        &quot;role&quot;: &quot;Provides global recurrence evidence to guide gradient purification and grounds judgments for semantic diff analysis.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;An LLM-driven module that compares the previous and current prompts at the rule level, classifies each change (GENERALIZED_RULE, CASE_PATCH, STYLE_ONLY), and judges the overall specificity shift (narrowing, broadening, or neutral).&quot;,
+        &quot;name&quot;: &quot;Semantic Diff Analyzer ($\\mathcal{M}_{\\Delta}$)&quot;,
+        &quot;role&quot;: &quot;Diagnoses how recent prompt edits change capacity cost and scope waste.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;An LLM-driven module that translates active regularization directions (capacity correction, scope broadening) into concrete structural directives for prompt compression, merging redundant sentences, tightening phrasing, rewriting narrow rules, or removing case-specific patches.&quot;,
+        &quot;name&quot;: &quot;Regularization Gradient Generator ($\\Gamma$)&quot;,
+        &quot;role&quot;: &quot;Synthesizes the textual regularization gradient `$\\text{g}_{\\text{reg}}$` based on identified inefficiency degradations.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;This module takes the purified task gradient `$\\tilde{g}_{\\text{task}}$` and the regularization gradient `$\\text{g}_{\\text{reg}}$` and rewrites the prompt. It selects, from a set of task-faithful candidates, the one whose edit is most compatible with `$\\text{g}_{\\text{reg}}$`, ensuring task intent is preserved while minimizing representational inefficiency.&quot;,
+        &quot;name&quot;: &quot;Regularization-Guided Prompt Update&quot;,
+        &quot;role&quot;: &quot;Implements the final composition step of the regularized objective, biasing prompt rewriting towards lower representational inefficiency.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;Prompt distributional overfitting, characterized by increasing prompt length (capacity cost) and narrow sample-specific rules (scope narrowness), can be effectively mitigated by a regularization framework, TextReg, that explicitly controls representational inefficiency during discrete text-space optimization, leading to improved out-of-distribution generalization for LLMs.&quot;,
+  &quot;title&quot;: &quot;TextReg: Mitigating Prompt Distributional Overfitting via Regularized Text-Space Optimization&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2605.21318&quot;,
+  &quot;venue&quot;: &quot;arXiv preprint&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2605.21318&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2605.21318&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:43,&quot;xmin&quot;:114,&quot;ymax&quot;:423,&quot;xmax&quot;:868},&quot;caption&quot;:&quot;Overview of TextReg, which proceeds in three stages. (a) Left: Dual-Evidence Gradient Purification filters the raw task gradient via local batch and RuleBank recurrence evidence, yielding `$\\tilde{g}_{\\text{task}}$`. (b) Middle: Semantic Edit Regularization diagnoses capacity and scope degradation and synthesizes the regularization gradient `$\\text{g}_{\\text{reg}}$`. (c) Right: Regularization-Guided Prompt Update rewrites `$\\text{p}_t$` into `$\\text{p}_{t+1}$` by selecting the task-faithful candidate most compatible with `$\\text{g}_{\\text{reg}}$`.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:4},&quot;authors&quot;:&quot;Lucheng Fu, Ye Yu, Yiyang Wang, Yiqiao Jin, Haibo Jin, B. Aditya Prakash, Haohan Wang&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper provides a novel formalization of prompt distributional overfitting as &#39;representational inefficiency&#39; and introduces a principled, three-stage regularization framework, TextReg, to mitigate it. It demonstrates strong empirical improvements on out-of-distribution generalization across various reasoning benchmarks and LLM backends, significantly advancing the state-of-the-art in prompt optimization by controlling prompt representation. The framework&#39;s modularity and robustness are also positive aspects, making it a strong contribution to the field.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Conventional prompt optimization methods often produce long prompts saturated with narrow rules, which degrade on out-of-distribution (OOD) inputs. This leads to prompts that expand in length with case-specific instructions and narrow in scope, drifting towards fragmented sample-dependent patches rather than general principles.&quot;,&quot;statement&quot;:&quot;Existing prompt optimization methods for Large Language Models (LLMs) suffer from &#39;prompt distributional overfitting,&#39; where iteratively refined prompts become overly long, accumulate narrow sample-specific rules, and generalize poorly beyond the training distribution (out-of-distribution generalization). This failure mode reflects a lack of representation control in discrete text-space optimization.&quot;,&quot;whyItMatters&quot;:[&quot;Poor generalization on out-of-distribution inputs hinders the broader applicability and reliability of LLM-based systems.&quot;,&quot;Longer prompts consume more context budget, making it harder for LLMs to reliably locate and leverage relevant instructions within their limited effective context windows.&quot;,&quot;Narrow rules act as ad hoc patches rather than reusable task principles, leading to inefficient representation of knowledge.&quot;,&quot;An increasing fraction of prompt capacity is wasted on information that contributes little to generalization, reducing overall efficiency.&quot;]},&quot;evaluationHighlights&quot;:[&quot;TextReg consistently outperforms existing prompt optimization methods (TextGrad, REVOLVE) on out-of-distribution (OOD) generalization across multiple reasoning benchmarks and LLM test engines.&quot;,&quot;Achieves accuracy gains of up to +11.8% over TextGrad and +16.5% over REVOLVE on challenging tasks like Tracking Shuffled Objects.&quot;,&quot;Preserves and extends the generalization benefits of Chain-of-Thought (CoT) reasoning, unlike baselines that often degrade OOD accuracy below CoT&#39;s performance.&quot;,&quot;All three core components of TextReg (Dual-Evidence Gradient Purification, Semantic Edit Regularization, Regularization-Guided Prompt Update) are jointly necessary for its strong performance.&quot;,&quot;TextReg demonstrates robustness to individual LLM-driven component degradation, indicating its regularization signal is structural rather than capability-bound.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Logical Deduction (3/5/7 Objects) from Big Bench Hard (BBH)&quot;,&quot;Tracking Shuffled Objects (3/5/7 Objects) from BBH&quot;,&quot;GSM8K&quot;,&quot;SVAMP&quot;,&quot;MultiArith&quot;],&quot;metrics&quot;:[&quot;Accuracy (Acc)&quot;],&quot;setting&quot;:&quot;Out-of-distribution (OOD) generalization across datasets and test engines. Prompts optimized on 3-object variants of BBH tasks and GSM8K, evaluated on 5/7-object variants of BBH, SVAMP, and MultiArith. Four LLM backends (Qwen2-7B-Instruct, Phi-3.5-Mini-Instruct, Llama-3-8B-Instruct, Llama-3.1-8B-Instruct) used as test engines.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:220,&quot;xmin&quot;:521,&quot;ymax&quot;:383,&quot;xmax&quot;:831},&quot;caption&quot;:&quot;Ablation study of the three core components of TextReg: Gradient Purification, Semantic Edit Regularization, and Regularization-Guided Update. Each bar reports mean out-of-distribution accuracy (%) across four OOD tasks (Tracking Shuffled Objects 5/7 obj, Logical Deduction 5/7 obj) on each test engine. See Section 5.3 for analysis.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:9},{&quot;boundingBox&quot;:{&quot;ymin&quot;:69,&quot;xmin&quot;:120,&quot;ymax&quot;:196,&quot;xmax&quot;:888},&quot;caption&quot;:&quot;Resilience analysis of TextReg under role-wise engine degradation, where each of the three LLM-driven roles in the optimization pipeline is replaced one at a time with a weaker Qwen2.5-7B-Instruct model. For an in-depth analysis, please refer to Section 5.4.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:9}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;54.4&quot;,&quot;benchmark&quot;:&quot;Logical Ded. 5obj&quot;,&quot;delta&quot;:&quot;+0.9&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;55.3&quot;},{&quot;baseline&quot;:&quot;47.6&quot;,&quot;benchmark&quot;:&quot;Logical Ded. 7obj&quot;,&quot;delta&quot;:&quot;+0.2&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;47.8&quot;},{&quot;baseline&quot;:&quot;40.3&quot;,&quot;benchmark&quot;:&quot;Tracking Shuf. 5obj&quot;,&quot;delta&quot;:&quot;+5.1&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;45.4&quot;},{&quot;baseline&quot;:&quot;33.9&quot;,&quot;benchmark&quot;:&quot;Tracking Shuf. 7obj&quot;,&quot;delta&quot;:&quot;+5.2&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;39.1&quot;},{&quot;baseline&quot;:&quot;89.3&quot;,&quot;benchmark&quot;:&quot;GSM8K&quot;,&quot;delta&quot;:&quot;+0.8&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;90.1&quot;},{&quot;baseline&quot;:&quot;96.2&quot;,&quot;benchmark&quot;:&quot;MultiArith&quot;,&quot;delta&quot;:&quot;+0.3&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;96.5&quot;}],&quot;title&quot;:&quot;Qwen2-7B-Instruct Results&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;59.8&quot;,&quot;benchmark&quot;:&quot;Logical Ded. 5obj&quot;,&quot;delta&quot;:&quot;+1.3&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;61.1&quot;},{&quot;baseline&quot;:&quot;50.6&quot;,&quot;benchmark&quot;:&quot;Logical Ded. 7obj&quot;,&quot;delta&quot;:&quot;+0.4&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;51.0&quot;},{&quot;baseline&quot;:&quot;69.7&quot;,&quot;benchmark&quot;:&quot;Tracking Shuf. 5obj&quot;,&quot;delta&quot;:&quot;+10.0&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;79.7&quot;},{&quot;baseline&quot;:&quot;66.7&quot;,&quot;benchmark&quot;:&quot;Tracking Shuf. 7obj&quot;,&quot;delta&quot;:&quot;+9.9&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;76.6&quot;},{&quot;baseline&quot;:&quot;85.5&quot;,&quot;benchmark&quot;:&quot;GSM8K&quot;,&quot;delta&quot;:&quot;+0.0&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;85.5&quot;},{&quot;baseline&quot;:&quot;96.0&quot;,&quot;benchmark&quot;:&quot;MultiArith&quot;,&quot;delta&quot;:&quot;+0.7&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;96.7&quot;}],&quot;title&quot;:&quot;Llama-3.1-8B-Instruct Results&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;52.6&quot;,&quot;benchmark&quot;:&quot;Logical Ded. 5obj&quot;,&quot;delta&quot;:&quot;+0.7&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;53.3&quot;},{&quot;baseline&quot;:&quot;48.8&quot;,&quot;benchmark&quot;:&quot;Logical Ded. 7obj&quot;,&quot;delta&quot;:&quot;+3.2&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;52.0&quot;},{&quot;baseline&quot;:&quot;46.1&quot;,&quot;benchmark&quot;:&quot;Tracking Shuf. 5obj&quot;,&quot;delta&quot;:&quot;+8.2&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;54.3&quot;},{&quot;baseline&quot;:&quot;41.8&quot;,&quot;benchmark&quot;:&quot;Tracking Shuf. 7obj&quot;,&quot;delta&quot;:&quot;+6.5&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;48.3&quot;},{&quot;baseline&quot;:&quot;83.9&quot;,&quot;benchmark&quot;:&quot;GSM8K&quot;,&quot;delta&quot;:&quot;+0.0&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;83.9&quot;},{&quot;baseline&quot;:&quot;94.7&quot;,&quot;benchmark&quot;:&quot;MultiArith&quot;,&quot;delta&quot;:&quot;+0.2&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;94.9&quot;}],&quot;title&quot;:&quot;Llama-3-8B-Instruct Results&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;57.0&quot;,&quot;benchmark&quot;:&quot;Logical Ded. 5obj&quot;,&quot;delta&quot;:&quot;+0.9&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;57.9&quot;},{&quot;baseline&quot;:&quot;50.5&quot;,&quot;benchmark&quot;:&quot;Logical Ded. 7obj&quot;,&quot;delta&quot;:&quot;+4.7&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;55.2&quot;},{&quot;baseline&quot;:&quot;89.6&quot;,&quot;benchmark&quot;:&quot;Tracking Shuf. 5obj&quot;,&quot;delta&quot;:&quot;+4.5&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;94.1&quot;},{&quot;baseline&quot;:&quot;92.8&quot;,&quot;benchmark&quot;:&quot;Tracking Shuf. 7obj&quot;,&quot;delta&quot;:&quot;-0.6&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;92.2&quot;},{&quot;baseline&quot;:&quot;90.4&quot;,&quot;benchmark&quot;:&quot;GSM8K&quot;,&quot;delta&quot;:&quot;-1.9&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;88.5&quot;},{&quot;baseline&quot;:&quot;97.0&quot;,&quot;benchmark&quot;:&quot;MultiArith&quot;,&quot;delta&quot;:&quot;-2.3&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Accuracy (%)&quot;,&quot;thisPaper&quot;:&quot;94.7&quot;}],&quot;title&quot;:&quot;Phi-3.5-Mini-Instruct Results&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;TextReg consistently outperforms existing prompt optimization methods like TextGrad and REVOLVE in terms of out-of-distribution (OOD) generalization across diverse reasoning benchmarks and LLM test engines.&quot;,&quot;The method achieves substantial accuracy gains, particularly on more challenging task variants, with improvements up to +10.0% over TextGrad and +9.9% over REVOLVE on Tracking Shuffled Objects.&quot;,&quot;Unlike baseline methods which often degrade OOD accuracy below zero-shot Chain-of-Thought (CoT) performance, TextReg consistently preserves and extends the generalization benefits of CoT.&quot;,&quot;Ablation studies confirm that all three components of TextReg (Dual-Evidence Gradient Purification, Semantic Edit Regularization, and Regularization-Guided Prompt Update) are essential and jointly contribute to mitigating prompt distributional overfitting.&quot;,&quot;TextReg demonstrates robustness to using weaker LLM components within its optimization pipeline, suggesting its regularization signal captures structural aspects rather than being solely dependent on strong LLM capabilities for every module.&quot;]},&quot;institutions&quot;:&quot;Georgia Institute of Technology, University of Illinois Urbana-Champaign&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Formalizing Representational Inefficiency: The paper introduces &#39;representational inefficiency&#39; as a dual-factor measure that quantifies prompt distributional overfitting. It decomposes inefficiency into &#39;capacity cost&#39; (prompt length) and &#39;scope narrowness&#39; (generalizability of rules), highlighting their coupled growth during optimization.&quot;,&quot;Regularized Text-Space Prompt Optimization: TextReg proposes a novel three-stage regularization framework to directly control the growth of representational inefficiency in discrete text space. This framework includes Dual-Evidence Gradient Purification, Semantic Edit Regularization, and Regularization-Guided Prompt Update, which together realize a soft-penalty objective.&quot;,&quot;Improved Out-of-Distribution Generalization: Through extensive experiments, TextReg is shown to consistently and substantially outperform existing prompt optimization methods on out-of-distribution generalization across various reasoning benchmarks and LLM backends, providing a principled mechanism to mitigate prompt distributional overfitting.&quot;],&quot;main&quot;:&quot;TextReg is a regularization framework that mitigates prompt distributional overfitting in discrete text-space optimization by explicitly controlling &#39;representational inefficiency&#39; (prompt length and rule narrowness) through a regularized textual-gradient approach.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A failure mode in prompt optimization where prompts improve on training data but accumulate narrow, sample-specific rules and excessive length, leading to poor generalization on out-of-distribution (OOD) inputs.&quot;,&quot;term&quot;:&quot;Prompt distributional overfitting&quot;},{&quot;definition&quot;:&quot;A dual-factor measure of prompt inefficiency, decomposing into capacity cost (prompt length) and scope narrowness (generalizability of rules).&quot;,&quot;term&quot;:&quot;Representational inefficiency&quot;},{&quot;definition&quot;:&quot;The consumption of an LLM&#39;s context budget incurred by the length of a prompt.&quot;,&quot;term&quot;:&quot;Capacity cost&quot;},{&quot;definition&quot;:&quot;The fraction of rules within a prompt that are narrow and fail to contribute broadly useful guidance, making them act as ad hoc patches rather than general principles.&quot;,&quot;term&quot;:&quot;Scope narrowness&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Prompt Engineering&quot;,&quot;Prompt Optimization&quot;,&quot;Out-of-Distribution (OOD) Generalization&quot;,&quot;Regularization in Machine Learning&quot;]},&quot;subTopics&quot;:[&quot;Prompt Optimization&quot;,&quot;Generalization in LLMs&quot;,&quot;Natural Language Processing&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Existing prompt optimization methods (e.g., Chain-of-Thought, TextGrad, REVOLVE) primarily rely on training feedback to improve prompt performance but do not explicitly regulate the evolution of prompt representation, often leading to overfitting.&quot;,&quot;Prior methods allow prompts to grow longer and accumulate case-specific instructions, making them fragile to wording changes, distribution shifts, and long contexts, which degrades out-of-distribution generalization.&quot;,&quot;Unlike methods that constrain model parameters or optimize continuous prompt embeddings, TextReg directly regularizes the representational inefficiency of natural-language prompts in discrete text space by controlling prompt length and rule generalizability.&quot;,&quot;TextReg addresses prompt overfitting as a representation-control problem, whereas prior work views it more as an artifact of optimization dynamics or mitigates it through static simplification instructions or external memory.&quot;],&quot;limitations&quot;:[&quot;TextReg currently targets single-turn reasoning tasks with well-defined behavioral rules.&quot;,&quot;Future work is needed to extend TextReg to open-ended generation, multi-turn prompts, and agent instructions, where rule structure may be less distinct and capacity costs might be shared across turns.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Empirical Task Risk&quot;,&quot;value&quot;:&quot;$L_{\\mathcal{D}}(p) = \\frac{1}{|\\mathcal{D}|} \\sum_{(x,y) \\in \\mathcal{D}} \\ell( \\mathcal{M}(p, x), y )$&quot;},{&quot;label&quot;:&quot;Generalization Quantification&quot;,&quot;value&quot;:&quot;$\\Delta(p; \\mathcal{D}&#39;) = L_{\\mathcal{D}&#39;}(p) - L_{\\mathcal{D}_{\\text{train}}}(p)$&quot;},{&quot;label&quot;:&quot;Generalization Scope of a Rule&quot;,&quot;value&quot;:&quot;$s(r_i) \\triangleq E_{x \\sim \\mathcal{X}} [\\rho_{r_i}(x)] \\in [0, 1]$&quot;},{&quot;label&quot;:&quot;Representational Inefficiency Measure&quot;,&quot;value&quot;:&quot;$I(p) = |p|_{\\text{tok}} \\cdot (1 - \\bar{s}(p))$&quot;},{&quot;label&quot;:&quot;Regularized Objective for Prompt Optimization&quot;,&quot;value&quot;:&quot;$\\min_{p \\in \\mathcal{P}} L_{\\mathcal{D}_{\\text{train}}}(p) + \\lambda I(p)$&quot;},{&quot;label&quot;:&quot;Prompt Update Decomposition&quot;,&quot;value&quot;:&quot;$g_{\\text{text}}(p_t) = \\tilde{g}_{\\text{task}}(p_t) + g_{\\text{reg}}(p_t)$&quot;}],&quot;pipelineFlow&quot;:[&quot;Stage 1 (Dual-Evidence Gradient Purification): Raw task gradients from the LLM evaluator are filtered using local batch evidence (case-attribution score) and global RuleBank recurrence evidence to identify generalizable update directions. Harmful gradients (narrow scope, redundant tokens) are discarded or rewritten into concise, broadly applicable forms, yielding a purified task gradient `$\\tilde{g}_{\\text{task}}$`.&quot;,&quot;Stage 2 (Semantic Edit Regularization - SER): This stage diagnoses the impact of recent prompt edits on &#39;representational inefficiency&#39; by estimating changes in capacity cost and scope narrowness. It uses a semantic diff analyzer and an LLM-based generator to synthesize a textual regularization gradient `$\\text{g}_{\\text{reg}}$` that opposes increases in inefficiency.&quot;,&quot;Stage 3 (Regularization-Guided Prompt Update): The purified task gradient `$\\tilde{g}_{\\text{task}}$` and the regularization gradient `$\\text{g}_{\\text{reg}}$` are combined. TextReg selects from a set of task-faithful candidate prompts (those that faithfully implement `$\\tilde{g}_{\\text{task}}$`) the one whose edit is most compatible with `$\\text{g}_{\\text{reg}}$`, thereby preserving task performance while discouraging increases in representational inefficiency.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Prompt Representation&quot;,&quot;value&quot;:&quot;A prompt `p` is viewed as a structured representation of task knowledge, composed of a set of behavioral rules `R(p) = {r1, ..., rk}`, where each `ri` is a semantically distinct instruction.&quot;},{&quot;label&quot;:&quot;Prompt Distributional Overfitting&quot;,&quot;value&quot;:&quot;Occurs when optimization reduces `L_Dtrain(p)` while increasing `Delta(p; D&#39;)`, empirically accompanied by structural growth (increased length, accumulation of narrow rules).&quot;}],&quot;reproducibility&quot;:&quot;The code for TextReg is publicly available at https://github.com/luchengfu6/TextReg. Detailed experimental setup, including datasets, LLM backends (Qwen2.5-7B-Instruct for forward, GPT-4o for backward), training budget, batch size, optimization iterations, and hyperparameters (e.g., `$\\tau_C = 0.2$`), are provided. All experiments were conducted on a server with six NVIDIA A100 80GB GPUs.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Filters raw task gradients from the LLM evaluator. It employs local case evidence (case-attribution score) to detect idiosyncratic batch examples and global recurrence evidence from a RuleBank to support generalizability. Gradients are retained only if not strongly batch-attributable and have sufficient recurrence support, then rewritten into concise, broadly applicable instructions.&quot;,&quot;name&quot;:&quot;Dual-Evidence Gradient Purification ($\\Pi_{\\text{gen}}$)&quot;,&quot;role&quot;:&quot;Source-level hard projection; filters harmful gradients (narrow patches, redundant tokens) at the gradient source.&quot;},{&quot;details&quot;:&quot;A cross-step memory that stores canonical descriptions of accepted generalized rules and their recurrence frequencies. It&#39;s updated by canonicalizing accepted gradients and either incrementing existing entries or inserting new canonical descriptions.&quot;,&quot;name&quot;:&quot;RuleBank&quot;,&quot;role&quot;:&quot;Provides global recurrence evidence to guide gradient purification and grounds judgments for semantic diff analysis.&quot;},{&quot;details&quot;:&quot;An LLM-driven module that compares the previous and current prompts at the rule level, classifies each change (GENERALIZED_RULE, CASE_PATCH, STYLE_ONLY), and judges the overall specificity shift (narrowing, broadening, or neutral).&quot;,&quot;name&quot;:&quot;Semantic Diff Analyzer ($\\mathcal{M}_{\\Delta}$)&quot;,&quot;role&quot;:&quot;Diagnoses how recent prompt edits change capacity cost and scope waste.&quot;},{&quot;details&quot;:&quot;An LLM-driven module that translates active regularization directions (capacity correction, scope broadening) into concrete structural directives for prompt compression, merging redundant sentences, tightening phrasing, rewriting narrow rules, or removing case-specific patches.&quot;,&quot;name&quot;:&quot;Regularization Gradient Generator ($\\Gamma$)&quot;,&quot;role&quot;:&quot;Synthesizes the textual regularization gradient `$\\text{g}_{\\text{reg}}$` based on identified inefficiency degradations.&quot;},{&quot;details&quot;:&quot;This module takes the purified task gradient `$\\tilde{g}_{\\text{task}}$` and the regularization gradient `$\\text{g}_{\\text{reg}}$` and rewrites the prompt. It selects, from a set of task-faithful candidates, the one whose edit is most compatible with `$\\text{g}_{\\text{reg}}$`, ensuring task intent is preserved while minimizing representational inefficiency.&quot;,&quot;name&quot;:&quot;Regularization-Guided Prompt Update&quot;,&quot;role&quot;:&quot;Implements the final composition step of the regularized objective, biasing prompt rewriting towards lower representational inefficiency.&quot;}]},&quot;thesis&quot;:&quot;Prompt distributional overfitting, characterized by increasing prompt length (capacity cost) and narrow sample-specific rules (scope narrowness), can be effectively mitigated by a regularization framework, TextReg, that explicitly controls representational inefficiency during discrete text-space optimization, leading to improved out-of-distribution generalization for LLMs.&quot;,&quot;title&quot;:&quot;TextReg: Mitigating Prompt Distributional Overfitting via Regularized Text-Space Optimization&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2605.21318&quot;,&quot;venue&quot;:&quot;arXiv preprint&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>
