@@ -1,0 +1,19 @@
+{
+  "paperId": "2605.29232",
+  "title": "On the Practice of Scaling Search Conversion Rate Prediction",
+  "authors": "James Pak Jyun-Yu Jiang Fan Zhang Sen Wang Taekmin Kim Henry Tsai Vijay Rajaram Juexin Lin Mohitdeep Singh Alessandro Magnani Johnny Chen Qian Zhao Rao Fu Zhirong Liang Jordan Gilliland Winter Jiao Coupang",
+  "publishedDate": "2026-05-01",
+  "tags": [
+    "Rec",
+    "Benchmark",
+    "Pretraining"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2605.29232",
+  "pagePath": "/paper-summaries-site/papers/2605.29232",
+  "summaryPath": "/paper-summaries-site/data/papers/2605.29232/summary.json",
+  "assets": {
+    "figureAssetCount": 6,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

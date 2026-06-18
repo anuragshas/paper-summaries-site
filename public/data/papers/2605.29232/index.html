@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>On the Practice of Scaling Search Conversion Rate Prediction</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>On the Practice of Scaling Search Conversion Rate Prediction</h1>
+      <p class="meta"><strong>Authors:</strong> James Pak Jyun-Yu Jiang Fan Zhang Sen Wang Taekmin Kim Henry Tsai Vijay Rajaram Juexin Lin Mohitdeep Singh Alessandro Magnani Johnny Chen Qian Zhao Rao Fu Zhirong Liang Jordan Gilliland Winter Jiao Coupang</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/arXiv:2605.29232" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/arXiv:2605.29232</a></p>
+      <p class="muted">Generated summary artifact for 2605.29232</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>This paper presents an effective and general mechanism for scaling modern search CVR prediction models by empirically studying the scaling performance of state-of-the-art architectures, identifying key scaling factors (backbone, embedding, data), and demonstrating robust inference optimizations to balance model quality with production constraints like training cost and serving latency.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Scaling a Search Conversion Rate (CVR) prediction model in high-traffic environments is challenging due to the need to balance superior model quality with strict constraints on training cost and serving latency.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A comprehensive empirical study and practical framework for scaling modern search CVR prediction models, identifying key scaling factors, demonstrating their additive effects, and proposing effective training and inference optimization strategies for real-world deployment.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Achieved a combined +2.1% offline mAP improvement and a +2.6% lift in online search conversion rate through A/B testing, compared to a pre-scaling baseline.</li><li>Deployed models with an 8x increase in inference compute (FLOPs) while maintaining minimal latency impact due to dedicated inference optimizations.</li><li>A streamlined warmstart strategy reduced training time overhead to just +36%, significantly improving iteration frequency and velocity of model updates compared to a +264% cold-start approach.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Selecting the right model backbone and scaling factors is crucial for performance and efficiency, with MaskNet often outperforming sequence models within the same FLOPs budget.</li><li>The impact of backbone, embedding, and data scaling on model quality is largely independent and additive, allowing for separate optimization.</li><li>Embedding dimension scaling is more effective than vocabulary size scaling for item embeddings; for data scaling, longer training durations yield log-linear mAP gains with diminishing returns.</li><li>Streamlined warmstart strategies significantly accelerate training iterations and reduce overhead, maintaining model quality.</li><li>Inference optimization techniques, such as hybrid CPU-GPU execution and dynamic batching, are essential to meet low-latency GPU serving requirements for high-capacity models.</li><li>Combined scaling strategies and infrastructure optimizations led to substantial online gains in search conversion rate (+2.6%) in real-world A/B tests.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Scaling approaches may not work uniformly across all cases, requiring exhaustive exploration to identify the optimal scaling recipe.</li><li>While DHEN-based ensembles consistently outperform individual models, optimized single-model backbones can achieve better Pareto-optimality in the long term under the same FLOPs budget.</li><li>Scaling text embeddings for product titles did not provide performance gains, hypothesized to be due to the general nature of text tokens compared to specific categorical features.</li><li>Simple volume scaling of training data shows diminishing returns and can be cost-ineffective without strategies like warmstarting.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 108,
+      &quot;xmin&quot;: 172,
+      &quot;ymax&quot;: 606,
+      &quot;xmax&quot;: 804
+    },
+    &quot;caption&quot;: &quot;Figure 1: Overall CVR Model Framework.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 2
+  },
+  &quot;authors&quot;: &quot;James Pak Jyun-Yu Jiang Fan Zhang Sen Wang Taekmin Kim Henry Tsai Vijay Rajaram Juexin Lin Mohitdeep Singh Alessandro Magnani Johnny Chen Qian Zhao Rao Fu Zhirong Liang Jordan Gilliland Winter Jiao Coupang&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper provides a comprehensive empirical study on scaling CVR models in a large-scale e-commerce production environment. It systematically analyzes the impact of backbone, embedding, and data scaling, demonstrating their additive effects. The proposed warmstart strategy and inference optimizations are practical and effective, leading to significant online performance gains (+2.6% conversion rate). While it leverages existing architectures, its detailed analysis, practical scaling recipes, and real-world deployment insights are highly valuable for practitioners, offering generalizable guidance for a complex problem domain. It identifies crucial factors and strategies for efficient scaling under strict production constraints.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Predicting if a customer &#39;u&#39; will purchase a specific item &#39;d_i&#39; after submitting a query &#39;q&#39;.&quot;,
+    &quot;statement&quot;: &quot;Scaling a Search Conversion Rate (CVR) prediction model in high-traffic environments is challenging due to the need to balance superior model quality with strict constraints on training cost and serving latency.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;CVR prediction is central to search and recommendation systems, particularly in e-commerce.&quot;,
+      &quot;Effectively realizing deep learning&#39;s scaling benefits in the search domain remains a challenge.&quot;,
+      &quot;CVR models are highly heterogeneous, with diverse inputs and large embedding tables that complicate scaling.&quot;,
+      &quot;Complex inputs (categorical, continuous, profiles, query context, item attributes) make balancing memorization and generalization difficult.&quot;,
+      &quot;Online CVR systems face strict inference latency and resource constraints.&quot;,
+      &quot;Search CVR problems differ from non-search recommendations, involving numerous point-in-time features and specific query intents.&quot;,
+      &quot;Many state-of-the-art architectural backbones are not inherently aligned with predictable scaling laws seen in language models.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Achieved a combined +2.1% offline mAP improvement and a +2.6% lift in online search conversion rate through A/B testing, compared to a pre-scaling baseline.&quot;,
+    &quot;Deployed models with an 8x increase in inference compute (FLOPs) while maintaining minimal latency impact due to dedicated inference optimizations.&quot;,
+    &quot;A streamlined warmstart strategy reduced training time overhead to just +36%, significantly improving iteration frequency and velocity of model updates compared to a +264% cold-start approach.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Large-scale production dataset of 70 days (and more/less for data scaling) of anonymized purchase data from a high-traffic e-commerce platform.&quot;,
+        &quot;Online A/B tests on a deployed system.&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Mean Average Precision (mAP) for customer purchases over seven days.&quot;,
+        &quot;Relative offline metric difference (% of mAP).&quot;,
+        &quot;P99 latency (ms).&quot;,
+        &quot;Peak Queries Per Second (QPS) (thousands of items/second).&quot;,
+        &quot;Online Search Conversion Rate (%).&quot;,
+        &quot;Inference FLOPs (x10^7).&quot;
+      ],
+      &quot;setting&quot;: &quot;Production environment of a high-traffic e-commerce platform, using real-world customer interaction logs.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 259,
+          &quot;xmin&quot;: 185,
+          &quot;ymax&quot;: 407,
+          &quot;xmax&quot;: 810
+        },
+        &quot;caption&quot;: &quot;Figure 2: FLOPs vs mAP gain against DCNv2 for different scaling factors.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 6
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 108,
+          &quot;xmin&quot;: 260,
+          &quot;ymax&quot;: 277,
+          &quot;xmax&quot;: 735
+        },
+        &quot;caption&quot;: &quot;Figure 3: Impact of data scaling for a MaskNet model on mAP.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 8
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 632,
+          &quot;xmin&quot;: 237,
+          &quot;ymax&quot;: 853,
+          &quot;xmax&quot;: 762
+        },
+        &quot;caption&quot;: &quot;Figure 4: FLOPs vs mAP gain for models and scaling factors.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 8
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 307,
+          &quot;xmin&quot;: 187,
+          &quot;ymax&quot;: 563,
+          &quot;xmax&quot;: 810
+        },
+        &quot;caption&quot;: &quot;Figure 5: Performance gains over different durations of training data with (a) different model backbones and with (b) different item embedding dimension sizes for MaskNet.&quot;,
+        &quot;figureNumber&quot;: 5,
+        &quot;pageIndex&quot;: 9
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 590,
+          &quot;xmin&quot;: 248,
+          &quot;ymax&quot;: 770,
+          &quot;xmax&quot;: 755
+        },
+        &quot;caption&quot;: &quot;Figure 6: P99 latency of CPU serving, as well as unoptimized and optimized GPU serving with hybrid CPU-GPU execution.&quot;,
+        &quot;figureNumber&quot;: 6,
+        &quot;pageIndex&quot;: 10
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.00%&quot;,
+            &quot;benchmark&quot;: &quot;MaskNet (Cross Width 4k)&quot;,
+            &quot;delta&quot;: &quot;+0.64%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.64%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.00%&quot;,
+            &quot;benchmark&quot;: &quot;MaskNet (Parallel Blocks 8)&quot;,
+            &quot;delta&quot;: &quot;+0.60%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.60%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.00%&quot;,
+            &quot;benchmark&quot;: &quot;RankMixer (d_model 384)&quot;,
+            &quot;delta&quot;: &quot;+0.53%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.53%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.00%&quot;,
+            &quot;benchmark&quot;: &quot;Transformer (Sequence Length 128)&quot;,
+            &quot;delta&quot;: &quot;+0.46%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.46%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.00%&quot;,
+            &quot;benchmark&quot;: &quot;DCNv2 (Cross Width 8k)&quot;,
+            &quot;delta&quot;: &quot;+0.18%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.18%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.17&quot;,
+            &quot;benchmark&quot;: &quot;MaskNet (Cross Width 4k)&quot;,
+            &quot;delta&quot;: &quot;+29.14&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Inference FLOPs (x10^7)&quot;,
+            &quot;thisPaper&quot;: &quot;33.31&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.17&quot;,
+            &quot;benchmark&quot;: &quot;MaskNet (Parallel Blocks 8)&quot;,
+            &quot;delta&quot;: &quot;+34.42&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Inference FLOPs (x10^7)&quot;,
+            &quot;thisPaper&quot;: &quot;38.59&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.17&quot;,
+            &quot;benchmark&quot;: &quot;RankMixer (d_model 384)&quot;,
+            &quot;delta&quot;: &quot;+23.32&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Inference FLOPs (x10^7)&quot;,
+            &quot;thisPaper&quot;: &quot;27.49&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.17&quot;,
+            &quot;benchmark&quot;: &quot;Transformer (Sequence Length 128)&quot;,
+            &quot;delta&quot;: &quot;+7.84&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Inference FLOPs (x10^7)&quot;,
+            &quot;thisPaper&quot;: &quot;12.01&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.17&quot;,
+            &quot;benchmark&quot;: &quot;DCNv2 (Cross Width 8k)&quot;,
+            &quot;delta&quot;: &quot;+24.20&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Inference FLOPs (x10^7)&quot;,
+            &quot;thisPaper&quot;: &quot;28.37&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Backbone Scaling - mAP and Inference FLOPs&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;+0.00%&quot;,
+            &quot;benchmark&quot;: &quot;Item Embedding (Vocab 10x, Dim 128)&quot;,
+            &quot;delta&quot;: &quot;+0.16%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.16%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;+0.00%&quot;,
+            &quot;benchmark&quot;: &quot;Item Embedding (Vocab 1x, Dim 128)&quot;,
+            &quot;delta&quot;: &quot;+0.12%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.12%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;+0.00%&quot;,
+            &quot;benchmark&quot;: &quot;Item Embedding (Vocab 10x, Dim 16)&quot;,
+            &quot;delta&quot;: &quot;+0.02%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.02%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Embedding Scaling - mAP Gain&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;1.00%&quot;,
+            &quot;benchmark&quot;: &quot;MaskNet (Training 500 Days, Full Coverage)&quot;,
+            &quot;delta&quot;: &quot;+0.05%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;1.05%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.97%&quot;,
+            &quot;benchmark&quot;: &quot;MaskNet (Training 500 Days, Recent 300 days only)&quot;,
+            &quot;delta&quot;: &quot;+0.06%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gain (%)&quot;,
+            &quot;thisPaper&quot;: &quot;1.03%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Data Scaling - mAP Gain&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.00%&quot;,
+            &quot;benchmark&quot;: &quot;Data Scaling&quot;,
+            &quot;delta&quot;: &quot;+0.47%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gains (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.47%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.00%&quot;,
+            &quot;benchmark&quot;: &quot;Backbone Scaling&quot;,
+            &quot;delta&quot;: &quot;+0.10%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gains (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.10%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.00%&quot;,
+            &quot;benchmark&quot;: &quot;Embedding Scaling&quot;,
+            &quot;delta&quot;: &quot;+0.13%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gains (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.13%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.00%&quot;,
+            &quot;benchmark&quot;: &quot;Combined Scaling&quot;,
+            &quot;delta&quot;: &quot;+0.74%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;mAP Gains (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+0.74%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Combined Scaling Impact&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;4.2k&quot;,
+            &quot;benchmark&quot;: &quot;Dynamic Batching (10ms timeout)&quot;,
+            &quot;delta&quot;: &quot;+9.4k&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Peak QPS at 50ms (thousands)&quot;,
+            &quot;thisPaper&quot;: &quot;13.6k&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;4.6k&quot;,
+            &quot;benchmark&quot;: &quot;Dynamic Batching (10ms timeout)&quot;,
+            &quot;delta&quot;: &quot;+15.5k&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Peak QPS at 75ms (thousands)&quot;,
+            &quot;thisPaper&quot;: &quot;20.1k&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Inference Performance Optimization - Peak QPS&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.0%&quot;,
+            &quot;benchmark&quot;: &quot;Overall Impact (Combined Scaling)&quot;,
+            &quot;delta&quot;: &quot;+2.1%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Offline mAP Change (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+2.1%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.0%&quot;,
+            &quot;benchmark&quot;: &quot;Overall Impact (Combined Scaling)&quot;,
+            &quot;delta&quot;: &quot;+2.6%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Online Search Conversion Rate Change (%)&quot;,
+            &quot;thisPaper&quot;: &quot;+2.6%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1x&quot;,
+            &quot;benchmark&quot;: &quot;Overall Impact (Combined Scaling)&quot;,
+            &quot;delta&quot;: &quot;+7x&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Inference FLOPs&quot;,
+            &quot;thisPaper&quot;: &quot;8x&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Online A/B Tests - Overall Impact&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;Selecting the right model backbone and scaling factors is crucial for performance and efficiency, with MaskNet often outperforming sequence models within the same FLOPs budget.&quot;,
+      &quot;The impact of backbone, embedding, and data scaling on model quality is largely independent and additive, allowing for separate optimization.&quot;,
+      &quot;Embedding dimension scaling is more effective than vocabulary size scaling for item embeddings; for data scaling, longer training durations yield log-linear mAP gains with diminishing returns.&quot;,
+      &quot;Streamlined warmstart strategies significantly accelerate training iterations and reduce overhead, maintaining model quality.&quot;,
+      &quot;Inference optimization techniques, such as hybrid CPU-GPU execution and dynamic batching, are essential to meet low-latency GPU serving requirements for high-capacity models.&quot;,
+      &quot;Combined scaling strategies and infrastructure optimizations led to substantial online gains in search conversion rate (+2.6%) in real-world A/B tests.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Coupang&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Methodically investigates the scalability properties and practical impact of individual scaling factors (backbone, embedding, data) in state-of-the-art search CVR models, providing generalizable guidance for production settings.&quot;,
+      &quot;Proposes a practical strategy for accelerating model selection by performing architecture search and hyperparameter optimization on smaller datasets, then transferring configurations to full-scale datasets.&quot;,
+      &quot;Introduces a streamlined warm-starting technique during model training to significantly reduce development time and manage dynamic feature sets.&quot;,
+      &quot;Presents a practical framework for optimizing GPU efficiency in real-world serving environments through techniques like hybrid CPU-GPU execution and dynamic batching.&quot;,
+      &quot;Demonstrates the real-world impact and effectiveness of the proposed scaling mechanisms through large-scale online A/B experiments, yielding a +2.6% increase in search customer conversion rate.&quot;
+    ],
+    &quot;main&quot;: &quot;A comprehensive empirical study and practical framework for scaling modern search CVR prediction models, identifying key scaling factors, demonstrating their additive effects, and proposing effective training and inference optimization strategies for real-world deployment.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;Given a query q submitted by a customer u and a set of exposed candidate items D = {di}, the goal is to produce a ranking score f(u,q,di) for each candidate item di by modeling the probability that the customer u would convert to a purchase of d: P(Purchase \\mid u,q,di).&quot;,
+        &quot;term&quot;: &quot;Conversion Rate (CVR) Prediction&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Floating-point operations per second, a measure of computational performance. In the context of model scaling, increasing FLOPs often means higher computational intensity.&quot;,
+        &quot;term&quot;: &quot;FLOPs&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A deep hierarchical ensemble network, used in this paper as a scaling strategy to combine multiple high-performance backbone models.&quot;,
+        &quot;term&quot;: &quot;DHEN (Deep Hierarchical Ensemble Network)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A specific multi-task learning architecture that transforms shared output from the feature interaction module into customized representations for diverse prediction tasks, such as CVR and Click-Through Rate (CTR).&quot;,
+        &quot;term&quot;: &quot;MMoE (Multi-gate Mixture of Experts)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Deep Learning for Recommendation Systems&quot;,
+      &quot;Multi-task Learning&quot;,
+      &quot;Cross-entropy Loss&quot;,
+      &quot;Adam Optimizer&quot;,
+      &quot;Embedding Techniques for Categorical Features&quot;,
+      &quot;Deep &amp; Cross Networks (DCNv2)&quot;,
+      &quot;Transformer Architectures&quot;,
+      &quot;Attention Mechanisms&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Conversion Rate Prediction&quot;,
+    &quot;E-commerce Recommendation&quot;,
+    &quot;Model Scaling&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Rec&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike early-stage CVR models (logistic regression, decision trees) relying on hand-crafted features, this work focuses on modern deep learning models that learn hidden representations from raw inputs.&quot;,
+      &quot;This study extends existing research on feature interaction backbones (Deep &amp; Cross Network, MaskNet, Transformers, RankMixer) and ensemble approaches (DHEN) by systematically analyzing their scaling properties.&quot;,
+      &quot;The work builds upon established CVR model improvement levers such as multi-task learning, embedding hashing, and learning-to-rank, incorporating refined versions of these components.&quot;,
+      &quot;The paper provides a granular, nuanced analysis of CVR scaling across backbones, embeddings, and training data, which contrasts with prior studies that often show diminishing returns and lack specific scaling dimensions, unlike well-defined scaling laws in LLMs.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;Scaling approaches may not work uniformly across all cases, requiring exhaustive exploration to identify the optimal scaling recipe.&quot;,
+      &quot;While DHEN-based ensembles consistently outperform individual models, optimized single-model backbones can achieve better Pareto-optimality in the long term under the same FLOPs budget.&quot;,
+      &quot;Scaling text embeddings for product titles did not provide performance gains, hypothesized to be due to the general nature of text tokens compared to specific categorical features.&quot;,
+      &quot;Simple volume scaling of training data shows diminishing returns and can be cost-ineffective without strategies like warmstarting.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Training Label Collection&quot;,
+        &quot;value&quot;: &quot;Customer engagement behaviors within a specific attribution window from item impressions on search results are collected. This accounts for delayed conversions, ensuring purchases are correctly linked to original search impressions.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Multi-task Learning Objective&quot;,
+        &quot;value&quot;: &quot;To address sparse conversion targets, multi-task learning is applied using Softmax cross-entropy loss for each learning task $t$: $L_t = -\\\\sum_i y_{i,t} \\\\log \\\\frac{\\\\exp (s_{i,t})}{\\\\sum_j \\\\exp (s_{j,t})}$, where $y_{i,t}$ indicates if item $d_i$ results in engagement for task $t$, and $s_{i,t}$ is the predicted logit. The overall objective is the summation of losses across all tasks.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Optimization&quot;,
+        &quot;value&quot;: &quot;Adam optimizer is used, incorporating a learning rate warm-up during the first epoch and a cosine decay schedule until the end of training.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Backbone Scaling&quot;,
+        &quot;list&quot;: [
+          &quot;Individual Backbone Scaling: Evaluates conventional state-of-the-art models including DCNv2, MaskNet, Transformers, and RankMixer. Scaling factors for Deep and Cross family (DCNv2, MaskNet) include Cross Width, Deep Width, Parallel Mask Blocks, and Sequential Mask Blocks. Scaling factors for Sequence Model family (Transformers, RankMixer) include $d_{\\text{model}}$, Sequence Length, $ffn_{\\text{dim}}$, Number of model layers, and Number of attention heads.&quot;,
+          &quot;Backbone Model Ensemble: Utilizes Deep Hierarchical Ensemble Network (DHEN) to combine heterogeneous backbone models and understand cumulative improvements.&quot;
+        ]
+      },
+      {
+        &quot;label&quot;: &quot;Embedding Scaling&quot;,
+        &quot;value&quot;: &quot;Explores increasing embedding dimensions (width) and vocabulary size (quantity) for item IDs, queries, and product titles. Vocabulary size is scaled by adjusting the hashing modulus divisor for features like n-grams.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Data Scaling&quot;,
+        &quot;value&quot;: &quot;Involves training on larger data corpora by extending the data duration or increasing the sampling rate. This can lead to longer training cycles and necessitate strategies like targeted feature exploration or warmstarts to manage costs and feature gaps.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Raw inputs (numerical, categorical, text, sequential features) are fed into the Feature Extraction module.&quot;,
+      &quot;Feature Extraction transforms raw inputs into dense, machine-readable vectors.&quot;,
+      &quot;These dense vectors are processed by the Feature Interaction module, typically a backbone model or ensemble, to generate a high-order hidden representation.&quot;,
+      &quot;The hidden representation is then passed to the Representation Transformation module (e.g., MMoE) to produce customized outputs for various prediction tasks (e.g., CVR, CTR).&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Conversion Rate (CVR) Prediction Goal&quot;,
+        &quot;value&quot;: &quot;Given a query $q$ submitted by a customer $u$ and a set of exposed candidate items $D = \\{d_i\\}$, the goal is to produce a ranking score $f(u,q,d_i)$ for each candidate item $d_i$ by modeling the probability that the customer $u$ would convert to a purchase of $d_i$: $P(\\text{Purchase} \\mid u,q,d_i)$.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The paper describes an empirical study on a large-scale production dataset and online A/B tests, providing detailed methodologies for model scaling, training, and inference optimization. However, the specific dataset is anonymized and not publicly available, and the code is not explicitly provided, which limits direct external reproduction by others.&quot;
+  },
+  &quot;thesis&quot;: &quot;This paper presents an effective and general mechanism for scaling modern search CVR prediction models by empirically studying the scaling performance of state-of-the-art architectures, identifying key scaling factors (backbone, embedding, data), and demonstrating robust inference optimizations to balance model quality with production constraints like training cost and serving latency.&quot;,
+  &quot;title&quot;: &quot;On the Practice of Scaling Search Conversion Rate Prediction&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/arXiv:2605.29232&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2605.29232&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/arXiv:2605.29232&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:108,&quot;xmin&quot;:172,&quot;ymax&quot;:606,&quot;xmax&quot;:804},&quot;caption&quot;:&quot;Figure 1: Overall CVR Model Framework.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:2},&quot;authors&quot;:&quot;James Pak Jyun-Yu Jiang Fan Zhang Sen Wang Taekmin Kim Henry Tsai Vijay Rajaram Juexin Lin Mohitdeep Singh Alessandro Magnani Johnny Chen Qian Zhao Rao Fu Zhirong Liang Jordan Gilliland Winter Jiao Coupang&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper provides a comprehensive empirical study on scaling CVR models in a large-scale e-commerce production environment. It systematically analyzes the impact of backbone, embedding, and data scaling, demonstrating their additive effects. The proposed warmstart strategy and inference optimizations are practical and effective, leading to significant online performance gains (+2.6% conversion rate). While it leverages existing architectures, its detailed analysis, practical scaling recipes, and real-world deployment insights are highly valuable for practitioners, offering generalizable guidance for a complex problem domain. It identifies crucial factors and strategies for efficient scaling under strict production constraints.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Predicting if a customer &#39;u&#39; will purchase a specific item &#39;d_i&#39; after submitting a query &#39;q&#39;.&quot;,&quot;statement&quot;:&quot;Scaling a Search Conversion Rate (CVR) prediction model in high-traffic environments is challenging due to the need to balance superior model quality with strict constraints on training cost and serving latency.&quot;,&quot;whyItMatters&quot;:[&quot;CVR prediction is central to search and recommendation systems, particularly in e-commerce.&quot;,&quot;Effectively realizing deep learning&#39;s scaling benefits in the search domain remains a challenge.&quot;,&quot;CVR models are highly heterogeneous, with diverse inputs and large embedding tables that complicate scaling.&quot;,&quot;Complex inputs (categorical, continuous, profiles, query context, item attributes) make balancing memorization and generalization difficult.&quot;,&quot;Online CVR systems face strict inference latency and resource constraints.&quot;,&quot;Search CVR problems differ from non-search recommendations, involving numerous point-in-time features and specific query intents.&quot;,&quot;Many state-of-the-art architectural backbones are not inherently aligned with predictable scaling laws seen in language models.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Achieved a combined +2.1% offline mAP improvement and a +2.6% lift in online search conversion rate through A/B testing, compared to a pre-scaling baseline.&quot;,&quot;Deployed models with an 8x increase in inference compute (FLOPs) while maintaining minimal latency impact due to dedicated inference optimizations.&quot;,&quot;A streamlined warmstart strategy reduced training time overhead to just +36%, significantly improving iteration frequency and velocity of model updates compared to a +264% cold-start approach.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Large-scale production dataset of 70 days (and more/less for data scaling) of anonymized purchase data from a high-traffic e-commerce platform.&quot;,&quot;Online A/B tests on a deployed system.&quot;],&quot;metrics&quot;:[&quot;Mean Average Precision (mAP) for customer purchases over seven days.&quot;,&quot;Relative offline metric difference (% of mAP).&quot;,&quot;P99 latency (ms).&quot;,&quot;Peak Queries Per Second (QPS) (thousands of items/second).&quot;,&quot;Online Search Conversion Rate (%).&quot;,&quot;Inference FLOPs (x10^7).&quot;],&quot;setting&quot;:&quot;Production environment of a high-traffic e-commerce platform, using real-world customer interaction logs.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:259,&quot;xmin&quot;:185,&quot;ymax&quot;:407,&quot;xmax&quot;:810},&quot;caption&quot;:&quot;Figure 2: FLOPs vs mAP gain against DCNv2 for different scaling factors.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:6},{&quot;boundingBox&quot;:{&quot;ymin&quot;:108,&quot;xmin&quot;:260,&quot;ymax&quot;:277,&quot;xmax&quot;:735},&quot;caption&quot;:&quot;Figure 3: Impact of data scaling for a MaskNet model on mAP.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:8},{&quot;boundingBox&quot;:{&quot;ymin&quot;:632,&quot;xmin&quot;:237,&quot;ymax&quot;:853,&quot;xmax&quot;:762},&quot;caption&quot;:&quot;Figure 4: FLOPs vs mAP gain for models and scaling factors.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:8},{&quot;boundingBox&quot;:{&quot;ymin&quot;:307,&quot;xmin&quot;:187,&quot;ymax&quot;:563,&quot;xmax&quot;:810},&quot;caption&quot;:&quot;Figure 5: Performance gains over different durations of training data with (a) different model backbones and with (b) different item embedding dimension sizes for MaskNet.&quot;,&quot;figureNumber&quot;:5,&quot;pageIndex&quot;:9},{&quot;boundingBox&quot;:{&quot;ymin&quot;:590,&quot;xmin&quot;:248,&quot;ymax&quot;:770,&quot;xmax&quot;:755},&quot;caption&quot;:&quot;Figure 6: P99 latency of CPU serving, as well as unoptimized and optimized GPU serving with hybrid CPU-GPU execution.&quot;,&quot;figureNumber&quot;:6,&quot;pageIndex&quot;:10}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.00%&quot;,&quot;benchmark&quot;:&quot;MaskNet (Cross Width 4k)&quot;,&quot;delta&quot;:&quot;+0.64%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;+0.64%&quot;},{&quot;baseline&quot;:&quot;0.00%&quot;,&quot;benchmark&quot;:&quot;MaskNet (Parallel Blocks 8)&quot;,&quot;delta&quot;:&quot;+0.60%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;+0.60%&quot;},{&quot;baseline&quot;:&quot;0.00%&quot;,&quot;benchmark&quot;:&quot;RankMixer (d_model 384)&quot;,&quot;delta&quot;:&quot;+0.53%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;+0.53%&quot;},{&quot;baseline&quot;:&quot;0.00%&quot;,&quot;benchmark&quot;:&quot;Transformer (Sequence Length 128)&quot;,&quot;delta&quot;:&quot;+0.46%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;+0.46%&quot;},{&quot;baseline&quot;:&quot;0.00%&quot;,&quot;benchmark&quot;:&quot;DCNv2 (Cross Width 8k)&quot;,&quot;delta&quot;:&quot;+0.18%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;+0.18%&quot;},{&quot;baseline&quot;:&quot;4.17&quot;,&quot;benchmark&quot;:&quot;MaskNet (Cross Width 4k)&quot;,&quot;delta&quot;:&quot;+29.14&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Inference FLOPs (x10^7)&quot;,&quot;thisPaper&quot;:&quot;33.31&quot;},{&quot;baseline&quot;:&quot;4.17&quot;,&quot;benchmark&quot;:&quot;MaskNet (Parallel Blocks 8)&quot;,&quot;delta&quot;:&quot;+34.42&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Inference FLOPs (x10^7)&quot;,&quot;thisPaper&quot;:&quot;38.59&quot;},{&quot;baseline&quot;:&quot;4.17&quot;,&quot;benchmark&quot;:&quot;RankMixer (d_model 384)&quot;,&quot;delta&quot;:&quot;+23.32&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Inference FLOPs (x10^7)&quot;,&quot;thisPaper&quot;:&quot;27.49&quot;},{&quot;baseline&quot;:&quot;4.17&quot;,&quot;benchmark&quot;:&quot;Transformer (Sequence Length 128)&quot;,&quot;delta&quot;:&quot;+7.84&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Inference FLOPs (x10^7)&quot;,&quot;thisPaper&quot;:&quot;12.01&quot;},{&quot;baseline&quot;:&quot;4.17&quot;,&quot;benchmark&quot;:&quot;DCNv2 (Cross Width 8k)&quot;,&quot;delta&quot;:&quot;+24.20&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Inference FLOPs (x10^7)&quot;,&quot;thisPaper&quot;:&quot;28.37&quot;}],&quot;title&quot;:&quot;Backbone Scaling - mAP and Inference FLOPs&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;+0.00%&quot;,&quot;benchmark&quot;:&quot;Item Embedding (Vocab 10x, Dim 128)&quot;,&quot;delta&quot;:&quot;+0.16%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;+0.16%&quot;},{&quot;baseline&quot;:&quot;+0.00%&quot;,&quot;benchmark&quot;:&quot;Item Embedding (Vocab 1x, Dim 128)&quot;,&quot;delta&quot;:&quot;+0.12%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;+0.12%&quot;},{&quot;baseline&quot;:&quot;+0.00%&quot;,&quot;benchmark&quot;:&quot;Item Embedding (Vocab 10x, Dim 16)&quot;,&quot;delta&quot;:&quot;+0.02%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;+0.02%&quot;}],&quot;title&quot;:&quot;Embedding Scaling - mAP Gain&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;1.00%&quot;,&quot;benchmark&quot;:&quot;MaskNet (Training 500 Days, Full Coverage)&quot;,&quot;delta&quot;:&quot;+0.05%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;1.05%&quot;},{&quot;baseline&quot;:&quot;0.97%&quot;,&quot;benchmark&quot;:&quot;MaskNet (Training 500 Days, Recent 300 days only)&quot;,&quot;delta&quot;:&quot;+0.06%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gain (%)&quot;,&quot;thisPaper&quot;:&quot;1.03%&quot;}],&quot;title&quot;:&quot;Data Scaling - mAP Gain&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.00%&quot;,&quot;benchmark&quot;:&quot;Data Scaling&quot;,&quot;delta&quot;:&quot;+0.47%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gains (%)&quot;,&quot;thisPaper&quot;:&quot;+0.47%&quot;},{&quot;baseline&quot;:&quot;0.00%&quot;,&quot;benchmark&quot;:&quot;Backbone Scaling&quot;,&quot;delta&quot;:&quot;+0.10%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gains (%)&quot;,&quot;thisPaper&quot;:&quot;+0.10%&quot;},{&quot;baseline&quot;:&quot;0.00%&quot;,&quot;benchmark&quot;:&quot;Embedding Scaling&quot;,&quot;delta&quot;:&quot;+0.13%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gains (%)&quot;,&quot;thisPaper&quot;:&quot;+0.13%&quot;},{&quot;baseline&quot;:&quot;0.00%&quot;,&quot;benchmark&quot;:&quot;Combined Scaling&quot;,&quot;delta&quot;:&quot;+0.74%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;mAP Gains (%)&quot;,&quot;thisPaper&quot;:&quot;+0.74%&quot;}],&quot;title&quot;:&quot;Combined Scaling Impact&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;4.2k&quot;,&quot;benchmark&quot;:&quot;Dynamic Batching (10ms timeout)&quot;,&quot;delta&quot;:&quot;+9.4k&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Peak QPS at 50ms (thousands)&quot;,&quot;thisPaper&quot;:&quot;13.6k&quot;},{&quot;baseline&quot;:&quot;4.6k&quot;,&quot;benchmark&quot;:&quot;Dynamic Batching (10ms timeout)&quot;,&quot;delta&quot;:&quot;+15.5k&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Peak QPS at 75ms (thousands)&quot;,&quot;thisPaper&quot;:&quot;20.1k&quot;}],&quot;title&quot;:&quot;Inference Performance Optimization - Peak QPS&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.0%&quot;,&quot;benchmark&quot;:&quot;Overall Impact (Combined Scaling)&quot;,&quot;delta&quot;:&quot;+2.1%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Offline mAP Change (%)&quot;,&quot;thisPaper&quot;:&quot;+2.1%&quot;},{&quot;baseline&quot;:&quot;0.0%&quot;,&quot;benchmark&quot;:&quot;Overall Impact (Combined Scaling)&quot;,&quot;delta&quot;:&quot;+2.6%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Online Search Conversion Rate Change (%)&quot;,&quot;thisPaper&quot;:&quot;+2.6%&quot;},{&quot;baseline&quot;:&quot;1x&quot;,&quot;benchmark&quot;:&quot;Overall Impact (Combined Scaling)&quot;,&quot;delta&quot;:&quot;+7x&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Inference FLOPs&quot;,&quot;thisPaper&quot;:&quot;8x&quot;}],&quot;title&quot;:&quot;Online A/B Tests - Overall Impact&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;Selecting the right model backbone and scaling factors is crucial for performance and efficiency, with MaskNet often outperforming sequence models within the same FLOPs budget.&quot;,&quot;The impact of backbone, embedding, and data scaling on model quality is largely independent and additive, allowing for separate optimization.&quot;,&quot;Embedding dimension scaling is more effective than vocabulary size scaling for item embeddings; for data scaling, longer training durations yield log-linear mAP gains with diminishing returns.&quot;,&quot;Streamlined warmstart strategies significantly accelerate training iterations and reduce overhead, maintaining model quality.&quot;,&quot;Inference optimization techniques, such as hybrid CPU-GPU execution and dynamic batching, are essential to meet low-latency GPU serving requirements for high-capacity models.&quot;,&quot;Combined scaling strategies and infrastructure optimizations led to substantial online gains in search conversion rate (+2.6%) in real-world A/B tests.&quot;]},&quot;institutions&quot;:&quot;Coupang&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Methodically investigates the scalability properties and practical impact of individual scaling factors (backbone, embedding, data) in state-of-the-art search CVR models, providing generalizable guidance for production settings.&quot;,&quot;Proposes a practical strategy for accelerating model selection by performing architecture search and hyperparameter optimization on smaller datasets, then transferring configurations to full-scale datasets.&quot;,&quot;Introduces a streamlined warm-starting technique during model training to significantly reduce development time and manage dynamic feature sets.&quot;,&quot;Presents a practical framework for optimizing GPU efficiency in real-world serving environments through techniques like hybrid CPU-GPU execution and dynamic batching.&quot;,&quot;Demonstrates the real-world impact and effectiveness of the proposed scaling mechanisms through large-scale online A/B experiments, yielding a +2.6% increase in search customer conversion rate.&quot;],&quot;main&quot;:&quot;A comprehensive empirical study and practical framework for scaling modern search CVR prediction models, identifying key scaling factors, demonstrating their additive effects, and proposing effective training and inference optimization strategies for real-world deployment.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;Given a query q submitted by a customer u and a set of exposed candidate items D = {di}, the goal is to produce a ranking score f(u,q,di) for each candidate item di by modeling the probability that the customer u would convert to a purchase of d: P(Purchase \\mid u,q,di).&quot;,&quot;term&quot;:&quot;Conversion Rate (CVR) Prediction&quot;},{&quot;definition&quot;:&quot;Floating-point operations per second, a measure of computational performance. In the context of model scaling, increasing FLOPs often means higher computational intensity.&quot;,&quot;term&quot;:&quot;FLOPs&quot;},{&quot;definition&quot;:&quot;A deep hierarchical ensemble network, used in this paper as a scaling strategy to combine multiple high-performance backbone models.&quot;,&quot;term&quot;:&quot;DHEN (Deep Hierarchical Ensemble Network)&quot;},{&quot;definition&quot;:&quot;A specific multi-task learning architecture that transforms shared output from the feature interaction module into customized representations for diverse prediction tasks, such as CVR and Click-Through Rate (CTR).&quot;,&quot;term&quot;:&quot;MMoE (Multi-gate Mixture of Experts)&quot;}],&quot;prerequisites&quot;:[&quot;Deep Learning for Recommendation Systems&quot;,&quot;Multi-task Learning&quot;,&quot;Cross-entropy Loss&quot;,&quot;Adam Optimizer&quot;,&quot;Embedding Techniques for Categorical Features&quot;,&quot;Deep &amp; Cross Networks (DCNv2)&quot;,&quot;Transformer Architectures&quot;,&quot;Attention Mechanisms&quot;]},&quot;subTopics&quot;:[&quot;Conversion Rate Prediction&quot;,&quot;E-commerce Recommendation&quot;,&quot;Model Scaling&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Rec&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike early-stage CVR models (logistic regression, decision trees) relying on hand-crafted features, this work focuses on modern deep learning models that learn hidden representations from raw inputs.&quot;,&quot;This study extends existing research on feature interaction backbones (Deep &amp; Cross Network, MaskNet, Transformers, RankMixer) and ensemble approaches (DHEN) by systematically analyzing their scaling properties.&quot;,&quot;The work builds upon established CVR model improvement levers such as multi-task learning, embedding hashing, and learning-to-rank, incorporating refined versions of these components.&quot;,&quot;The paper provides a granular, nuanced analysis of CVR scaling across backbones, embeddings, and training data, which contrasts with prior studies that often show diminishing returns and lack specific scaling dimensions, unlike well-defined scaling laws in LLMs.&quot;],&quot;limitations&quot;:[&quot;Scaling approaches may not work uniformly across all cases, requiring exhaustive exploration to identify the optimal scaling recipe.&quot;,&quot;While DHEN-based ensembles consistently outperform individual models, optimized single-model backbones can achieve better Pareto-optimality in the long term under the same FLOPs budget.&quot;,&quot;Scaling text embeddings for product titles did not provide performance gains, hypothesized to be due to the general nature of text tokens compared to specific categorical features.&quot;,&quot;Simple volume scaling of training data shows diminishing returns and can be cost-ineffective without strategies like warmstarting.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Training Label Collection&quot;,&quot;value&quot;:&quot;Customer engagement behaviors within a specific attribution window from item impressions on search results are collected. This accounts for delayed conversions, ensuring purchases are correctly linked to original search impressions.&quot;},{&quot;label&quot;:&quot;Multi-task Learning Objective&quot;,&quot;value&quot;:&quot;To address sparse conversion targets, multi-task learning is applied using Softmax cross-entropy loss for each learning task $t$: $L_t = -\\\\sum_i y_{i,t} \\\\log \\\\frac{\\\\exp (s_{i,t})}{\\\\sum_j \\\\exp (s_{j,t})}$, where $y_{i,t}$ indicates if item $d_i$ results in engagement for task $t$, and $s_{i,t}$ is the predicted logit. The overall objective is the summation of losses across all tasks.&quot;},{&quot;label&quot;:&quot;Optimization&quot;,&quot;value&quot;:&quot;Adam optimizer is used, incorporating a learning rate warm-up during the first epoch and a cosine decay schedule until the end of training.&quot;},{&quot;label&quot;:&quot;Backbone Scaling&quot;,&quot;list&quot;:[&quot;Individual Backbone Scaling: Evaluates conventional state-of-the-art models including DCNv2, MaskNet, Transformers, and RankMixer. Scaling factors for Deep and Cross family (DCNv2, MaskNet) include Cross Width, Deep Width, Parallel Mask Blocks, and Sequential Mask Blocks. Scaling factors for Sequence Model family (Transformers, RankMixer) include $d_{\\text{model}}$, Sequence Length, $ffn_{\\text{dim}}$, Number of model layers, and Number of attention heads.&quot;,&quot;Backbone Model Ensemble: Utilizes Deep Hierarchical Ensemble Network (DHEN) to combine heterogeneous backbone models and understand cumulative improvements.&quot;]},{&quot;label&quot;:&quot;Embedding Scaling&quot;,&quot;value&quot;:&quot;Explores increasing embedding dimensions (width) and vocabulary size (quantity) for item IDs, queries, and product titles. Vocabulary size is scaled by adjusting the hashing modulus divisor for features like n-grams.&quot;},{&quot;label&quot;:&quot;Data Scaling&quot;,&quot;value&quot;:&quot;Involves training on larger data corpora by extending the data duration or increasing the sampling rate. This can lead to longer training cycles and necessitate strategies like targeted feature exploration or warmstarts to manage costs and feature gaps.&quot;}],&quot;pipelineFlow&quot;:[&quot;Raw inputs (numerical, categorical, text, sequential features) are fed into the Feature Extraction module.&quot;,&quot;Feature Extraction transforms raw inputs into dense, machine-readable vectors.&quot;,&quot;These dense vectors are processed by the Feature Interaction module, typically a backbone model or ensemble, to generate a high-order hidden representation.&quot;,&quot;The hidden representation is then passed to the Representation Transformation module (e.g., MMoE) to produce customized outputs for various prediction tasks (e.g., CVR, CTR).&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Conversion Rate (CVR) Prediction Goal&quot;,&quot;value&quot;:&quot;Given a query $q$ submitted by a customer $u$ and a set of exposed candidate items $D = \\{d_i\\}$, the goal is to produce a ranking score $f(u,q,d_i)$ for each candidate item $d_i$ by modeling the probability that the customer $u$ would convert to a purchase of $d_i$: $P(\\text{Purchase} \\mid u,q,d_i)$.&quot;}],&quot;reproducibility&quot;:&quot;The paper describes an empirical study on a large-scale production dataset and online A/B tests, providing detailed methodologies for model scaling, training, and inference optimization. However, the specific dataset is anonymized and not publicly available, and the code is not explicitly provided, which limits direct external reproduction by others.&quot;},&quot;thesis&quot;:&quot;This paper presents an effective and general mechanism for scaling modern search CVR prediction models by empirically studying the scaling performance of state-of-the-art architectures, identifying key scaling factors (backbone, embedding, data), and demonstrating robust inference optimizations to balance model quality with production constraints like training cost and serving latency.&quot;,&quot;title&quot;:&quot;On the Practice of Scaling Search Conversion Rate Prediction&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/arXiv:2605.29232&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

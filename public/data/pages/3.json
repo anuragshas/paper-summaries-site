@@ -2,6 +2,17 @@
   "page": 3,
   "papers": [
     {
+      "paperId": "2603.15916",
+      "title": "2603.15916",
+      "authors": "Xiaoyi Li",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Agent",
+        "Reasoning",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2603.12228",
       "title": "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights",
       "authors": "Yulu Gan, Phillip Isola",
@@ -100,18 +111,6 @@
         "Speculative Decoding",
         "Parallel Computing",
         "Algorithm"
-      ]
-    },
-    {
-      "paperId": "2603.01562",
-      "title": "RubricBench: Aligning Model-Generated Rubrics with Human Standards",
-      "authors": "Qiyuan Zhang, Junyi Zhou, Yufei Wang, Fuyuan Lyu, Yidong Ming, Can Xu, Qingfeng Sun, Kai Zheng, Peng Kang, Xue Liu, Chen Ma",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "LLM Evaluation",
-        "Reward Models",
-        "Benchmarks",
-        "AI Alignment"
       ]
     }
   ]
