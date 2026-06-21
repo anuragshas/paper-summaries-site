@@ -432,6 +432,15 @@
       ]
     },
     {
+      "paperId": "2510.14686",
+      "title": "xLLM Technical Report",
+      "tags": [
+        "Memory",
+        "MM",
+        "Rec"
+      ]
+    },
+    {
       "paperId": "2510.11056",
       "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
       "tags": [

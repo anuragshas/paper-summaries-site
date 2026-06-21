@@ -62,6 +62,17 @@
       ]
     },
     {
+      "paperId": "2510.14686",
+      "title": "xLLM Technical Report",
+      "authors": "Tongxuan Liu, Tao Peng, Peijun Yang, Xiaoyang Zhao, Xiusheng Lu, Weizhe Huang, Zirui Liu, Xiaoyu Chen, Zhiwei Liang, Jun Xiong, Donghe Jin, Minchao Zhang, Jinrong Guo, Yingxu Deng, Xu Zhang, Xianzhe Dong, Siqi Wang, Siyu Wu, Yu Wu, Zihan Tang, Yuting Zeng, Yanshu Wang, Jinguang Liu, Meng Kang, Menxin Li, Yunlong Wang, Yiming Liu, Xiaolong Ma, Yifan Wang, Yichen Zhang, Jinrun Yin, Keyang Zheng, Jiawei Yin, Jun Zhang, Ziyue Wang, Xiaobo Lin, Liangyu Liu, Liwei Lan, Yang Liu, Chunhua Peng, Han Liu, Songcheng Ren, Xuezhu Wang, Yunheng Shen, Yi Wang, Guyue Liu, Yitao Hu, Hui Chen, Tong Yang, Hailong Yang, Jing Li, Guiguang Ding, Ke Zhang",
+      "publishedDate": "2025-10-01",
+      "tags": [
+        "Memory",
+        "MM",
+        "Rec"
+      ]
+    },
+    {
       "paperId": "2510.11056",
       "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
       "authors": "Runze Xia, Yupeng Ji, Yuxi Zhou, Haodong Liu, Teng Zhang, and Piji Li",
@@ -105,19 +116,6 @@
         "Pretraining",
         "Memory",
         "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2602.17654",
-      "title": "Mine and Refine: Optimizing Graded Relevance in E-commerce Search Retrieval",
-      "authors": "Jiaqi Xi, Raghav Saboo, Luming Chen, Martin Wang, Sudeep Das",
-      "publishedDate": "2024-02-01",
-      "tags": [
-        "Information Retrieval",
-        "E-commerce",
-        "Deep Learning",
-        "Contrastive Learning",
-        "Semantic Search"
       ]
     }
   ]

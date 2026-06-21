@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>xLLM Technical Report</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>xLLM Technical Report</h1>
+      <p class="meta"><strong>Authors:</strong> Tongxuan Liu, Tao Peng, Peijun Yang, Xiaoyang Zhao, Xiusheng Lu, Weizhe Huang, Zirui Liu, Xiaoyu Chen, Zhiwei Liang, Jun Xiong, Donghe Jin, Minchao Zhang, Jinrong Guo, Yingxu Deng, Xu Zhang, Xianzhe Dong, Siqi Wang, Siyu Wu, Yu Wu, Zihan Tang, Yuting Zeng, Yanshu Wang, Jinguang Liu, Meng Kang, Menxin Li, Yunlong Wang, Yiming Liu, Xiaolong Ma, Yifan Wang, Yichen Zhang, Jinrun Yin, Keyang Zheng, Jiawei Yin, Jun Zhang, Ziyue Wang, Xiaobo Lin, Liangyu Liu, Liwei Lan, Yang Liu, Chunhua Peng, Han Liu, Songcheng Ren, Xuezhu Wang, Yunheng Shen, Yi Wang, Guyue Liu, Yitao Hu, Hui Chen, Tong Yang, Hailong Yang, Jing Li, Guiguang Ding, Ke Zhang</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/pdf/2510.14686" target="_blank" rel="noopener noreferrer">https://arxiv.org/pdf/2510.14686</a></p>
+      <p class="muted">Generated summary artifact for 2510.14686</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>xLLM is an intelligent and efficient Large Language Model (LLM) inference framework designed for high-performance, large-scale enterprise-grade serving, with deep optimizations for diverse AI accelerators, addressing challenges in hybrid/dynamic workloads, strict demand for high availability, distributed storage management, and underutilized AI accelerators through a novel decoupled service-engine architecture and comprehensive optimizations.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Current mainstream Large Language Model (LLM) inference frameworks face significant challenges in high-performance, large-scale enterprise-grade serving due to hybrid and dynamic workloads, strict demand for high availability, distributed storage management, and underutilized AI accelerators.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>xLLM introduces a novel decoupled service-engine architecture with intelligent scheduling, workload-adaptive disaggregation policies, advanced memory management, and comprehensive engine-level optimizations to achieve high-performance, large-scale, and efficient LLM inference for enterprise-grade serving.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Achieved throughput improvements of up to 1.9x and 1.7x compared to vLLM-Ascend and MindIE respectively, on Qwen3-series models.</li><li>Outperformed vLLM-Ascend and MindIE by up to 2.2x and 1.5x respectively on Ascend 910C for Qwen3-series models.</li><li>Demonstrated superior inference efficiency on Deepseek-R1 models across various TPOT and input/output length constraints.</li><li>Showcased near-linear strong scalability with an increasing number of accelerators.</li><li>Successfully deployed in production for various JD.com business scenarios, including AI chatbot, marketing recommendations, product understanding, and customer service assistants.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>xLLM consistently delivers superior throughput performance across various LLM models, including Qwen3-series and Deepseek-R1, demonstrating its efficiency.</li><li>The framework exhibits near-linear strong scalability with an increasing number of accelerators, confirming its effectiveness for large-scale deployments.</li><li>xLLM significantly outperforms strong baselines like vLLM-Ascend and MindIE under various identical TPOT constraints and input/output length settings.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Not specified</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 91,
+      &quot;xmin&quot;: 195,
+      &quot;ymax&quot;: 379,
+      &quot;xmax&quot;: 819
+    },
+    &quot;caption&quot;: &quot;Overview of xLLM&#39;s capabilities, with decoupled service-engine architecture.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 3
+  },
+  &quot;authors&quot;: &quot;Tongxuan Liu, Tao Peng, Peijun Yang, Xiaoyang Zhao, Xiusheng Lu, Weizhe Huang, Zirui Liu, Xiaoyu Chen, Zhiwei Liang, Jun Xiong, Donghe Jin, Minchao Zhang, Jinrong Guo, Yingxu Deng, Xu Zhang, Xianzhe Dong, Siqi Wang, Siyu Wu, Yu Wu, Zihan Tang, Yuting Zeng, Yanshu Wang, Jinguang Liu, Meng Kang, Menxin Li, Yunlong Wang, Yiming Liu, Xiaolong Ma, Yifan Wang, Yichen Zhang, Jinrun Yin, Keyang Zheng, Jiawei Yin, Jun Zhang, Ziyue Wang, Xiaobo Lin, Liangyu Liu, Liwei Lan, Yang Liu, Chunhua Peng, Han Liu, Songcheng Ren, Xuezhu Wang, Yunheng Shen, Yi Wang, Guyue Liu, Yitao Hu, Hui Chen, Tong Yang, Hailong Yang, Jing Li, Guiguang Ding, Ke Zhang&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;xLLM introduces a comprehensive system and engine-level optimization framework for LLM inference, addressing critical enterprise-grade serving challenges like dynamic workloads, multimodal support, and efficient hardware utilization on accelerators like Ascend. The novel decoupled architecture, adaptive scheduling, and memory management (xTensor) are significant contributions. The empirical results demonstrate substantial performance gains (up to 2.2x throughput) over strong baselines, and its deployment in real-world scenarios at JD.com highlights its practical impact and robustness. It significantly advances the state-of-the-art in LLM serving infrastructure.&quot;,
+    &quot;score&quot;: 8
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;Online inference requests exhibit significant tidal characteristics, making current scheduling systems fail to meet Service Level Objectives (SLOs) and fully leverage idle periods. Static resource allocation in existing Prefill-Decode (PD) disaggregation architectures cannot adapt to dynamically changing request loads, leading to low AI accelerator utilization and increased SLO violation risks. Lack of efficient strategies for servicing multimodal requests, including parallel processing for encode phase and fine-grained resource allocation, poses a challenge.&quot;,
+    &quot;statement&quot;: &quot;Current mainstream Large Language Model (LLM) inference frameworks face significant challenges in high-performance, large-scale enterprise-grade serving due to hybrid and dynamic workloads, strict demand for high availability, distributed storage management, and underutilized AI accelerators.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Increases operational cost of model inference.&quot;,
+      &quot;Degrades computing efficiency and overall system throughput.&quot;,
+      &quot;Leads to failure in meeting Service Level Objectives (SLOs) for latency-sensitive applications.&quot;,
+      &quot;Results in underutilization of expensive AI accelerator resources.&quot;,
+      &quot;Restricts scalability for large-scale deployments and limits multimodal inference capabilities.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Achieved throughput improvements of up to 1.9x and 1.7x compared to vLLM-Ascend and MindIE respectively, on Qwen3-series models.&quot;,
+    &quot;Outperformed vLLM-Ascend and MindIE by up to 2.2x and 1.5x respectively on Ascend 910C for Qwen3-series models.&quot;,
+    &quot;Demonstrated superior inference efficiency on Deepseek-R1 models across various TPOT and input/output length constraints.&quot;,
+    &quot;Showcased near-linear strong scalability with an increasing number of accelerators.&quot;,
+    &quot;Successfully deployed in production for various JD.com business scenarios, including AI chatbot, marketing recommendations, product understanding, and customer service assistants.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;Qwen3-series (0.6B, 1.7B, 4B, 8B, 14B, 32B parameters)&quot;,
+        &quot;Deepseek-R1&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Throughput (tokens/s)&quot;,
+        &quot;Time Per Output Token (TPOT)&quot;,
+        &quot;Input/Output sequence length&quot;
+      ],
+      &quot;setting&quot;: &quot;LLM inference on Ascend 910B/910C instances using the ShareGPT dataset.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 90,
+          &quot;xmin&quot;: 78,
+          &quot;ymax&quot;: 450,
+          &quot;xmax&quot;: 924
+        },
+        &quot;caption&quot;: &quot;Throughput comparison of LLM inference frameworks evaluated on Qwen3-series models using the ShareGPT dataset, under the constraint of TPOT=50ms and input/output length=2048.&quot;,
+        &quot;figureNumber&quot;: 14,
+        &quot;pageIndex&quot;: 24
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 462,
+          &quot;xmin&quot;: 94,
+          &quot;ymax&quot;: 695,
+          &quot;xmax&quot;: 914
+        },
+        &quot;caption&quot;: &quot;Throughput comparison of LLM inference frameworks using DeepSeek-R1 on the ShareGPT dataset constrained by given TPOT and input/output length, where [2500, 1500] means input length=2500 and output length=1500 . vLLM-Ascend on the 910C is excluded from the comparison, as its performance with Deepseek-R1 fails to meet the required TPOT threshold.&quot;,
+        &quot;figureNumber&quot;: 15,
+        &quot;pageIndex&quot;: 24
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;5500 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-0.6B (4 Accelerators)&quot;,
+            &quot;delta&quot;: &quot;+4000 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,
+            &quot;thisPaper&quot;: &quot;9500 tokens/s&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;5000 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-1.7B (4 Accelerators)&quot;,
+            &quot;delta&quot;: &quot;+4000 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,
+            &quot;thisPaper&quot;: &quot;9000 tokens/s&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;3000 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-4B (4 Accelerators)&quot;,
+            &quot;delta&quot;: &quot;+2500 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,
+            &quot;thisPaper&quot;: &quot;5500 tokens/s&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;2500 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-8B (4 Accelerators)&quot;,
+            &quot;delta&quot;: &quot;+2000 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,
+            &quot;thisPaper&quot;: &quot;4500 tokens/s&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;2000 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-14B (4 Accelerators)&quot;,
+            &quot;delta&quot;: &quot;+1500 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,
+            &quot;thisPaper&quot;: &quot;3500 tokens/s&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;1500 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-32B (4 Accelerators)&quot;,
+            &quot;delta&quot;: &quot;+1200 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,
+            &quot;thisPaper&quot;: &quot;2700 tokens/s&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Qwen3-series Throughput Performance (4 Accelerators)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;220 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;DeepSeek-R1 [2048,2048] (16x910B)&quot;,
+            &quot;delta&quot;: &quot;+150 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=50ms&quot;,
+            &quot;thisPaper&quot;: &quot;370 tokens/s&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;850 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;DeepSeek-R1 [2048,2048] (16x910B)&quot;,
+            &quot;delta&quot;: &quot;+500 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=100ms&quot;,
+            &quot;thisPaper&quot;: &quot;1350 tokens/s&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;230 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;DeepSeek-R1 [2500,1500] (16x910B)&quot;,
+            &quot;delta&quot;: &quot;+150 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=50ms&quot;,
+            &quot;thisPaper&quot;: &quot;380 tokens/s&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;900 tokens/s&quot;,
+            &quot;benchmark&quot;: &quot;DeepSeek-R1 [2500,1500] (16x910B)&quot;,
+            &quot;delta&quot;: &quot;+500 tokens/s&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Throughput (tokens/s) @ TPOT=100ms&quot;,
+            &quot;thisPaper&quot;: &quot;1400 tokens/s&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;DeepSeek-R1 Throughput Performance (16x910B)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;xLLM consistently delivers superior throughput performance across various LLM models, including Qwen3-series and Deepseek-R1, demonstrating its efficiency.&quot;,
+      &quot;The framework exhibits near-linear strong scalability with an increasing number of accelerators, confirming its effectiveness for large-scale deployments.&quot;,
+      &quot;xLLM significantly outperforms strong baselines like vLLM-Ascend and MindIE under various identical TPOT constraints and input/output length settings.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;JD.com; Tsinghua University (THU); University of Science and Technology of China (USTC); Beihang University (BUAA); Peking University (PKU); Tianjin University (TJU)&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;A novel decoupled service-engine architecture that separates service-layer (scheduling, request management) from engine-layer (inference execution, hardware optimization) for improved efficiency and scalability.&quot;,
+      &quot;Unified elastic scheduling for online/offline workloads, combining preemptive execution for online requests and best-effort for offline tasks, with workload-adaptive dynamic Prefill-Decode (PD) and Hybrid Encode-Prefill-Decode (EPD) disaggregation policies for text and multimodal requests.&quot;,
+      &quot;A distributed global KV Cache management system leveraging hybrid storage architectures and intelligent routing strategies to expand capacity and improve cache hit rates, alongside a robust multi-node fault-tolerance framework for high service availability.&quot;,
+      &quot;Comprehensive engine-level optimizations including a multi-layer pipeline execution mechanism (asynchronous CPU-accelerator scheduling, dual-stream micro-batch parallelism, operator-level computation/memory overlap), an Adaptive Graph Mode to reduce kernel launch overhead, and xTensor memory management for logically contiguous, physically discrete KV cache storage.&quot;,
+      &quot;Algorithmic enhancements such as optimized speculative decoding, dynamic Expert Parallel Load Balance (EPLB) for MoE models, and hierarchical Data Parallel (DP) load balance for efficient resource utilization.&quot;
+    ],
+    &quot;main&quot;: &quot;xLLM introduces a novel decoupled service-engine architecture with intelligent scheduling, workload-adaptive disaggregation policies, advanced memory management, and comprehensive engine-level optimizations to achieve high-performance, large-scale, and efficient LLM inference for enterprise-grade serving.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;An inference architecture that partitions computing instances into dedicated prefill and decode instances, each handling their respective processing phases, to mitigate interference and improve performance.&quot;,
+        &quot;term&quot;: &quot;Prefill-Decode (PD) Disaggregation&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A memory management scheme that employs a &#39;logically contiguous, physically discrete&#39; KV cache storage structure to resolve conflicts between memory contiguity requirements and dynamic allocation needs, enhancing both computational efficiency and memory utilization.&quot;,
+        &quot;term&quot;: &quot;xTensor Memory Management&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A performance metric measuring the latency from when a request is submitted until the first output token is generated, crucial for latency-sensitive online services.&quot;,
+        &quot;term&quot;: &quot;Time to First Token (TTFT)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A performance metric measuring the average latency required to generate each subsequent output token, indicating the speed of token generation.&quot;,
+        &quot;term&quot;: &quot;Time Per Output Token (TPOT)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Mixture of Experts (MoE) models&quot;,
+      &quot;Speculative Decoding&quot;,
+      &quot;KV Cache management&quot;,
+      &quot;Service Level Objectives (SLOs)&quot;,
+      &quot;Data Parallelism (DP)&quot;,
+      &quot;Expert Parallelism (EP)&quot;,
+      &quot;Graph computation and optimization&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;LLM Inference Systems&quot;,
+    &quot;Resource Management&quot;,
+    &quot;Hardware Acceleration&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Memory&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;MM&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Rec&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike mainstream LLM inference frameworks (vLLM, SGLang, TensorRT-LLM) that struggle with hybrid/dynamic workloads, static PD disaggregation, multimodal request handling, and fault tolerance, xLLM provides a holistic solution addressing these challenges.&quot;,
+      &quot;Existing PD disaggregated systems suffer from low hardware utilization and latency overheads due to static instance partitioning and slow instance role switching; xLLM introduces adaptive PD disaggregation with stateless instances and elastic pools for dynamic resource adjustment.&quot;,
+      &quot;Mainstream inference engines for MLLMs (vLLM, TGI, SGLang, DistServe) are tailored for LLMs and lack efficient multimodal inference due to insufficient parallelism and coarse-grained scheduling; xLLM uses dual-stream parallelism and three-phase disaggregation for improved multimodal support.&quot;,
+      &quot;Traditional autoregressive LLM inference relies on single-stream sequential execution, leading to computational resource underutilization and communication stalls; xLLM employs a multi-layer asynchronous pipeline execution to overlap CPU and accelerator operations.&quot;,
+      &quot;Traditional KV Cache memory allocation is either contiguous (high computational efficiency, low memory utilization) or paged (high memory utilization, low computational efficiency); xLLM&#39;s xTensor memory management provides both logically contiguous access and physically discrete storage.&quot;,
+      &quot;Existing speculative decoding frameworks suffer from synchronous scheduling between CPUs and accelerators and redundant data movement; xLLM optimizes this with asynchronous decoding and MLA optimization to reduce data transfer and improve utilization.&quot;,
+      &quot;Current mainstream Data Parallel (DP) frameworks (vLLM, SGLang) use simple static round-robin scheduling, which leads to load imbalance; xLLM proposes a hierarchical DP load balance strategy to adapt to dynamic load changes across different time scales and granularities.&quot;
+    ],
+    &quot;limitations&quot;: [],
+    &quot;modeling&quot;: [],
+    &quot;pipelineFlow&quot;: [
+      &quot;Upon request arrival, xLLM-Service performs intelligent scheduling to distribute each request to one of three elastic instance pools (Prefill, Decode, Encode) and manages instance migration across these pools.&quot;,
+      &quot;The Pre-processing Layer (Predictor and Profiler) assesses text and multimodal requests to guide scheduling and resource allocation.&quot;,
+      &quot;The Scheduling Layer integrates Online-Offline Co-location, Dynamic PD Disaggregation, and Hybrid EPD Disaggregation policies to optimize resource utilization and meet SLOs.&quot;,
+      &quot;xLLM-Engine then drives efficient request inference by orchestrating system-level (multi-layer pipeline, adaptive graph, xTensor memory) and algorithm-level (speculative decoding, dynamic EPLB, hierarchical DPLB) optimizations.&quot;,
+      &quot;A Global KV Cache Management system and a Fast Fault Recovery Framework are integrated across the entire architecture to ensure efficient memory handling and high service availability.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Alignment Loss for Dynamic Resource Allocation&quot;,
+        &quot;value&quot;: &quot;$\\operatorname{argmin}_{x_i,y_j} L_{\\text{align}} = \\max_{i \\in C, j \\in V} |T_i - T_j|$, where $T_i = \\frac{W_i}{\\gamma_{\\text{Cube}} \\cdot x_i}$, $T_j = \\frac{W_j}{\\gamma_{\\text{Vector}} \\cdot y_j}$, and $\\sum_{i \\in C} x_i \\le N_{\\text{Cube}}$, $\\sum_{j \\in V} y_j \\le N_{\\text{Vector}}$. This objective aims to minimize the maximum difference in execution time between any pair of concurrent matrix and vector operators to effectively synchronize the completion time of all parallel kernels.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The xLLM framework is publicly available at https://github.com/jd-opensource/xllm and https://github.com/jd-opensource/xllm-service.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Designs a unified scheduling algorithm for online/offline workloads with preemptive execution for online requests and best-effort for offline tasks. Implements a workload-adaptive dynamic PD disaggregation policy and a novel Hybrid EPD disaggregation policy for multimodal requests, dynamically adjusting resource allocation based on real-time traffic and request characteristics. Leverages multi-level KV Cache management and a global KV Cache routing strategy to expand capacity and improve cache hit rates. Includes a multi-node fault tolerance architecture for high service availability.&quot;,
+        &quot;name&quot;: &quot;xLLM-Service&quot;,
+        &quot;role&quot;: &quot;Manages scheduling, resource allocation, KV cache, and fault tolerance at the service layer.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Employs a multi-layer pipeline execution engine with asynchronous CPU-accelerator scheduling, dual-stream micro-batch parallelism, and operator-level computation/memory overlap. Introduces an Adaptive Graph Mode with dynamic shape adaptation to reduce kernel launch overhead. Implements xTensor memory management, a &#39;logically contiguous, physically discrete&#39; KV cache storage structure. Integrates algorithmic optimizations such as optimized speculative decoding, dynamic Expert Parallel Load Balance (EPLB), and hierarchical Data Parallel (DP) load balance. Provides scenario-specific optimizations for generative recommendation.&quot;,
+        &quot;name&quot;: &quot;xLLM-Engine&quot;,
+        &quot;role&quot;: &quot;Drives efficient inference execution through comprehensive system- and algorithm-level optimizations to fully saturate computing resources at the engine layer.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Consists of a TTFT Predictor for text requests and an EPD Profiler for multimodal requests. These modules guide instance allocation for dynamic PD disaggregation and determine optimal EPD strategies.&quot;,
+        &quot;name&quot;: &quot;Preprocessing Layer&quot;,
+        &quot;role&quot;: &quot;Pre-processes incoming requests to provide information for intelligent scheduling decisions.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Manages three elastic instance pools (Prefill, Decode, Encode) and enables fast, dynamic switching of instance roles without physical migration, treating prefill/decode as request attributes. Includes Global Request Scheduler and Local Request Scheduler for SLO-aware request scheduling.&quot;,
+        &quot;name&quot;: &quot;Intelligent Scheduling Layer&quot;,
+        &quot;role&quot;: &quot;Adjusts resource allocation for requests across their full lifecycles based on various scheduling policies and real-time performance.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;xLLM is an intelligent and efficient Large Language Model (LLM) inference framework designed for high-performance, large-scale enterprise-grade serving, with deep optimizations for diverse AI accelerators, addressing challenges in hybrid/dynamic workloads, strict demand for high availability, distributed storage management, and underutilized AI accelerators through a novel decoupled service-engine architecture and comprehensive optimizations.&quot;,
+  &quot;title&quot;: &quot;xLLM Technical Report&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/pdf/2510.14686&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2510.14686&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/pdf/2510.14686&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:91,&quot;xmin&quot;:195,&quot;ymax&quot;:379,&quot;xmax&quot;:819},&quot;caption&quot;:&quot;Overview of xLLM&#39;s capabilities, with decoupled service-engine architecture.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:3},&quot;authors&quot;:&quot;Tongxuan Liu, Tao Peng, Peijun Yang, Xiaoyang Zhao, Xiusheng Lu, Weizhe Huang, Zirui Liu, Xiaoyu Chen, Zhiwei Liang, Jun Xiong, Donghe Jin, Minchao Zhang, Jinrong Guo, Yingxu Deng, Xu Zhang, Xianzhe Dong, Siqi Wang, Siyu Wu, Yu Wu, Zihan Tang, Yuting Zeng, Yanshu Wang, Jinguang Liu, Meng Kang, Menxin Li, Yunlong Wang, Yiming Liu, Xiaolong Ma, Yifan Wang, Yichen Zhang, Jinrun Yin, Keyang Zheng, Jiawei Yin, Jun Zhang, Ziyue Wang, Xiaobo Lin, Liangyu Liu, Liwei Lan, Yang Liu, Chunhua Peng, Han Liu, Songcheng Ren, Xuezhu Wang, Yunheng Shen, Yi Wang, Guyue Liu, Yitao Hu, Hui Chen, Tong Yang, Hailong Yang, Jing Li, Guiguang Ding, Ke Zhang&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;xLLM introduces a comprehensive system and engine-level optimization framework for LLM inference, addressing critical enterprise-grade serving challenges like dynamic workloads, multimodal support, and efficient hardware utilization on accelerators like Ascend. The novel decoupled architecture, adaptive scheduling, and memory management (xTensor) are significant contributions. The empirical results demonstrate substantial performance gains (up to 2.2x throughput) over strong baselines, and its deployment in real-world scenarios at JD.com highlights its practical impact and robustness. It significantly advances the state-of-the-art in LLM serving infrastructure.&quot;,&quot;score&quot;:8},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;Online inference requests exhibit significant tidal characteristics, making current scheduling systems fail to meet Service Level Objectives (SLOs) and fully leverage idle periods. Static resource allocation in existing Prefill-Decode (PD) disaggregation architectures cannot adapt to dynamically changing request loads, leading to low AI accelerator utilization and increased SLO violation risks. Lack of efficient strategies for servicing multimodal requests, including parallel processing for encode phase and fine-grained resource allocation, poses a challenge.&quot;,&quot;statement&quot;:&quot;Current mainstream Large Language Model (LLM) inference frameworks face significant challenges in high-performance, large-scale enterprise-grade serving due to hybrid and dynamic workloads, strict demand for high availability, distributed storage management, and underutilized AI accelerators.&quot;,&quot;whyItMatters&quot;:[&quot;Increases operational cost of model inference.&quot;,&quot;Degrades computing efficiency and overall system throughput.&quot;,&quot;Leads to failure in meeting Service Level Objectives (SLOs) for latency-sensitive applications.&quot;,&quot;Results in underutilization of expensive AI accelerator resources.&quot;,&quot;Restricts scalability for large-scale deployments and limits multimodal inference capabilities.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Achieved throughput improvements of up to 1.9x and 1.7x compared to vLLM-Ascend and MindIE respectively, on Qwen3-series models.&quot;,&quot;Outperformed vLLM-Ascend and MindIE by up to 2.2x and 1.5x respectively on Ascend 910C for Qwen3-series models.&quot;,&quot;Demonstrated superior inference efficiency on Deepseek-R1 models across various TPOT and input/output length constraints.&quot;,&quot;Showcased near-linear strong scalability with an increasing number of accelerators.&quot;,&quot;Successfully deployed in production for various JD.com business scenarios, including AI chatbot, marketing recommendations, product understanding, and customer service assistants.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;Qwen3-series (0.6B, 1.7B, 4B, 8B, 14B, 32B parameters)&quot;,&quot;Deepseek-R1&quot;],&quot;metrics&quot;:[&quot;Throughput (tokens/s)&quot;,&quot;Time Per Output Token (TPOT)&quot;,&quot;Input/Output sequence length&quot;],&quot;setting&quot;:&quot;LLM inference on Ascend 910B/910C instances using the ShareGPT dataset.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:90,&quot;xmin&quot;:78,&quot;ymax&quot;:450,&quot;xmax&quot;:924},&quot;caption&quot;:&quot;Throughput comparison of LLM inference frameworks evaluated on Qwen3-series models using the ShareGPT dataset, under the constraint of TPOT=50ms and input/output length=2048.&quot;,&quot;figureNumber&quot;:14,&quot;pageIndex&quot;:24},{&quot;boundingBox&quot;:{&quot;ymin&quot;:462,&quot;xmin&quot;:94,&quot;ymax&quot;:695,&quot;xmax&quot;:914},&quot;caption&quot;:&quot;Throughput comparison of LLM inference frameworks using DeepSeek-R1 on the ShareGPT dataset constrained by given TPOT and input/output length, where [2500, 1500] means input length=2500 and output length=1500 . vLLM-Ascend on the 910C is excluded from the comparison, as its performance with Deepseek-R1 fails to meet the required TPOT threshold.&quot;,&quot;figureNumber&quot;:15,&quot;pageIndex&quot;:24}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;5500 tokens/s&quot;,&quot;benchmark&quot;:&quot;Qwen3-0.6B (4 Accelerators)&quot;,&quot;delta&quot;:&quot;+4000 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,&quot;thisPaper&quot;:&quot;9500 tokens/s&quot;},{&quot;baseline&quot;:&quot;5000 tokens/s&quot;,&quot;benchmark&quot;:&quot;Qwen3-1.7B (4 Accelerators)&quot;,&quot;delta&quot;:&quot;+4000 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,&quot;thisPaper&quot;:&quot;9000 tokens/s&quot;},{&quot;baseline&quot;:&quot;3000 tokens/s&quot;,&quot;benchmark&quot;:&quot;Qwen3-4B (4 Accelerators)&quot;,&quot;delta&quot;:&quot;+2500 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,&quot;thisPaper&quot;:&quot;5500 tokens/s&quot;},{&quot;baseline&quot;:&quot;2500 tokens/s&quot;,&quot;benchmark&quot;:&quot;Qwen3-8B (4 Accelerators)&quot;,&quot;delta&quot;:&quot;+2000 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,&quot;thisPaper&quot;:&quot;4500 tokens/s&quot;},{&quot;baseline&quot;:&quot;2000 tokens/s&quot;,&quot;benchmark&quot;:&quot;Qwen3-14B (4 Accelerators)&quot;,&quot;delta&quot;:&quot;+1500 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,&quot;thisPaper&quot;:&quot;3500 tokens/s&quot;},{&quot;baseline&quot;:&quot;1500 tokens/s&quot;,&quot;benchmark&quot;:&quot;Qwen3-32B (4 Accelerators)&quot;,&quot;delta&quot;:&quot;+1200 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=50ms, Length=2048&quot;,&quot;thisPaper&quot;:&quot;2700 tokens/s&quot;}],&quot;title&quot;:&quot;Qwen3-series Throughput Performance (4 Accelerators)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;220 tokens/s&quot;,&quot;benchmark&quot;:&quot;DeepSeek-R1 [2048,2048] (16x910B)&quot;,&quot;delta&quot;:&quot;+150 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=50ms&quot;,&quot;thisPaper&quot;:&quot;370 tokens/s&quot;},{&quot;baseline&quot;:&quot;850 tokens/s&quot;,&quot;benchmark&quot;:&quot;DeepSeek-R1 [2048,2048] (16x910B)&quot;,&quot;delta&quot;:&quot;+500 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=100ms&quot;,&quot;thisPaper&quot;:&quot;1350 tokens/s&quot;},{&quot;baseline&quot;:&quot;230 tokens/s&quot;,&quot;benchmark&quot;:&quot;DeepSeek-R1 [2500,1500] (16x910B)&quot;,&quot;delta&quot;:&quot;+150 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=50ms&quot;,&quot;thisPaper&quot;:&quot;380 tokens/s&quot;},{&quot;baseline&quot;:&quot;900 tokens/s&quot;,&quot;benchmark&quot;:&quot;DeepSeek-R1 [2500,1500] (16x910B)&quot;,&quot;delta&quot;:&quot;+500 tokens/s&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Throughput (tokens/s) @ TPOT=100ms&quot;,&quot;thisPaper&quot;:&quot;1400 tokens/s&quot;}],&quot;title&quot;:&quot;DeepSeek-R1 Throughput Performance (16x910B)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;xLLM consistently delivers superior throughput performance across various LLM models, including Qwen3-series and Deepseek-R1, demonstrating its efficiency.&quot;,&quot;The framework exhibits near-linear strong scalability with an increasing number of accelerators, confirming its effectiveness for large-scale deployments.&quot;,&quot;xLLM significantly outperforms strong baselines like vLLM-Ascend and MindIE under various identical TPOT constraints and input/output length settings.&quot;]},&quot;institutions&quot;:&quot;JD.com; Tsinghua University (THU); University of Science and Technology of China (USTC); Beihang University (BUAA); Peking University (PKU); Tianjin University (TJU)&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;A novel decoupled service-engine architecture that separates service-layer (scheduling, request management) from engine-layer (inference execution, hardware optimization) for improved efficiency and scalability.&quot;,&quot;Unified elastic scheduling for online/offline workloads, combining preemptive execution for online requests and best-effort for offline tasks, with workload-adaptive dynamic Prefill-Decode (PD) and Hybrid Encode-Prefill-Decode (EPD) disaggregation policies for text and multimodal requests.&quot;,&quot;A distributed global KV Cache management system leveraging hybrid storage architectures and intelligent routing strategies to expand capacity and improve cache hit rates, alongside a robust multi-node fault-tolerance framework for high service availability.&quot;,&quot;Comprehensive engine-level optimizations including a multi-layer pipeline execution mechanism (asynchronous CPU-accelerator scheduling, dual-stream micro-batch parallelism, operator-level computation/memory overlap), an Adaptive Graph Mode to reduce kernel launch overhead, and xTensor memory management for logically contiguous, physically discrete KV cache storage.&quot;,&quot;Algorithmic enhancements such as optimized speculative decoding, dynamic Expert Parallel Load Balance (EPLB) for MoE models, and hierarchical Data Parallel (DP) load balance for efficient resource utilization.&quot;],&quot;main&quot;:&quot;xLLM introduces a novel decoupled service-engine architecture with intelligent scheduling, workload-adaptive disaggregation policies, advanced memory management, and comprehensive engine-level optimizations to achieve high-performance, large-scale, and efficient LLM inference for enterprise-grade serving.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;An inference architecture that partitions computing instances into dedicated prefill and decode instances, each handling their respective processing phases, to mitigate interference and improve performance.&quot;,&quot;term&quot;:&quot;Prefill-Decode (PD) Disaggregation&quot;},{&quot;definition&quot;:&quot;A memory management scheme that employs a &#39;logically contiguous, physically discrete&#39; KV cache storage structure to resolve conflicts between memory contiguity requirements and dynamic allocation needs, enhancing both computational efficiency and memory utilization.&quot;,&quot;term&quot;:&quot;xTensor Memory Management&quot;},{&quot;definition&quot;:&quot;A performance metric measuring the latency from when a request is submitted until the first output token is generated, crucial for latency-sensitive online services.&quot;,&quot;term&quot;:&quot;Time to First Token (TTFT)&quot;},{&quot;definition&quot;:&quot;A performance metric measuring the average latency required to generate each subsequent output token, indicating the speed of token generation.&quot;,&quot;term&quot;:&quot;Time Per Output Token (TPOT)&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Mixture of Experts (MoE) models&quot;,&quot;Speculative Decoding&quot;,&quot;KV Cache management&quot;,&quot;Service Level Objectives (SLOs)&quot;,&quot;Data Parallelism (DP)&quot;,&quot;Expert Parallelism (EP)&quot;,&quot;Graph computation and optimization&quot;]},&quot;subTopics&quot;:[&quot;LLM Inference Systems&quot;,&quot;Resource Management&quot;,&quot;Hardware Acceleration&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Memory&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;MM&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Rec&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike mainstream LLM inference frameworks (vLLM, SGLang, TensorRT-LLM) that struggle with hybrid/dynamic workloads, static PD disaggregation, multimodal request handling, and fault tolerance, xLLM provides a holistic solution addressing these challenges.&quot;,&quot;Existing PD disaggregated systems suffer from low hardware utilization and latency overheads due to static instance partitioning and slow instance role switching; xLLM introduces adaptive PD disaggregation with stateless instances and elastic pools for dynamic resource adjustment.&quot;,&quot;Mainstream inference engines for MLLMs (vLLM, TGI, SGLang, DistServe) are tailored for LLMs and lack efficient multimodal inference due to insufficient parallelism and coarse-grained scheduling; xLLM uses dual-stream parallelism and three-phase disaggregation for improved multimodal support.&quot;,&quot;Traditional autoregressive LLM inference relies on single-stream sequential execution, leading to computational resource underutilization and communication stalls; xLLM employs a multi-layer asynchronous pipeline execution to overlap CPU and accelerator operations.&quot;,&quot;Traditional KV Cache memory allocation is either contiguous (high computational efficiency, low memory utilization) or paged (high memory utilization, low computational efficiency); xLLM&#39;s xTensor memory management provides both logically contiguous access and physically discrete storage.&quot;,&quot;Existing speculative decoding frameworks suffer from synchronous scheduling between CPUs and accelerators and redundant data movement; xLLM optimizes this with asynchronous decoding and MLA optimization to reduce data transfer and improve utilization.&quot;,&quot;Current mainstream Data Parallel (DP) frameworks (vLLM, SGLang) use simple static round-robin scheduling, which leads to load imbalance; xLLM proposes a hierarchical DP load balance strategy to adapt to dynamic load changes across different time scales and granularities.&quot;],&quot;limitations&quot;:[],&quot;modeling&quot;:[],&quot;pipelineFlow&quot;:[&quot;Upon request arrival, xLLM-Service performs intelligent scheduling to distribute each request to one of three elastic instance pools (Prefill, Decode, Encode) and manages instance migration across these pools.&quot;,&quot;The Pre-processing Layer (Predictor and Profiler) assesses text and multimodal requests to guide scheduling and resource allocation.&quot;,&quot;The Scheduling Layer integrates Online-Offline Co-location, Dynamic PD Disaggregation, and Hybrid EPD Disaggregation policies to optimize resource utilization and meet SLOs.&quot;,&quot;xLLM-Engine then drives efficient request inference by orchestrating system-level (multi-layer pipeline, adaptive graph, xTensor memory) and algorithm-level (speculative decoding, dynamic EPLB, hierarchical DPLB) optimizations.&quot;,&quot;A Global KV Cache Management system and a Fast Fault Recovery Framework are integrated across the entire architecture to ensure efficient memory handling and high service availability.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Alignment Loss for Dynamic Resource Allocation&quot;,&quot;value&quot;:&quot;$\\operatorname{argmin}_{x_i,y_j} L_{\\text{align}} = \\max_{i \\in C, j \\in V} |T_i - T_j|$, where $T_i = \\frac{W_i}{\\gamma_{\\text{Cube}} \\cdot x_i}$, $T_j = \\frac{W_j}{\\gamma_{\\text{Vector}} \\cdot y_j}$, and $\\sum_{i \\in C} x_i \\le N_{\\text{Cube}}$, $\\sum_{j \\in V} y_j \\le N_{\\text{Vector}}$. This objective aims to minimize the maximum difference in execution time between any pair of concurrent matrix and vector operators to effectively synchronize the completion time of all parallel kernels.&quot;}],&quot;reproducibility&quot;:&quot;The xLLM framework is publicly available at https://github.com/jd-opensource/xllm and https://github.com/jd-opensource/xllm-service.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Designs a unified scheduling algorithm for online/offline workloads with preemptive execution for online requests and best-effort for offline tasks. Implements a workload-adaptive dynamic PD disaggregation policy and a novel Hybrid EPD disaggregation policy for multimodal requests, dynamically adjusting resource allocation based on real-time traffic and request characteristics. Leverages multi-level KV Cache management and a global KV Cache routing strategy to expand capacity and improve cache hit rates. Includes a multi-node fault tolerance architecture for high service availability.&quot;,&quot;name&quot;:&quot;xLLM-Service&quot;,&quot;role&quot;:&quot;Manages scheduling, resource allocation, KV cache, and fault tolerance at the service layer.&quot;},{&quot;details&quot;:&quot;Employs a multi-layer pipeline execution engine with asynchronous CPU-accelerator scheduling, dual-stream micro-batch parallelism, and operator-level computation/memory overlap. Introduces an Adaptive Graph Mode with dynamic shape adaptation to reduce kernel launch overhead. Implements xTensor memory management, a &#39;logically contiguous, physically discrete&#39; KV cache storage structure. Integrates algorithmic optimizations such as optimized speculative decoding, dynamic Expert Parallel Load Balance (EPLB), and hierarchical Data Parallel (DP) load balance. Provides scenario-specific optimizations for generative recommendation.&quot;,&quot;name&quot;:&quot;xLLM-Engine&quot;,&quot;role&quot;:&quot;Drives efficient inference execution through comprehensive system- and algorithm-level optimizations to fully saturate computing resources at the engine layer.&quot;},{&quot;details&quot;:&quot;Consists of a TTFT Predictor for text requests and an EPD Profiler for multimodal requests. These modules guide instance allocation for dynamic PD disaggregation and determine optimal EPD strategies.&quot;,&quot;name&quot;:&quot;Preprocessing Layer&quot;,&quot;role&quot;:&quot;Pre-processes incoming requests to provide information for intelligent scheduling decisions.&quot;},{&quot;details&quot;:&quot;Manages three elastic instance pools (Prefill, Decode, Encode) and enables fast, dynamic switching of instance roles without physical migration, treating prefill/decode as request attributes. Includes Global Request Scheduler and Local Request Scheduler for SLO-aware request scheduling.&quot;,&quot;name&quot;:&quot;Intelligent Scheduling Layer&quot;,&quot;role&quot;:&quot;Adjusts resource allocation for requests across their full lifecycles based on various scheduling policies and real-time performance.&quot;}]},&quot;thesis&quot;:&quot;xLLM is an intelligent and efficient Large Language Model (LLM) inference framework designed for high-performance, large-scale enterprise-grade serving, with deep optimizations for diverse AI accelerators, addressing challenges in hybrid/dynamic workloads, strict demand for high availability, distributed storage management, and underutilized AI accelerators through a novel decoupled service-engine architecture and comprehensive optimizations.&quot;,&quot;title&quot;:&quot;xLLM Technical Report&quot;,&quot;url&quot;:&quot;https://arxiv.org/pdf/2510.14686&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>
