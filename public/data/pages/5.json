@@ -62,6 +62,17 @@
       ]
     },
     {
+      "paperId": "2511.10643",
+      "title": "Black-Box On-Policy Distillation of Large Language Models",
+      "authors": "Tianzhu Ye, Li Dong, Zewen Chi, Xun Wu, Shaohan Huang, Furu Wei",
+      "publishedDate": "2025-11-01",
+      "tags": [
+        "Pretraining",
+        "RL",
+        "QA"
+      ]
+    },
+    {
       "paperId": "2510.14686",
       "title": "xLLM Technical Report",
       "authors": "Tongxuan Liu, Tao Peng, Peijun Yang, Xiaoyang Zhao, Xiusheng Lu, Weizhe Huang, Zirui Liu, Xiaoyu Chen, Zhiwei Liang, Jun Xiong, Donghe Jin, Minchao Zhang, Jinrong Guo, Yingxu Deng, Xu Zhang, Xianzhe Dong, Siqi Wang, Siyu Wu, Yu Wu, Zihan Tang, Yuting Zeng, Yanshu Wang, Jinguang Liu, Meng Kang, Menxin Li, Yunlong Wang, Yiming Liu, Xiaolong Ma, Yifan Wang, Yichen Zhang, Jinrun Yin, Keyang Zheng, Jiawei Yin, Jun Zhang, Ziyue Wang, Xiaobo Lin, Liangyu Liu, Liwei Lan, Yang Liu, Chunhua Peng, Han Liu, Songcheng Ren, Xuezhu Wang, Yunheng Shen, Yi Wang, Guyue Liu, Yitao Hu, Hui Chen, Tong Yang, Hailong Yang, Jing Li, Guiguang Ding, Ke Zhang",
@@ -104,17 +115,6 @@
       "tags": [
         "Rec",
         "Reasoning",
-        "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2403.00417",
-      "title": "Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models",
-      "authors": "Jinbiao Yang",
-      "publishedDate": "2024-03-01",
-      "tags": [
-        "Pretraining",
-        "Memory",
         "Benchmark"
       ]
     }

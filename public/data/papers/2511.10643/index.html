@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Black-Box On-Policy Distillation of Large Language Models</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Black-Box On-Policy Distillation of Large Language Models</h1>
+      <p class="meta"><strong>Authors:</strong> Tianzhu Ye, Li Dong, Zewen Chi, Xun Wu, Shaohan Huang, Furu Wei</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/pdf/2511.10643" target="_blank" rel="noopener noreferrer">https://arxiv.org/pdf/2511.10643</a></p>
+      <p class="muted">Generated summary artifact for 2511.10643</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Generative Adversarial Distillation (GAD), a framework that frames the student LLM as a generator and trains a discriminator to distinguish its responses from the teacher, enables effective on-policy and black-box distillation of large language models, consistently outperforming sequence-level knowledge distillation and achieving strong generalization.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Black-box distillation trains a student model using only the textual outputs of a teacher, without access to its internal logits or parameters. The absence of fine-grained probability supervision makes conventional likelihood-based objectives unavailable, and on-policy learning without explicit feedback on the quality of student generations is infeasible.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>Introducing Generative Adversarial Distillation (GAD), a novel framework for black-box LLM distillation that enables on-policy learning without access to teacher logits or internal states by employing a generator-discriminator minimax game.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>GAD consistently surpasses SeqKD and instruction models without distillation across various LLM sizes and datasets (GPT-4o scores).</li><li>Qwen2.5-14B-Instruct distilled with GAD achieves performance comparable to the proprietary GPT-5-Chat teacher on the LMSYS-Chat benchmark.</li><li>GAD demonstrates strong improvements in out-of-distribution generalization, where SeqKD often performs poorly, sometimes yielding negative gains.</li><li>Human evaluations validate GAD&#39;s superiority with high win rates (exceeding 50%) and low loss rates (below 30%) against baselines.</li><li>Ablation studies confirm the importance of warmup strategies, Bradley-Terry loss, and balanced generator-discriminator sizes for optimal performance, and GAD&#39;s resistance to reward hacking.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>GAD consistently outperforms the instruct model before distillation and the SeqKD baseline across all datasets and model variants in automatic evaluation (GPT-4o scores).</li><li>GAD shows particularly strong gains in out-of-distribution generalization compared to SeqKD, which often yields marginal or negative improvements.</li><li>On GPT-4o score, Qwen2.5-14B-Instruct distilled with GAD approaches the capability of the GPT-5 teacher itself.</li><li>Human evaluations confirm GAD&#39;s superiority, achieving win rates exceeding 50% and loss rates below 30% against baselines.</li><li>SeqKD tends to overfit to local patterns, while GAD captures global stylistic characteristics and learns reachable modes, leading to better generalization.</li><li>The on-policy discriminator in GAD is stable and robust against reward hacking over thousands of training steps, unlike off-policy discriminators.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Not specified</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 109,
+      &quot;xmin&quot;: 195,
+      &quot;ymax&quot;: 228,
+      &quot;xmax&quot;: 814
+    },
+    &quot;caption&quot;: &quot;Training procedure of GAD. The student (generator) learns to generate responses that maximize the score assigned by the discriminator. The discriminator is trained with Bradley-Terry loss to assign a lower score to the student than the teacher, learning to distinguish between them. Together, they form a two-player minimax game in an adversarial learning framework.&quot;,
+    &quot;figureNumber&quot;: 2,
+    &quot;pageIndex&quot;: 2
+  },
+  &quot;authors&quot;: &quot;Tianzhu Ye, Li Dong, Zewen Chi, Xun Wu, Shaohan Huang, Furu Wei&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper presents GAD, a novel and effective framework for black-box LLM distillation that addresses key challenges of on-policy learning without access to teacher logits. By framing distillation as a minimax game with an adaptive discriminator, GAD overcomes the limitations of prior black-box and on-policy methods, demonstrating robust performance, superior generalization, and resistance to reward hacking. The approach significantly advances the state-of-the-art for black-box distillation, especially for proprietary models.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;When a proprietary API model (e.g., GPT-5) serves as the teacher, its internal states or logit distributions are inaccessible, making white-box distillation methods unfeasible. Extending on-policy learning to this black-box setting is challenging due to the lack of probability-level supervision signals for student-generated responses.&quot;,
+    &quot;statement&quot;: &quot;Black-box distillation trains a student model using only the textual outputs of a teacher, without access to its internal logits or parameters. The absence of fine-grained probability supervision makes conventional likelihood-based objectives unavailable, and on-policy learning without explicit feedback on the quality of student generations is infeasible.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;Enables creation of smaller, more efficient student models from larger, resource-intensive proprietary teacher models without internal access.&quot;,
+      &quot;Overcomes the limitations of white-box distillation methods when teacher models are proprietary APIs or closed-source.&quot;,
+      &quot;Facilitates on-policy learning, which promotes mode-seeking behavior and reduces exposure bias, in the challenging black-box setting.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;GAD consistently surpasses SeqKD and instruction models without distillation across various LLM sizes and datasets (GPT-4o scores).&quot;,
+    &quot;Qwen2.5-14B-Instruct distilled with GAD achieves performance comparable to the proprietary GPT-5-Chat teacher on the LMSYS-Chat benchmark.&quot;,
+    &quot;GAD demonstrates strong improvements in out-of-distribution generalization, where SeqKD often performs poorly, sometimes yielding negative gains.&quot;,
+    &quot;Human evaluations validate GAD&#39;s superiority with high win rates (exceeding 50%) and low loss rates (below 30%) against baselines.&quot;,
+    &quot;Ablation studies confirm the importance of warmup strategies, Bradley-Terry loss, and balanced generator-discriminator sizes for optimal performance, and GAD&#39;s resistance to reward hacking.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;LMSYS-Chat-1M-Clean&quot;,
+        &quot;Dolly&quot;,
+        &quot;SelfInst&quot;,
+        &quot;Vicuna&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;GPT-4o score&quot;,
+        &quot;Human Evaluation Win Rate&quot;
+      ],
+      &quot;setting&quot;: &quot;Black-box LLM distillation&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 635,
+          &quot;xmin&quot;: 208,
+          &quot;ymax&quot;: 785,
+          &quot;xmax&quot;: 493
+        },
+        &quot;caption&quot;: &quot;Comparison between GAD and sequence-level knowledge distillation (SeqKD; KR16) trained on LMSYS-Chat [ZCS + 24] dataset, evaluated by averaged GPT-4o scores. Left: Results on the LMSYS-Chat test set.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 0
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 635,
+          &quot;xmin&quot;: 509,
+          &quot;ymax&quot;: 785,
+          &quot;xmax&quot;: 794
+        },
+        &quot;caption&quot;: &quot;Comparison between GAD and sequence-level knowledge distillation (SeqKD; KR16) trained on LMSYS-Chat [ZCS + 24] dataset, evaluated by averaged GPT-4o scores. Right: Average performance across Dolly [Dat23], SelfInst [WKM + 23], and Vicuna [CLL + 23] datasets.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 0
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 452,
+          &quot;xmin&quot;: 136,
+          &quot;ymax&quot;: 632,
+          &quot;xmax&quot;: 864
+        },
+        &quot;caption&quot;: &quot;Human evaluation results on the LMSYS-Chat-1M-Clean test set. We compare GAD to the instruct model before distillation and the model fine-tuned with SeqKD.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 6
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 69,
+          &quot;xmin&quot;: 209,
+          &quot;ymax&quot;: 336,
+          &quot;xmax&quot;: 493
+        },
+        &quot;caption&quot;: &quot;Overlap of local patterns between the student and the teacher. SeqKD tends to overfit to local patterns of the teacher.&quot;,
+        &quot;figureNumber&quot;: 4,
+        &quot;pageIndex&quot;: 7
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 69,
+          &quot;xmin&quot;: 509,
+          &quot;ymax&quot;: 336,
+          &quot;xmax&quot;: 794
+        },
+        &quot;caption&quot;: &quot;Black-box distillation on toy data. GAD learns reachable modes from the teacher while SeqKD aims to cover all the modes.&quot;,
+        &quot;figureNumber&quot;: 5,
+        &quot;pageIndex&quot;: 7
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 735,
+          &quot;xmin&quot;: 610,
+          &quot;ymax&quot;: 867,
+          &quot;xmax&quot;: 794
+        },
+        &quot;caption&quot;: &quot;Off-policy discriminator suffers from reward hacking, whereas on-policy discriminator remains stable over thousands of training steps.&quot;,
+        &quot;figureNumber&quot;: 6,
+        &quot;pageIndex&quot;: 7
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;47.5&quot;,
+            &quot;benchmark&quot;: &quot;Qwen2.5-3B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+1.4&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score&quot;,
+            &quot;thisPaper&quot;: &quot;48.9&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;49.2&quot;,
+            &quot;benchmark&quot;: &quot;Qwen2.5-7B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+1.6&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score&quot;,
+            &quot;thisPaper&quot;: &quot;50.8&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.6&quot;,
+            &quot;benchmark&quot;: &quot;Qwen2.5-14B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+1.5&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score&quot;,
+            &quot;thisPaper&quot;: &quot;52.1&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;47.6&quot;,
+            &quot;benchmark&quot;: &quot;Llama-3.2-3B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+0.5&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score&quot;,
+            &quot;thisPaper&quot;: &quot;48.1&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;49.7&quot;,
+            &quot;benchmark&quot;: &quot;Llama-3.1-8B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+0.6&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score&quot;,
+            &quot;thisPaper&quot;: &quot;50.3&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Automatic Evaluation on LMSYS-Chat&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;46.16&quot;,
+            &quot;benchmark&quot;: &quot;Qwen2.5-3B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+1.77&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,
+            &quot;thisPaper&quot;: &quot;47.93&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;48.33&quot;,
+            &quot;benchmark&quot;: &quot;Qwen2.5-7B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+1.67&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,
+            &quot;thisPaper&quot;: &quot;50.0&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;49.1&quot;,
+            &quot;benchmark&quot;: &quot;Qwen2.5-14B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+1.93&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,
+            &quot;thisPaper&quot;: &quot;51.03&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;47.4&quot;,
+            &quot;benchmark&quot;: &quot;Llama-3.2-3B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+1.43&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,
+            &quot;thisPaper&quot;: &quot;48.83&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;48.37&quot;,
+            &quot;benchmark&quot;: &quot;Llama-3.1-8B-Instruct&quot;,
+            &quot;delta&quot;: &quot;+1.13&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,
+            &quot;thisPaper&quot;: &quot;49.5&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Automatic Evaluation on Out-of-Distribution Datasets&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Qwen2.5-7B-Instruct vs. SeqKD&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GAD Win Rate&quot;,
+            &quot;thisPaper&quot;: &quot;68% wins&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Qwen2.5-14B-Instruct vs. SeqKD&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GAD Win Rate&quot;,
+            &quot;thisPaper&quot;: &quot;56% wins&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;N/A&quot;,
+            &quot;benchmark&quot;: &quot;Llama-3.1-8B-Instruct vs. SeqKD&quot;,
+            &quot;delta&quot;: &quot;N/A&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;GAD Win Rate&quot;,
+            &quot;thisPaper&quot;: &quot;60% wins&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Human Evaluation Win Rate on LMSYS-Chat&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;GAD consistently outperforms the instruct model before distillation and the SeqKD baseline across all datasets and model variants in automatic evaluation (GPT-4o scores).&quot;,
+      &quot;GAD shows particularly strong gains in out-of-distribution generalization compared to SeqKD, which often yields marginal or negative improvements.&quot;,
+      &quot;On GPT-4o score, Qwen2.5-14B-Instruct distilled with GAD approaches the capability of the GPT-5 teacher itself.&quot;,
+      &quot;Human evaluations confirm GAD&#39;s superiority, achieving win rates exceeding 50% and loss rates below 30% against baselines.&quot;,
+      &quot;SeqKD tends to overfit to local patterns, while GAD captures global stylistic characteristics and learns reachable modes, leading to better generalization.&quot;,
+      &quot;The on-policy discriminator in GAD is stable and robust against reward hacking over thousands of training steps, unlike off-policy discriminators.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Microsoft Research&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;GAD frames the student LLM as a generator and trains a discriminator to distinguish its responses from the teacher LLM&#39;s, establishing a minimax game for black-box distillation.&quot;,
+      &quot;The discriminator acts as an on-policy reward model that continually updates and co-evolves with the student, providing stable and adaptive feedback, which differs from fixed reward models in conventional RLHF.&quot;,
+      &quot;This adversarial process provides implicit feedback on the quality of student generations without needing access to the teacher&#39;s internal probability space, addressing a major challenge in black-box on-policy learning.&quot;,
+      &quot;The framework demonstrates robustness against reward hacking, a common issue observed in off-policy discriminator approaches for distillation.&quot;
+    ],
+    &quot;main&quot;: &quot;Introducing Generative Adversarial Distillation (GAD), a novel framework for black-box LLM distillation that enables on-policy learning without access to teacher logits or internal states by employing a generator-discriminator minimax game.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;A technique to transfer capabilities from a larger, resource-intensive teacher model to a smaller, more efficient student model.&quot;,
+        &quot;term&quot;: &quot;Knowledge Distillation (KD)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A setting where the student model only has access to the teacher&#39;s text outputs, without access to internal logits or parameters.&quot;,
+        &quot;term&quot;: &quot;Black-box Distillation&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;Learning where the student learns from its own generated responses rather than solely imitating the teacher&#39;s outputs.&quot;,
+        &quot;term&quot;: &quot;On-policy Learning&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A framework where a generator and a discriminator compete in a minimax game to produce realistic data.&quot;,
+        &quot;term&quot;: &quot;Generative Adversarial Networks (GANs)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A probabilistic model for paired comparisons, used here to capture pairwise preferences between teacher and student responses for discriminator training.&quot;,
+        &quot;term&quot;: &quot;Bradley-Terry Model&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A common black-box distillation method that performs supervised fine-tuning (SFT) on teacher responses.&quot;,
+        &quot;term&quot;: &quot;Sequence-level Knowledge Distillation (SeqKD)&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A phenomenon in reinforcement learning where an agent exploits flaws in the reward function to achieve high scores without actually performing the desired task.&quot;,
+        &quot;term&quot;: &quot;Reward Hacking&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Reinforcement Learning (RL)&quot;,
+      &quot;Policy Gradient Algorithms (e.g., GRPO)&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Knowledge Distillation&quot;,
+    &quot;Reinforcement Learning&quot;,
+    &quot;Generative Adversarial Networks&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;RL&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Traditional white-box distillation methods (e.g., KLD, inner state matching) are inapplicable in the black-box setting due to lack of access to teacher internal states or logits.&quot;,
+      &quot;Standard black-box distillation methods like Sequence-level Knowledge Distillation (SeqKD) perform supervised fine-tuning on teacher responses, which tends to memorize local lexical patterns and can overfit, leading to poor generalization.&quot;,
+      &quot;Unlike conventional RLHF which trains a fixed reward model on a static dataset, GAD&#39;s discriminator acts as an on-policy reward model that continually updates and co-evolves with the student, providing adaptive feedback.&quot;,
+      &quot;GAD&#39;s on-policy discriminator is robust against reward hacking, a common issue where off-policy discriminators can lead to agents exploiting flaws (e.g., producing excessively long responses).&quot;,
+      &quot;GAD enables effective on-policy learning in the black-box setting, a challenge prior on-policy distillation methods faced due to the requirement for probability-level supervision.&quot;
+    ],
+    &quot;limitations&quot;: [],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Minimax Objective&quot;,
+        &quot;value&quot;: &quot;$\\max_G \\min_D V(G, D) = E_{(x,y_t) \\sim T} [-\\log \\sigma (D(y_t) - D(G(x)))]$ where $\\sigma(\\cdot)$ is the sigmoid function.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Generator Objective&quot;,
+        &quot;value&quot;: &quot;$(Generator) \\max_G E_{(x,y_t) \\sim T} [D(G(x))]$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Discriminator Objective&quot;,
+        &quot;value&quot;: &quot;$(Discriminator) \\min_D E_{(x,y_t) \\sim T} [-\\log \\sigma (D(y_t) - D(G(x)))]$ using Bradley-Terry loss.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Discriminator Cross-Entropy Loss (Ablation)&quot;,
+        &quot;value&quot;: &quot;$\\min_D E_{(x,y_t) \\sim T} [-\\log \\sigma (D(y_t)) - \\log (1 - \\sigma (D(G(x))))]$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Advantage Function for GRPO&quot;,
+        &quot;value&quot;: &quot;$A^i = \\frac{r^i_s - \\text{mean}(\\{r^j_s\\}^N_{j=1})}{\\text{std}(\\{r^j_s\\}^N_{j=1})}$ where $r^i_s = D(y^i_s)$.&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;The student LLM is framed as a generator G, which produces responses $G(x)$ for a given prompt $x$.&quot;,
+      &quot;A discriminator D is trained to distinguish between teacher responses $y_t$ and student responses $G(x)$.&quot;,
+      &quot;The generator G is optimized to produce responses that the discriminator cannot distinguish from those of the teacher, forming a two-player minimax game.&quot;,
+      &quot;The discriminator acts as an on-policy reward model, continually adapting to the student&#39;s behavior during training.&quot;,
+      &quot;A warmup stage is performed where both generator and discriminator are pre-trained for one epoch using cross-entropy loss (for generator) and Bradley-Terry loss (for discriminator) on teacher responses.&quot;,
+      &quot;During the GAD training stage, the generator is updated using $D(G(x))$ as a reward signal via reinforcement learning (GRPO), and the discriminator is updated with Bradley-Terry loss to distinguish teacher responses $y_t$ from student responses $G(x)$.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Teacher Distribution&quot;,
+        &quot;value&quot;: &quot;A teacher model $p(y|x)$ generates responses $y_t$ conditioned on a prompt $x$. In black-box distillation, only $y_t$ is observable, not $p(y|x)$.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Student Model&quot;,
+        &quot;value&quot;: &quot;A student model $q_{\\theta}(y|x)$ parameterized by $\\theta$ aims to approximate the teacher&#39;s generative behavior.&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Black-box Setting&quot;,
+        &quot;value&quot;: &quot;The student has no access to the teacher&#39;s internal probability distribution or hidden states, only text outputs.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;Code and project page are available at aka.ms/GAD-project and aka.ms/GAD-github. Training details, including batch size, optimization steps, PPO mini-batch size, context length, and temperature are provided. Evaluation protocols and GPT-4o prompting are detailed.&quot;,
+    &quot;systemModules&quot;: [
+      {
+        &quot;details&quot;: &quot;Generates responses $G(x)$ to prompts $x$. Optimized via policy gradient (GRPO) to maximize rewards provided by the discriminator.&quot;,
+        &quot;name&quot;: &quot;Generator (Student LLM)&quot;,
+        &quot;role&quot;: &quot;Student model that learns to imitate the teacher.&quot;
+      },
+      {
+        &quot;details&quot;: &quot;Assesses the quality of student and teacher responses, distinguishing between them. Predicts a sequence-level scalar score $D([x,y])$. Trained with Bradley-Terry loss to assign higher scores to teacher responses ($D(y_t)$) than student responses ($D(G(x))$), co-evolving with the student.&quot;,
+        &quot;name&quot;: &quot;Discriminator&quot;,
+        &quot;role&quot;: &quot;Provides implicit, on-policy reward signal to guide student optimization.&quot;
+      }
+    ]
+  },
+  &quot;thesis&quot;: &quot;Generative Adversarial Distillation (GAD), a framework that frames the student LLM as a generator and trains a discriminator to distinguish its responses from the teacher, enables effective on-policy and black-box distillation of large language models, consistently outperforming sequence-level knowledge distillation and achieving strong generalization.&quot;,
+  &quot;title&quot;: &quot;Black-Box On-Policy Distillation of Large Language Models&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/pdf/2511.10643&quot;,
+  &quot;venue&quot;: &quot;N/A&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2511.10643&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/pdf/2511.10643&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:109,&quot;xmin&quot;:195,&quot;ymax&quot;:228,&quot;xmax&quot;:814},&quot;caption&quot;:&quot;Training procedure of GAD. The student (generator) learns to generate responses that maximize the score assigned by the discriminator. The discriminator is trained with Bradley-Terry loss to assign a lower score to the student than the teacher, learning to distinguish between them. Together, they form a two-player minimax game in an adversarial learning framework.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:2},&quot;authors&quot;:&quot;Tianzhu Ye, Li Dong, Zewen Chi, Xun Wu, Shaohan Huang, Furu Wei&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper presents GAD, a novel and effective framework for black-box LLM distillation that addresses key challenges of on-policy learning without access to teacher logits. By framing distillation as a minimax game with an adaptive discriminator, GAD overcomes the limitations of prior black-box and on-policy methods, demonstrating robust performance, superior generalization, and resistance to reward hacking. The approach significantly advances the state-of-the-art for black-box distillation, especially for proprietary models.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;When a proprietary API model (e.g., GPT-5) serves as the teacher, its internal states or logit distributions are inaccessible, making white-box distillation methods unfeasible. Extending on-policy learning to this black-box setting is challenging due to the lack of probability-level supervision signals for student-generated responses.&quot;,&quot;statement&quot;:&quot;Black-box distillation trains a student model using only the textual outputs of a teacher, without access to its internal logits or parameters. The absence of fine-grained probability supervision makes conventional likelihood-based objectives unavailable, and on-policy learning without explicit feedback on the quality of student generations is infeasible.&quot;,&quot;whyItMatters&quot;:[&quot;Enables creation of smaller, more efficient student models from larger, resource-intensive proprietary teacher models without internal access.&quot;,&quot;Overcomes the limitations of white-box distillation methods when teacher models are proprietary APIs or closed-source.&quot;,&quot;Facilitates on-policy learning, which promotes mode-seeking behavior and reduces exposure bias, in the challenging black-box setting.&quot;]},&quot;evaluationHighlights&quot;:[&quot;GAD consistently surpasses SeqKD and instruction models without distillation across various LLM sizes and datasets (GPT-4o scores).&quot;,&quot;Qwen2.5-14B-Instruct distilled with GAD achieves performance comparable to the proprietary GPT-5-Chat teacher on the LMSYS-Chat benchmark.&quot;,&quot;GAD demonstrates strong improvements in out-of-distribution generalization, where SeqKD often performs poorly, sometimes yielding negative gains.&quot;,&quot;Human evaluations validate GAD&#39;s superiority with high win rates (exceeding 50%) and low loss rates (below 30%) against baselines.&quot;,&quot;Ablation studies confirm the importance of warmup strategies, Bradley-Terry loss, and balanced generator-discriminator sizes for optimal performance, and GAD&#39;s resistance to reward hacking.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;LMSYS-Chat-1M-Clean&quot;,&quot;Dolly&quot;,&quot;SelfInst&quot;,&quot;Vicuna&quot;],&quot;metrics&quot;:[&quot;GPT-4o score&quot;,&quot;Human Evaluation Win Rate&quot;],&quot;setting&quot;:&quot;Black-box LLM distillation&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:635,&quot;xmin&quot;:208,&quot;ymax&quot;:785,&quot;xmax&quot;:493},&quot;caption&quot;:&quot;Comparison between GAD and sequence-level knowledge distillation (SeqKD; KR16) trained on LMSYS-Chat [ZCS + 24] dataset, evaluated by averaged GPT-4o scores. Left: Results on the LMSYS-Chat test set.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:0},{&quot;boundingBox&quot;:{&quot;ymin&quot;:635,&quot;xmin&quot;:509,&quot;ymax&quot;:785,&quot;xmax&quot;:794},&quot;caption&quot;:&quot;Comparison between GAD and sequence-level knowledge distillation (SeqKD; KR16) trained on LMSYS-Chat [ZCS + 24] dataset, evaluated by averaged GPT-4o scores. Right: Average performance across Dolly [Dat23], SelfInst [WKM + 23], and Vicuna [CLL + 23] datasets.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:0},{&quot;boundingBox&quot;:{&quot;ymin&quot;:452,&quot;xmin&quot;:136,&quot;ymax&quot;:632,&quot;xmax&quot;:864},&quot;caption&quot;:&quot;Human evaluation results on the LMSYS-Chat-1M-Clean test set. We compare GAD to the instruct model before distillation and the model fine-tuned with SeqKD.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:6},{&quot;boundingBox&quot;:{&quot;ymin&quot;:69,&quot;xmin&quot;:209,&quot;ymax&quot;:336,&quot;xmax&quot;:493},&quot;caption&quot;:&quot;Overlap of local patterns between the student and the teacher. SeqKD tends to overfit to local patterns of the teacher.&quot;,&quot;figureNumber&quot;:4,&quot;pageIndex&quot;:7},{&quot;boundingBox&quot;:{&quot;ymin&quot;:69,&quot;xmin&quot;:509,&quot;ymax&quot;:336,&quot;xmax&quot;:794},&quot;caption&quot;:&quot;Black-box distillation on toy data. GAD learns reachable modes from the teacher while SeqKD aims to cover all the modes.&quot;,&quot;figureNumber&quot;:5,&quot;pageIndex&quot;:7},{&quot;boundingBox&quot;:{&quot;ymin&quot;:735,&quot;xmin&quot;:610,&quot;ymax&quot;:867,&quot;xmax&quot;:794},&quot;caption&quot;:&quot;Off-policy discriminator suffers from reward hacking, whereas on-policy discriminator remains stable over thousands of training steps.&quot;,&quot;figureNumber&quot;:6,&quot;pageIndex&quot;:7}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;47.5&quot;,&quot;benchmark&quot;:&quot;Qwen2.5-3B-Instruct&quot;,&quot;delta&quot;:&quot;+1.4&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score&quot;,&quot;thisPaper&quot;:&quot;48.9&quot;},{&quot;baseline&quot;:&quot;49.2&quot;,&quot;benchmark&quot;:&quot;Qwen2.5-7B-Instruct&quot;,&quot;delta&quot;:&quot;+1.6&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score&quot;,&quot;thisPaper&quot;:&quot;50.8&quot;},{&quot;baseline&quot;:&quot;50.6&quot;,&quot;benchmark&quot;:&quot;Qwen2.5-14B-Instruct&quot;,&quot;delta&quot;:&quot;+1.5&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score&quot;,&quot;thisPaper&quot;:&quot;52.1&quot;},{&quot;baseline&quot;:&quot;47.6&quot;,&quot;benchmark&quot;:&quot;Llama-3.2-3B-Instruct&quot;,&quot;delta&quot;:&quot;+0.5&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score&quot;,&quot;thisPaper&quot;:&quot;48.1&quot;},{&quot;baseline&quot;:&quot;49.7&quot;,&quot;benchmark&quot;:&quot;Llama-3.1-8B-Instruct&quot;,&quot;delta&quot;:&quot;+0.6&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score&quot;,&quot;thisPaper&quot;:&quot;50.3&quot;}],&quot;title&quot;:&quot;Automatic Evaluation on LMSYS-Chat&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;46.16&quot;,&quot;benchmark&quot;:&quot;Qwen2.5-3B-Instruct&quot;,&quot;delta&quot;:&quot;+1.77&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,&quot;thisPaper&quot;:&quot;47.93&quot;},{&quot;baseline&quot;:&quot;48.33&quot;,&quot;benchmark&quot;:&quot;Qwen2.5-7B-Instruct&quot;,&quot;delta&quot;:&quot;+1.67&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,&quot;thisPaper&quot;:&quot;50.0&quot;},{&quot;baseline&quot;:&quot;49.1&quot;,&quot;benchmark&quot;:&quot;Qwen2.5-14B-Instruct&quot;,&quot;delta&quot;:&quot;+1.93&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,&quot;thisPaper&quot;:&quot;51.03&quot;},{&quot;baseline&quot;:&quot;47.4&quot;,&quot;benchmark&quot;:&quot;Llama-3.2-3B-Instruct&quot;,&quot;delta&quot;:&quot;+1.43&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,&quot;thisPaper&quot;:&quot;48.83&quot;},{&quot;baseline&quot;:&quot;48.37&quot;,&quot;benchmark&quot;:&quot;Llama-3.1-8B-Instruct&quot;,&quot;delta&quot;:&quot;+1.13&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GPT-4o score (Avg. Dolly, SelfInst, Vicuna)&quot;,&quot;thisPaper&quot;:&quot;49.5&quot;}],&quot;title&quot;:&quot;Automatic Evaluation on Out-of-Distribution Datasets&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Qwen2.5-7B-Instruct vs. SeqKD&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GAD Win Rate&quot;,&quot;thisPaper&quot;:&quot;68% wins&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Qwen2.5-14B-Instruct vs. SeqKD&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GAD Win Rate&quot;,&quot;thisPaper&quot;:&quot;56% wins&quot;},{&quot;baseline&quot;:&quot;N/A&quot;,&quot;benchmark&quot;:&quot;Llama-3.1-8B-Instruct vs. SeqKD&quot;,&quot;delta&quot;:&quot;N/A&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;GAD Win Rate&quot;,&quot;thisPaper&quot;:&quot;60% wins&quot;}],&quot;title&quot;:&quot;Human Evaluation Win Rate on LMSYS-Chat&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;GAD consistently outperforms the instruct model before distillation and the SeqKD baseline across all datasets and model variants in automatic evaluation (GPT-4o scores).&quot;,&quot;GAD shows particularly strong gains in out-of-distribution generalization compared to SeqKD, which often yields marginal or negative improvements.&quot;,&quot;On GPT-4o score, Qwen2.5-14B-Instruct distilled with GAD approaches the capability of the GPT-5 teacher itself.&quot;,&quot;Human evaluations confirm GAD&#39;s superiority, achieving win rates exceeding 50% and loss rates below 30% against baselines.&quot;,&quot;SeqKD tends to overfit to local patterns, while GAD captures global stylistic characteristics and learns reachable modes, leading to better generalization.&quot;,&quot;The on-policy discriminator in GAD is stable and robust against reward hacking over thousands of training steps, unlike off-policy discriminators.&quot;]},&quot;institutions&quot;:&quot;Microsoft Research&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;GAD frames the student LLM as a generator and trains a discriminator to distinguish its responses from the teacher LLM&#39;s, establishing a minimax game for black-box distillation.&quot;,&quot;The discriminator acts as an on-policy reward model that continually updates and co-evolves with the student, providing stable and adaptive feedback, which differs from fixed reward models in conventional RLHF.&quot;,&quot;This adversarial process provides implicit feedback on the quality of student generations without needing access to the teacher&#39;s internal probability space, addressing a major challenge in black-box on-policy learning.&quot;,&quot;The framework demonstrates robustness against reward hacking, a common issue observed in off-policy discriminator approaches for distillation.&quot;],&quot;main&quot;:&quot;Introducing Generative Adversarial Distillation (GAD), a novel framework for black-box LLM distillation that enables on-policy learning without access to teacher logits or internal states by employing a generator-discriminator minimax game.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;A technique to transfer capabilities from a larger, resource-intensive teacher model to a smaller, more efficient student model.&quot;,&quot;term&quot;:&quot;Knowledge Distillation (KD)&quot;},{&quot;definition&quot;:&quot;A setting where the student model only has access to the teacher&#39;s text outputs, without access to internal logits or parameters.&quot;,&quot;term&quot;:&quot;Black-box Distillation&quot;},{&quot;definition&quot;:&quot;Learning where the student learns from its own generated responses rather than solely imitating the teacher&#39;s outputs.&quot;,&quot;term&quot;:&quot;On-policy Learning&quot;},{&quot;definition&quot;:&quot;A framework where a generator and a discriminator compete in a minimax game to produce realistic data.&quot;,&quot;term&quot;:&quot;Generative Adversarial Networks (GANs)&quot;},{&quot;definition&quot;:&quot;A probabilistic model for paired comparisons, used here to capture pairwise preferences between teacher and student responses for discriminator training.&quot;,&quot;term&quot;:&quot;Bradley-Terry Model&quot;},{&quot;definition&quot;:&quot;A common black-box distillation method that performs supervised fine-tuning (SFT) on teacher responses.&quot;,&quot;term&quot;:&quot;Sequence-level Knowledge Distillation (SeqKD)&quot;},{&quot;definition&quot;:&quot;A phenomenon in reinforcement learning where an agent exploits flaws in the reward function to achieve high scores without actually performing the desired task.&quot;,&quot;term&quot;:&quot;Reward Hacking&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Reinforcement Learning (RL)&quot;,&quot;Policy Gradient Algorithms (e.g., GRPO)&quot;]},&quot;subTopics&quot;:[&quot;Knowledge Distillation&quot;,&quot;Reinforcement Learning&quot;,&quot;Generative Adversarial Networks&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;RL&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Traditional white-box distillation methods (e.g., KLD, inner state matching) are inapplicable in the black-box setting due to lack of access to teacher internal states or logits.&quot;,&quot;Standard black-box distillation methods like Sequence-level Knowledge Distillation (SeqKD) perform supervised fine-tuning on teacher responses, which tends to memorize local lexical patterns and can overfit, leading to poor generalization.&quot;,&quot;Unlike conventional RLHF which trains a fixed reward model on a static dataset, GAD&#39;s discriminator acts as an on-policy reward model that continually updates and co-evolves with the student, providing adaptive feedback.&quot;,&quot;GAD&#39;s on-policy discriminator is robust against reward hacking, a common issue where off-policy discriminators can lead to agents exploiting flaws (e.g., producing excessively long responses).&quot;,&quot;GAD enables effective on-policy learning in the black-box setting, a challenge prior on-policy distillation methods faced due to the requirement for probability-level supervision.&quot;],&quot;limitations&quot;:[],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Minimax Objective&quot;,&quot;value&quot;:&quot;$\\max_G \\min_D V(G, D) = E_{(x,y_t) \\sim T} [-\\log \\sigma (D(y_t) - D(G(x)))]$ where $\\sigma(\\cdot)$ is the sigmoid function.&quot;},{&quot;label&quot;:&quot;Generator Objective&quot;,&quot;value&quot;:&quot;$(Generator) \\max_G E_{(x,y_t) \\sim T} [D(G(x))]$&quot;},{&quot;label&quot;:&quot;Discriminator Objective&quot;,&quot;value&quot;:&quot;$(Discriminator) \\min_D E_{(x,y_t) \\sim T} [-\\log \\sigma (D(y_t) - D(G(x)))]$ using Bradley-Terry loss.&quot;},{&quot;label&quot;:&quot;Discriminator Cross-Entropy Loss (Ablation)&quot;,&quot;value&quot;:&quot;$\\min_D E_{(x,y_t) \\sim T} [-\\log \\sigma (D(y_t)) - \\log (1 - \\sigma (D(G(x))))]$&quot;},{&quot;label&quot;:&quot;Advantage Function for GRPO&quot;,&quot;value&quot;:&quot;$A^i = \\frac{r^i_s - \\text{mean}(\\{r^j_s\\}^N_{j=1})}{\\text{std}(\\{r^j_s\\}^N_{j=1})}$ where $r^i_s = D(y^i_s)$.&quot;}],&quot;pipelineFlow&quot;:[&quot;The student LLM is framed as a generator G, which produces responses $G(x)$ for a given prompt $x$.&quot;,&quot;A discriminator D is trained to distinguish between teacher responses $y_t$ and student responses $G(x)$.&quot;,&quot;The generator G is optimized to produce responses that the discriminator cannot distinguish from those of the teacher, forming a two-player minimax game.&quot;,&quot;The discriminator acts as an on-policy reward model, continually adapting to the student&#39;s behavior during training.&quot;,&quot;A warmup stage is performed where both generator and discriminator are pre-trained for one epoch using cross-entropy loss (for generator) and Bradley-Terry loss (for discriminator) on teacher responses.&quot;,&quot;During the GAD training stage, the generator is updated using $D(G(x))$ as a reward signal via reinforcement learning (GRPO), and the discriminator is updated with Bradley-Terry loss to distinguish teacher responses $y_t$ from student responses $G(x)$.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Teacher Distribution&quot;,&quot;value&quot;:&quot;A teacher model $p(y|x)$ generates responses $y_t$ conditioned on a prompt $x$. In black-box distillation, only $y_t$ is observable, not $p(y|x)$.&quot;},{&quot;label&quot;:&quot;Student Model&quot;,&quot;value&quot;:&quot;A student model $q_{\\theta}(y|x)$ parameterized by $\\theta$ aims to approximate the teacher&#39;s generative behavior.&quot;},{&quot;label&quot;:&quot;Black-box Setting&quot;,&quot;value&quot;:&quot;The student has no access to the teacher&#39;s internal probability distribution or hidden states, only text outputs.&quot;}],&quot;reproducibility&quot;:&quot;Code and project page are available at aka.ms/GAD-project and aka.ms/GAD-github. Training details, including batch size, optimization steps, PPO mini-batch size, context length, and temperature are provided. Evaluation protocols and GPT-4o prompting are detailed.&quot;,&quot;systemModules&quot;:[{&quot;details&quot;:&quot;Generates responses $G(x)$ to prompts $x$. Optimized via policy gradient (GRPO) to maximize rewards provided by the discriminator.&quot;,&quot;name&quot;:&quot;Generator (Student LLM)&quot;,&quot;role&quot;:&quot;Student model that learns to imitate the teacher.&quot;},{&quot;details&quot;:&quot;Assesses the quality of student and teacher responses, distinguishing between them. Predicts a sequence-level scalar score $D([x,y])$. Trained with Bradley-Terry loss to assign higher scores to teacher responses ($D(y_t)$) than student responses ($D(G(x))$), co-evolving with the student.&quot;,&quot;name&quot;:&quot;Discriminator&quot;,&quot;role&quot;:&quot;Provides implicit, on-policy reward signal to guide student optimization.&quot;}]},&quot;thesis&quot;:&quot;Generative Adversarial Distillation (GAD), a framework that frames the student LLM as a generator and trains a discriminator to distinguish its responses from the teacher, enables effective on-policy and black-box distillation of large language models, consistently outperforming sequence-level knowledge distillation and achieving strong generalization.&quot;,&quot;title&quot;:&quot;Black-Box On-Policy Distillation of Large Language Models&quot;,&quot;url&quot;:&quot;https://arxiv.org/pdf/2511.10643&quot;,&quot;venue&quot;:&quot;N/A&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

@@ -432,6 +432,15 @@
       ]
     },
     {
+      "paperId": "2511.10643",
+      "title": "Black-Box On-Policy Distillation of Large Language Models",
+      "tags": [
+        "Pretraining",
+        "RL",
+        "QA"
+      ]
+    },
+    {
       "paperId": "2510.14686",
       "title": "xLLM Technical Report",
       "tags": [

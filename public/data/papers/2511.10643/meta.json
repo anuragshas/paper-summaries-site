@@ -1,0 +1,19 @@
+{
+  "paperId": "2511.10643",
+  "title": "Black-Box On-Policy Distillation of Large Language Models",
+  "authors": "Tianzhu Ye, Li Dong, Zewen Chi, Xun Wu, Shaohan Huang, Furu Wei",
+  "publishedDate": "2025-11-01",
+  "tags": [
+    "Pretraining",
+    "RL",
+    "QA"
+  ],
+  "sourceUrl": "https://arxiv.org/pdf/2511.10643",
+  "pagePath": "/paper-summaries-site/papers/2511.10643",
+  "summaryPath": "/paper-summaries-site/data/papers/2511.10643/summary.json",
+  "assets": {
+    "figureAssetCount": 7,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

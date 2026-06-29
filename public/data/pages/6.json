@@ -2,6 +2,17 @@
   "page": 6,
   "papers": [
     {
+      "paperId": "2403.00417",
+      "title": "Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models",
+      "authors": "Jinbiao Yang",
+      "publishedDate": "2024-03-01",
+      "tags": [
+        "Pretraining",
+        "Memory",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2602.17654",
       "title": "Mine and Refine: Optimizing Graded Relevance in E-commerce Search Retrieval",
       "authors": "Jiaqi Xi, Raghav Saboo, Luming Chen, Martin Wang, Sudeep Das",
