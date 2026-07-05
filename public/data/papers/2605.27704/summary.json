@@ -1,0 +1,299 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 153,
+      "xmin": 151,
+      "ymax": 341,
+      "xmax": 846
+    },
+    "caption": "Multi-task ranking architecture with unified relevance\u2013engagement optimization",
+    "figureNumber": 1,
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2605.27704/figures/architecture.webp"
+  },
+  "authors": "Luming Chen, Jiaqi Xi, Raghav Saboo, Kenny Chi, Martin Wang, Sudeep Das, Danny Nightingale, Aditya Dodda, Elyse Winer, Akshad Viswanathan",
+  "breakthroughAssessment": {
+    "justification": "This paper presents a robust, production-ready solution to a critical problem in e-commerce search: balancing engagement with semantic relevance. The novelty lies in the efficient integration of LLM-based ordinal relevance supervision as a first-class objective within a multi-task ranking framework, enabling explicit trade-offs without online LLM inference overhead. The experimental results, both offline and online A/B, show statistically significant improvements in relevance and key business metrics, demonstrating strong practical impact. While LLM supervision for relevance is not entirely new, its scalable and controllable integration for ordinal relevance in a multi-task production system, coupled with the unified value function, is a strong contribution to the applied ML/IR field.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "Items that attract interaction due to popularity, price anchoring, or lexical overlap may be up-ranked even when they do not semantically satisfy user intent, leading to degraded search quality.",
+    "statement": "Optimizing industrial search ranking models solely for user engagement signals (e.g., click-through rate, add-to-cart rate, conversion rate) often introduces systematic biases, failing to satisfy semantic intent. A central challenge is the scarcity of high-quality semantic relevance supervision at production scale.",
+    "whyItMatters": [
+      "Optimizing solely for engagement can degrade perceived search quality, increase query reformulation, and erode user trust.",
+      "Traditional human annotation for relevance is expensive, slow, and difficult to maintain for dynamic e-commerce catalogs.",
+      "Integrating Large Language Model (LLM) supervision into production systems faces challenges such as high inference cost/latency, sensitivity to label distribution, and calibration with existing objectives."
+    ]
+  },
+  "evaluationHighlights": [
+    "The proposed ordinal formulation achieves substantially higher relevance NDCG@10 (0.962) compared to an engagement-only baseline (0.812), showing a +0.150 delta.",
+    "It maintains comparable performance on engagement metrics (AUC and NDCG@10 for Click, Add-to-cart, Conversion) relative to the engagement-only baseline, demonstrating no compromise of core behavioral objectives.",
+    "Online A/B experiments show statistically significant improvements in key business metrics: +1.16% ATCR, +1.10% CVR, and +0.50% Gross Order Value (GOV).",
+    "The ordinal relevance formulation consistently yields a more favorable trade-off frontier between relevance NDCG@10 and conversion NDCG@10 compared to softmax and regression baselines.",
+    "The fine-tuned LLM achieves 89% three-class accuracy and 98% within-1 accuracy in generating relevance labels compared to human annotations on a hold-out set of 105k query-item pairs."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Large-scale product search dataset (2 million query\u2013item pairs)",
+        "Online live search traffic A/B experiments"
+      ],
+      "metrics": [
+        "AUC (Area Under the Curve)",
+        "NDCG@10 (Normalized Discounted Cumulative Gain at 10)",
+        "Relative lift for ATCR, CVR, and GOV"
+      ],
+      "setting": "Offline evaluation on a large-scale product search dataset and online A/B experiments on live search traffic."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 236,
+          "xmin": 554,
+          "ymax": 457,
+          "xmax": 893
+        },
+        "caption": "Relevance vs. conversion trade-off (NDCG@10) for different model variants.",
+        "figureNumber": 2,
+        "pageIndex": 3,
+        "assetPath": "/paper-summaries-site/data/papers/2605.27704/figures/experiment-1.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "0.840",
+            "benchmark": "N/A",
+            "delta": "-0.002",
+            "isPositive": false,
+            "metric": "AUC Click",
+            "thisPaper": "0.838"
+          },
+          {
+            "baseline": "0.852",
+            "benchmark": "N/A",
+            "delta": "-0.001",
+            "isPositive": false,
+            "metric": "AUC Add-to-cart",
+            "thisPaper": "0.851"
+          },
+          {
+            "baseline": "0.855",
+            "benchmark": "N/A",
+            "delta": "0.000",
+            "isPositive": true,
+            "metric": "AUC Conversion",
+            "thisPaper": "0.855"
+          },
+          {
+            "baseline": "0.631",
+            "benchmark": "N/A",
+            "delta": "-0.001",
+            "isPositive": false,
+            "metric": "NDCG@10 Click",
+            "thisPaper": "0.630"
+          },
+          {
+            "baseline": "0.626",
+            "benchmark": "N/A",
+            "delta": "-0.001",
+            "isPositive": false,
+            "metric": "NDCG@10 Add-to-cart",
+            "thisPaper": "0.625"
+          },
+          {
+            "baseline": "0.628",
+            "benchmark": "N/A",
+            "delta": "-0.001",
+            "isPositive": false,
+            "metric": "NDCG@10 Conversion",
+            "thisPaper": "0.627"
+          },
+          {
+            "baseline": "0.812 (MTL-Engagement)",
+            "benchmark": "N/A",
+            "delta": "+0.150",
+            "isPositive": true,
+            "metric": "NDCG@10 Relevance",
+            "thisPaper": "0.962 (Ours (Ordinal))"
+          }
+        ],
+        "title": "Offline Performance Comparison (Table 1)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.00%",
+            "benchmark": "N/A (Online A/B)",
+            "delta": "+1.16%",
+            "isPositive": true,
+            "metric": "ATCR Relative lift (p-value)",
+            "thisPaper": "1.16% (0.01)"
+          },
+          {
+            "baseline": "0.00%",
+            "benchmark": "N/A (Online A/B)",
+            "delta": "+1.10%",
+            "isPositive": true,
+            "metric": "CVR Relative lift (p-value)",
+            "thisPaper": "1.10% (0.01)"
+          },
+          {
+            "baseline": "0.00%",
+            "benchmark": "N/A (Online A/B)",
+            "delta": "+0.50%",
+            "isPositive": true,
+            "metric": "Gross Order Value (GOV) Relative lift (p-value)",
+            "thisPaper": "0.50% (0.03)"
+          }
+        ],
+        "title": "Online A/B Experiment Results (Table 2)"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "Integrating LLM-based relevance supervision into a multi-task ranking framework significantly improves semantic relevance without compromising core engagement metrics.",
+      "The proposed ordinal relevance formulation consistently outperforms other relevance-aware baselines (softmax, regression) in terms of the relevance vs. conversion trade-off.",
+      "Directly incorporating ordinal semantic relevance into the unified value function yields substantial relevance gains and positive online business impact, unlike treating it merely as an auxiliary task."
+    ]
+  },
+  "institutions": "DoorDash Inc.",
+  "keyNovelty": {
+    "explanation": [
+      "A scalable pipeline for LLM-based relevance supervision is designed to generate high-quality, three-level ordinal relevance labels (irrelevant, moderately relevant, highly relevant) at production scale, aligned with human annotations and production query distributions, addressing data scarcity.",
+      "Ordinal semantic relevance is directly integrated into a multi-task ranking objective via an ordinal relevance head that predicts cumulative probabilities, enabling explicit and controllable trade-offs between relevance and engagement using a unified value function.",
+      "The system demonstrates significant offline relevance improvements and positive online impact on key business metrics (ATCR, CVR, GOV) in a large-scale production search system, proving practical applicability without online LLM inference overhead."
+    ],
+    "main": "A production-scale multi-task ranking framework that integrates efficient LLM-based ordinal semantic relevance supervision as a first-class optimization objective, enabling explicit and controllable relevance\u2013engagement trade-offs without incurring online LLM inference overhead."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A common engagement signal, representing the proportion of impressions that result in a click.",
+        "term": "CTR (Click-Through Rate)"
+      },
+      {
+        "definition": "An engagement signal, representing the proportion of views that result in an item being added to the cart.",
+        "term": "ATCR (Add-To-Cart Rate)"
+      },
+      {
+        "definition": "An engagement signal, representing the proportion of views that result in a purchase.",
+        "term": "CVR (Conversion Rate)"
+      },
+      {
+        "definition": "A multi-level relevance judgment (e.g., irrelevant, moderately relevant, highly relevant) that preserves an inherent ordering, allowing for nuanced relationships between queries and items.",
+        "term": "Ordinal Relevance"
+      },
+      {
+        "definition": "A function that aggregates multiple predicted outcomes (e.g., engagement and relevance) into a single continuous ranking score, allowing for explicit control over the relative importance of different objectives.",
+        "term": "Unified Value Function"
+      }
+    ],
+    "prerequisites": [
+      "Multi-task learning (MTL)",
+      "Large Language Models (LLMs)",
+      "E-commerce search ranking",
+      "Information Retrieval metrics (e.g., AUC, NDCG)"
+    ]
+  },
+  "subTopics": [
+    "E-commerce Search",
+    "Multi-task Learning",
+    "LLM for Ranking"
+  ],
+  "tags": [
+    {
+      "name": "RAG",
+      "type": "primary"
+    },
+    {
+      "name": "Pretraining",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Prior work often optimizes ranking models solely for engagement signals, which introduces systematic biases by up-ranking popular or lexically overlapping items even if semantically irrelevant.",
+      "Many industrial ranking systems lack reliable fine-grained semantic supervision or treat relevance as an auxiliary task, which makes models susceptible to bias and exposure effects.",
+      "Previous methods using LLMs for relevance often treat them as external teachers, evaluation tools, or standalone rerankers, leading to high online inference costs or lack of direct integration into the ranking objective.",
+      "This work differs by directly integrating efficient, fine-grained LLM supervision for ordinal relevance into a multi-task ranking objective, enabling explicit and controllable relevance\u2013engagement trade-offs without online LLM inference overhead."
+    ],
+    "limitations": [
+      "Future work could explore richer semantic signals as inputs (e.g., query intent decomposition, attribute-level relevance).",
+      "The framework could be extended to replace global value model weights with query-adaptive weights.",
+      "The current approach can be extended to incorporate long-term user satisfaction metrics."
+    ],
+    "modeling": [
+      {
+        "label": "Multi-task DNN Architecture Efficiencies",
+        "list": [
+          "Shared Bottom Layers: The relevance head shares bottom layers with the engagement tasks, where primary computational costs (e.g., high-cardinality embedding lookups) are generated.",
+          "Feature Reusability: The relevance task utilizes a subset of features already being processed for engagement models, avoiding duplicated feature fetching.",
+          "Single-Pass Inference: Consolidating objectives into one model avoids separate service calls or multiple forward passes."
+        ]
+      },
+      {
+        "label": "Ordinal Relevance Head Prediction",
+        "value": "The relevance head predicts two probabilities: $\\hat{p}(r_{q,i} \\geq 1)$ and $\\hat{p}(r_{q,i} \\geq 2)$, corresponding to the probability that an item is at least moderately relevant or highly relevant, respectively. This preserves the natural ordering of relevance levels."
+      },
+      {
+        "label": "Scalar Relevance Score",
+        "value": "The predicted scalar relevance score is derived from the ordinal relevance head as $\\hat{s}_{rel}(q,i) = \\hat{p}(r_{q,i} \\geq 1) + \\hat{p}(r_{q,i} \\geq 2)$, which corresponds to the expected relevance grade $E[r_{q,i}] = \\sum_{k=1}^{2} p(r_{q,i} \\geq k)$."
+      }
+    ],
+    "pipelineFlow": [
+      "Generate training labels for fine-grained ordinal relevance using a multi-stage LLM-based supervision pipeline at scale.",
+      "Integrate the LLM-generated relevance signal into a shared multi-task deep neural network (DNN) architecture.",
+      "The DNN jointly predicts engagement signals (CTR, ATCR, CVR) and ordinal relevance using shared bottom layers and task-specific heads.",
+      "Compute a final ranking score using a unified value function that aggregates predicted engagement outcomes and semantic relevance, allowing for explicit control over trade-offs.",
+      "Deploy the relevance-aware model in production via A/B experiments to validate online impact."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Goal",
+        "value": "To rank items for a user query by jointly optimizing semantic relevance and user engagement outcomes (CTR, ATCR, CVR)."
+      },
+      {
+        "label": "Ordinal Relevance Formulation",
+        "value": "Semantic relevance $r_{q,i}$ between a query $q$ and an item $i$ is formulated as a three-level ordinal variable: $r_{q,i} \\in \\{0, 1, 2\\}$, where 0=irrelevant, 1=moderately relevant, and 2=highly relevant."
+      },
+      {
+        "label": "Final Ranking Score (Unified Value Function)",
+        "value": "The final ranking score $S(q,i)$ is computed by $S(q,i) = \\alpha \\hat{y}_{CTR} + \\beta \\hat{y}_{ATCR} + \\gamma \\hat{y}_{CVR} + (1 - \\alpha - \\beta - \\gamma) \\hat{s}_{rel}$, where $\\alpha, \\beta, \\gamma \\in [0, 1]$ are hyperparameters, and $\\hat{s}_{rel}$ is the predicted scalar relevance score."
+      }
+    ],
+    "reproducibility": "The paper describes the methodology, including dataset size, LLM models used (GPT-4o, gpt-4o-mini), and evaluation metrics. However, no specific details on code availability or dataset release are provided.",
+    "systemModules": [
+      {
+        "details": "A deep neural network architecture that jointly predicts engagement (CTR, ATCR, CVR) and relevance signals. It incorporates multiple feature groups (query, item, consumer, interaction features) processed by shared bottom layers and task-specific heads.",
+        "name": "Multi-task DNN Architecture",
+        "role": "Core model for joint prediction of engagement and relevance."
+      },
+      {
+        "details": "Predicts two probabilities, $\\hat{p}(r_{q,i} \\geq 1)$ and $\\hat{p}(r_{q,i} \\geq 2)$, corresponding to an item being at least moderately relevant and highly relevant. This formulation preserves the natural ordering of relevance levels.",
+        "name": "Ordinal Relevance Head",
+        "role": "Outputs fine-grained semantic relevance predictions."
+      },
+      {
+        "details": "A multi-stage process involving collecting ~600k human annotations, auditing them with a larger LLM (GPT-4o), reconciling conflicts using a Query-to-Taxonomy (Q2T) model, and fine-tuning a lightweight LLM (gpt-4o-mini) to generate relevance labels at scale for over 100M query-item pairs.",
+        "name": "LLM-based Relevance Supervision Pipeline",
+        "role": "Generates high-quality, large-scale ordinal relevance training labels offline."
+      },
+      {
+        "details": "Aggregates predicted engagement outcomes ($\\hat{y}_{CTR}, \\hat{y}_{ATCR}, \\hat{y}_{CVR}$) and the scalar relevance score ($\\hat{s}_{rel}$) into a single continuous ranking score. Hyperparameters ($\\alpha, \\beta, \\gamma$) control the relative importance of objectives, enabling explicit trade-off management.",
+        "name": "Unified Value Function",
+        "role": "Combines predictions for final ranking score and allows for explicit relevance-engagement trade-offs."
+      }
+    ]
+  },
+  "thesis": "This paper proposes a production-scale multi-task ranking system that effectively integrates efficient LLM-based ordinal semantic relevance supervision as a first-class optimization objective, enabling explicit and controllable trade-offs between relevance and engagement without incurring online LLM inference overhead, thereby improving search quality and user trust in e-commerce platforms.",
+  "title": "Joint Optimization of Relevance and Engagement in Multi-Task Ranking for E-Commerce with Efficient LLM Supervision",
+  "url": "https://arxiv.org/abs/arXiv:2605.27704",
+  "venue": "SIGIR '26",
+  "year": "2026"
+}

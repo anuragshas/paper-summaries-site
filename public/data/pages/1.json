@@ -24,6 +24,17 @@
       ]
     },
     {
+      "paperId": "2605.27704",
+      "title": "Joint Optimization of Relevance and Engagement in Multi-Task Ranking for E-Commerce with Efficient LLM Supervision",
+      "authors": "Luming Chen, Jiaqi Xi, Raghav Saboo, Kenny Chi, Martin Wang, Sudeep Das, Danny Nightingale, Aditya Dodda, Elyse Winer, Akshad Viswanathan",
+      "publishedDate": "2026-05-01",
+      "tags": [
+        "RAG",
+        "Pretraining",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2605.23904",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
       "authors": "Yifan Yang, Ziyang Gong, Weiquan Huang, Qihao Yang, Ziwei Zhou, Zisu Huang, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo",
@@ -97,17 +108,6 @@
       "tags": [
         "Agent",
         "QA",
-        "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2604.12965",
-      "title": "Efficient Retrieval Scaling with Hierarchical Indexing for Large Scale Recommendation",
-      "authors": "Dongqi Fu, Kaushik Rangadurai, Haiyu Lu, Yunchen Pu, Siyang Yuan, Minhui Huang, Yiqun Liu, Golnaz Ghasemiesfeh, Xingfeng He, Fangzhou Xu, Andrew Cui, Vidhoon Viswanathan, Lin Yang, Liang Wang, Jiyan Yang, Chonglin Sun",
-      "publishedDate": "2026-04-01",
-      "tags": [
-        "Rec",
-        "Pretraining",
         "Benchmark"
       ]
     }

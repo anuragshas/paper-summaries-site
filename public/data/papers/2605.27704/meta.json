@@ -1,0 +1,19 @@
+{
+  "paperId": "2605.27704",
+  "title": "Joint Optimization of Relevance and Engagement in Multi-Task Ranking for E-Commerce with Efficient LLM Supervision",
+  "authors": "Luming Chen, Jiaqi Xi, Raghav Saboo, Kenny Chi, Martin Wang, Sudeep Das, Danny Nightingale, Aditya Dodda, Elyse Winer, Akshad Viswanathan",
+  "publishedDate": "2026-05-01",
+  "tags": [
+    "RAG",
+    "Pretraining",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2605.27704",
+  "pagePath": "/paper-summaries-site/papers/2605.27704",
+  "summaryPath": "/paper-summaries-site/data/papers/2605.27704/summary.json",
+  "assets": {
+    "figureAssetCount": 2,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

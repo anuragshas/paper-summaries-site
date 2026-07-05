@@ -19,6 +19,15 @@
       ]
     },
     {
+      "paperId": "2605.27704",
+      "title": "Joint Optimization of Relevance and Engagement in Multi-Task Ranking for E-Commerce with Efficient LLM Supervision",
+      "tags": [
+        "RAG",
+        "Pretraining",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2605.23904",
       "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
       "tags": [
