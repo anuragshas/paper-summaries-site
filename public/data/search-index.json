@@ -468,6 +468,15 @@
       ]
     },
     {
+      "paperId": "2509.23234",
+      "title": "p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding",
+      "tags": [
+        "Reasoning",
+        "QA",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2509.05486",
       "title": "The Token Tax: Systematic Bias in Multilingual Tokenization",
       "tags": [
@@ -476,6 +485,15 @@
         "African Languages",
         "AI Ethics",
         "LLM Scaling Laws"
+      ]
+    },
+    {
+      "paperId": "2411.07641",
+      "title": "Top-nsigma: Not All Logits Are You Need",
+      "tags": [
+        "QA",
+        "Reasoning",
+        "Benchmark"
       ]
     },
     {

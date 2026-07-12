@@ -1,0 +1,19 @@
+{
+  "paperId": "2509.23234",
+  "title": "p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding",
+  "authors": "Runyan Tan, Shuang Wu, Phillip Howard",
+  "publishedDate": "2025-09-01",
+  "tags": [
+    "Reasoning",
+    "QA",
+    "Pretraining"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2509.23234",
+  "pagePath": "/paper-summaries-site/papers/2509.23234",
+  "summaryPath": "/paper-summaries-site/data/papers/2509.23234/summary.json",
+  "assets": {
+    "figureAssetCount": 2,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

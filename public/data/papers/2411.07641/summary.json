@@ -1,0 +1,321 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 191,
+      "xmin": 194,
+      "ymax": 267,
+      "xmax": 808
+    },
+    "caption": "Distribution of logits and descendingly sorted probabilities of LLaMA3-8B-Instruct on an AQuA sample. Note that the leading tokens in the right plot (with higher probabilities) correspond to the right-side region of the logits distribution. The maximum logit is approximately 10 sigma above the mean of the distribution.",
+    "figureNumber": 1,
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2411.07641/figures/architecture.webp"
+  },
+  "authors": "Chenxia Tang, Jianchun Liu, Hongli Xu, Liusheng Huang",
+  "breakthroughAssessment": {
+    "justification": "The paper provides novel theoretical insights into logit distributions, identifying a noisy Gaussian region and an informative region. Leveraging this, it introduces top-nsigma, an efficient, temperature-invariant sampling method that consistently outperforms existing methods and even greedy decoding for reasoning tasks. The strong empirical validation and clear theoretical foundation make it a valuable contribution to LLM decoding strategies.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "Existing probability-based sampling methods (e.g., temperature-scaling, nucleus sampling, top-k, min-p) are not specifically designed to maintain reasoning quality and can degrade output quality due to their inability to effectively filter out irrelevant tokens, particularly at higher temperatures. Deterministic methods like greedy decoding introduce bias by not reflecting the model's learned distribution.",
+    "statement": "Current Large Language Model (LLM) sampling methods for reasoning tasks often exhibit a trade-off between diversity and accuracy, struggling to maintain reasoning quality, especially at varying temperatures. This stems from their inability to effectively filter irrelevant or noisy tokens from the pre-softmax logits.",
+    "whyItMatters": [
+      "Token sampling is a crucial first step in text generation that significantly impacts the quality of LLM outputs, particularly for complex reasoning-intensive tasks.",
+      "Ineffective sampling strategies lead to a trade-off between output diversity and reasoning fidelity, hindering LLMs' performance on tasks requiring precise reasoning.",
+      "Deterministic methods fail to fully leverage the probabilistic nature of LLMs, introducing bias and limiting their potential."
+    ]
+  },
+  "evaluationHighlights": [
+    "top-nsigma consistently outperforms existing sampling methods (top-p, top-k, min-p, temperature sampling) across four diverse reasoning-focused datasets (AQuA, MATH, GSM8K, GPQA).",
+    "It surpasses greedy decoding (temperature = 0.0) in all evaluated reasoning tasks, challenging the conventional wisdom that deterministic methods are best for reasoning.",
+    "The method demonstrates exceptional stability and robust performance even at high temperatures (e.g., T=3.0), where other methods catastrophically degrade.",
+    "top-nsigma combined with moderately higher temperatures (around T=1.5) yields optimal performance, suggesting that controlled exploration can enhance reasoning quality."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "AQuA",
+        "MATH",
+        "GSM8K",
+        "GPQA"
+      ],
+      "metrics": [
+        "Exact Match (EM)",
+        "Maj@N (Majority@20)"
+      ],
+      "setting": "Reasoning-focused question answering with LLaMA3-8B-Instruct."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 193,
+          "xmin": 195,
+          "ymax": 262,
+          "xmax": 478
+        },
+        "caption": "Relationship between sigma-distance and nucleus size when temperature T = 1 during generation. The plots demonstrate an inverse relationship: high sigma-distances correspond to small nucleus sizes (mostly 1), while lower sigma-distances (though remaining above 10) correlate with larger nucleus sizes.",
+        "figureNumber": 2,
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2411.07641/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 194,
+          "xmin": 530,
+          "ymax": 262,
+          "xmax": 808
+        },
+        "caption": "Relationship between sigma-distance and nucleus size when temperature T = 1 during generation. The plots demonstrate an inverse relationship: high sigma-distances correspond to small nucleus sizes (mostly 1), while lower sigma-distances (though remaining above 10) correlate with larger nucleus sizes.",
+        "figureNumber": 2,
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2411.07641/figures/experiment-2.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "31.25%",
+            "benchmark": "GPQA",
+            "delta": "+1.17%",
+            "isPositive": true,
+            "metric": "EM @ T=1.5",
+            "thisPaper": "32.42%"
+          },
+          {
+            "baseline": "76.56%",
+            "benchmark": "GSM8K",
+            "delta": "+5.47%",
+            "isPositive": true,
+            "metric": "EM @ T=1.5",
+            "thisPaper": "82.03%"
+          },
+          {
+            "baseline": "39.76%",
+            "benchmark": "AQuA",
+            "delta": "+1.97%",
+            "isPositive": true,
+            "metric": "EM @ T=1.0",
+            "thisPaper": "41.73%"
+          },
+          {
+            "baseline": "10.94%",
+            "benchmark": "MATH",
+            "delta": "+3.12%",
+            "isPositive": true,
+            "metric": "EM @ T=3.0",
+            "thisPaper": "14.06%"
+          },
+          {
+            "baseline": "0.00%",
+            "benchmark": "GPQA",
+            "delta": "+25.00%",
+            "isPositive": true,
+            "metric": "EM @ T=3.0",
+            "thisPaper": "25.00%"
+          },
+          {
+            "baseline": "14.84%",
+            "benchmark": "GSM8K",
+            "delta": "+59.77%",
+            "isPositive": true,
+            "metric": "EM @ T=3.0",
+            "thisPaper": "74.61%"
+          }
+        ],
+        "title": "Single-Pass Exact Match Results"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "90.63%",
+            "benchmark": "GSM8K",
+            "delta": "+0.78%",
+            "isPositive": true,
+            "metric": "Maj@20 @ T=1.5",
+            "thisPaper": "91.41%"
+          },
+          {
+            "baseline": "33.20%",
+            "benchmark": "GPQA",
+            "delta": "0.00%",
+            "isPositive": true,
+            "metric": "Maj@20 @ T=1.5",
+            "thisPaper": "33.20%"
+          },
+          {
+            "baseline": "51.18%",
+            "benchmark": "AQuA",
+            "delta": "-1.57%",
+            "isPositive": false,
+            "metric": "Maj@20 @ T=2.0",
+            "thisPaper": "49.61%"
+          },
+          {
+            "baseline": "23.83%",
+            "benchmark": "MATH",
+            "delta": "+10.15%",
+            "isPositive": true,
+            "metric": "Maj@20 @ T=3.0",
+            "thisPaper": "33.98%"
+          },
+          {
+            "baseline": "53.13%",
+            "benchmark": "GSM8K",
+            "delta": "+37.10%",
+            "isPositive": true,
+            "metric": "Maj@20 @ T=3.0",
+            "thisPaper": "90.23%"
+          },
+          {
+            "baseline": "30.47%",
+            "benchmark": "GPQA",
+            "delta": "0.00%",
+            "isPositive": true,
+            "metric": "Maj@20 @ T=3.0",
+            "thisPaper": "30.47%"
+          }
+        ],
+        "title": "Multiple-Pass Maj@20 Results"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "top-nsigma consistently achieves the best or near-best performance across all datasets in single-pass evaluation, outperforming other sampling methods.",
+      "The stochastic sampling approach of top-nsigma challenges conventional wisdom by outperforming greedy (deterministic) decoding across all datasets for reasoning tasks.",
+      "top-nsigma demonstrates robust performance at higher temperatures (e.g., T=3.0), where conventional methods suffer catastrophic degradation, maintaining significantly higher accuracy.",
+      "Experiments suggest that moderately higher temperatures (typically around 1.5) combined with top-nsigma lead to optimal performance, indicating that controlled exploration enhances reasoning quality."
+    ]
+  },
+  "institutions": "School of Computer Science and Technology, University of Science and Technology of China; Suzhou Institute for Advanced Research, University of Science and Technology of China",
+  "keyNovelty": {
+    "explanation": [
+      "Novel Logit-Based Perspective: The paper introduces an analytical framework focusing on pre-softmax logit distributions, revealing that logits naturally separate into a Gaussian-distributed noisy region and a distinct informative region. This insight allows for efficient token filtering without complex probability manipulations.",
+      "Efficient top-nsigma Algorithm: A conceptually simple yet powerful sampling method that operates directly on logits by applying a statistical threshold. It achieves superior generation quality and computational efficiency through its sorting-free and softmax-free implementation, making it easy to integrate into existing LLM frameworks.",
+      "Temperature Invariance: The paper theoretically proves that top-nsigma's nucleus (the set of candidate tokens) remains invariant across different temperature values, ensuring stable performance regardless of temperature scaling.",
+      "Nuanced Exploration Control: The method decomposes exploration into two parameters: 'n' controls the size of the nucleus by setting the statistical boundary, while temperature 'T' solely regulates exploration within this validated token space, allowing for a better balance between exploration and exploitation."
+    ],
+    "main": "A novel, logit-based sampling method called top-nsigma that leverages the statistical properties of pre-softmax logit distributions to dynamically filter noisy tokens, resulting in temperature-invariant, efficient, and superior performance for reasoning tasks."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "The raw, unnormalized outputs of a neural network before applying a softmax function to convert them into probabilities.",
+        "term": "Logits"
+      },
+      {
+        "definition": "A function that converts a vector of real numbers into a probability distribution, where each value is between 0 and 1 and all values sum to 1.",
+        "term": "Softmax"
+      },
+      {
+        "definition": "A token sampling method that considers only the smallest set of tokens whose cumulative probability exceeds a predefined threshold p, then redistributes the probability mass among them.",
+        "term": "Nucleus Sampling (top-p sampling)"
+      },
+      {
+        "definition": "A deterministic text generation strategy that always selects the token with the highest probability at each step.",
+        "term": "Greedy Decoding"
+      },
+      {
+        "definition": "A technique to modify the probability distribution of tokens by dividing logits by a temperature value T. Higher T makes the distribution flatter (more diverse), lower T makes it sharper (more deterministic).",
+        "term": "Temperature Scaling"
+      }
+    ],
+    "prerequisites": [
+      "Understanding of Large Language Models (LLMs) and their text generation process.",
+      "Familiarity with common text decoding/sampling strategies (e.g., greedy, top-k, top-p).",
+      "Basic knowledge of probability distributions (Gaussian, Uniform) and statistical concepts (mean, standard deviation, error function)."
+    ]
+  },
+  "subTopics": [
+    "Natural Language Processing",
+    "Large Language Models",
+    "Text Generation"
+  ],
+  "tags": [
+    {
+      "name": "QA",
+      "type": "primary"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike top-p and min-p sampling, which inadvertently include more noise tokens at higher temperatures, top-nsigma maintains a stable sampling space independent of temperature scaling.",
+      "In contrast to top-k sampling, which uses a fixed k value, top-nsigma dynamically distinguishes between valid and noise tokens based on statistical properties.",
+      "top-nsigma operates directly on logits without requiring sorting operations or additional softmax transformations, making it computationally more efficient than many probability-based methods.",
+      "The paper challenges the conventional preference for greedy decoding in reasoning tasks by demonstrating that top-nsigma, a stochastic sampling approach, consistently outperforms greedy decoding."
+    ],
+    "limitations": [
+      "The paper focuses on inference-time sampling and does not fundamentally address the root causes of noise (e.g., training data noise, regularization effects, softmax limitations) during model training, although it suggests insights could improve future training procedures.",
+      "This is a preprint version and is explicitly stated as incomplete, with missing experimental results and appendices to be supplemented later."
+    ],
+    "modeling": [
+      {
+        "label": "Logit-to-Probability Transformation",
+        "value": "$p_i = \\frac{e^{l_i}}{s}$, where $s = \\sum_{j=1}^{V} e^{l_j}$ for a logit vector $l = (l_1, \\ldots, l_V) \\in \\mathbb{R}^V$."
+      },
+      {
+        "label": "Nucleus Definition",
+        "value": "The nucleus $N = \\{i \\mid p_i \\geq p(t)\\} = \\{i \\mid l_i \\geq t\\}$, where $p(t)$ is a probability threshold and $t = \\ln(s \\cdot p(t))$ is the corresponding logit threshold."
+      },
+      {
+        "label": "Gaussian Logit Distribution Threshold",
+        "value": "For logits $l_i \\sim N(\\mu, \\sigma^2)$, the threshold $t = \\mu + \\sqrt{2}\\sigma \\left(\\text{erf}^{-1}(1 - 2p)\\right) + \\sigma^2$, where $\\text{erf}(\\cdot)$ is the error function."
+      },
+      {
+        "label": "Uniform Logit Distribution Threshold",
+        "value": "For logits $l_i \\sim U(M-a, M)$, the threshold $t = M - \\ln\\left(\\frac{1}{1 - p(1 - e^{-a})}\\right)$."
+      },
+      {
+        "label": "top-nsigma Masking Rule",
+        "value": "A token $i$ is selected if its scaled logit $l'_i \\geq M' - n\\sigma'$, where $M' = \\max_j(l'_j)$ is the maximum scaled logit and $\\sigma' = \\text{std}(l')$ is the standard deviation of scaled logits. A mask $m_i$ is set to 1 if this condition holds, 0 otherwise."
+      }
+    ],
+    "pipelineFlow": [
+      "Input context $x$ and parameters (temperature $T$, threshold multiplier $n$) are provided.",
+      "Compute logits $l = \\text{LLM}(x)$ from the language model.",
+      "Scale logits by temperature: $l' = l/T$.",
+      "Calculate the maximum scaled logit $M' = \\max(l')$ and the standard deviation $\\sigma' = \\text{std}(l')$ of the scaled logits.",
+      "Create a binary mask $m_i$ for each token: $m_i = 1$ if $l'_i \\geq M' - n\\sigma'$, otherwise $m_i = 0$.",
+      "Apply the mask to the scaled logits: set $l'_i = -\\infty$ if $m_i = 0$, effectively removing noisy tokens from consideration.",
+      "Compute probabilities $p = \\text{softmax}(l')$ from the filtered logits.",
+      "Sample the next token from the resulting probability distribution $p$."
+    ],
+    "problemDefinition": [],
+    "reproducibility": "The algorithm is conceptually simple and easy to integrate into existing LLM frameworks. It is evaluated using the LLaMA3-8B-Instruct model and the vllm inference framework. Hyperparameters for baselines are adopted from previous work or practical guidelines. The optimal hyperparameter 'n' for top-nsigma is found to be 1.0, providing robust performance.",
+    "systemModules": [
+      {
+        "details": "Generates the raw, unnormalized logit vector $l \\in \\mathbb{R}^V$ for the next token given an input context $x$.",
+        "name": "Logit Generator",
+        "role": "Produces pre-softmax logits from the LLM."
+      },
+      {
+        "details": "Scales the raw logits $l$ by a given temperature $T$ to produce $l' = l/T$, influencing the sharpness of the probability distribution.",
+        "name": "Temperature Scaler",
+        "role": "Adjusts logit magnitudes based on temperature."
+      },
+      {
+        "details": "Calculates the maximum logit $M'$ and standard deviation $\\sigma'$ of the scaled logits $l'$. It then applies a statistical threshold $M' - n\\sigma'$ to filter tokens, effectively setting logits of non-selected tokens to $-\\infty$.",
+        "name": "Statistical Thresholding Module (top-nsigma)",
+        "role": "Dynamically filters candidate tokens based on logit distribution properties."
+      },
+      {
+        "details": "Converts the filtered scaled logits $l'$ into a probability distribution $p$ using the softmax function and then samples a token from this distribution.",
+        "name": "Softmax and Sampling Module",
+        "role": "Generates the next token based on the refined probability distribution."
+      }
+    ]
+  },
+  "thesis": "The paper posits that by analyzing pre-softmax logit distributions, one can identify distinct noisy and informative regions. Leveraging this insight, the proposed top-nsigma sampling method can efficiently filter irrelevant tokens, achieving superior and temperature-invariant performance for LLM reasoning tasks, even outperforming traditional greedy decoding methods.",
+  "title": "Top-nsigma: Not All Logits Are You Need",
+  "url": "https://arxiv.org/abs/2411.07641",
+  "venue": "N/A",
+  "year": "2024"
+}

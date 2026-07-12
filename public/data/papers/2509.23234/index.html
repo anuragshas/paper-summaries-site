@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding</h1>
+      <p class="meta"><strong>Authors:</strong> Runyan Tan, Shuang Wu, Phillip Howard</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/2509.23234" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2509.23234</a></p>
+      <p class="muted">Generated summary artifact for 2509.23234</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>p-less sampling is a novel hyperparameter-free decoding strategy for LLMs that dynamically adjusts its truncation threshold based on information-theoretic principles derived from the entire token probability distribution, yielding robust, high-quality, and efficient text generation across diverse tasks and temperatures.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Obtaining high-quality and robust outputs from Large Language Models (LLMs) via sampling-based decoding is challenging because existing methods are sensitive to hyperparameter choices that depend on the generation task and temperature settings, often leading to text degeneration or requiring extensive tuning.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A robust, hyperparameter-free sampling strategy (p-less sampling) for LLM decoding, which dynamically adapts its truncation threshold based on information-theoretic principles from the entire token probability distribution.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>p-less and its variant p-less_norm consistently achieve the highest or second-highest Area Under the Curve (AUC) on math and logical reasoning datasets for Llama2-7b, Mistral-7b, and Llama3-70b.</li><li>p-less performs significantly better than other methods in creative writing tasks at higher temperatures, demonstrating robust quality (e.g., win rate +16.70 for Llama-2-7b at \$\tau=2.0\$ over min-p).</li><li>p-less achieves the fastest average sampling speed per token (0.01942 s), representing a 22% reduction compared to the min-p baseline.</li><li>Human evaluation confirmed a preference for p-less generated stories over alternative sampling approaches for creative writing.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>p-less consistently outperforms existing sampling approaches in math and logical reasoning tasks, especially at higher temperatures where other methods degrade.</li><li>It maintains superior performance in creative writing tasks, avoiding quality degradation typically seen in other methods at higher temperatures.</li><li>p-less is more inference-time efficient, achieving faster average token sampling speeds and shorter generation lengths without sacrificing accuracy.</li><li>The method is robust, hyperparameter-free, and grounded in information theory, providing a principled approach to LLM decoding.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Not specified</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;architectureFigure&quot;: {
+    &quot;boundingBox&quot;: {
+      &quot;ymin&quot;: 103,
+      &quot;xmin&quot;: 190,
+      &quot;ymax&quot;: 256,
+      &quot;xmax&quot;: 807
+    },
+    &quot;caption&quot;: &quot;Comparison of truncation thresholds produced by p-less, min-p, and top-p for a token probability distribution with different applied temperatures (\\$\\tau\\$). As temperature increases, p-less avoids admitting a large number of lower-likelihood tokens by considering the entropy of the distribution in computing the threshold.&quot;,
+    &quot;figureNumber&quot;: 1,
+    &quot;pageIndex&quot;: 1
+  },
+  &quot;authors&quot;: &quot;Runyan Tan, Shuang Wu, Phillip Howard&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;The paper introduces a novel, parameter-less decoding strategy grounded in information theory that consistently outperforms or matches state-of-the-art sampling methods across diverse tasks (math, logical reasoning, creative writing) and LLMs. Its key strengths are robustness to temperature changes, hyperparameter-free operation, and improved inference efficiency, addressing significant practical challenges in LLM deployment. While not a paradigm shift, it represents a substantial methodological improvement.&quot;,
+    &quot;score&quot;: 7
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;At higher temperatures, existing sampling approaches like top-p and min-p admit a large number of lower-likelihood tokens, leading to increased text degeneracy, whereas p-less sensibly truncates these long-tail tokens to maintain quality (as illustrated in Figure 1).&quot;,
+    &quot;statement&quot;: &quot;Obtaining high-quality and robust outputs from Large Language Models (LLMs) via sampling-based decoding is challenging because existing methods are sensitive to hyperparameter choices that depend on the generation task and temperature settings, often leading to text degeneration or requiring extensive tuning.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;The performance of LLMs in various generation tasks is critical for their real-world utility.&quot;,
+      &quot;Extensive hyperparameter tuning for different tasks and temperatures is time-consuming and labor-intensive, hindering broad adoption.&quot;,
+      &quot;Poor decoding strategies can lead to incoherent, degenerate, or factually incorrect generations, particularly at higher temperatures meant to encourage diversity.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;p-less and its variant p-less_norm consistently achieve the highest or second-highest Area Under the Curve (AUC) on math and logical reasoning datasets for Llama2-7b, Mistral-7b, and Llama3-70b.&quot;,
+    &quot;p-less performs significantly better than other methods in creative writing tasks at higher temperatures, demonstrating robust quality (e.g., win rate +16.70 for Llama-2-7b at \\$\\tau=2.0\\$ over min-p).&quot;,
+    &quot;p-less achieves the fastest average sampling speed per token (0.01942 s), representing a 22% reduction compared to the min-p baseline.&quot;,
+    &quot;Human evaluation confirmed a preference for p-less generated stories over alternative sampling approaches for creative writing.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;GPQA (Graduate-Level Google-Proof Q&amp;A)&quot;,
+        &quot;GSM8K (Grade School Math)&quot;,
+        &quot;QASC (Question Answering via Sentence Composition)&quot;,
+        &quot;CommonsenseQA (CSQA)&quot;,
+        &quot;Writing Prompts (WP)&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Accuracy&quot;,
+        &quot;Area Under the Curve (AUC) of Accuracy-Temperature&quot;,
+        &quot;Length-controlled Win Rate&quot;,
+        &quot;Average Sampling Time per Token&quot;,
+        &quot;n-gram Repetition Diversity&quot;
+      ],
+      &quot;setting&quot;: &quot;Evaluation across three LLMs (Llama-2-7B, Mistral-7B, Llama3-70b) on math, logical reasoning, and creative writing tasks at various temperatures (0.5 to 2.0).&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 497,
+          &quot;xmin&quot;: 207,
+          &quot;ymax&quot;: 648,
+          &quot;xmax&quot;: 793
+        },
+        &quot;caption&quot;: &quot;Accuracy vs. temperature curves of each method on CSQA, QASC, and GSM8k using Llama-2-7b. AUC values achieved by each method are provided in the legend (in parentheses) with the best AUC in bold .&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 6
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.488&quot;,
+            &quot;benchmark&quot;: &quot;CSQA (Llama2-7b)&quot;,
+            &quot;delta&quot;: &quot;+0.015&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AUC&quot;,
+            &quot;thisPaper&quot;: &quot;0.503 (p-less)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.243&quot;,
+            &quot;benchmark&quot;: &quot;GPQA (Llama2-7b)&quot;,
+            &quot;delta&quot;: &quot;+0.005&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AUC&quot;,
+            &quot;thisPaper&quot;: &quot;0.248 (p-less_norm)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.256&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K (Llama2-7b)&quot;,
+            &quot;delta&quot;: &quot;+0.011&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AUC&quot;,
+            &quot;thisPaper&quot;: &quot;0.267 (p-less)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;0.502&quot;,
+            &quot;benchmark&quot;: &quot;QASC (Llama2-7b)&quot;,
+            &quot;delta&quot;: &quot;+0.036&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;AUC&quot;,
+            &quot;thisPaper&quot;: &quot;0.538 (p-less_norm)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Math and Logical Reasoning AUC (Table 1)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;48.94&quot;,
+            &quot;benchmark&quot;: &quot;Writing Prompts (Llama-2-7b, \\$\\tau=2.0\\$)&quot;,
+            &quot;delta&quot;: &quot;+16.70&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win rate&quot;,
+            &quot;thisPaper&quot;: &quot;65.64 (p-less)&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;54.11&quot;,
+            &quot;benchmark&quot;: &quot;Writing Prompts (Mistral-7b, \\$\\tau=2.0\\$)&quot;,
+            &quot;delta&quot;: &quot;+6.21&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win rate&quot;,
+            &quot;thisPaper&quot;: &quot;60.32 (p-less)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Creative Writing Win Rate (Table 2)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;0.02497&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K/GPQA (Mistral-7b)&quot;,
+            &quot;delta&quot;: &quot;-0.00555&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Average sampling time (s)&quot;,
+            &quot;thisPaper&quot;: &quot;0.01942 (p-less)&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Sampling Efficiency (Table 3)&quot;
+      }
+    ],
+    &quot;keyResults&quot;: [],
+    &quot;mainTakeaways&quot;: [
+      &quot;p-less consistently outperforms existing sampling approaches in math and logical reasoning tasks, especially at higher temperatures where other methods degrade.&quot;,
+      &quot;It maintains superior performance in creative writing tasks, avoiding quality degradation typically seen in other methods at higher temperatures.&quot;,
+      &quot;p-less is more inference-time efficient, achieving faster average token sampling speeds and shorter generation lengths without sacrificing accuracy.&quot;,
+      &quot;The method is robust, hyperparameter-free, and grounded in information theory, providing a principled approach to LLM decoding.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;Thoughtworks, National University of Singapore&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;p-less sampling dynamically sets a truncation threshold at each decoding step by computing the likelihood of a &#39;correct random guess&#39; based on the entire token probability distribution.&quot;,
+      &quot;Unlike existing methods, p-less is parameter-less, eliminating the need for hyperparameter tuning which is often task and temperature sensitive.&quot;,
+      &quot;The truncation threshold dynamically adjusts with temperature, enabling robust high-quality outputs even at high temperatures where other methods suffer text degeneration.&quot;,
+      &quot;It is grounded in information theory, specifically connected to Rényi entropies, providing a principled, model-agnostic approach to truncation.&quot;
+    ],
+    &quot;main&quot;: &quot;A robust, hyperparameter-free sampling strategy (p-less sampling) for LLM decoding, which dynamically adapts its truncation threshold based on information-theoretic principles from the entire token probability distribution.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;The probability assigned by a language model to each token in its vocabulary for the next predicted token, conditioned on the preceding token sequence.&quot;,
+        &quot;term&quot;: &quot;Token Probability Distribution&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A value used in sampling-based decoding to filter out lower-likelihood tokens, restricting the sampling pool to a subset of higher-likelihood tokens.&quot;,
+        &quot;term&quot;: &quot;Truncation Threshold&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A generalization of Shannon entropy, used in information theory to quantify the uncertainty or diversity of a probability distribution, with different orders quantifying different sensitivities.&quot;,
+        &quot;term&quot;: &quot;Rényi Entropy&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;A hyperparameter that controls the randomness of token generation, where higher temperatures lead to more diverse (and potentially less coherent) outputs by flattening the probability distribution.&quot;,
+        &quot;term&quot;: &quot;Temperature (in LLM decoding)&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Sampling-based decoding strategies&quot;,
+      &quot;Probability distributions&quot;,
+      &quot;Information theory (entropy)&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;LLM Decoding&quot;,
+    &quot;Sampling Strategies&quot;,
+    &quot;Information Theory&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Pretraining&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Existing truncation methods (top-k, top-p, \\$\\epsilon\\$-sampling, min-p) rely on fixed thresholds or single token statistics, failing to dynamically adapt to the entire token probability distribution.&quot;,
+      &quot;Mirostat assumes Zipf&#39;s Law and dynamically adjusts a threshold to maintain target surprisal, but requires tuning target surprisal and learning rate based on task and model.&quot;,
+      &quot;\\$\\eta\\$-sampling introduces additional hyperparameters and assumes a uniform entropy distribution baseline.&quot;,
+      &quot;In contrast, p-less operates directly on the empirical token distribution without parametric assumptions or hyperparameter tuning, making it robust in high-entropy regimes.&quot;,
+      &quot;p-less uniquely guarantees a non-empty candidate set and its truncation threshold dynamically adjusts with temperature, remaining meaningful even when temperature approaches zero or infinity.&quot;
+    ],
+    &quot;limitations&quot;: [],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;p-less quantity (Likelihood of correct random guess)&quot;,
+        &quot;value&quot;: &quot;$L[P] := \\sum_{v \\in V} P_{\\theta}(v|x_{1:t-1})^2$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;p-less_norm quantity&quot;,
+        &quot;value&quot;: &quot;$\\bar{L}[P_{\\theta}] := L[P_{\\theta}] - \\frac{1}{|V|-1} \\times \\sum_{u,v \\in V, u \\ne v} P_{\\theta}(u|x_{1:t-1})P_{\\theta}(v|x_{1:t-1})$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Connection to Rényi Entropy of order 2&quot;,
+        &quot;value&quot;: &quot;$H_2(p) = -\\log \\sum_i p_i^2 = -\\log L[P]$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Bounds for L[P]&quot;,
+        &quot;list&quot;: [
+          &quot;Lower bound: $\\frac{1}{c} \\le L[P]$&quot;,
+          &quot;Upper bound: $L[P] \\le \\max_i P(x_i)$&quot;
+        ]
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Determine the threshold probability $L[P_{\\theta}]$ using equation (2) based on the language model&#39;s predicted token distribution.&quot;,
+      &quot;Construct the sampling set $V_{p-less}$ consisting of tokens whose probabilities are at least the determined threshold $L[P_{\\theta}]$.&quot;,
+      &quot;Sample the next token $x_t$ from $V_{p-less}$ according to their normalized token probabilities $P&#39;_{\\theta}$.&quot;
+    ],
+    &quot;problemDefinition&quot;: [
+      {
+        &quot;label&quot;: &quot;Problem&quot;,
+        &quot;value&quot;: &quot;Given a probability distribution of tokens, identify a reliable subset of tokens to sample from, ensuring high-quality, non-degenerate text generation across varying tasks and temperatures without extensive hyperparameter tuning.&quot;
+      }
+    ],
+    &quot;reproducibility&quot;: &quot;The source code will be publicly available. Complete details on models, datasets, evaluation metrics, hyperparameters, prompts, and generation examples are provided in the appendices (C.1 to C.13). The documentation aims to provide all necessary details for full reproduction.&quot;,
+    &quot;systemModules&quot;: []
+  },
+  &quot;thesis&quot;: &quot;p-less sampling is a novel hyperparameter-free decoding strategy for LLMs that dynamically adjusts its truncation threshold based on information-theoretic principles derived from the entire token probability distribution, yielding robust, high-quality, and efficient text generation across diverse tasks and temperatures.&quot;,
+  &quot;title&quot;: &quot;p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/2509.23234&quot;,
+  &quot;venue&quot;: &quot;ICLR&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2509.23234&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/2509.23234&quot;,&quot;summary&quot;:{&quot;architectureFigure&quot;:{&quot;boundingBox&quot;:{&quot;ymin&quot;:103,&quot;xmin&quot;:190,&quot;ymax&quot;:256,&quot;xmax&quot;:807},&quot;caption&quot;:&quot;Comparison of truncation thresholds produced by p-less, min-p, and top-p for a token probability distribution with different applied temperatures (\\$\\tau\\$). As temperature increases, p-less avoids admitting a large number of lower-likelihood tokens by considering the entropy of the distribution in computing the threshold.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},&quot;authors&quot;:&quot;Runyan Tan, Shuang Wu, Phillip Howard&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;The paper introduces a novel, parameter-less decoding strategy grounded in information theory that consistently outperforms or matches state-of-the-art sampling methods across diverse tasks (math, logical reasoning, creative writing) and LLMs. Its key strengths are robustness to temperature changes, hyperparameter-free operation, and improved inference efficiency, addressing significant practical challenges in LLM deployment. While not a paradigm shift, it represents a substantial methodological improvement.&quot;,&quot;score&quot;:7},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;At higher temperatures, existing sampling approaches like top-p and min-p admit a large number of lower-likelihood tokens, leading to increased text degeneracy, whereas p-less sensibly truncates these long-tail tokens to maintain quality (as illustrated in Figure 1).&quot;,&quot;statement&quot;:&quot;Obtaining high-quality and robust outputs from Large Language Models (LLMs) via sampling-based decoding is challenging because existing methods are sensitive to hyperparameter choices that depend on the generation task and temperature settings, often leading to text degeneration or requiring extensive tuning.&quot;,&quot;whyItMatters&quot;:[&quot;The performance of LLMs in various generation tasks is critical for their real-world utility.&quot;,&quot;Extensive hyperparameter tuning for different tasks and temperatures is time-consuming and labor-intensive, hindering broad adoption.&quot;,&quot;Poor decoding strategies can lead to incoherent, degenerate, or factually incorrect generations, particularly at higher temperatures meant to encourage diversity.&quot;]},&quot;evaluationHighlights&quot;:[&quot;p-less and its variant p-less_norm consistently achieve the highest or second-highest Area Under the Curve (AUC) on math and logical reasoning datasets for Llama2-7b, Mistral-7b, and Llama3-70b.&quot;,&quot;p-less performs significantly better than other methods in creative writing tasks at higher temperatures, demonstrating robust quality (e.g., win rate +16.70 for Llama-2-7b at \\$\\tau=2.0\\$ over min-p).&quot;,&quot;p-less achieves the fastest average sampling speed per token (0.01942 s), representing a 22% reduction compared to the min-p baseline.&quot;,&quot;Human evaluation confirmed a preference for p-less generated stories over alternative sampling approaches for creative writing.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;GPQA (Graduate-Level Google-Proof Q&amp;A)&quot;,&quot;GSM8K (Grade School Math)&quot;,&quot;QASC (Question Answering via Sentence Composition)&quot;,&quot;CommonsenseQA (CSQA)&quot;,&quot;Writing Prompts (WP)&quot;],&quot;metrics&quot;:[&quot;Accuracy&quot;,&quot;Area Under the Curve (AUC) of Accuracy-Temperature&quot;,&quot;Length-controlled Win Rate&quot;,&quot;Average Sampling Time per Token&quot;,&quot;n-gram Repetition Diversity&quot;],&quot;setting&quot;:&quot;Evaluation across three LLMs (Llama-2-7B, Mistral-7B, Llama3-70b) on math, logical reasoning, and creative writing tasks at various temperatures (0.5 to 2.0).&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:497,&quot;xmin&quot;:207,&quot;ymax&quot;:648,&quot;xmax&quot;:793},&quot;caption&quot;:&quot;Accuracy vs. temperature curves of each method on CSQA, QASC, and GSM8k using Llama-2-7b. AUC values achieved by each method are provided in the legend (in parentheses) with the best AUC in bold .&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:6}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.488&quot;,&quot;benchmark&quot;:&quot;CSQA (Llama2-7b)&quot;,&quot;delta&quot;:&quot;+0.015&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.503 (p-less)&quot;},{&quot;baseline&quot;:&quot;0.243&quot;,&quot;benchmark&quot;:&quot;GPQA (Llama2-7b)&quot;,&quot;delta&quot;:&quot;+0.005&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.248 (p-less_norm)&quot;},{&quot;baseline&quot;:&quot;0.256&quot;,&quot;benchmark&quot;:&quot;GSM8K (Llama2-7b)&quot;,&quot;delta&quot;:&quot;+0.011&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.267 (p-less)&quot;},{&quot;baseline&quot;:&quot;0.502&quot;,&quot;benchmark&quot;:&quot;QASC (Llama2-7b)&quot;,&quot;delta&quot;:&quot;+0.036&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;AUC&quot;,&quot;thisPaper&quot;:&quot;0.538 (p-less_norm)&quot;}],&quot;title&quot;:&quot;Math and Logical Reasoning AUC (Table 1)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;48.94&quot;,&quot;benchmark&quot;:&quot;Writing Prompts (Llama-2-7b, \\$\\tau=2.0\\$)&quot;,&quot;delta&quot;:&quot;+16.70&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win rate&quot;,&quot;thisPaper&quot;:&quot;65.64 (p-less)&quot;},{&quot;baseline&quot;:&quot;54.11&quot;,&quot;benchmark&quot;:&quot;Writing Prompts (Mistral-7b, \\$\\tau=2.0\\$)&quot;,&quot;delta&quot;:&quot;+6.21&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win rate&quot;,&quot;thisPaper&quot;:&quot;60.32 (p-less)&quot;}],&quot;title&quot;:&quot;Creative Writing Win Rate (Table 2)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;0.02497&quot;,&quot;benchmark&quot;:&quot;GSM8K/GPQA (Mistral-7b)&quot;,&quot;delta&quot;:&quot;-0.00555&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Average sampling time (s)&quot;,&quot;thisPaper&quot;:&quot;0.01942 (p-less)&quot;}],&quot;title&quot;:&quot;Sampling Efficiency (Table 3)&quot;}],&quot;keyResults&quot;:[],&quot;mainTakeaways&quot;:[&quot;p-less consistently outperforms existing sampling approaches in math and logical reasoning tasks, especially at higher temperatures where other methods degrade.&quot;,&quot;It maintains superior performance in creative writing tasks, avoiding quality degradation typically seen in other methods at higher temperatures.&quot;,&quot;p-less is more inference-time efficient, achieving faster average token sampling speeds and shorter generation lengths without sacrificing accuracy.&quot;,&quot;The method is robust, hyperparameter-free, and grounded in information theory, providing a principled approach to LLM decoding.&quot;]},&quot;institutions&quot;:&quot;Thoughtworks, National University of Singapore&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;p-less sampling dynamically sets a truncation threshold at each decoding step by computing the likelihood of a &#39;correct random guess&#39; based on the entire token probability distribution.&quot;,&quot;Unlike existing methods, p-less is parameter-less, eliminating the need for hyperparameter tuning which is often task and temperature sensitive.&quot;,&quot;The truncation threshold dynamically adjusts with temperature, enabling robust high-quality outputs even at high temperatures where other methods suffer text degeneration.&quot;,&quot;It is grounded in information theory, specifically connected to Rényi entropies, providing a principled, model-agnostic approach to truncation.&quot;],&quot;main&quot;:&quot;A robust, hyperparameter-free sampling strategy (p-less sampling) for LLM decoding, which dynamically adapts its truncation threshold based on information-theoretic principles from the entire token probability distribution.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;The probability assigned by a language model to each token in its vocabulary for the next predicted token, conditioned on the preceding token sequence.&quot;,&quot;term&quot;:&quot;Token Probability Distribution&quot;},{&quot;definition&quot;:&quot;A value used in sampling-based decoding to filter out lower-likelihood tokens, restricting the sampling pool to a subset of higher-likelihood tokens.&quot;,&quot;term&quot;:&quot;Truncation Threshold&quot;},{&quot;definition&quot;:&quot;A generalization of Shannon entropy, used in information theory to quantify the uncertainty or diversity of a probability distribution, with different orders quantifying different sensitivities.&quot;,&quot;term&quot;:&quot;Rényi Entropy&quot;},{&quot;definition&quot;:&quot;A hyperparameter that controls the randomness of token generation, where higher temperatures lead to more diverse (and potentially less coherent) outputs by flattening the probability distribution.&quot;,&quot;term&quot;:&quot;Temperature (in LLM decoding)&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Sampling-based decoding strategies&quot;,&quot;Probability distributions&quot;,&quot;Information theory (entropy)&quot;]},&quot;subTopics&quot;:[&quot;LLM Decoding&quot;,&quot;Sampling Strategies&quot;,&quot;Information Theory&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Pretraining&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Existing truncation methods (top-k, top-p, \\$\\epsilon\\$-sampling, min-p) rely on fixed thresholds or single token statistics, failing to dynamically adapt to the entire token probability distribution.&quot;,&quot;Mirostat assumes Zipf&#39;s Law and dynamically adjusts a threshold to maintain target surprisal, but requires tuning target surprisal and learning rate based on task and model.&quot;,&quot;\\$\\eta\\$-sampling introduces additional hyperparameters and assumes a uniform entropy distribution baseline.&quot;,&quot;In contrast, p-less operates directly on the empirical token distribution without parametric assumptions or hyperparameter tuning, making it robust in high-entropy regimes.&quot;,&quot;p-less uniquely guarantees a non-empty candidate set and its truncation threshold dynamically adjusts with temperature, remaining meaningful even when temperature approaches zero or infinity.&quot;],&quot;limitations&quot;:[],&quot;modeling&quot;:[{&quot;label&quot;:&quot;p-less quantity (Likelihood of correct random guess)&quot;,&quot;value&quot;:&quot;$L[P] := \\sum_{v \\in V} P_{\\theta}(v|x_{1:t-1})^2$&quot;},{&quot;label&quot;:&quot;p-less_norm quantity&quot;,&quot;value&quot;:&quot;$\\bar{L}[P_{\\theta}] := L[P_{\\theta}] - \\frac{1}{|V|-1} \\times \\sum_{u,v \\in V, u \\ne v} P_{\\theta}(u|x_{1:t-1})P_{\\theta}(v|x_{1:t-1})$&quot;},{&quot;label&quot;:&quot;Connection to Rényi Entropy of order 2&quot;,&quot;value&quot;:&quot;$H_2(p) = -\\log \\sum_i p_i^2 = -\\log L[P]$&quot;},{&quot;label&quot;:&quot;Bounds for L[P]&quot;,&quot;list&quot;:[&quot;Lower bound: $\\frac{1}{c} \\le L[P]$&quot;,&quot;Upper bound: $L[P] \\le \\max_i P(x_i)$&quot;]}],&quot;pipelineFlow&quot;:[&quot;Determine the threshold probability $L[P_{\\theta}]$ using equation (2) based on the language model&#39;s predicted token distribution.&quot;,&quot;Construct the sampling set $V_{p-less}$ consisting of tokens whose probabilities are at least the determined threshold $L[P_{\\theta}]$.&quot;,&quot;Sample the next token $x_t$ from $V_{p-less}$ according to their normalized token probabilities $P&#39;_{\\theta}$.&quot;],&quot;problemDefinition&quot;:[{&quot;label&quot;:&quot;Problem&quot;,&quot;value&quot;:&quot;Given a probability distribution of tokens, identify a reliable subset of tokens to sample from, ensuring high-quality, non-degenerate text generation across varying tasks and temperatures without extensive hyperparameter tuning.&quot;}],&quot;reproducibility&quot;:&quot;The source code will be publicly available. Complete details on models, datasets, evaluation metrics, hyperparameters, prompts, and generation examples are provided in the appendices (C.1 to C.13). The documentation aims to provide all necessary details for full reproduction.&quot;,&quot;systemModules&quot;:[]},&quot;thesis&quot;:&quot;p-less sampling is a novel hyperparameter-free decoding strategy for LLMs that dynamically adjusts its truncation threshold based on information-theoretic principles derived from the entire token probability distribution, yielding robust, high-quality, and efficient text generation across diverse tasks and temperatures.&quot;,&quot;title&quot;:&quot;p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/2509.23234&quot;,&quot;venue&quot;:&quot;ICLR&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "paperId": "2411.07641",
+  "title": "Top-nsigma: Not All Logits Are You Need",
+  "authors": "Chenxia Tang, Jianchun Liu, Hongli Xu, Liusheng Huang",
+  "publishedDate": "2024-11-01",
+  "tags": [
+    "QA",
+    "Reasoning",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2411.07641",
+  "pagePath": "/paper-summaries-site/papers/2411.07641",
+  "summaryPath": "/paper-summaries-site/data/papers/2411.07641/summary.json",
+  "assets": {
+    "figureAssetCount": 3,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

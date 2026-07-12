@@ -106,16 +106,14 @@
       ]
     },
     {
-      "paperId": "2509.05486",
-      "title": "The Token Tax: Systematic Bias in Multilingual Tokenization",
-      "authors": "Jessica M. Lundin, Ada Zhang, Nihal Karim, Hamza Louzan, Victor Wei, David Adelani, Cody Carroll",
+      "paperId": "2509.23234",
+      "title": "p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding",
+      "authors": "Runyan Tan, Shuang Wu, Phillip Howard",
       "publishedDate": "2025-09-01",
       "tags": [
-        "Multilingual NLP",
-        "Tokenization Bias",
-        "African Languages",
-        "AI Ethics",
-        "LLM Scaling Laws"
+        "Reasoning",
+        "QA",
+        "Pretraining"
       ]
     }
   ]
