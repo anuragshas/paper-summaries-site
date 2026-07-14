@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Min-k Sampling: Decoupling Truncation from Temperature Scaling via Relative Logit Dynamics</title>
+  <style>
+    body { font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background:#f6f8fb; color:#111827; }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 0 16px 32px; }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+    h1 { margin: 0 0 10px; font-size: 1.5rem; line-height:1.3; }
+    h2 { margin: 0 0 10px; font-size: 1rem; border-bottom:1px solid #e5e7eb; padding-bottom:6px; }
+    p { margin: 0 0 8px; line-height:1.5; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    .meta { color:#4b5563; }
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .muted { color:#6b7280; font-size: 0.9rem; }
+    .raw { white-space: pre-wrap; word-break: break-word; background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:12px; font-size:13px; }
+    a { color:#2563eb; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Min-k Sampling: Decoupling Truncation from Temperature Scaling via Relative Logit Dynamics</h1>
+      <p class="meta"><strong>Authors:</strong> Yuanhao Ding, Meimingwei Li, Esteban Garces Arias, Matthias Aßenmacher, Christian Heumann, Chongsheng Zhang</p>
+      <p class="meta"><strong>Source:</strong> <a href="https://arxiv.org/abs/2604.11012" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2604.11012</a></p>
+      <p class="muted">Generated summary artifact for 2604.11012</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Thesis</h2>
+        <p>Min-k Sampling is a novel dynamic truncation strategy that analyzes the local shape of the sorted logit distribution to identify &quot;semantic cliffs&quot; and determine truncation boundaries, achieving strict temperature invariance and maintaining robust, high-quality performance across various tasks and temperatures, thereby overcoming limitations of existing probability-based and logit-space methods.</p>
+      </div>
+      <div class="card">
+        <h2>Core Problem</h2>
+        <p>Existing LLM decoding sampling strategies (Top-k, Top-p, Min-p, Top-nσ) suffer from inherent limitations: extreme sensitivity to the temperature parameter (T) or susceptibility to long-tail noise, leading to performance degradation and &quot;semantic collapse&quot; at high temperatures.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Novelty</h2>
+      <p>A novel dynamic truncation strategy for LLM decoding that identifies &quot;semantic cliffs&quot; in the local logit distribution via a position-weighted relative decay rate, achieving strict temperature invariance and robust performance across diverse generation tasks.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Key Contributions</h2>
+        <ul><li>Min-k consistently achieves higher reasoning accuracy (EM%) across diverse models and datasets, maintaining robust performance even at high temperatures (T=10.0) where traditional methods collapse to near-zero accuracy.</li><li>In creative writing, Min-k attains peak win rates in low-temperature settings (58.60% at T=1.0 on LLaMA-3-8B-Instruct) and maintains strong performance at high temperatures (52.80% at T=10.0 on LLaMA-3-8B-Instruct).</li><li>Human evaluation indicates a preference for Min-k over the Top-nσ baseline, with Min-k preferred in 37.5% of cases compared to 33.5% for Top-nσ.</li><li>Min-k demonstrates remarkable robustness to its core hyperparameter τ, with accuracy consistently lying within a narrow 74%-79% range across a broad hyperparameter space, significantly reducing reliance on extensive tuning.</li><li>Min-k effectively suppresses semantic noise, maintaining a negligible noise rate (&lt;10%) even at extreme temperatures (T=10.0), contrasting with traditional methods that reach 100% noise saturation at T&gt;=2.0.</li><li>Min-k introduces a marginal computational overhead (3.73% relative slowdown over greedy decoding), comparable to other advanced sampling strategies, making it suitable for real-time deployment without specialized kernels.</li></ul>
+      </div>
+      <div class="card">
+        <h2>Results</h2>
+        <ul><li>Min-k consistently improves text quality and diversity, demonstrating superior stability across various temperature regimes (mid and high) in reasoning-centric tasks and creative writing.</li><li>Min-k exhibits strong resilience against high-temperature degradation, preventing the &quot;semantic collapse&quot; observed in traditional probability-based methods and preserving core reasoning capabilities.</li><li>Min-k is strictly temperature-invariant and shows low sensitivity to its core hyperparameter τ, making it robust, easy to deploy, and reducing reliance on extensive hyperparameter search.</li><li>The method effectively suppresses long-tail distributed noise, enabling models to maintain high generation quality and coherence while adapting to fluctuating uncertainty in token generation.</li></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Limitations</h2>
+      <ul><li>Similar to Top-p and Min-p, Min-k relies on sorting or scanning the full logit distribution, which incurs a marginal computational overhead, though this is negligible compared to the model&#39;s forward pass.</li><li>The core assumption of Min-k—that a semantic boundary manifests as a distinct &quot;cliff&quot; in the logit curve—may be less effective in scenarios requiring the retrieval of extremely long-tail knowledge entities where the correct token possesses a very low probability indistinguishable from noise. Aggressive truncation in such cases might inadvertently filter out the correct answer.</li></ul>
+    </div>
+
+    <div class="card">
+      <h2>Raw JSON</h2>
+      <div class="raw">{
+  &quot;authors&quot;: &quot;Yuanhao Ding, Meimingwei Li, Esteban Garces Arias, Matthias Aßenmacher, Christian Heumann, Chongsheng Zhang&quot;,
+  &quot;breakthroughAssessment&quot;: {
+    &quot;justification&quot;: &quot;Min-k Sampling introduces a novel, theoretically sound, and empirically validated approach to LLM decoding that addresses a critical flaw in existing methods: sensitivity to temperature and vulnerability to semantic collapse at high temperatures. Its temperature invariance, robustness to hyperparameters, and consistent state-of-the-art performance across diverse reasoning and creative tasks (especially at high temperatures) represent a significant step forward for reliable LLM generation. The explicit mechanism for identifying \&quot;semantic cliffs\&quot; in logit space is a creative and effective solution to a long-standing problem.&quot;,
+    &quot;score&quot;: 8
+  },
+  &quot;coreProblem&quot;: {
+    &quot;concreteExample&quot;: &quot;As temperature (T) increases, probability distributions flatten, causing Top-p and Min-p to include low-quality noise tokens. Top-k, with its fixed size, is insensitive to dynamic confidence. Top-nσ relies on global statistics, making its truncation decision susceptible to interference from background noise within the long-tail logit distribution.&quot;,
+    &quot;statement&quot;: &quot;Existing LLM decoding sampling strategies (Top-k, Top-p, Min-p, Top-nσ) suffer from inherent limitations: extreme sensitivity to the temperature parameter (T) or susceptibility to long-tail noise, leading to performance degradation and \&quot;semantic collapse\&quot; at high temperatures.&quot;,
+    &quot;whyItMatters&quot;: [
+      &quot;The quality of text generated by large language models depends critically on the decoding sampling strategy.&quot;,
+      &quot;Poor sampling strategies lead to illogical, incoherent, or repetitive outputs, especially in high-uncertainty or high-temperature settings, which limits their reliability and generalizability.&quot;,
+      &quot;Temperature sensitivity makes decoding methods difficult to tune and deploy consistently across varying generation contexts.&quot;
+    ]
+  },
+  &quot;evaluationHighlights&quot;: [
+    &quot;Min-k consistently achieves higher reasoning accuracy (EM%) across diverse models and datasets, maintaining robust performance even at high temperatures (T=10.0) where traditional methods collapse to near-zero accuracy.&quot;,
+    &quot;In creative writing, Min-k attains peak win rates in low-temperature settings (58.60% at T=1.0 on LLaMA-3-8B-Instruct) and maintains strong performance at high temperatures (52.80% at T=10.0 on LLaMA-3-8B-Instruct).&quot;,
+    &quot;Human evaluation indicates a preference for Min-k over the Top-nσ baseline, with Min-k preferred in 37.5% of cases compared to 33.5% for Top-nσ.&quot;,
+    &quot;Min-k demonstrates remarkable robustness to its core hyperparameter τ, with accuracy consistently lying within a narrow 74%-79% range across a broad hyperparameter space, significantly reducing reliance on extensive tuning.&quot;,
+    &quot;Min-k effectively suppresses semantic noise, maintaining a negligible noise rate (&lt;10%) even at extreme temperatures (T=10.0), contrasting with traditional methods that reach 100% noise saturation at T&gt;=2.0.&quot;,
+    &quot;Min-k introduces a marginal computational overhead (3.73% relative slowdown over greedy decoding), comparable to other advanced sampling strategies, making it suitable for real-time deployment without specialized kernels.&quot;
+  ],
+  &quot;experiments&quot;: {
+    &quot;evaluationSetup&quot;: {
+      &quot;benchmarks&quot;: [
+        &quot;AQuA&quot;,
+        &quot;GPQA-main&quot;,
+        &quot;GSM8K&quot;,
+        &quot;MATH500&quot;,
+        &quot;AlpacaEval&quot;
+      ],
+      &quot;metrics&quot;: [
+        &quot;Exact Match (EM) %&quot;,
+        &quot;Win Rate % (against Greedy Decoding)&quot;,
+        &quot;Human Preference %&quot;,
+        &quot;Semantic Noise Rate (SNR)&quot;,
+        &quot;Latency (ms)&quot;,
+        &quot;Relative Slowdown %&quot;
+      ],
+      &quot;setting&quot;: &quot;Mathematical reasoning tasks, creative writing tasks, and semantic noise analysis, evaluated across various temperature settings (T=1.0 to 10.0) using LLaMA-3 (8B, 70B) and Qwen3 (4B, 30B) instruction-tuned models.&quot;
+    },
+    &quot;experimentFigures&quot;: [
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 101,
+          &quot;xmin&quot;: 125,
+          &quot;ymax&quot;: 370,
+          &quot;xmax&quot;: 860
+        },
+        &quot;caption&quot;: &quot;Comparison of decoding methods under different temperature and confidence conditions. See Appendix A for detailed token information. Top: High-confidence case, where Min-k accurately selects correct tokens and remains temperature-invariant. Bottom: Low-confidence case, where Min-k identifies semantic boundaries while reducing noise tokens.&quot;,
+        &quot;figureNumber&quot;: 1,
+        &quot;pageIndex&quot;: 1
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 206,
+          &quot;xmin&quot;: 514,
+          &quot;ymax&quot;: 389,
+          &quot;xmax&quot;: 873
+        },
+        &quot;caption&quot;: &quot;Sensitivity analysis of Min-k with respect to τ on GSM8K. The heatmap shows accuracy (%) under different combinations of τ and temperature. The method maintains highly stable performance ( ∼ 74-79%) across the entire tested parameter space, demonstrating strong robustness without a clear degradation threshold even at very high temperatures.&quot;,
+        &quot;figureNumber&quot;: 2,
+        &quot;pageIndex&quot;: 7
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 435,
+          &quot;xmin&quot;: 516,
+          &quot;ymax&quot;: 609,
+          &quot;xmax&quot;: 863
+        },
+        &quot;caption&quot;: &quot;Semantic Noise Rate Comparison (Log Scale). We evaluate the ratio of incoherent tokens generated by different methods across temperatures ranging from 1.0 to 10.0 on GSM8K (128 samples). While traditional methods collapse (noise rate → 1.0) as temperature rises, Min-k remains remarkably stable, consistently filtering out long-tail noise without manual tuning.&quot;,
+        &quot;figureNumber&quot;: 3,
+        &quot;pageIndex&quot;: 7
+      },
+      {
+        &quot;boundingBox&quot;: {
+          &quot;ymin&quot;: 622,
+          &quot;xmin&quot;: 521,
+          &quot;ymax&quot;: 728,
+          &quot;xmax&quot;: 871
+        },
+        &quot;caption&quot;: &quot;Visualization of candidate set size k across decoding steps under different temperature settings. Left: T = 1.0. Right: T = 5.0. The distributions are nearly identical, indicating strong temperature invariance.&quot;,
+        &quot;figureNumber&quot;: 6,
+        &quot;pageIndex&quot;: 11
+      }
+    ],
+    &quot;keyResultGroups&quot;: [
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;46.85%&quot;,
+            &quot;benchmark&quot;: &quot;AQuA (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;+3.15%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;50.00%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;49.61%&quot;,
+            &quot;benchmark&quot;: &quot;AQuA (T=10.0)&quot;,
+            &quot;delta&quot;: &quot;-3.55%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;46.06%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;28.57%&quot;,
+            &quot;benchmark&quot;: &quot;GPQA-main (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;+0.45%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;29.02%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;28.35%&quot;,
+            &quot;benchmark&quot;: &quot;GPQA-main (T=10.0)&quot;,
+            &quot;delta&quot;: &quot;+1.34%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;29.69%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;76.27%&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;+1.12%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;77.39%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;73.77%&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K (T=10.0)&quot;,
+            &quot;delta&quot;: &quot;+1.02%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;74.79%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;24.60%&quot;,
+            &quot;benchmark&quot;: &quot;MATH500 (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;-0.60%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;24.00%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;21.20%&quot;,
+            &quot;benchmark&quot;: &quot;MATH500 (T=10.0)&quot;,
+            &quot;delta&quot;: &quot;+0.40%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;21.60%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Mathematical Reasoning (LLaMA3-8B-Instruct)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;78.35%&quot;,
+            &quot;benchmark&quot;: &quot;AQuA (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;+0.78%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;79.13%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;77.17%&quot;,
+            &quot;benchmark&quot;: &quot;AQuA (T=10.0)&quot;,
+            &quot;delta&quot;: &quot;+1.96%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;79.13%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;17.19%&quot;,
+            &quot;benchmark&quot;: &quot;GPQA-main (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;+1.78%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;18.97%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;16.07%&quot;,
+            &quot;benchmark&quot;: &quot;GPQA-main (T=10.0)&quot;,
+            &quot;delta&quot;: &quot;+2.90%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;18.97%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;93.40%&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;+0.23%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;93.63%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;93.18%&quot;,
+            &quot;benchmark&quot;: &quot;GSM8K (T=10.0)&quot;,
+            &quot;delta&quot;: &quot;-0.08%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;93.10%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;60.00%&quot;,
+            &quot;benchmark&quot;: &quot;MATH500 (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;-0.80%&quot;,
+            &quot;isPositive&quot;: false,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;59.20%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;57.40%&quot;,
+            &quot;benchmark&quot;: &quot;MATH500 (T=10.0)&quot;,
+            &quot;delta&quot;: &quot;+1.60%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Exact Match (%)&quot;,
+            &quot;thisPaper&quot;: &quot;59.00%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Mathematical Reasoning (Qwen3-4B-Instruct)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;50.80%&quot;,
+            &quot;benchmark&quot;: &quot;LLaMA3-8B-Instruct (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;+7.80%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;58.60%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;51.60%&quot;,
+            &quot;benchmark&quot;: &quot;LLaMA3-8B-Instruct (T=3.0)&quot;,
+            &quot;delta&quot;: &quot;+2.00%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;53.60%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;54.60%&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-4B-Instruct (T=1.0)&quot;,
+            &quot;delta&quot;: &quot;+1.40%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;56.00%&quot;
+          },
+          {
+            &quot;baseline&quot;: &quot;50.80%&quot;,
+            &quot;benchmark&quot;: &quot;Qwen3-4B-Instruct (T=3.0)&quot;,
+            &quot;delta&quot;: &quot;+4.60%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Win Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;55.40%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Creative Writing (AlpacaEval Win Rates)&quot;
+      },
+      {
+        &quot;keyResults&quot;: [
+          {
+            &quot;baseline&quot;: &quot;33.5%&quot;,
+            &quot;benchmark&quot;: &quot;Overall Human Preference&quot;,
+            &quot;delta&quot;: &quot;+4.0%&quot;,
+            &quot;isPositive&quot;: true,
+            &quot;metric&quot;: &quot;Preference Rate (%)&quot;,
+            &quot;thisPaper&quot;: &quot;37.5%&quot;
+          }
+        ],
+        &quot;title&quot;: &quot;Human Evaluation&quot;
+      }
+    ],
+    &quot;mainTakeaways&quot;: [
+      &quot;Min-k consistently improves text quality and diversity, demonstrating superior stability across various temperature regimes (mid and high) in reasoning-centric tasks and creative writing.&quot;,
+      &quot;Min-k exhibits strong resilience against high-temperature degradation, preventing the \&quot;semantic collapse\&quot; observed in traditional probability-based methods and preserving core reasoning capabilities.&quot;,
+      &quot;Min-k is strictly temperature-invariant and shows low sensitivity to its core hyperparameter τ, making it robust, easy to deploy, and reducing reliance on extensive hyperparameter search.&quot;,
+      &quot;The method effectively suppresses long-tail distributed noise, enabling models to maintain high generation quality and coherence while adapting to fluctuating uncertainty in token generation.&quot;
+    ]
+  },
+  &quot;institutions&quot;: &quot;School of Computer and Information Engineering, Henan University; Department of Statistics, LMU Munich; Munich Center for Machine Learning (MCML)&quot;,
+  &quot;keyNovelty&quot;: {
+    &quot;explanation&quot;: [
+      &quot;Min-k Sampling dynamically determines the candidate set size by analyzing the intrinsic local geometric structure of the sorted logit distribution, rather than relying on global statistics or fixed thresholds, enabling adaptive truncation.&quot;,
+      &quot;It computes a position-weighted relative decay rate ($w_i = \\frac{(l_i - l_{i+1})}{R_l} \\cdot \\frac{1}{i}$) to detect the most pronounced \&quot;semantic cliff\&quot; within the logit sequence, which marks the boundary between confident and uncertain tokens.&quot;,
+      &quot;A dynamic fallback mechanism ($k_{fallback} = \\lfloor \\tau \\cdot R^{-1}_l \\rfloor$) is integrated to safeguard against pathological cases of extremely flat logit distributions, ensuring a minimum level of exploration without distinct semantic cliffs.&quot;,
+      &quot;The entire design is formally proven to be strictly temperature-invariant, ensuring consistent decoding behavior across different temperature settings by decoupling truncation from temperature scaling.&quot;
+    ],
+    &quot;main&quot;: &quot;A novel dynamic truncation strategy for LLM decoding that identifies \&quot;semantic cliffs\&quot; in the local logit distribution via a position-weighted relative decay rate, achieving strict temperature invariance and robust performance across diverse generation tasks.&quot;
+  },
+  &quot;prerequisiteKnowledge&quot;: {
+    &quot;keyTerms&quot;: [
+      {
+        &quot;definition&quot;: &quot;Sharp transition point in the sorted logit distribution, representing the boundary between high-confidence core tokens and unreliable long-tail noise tokens.&quot;,
+        &quot;term&quot;: &quot;Semantic Cliff&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The property of a decoding strategy where its behavior and the selection of candidate tokens remain unchanged regardless of temperature scaling.&quot;,
+        &quot;term&quot;: &quot;Temperature Invariance&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The raw, unnormalized outputs of an LLM&#39;s final layer before the softmax function is applied, representing scores or \&quot;evidence\&quot; for each possible next token.&quot;,
+        &quot;term&quot;: &quot;Logit Space&quot;
+      },
+      {
+        &quot;definition&quot;: &quot;The process of selecting the next token during text generation by an LLM, typically involving sampling from a probability distribution over the vocabulary.&quot;,
+        &quot;term&quot;: &quot;Decoding Strategy&quot;
+      }
+    ],
+    &quot;prerequisites&quot;: [
+      &quot;Large Language Models (LLMs)&quot;,
+      &quot;Text Generation&quot;,
+      &quot;Sampling Strategies (Top-k, Top-p, Min-p, Top-nσ)&quot;,
+      &quot;Temperature Scaling&quot;,
+      &quot;Softmax Function&quot;
+    ]
+  },
+  &quot;subTopics&quot;: [
+    &quot;Text Generation&quot;,
+    &quot;Decoding Strategies&quot;,
+    &quot;Temperature Scaling&quot;
+  ],
+  &quot;tags&quot;: [
+    {
+      &quot;name&quot;: &quot;Reasoning&quot;,
+      &quot;type&quot;: &quot;primary&quot;
+    },
+    {
+      &quot;name&quot;: &quot;QA&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Benchmark&quot;,
+      &quot;type&quot;: &quot;topic&quot;
+    }
+  ],
+  &quot;technicalDetails&quot;: {
+    &quot;comparisonToPriorWork&quot;: [
+      &quot;Unlike probability-based methods (Top-k, Top-p, Min-p), which are highly sensitive to the temperature parameter and suffer from semantic collapse at high temperatures, Min-k is strictly temperature-invariant and maintains robust performance.&quot;,
+      &quot;In contrast to logit-space approaches like Top-nσ, which rely on global statistics (standard deviation) susceptible to long-tail noise, Min-k analyzes the local shape of the sorted logit distribution, enabling more precise identification of semantic boundaries.&quot;,
+      &quot;Compared to entropy-based sampling methods (e.g., Mirostat, η-sampling, ACS, GUARD), Min-k offers a simpler, more computationally efficient, and robust solution without the added complexity and hyperparameter tuning challenges often associated with information-theoretic approaches.&quot;,
+      &quot;Min-k provides a dynamic candidate set size determination, adapting to context-specific confidence levels, which overcomes the limitation of Top-k&#39;s fixed size that cannot adapt to different contexts.&quot;
+    ],
+    &quot;limitations&quot;: [
+      &quot;Similar to Top-p and Min-p, Min-k relies on sorting or scanning the full logit distribution, which incurs a marginal computational overhead, though this is negligible compared to the model&#39;s forward pass.&quot;,
+      &quot;The core assumption of Min-k—that a semantic boundary manifests as a distinct \&quot;cliff\&quot; in the logit curve—may be less effective in scenarios requiring the retrieval of extremely long-tail knowledge entities where the correct token possesses a very low probability indistinguishable from noise. Aggressive truncation in such cases might inadvertently filter out the correct answer.&quot;
+    ],
+    &quot;modeling&quot;: [
+      {
+        &quot;label&quot;: &quot;Sorted Logits&quot;,
+        &quot;value&quot;: &quot;$I_{sorted} = (l_1, l_2, \\dots, l_{|V|})$ with $l_1 \\geq l_2 \\geq \\dots \\geq l_{|V|}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Dynamic Range&quot;,
+        &quot;value&quot;: &quot;$R_l = l_1 - l_{|V|}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Weighted Relative Decay&quot;,
+        &quot;value&quot;: &quot;$w_i = \\frac{(l_i - l_{i+1})}{R_l} \\cdot \\frac{1}{i}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Cliff Detection (Candidate size)&quot;,
+        &quot;value&quot;: &quot;$k_{cliff} = i^* = \\text{arg max}_{i \\in \\{1, \\dots, |V|-1\\}} w_i$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Fallback Candidate Size&quot;,
+        &quot;value&quot;: &quot;$k_{fallback} = \\lfloor \\tau \\cdot R^{-1}_l \\rfloor$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Final Candidate Set Size&quot;,
+        &quot;value&quot;: &quot;$k = \\text{max}(k_{cliff}, k_{fallback})$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Truncated Logits&quot;,
+        &quot;value&quot;: &quot;$l_j = \\begin{cases} l_j &amp; \\text{if } j \\leq k \\\\ -\\infty &amp; \\text{otherwise} \\end{cases}$&quot;
+      },
+      {
+        &quot;label&quot;: &quot;Sampling Distribution&quot;,
+        &quot;value&quot;: &quot;$P(x_i) = \\frac{\\exp(l_i/T)}{\\sum_{j=1}^{|V|} \\exp(l_j/T)}$&quot;
+      }
+    ],
+    &quot;pipelineFlow&quot;: [
+      &quot;Compute the raw logit vector $I$ from the LLM given the input context $x$.&quot;,
+      &quot;Sort the logits in descending order to obtain $I_{sorted} = (l_1, l_2, \\dots, l_{|V|})$.&quot;,
+      &quot;Compute the dynamic range $R_l = l_1 - l_{|V|}$ for temperature invariance.&quot;,
+      &quot;Calculate the position-weighted relative decay measure $w_i = \\frac{(l_i - l_{i+1})}{R_l} \\cdot \\frac{1}{i}$ for each $i \\in \\{1, \\dots, |V|-1\\}$.&quot;,
+      &quot;Identify the &#39;semantic cliff&#39; by finding the rank $i^*$ with the maximum relative decay, setting $k_{cliff} = i^*$.&quot;,
+      &quot;Determine a fallback candidate size $k_{fallback} = \\lfloor \\tau \\cdot R^{-1}_l \\rfloor$ (activated when $R_l$ is minimal) to prevent collapse in flat distributions.&quot;,
+      &quot;The final candidate set size $k$ is chosen as the maximum of $k_{cliff}$ and $k_{fallback}$, i.e., $k = \\text{max}(k_{cliff}, k_{fallback})$.&quot;,
+      &quot;Filter the logits by retaining the top-$k$ logits and setting all remaining logits to $-\\infty$.&quot;,
+      &quot;Scale the truncated logits by the temperature $T$ and pass them through the softmax function to form the final sampling distribution.&quot;,
+      &quot;Sample the next token from the resulting probability distribution.&quot;
+    ],
+    &quot;problemDefinition&quot;: [],
+    &quot;reproducibility&quot;: &quot;The code, models, and analysis tools are publicly available at https://github.com/YecanLee/Mink, enhancing reproducibility.&quot;,
+    &quot;systemModules&quot;: []
+  },
+  &quot;thesis&quot;: &quot;Min-k Sampling is a novel dynamic truncation strategy that analyzes the local shape of the sorted logit distribution to identify \&quot;semantic cliffs\&quot; and determine truncation boundaries, achieving strict temperature invariance and maintaining robust, high-quality performance across various tasks and temperatures, thereby overcoming limitations of existing probability-based and logit-space methods.&quot;,
+  &quot;title&quot;: &quot;Min-k Sampling: Decoupling Truncation from Temperature Scaling via Relative Logit Dynamics&quot;,
+  &quot;url&quot;: &quot;https://arxiv.org/abs/2604.11012&quot;,
+  &quot;venue&quot;: &quot;arXiv preprint&quot;,
+  &quot;year&quot;: &quot;2026&quot;
+}</div>
+    </div>
+  </div>
+  <script id="paper-summary-data" type="application/json">{&quot;paperId&quot;:&quot;2604.11012&quot;,&quot;sourceUrl&quot;:&quot;https://arxiv.org/abs/2604.11012&quot;,&quot;summary&quot;:{&quot;authors&quot;:&quot;Yuanhao Ding, Meimingwei Li, Esteban Garces Arias, Matthias Aßenmacher, Christian Heumann, Chongsheng Zhang&quot;,&quot;breakthroughAssessment&quot;:{&quot;justification&quot;:&quot;Min-k Sampling introduces a novel, theoretically sound, and empirically validated approach to LLM decoding that addresses a critical flaw in existing methods: sensitivity to temperature and vulnerability to semantic collapse at high temperatures. Its temperature invariance, robustness to hyperparameters, and consistent state-of-the-art performance across diverse reasoning and creative tasks (especially at high temperatures) represent a significant step forward for reliable LLM generation. The explicit mechanism for identifying \&quot;semantic cliffs\&quot; in logit space is a creative and effective solution to a long-standing problem.&quot;,&quot;score&quot;:8},&quot;coreProblem&quot;:{&quot;concreteExample&quot;:&quot;As temperature (T) increases, probability distributions flatten, causing Top-p and Min-p to include low-quality noise tokens. Top-k, with its fixed size, is insensitive to dynamic confidence. Top-nσ relies on global statistics, making its truncation decision susceptible to interference from background noise within the long-tail logit distribution.&quot;,&quot;statement&quot;:&quot;Existing LLM decoding sampling strategies (Top-k, Top-p, Min-p, Top-nσ) suffer from inherent limitations: extreme sensitivity to the temperature parameter (T) or susceptibility to long-tail noise, leading to performance degradation and \&quot;semantic collapse\&quot; at high temperatures.&quot;,&quot;whyItMatters&quot;:[&quot;The quality of text generated by large language models depends critically on the decoding sampling strategy.&quot;,&quot;Poor sampling strategies lead to illogical, incoherent, or repetitive outputs, especially in high-uncertainty or high-temperature settings, which limits their reliability and generalizability.&quot;,&quot;Temperature sensitivity makes decoding methods difficult to tune and deploy consistently across varying generation contexts.&quot;]},&quot;evaluationHighlights&quot;:[&quot;Min-k consistently achieves higher reasoning accuracy (EM%) across diverse models and datasets, maintaining robust performance even at high temperatures (T=10.0) where traditional methods collapse to near-zero accuracy.&quot;,&quot;In creative writing, Min-k attains peak win rates in low-temperature settings (58.60% at T=1.0 on LLaMA-3-8B-Instruct) and maintains strong performance at high temperatures (52.80% at T=10.0 on LLaMA-3-8B-Instruct).&quot;,&quot;Human evaluation indicates a preference for Min-k over the Top-nσ baseline, with Min-k preferred in 37.5% of cases compared to 33.5% for Top-nσ.&quot;,&quot;Min-k demonstrates remarkable robustness to its core hyperparameter τ, with accuracy consistently lying within a narrow 74%-79% range across a broad hyperparameter space, significantly reducing reliance on extensive tuning.&quot;,&quot;Min-k effectively suppresses semantic noise, maintaining a negligible noise rate (&lt;10%) even at extreme temperatures (T=10.0), contrasting with traditional methods that reach 100% noise saturation at T&gt;=2.0.&quot;,&quot;Min-k introduces a marginal computational overhead (3.73% relative slowdown over greedy decoding), comparable to other advanced sampling strategies, making it suitable for real-time deployment without specialized kernels.&quot;],&quot;experiments&quot;:{&quot;evaluationSetup&quot;:{&quot;benchmarks&quot;:[&quot;AQuA&quot;,&quot;GPQA-main&quot;,&quot;GSM8K&quot;,&quot;MATH500&quot;,&quot;AlpacaEval&quot;],&quot;metrics&quot;:[&quot;Exact Match (EM) %&quot;,&quot;Win Rate % (against Greedy Decoding)&quot;,&quot;Human Preference %&quot;,&quot;Semantic Noise Rate (SNR)&quot;,&quot;Latency (ms)&quot;,&quot;Relative Slowdown %&quot;],&quot;setting&quot;:&quot;Mathematical reasoning tasks, creative writing tasks, and semantic noise analysis, evaluated across various temperature settings (T=1.0 to 10.0) using LLaMA-3 (8B, 70B) and Qwen3 (4B, 30B) instruction-tuned models.&quot;},&quot;experimentFigures&quot;:[{&quot;boundingBox&quot;:{&quot;ymin&quot;:101,&quot;xmin&quot;:125,&quot;ymax&quot;:370,&quot;xmax&quot;:860},&quot;caption&quot;:&quot;Comparison of decoding methods under different temperature and confidence conditions. See Appendix A for detailed token information. Top: High-confidence case, where Min-k accurately selects correct tokens and remains temperature-invariant. Bottom: Low-confidence case, where Min-k identifies semantic boundaries while reducing noise tokens.&quot;,&quot;figureNumber&quot;:1,&quot;pageIndex&quot;:1},{&quot;boundingBox&quot;:{&quot;ymin&quot;:206,&quot;xmin&quot;:514,&quot;ymax&quot;:389,&quot;xmax&quot;:873},&quot;caption&quot;:&quot;Sensitivity analysis of Min-k with respect to τ on GSM8K. The heatmap shows accuracy (%) under different combinations of τ and temperature. The method maintains highly stable performance ( ∼ 74-79%) across the entire tested parameter space, demonstrating strong robustness without a clear degradation threshold even at very high temperatures.&quot;,&quot;figureNumber&quot;:2,&quot;pageIndex&quot;:7},{&quot;boundingBox&quot;:{&quot;ymin&quot;:435,&quot;xmin&quot;:516,&quot;ymax&quot;:609,&quot;xmax&quot;:863},&quot;caption&quot;:&quot;Semantic Noise Rate Comparison (Log Scale). We evaluate the ratio of incoherent tokens generated by different methods across temperatures ranging from 1.0 to 10.0 on GSM8K (128 samples). While traditional methods collapse (noise rate → 1.0) as temperature rises, Min-k remains remarkably stable, consistently filtering out long-tail noise without manual tuning.&quot;,&quot;figureNumber&quot;:3,&quot;pageIndex&quot;:7},{&quot;boundingBox&quot;:{&quot;ymin&quot;:622,&quot;xmin&quot;:521,&quot;ymax&quot;:728,&quot;xmax&quot;:871},&quot;caption&quot;:&quot;Visualization of candidate set size k across decoding steps under different temperature settings. Left: T = 1.0. Right: T = 5.0. The distributions are nearly identical, indicating strong temperature invariance.&quot;,&quot;figureNumber&quot;:6,&quot;pageIndex&quot;:11}],&quot;keyResultGroups&quot;:[{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;46.85%&quot;,&quot;benchmark&quot;:&quot;AQuA (T=1.0)&quot;,&quot;delta&quot;:&quot;+3.15%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;50.00%&quot;},{&quot;baseline&quot;:&quot;49.61%&quot;,&quot;benchmark&quot;:&quot;AQuA (T=10.0)&quot;,&quot;delta&quot;:&quot;-3.55%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;46.06%&quot;},{&quot;baseline&quot;:&quot;28.57%&quot;,&quot;benchmark&quot;:&quot;GPQA-main (T=1.0)&quot;,&quot;delta&quot;:&quot;+0.45%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;29.02%&quot;},{&quot;baseline&quot;:&quot;28.35%&quot;,&quot;benchmark&quot;:&quot;GPQA-main (T=10.0)&quot;,&quot;delta&quot;:&quot;+1.34%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;29.69%&quot;},{&quot;baseline&quot;:&quot;76.27%&quot;,&quot;benchmark&quot;:&quot;GSM8K (T=1.0)&quot;,&quot;delta&quot;:&quot;+1.12%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;77.39%&quot;},{&quot;baseline&quot;:&quot;73.77%&quot;,&quot;benchmark&quot;:&quot;GSM8K (T=10.0)&quot;,&quot;delta&quot;:&quot;+1.02%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;74.79%&quot;},{&quot;baseline&quot;:&quot;24.60%&quot;,&quot;benchmark&quot;:&quot;MATH500 (T=1.0)&quot;,&quot;delta&quot;:&quot;-0.60%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;24.00%&quot;},{&quot;baseline&quot;:&quot;21.20%&quot;,&quot;benchmark&quot;:&quot;MATH500 (T=10.0)&quot;,&quot;delta&quot;:&quot;+0.40%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;21.60%&quot;}],&quot;title&quot;:&quot;Mathematical Reasoning (LLaMA3-8B-Instruct)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;78.35%&quot;,&quot;benchmark&quot;:&quot;AQuA (T=1.0)&quot;,&quot;delta&quot;:&quot;+0.78%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;79.13%&quot;},{&quot;baseline&quot;:&quot;77.17%&quot;,&quot;benchmark&quot;:&quot;AQuA (T=10.0)&quot;,&quot;delta&quot;:&quot;+1.96%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;79.13%&quot;},{&quot;baseline&quot;:&quot;17.19%&quot;,&quot;benchmark&quot;:&quot;GPQA-main (T=1.0)&quot;,&quot;delta&quot;:&quot;+1.78%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;18.97%&quot;},{&quot;baseline&quot;:&quot;16.07%&quot;,&quot;benchmark&quot;:&quot;GPQA-main (T=10.0)&quot;,&quot;delta&quot;:&quot;+2.90%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;18.97%&quot;},{&quot;baseline&quot;:&quot;93.40%&quot;,&quot;benchmark&quot;:&quot;GSM8K (T=1.0)&quot;,&quot;delta&quot;:&quot;+0.23%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;93.63%&quot;},{&quot;baseline&quot;:&quot;93.18%&quot;,&quot;benchmark&quot;:&quot;GSM8K (T=10.0)&quot;,&quot;delta&quot;:&quot;-0.08%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;93.10%&quot;},{&quot;baseline&quot;:&quot;60.00%&quot;,&quot;benchmark&quot;:&quot;MATH500 (T=1.0)&quot;,&quot;delta&quot;:&quot;-0.80%&quot;,&quot;isPositive&quot;:false,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;59.20%&quot;},{&quot;baseline&quot;:&quot;57.40%&quot;,&quot;benchmark&quot;:&quot;MATH500 (T=10.0)&quot;,&quot;delta&quot;:&quot;+1.60%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Exact Match (%)&quot;,&quot;thisPaper&quot;:&quot;59.00%&quot;}],&quot;title&quot;:&quot;Mathematical Reasoning (Qwen3-4B-Instruct)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;50.80%&quot;,&quot;benchmark&quot;:&quot;LLaMA3-8B-Instruct (T=1.0)&quot;,&quot;delta&quot;:&quot;+7.80%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;58.60%&quot;},{&quot;baseline&quot;:&quot;51.60%&quot;,&quot;benchmark&quot;:&quot;LLaMA3-8B-Instruct (T=3.0)&quot;,&quot;delta&quot;:&quot;+2.00%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;53.60%&quot;},{&quot;baseline&quot;:&quot;54.60%&quot;,&quot;benchmark&quot;:&quot;Qwen3-4B-Instruct (T=1.0)&quot;,&quot;delta&quot;:&quot;+1.40%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;56.00%&quot;},{&quot;baseline&quot;:&quot;50.80%&quot;,&quot;benchmark&quot;:&quot;Qwen3-4B-Instruct (T=3.0)&quot;,&quot;delta&quot;:&quot;+4.60%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Win Rate (%)&quot;,&quot;thisPaper&quot;:&quot;55.40%&quot;}],&quot;title&quot;:&quot;Creative Writing (AlpacaEval Win Rates)&quot;},{&quot;keyResults&quot;:[{&quot;baseline&quot;:&quot;33.5%&quot;,&quot;benchmark&quot;:&quot;Overall Human Preference&quot;,&quot;delta&quot;:&quot;+4.0%&quot;,&quot;isPositive&quot;:true,&quot;metric&quot;:&quot;Preference Rate (%)&quot;,&quot;thisPaper&quot;:&quot;37.5%&quot;}],&quot;title&quot;:&quot;Human Evaluation&quot;}],&quot;mainTakeaways&quot;:[&quot;Min-k consistently improves text quality and diversity, demonstrating superior stability across various temperature regimes (mid and high) in reasoning-centric tasks and creative writing.&quot;,&quot;Min-k exhibits strong resilience against high-temperature degradation, preventing the \&quot;semantic collapse\&quot; observed in traditional probability-based methods and preserving core reasoning capabilities.&quot;,&quot;Min-k is strictly temperature-invariant and shows low sensitivity to its core hyperparameter τ, making it robust, easy to deploy, and reducing reliance on extensive hyperparameter search.&quot;,&quot;The method effectively suppresses long-tail distributed noise, enabling models to maintain high generation quality and coherence while adapting to fluctuating uncertainty in token generation.&quot;]},&quot;institutions&quot;:&quot;School of Computer and Information Engineering, Henan University; Department of Statistics, LMU Munich; Munich Center for Machine Learning (MCML)&quot;,&quot;keyNovelty&quot;:{&quot;explanation&quot;:[&quot;Min-k Sampling dynamically determines the candidate set size by analyzing the intrinsic local geometric structure of the sorted logit distribution, rather than relying on global statistics or fixed thresholds, enabling adaptive truncation.&quot;,&quot;It computes a position-weighted relative decay rate ($w_i = \\frac{(l_i - l_{i+1})}{R_l} \\cdot \\frac{1}{i}$) to detect the most pronounced \&quot;semantic cliff\&quot; within the logit sequence, which marks the boundary between confident and uncertain tokens.&quot;,&quot;A dynamic fallback mechanism ($k_{fallback} = \\lfloor \\tau \\cdot R^{-1}_l \\rfloor$) is integrated to safeguard against pathological cases of extremely flat logit distributions, ensuring a minimum level of exploration without distinct semantic cliffs.&quot;,&quot;The entire design is formally proven to be strictly temperature-invariant, ensuring consistent decoding behavior across different temperature settings by decoupling truncation from temperature scaling.&quot;],&quot;main&quot;:&quot;A novel dynamic truncation strategy for LLM decoding that identifies \&quot;semantic cliffs\&quot; in the local logit distribution via a position-weighted relative decay rate, achieving strict temperature invariance and robust performance across diverse generation tasks.&quot;},&quot;prerequisiteKnowledge&quot;:{&quot;keyTerms&quot;:[{&quot;definition&quot;:&quot;Sharp transition point in the sorted logit distribution, representing the boundary between high-confidence core tokens and unreliable long-tail noise tokens.&quot;,&quot;term&quot;:&quot;Semantic Cliff&quot;},{&quot;definition&quot;:&quot;The property of a decoding strategy where its behavior and the selection of candidate tokens remain unchanged regardless of temperature scaling.&quot;,&quot;term&quot;:&quot;Temperature Invariance&quot;},{&quot;definition&quot;:&quot;The raw, unnormalized outputs of an LLM&#39;s final layer before the softmax function is applied, representing scores or \&quot;evidence\&quot; for each possible next token.&quot;,&quot;term&quot;:&quot;Logit Space&quot;},{&quot;definition&quot;:&quot;The process of selecting the next token during text generation by an LLM, typically involving sampling from a probability distribution over the vocabulary.&quot;,&quot;term&quot;:&quot;Decoding Strategy&quot;}],&quot;prerequisites&quot;:[&quot;Large Language Models (LLMs)&quot;,&quot;Text Generation&quot;,&quot;Sampling Strategies (Top-k, Top-p, Min-p, Top-nσ)&quot;,&quot;Temperature Scaling&quot;,&quot;Softmax Function&quot;]},&quot;subTopics&quot;:[&quot;Text Generation&quot;,&quot;Decoding Strategies&quot;,&quot;Temperature Scaling&quot;],&quot;tags&quot;:[{&quot;name&quot;:&quot;Reasoning&quot;,&quot;type&quot;:&quot;primary&quot;},{&quot;name&quot;:&quot;QA&quot;,&quot;type&quot;:&quot;topic&quot;},{&quot;name&quot;:&quot;Benchmark&quot;,&quot;type&quot;:&quot;topic&quot;}],&quot;technicalDetails&quot;:{&quot;comparisonToPriorWork&quot;:[&quot;Unlike probability-based methods (Top-k, Top-p, Min-p), which are highly sensitive to the temperature parameter and suffer from semantic collapse at high temperatures, Min-k is strictly temperature-invariant and maintains robust performance.&quot;,&quot;In contrast to logit-space approaches like Top-nσ, which rely on global statistics (standard deviation) susceptible to long-tail noise, Min-k analyzes the local shape of the sorted logit distribution, enabling more precise identification of semantic boundaries.&quot;,&quot;Compared to entropy-based sampling methods (e.g., Mirostat, η-sampling, ACS, GUARD), Min-k offers a simpler, more computationally efficient, and robust solution without the added complexity and hyperparameter tuning challenges often associated with information-theoretic approaches.&quot;,&quot;Min-k provides a dynamic candidate set size determination, adapting to context-specific confidence levels, which overcomes the limitation of Top-k&#39;s fixed size that cannot adapt to different contexts.&quot;],&quot;limitations&quot;:[&quot;Similar to Top-p and Min-p, Min-k relies on sorting or scanning the full logit distribution, which incurs a marginal computational overhead, though this is negligible compared to the model&#39;s forward pass.&quot;,&quot;The core assumption of Min-k—that a semantic boundary manifests as a distinct \&quot;cliff\&quot; in the logit curve—may be less effective in scenarios requiring the retrieval of extremely long-tail knowledge entities where the correct token possesses a very low probability indistinguishable from noise. Aggressive truncation in such cases might inadvertently filter out the correct answer.&quot;],&quot;modeling&quot;:[{&quot;label&quot;:&quot;Sorted Logits&quot;,&quot;value&quot;:&quot;$I_{sorted} = (l_1, l_2, \\dots, l_{|V|})$ with $l_1 \\geq l_2 \\geq \\dots \\geq l_{|V|}$&quot;},{&quot;label&quot;:&quot;Dynamic Range&quot;,&quot;value&quot;:&quot;$R_l = l_1 - l_{|V|}$&quot;},{&quot;label&quot;:&quot;Weighted Relative Decay&quot;,&quot;value&quot;:&quot;$w_i = \\frac{(l_i - l_{i+1})}{R_l} \\cdot \\frac{1}{i}$&quot;},{&quot;label&quot;:&quot;Cliff Detection (Candidate size)&quot;,&quot;value&quot;:&quot;$k_{cliff} = i^* = \\text{arg max}_{i \\in \\{1, \\dots, |V|-1\\}} w_i$&quot;},{&quot;label&quot;:&quot;Fallback Candidate Size&quot;,&quot;value&quot;:&quot;$k_{fallback} = \\lfloor \\tau \\cdot R^{-1}_l \\rfloor$&quot;},{&quot;label&quot;:&quot;Final Candidate Set Size&quot;,&quot;value&quot;:&quot;$k = \\text{max}(k_{cliff}, k_{fallback})$&quot;},{&quot;label&quot;:&quot;Truncated Logits&quot;,&quot;value&quot;:&quot;$l_j = \\begin{cases} l_j &amp; \\text{if } j \\leq k \\\\ -\\infty &amp; \\text{otherwise} \\end{cases}$&quot;},{&quot;label&quot;:&quot;Sampling Distribution&quot;,&quot;value&quot;:&quot;$P(x_i) = \\frac{\\exp(l_i/T)}{\\sum_{j=1}^{|V|} \\exp(l_j/T)}$&quot;}],&quot;pipelineFlow&quot;:[&quot;Compute the raw logit vector $I$ from the LLM given the input context $x$.&quot;,&quot;Sort the logits in descending order to obtain $I_{sorted} = (l_1, l_2, \\dots, l_{|V|})$.&quot;,&quot;Compute the dynamic range $R_l = l_1 - l_{|V|}$ for temperature invariance.&quot;,&quot;Calculate the position-weighted relative decay measure $w_i = \\frac{(l_i - l_{i+1})}{R_l} \\cdot \\frac{1}{i}$ for each $i \\in \\{1, \\dots, |V|-1\\}$.&quot;,&quot;Identify the &#39;semantic cliff&#39; by finding the rank $i^*$ with the maximum relative decay, setting $k_{cliff} = i^*$.&quot;,&quot;Determine a fallback candidate size $k_{fallback} = \\lfloor \\tau \\cdot R^{-1}_l \\rfloor$ (activated when $R_l$ is minimal) to prevent collapse in flat distributions.&quot;,&quot;The final candidate set size $k$ is chosen as the maximum of $k_{cliff}$ and $k_{fallback}$, i.e., $k = \\text{max}(k_{cliff}, k_{fallback})$.&quot;,&quot;Filter the logits by retaining the top-$k$ logits and setting all remaining logits to $-\\infty$.&quot;,&quot;Scale the truncated logits by the temperature $T$ and pass them through the softmax function to form the final sampling distribution.&quot;,&quot;Sample the next token from the resulting probability distribution.&quot;],&quot;problemDefinition&quot;:[],&quot;reproducibility&quot;:&quot;The code, models, and analysis tools are publicly available at https://github.com/YecanLee/Mink, enhancing reproducibility.&quot;,&quot;systemModules&quot;:[]},&quot;thesis&quot;:&quot;Min-k Sampling is a novel dynamic truncation strategy that analyzes the local shape of the sorted logit distribution to identify \&quot;semantic cliffs\&quot; and determine truncation boundaries, achieving strict temperature invariance and maintaining robust, high-quality performance across various tasks and temperatures, thereby overcoming limitations of existing probability-based and logit-space methods.&quot;,&quot;title&quot;:&quot;Min-k Sampling: Decoupling Truncation from Temperature Scaling via Relative Logit Dynamics&quot;,&quot;url&quot;:&quot;https://arxiv.org/abs/2604.11012&quot;,&quot;venue&quot;:&quot;arXiv preprint&quot;,&quot;year&quot;:&quot;2026&quot;}}</script>
+</body>
+</html>

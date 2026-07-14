@@ -1,0 +1,19 @@
+{
+  "paperId": "2509.02510",
+  "title": "Top-H Decoding: Adapting the Creativity and Coherence with Bounded Entropy in Text Generation",
+  "authors": "Erfan Baghaei Potraghloo, Seyedarmin Azizi, Souvik Kundu, and Massoud Pedram",
+  "publishedDate": "2025-09-01",
+  "tags": [
+    "Reasoning",
+    "QA",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2509.02510",
+  "pagePath": "/paper-summaries-site/papers/2509.02510",
+  "summaryPath": "/paper-summaries-site/data/papers/2509.02510/summary.json",
+  "assets": {
+    "figureAssetCount": 5,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

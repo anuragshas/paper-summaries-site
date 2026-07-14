@@ -1,0 +1,19 @@
+{
+  "paperId": "2604.11012",
+  "title": "Min-k Sampling: Decoupling Truncation from Temperature Scaling via Relative Logit Dynamics",
+  "authors": "Yuanhao Ding, Meimingwei Li, Esteban Garces Arias, Matthias A\u00dfenmacher, Christian Heumann, Chongsheng Zhang",
+  "publishedDate": "2026-04-01",
+  "tags": [
+    "Reasoning",
+    "QA",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2604.11012",
+  "pagePath": "/paper-summaries-site/papers/2604.11012",
+  "summaryPath": "/paper-summaries-site/data/papers/2604.11012/summary.json",
+  "assets": {
+    "figureAssetCount": 4,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

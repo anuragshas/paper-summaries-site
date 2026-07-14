@@ -1,0 +1,355 @@
+{
+  "authors": "Erfan Baghaei Potraghloo, Seyedarmin Azizi, Souvik Kundu, and Massoud Pedram",
+  "breakthroughAssessment": {
+    "justification": "This paper presents a strong contribution by introducing Top-H decoding, a theoretically grounded sampling method that effectively balances creativity and coherence in LLM text generation. It formalizes the problem as an NP-hard entropy-constrained mass maximization problem and proposes an efficient greedy approximation. Extensive empirical evaluations demonstrate consistent state-of-the-art performance, especially at higher temperatures, outperforming established methods like min-p and top-p by significant margins (e.g., up to 25.63% accuracy improvement). The method also offers robustness to temperature scaling and provides a clear path for future research in dynamic alpha adaptation and approximation guarantees, marking it as highly useful to the sub-field.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "Min-p sampling, for instance, relies on a single top token's probability to estimate confidence. This often leads to over-truncation in sparse probability distributions and under-truncation in dense distributions, failing to effectively utilize the overall shape of the probability distribution for optimal token selection.",
+    "statement": "Large language models (LLMs) struggle to balance two competing objectives in open-ended text generation: fostering diversity and creativity while preserving logical coherence. Existing truncation-based sampling techniques (e.g., temperature scaling, top-p, min-p) often fail to effectively incorporate the model's confidence, leading to suboptimal trade-offs, particularly at higher temperatures where coherence degrades.",
+    "whyItMatters": [
+      "Enables LLMs to generate text that is simultaneously more creative and coherent, addressing a long-standing challenge in open-ended text generation.",
+      "Improves the robustness of LLM outputs across varying temperature settings, making them more reliable for diverse applications.",
+      "Provides a principled, theoretically-grounded approach to text generation sampling, moving beyond heuristic methods."
+    ]
+  },
+  "evaluationHighlights": [
+    "Top-H consistently outperforms existing sampling methods (min-p, top-p, top-k, eta-sampling) in balancing creativity and coherence.",
+    "Demonstrates remarkable robustness to temperature scaling, preserving effectiveness at high temperatures where traditional methods significantly degrade.",
+    "Achieves up to 25.63% higher accuracy compared to min-p on creative writing benchmarks with LLaMA3.1-8B.",
+    "Maintains strong accuracy on reasoning datasets (GPQA, GSM8K) even at high temperatures, with significant accuracy improvements over baselines.",
+    "Exhibits negligible computational overhead, performing as efficiently as top-p and min-p (as low as 0.8% overhead).",
+    "Outperforms Mirostat, another entropy-aware baseline, by +13.3% on MT-Bench and +4.3% on GPQA averaged across models and temperatures."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Alpaca-Eval",
+        "MT-Bench",
+        "GSM8K",
+        "GPQA"
+      ],
+      "metrics": [
+        "Win-rate (%)",
+        "Accuracy (%)",
+        "Judge scores (1-10 scale)",
+        "Per-token decode latency (ms/token)",
+        "Log-likelihood"
+      ],
+      "setting": "Open-ended text generation, creative writing, reasoning (Chain-of-Thought tasks), human-aligned evaluations using LLM-as-a-judge framework."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 140,
+          "xmin": 167,
+          "ymax": 569,
+          "xmax": 820
+        },
+        "caption": "(a)-(c): Length-controlled win rates (%) comparison of different SoTA sampling with top-H on Alpaca-Eval benchmark. (d)-(f): Judge scores (on a scale of 1 to 10) on MT-Bench.",
+        "figureNumber": 2,
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2509.02510/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 24,
+          "xmin": 529,
+          "ymax": 201,
+          "xmax": 820
+        },
+        "caption": "Effect of T scaling on generation coherence in min-p, top-p vs top-H.",
+        "figureNumber": 3,
+        "pageIndex": 9,
+        "assetPath": "/paper-summaries-site/data/papers/2509.02510/figures/experiment-2.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 198,
+          "xmin": 341,
+          "ymax": 338,
+          "xmax": 673
+        },
+        "caption": "Effect of the parameter alpha on creativity and coherence.",
+        "figureNumber": 4,
+        "pageIndex": 10,
+        "assetPath": "/paper-summaries-site/data/papers/2509.02510/figures/experiment-3.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 489,
+          "xmin": 395,
+          "ymax": 574,
+          "xmax": 622
+        },
+        "caption": "Empirical evaluation of top-H performance relative to the optimal solution of the ECMM problem.",
+        "figureNumber": 5,
+        "pageIndex": 10,
+        "assetPath": "/paper-summaries-site/data/papers/2509.02510/figures/experiment-4.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 103,
+          "xmin": 172,
+          "ymax": 377,
+          "xmax": 819
+        },
+        "caption": "Probability distribution of two different types with associated top-H thresholds.",
+        "figureNumber": 6,
+        "pageIndex": 24,
+        "assetPath": "/paper-summaries-site/data/papers/2509.02510/figures/experiment-5.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "67.93",
+            "benchmark": "GSM8K (LLaMA3.1-8B-Instruct, T=1.0)",
+            "delta": "+8.42",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "76.35"
+          },
+          {
+            "baseline": "13.72",
+            "benchmark": "GSM8K (LLaMA3.1-8B-Instruct, T=2.0)",
+            "delta": "+25.63",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "39.35"
+          },
+          {
+            "baseline": "7.73",
+            "benchmark": "GSM8K (Phi-3-Mini, T=2.0)",
+            "delta": "+52.47",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "60.20"
+          }
+        ],
+        "title": "GSM8K Accuracy"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "28.57",
+            "benchmark": "GPQA (LLaMA3.1-8B-Instruct, T=1.5)",
+            "delta": "+2.01",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "30.58"
+          },
+          {
+            "baseline": "23.44",
+            "benchmark": "GPQA (Phi-3-Mini, T=2.0)",
+            "delta": "+7.36",
+            "isPositive": true,
+            "metric": "Accuracy (%)",
+            "thisPaper": "30.80"
+          }
+        ],
+        "title": "GPQA Accuracy"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "7.85",
+            "benchmark": "Prompt 1, T=1.0 (LLaMA3.1-8B-Instruct)",
+            "delta": "+0.60",
+            "isPositive": true,
+            "metric": "Average Score (1-10)",
+            "thisPaper": "8.45"
+          },
+          {
+            "baseline": "6.25",
+            "benchmark": "Prompt 2, T=2.0 (LLaMA3.1-8B-Instruct)",
+            "delta": "+2.35",
+            "isPositive": true,
+            "metric": "Average Score (1-10)",
+            "thisPaper": "8.60"
+          },
+          {
+            "baseline": "6.65",
+            "benchmark": "Prompt 3, T=2.0 (LLaMA3.1-8B-Instruct)",
+            "delta": "+1.00",
+            "isPositive": true,
+            "metric": "Average Score (1-10)",
+            "thisPaper": "7.65"
+          }
+        ],
+        "title": "LLM-as-a-Judge Evaluation"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "27.4275",
+            "benchmark": "LLaMA3.1-8B-Instruct, T=1.0",
+            "delta": "+0.9676",
+            "isPositive": false,
+            "metric": "ms/token",
+            "thisPaper": "28.3951"
+          },
+          {
+            "baseline": "217.7083",
+            "benchmark": "LLaMA3.3-70B-Instruct, T=2.0",
+            "delta": "+1.6345",
+            "isPositive": false,
+            "metric": "ms/token",
+            "thisPaper": "219.3428"
+          }
+        ],
+        "title": "Computational Overhead"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "6.375",
+            "benchmark": "MT-Bench (LLaMA3.1-8B-Instruct, T=1.0)",
+            "delta": "+0.413",
+            "isPositive": true,
+            "metric": "Score",
+            "thisPaper": "6.788"
+          },
+          {
+            "baseline": "25.67",
+            "benchmark": "GPQA (LLaMA3.1-8B-Instruct, T=1.5)",
+            "delta": "+4.91",
+            "isPositive": true,
+            "metric": "Accuracy",
+            "thisPaper": "30.58"
+          }
+        ],
+        "title": "Comparison to Mirostat"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "Top-H decoding consistently outperforms established sampling methods (min-p, top-p, top-k, eta-sampling) in balancing creativity and coherence across various LLMs and tasks.",
+      "The method demonstrates superior robustness to temperature scaling, maintaining high performance at increased temperatures where other baselines experience significant degradation.",
+      "Top-H provides substantial accuracy improvements on reasoning and QA benchmarks (e.g., up to 25.63% on creative writing benchmarks, +7.36% on GPQA) and achieves higher human-aligned evaluation scores for creative writing.",
+      "Top-H introduces negligible computational overhead, making it a practically efficient solution despite addressing an NP-hard problem.",
+      "The greedy approach of Top-H is empirically shown to closely approximate the optimal solution to the entropy-constrained mass maximization problem."
+    ]
+  },
+  "institutions": "University of Southern California, Los Angeles, USA; Intel AI, USA",
+  "keyNovelty": {
+    "explanation": [
+      "Top-H decoding is theoretically grounded by formulating the trade-off between creativity and coherence as an entropy-constrained minimum divergence (ECMD) problem, which is proven to be equivalent to an NP-hard entropy-constrained mass maximization (ECMM) problem.",
+      "It provides a computationally efficient greedy algorithm that approximates the solution to the ECMM problem, enabling practical deployment while adhering to the entropy constraint.",
+      "Unlike prior heuristic methods, Top-H dynamically adjusts its entropy threshold based on the evolving entropy of the token distribution, allowing adaptive control over randomness and effective incorporation of model confidence."
+    ],
+    "main": "Top-H decoding, a novel sampling method that dynamically selects a subset of tokens for text generation by maintaining minimal divergence from the original distribution under an upper-bounded entropy constraint, thereby balancing creativity and coherence."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "Sampling methods that select a subset of tokens from the full vocabulary to generate the next token, typically based on probability thresholds (e.g., top-k, top-p, min-p).",
+        "term": "Truncated Sampling"
+      },
+      {
+        "definition": "A sampling strategy that selects the smallest set of tokens whose cumulative probability exceeds a predefined threshold p, aiming to reduce the sampling space.",
+        "term": "Top-p (Nucleus) Sampling"
+      },
+      {
+        "definition": "A dynamic sampling strategy that scales a base probability score threshold by the probability of the top-1 token, restricting the sample space more aggressively when the model is confident.",
+        "term": "Min-p Sampling"
+      },
+      {
+        "definition": "An optimization problem to determine a subset of tokens that minimizes the Jensen-Shannon divergence from the original probability distribution, subject to an entropy constraint on the selected subset's distribution.",
+        "term": "Entropy-Constrained Minimum Divergence (ECMD)"
+      },
+      {
+        "definition": "An optimization problem, proven equivalent to ECMD, that aims to maximize the sum of probabilities of tokens in a selected subset, subject to an entropy constraint on the subset's renormalized distribution. This problem is NP-hard.",
+        "term": "Entropy-Constrained Mass Maximization (ECMM)"
+      }
+    ],
+    "prerequisites": [
+      "Large Language Models (LLMs)",
+      "Autoregressive Text Generation",
+      "Probability Distributions",
+      "Shannon Entropy",
+      "Jensen-Shannon Divergence (JSD)",
+      "Computational Complexity (NP-hard problems)"
+    ]
+  },
+  "subTopics": [
+    "Text Generation",
+    "Sampling Algorithms",
+    "Large Language Models"
+  ],
+  "tags": [
+    {
+      "name": "Reasoning",
+      "type": "primary"
+    },
+    {
+      "name": "QA",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Traditional temperature scaling can lead to incoherent text at high temperatures due to indiscriminate exploration, whereas Top-H maintains coherence by adaptively constraining randomness.",
+      "Top-k sampling's hard cutoff is insensitive to context and can arbitrarily exclude plausible tokens, which Top-H avoids by considering the overall distribution shape and entropy.",
+      "Top-p (nucleus) sampling can include low-probability tokens at high temperatures, harming coherence, and lacks awareness of the model's confidence based purely on cumulative probability. Top-H explicitly controls entropy and adapts to model uncertainty.",
+      "Min-p sampling relies solely on the top-1 token's probability for confidence, often overlooking broader distributional features, leading to over- or under-truncation. Top-H addresses this by considering the entire probability distribution's entropy.",
+      "Entropy-based methods like eta-sampling and Mirostat often require extensive hyperparameter tuning or introduce significant runtime overhead. Top-H offers a balance of efficiency and effectiveness with minimal overhead and a single hyperparameter (alpha)."
+    ],
+    "limitations": [
+      "As a greedy solution to an NP-hard problem, Top-H does not provide general competitive guarantees that apply across a broad range of distributions.",
+      "The hyperparameter alpha, which controls the entropy threshold, is currently tuned manually, though the method exhibits robustness to its variation.",
+      "Future research is needed to design an algorithm that offers a provable approximation ratio and can dynamically adapt the entropy threshold alpha."
+    ],
+    "modeling": [
+      {
+        "label": "Next token probability",
+        "value": "$p(x_t) = \\mathcal{M}(x_{1:t-1})$"
+      },
+      {
+        "label": "Conditional probability $p_i$",
+        "value": "$p_i = \\text{Prob}(x_t = v_i \\mid x_{1:t-1})$"
+      },
+      {
+        "label": "Conditional probability $q_i$ over subset $S$",
+        "value": "$q_i = \\begin{cases} p_i / \\Gamma_S & v_i \\in S \\\\ 0 & \\text{otherwise} \\end{cases}$, where $\\Gamma_S = \\sum_{v_i \\in S} p_i$"
+      },
+      {
+        "label": "Jensen-Shannon Divergence",
+        "value": "$JSD(p \\| q) = \\frac{1}{2} D_{KL}(p \\| M) + \\frac{1}{2} D_{KL}(q \\| M)$, where $M = \\frac{1}{2}(p+q)$"
+      },
+      {
+        "label": "Entropy of distribution $q$ after $j$ steps",
+        "value": "$H(q^j) = \\log \\Gamma_j - \\frac{h_j}{\\Gamma_j}$, where $\\Gamma_j = \\Gamma_{j-1} + p_j$, $h_j = h_{j-1} + p_j \\log p_j$"
+      }
+    ],
+    "pipelineFlow": [
+      "1. Initialize: Given a probability mass function $p=(p_1, \\dots, p_n)$ and an entropy threshold coefficient $\\alpha \\in (0,1)$.",
+      "2. Sort tokens: Sort all candidate tokens in descending order of their probabilities ($p_1 \\ge p_2 \\ge \\dots \\ge p_n$).",
+      "3. Iterative Addition: Initialize an empty selected token set $S$ and $H(q)=0$. Iteratively add tokens from the sorted list to $S$.",
+      "4. Entropy Calculation: After each token addition, compute the updated distribution $q$ over $S$ and its Shannon entropy $H(q)$.",
+      "5. Constraint Check: If the calculated $H(q)$ exceeds the dynamic entropy threshold $\\alpha \\cdot H(p)$, the last added token is removed from $S$, and the algorithm terminates.",
+      "6. Return: The final set $S$ of selected tokens is used for sampling the next token."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Entropy-Constrained Minimum Divergence (ECMD)",
+        "value": "$\\min_S JSD(q \\| p) \\text{ subject to } H(q) \\le \\alpha H(p)$"
+      },
+      {
+        "label": "Entropy-Constrained Mass Maximization (ECMM)",
+        "value": "$\\max_S \\sum_{i \\in S} p_i \\text{ subject to } H(q) \\le \\alpha H(p)$"
+      }
+    ],
+    "reproducibility": "The code for Top-H decoding is publicly available at https://github.com/ErfanBaghaei/Top-H-Decoding. Experiments were conducted using PyTorch and Hugging Face Transformers library."
+  },
+  "thesis": "Top-H decoding provides a theoretically grounded and computationally efficient greedy algorithm to balance creativity and coherence in open-ended text generation, outperforming existing sampling methods, especially at high temperatures, by addressing the entropy-constrained mass maximization problem.",
+  "title": "Top-H Decoding: Adapting the Creativity and Coherence with Bounded Entropy in Text Generation",
+  "url": "https://arxiv.org/abs/2509.02510",
+  "venue": "39th Conference on Neural Information Processing Systems (NeurIPS 2025)",
+  "year": "2025"
+}

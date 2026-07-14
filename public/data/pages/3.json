@@ -2,6 +2,17 @@
   "page": 3,
   "papers": [
     {
+      "paperId": "2603.22376",
+      "title": "AI Co-Scientist for Ranking: Discovering Novel Search Ranking Models alongside LLM-based AI Agents with Cloud Computing Access",
+      "authors": "Liwei Wu, Cho-Jui Hsieh",
+      "publishedDate": "2026-03-01",
+      "tags": [
+        "Agent",
+        "Rec",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2603.18573",
       "title": "Interplay: Training Independent Simulators for Reference-Free Conversational Recommendation",
       "authors": "Jerome Ramos, Feng Xia, Xi Wang, Shubham Chatterjee, Xiao Fu, Hossein A. Rahmani, and Aldo Lipani",
@@ -98,17 +109,6 @@
         "Agent",
         "QA",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2603.04816",
-      "title": "Scaling Laws for Reranking in Information Retrieval",
-      "authors": "Rahul Seetharaman, Aman Bansal, Hamed Zamani, Kaustubh D. Dhole",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "RAG",
-        "Benchmark",
-        "QA"
       ]
     }
   ]

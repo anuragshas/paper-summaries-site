@@ -1,0 +1,286 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 106,
+      "xmin": 198,
+      "ymax": 332,
+      "xmax": 808
+    },
+    "caption": "Figure 1: Comparison of sampling methods. (a) Top-p sampling in a high-certainty case. (b) Top-k sampling in a low-certainty case. (c) Min-p sampling in a high-certainty case. (d) Min-p sampling in a low-certainty case. Min-p sampling dynamically adjusts its threshold based on the model\u2019s confidence, focusing on likeliest tokens when confident and allowing more diverse options when uncertain. This dynamic threshold balances coherence and diversity better than top-p and top-k.",
+    "figureNumber": 1,
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2407.01082/figures/architecture.webp"
+  },
+  "authors": "Nguyen Nhat Minh, Andrew Baker, Clement Neo, Allen Roush, Andreas Kirsch, Ravid Shwartz-Ziv",
+  "breakthroughAssessment": {
+    "justification": "Min-p sampling provides a simple yet effective solution to a long-standing challenge in LLM generation: balancing creativity and coherence, particularly at high temperatures. Its dynamic, confidence-based approach offers clear quantitative and qualitative improvements over widely adopted methods like top-p and top-k. The rapid adoption in open-source frameworks further validates its practical utility and impact, making it a strong contribution for generative text quality.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "When generating creative stories or complex reasoning sequences with LLMs, popular sampling methods like top-p often struggle to produce diverse and creative outputs without sacrificing coherence, especially if high 'temperature' settings are used to encourage diversity.",
+    "statement": "The central challenge in Large Language Models (LLMs) is the trade-off between generating creative and diverse text outputs while maintaining coherence and quality, especially at higher decoding temperatures.",
+    "whyItMatters": [
+      "Incoherence or repetition in LLM outputs at higher temperatures limits the applicability of LLMs in creative writing, storytelling, and open-ended generation tasks.",
+      "Conservative sampling methods that prioritize coherence often result in generic and uncreative text, failing to fully leverage the LLM's generative potential.",
+      "Developing sampling strategies that dynamically adapt to context and model confidence is crucial for robust and versatile LLM performance across various tasks."
+    ]
+  },
+  "evaluationHighlights": [
+    "Min-p sampling consistently achieved higher accuracy on graduate-level reasoning (GPQA) and grade school math (GSM8K CoT) benchmarks across most temperature settings, demonstrating robustness and improved correctness, especially at higher temperatures.",
+    "The method significantly outperformed baseline methods, including top-p, on the AlpacaEval Creative Writing benchmark, yielding higher win rates and length-controlled win rates for creative and engaging text.",
+    "Human evaluations showed a clear preference for min-p outputs in terms of both quality and diversity, particularly at higher temperature settings, validating its real-world utility.",
+    "Min-p demonstrated a superior accuracy-diversity trade-off compared to top-p, with its configurations consistently lying closer to the Pareto frontier, indicating more efficient performance.",
+    "The benefits of min-p sampling generalized well across diverse LLM families and scales, from 1B to 123B parameters (Mistral and Llama 3 models), highlighting its broad applicability."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "GPQA Main Benchmark (Graduate-Level Reasoning)",
+        "GSM8K Chain-of-Thought (Grade School Math)",
+        "AlpacaEval Creative Writing"
+      ],
+      "metrics": [
+        "Accuracy (%)",
+        "Win Rate (%)",
+        "Length-Controlled Win Rate (LC-Win Rate) (%)",
+        "Quality (1-10 scale)",
+        "Diversity (1-10 scale)",
+        "Average Entropy of Correct Predictions"
+      ],
+      "setting": "Text generation using various Large Language Models (Mistral 7B, Llama 3 1B/3B/8B/70B, Mistral Large 123B, openchat-3.5-0106) across a range of temperatures (0.7 to 3.0) and diversity settings (low to high)."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 440,
+          "xmin": 275,
+          "ymax": 607,
+          "xmax": 785
+        },
+        "caption": "Figure 2: Comparing min-p and top-p on GSM8K CoT-SC: Accuracy vs. Diversity (Mistral-7B). Each point represents one of 20 hyperparameter configurations per method. Accuracy-diversity tradeoff\u2014measured by average entropy of correct predictions\u2014on the GSM8K CoT-SC task shows that min-p (circles) achieves higher accuracy and diversity compared to top-p (triangles) . Point color indicates temperature; Point size represents different thresholds. Solid lines show Pareto frontiers for each sampling method. The inset plot highlights min-p\u2019s broader parameter coverage.",
+        "figureNumber": 2,
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2407.01082/figures/experiment-1.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "29.02%",
+            "benchmark": "GPQA Main (Mistral 7B)",
+            "delta": "+0.16%",
+            "isPositive": true,
+            "metric": "Accuracy (%) at T=0.7",
+            "thisPaper": "29.18%"
+          },
+          {
+            "baseline": "24.78%",
+            "benchmark": "GPQA Main (Mistral 7B)",
+            "delta": "+3.35%",
+            "isPositive": true,
+            "metric": "Accuracy (%) at T=1.5",
+            "thisPaper": "28.13%"
+          },
+          {
+            "baseline": "0.46%",
+            "benchmark": "GPQA Main (Mistral 7B)",
+            "delta": "+24.09%",
+            "isPositive": true,
+            "metric": "Accuracy (%) at T=3.0",
+            "thisPaper": "24.55%"
+          },
+          {
+            "baseline": "27.67%",
+            "benchmark": "GSM8K CoT (Mistral 7B)",
+            "delta": "+3.19%",
+            "isPositive": true,
+            "metric": "Accuracy (%) at T=1.0",
+            "thisPaper": "30.86%"
+          },
+          {
+            "baseline": "0.68%",
+            "benchmark": "GSM8K CoT (Mistral 7B)",
+            "delta": "+17.74%",
+            "isPositive": true,
+            "metric": "Accuracy (%) at T=1.5",
+            "thisPaper": "18.42%"
+          }
+        ],
+        "title": "LLM Reasoning Benchmarks (Mistral 7B)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "50.43%",
+            "benchmark": "AlpacaEval Creative Writing",
+            "delta": "+1.58%",
+            "isPositive": true,
+            "metric": "Win Rate (%) at T=1.0",
+            "thisPaper": "52.01%"
+          },
+          {
+            "baseline": "53.18%",
+            "benchmark": "AlpacaEval Creative Writing",
+            "delta": "+3.36%",
+            "isPositive": true,
+            "metric": "Win Rate (%) at T=1.5",
+            "thisPaper": "56.54%"
+          }
+        ],
+        "title": "Creative Writing Benchmark"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "5.96",
+            "benchmark": "Human Evaluation (Low Diversity)",
+            "delta": "+1.10",
+            "isPositive": true,
+            "metric": "Quality at T=1",
+            "thisPaper": "7.06"
+          },
+          {
+            "baseline": "2.40",
+            "benchmark": "Human Evaluation (Low Diversity)",
+            "delta": "+3.43",
+            "isPositive": true,
+            "metric": "Diversity at T=1",
+            "thisPaper": "5.83"
+          },
+          {
+            "baseline": "7.11",
+            "benchmark": "Human Evaluation (High Diversity)",
+            "delta": "+0.46",
+            "isPositive": true,
+            "metric": "Quality at T=3",
+            "thisPaper": "7.57"
+          },
+          {
+            "baseline": "7.49",
+            "benchmark": "Human Evaluation (High Diversity)",
+            "delta": "+0.17",
+            "isPositive": true,
+            "metric": "Diversity at T=3",
+            "thisPaper": "7.66"
+          }
+        ],
+        "title": "Human Evaluation (Quality and Diversity)"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "Min-p sampling consistently achieves higher accuracy on graduate-level reasoning and grade school math benchmarks across most temperature settings, demonstrating improved correctness and robustness at higher temperatures.",
+      "Min-p significantly outperforms other methods in creative writing tasks (AlpacaEval) by achieving higher win rates and length-controlled win rates.",
+      "Human evaluations show a clear preference for min-p generated text in terms of both quality and diversity, especially in high-temperature settings.",
+      "The method demonstrates a better accuracy-diversity trade-off compared to top-p sampling, with its configurations closer to the Pareto frontier, indicating more efficient performance.",
+      "Min-p's benefits generalize well across various LLM families and sizes (1B to 123B parameters) and integrates seamlessly into existing inference pipelines with minimal computational overhead."
+    ]
+  },
+  "institutions": "Apart Research, Independent, Wand.ai, New York University",
+  "keyNovelty": {
+    "explanation": [
+      "Min-p sampling introduces a dynamic truncation method that adjusts the sampling threshold based on the model's confidence, using the top token's probability as a scaling factor.",
+      "Unlike static thresholds in top-p sampling, min-p dynamically restricts the sampling pool to high-probability candidates when the model is confident, ensuring coherence.",
+      "Conversely, when the model is less confident (lower $p_{\\text{max}}$), min-p relaxes the sampling pool, allowing for a broader range of diverse options and promoting creativity.",
+      "This dynamic behavior allows min-p to balance creativity and coherence more effectively across different contexts and temperature settings, especially at high temperatures where other methods struggle."
+    ],
+    "main": "Min-p sampling, a novel dynamic truncation method for LLMs that adjusts the sampling threshold based on the model's confidence by scaling a base probability threshold with the top token's probability."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A decoding strategy that selects the next token from the k most probable tokens in the probability distribution.",
+        "term": "Top-k sampling"
+      },
+      {
+        "definition": "A decoding strategy that restricts the sampling pool to tokens whose cumulative probability exceeds a predefined threshold p (also known as nucleus sampling).",
+        "term": "Top-p sampling"
+      },
+      {
+        "definition": "A hyperparameter that adjusts the sharpness of the probability distribution over tokens, influencing the randomness and diversity of generated text.",
+        "term": "Temperature scaling"
+      },
+      {
+        "definition": "Decoding strategies that dynamically adjust the sampling pool based on the entropy of the token distribution, aiming to balance diversity and coherence.",
+        "term": "Entropy-based sampling"
+      }
+    ],
+    "prerequisites": [
+      "Large Language Models (LLMs)",
+      "Text generation and decoding strategies",
+      "Probability distributions over vocabulary",
+      "Concepts of text coherence and diversity"
+    ]
+  },
+  "subTopics": [
+    "LLM sampling methods",
+    "Generative text quality",
+    "Creativity-coherence trade-off"
+  ],
+  "tags": [
+    {
+      "name": "Reasoning",
+      "type": "primary"
+    },
+    {
+      "name": "QA",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike static threshold methods like top-p and top-k, min-p dynamically adjusts its sampling threshold based on the model's confidence, making it context-sensitive.",
+      "Min-p addresses a key limitation of existing methods by preserving output coherence even at high temperatures, where other methods often lead to incoherent or repetitive text.",
+      "Min-p is simpler and requires minimal calculations compared to methods involving auxiliary models (e.g., adaptive plausibility constraints) or complex entropy-based adjustments (e.g., epsilon and eta sampling).",
+      "While similar to adaptive threshold mechanisms, min-p functions as a standalone sampling mechanism rather than a constraint within a contrastive objective."
+    ],
+    "limitations": [
+      "The initial human evaluation had limitations regarding sample size and the assessment of diversity for other potential triplets from the same condition.",
+      "Potential misuse exists where min-p could enhance the fluency of misleading or harmful content, emphasizing the need for responsible implementation and content filtering.",
+      "High-temperature text generation using min-p could potentially increase risks of circumventing safety finetuning, though no such instances were observed in practice."
+    ],
+    "modeling": [],
+    "pipelineFlow": [
+      "Calculate the Maximum Probability: Identify the token with the maximum probability ($p_{\\text{max}} = \\max_{v \\in V} P(v \\mid x_{1:t-1})$) from the conditional probability distribution over the vocabulary for the next token.",
+      "Truncation Threshold: Set a base probability threshold ($p_{\\text{base}} \\in (0, 1]$) and scale it by $p_{\\text{max}}$ to obtain the scaled threshold: $p_{\\text{scaled}} = p_{\\text{base}} \\times p_{\\text{max}}$.",
+      "Define Sampling Pool: Construct a sampling pool ($V_{\\text{min}}$) comprising tokens whose probabilities are greater than or equal to $p_{\\text{scaled}}$: $V_{\\text{min}} = \\{v \\in V : P(v \\mid x_{1:t-1}) \\ge p_{\\text{scaled}}\\}$.",
+      "Sample from Pool: Sample the next token ($x_t$) from the normalized probability distribution over the defined sampling pool $V_{\\text{min}}$."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Conditional Probability Distribution",
+        "value": "$P(x_t \\mid x_{1:t-1})$"
+      },
+      {
+        "label": "Maximum Probability",
+        "value": "$p_{\\text{max}} = \\max_{v \\in V} P(v \\mid x_{1:t-1})$"
+      },
+      {
+        "label": "Scaled Truncation Threshold",
+        "value": "$p_{\\text{scaled}} = p_{\\text{base}} \\times p_{\\text{max}}$"
+      },
+      {
+        "label": "Sampling Pool",
+        "value": "$V_{\\text{min}} = \\{v \\in V : P(v \\mid x_{1:t-1}) \\ge p_{\\text{scaled}}\\}$"
+      }
+    ],
+    "reproducibility": "The implementation of min-p sampling is publicly available in a project repository on GitHub. Detailed descriptions of experimental setups, including model configurations, hyperparameter settings, and evaluation protocols, are provided in the paper. All datasets used are publicly accessible, and full implementation code for benchmarks and human evaluation is included to facilitate replication. Multiple unaffiliated and independent replications of the claims have been noted within the open-source community.",
+    "systemModules": [
+      {
+        "details": "Min-p is implemented as a logits processor, allowing seamless integration into existing LLM decoding pipelines. It computes the scaled threshold and efficiently filters tokens using vectorized operations, adding negligible overhead.",
+        "name": "MinPLogitsWarper",
+        "role": "Core component for dynamically adjusting the sampling threshold and filtering tokens."
+      }
+    ]
+  },
+  "thesis": "Min-p sampling, a novel dynamic truncation method, effectively balances creativity and coherence in Large Language Model (LLM) generated text, particularly at high temperatures, by dynamically adjusting the sampling threshold based on the model's confidence.",
+  "title": "TURNING UP THE HEAT: MIN-p SAMPLING FOR CREATIVE AND COHERENT LLM OUTPUTS",
+  "url": "https://arxiv.org/abs/2407.01082",
+  "venue": "ICLR",
+  "year": "2025"
+}

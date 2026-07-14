@@ -2,6 +2,20 @@
   "page": 5,
   "papers": [
     {
+      "paperId": "2602.18734",
+      "title": "Rethinking Retrieval-Augmented Generation as a Cooperative Decision-Making Problem",
+      "authors": "Lichang Song, Ting Long, Yi Chang",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "Retrieval-Augmented Generation",
+        "Multi-Agent Systems",
+        "Reinforcement Learning",
+        "Large Language Models",
+        "Question Answering",
+        "Natural Language Processing"
+      ]
+    },
+    {
       "paperId": "2602.16932",
       "title": "RankEvolve: Automating the Discovery of Retrieval Algorithms via LLM-Driven Evolution",
       "authors": "Jinming Nian, Fangchen Li, Dae Hoon Park, Yi Fang",
@@ -103,17 +117,6 @@
         "QA",
         "Pretraining",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2509.23234",
-      "title": "p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding",
-      "authors": "Runyan Tan, Shuang Wu, Phillip Howard",
-      "publishedDate": "2025-09-01",
-      "tags": [
-        "Reasoning",
-        "QA",
-        "Pretraining"
       ]
     }
   ]

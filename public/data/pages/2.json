@@ -13,6 +13,17 @@
       ]
     },
     {
+      "paperId": "2604.11012",
+      "title": "Min-k Sampling: Decoupling Truncation from Temperature Scaling via Relative Logit Dynamics",
+      "authors": "Yuanhao Ding, Meimingwei Li, Esteban Garces Arias, Matthias A\u00dfenmacher, Christian Heumann, Chongsheng Zhang",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "Reasoning",
+        "QA",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2604.08377",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
       "authors": "Ziyu Ma, Shidong Yang, Yuxiang Ji, Xucong Wang, Yong Wang, Yiming Hu, Tongwen Huang, Xiangxiang Chu",
@@ -98,17 +109,6 @@
         "RAG",
         "Memory",
         "QA"
-      ]
-    },
-    {
-      "paperId": "2603.22376",
-      "title": "AI Co-Scientist for Ranking: Discovering Novel Search Ranking Models alongside LLM-based AI Agents with Cloud Computing Access",
-      "authors": "Liwei Wu, Cho-Jui Hsieh",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Agent",
-        "Rec",
-        "Pretraining"
       ]
     }
   ]

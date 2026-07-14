@@ -100,6 +100,15 @@
       ]
     },
     {
+      "paperId": "2604.11012",
+      "title": "Min-k Sampling: Decoupling Truncation from Temperature Scaling via Relative Logit Dynamics",
+      "tags": [
+        "Reasoning",
+        "QA",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2604.08377",
       "title": "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver",
       "tags": [
@@ -488,11 +497,20 @@
       ]
     },
     {
-      "paperId": "2411.07641",
-      "title": "Top-nsigma: Not All Logits Are You Need",
+      "paperId": "2509.02510",
+      "title": "Top-H Decoding: Adapting the Creativity and Coherence with Bounded Entropy in Text Generation",
       "tags": [
-        "QA",
         "Reasoning",
+        "QA",
+        "Benchmark"
+      ]
+    },
+    {
+      "paperId": "2411.07641",
+      "title": "Top-n\\sigma: Not All Logits Are You Need",
+      "tags": [
+        "Reasoning",
+        "QA",
         "Benchmark"
       ]
     },
@@ -502,6 +520,15 @@
       "tags": [
         "Rec",
         "Reasoning",
+        "Benchmark"
+      ]
+    },
+    {
+      "paperId": "2407.01082",
+      "title": "TURNING UP THE HEAT: MIN-p SAMPLING FOR CREATIVE AND COHERENT LLM OUTPUTS",
+      "tags": [
+        "Reasoning",
+        "QA",
         "Benchmark"
       ]
     },

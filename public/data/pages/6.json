@@ -2,6 +2,17 @@
   "page": 6,
   "papers": [
     {
+      "paperId": "2509.23234",
+      "title": "p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding",
+      "authors": "Runyan Tan, Shuang Wu, Phillip Howard",
+      "publishedDate": "2025-09-01",
+      "tags": [
+        "Reasoning",
+        "QA",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2509.05486",
       "title": "The Token Tax: Systematic Bias in Multilingual Tokenization",
       "authors": "Jessica M. Lundin, Ada Zhang, Nihal Karim, Hamza Louzan, Victor Wei, David Adelani, Cody Carroll",
@@ -15,13 +26,24 @@
       ]
     },
     {
+      "paperId": "2509.02510",
+      "title": "Top-H Decoding: Adapting the Creativity and Coherence with Bounded Entropy in Text Generation",
+      "authors": "Erfan Baghaei Potraghloo, Seyedarmin Azizi, Souvik Kundu, and Massoud Pedram",
+      "publishedDate": "2025-09-01",
+      "tags": [
+        "Reasoning",
+        "QA",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2411.07641",
-      "title": "Top-nsigma: Not All Logits Are You Need",
+      "title": "Top-n\\sigma: Not All Logits Are You Need",
       "authors": "Chenxia Tang, Jianchun Liu, Hongli Xu, Liusheng Huang",
       "publishedDate": "2024-11-01",
       "tags": [
-        "QA",
         "Reasoning",
+        "QA",
         "Benchmark"
       ]
     },
@@ -33,6 +55,17 @@
       "tags": [
         "Rec",
         "Reasoning",
+        "Benchmark"
+      ]
+    },
+    {
+      "paperId": "2407.01082",
+      "title": "TURNING UP THE HEAT: MIN-p SAMPLING FOR CREATIVE AND COHERENT LLM OUTPUTS",
+      "authors": "Nguyen Nhat Minh, Andrew Baker, Clement Neo, Allen Roush, Andreas Kirsch, Ravid Shwartz-Ziv",
+      "publishedDate": "2024-07-01",
+      "tags": [
+        "Reasoning",
+        "QA",
         "Benchmark"
       ]
     },
@@ -82,42 +115,6 @@
         "Control Function",
         "Bias Correction",
         "Information Retrieval"
-      ]
-    },
-    {
-      "paperId": "paper-1773559204996",
-      "title": "Think before Recommendation: Autonomous Reasoning-enhanced Recommender",
-      "authors": "Xiaoyu Kong, Junguang Jiang, Bin Liu, Ziru Xu, Han Zhu, Jian Xu, Bo Zheng, Jiancan Wu, Xiang Wang",
-      "publishedDate": null,
-      "tags": [
-        "RL",
-        "Rec",
-        "Reasoning"
-      ]
-    },
-    {
-      "paperId": "paper-1772980095573",
-      "title": "GENERATIVE REWARD MODELS",
-      "authors": "Dakota Mahan, Duy Van Phung, Rafael Rafailov, Chase Blagden, Nathan Lile, Louis Castricato, Jan-Philipp Franken, Chelsea Finn, Alon Albalak",
-      "publishedDate": null,
-      "tags": [
-        "RL",
-        "Reasoning",
-        "QA"
-      ]
-    },
-    {
-      "paperId": "paper-1772343143036",
-      "title": "The Context Trap: Why End-to-End Audio Language Models Fail Multi-turn Dialogues",
-      "authors": "Zhi Rui Tam Wen-Yu Chang Yun-Nung Chen",
-      "publishedDate": null,
-      "tags": [
-        "Spoken Dialogue Systems",
-        "End-to-End Models",
-        "Audio Language Models",
-        "Dialogue Coherence",
-        "Context Tracking",
-        "LLM Evaluation"
       ]
     }
   ]

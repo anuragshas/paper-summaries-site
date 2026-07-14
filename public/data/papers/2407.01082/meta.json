@@ -1,0 +1,19 @@
+{
+  "paperId": "2407.01082",
+  "title": "TURNING UP THE HEAT: MIN-p SAMPLING FOR CREATIVE AND COHERENT LLM OUTPUTS",
+  "authors": "Nguyen Nhat Minh, Andrew Baker, Clement Neo, Allen Roush, Andreas Kirsch, Ravid Shwartz-Ziv",
+  "publishedDate": "2024-07-01",
+  "tags": [
+    "Reasoning",
+    "QA",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2407.01082",
+  "pagePath": "/paper-summaries-site/papers/2407.01082",
+  "summaryPath": "/paper-summaries-site/data/papers/2407.01082/summary.json",
+  "assets": {
+    "figureAssetCount": 2,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}
