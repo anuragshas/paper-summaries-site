@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2607.14604",
+      "title": "2607.14604",
+      "authors": "Olivier Jeunen",
+      "publishedDate": "2026-07-01",
+      "tags": [
+        "RL",
+        "Rec",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2605.31264",
       "title": "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation",
       "authors": "Tianyi Zhou, Dongrui Liu, Leitao Yuan, Jing Shao, Xia Hu",
@@ -98,17 +109,6 @@
         "Agent",
         "Pretraining",
         "Reasoning"
-      ]
-    },
-    {
-      "paperId": "2604.13018",
-      "title": "Toward Autonomous Long-horizon Engineering for ML Research",
-      "authors": "Guoxin Chen, Jie Chen, Lei Chen, Jiale Zhao, Fanzhe Meng, Wayne Xin Zhao, Ruihua Song, Cheng Chen, Ji-Rong Wen and Kai Jia",
-      "publishedDate": "2026-04-01",
-      "tags": [
-        "Agent",
-        "QA",
-        "Benchmark"
       ]
     }
   ]

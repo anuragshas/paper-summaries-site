@@ -2,6 +2,17 @@
   "page": 6,
   "papers": [
     {
+      "paperId": "2510.11056",
+      "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
+      "authors": "Runze Xia, Yupeng Ji, Yuxi Zhou, Haodong Liu, Teng Zhang, and Piji Li",
+      "publishedDate": "2025-10-01",
+      "tags": [
+        "QA",
+        "Pretraining",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2509.23234",
       "title": "p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding",
       "authors": "Runyan Tan, Shuang Wu, Phillip Howard",
@@ -102,19 +113,6 @@
         "Pretraining",
         "QA",
         "RAG"
-      ]
-    },
-    {
-      "paperId": "2506.06989",
-      "title": "Correcting for Position Bias in Learning to Rank: A Control Function Approach",
-      "authors": "Md Aminul Islam, Kathryn Vasilaky, Elena Zheleva",
-      "publishedDate": "2022-06-01",
-      "tags": [
-        "Learning to Rank",
-        "Position Bias",
-        "Control Function",
-        "Bias Correction",
-        "Information Retrieval"
       ]
     }
   ]

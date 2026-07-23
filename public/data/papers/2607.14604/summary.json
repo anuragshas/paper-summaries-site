@@ -1,0 +1,280 @@
+{
+  "authors": "Olivier Jeunen",
+  "breakthroughAssessment": {
+    "justification": "The paper presents a rigorous theoretical framework unifying online A/B-testing with Off-Policy Evaluation, demonstrating strong variance reduction benefits by exploiting policy overlap. The analytical proofs, novel estimators (Delta-MRDR, Delta-DCG with optimal baselines), and optimal traffic allocation insights are significant contributions to the field of online experimentation and causal inference. While empirical validation is primarily simulation-based, the results are compelling and point to practical utility for large-scale online platforms, enabling more efficient and robust A/B tests.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "When a treatment and control policy in an A/B-test agree on an action, the observed outcome contributes noise but no signal regarding the treatment effect, unnecessarily inflating confidence intervals.",
+    "statement": "Online controlled experiments (A/B-tests) are expensive and suffer from high variance, which limits statistical power in assessing treatment effects. Standard variance reduction techniques leverage model-based control variates but often remain agnostic to potential structural relationships between competing policies.",
+    "whyItMatters": [
+      "High variance inhibits practitioners from attaining tight confidence intervals around Average Treatment Effects (ATEs), limiting statistical power.",
+      "Detecting small incremental model updates requires prolonged test durations or substantial traffic allocation, both of which impose material opportunity costs.",
+      "Policy overlap, where treatment and control policies often agree on actions, is common in practice but its statistical implications for variance reduction are rarely exploited."
+    ]
+  },
+  "evaluationHighlights": [
+    "The policy-aware Delta-IPS estimator strictly dominates the standard Difference-in-Means (DiM) estimator in terms of Mean Squared Error (MSE) on Average Treatment Effects (ATE), demonstrating robustness across varying action space sizes and reducing MSE significantly in high-overlap regimes.",
+    "Optimal treatment allocation, deviating from a balanced 50/50 split, can yield an approximately 18% variance reduction compared to standard practice in asymmetric policy settings.",
+    "The Delta-MRDR objective significantly reduces ATE estimation variance by 75% compared to Delta-Beta-IPS and 8% compared to Delta-DR in heterogeneous environments, by focusing model capacity on regions of policy disagreement.",
+    "The Delta-Beta-perp-perp-DCG estimator effectively combats variance explosion in top-K ranking evaluation at high policy divergence, maintaining strict variance advantage over DiM and unbaselined Delta-DCG across the entire divergence spectrum."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Contextual Bandit (various action space sizes)",
+        "Asymmetric Policy Setting",
+        "Heterogeneous Recommendation Environment",
+        "Top-K Ranking under Position-Based Model (PBM)"
+      ],
+      "metrics": [
+        "Mean Squared Error (MSE) on ATE",
+        "Empirical Variance",
+        "ATE Estimation Variance Reduction"
+      ],
+      "setting": "Controlled synthetic simulation environments"
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 104,
+          "xmin": 107,
+          "ymax": 271,
+          "xmax": 916
+        },
+        "caption": "Mean Squared Error (MSE) of the standard DiM estimator and the Policy-Aware $\\Delta$-IPS estimator for varying action space sizes $|A|$. The $x$-axis represents policy divergence (proxied by the inverse temperature $\\frac{1}{T}$ of $\\pi'$). We observe that the $\\Delta$-OPE view successfully exploits policy overlap to significantly reduce estimation error, remaining robust across large action spaces.",
+        "figureNumber": 1,
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2607.14604/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 310,
+          "xmin": 50,
+          "ymax": 421,
+          "xmax": 480
+        },
+        "caption": "Visualising optimal treatment allocation ($p^{\\star}$) in an asymmetric policy setting. We compare a conservative control policy $\\pi'$ against an exploratory treatment policy $\\pi$. We validate that empirical estimation variance tracks the theoretical variance proxy $J(p)$ derived in Eq. 23 up to a multiplicative constant. The minimum variance is achieved at $p^{\\star} \\approx 0.81$, reducing variance by 18% compared to an even split.",
+        "figureNumber": 2,
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2607.14604/figures/experiment-2.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 310,
+          "xmin": 521,
+          "ymax": 569,
+          "xmax": 967
+        },
+        "caption": "Variance reduction via the $\\Delta$-MRDR objective in a highly heterogeneous environment. The $\\Delta\\beta^{\\star}$-IPS estimator serves as the optimal model-free baseline. The $\\Delta$-DR estimator minimises global MSE, causing it to overfit to the noisy majority and mischaracterise the baseline for the target group, resulting in suboptimal variance. The $\\Delta$-MRDR estimator targets model capacity exclusively at the regions of high policy divergence, learning the correct local relationship and significantly reducing ATE estimation variance.",
+        "figureNumber": 3,
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2607.14604/figures/experiment-3.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 99,
+          "xmin": 49,
+          "ymax": 228,
+          "xmax": 478
+        },
+        "caption": "Empirical variance of top-$K$ ranking estimators across varying levels of policy divergence ($1-\\alpha$), shown on a logarithmic scale. The standard A/B testing procedure (DiM) suffers from high variance regardless of policy overlap. The unbaselined $\\Delta$-DCG estimator performs well under high overlap but suffers from severe variance explosion as divergence increases. The $\\Delta\\beta^{\\star}_{\\perp\\perp}$-DCG estimator utilises position-specific optimal baselines to mitigate this explosion, achieving significant variance reduction compared to the standard A/B test across all divergence regimes.",
+        "figureNumber": 4,
+        "pageIndex": 7,
+        "assetPath": "/paper-summaries-site/data/papers/2607.14604/figures/experiment-4.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "10.0 (approx)",
+            "benchmark": "Contextual Bandit (|A|=10, 1/T=1)",
+            "delta": "-9.9 (approx)",
+            "isPositive": true,
+            "metric": "MSE on ATE",
+            "thisPaper": "0.1 (approx)"
+          }
+        ],
+        "title": "RQ1: Estimator Efficiency & Scalability"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "Standard 50/50 split",
+            "benchmark": "Asymmetric Policy Setting",
+            "delta": "-18%",
+            "isPositive": true,
+            "metric": "Variance Reduction",
+            "thisPaper": "Optimal p*\u22480.81 split"
+          }
+        ],
+        "title": "RQ2: Optimal Treatment Allocation"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "$\\Delta\\beta^*$-IPS",
+            "benchmark": "Heterogeneous Recommendation",
+            "delta": "-75%",
+            "isPositive": true,
+            "metric": "ATE Estimation Variance Reduction",
+            "thisPaper": "$\\Delta$-MRDR"
+          },
+          {
+            "baseline": "$\\Delta$-DR",
+            "benchmark": "Heterogeneous Recommendation",
+            "delta": "-8%",
+            "isPositive": true,
+            "metric": "ATE Estimation Variance Reduction",
+            "thisPaper": "$\\Delta$-MRDR"
+          }
+        ],
+        "title": "RQ3: Variance Reduction via $\\Delta$-MRDR"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.01 (approx)",
+            "benchmark": "Top-K Ranking (High Divergence)",
+            "delta": "-0.009 (approx)",
+            "isPositive": true,
+            "metric": "Estimator Variance",
+            "thisPaper": "0.001 (approx)"
+          }
+        ],
+        "title": "RQ4: Extensions to Ranking"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "The proposed policy-aware $\\Delta$-OPE estimators ($\\Delta$-IPS, $\\Delta$-DR) strictly dominate the standard Difference-in-Means (DiM) estimator, especially when policies exhibit common support (overlap).",
+      "Optimal treatment allocation can significantly deviate from the traditional 50/50 split, favoring exploratory policies to minimize estimation variance and maximize statistical power.",
+      "The $\\Delta$-MRDR objective effectively reduces ATE estimation variance by concentrating model capacity on regions of policy disagreement.",
+      "The framework extends to combinatorial ranking action spaces via $\\Delta$-DCG, which, when combined with position-specific optimal baselines, combats variance explosion at high policy divergence."
+    ]
+  },
+  "institutions": "Independent Researcher Antwerp, Belgium",
+  "keyNovelty": {
+    "explanation": [
+      "A formal proof demonstrating that the resulting policy-aware estimators strictly dominate the standard DiM estimator in terms of variance, given common support and non-zero residual variance.",
+      "Derivation of a variance-optimal traffic allocation ratio ($p^{\\star}$) that can deviate from a balanced 50/50 split, determined by policy divergence and the curvature of variance, offering guidance for experimental design.",
+      "Introduction of the $\\Delta$-MRDR (More Robust Doubly Robust) objective, which trains reward models to explicitly minimize ATE estimation variance by focusing learning on regions of policy disagreement.",
+      "Extension of the framework to combinatorial ranking applications with the $\\Delta$-DCG estimator and position-specific optimal baselines ($\\Delta\\beta^{\\star}_{\\perp\\perp}$-DCG) to combat variance explosion inherent in off-policy ranking evaluation."
+    ],
+    "main": "Applying the $\\Delta$-Off-Policy Estimation ($\\Delta$-OPE) framework to online A/B-testing by interpreting treatment assignment as a meta-policy, which leverages policy overlap to accelerate experimentation and reduce variance."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "The causal effect of a treatment, typically estimated as the difference in expected outcomes between a treatment group and a control group.",
+        "term": "Average Treatment Effect (ATE)"
+      },
+      {
+        "definition": "The task of evaluating the performance of a new policy using data collected from a different logging (behavior) policy.",
+        "term": "Off-Policy Evaluation (OPE)"
+      },
+      {
+        "definition": "A technique used in off-policy evaluation to re-weight logged data from a behavior policy to estimate the performance of a target policy.",
+        "term": "Importance Sampling (IS)"
+      },
+      {
+        "definition": "An estimator that combines importance sampling with a model-based control variate, providing unbiased estimates if either the importance weights or the reward model are correctly specified.",
+        "term": "Doubly Robust (DR) Estimator"
+      },
+      {
+        "definition": "The degree to which two policies (treatment and control) agree on the actions they would recommend for a given context; specifically, the region where both policies assign positive probability to an action.",
+        "term": "Policy Overlap"
+      }
+    ],
+    "prerequisites": [
+      "A/B Testing / Online Controlled Experiments",
+      "Counterfactual Inference",
+      "Difference-in-Means (DiM) estimator",
+      "Regression-Adjusted Difference-in-Means (RADiM)",
+      "Discounted Cumulative Gain (DCG)",
+      "Position-Based Model (PBM)"
+    ]
+  },
+  "subTopics": [
+    "Causal Inference",
+    "Experimentation",
+    "Recommendation Systems"
+  ],
+  "tags": [
+    {
+      "name": "RL",
+      "type": "primary"
+    },
+    {
+      "name": "Rec",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Standard variance reduction techniques in A/B-testing are typically agnostic to structural relationships between policies, whereas this work explicitly leverages policy overlap.",
+      "The paper formally establishes exact equivalences between online DiM and $\\Delta\\beta^{\\star}$-IPS, and between RADiM and $\\Delta$-DR, bridging online controlled experiments and off-policy evaluation frameworks.",
+      "Unlike prior work (e.g., Konishi et al. [43], Sakhi et al. [60]) that bounds reward variance or uses variance surrogates, this work provides exact variance dominance proofs and derives an analytical variance-optimal traffic allocation.",
+      "This work extends the framework to combinatorial ranking spaces with the $\\Delta$-DCG estimator, which previous comparable methods did not explicitly address."
+    ],
+    "limitations": [
+      "Empirical validation is based solely on synthetic simulation environments, which, despite offering ground-truth counterfactuals, necessarily simplify reward structure, context distributions, and policy behavior, making real-world uplift predictions less certain.",
+      "The proposed estimators require knowledge of exact policy probabilities $\\pi(a|x)$ and $\\pi'(a|x)$, which can be computationally expensive or numerically unstable in large action spaces or sequence generation settings (e.g., for LLMs).",
+      "The variance-optimal traffic allocation $p^{\\star}$ derivation assumes stationarity of the context distribution and homoskedasticity of outcomes for the analytical solution under $\\Delta$-IPS, though an adaptive two-stage design is suggested to mitigate the latter.",
+      "The robustness of $p^{\\star}$ to distribution shifts (common in live recommender systems) remains an open question, requiring future work on fully sequential adaptive designs."
+    ],
+    "modeling": [
+      {
+        "label": "Policy Mixture for Meta-Policy",
+        "value": "The randomized treatment assignment in A/B-testing is reframed as a meta-policy $\\pi_0(a|x) = p\\pi(a|x) + (1-p)\\pi'(a|x)$, where $p$ is the treatment allocation ratio."
+      },
+      {
+        "label": "Delta-IPS Estimator",
+        "value": "An unbiased estimator for ATE: $\\hat{\\text{V}}_{\\Delta \\text{-IPS}} = \\frac{1}{|D|} \\sum_{(x,a,y) \\in D} \\frac{\\Delta(a|x)}{\\pi_0(a|x)} y$, where $\\Delta(a|x) = \\pi(a|x) - \\pi'(a|x)$."
+      },
+      {
+        "label": "Delta-Doubly Robust (DR) Estimator",
+        "value": "A variance-reduced estimator that leverages a learned reward model $f(x,a)$: $\\hat{\\text{V}}_{\\Delta \\text{-DR}} = \\frac{1}{|D|} \\sum_{(x,a,y) \\in D} \\left( \\hat{\\tau}(x) + \\frac{\\Delta(a|x)}{\\pi_0(a|x)} (y - f(x,a)) \\right)$, with $\\hat{\\tau}(x) = \\sum_{a \\in \\text{A}} \\Delta(a|x) f(x,a)$."
+      },
+      {
+        "label": "Delta-MRDR Objective",
+        "value": "A Weighted Least Squares objective for learning reward models ($f_\\theta$) that minimize ATE estimation variance by focusing on regions of policy disagreement: $\\theta^{\\star} = \\text{arg min}_{\\theta} \\text{E}_{(x,a,y) \\sim D} \\left[ \\left( \\frac{\\Delta(a|x)}{\\pi_0(a|x)} (y - f_\\theta(x,a)) \\right)^2 \\right]$."
+      },
+      {
+        "label": "Delta-DCG Estimator",
+        "value": "An estimator for ATE in ranking, replacing action propensities with exposure propensities: $\\hat{\\text{V}}_{\\Delta \\text{-DCG}} = \\frac{1}{|D|} \\sum_{(x, \\mathbf{a}, \\mathbf{y}) \\in D} \\sum_{j=1}^K w_{\\Delta}(x, a_j) y_j$, where $w_{\\Delta}(x, a_j) = \\frac{\\epsilon_R(x, a_j) - \\epsilon_{R'}(x, a_j)}{\\epsilon_0(x, a_j)}$."
+      },
+      {
+        "label": "Position-Specific Optimal Baselines for Delta-DCG",
+        "value": "Variance-minimizing baselines for ranking, defined as $\\beta^{\\star}_{\\perp \\perp, j} = \\frac{\\text{E} \\left[ w_{\\Delta}(x, a_j)^2 y_j \\right]}{\\text{E} \\left[ w_{\\Delta}(x, a_j)^2 \\right]}$ for each rank position $j$."
+      }
+    ],
+    "pipelineFlow": [
+      "Interpret the randomized treatment assignment mechanism in A/B-testing as a meta-policy that defines a mixture over the treatment and control policies.",
+      "Apply $\\Delta$-Off-Policy Estimation ($\\Delta$-OPE) estimators, such as $\\Delta$-IPS or $\\Delta$-DR, to A/B-testing data logged under this meta-policy to obtain unbiased ATE estimates.",
+      "Leverage the resulting policy-aware importance weights $w_{\\Delta}(x,a) = \\frac{\\Delta(a|x)}{\\pi_0(a|x)}$ to exploit structural information about policy overlap, thereby reducing estimation noise.",
+      "For optimal treatment allocation, conduct a two-stage adaptive design: start with a balanced split, empirically estimate weighted residual variances, and then update the allocation ratio $p$ to minimize overall estimation variance.",
+      "For enhanced variance reduction, train reward models using the $\\Delta$-MRDR objective, which selectively focuses model capacity on regions of policy disagreement.",
+      "Extend the framework to top-K ranking by employing the $\\Delta$-DCG estimator and incorporating position-specific optimal baselines to mitigate variance explosion in combinatorial action spaces."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Policy Value Function",
+        "value": "$V(\\pi) = \\text{E}_{x \\sim P(X)} \\text{E}_{a \\sim \\pi(\\cdot | x)} \\text{E}_{P(Y | X=x; A=a)} [Y]$"
+      },
+      {
+        "label": "Average Treatment Effect (ATE)",
+        "value": "$V_{\\Delta}(\\pi, \\pi') = V(\\pi) - V(\\pi')$"
+      }
+    ],
+    "reproducibility": "The source code to reproduce all figures and numbers reported in the paper's Section 4 is available at github.com/olivierjeunen/delta-OPE-ABTesting/.",
+    "systemModules": []
+  },
+  "thesis": "By reframing the randomized treatment assignment in A/B-testing as a meta-policy and leveraging $\\Delta$-Off-Policy Estimation, a novel experimental protocol can exploit policy overlap to obtain unbiased, variance-reduced estimates for Average Treatment Effects, thereby accelerating experimentation and enhancing statistical power.",
+  "url": "https://arxiv.org/abs/2607.14604"
+}

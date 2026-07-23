@@ -1,0 +1,19 @@
+{
+  "paperId": "2607.14604",
+  "title": "2607.14604",
+  "authors": "Olivier Jeunen",
+  "publishedDate": "2026-07-01",
+  "tags": [
+    "RL",
+    "Rec",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2607.14604",
+  "pagePath": "/paper-summaries-site/papers/2607.14604",
+  "summaryPath": "/paper-summaries-site/data/papers/2607.14604/summary.json",
+  "assets": {
+    "figureAssetCount": 4,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

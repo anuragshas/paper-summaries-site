@@ -2,6 +2,20 @@
   "page": 5,
   "papers": [
     {
+      "paperId": "2602.20558",
+      "title": "From Logs to Language: Learning Optimal Verbalization for LLM-Based Recommendation in Production",
+      "authors": "Yucheng Shi, Ying Li, Yu Wang, Yesu Feng, Arjun Rao, Rein Houthooft, Shradha Sehgal, Jin Wang, Hao Zhen, Ninghao Liu, Linas Baltrunas",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "LLM-based Recommendation",
+        "Verbalization",
+        "Reinforcement Learning",
+        "Data-Centric AI",
+        "Prompt Optimization",
+        "Sequential Recommendation"
+      ]
+    },
+    {
       "paperId": "2602.18734",
       "title": "Rethinking Retrieval-Augmented Generation as a Cooperative Decision-Making Problem",
       "authors": "Lichang Song, Ting Long, Yi Chang",
@@ -106,17 +120,6 @@
         "Memory",
         "MM",
         "Rec"
-      ]
-    },
-    {
-      "paperId": "2510.11056",
-      "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
-      "authors": "Runze Xia, Yupeng Ji, Yuxi Zhou, Haodong Liu, Teng Zhang, and Piji Li",
-      "publishedDate": "2025-10-01",
-      "tags": [
-        "QA",
-        "Pretraining",
-        "Reasoning"
       ]
     }
   ]
