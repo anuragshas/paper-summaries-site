@@ -2,6 +2,17 @@
   "page": 5,
   "papers": [
     {
+      "paperId": "2602.21456",
+      "title": "Revisiting Text Ranking in Deep Research",
+      "authors": "Chuan Meng, Litu Ou, Sean MacAvaney, Jeff Dalton",
+      "publishedDate": "2026-02-01",
+      "tags": [
+        "RAG",
+        "QA",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2602.20558",
       "title": "From Logs to Language: Learning Optimal Verbalization for LLM-Based Recommendation in Production",
       "authors": "Yucheng Shi, Ying Li, Yu Wang, Yesu Feng, Arjun Rao, Rein Houthooft, Shradha Sehgal, Jin Wang, Hao Zhen, Ninghao Liu, Linas Baltrunas",
@@ -109,17 +120,6 @@
         "Pretraining",
         "RL",
         "QA"
-      ]
-    },
-    {
-      "paperId": "2510.14686",
-      "title": "xLLM Technical Report",
-      "authors": "Tongxuan Liu, Tao Peng, Peijun Yang, Xiaoyang Zhao, Xiusheng Lu, Weizhe Huang, Zirui Liu, Xiaoyu Chen, Zhiwei Liang, Jun Xiong, Donghe Jin, Minchao Zhang, Jinrong Guo, Yingxu Deng, Xu Zhang, Xianzhe Dong, Siqi Wang, Siyu Wu, Yu Wu, Zihan Tang, Yuting Zeng, Yanshu Wang, Jinguang Liu, Meng Kang, Menxin Li, Yunlong Wang, Yiming Liu, Xiaolong Ma, Yifan Wang, Yichen Zhang, Jinrun Yin, Keyang Zheng, Jiawei Yin, Jun Zhang, Ziyue Wang, Xiaobo Lin, Liangyu Liu, Liwei Lan, Yang Liu, Chunhua Peng, Han Liu, Songcheng Ren, Xuezhu Wang, Yunheng Shen, Yi Wang, Guyue Liu, Yitao Hu, Hui Chen, Tong Yang, Hailong Yang, Jing Li, Guiguang Ding, Ke Zhang",
-      "publishedDate": "2025-10-01",
-      "tags": [
-        "Memory",
-        "MM",
-        "Rec"
       ]
     }
   ]

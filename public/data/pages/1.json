@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2608.25756",
+      "title": "TailSFT: Filtered Fine-Tuning Improves Post-Training Performance",
+      "authors": "Sadhika Malladi, Samy Jelassi, Dylan J. Foster, Jordan T. Ash, Akshay Krishnamurthy",
+      "publishedDate": "2026-08-01",
+      "tags": [
+        "Pretraining",
+        "RL",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2607.14604",
       "title": "2607.14604",
       "authors": "Olivier Jeunen",
@@ -98,17 +109,6 @@
         "Agent",
         "Reasoning",
         "QA"
-      ]
-    },
-    {
-      "paperId": "2604.15034",
-      "title": "Autogenesis: A Self-Evolving Agent Protocol",
-      "authors": "Wentao Zhang",
-      "publishedDate": "2026-04-01",
-      "tags": [
-        "Agent",
-        "Pretraining",
-        "Reasoning"
       ]
     }
   ]

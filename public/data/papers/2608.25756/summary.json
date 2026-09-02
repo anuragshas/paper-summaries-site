@@ -1,0 +1,354 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 163,
+      "xmin": 219,
+      "ymax": 442,
+      "xmax": 785
+    },
+    "caption": "TailSFT trades single-sample accuracy for better coverage under repeated sampling. The SFT distribution contains majority and minority shards with different rewarding paths. Standard SFT over-anchors on the majority shard, achieving high pass@1 but no improvement as K grows. A filtered objective, illustrated here by TailSFT, retains probability on both paths, yielding lower pass@1 but substantially better pass@K scaling.",
+    "figureNumber": 2,
+    "pageIndex": 3,
+    "assetPath": "/paper-summaries-site/data/papers/2608.25756/figures/architecture.webp"
+  },
+  "authors": "Sadhika Malladi, Samy Jelassi, Dylan J. Foster, Jordan T. Ash, Akshay Krishnamurthy",
+  "breakthroughAssessment": {
+    "justification": "The paper introduces TailSFT, a principled modification to supervised fine-tuning that explicitly aims to improve model initialization for subsequent reinforcement learning. By filtering \"already-fit\" sequences, TailSFT consistently enhances coverage (pass@16) and demonstrably leads to higher post-RL performance. This work addresses a critical misalignment in multi-stage language model training, offering a practical intervention supported by both theoretical analysis and strong empirical results on math and code tasks. While not a complete paradigm shift, it represents a significant and useful advancement in optimizing LLM training pipelines.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "In mathematical reasoning or code generation, standard SFT might improve single-sample accuracy (pass@1) on a training dataset, but simultaneously reduce the diversity and accessibility of useful, reward-bearing responses (coverage, measured by pass@K for large K). This makes it harder for downstream reinforcement learning (RL) to explore and learn better policies.",
+    "statement": "Existing supervised fine-tuning (SFT) pipelines, while optimizing for local objectives, often yield models that are suboptimal as initializations for subsequent reinforcement learning (RL), particularly by not adequately preserving or improving the coverage of useful, reward-bearing responses.",
+    "whyItMatters": [
+      "Suboptimal SFT initialization can significantly hinder the effectiveness and computational efficiency of the costly reinforcement learning stage in multi-stage language model training.",
+      "Misalignment between the SFT objective and the needs of post-training RL can prevent language models from achieving their full reasoning and agentic capabilities.",
+      "Improving the SFT-to-RL transition can lead to overall stronger and more robust language models for complex tasks."
+    ]
+  },
+  "evaluationHighlights": [
+    "TailSFT significantly improves pass@16 (coverage) by up to 16.79% absolute on coding tasks and 3.07% on math tasks when fine-tuning OLMo-3 7B.",
+    "Higher-coverage SFT checkpoints produced by TailSFT consistently translate into better post-RL performance, showing up to 3.93% absolute pass@1 gains after GRPO.",
+    "TailSFT improves post-RL pass@1 in every matched comparison (100% of tested cases) compared to standard SFT initialization.",
+    "A lightweight coverage-ratio diagnostic is introduced, providing a sufficient condition to identify settings where TailSFT is most likely to improve coverage."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "AIME 2022-2025",
+        "MATH-500 Level 5",
+        "OMEGA-500",
+        "MBPP+",
+        "HumanEval+",
+        "CruxEval-I",
+        "CruxEval-O",
+        "LiveCodeBench"
+      ],
+      "metrics": [
+        "pass@1",
+        "pass@16"
+      ],
+      "setting": "Supervised fine-tuning (SFT) of OLMo-3 7B base model on domain-specific math and code instruction data, followed by Generalized Reward Policy Optimization (GRPO) for post-training RL."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 504,
+          "xmin": 191,
+          "ymax": 744,
+          "xmax": 808
+        },
+        "caption": "TailSFT yields better coverage, possibly at the cost of worse cross-entropy, which translates to stronger post-RL performance. Standard SFT achieves lower cross-entropy, while TailSFT preserves higher pass@K at large K. Starting from this higher-coverage checkpoint, the same RL procedure yields higher pass@1. Curves are illustrative.",
+        "figureNumber": 1,
+        "pageIndex": 0,
+        "assetPath": "/paper-summaries-site/data/papers/2608.25756/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 221,
+          "xmin": 188,
+          "ymax": 672,
+          "xmax": 812
+        },
+        "caption": "Filtering improves pass@K at the expense of cross entropy and pass@1. Results on the graph-navigation task. Standard SFT achieves the lowest cross-entropy and highest pass@1, while all three filtering methods achieve substantially higher pass@8. See Appendix C for details.",
+        "figureNumber": 3,
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2608.25756/figures/experiment-2.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 104,
+          "xmin": 169,
+          "ymax": 647,
+          "xmax": 820
+        },
+        "caption": "When standard SFT loses more coverage than it gains, TailSFT preserves or improves coverage. The vertical line marks $\\rho_{16} = 1$, where the estimated coverage lost and gained by standard SFT are equal. Of the 11 evaluated settings with $\\rho_{16} > 1$, 10 have positive coverage gains from TailSFT and one is essentially unchanged. Several settings with $\\rho_{16} < 1$ also improve. Coverage gain and ratio are computed on the base-reachable set (Definition 4.1).",
+        "figureNumber": 4,
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2608.25756/figures/experiment-3.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "15.24 \\pm 2.02%",
+            "benchmark": "AIME 2022-2025 (n=120)",
+            "delta": "+3.07",
+            "isPositive": true,
+            "metric": "pass@16",
+            "thisPaper": "18.31 \\pm 0.57%"
+          },
+          {
+            "baseline": "66.42 \\pm 0.00%",
+            "benchmark": "MATH-500 Level 5 (n=134)",
+            "delta": "+2.74",
+            "isPositive": true,
+            "metric": "pass@16",
+            "thisPaper": "69.15 \\pm 0.86%"
+          },
+          {
+            "baseline": "24.21 \\pm 2.38%",
+            "benchmark": "CruxEval-O (n=800) [BigCode]",
+            "delta": "+16.79",
+            "isPositive": true,
+            "metric": "pass@16",
+            "thisPaper": "41.00 \\pm 1.35%"
+          },
+          {
+            "baseline": "59.75 \\pm 0.62%",
+            "benchmark": "CruxEval-I (n=800) [Magicoder]",
+            "delta": "+8.33",
+            "isPositive": true,
+            "metric": "pass@16",
+            "thisPaper": "68.08 \\pm 0.94%"
+          },
+          {
+            "baseline": "38.08 \\pm 0.94%",
+            "benchmark": "CruxEval-O (n=800) [Magicoder]",
+            "delta": "+9.83",
+            "isPositive": true,
+            "metric": "pass@16",
+            "thisPaper": "47.92 \\pm 1.66%"
+          },
+          {
+            "baseline": "81.22 \\pm 0.75%",
+            "benchmark": "MBPP+ (n=378) [OCI]",
+            "delta": "+1.15",
+            "isPositive": true,
+            "metric": "pass@16",
+            "thisPaper": "82.36 \\pm 0.81%"
+          },
+          {
+            "baseline": "40.12 \\pm 0.00%",
+            "benchmark": "CruxEval-O (n=800) [OCI]",
+            "delta": "+4.33",
+            "isPositive": true,
+            "metric": "pass@16",
+            "thisPaper": "44.46 \\pm 0.47%"
+          },
+          {
+            "baseline": "53.04 \\pm 0.93%",
+            "benchmark": "MBPP+ (n=378) [BigCode]",
+            "delta": "-1.68",
+            "isPositive": false,
+            "metric": "pass@1",
+            "thisPaper": "51.36 \\pm 0.14%"
+          },
+          {
+            "baseline": "32.80 \\pm 2.25%",
+            "benchmark": "OMEGA-500 (n=500)",
+            "delta": "-0.20",
+            "isPositive": false,
+            "metric": "pass@16",
+            "thisPaper": "32.60 \\pm 1.56%"
+          }
+        ],
+        "title": "TailSFT improves coverage over standard SFT (Table 1)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "57.70 \\pm 0.44%",
+            "benchmark": "MATH-500 Level 5 (n=134)",
+            "delta": "+2.56",
+            "isPositive": true,
+            "metric": "pass@1",
+            "thisPaper": "60.26 \\pm 1.02%"
+          },
+          {
+            "baseline": "14.40 \\pm 0.26%",
+            "benchmark": "AIME 2022-2025 (n=120)",
+            "delta": "+1.21",
+            "isPositive": true,
+            "metric": "pass@1",
+            "thisPaper": "15.61 \\pm 0.44%"
+          },
+          {
+            "baseline": "69.57 \\pm 0.29%",
+            "benchmark": "MBPP+ (n=378) [BigCode]",
+            "delta": "+3.93",
+            "isPositive": true,
+            "metric": "pass@1",
+            "thisPaper": "73.50 \\pm 0.70%"
+          },
+          {
+            "baseline": "70.52 \\pm 0.25%",
+            "benchmark": "MBPP+ (n=378) [Magicoder]",
+            "delta": "+2.72",
+            "isPositive": true,
+            "metric": "pass@1",
+            "thisPaper": "73.24 \\pm 0.09%"
+          },
+          {
+            "baseline": "74.67 \\pm 0.08%",
+            "benchmark": "MBPP+ (n=378) [OCI]",
+            "delta": "+1.62",
+            "isPositive": true,
+            "metric": "pass@1",
+            "thisPaper": "76.30 \\pm 0.05%"
+          }
+        ],
+        "title": "TailSFT improves post-GRPO performance (Table 2)"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "TailSFT, a supervised fine-tuning method, significantly improves pass@16 (coverage) for OLMo-3 7B models across 15 out of 18 math and coding benchmarks.",
+      "The higher-coverage SFT checkpoints generated by TailSFT consistently lead to improved pass@1 performance after subsequent GRPO, with absolute gains up to 3.93%.",
+      "TailSFT's benefits are more pronounced for large K coverage during SFT, but consistently translate to better single-sample accuracy post-RL.",
+      "A proposed coverage-ratio diagnostic helps identify scenarios where TailSFT is most likely to preserve or improve coverage."
+    ]
+  },
+  "institutions": "University of California San Diego, Microsoft Research NYC",
+  "keyNovelty": {
+    "explanation": [
+      "TailSFT introduces a sequence-level filtering mechanism that identifies and excludes \"already-fit\" examples from the SFT loss calculation at each training step. This is determined by comparing the current loss of an example to its initial loss under the base policy.",
+      "By focusing training on \"under-modeled regions\" or the \"tail\" of the data distribution, TailSFT prevents the model from over-anchoring on easily learned responses and instead directs learning towards improving the accessibility of less-covered, but potentially useful, reward-bearing responses.",
+      "A theoretical analysis demonstrates that TailSFT's \"offset filtering\" (comparing loss relative to the initial policy) can provably achieve better coverage than standard SFT or absolute threshold-based filtering."
+    ],
+    "main": "A supervised fine-tuning (SFT) algorithm, TailSFT, which filters already-fit sequences based on their loss reduction relative to the initial policy, to improve coverage for subsequent reinforcement learning (RL)."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A property of an SFT initialization that captures how readily reward-bearing responses can be sampled by a downstream RL agent.",
+        "term": "Coverage"
+      },
+      {
+        "definition": "An empirical measure of coverage, quantifying the expected number of samples (out of K) that contain at least one reward-bearing response, used to assess the learning signal available to RL.",
+        "term": "pass@K"
+      },
+      {
+        "definition": "A technique that fine-tunes a pre-trained language model on specific instruction-following datasets to align its behavior with desired outputs.",
+        "term": "Supervised Fine-Tuning (SFT)"
+      },
+      {
+        "definition": "A machine learning paradigm where an agent learns to make optimal decisions by interacting with an environment and receiving reward signals.",
+        "term": "Reinforcement Learning (RL)"
+      },
+      {
+        "definition": "An RL algorithm (Generalized Reward Policy Optimization) used in the paper for post-training to improve model performance.",
+        "term": "GRPO"
+      }
+    ],
+    "prerequisites": [
+      "Language Model (LM) pre-training concepts",
+      "Supervised Fine-Tuning (SFT) methodologies",
+      "Basic understanding of Reinforcement Learning (RL)",
+      "Cross-entropy loss",
+      "Kullback-Leibler (KL) divergence"
+    ]
+  },
+  "subTopics": [
+    "Language Model Alignment",
+    "Multi-stage Training",
+    "Model Initialization"
+  ],
+  "tags": [
+    {
+      "name": "Pretraining",
+      "type": "primary"
+    },
+    {
+      "name": "RL",
+      "type": "topic"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Unlike direct coverage optimization methods that explicitly optimize for pass@K, TailSFT uses a filtering strategy at the sequence level to indirectly improve coverage as an initialization for RL.",
+      "TailSFT's filtering mechanism is distinct from other loss-based data filtering techniques (e.g., CoLoR-Filter, RHO-LOSS, Token Cleaning) as it specifically compares current loss to initial loss relative to the base policy, rather than focusing on potential loss reduction or token-level filtering.",
+      "While other works couple SFT and RL objectives or modify their coupling, TailSFT maintains the traditional two-stage pipeline, only altering which SFT examples receive gradient updates.",
+      "The theoretical analysis demonstrates that TailSFT's \"offset filtering\" (which considers the initial policy) is provably superior in coverage to standard SFT (ERM) and \"absolute filtering\" (which uses a fixed threshold), especially in settings where the initial policy holds useful information about response distributions."
+    ],
+    "limitations": [
+      "In controlled graph navigation experiments, TailSFT was slightly less effective than other filtering variants when prompts were homogeneous, suggesting that the initial policy reference might not always provide useful signal in simpler, uniform settings.",
+      "The coverage-ratio diagnostic ($\\\\rho_{16}$) provides a sufficient but not necessary condition for TailSFT to improve coverage, meaning some cases with $\\\\rho_{16} < 1$ can still benefit, indicating room for more precise diagnostic tools."
+    ],
+    "modeling": [
+      {
+        "label": "Coverage Profile",
+        "value": "Cov_N(\\pi_D \\| \\| \\pi) := \\text{Pr}_{x \\sim \\mu, y \\sim \\pi_D(\\cdot|x)} \\left[ \\frac{\\pi_D(y|x)}{\\pi(y|x)} \\ge N \\right]"
+      },
+      {
+        "label": "Pass@K Metric",
+        "value": "pass@K(\\pi) := \\mathbb{E}_{x \\sim \\mu} [1 - (1 - p_{\\pi}(x))^K]"
+      },
+      {
+        "label": "Standard SFT Loss",
+        "value": "\\ell_{\\pi}(x, y) = - \\log \\pi(y|x)"
+      },
+      {
+        "label": "Absolute Filtering Loss",
+        "value": "\\ell_{abs}(\\pi; x, y) = [\\ell_{\\pi}(x, y) + \\log(\\alpha)]_+"
+      },
+      {
+        "label": "Offset Filtering Loss (TailSFT)",
+        "value": "\\ell_{off}(\\pi; x, y) = [\\ell_{\\pi}(x, y) - \\ell_{\\pi_0}(x, y) + \\log \\beta]_+"
+      }
+    ],
+    "pipelineFlow": [
+      "Initial policy $\\pi_0$ is used to record baseline loss $\\ell_0_i$ for all SFT data examples $(x_i, y_i)$.",
+      "During each training step $t$, a batch $\\mathcal{B}_t$ is sampled, and current losses $\\ell_t_i$ are computed for examples in the batch.",
+      "A fraction $\\gamma_t$ of sequences with the smallest (most negative) loss reduction $m_t(x) = \\ell_t(x) - \\ell_0(x)$ are identified as \"already-fit\" and filtered out.",
+      "The model $\\pi_{t+1}$ is updated by taking a gradient step on the standard token-averaged cross-entropy loss $\\mathcal{L}_t(\\pi) = \\sum_{i \\in \\mathcal{B}_t \\setminus \\mathcal{F}_t} -\\log \\pi(y_i|x_i) / |y_i|$ over the retained sequences."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Coverage Profile at scale N",
+        "value": "$Cov_N(\\pi_D \\| \\| \\pi) := \\text{Pr}_{x \\sim \\mu, y \\sim \\pi_D(\\cdot|x)} \\left[ \\frac{\\pi_D(y|x)}{\\pi(y|x)} \\ge N \\right]$"
+      },
+      {
+        "label": "Pass@K for binary rewards",
+        "value": "$pass@K(\\pi) := \\mathbb{E}_{x \\sim \\mu} [1 - (1 - p_{\\pi}(x))^K]$"
+      }
+    ],
+    "reproducibility": "The paper provides details on the OLMo-3 7B base model, training data (OpenMathInstruct-2, Magicoder, BigCode Self-OSS-Instruct, OpenCodeInstruct), evaluation protocols (OLMES), hyperparameters for AdamW, gradient-norm clipping, and the filtering mechanism. Code and math domain-specific details are mentioned to be in Appendices D.1.1 and D.1.2. GRPO setup details including rollouts, learning rate, and evaluation are also specified. This suggests a good level of detail for reproducibility.",
+    "systemModules": [
+      {
+        "details": "Calculates the difference between an example's current sequence-level cross-entropy loss and its initial loss under the base model. This margin $m_t(x) = \\ell_t(x) - \\ell_0(x)$ is used to rank examples by how \"fit\" they are.",
+        "name": "Loss Margin Calculator",
+        "role": "Determines how much an example's loss has improved relative to the initial policy."
+      },
+      {
+        "details": "Filters out a specified fraction $\\gamma_t$ of sequences from each batch that have the smallest (most negative) loss margins, meaning they are already well-modeled by the current policy. This redirects training effort to under-modeled examples.",
+        "name": "Sequence Filtering Module",
+        "role": "Selectively removes already-fit examples from the training objective."
+      },
+      {
+        "details": "Applies token-averaged cross-entropy loss to the remaining (unfiltered) sequences in the batch to update the model parameters.",
+        "name": "Modified SFT Objective",
+        "role": "Optimizes the model on the \"tail\" of the data distribution, focusing on improving coverage."
+      }
+    ]
+  },
+  "thesis": "By modifying supervised fine-tuning (SFT) to filter out already-fit sequences, TailSFT improves the coverage of reward-bearing responses, which in turn provides a better initialization for reinforcement learning (RL) and ultimately leads to enhanced post-training performance in language models for complex reasoning tasks.",
+  "title": "TailSFT: Filtered Fine-Tuning Improves Post-Training Performance",
+  "url": "https://arxiv.org/abs/arXiv:2608.25756",
+  "venue": "N/A",
+  "year": "2026"
+}

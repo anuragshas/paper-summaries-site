@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2608.25756",
+      "title": "TailSFT: Filtered Fine-Tuning Improves Post-Training Performance",
+      "tags": [
+        "Pretraining",
+        "RL",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2607.14604",
       "title": "2607.14604",
       "tags": [

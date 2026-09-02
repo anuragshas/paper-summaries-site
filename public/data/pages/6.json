@@ -2,6 +2,17 @@
   "page": 6,
   "papers": [
     {
+      "paperId": "2510.14686",
+      "title": "xLLM Technical Report",
+      "authors": "Tongxuan Liu, Tao Peng, Peijun Yang, Xiaoyang Zhao, Xiusheng Lu, Weizhe Huang, Zirui Liu, Xiaoyu Chen, Zhiwei Liang, Jun Xiong, Donghe Jin, Minchao Zhang, Jinrong Guo, Yingxu Deng, Xu Zhang, Xianzhe Dong, Siqi Wang, Siyu Wu, Yu Wu, Zihan Tang, Yuting Zeng, Yanshu Wang, Jinguang Liu, Meng Kang, Menxin Li, Yunlong Wang, Yiming Liu, Xiaolong Ma, Yifan Wang, Yichen Zhang, Jinrun Yin, Keyang Zheng, Jiawei Yin, Jun Zhang, Ziyue Wang, Xiaobo Lin, Liangyu Liu, Liwei Lan, Yang Liu, Chunhua Peng, Han Liu, Songcheng Ren, Xuezhu Wang, Yunheng Shen, Yi Wang, Guyue Liu, Yitao Hu, Hui Chen, Tong Yang, Hailong Yang, Jing Li, Guiguang Ding, Ke Zhang",
+      "publishedDate": "2025-10-01",
+      "tags": [
+        "Memory",
+        "MM",
+        "Rec"
+      ]
+    },
+    {
       "paperId": "2510.11056",
       "title": "From Reasoning LLMs to BERT: A Two-Stage Distillation Framework for Search Relevance",
       "authors": "Runze Xia, Yupeng Ji, Yuxi Zhou, Haodong Liu, Teng Zhang, and Piji Li",
@@ -102,17 +113,6 @@
         "Deep Learning",
         "Contrastive Learning",
         "Semantic Search"
-      ]
-    },
-    {
-      "paperId": "2303.18223",
-      "title": "A Survey of Large Language Models",
-      "authors": "Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min, Beichen Zhang, Junjie Zhang, Zican Dong, Yifan Du, Chen Yang, Yushuo Chen, Zhipeng Chen, Jinhao Jiang, Ruiyang Ren, Yifan Li, Xinyu Tang, Zikang Liu, Peiyu Liu, Jian-Yun Nie and Ji-Rong Wen",
-      "publishedDate": "2023-03-01",
-      "tags": [
-        "Pretraining",
-        "QA",
-        "RAG"
       ]
     }
   ]

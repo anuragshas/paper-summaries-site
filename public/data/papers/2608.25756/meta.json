@@ -1,0 +1,19 @@
+{
+  "paperId": "2608.25756",
+  "title": "TailSFT: Filtered Fine-Tuning Improves Post-Training Performance",
+  "authors": "Sadhika Malladi, Samy Jelassi, Dylan J. Foster, Jordan T. Ash, Akshay Krishnamurthy",
+  "publishedDate": "2026-08-01",
+  "tags": [
+    "Pretraining",
+    "RL",
+    "Reasoning"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2608.25756",
+  "pagePath": "/paper-summaries-site/papers/2608.25756",
+  "summaryPath": "/paper-summaries-site/data/papers/2608.25756/summary.json",
+  "assets": {
+    "figureAssetCount": 4,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

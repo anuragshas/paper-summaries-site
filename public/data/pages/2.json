@@ -2,6 +2,17 @@
   "page": 2,
   "papers": [
     {
+      "paperId": "2604.15034",
+      "title": "Autogenesis: A Self-Evolving Agent Protocol",
+      "authors": "Wentao Zhang",
+      "publishedDate": "2026-04-01",
+      "tags": [
+        "Agent",
+        "Pretraining",
+        "Reasoning"
+      ]
+    },
+    {
       "paperId": "2604.13018",
       "title": "Toward Autonomous Long-horizon Engineering for ML Research",
       "authors": "Guoxin Chen, Jie Chen, Lei Chen, Jiale Zhao, Fanzhe Meng, Wayne Xin Zhao, Ruihua Song, Cheng Chen, Ji-Rong Wen and Kai Jia",
@@ -98,17 +109,6 @@
         "Agent",
         "Reasoning",
         "QA"
-      ]
-    },
-    {
-      "paperId": "2603.25551",
-      "title": "Voxtral TTS",
-      "authors": "Alexander H. Liu, Alexis Tacnet, Andy Ehrenberg, Andy Lo, Chen-Yo Sun, Guillaume Lample, Henry Lagarde, Jean-Malo Delignon, Jaeyoung Kim, John Harvill, Khyathi Raghavi Chandu, Lorenzo Signoretti, Margaret Jennings, Patrick von Platen, Pavankumar Reddy Muddireddy, Rohin Arora, Sanchit Gandhi, Samuel Humeau, Soham Ghosh, Srijan Mishra, Van Phung",
-      "publishedDate": "2026-03-01",
-      "tags": [
-        "Speech",
-        "Pretraining",
-        "RL"
       ]
     }
   ]
