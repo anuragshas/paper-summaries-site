@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2609.03003",
+      "title": "Causal Foundation Models",
+      "tags": [
+        "Reasoning",
+        "Pretraining",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2608.25756",
       "title": "TailSFT: Filtered Fine-Tuning Improves Post-Training Performance",
       "tags": [

@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2609.03003",
+      "title": "Causal Foundation Models",
+      "authors": "Christopher Stith, Hossein Rahmani, Jesse C. Cresswell",
+      "publishedDate": "2026-09-01",
+      "tags": [
+        "Reasoning",
+        "Pretraining",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2608.25756",
       "title": "TailSFT: Filtered Fine-Tuning Improves Post-Training Performance",
       "authors": "Sadhika Malladi, Samy Jelassi, Dylan J. Foster, Jordan T. Ash, Akshay Krishnamurthy",
@@ -98,17 +109,6 @@
         "Agent",
         "RAG",
         "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2604.24026",
-      "title": "From Skill Text to Skill Structure: The Scheduling-Structural-Logical Representation for Agent Skills",
-      "authors": "Qiliang Liang, Hansi Wang, Zhong Liang, and Yang Liu",
-      "publishedDate": "2026-04-01",
-      "tags": [
-        "Agent",
-        "Reasoning",
-        "QA"
       ]
     }
   ]

@@ -1,0 +1,263 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 122,
+      "xmin": 114,
+      "ymax": 247,
+      "xmax": 885
+    },
+    "caption": "Causal foundation models predict on each new dataset using in-context learning without training or fine-tuning. Labeled context data ( X_ctx , etc.) are provided as examples so that the model can predict causal effects on unlabeled query data ( X_qry ). A quickstart example is available in this notebook: .",
+    "figureNumber": 1,
+    "pageIndex": 1,
+    "assetPath": "/paper-summaries-site/data/papers/2609.03003/figures/architecture.webp"
+  },
+  "authors": "Christopher Stith, Hossein Rahmani, Jesse C. Cresswell",
+  "breakthroughAssessment": {
+    "justification": "The paper introduces Causal Foundation Models (CFMs), which enable amortized Bayesian causal inference using in-context learning. This represents a significant paradigm shift for causal inference, as it achieves competitive accuracy with traditional causal estimators while providing 1-2 orders of magnitude faster inference by eliminating the need for per-task training and hyperparameter tuning. This practical advantage for deploying causal analysis across diverse settings and small datasets is a strong contribution to the field.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "Traditionally, for each new causal inference problem, a bespoke pipeline is required: first proposing a causal mechanism, then selecting a compatible estimator, and finally training it. This means repeating the full pipeline for every new problem, with no opportunity to reuse tuned models or transfer knowledge between tasks.",
+    "statement": "Causal inference traditionally requires a laborious and repetitive workflow where a new, problem-specific pipeline must be constructed, involving model proposal, estimator selection, and training, for every new task, without effective knowledge transfer or reuse.",
+    "whyItMatters": [
+      "The traditional workflow leads to slow and labor-intensive deployment of causal inference in new settings, hindering practical application.",
+      "The lack of reusability and transferability of knowledge across causal tasks increases computational burden and time-to-solution.",
+      "The need for extensive hyperparameter tuning and model training for each new problem is a significant barrier to scalability and efficiency."
+    ]
+  },
+  "evaluationHighlights": [
+    "Causal Foundation Models (CFMs) achieve competitive causal effect estimation performance on semi-synthetic RealCause-Lalonde benchmarks.",
+    "CFMs demonstrate 1-2 orders of magnitude faster inference times compared to traditional causal estimators, largely eliminating per-task training and tuning overhead.",
+    "CausalPFN, a specific CFM, exhibits particularly strong performance, often matching or exceeding traditional methods in accuracy while providing a substantial speedup in inference."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "RealCause-Lalonde (Lalonde-CPS cohort, 16,177 samples)",
+        "RealCause-Lalonde (Lalonde-PSID cohort, 2,675 samples)"
+      ],
+      "metrics": [
+        "PEHE (Precision in Estimation of Heterogeneous Effects, lower is better)",
+        "ATE Relative Error (lower is better)",
+        "CATE Runtime (s, lower is better)"
+      ],
+      "setting": "Semi-synthetic observational data with known ground truth for CATE and ATE under strong confounding."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 236,
+          "xmin": 154,
+          "ymax": 426,
+          "xmax": 852
+        },
+        "caption": "CATE Estimation Ranking vs. Wall-Clock Runtime on RealCause-Lalonde. Causal foundation models deliver competitive estimation results while achieving orders-of-magnitude faster inference compared to tuned classical estimators because they do not need to be trained on RealCause. For CFMs, runtimes are shown both on CPU (matching the hardware used for all models) and an A100 GPU.",
+        "figureNumber": 7,
+        "pageIndex": 20,
+        "assetPath": "/paper-summaries-site/data/papers/2609.03003/figures/experiment-1.webp"
+      }
+    ],
+    "keyResultGroups": [],
+    "keyResults": [
+      {
+        "baseline": "9.04 \\times 10^{-3}",
+        "benchmark": "Lalonde-CPS",
+        "delta": "-0.07 \\times 10^{-3}",
+        "isPositive": true,
+        "metric": "PEHE",
+        "thisPaper": "8.97 \\times 10^{-3}"
+      },
+      {
+        "baseline": "13.65 \\times 10^{-3}",
+        "benchmark": "Lalonde-PSID",
+        "delta": "+0.35 \\times 10^{-3}",
+        "isPositive": false,
+        "metric": "PEHE",
+        "thisPaper": "14.00 \\times 10^{-3}"
+      },
+      {
+        "baseline": "0.15",
+        "benchmark": "Lalonde-CPS",
+        "delta": "+0.02",
+        "isPositive": false,
+        "metric": "ATE Relative Error",
+        "thisPaper": "0.17"
+      },
+      {
+        "baseline": "0.08",
+        "benchmark": "Lalonde-PSID",
+        "delta": "+0.16",
+        "isPositive": false,
+        "metric": "ATE Relative Error",
+        "thisPaper": "0.24"
+      },
+      {
+        "baseline": "1803.0 s",
+        "benchmark": "N/A",
+        "delta": "-1784.6 s",
+        "isPositive": true,
+        "metric": "CATE Runtime (median)",
+        "thisPaper": "18.4 s"
+      }
+    ],
+    "mainTakeaways": [
+      "Causal Foundation Models (CFMs), particularly CausalPFN, achieve competitive or superior performance on PEHE (Precision in Estimation of Heterogeneous Effects) and ATE Relative Error benchmarks compared to highly optimized traditional causal estimators like T-Learner and IPW.",
+      "CFMs offer a dramatic speedup in inference time (1-2 orders of magnitude faster) compared to traditional models, as they perform inference directly without per-task training or hyperparameter tuning.",
+      "The amortization of Bayesian inference via pretraining in CFMs effectively eliminates the computational overhead typically associated with hyperparameter tuning and cross-fitting loops in traditional causal analysis workflows."
+    ]
+  },
+  "institutions": "Layer 6 AI, TD Bank Group",
+  "keyNovelty": {
+    "explanation": [
+      "CFMs are pretrained neural networks that estimate causal quantities like Average Treatment Effect (ATE) and Conditional Average Treatment Effect (CATE) on entirely new datasets using in-context learning, which eliminates the need for further training or fine-tuning per task.",
+      "They are trained on synthetic data sampled from a diverse prior over data-generating processes and causal mechanisms, allowing them to generalize to a wide variety of unseen causal tasks at inference time.",
+      "This approach drastically cuts down on model deployment time and significantly increases inference speed while maintaining competitive performance with traditional, task-specific causal estimators."
+    ],
+    "main": "The introduction of Causal Foundation Models (CFMs) that apply the foundation model paradigm of large-scale pretraining and in-context learning to causal inference tasks, enabling efficient, zero-shot causal effect estimation."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "The outcome that would occur for an individual under a specific treatment value, often denoted as $Y(t)$.",
+        "term": "Potential Outcomes"
+      },
+      {
+        "definition": "The ability to determine a causal estimand uniquely from observational data alone, given certain assumptions.",
+        "term": "Identifiability"
+      },
+      {
+        "definition": "The assumption that treatment assignment is conditionally independent of potential outcomes given observed covariates, also known as conditional unconfoundedness.",
+        "term": "Ignorability"
+      },
+      {
+        "definition": "The assumption that for every covariate value, there is a non-zero probability of receiving any treatment value, ensuring sufficient overlap in treatment groups.",
+        "term": "Positivity"
+      },
+      {
+        "definition": "Assumptions that state there is no interference between individuals' treatments and outcomes, and that treatments are well-defined without multiple versions.",
+        "term": "Stable Unit Treatment Value Assumption (SUTVA)"
+      },
+      {
+        "definition": "Transformer-based networks that perform Bayesian inference by directly mapping datasets to posterior predictive distributions using in-context learning, without explicit posterior approximation.",
+        "term": "Prior-Data Fitted Networks (PFNs)"
+      },
+      {
+        "definition": "A method where a model learns a mapping from a dataset of samples directly to the posterior predictive distribution, effectively performing Bayesian inference without explicitly approximating the posterior.",
+        "term": "Amortized Bayesian Inference"
+      }
+    ],
+    "prerequisites": [
+      "Causal Inference",
+      "Bayesian Inference",
+      "Structural Causal Models (SCMs)",
+      "Foundation Models",
+      "In-context Learning",
+      "Transformers"
+    ]
+  },
+  "subTopics": [
+    "Causal Inference",
+    "Foundation Models",
+    "Meta-learning"
+  ],
+  "tags": [
+    {
+      "name": "Reasoning",
+      "type": "primary"
+    },
+    {
+      "name": "Pretraining",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Traditional causal estimators require a bespoke pipeline for each new causal problem, including extensive training and hyperparameter tuning, which is time-consuming and labor-intensive.",
+      "CFMs, in contrast, are pretrained once at scale and leverage in-context learning to estimate causal effects on new datasets without any further training or fine-tuning, leading to orders-of-magnitude faster inference.",
+      "While traditional methods approximate posterior distributions, CFMs perform amortized Bayesian inference by learning a direct mapping from a dataset to the Posterior Predictive Distribution (PPD).",
+      "CFMs demonstrate competitive performance on causal benchmarks, sometimes outperforming or closely matching highly optimized traditional estimators, while offering significant practical advantages in deployment speed and ease of use."
+    ],
+    "limitations": [
+      "Existing CFMs are often specialized along specific axes (e.g., binary treatment, backdoor identification, particular causal quantities), and a single general CFM supporting multiple regimes and estimands is a future goal.",
+      "The quality of the synthetic training prior directly impacts CFM performance and generalization, highlighting the need for more quantitative measures of causal prior coverage and improved prior design.",
+      "Some existing CFMs exhibit prior-induced bias due to priors being supported on Data-Generating Processes (DGPs) with low confounding, necessitating methods like one-step posterior correction.",
+      "There are indications of low coverage in the credible intervals provided by CausalPFN, suggesting that uncertainty quantification needs further improvement.",
+      "Errors can occur in CFMs when a post-treatment covariate is passed to the model at inference time, indicating a need for better handling or filtering of such inputs."
+    ],
+    "modeling": [
+      {
+        "label": "Causal Foundation Model (CFM) Definition",
+        "value": "A prior-data fitted network pretrained on a variety of causal tasks to estimate causal quantities from new datasets using in-context learning, without updating any model weights."
+      },
+      {
+        "label": "Causal Prior-Data Loss (CEPO-PPD)",
+        "value": "For the CEPO-PPD, the causal prior-data loss is defined as $ \\mathcal{L}_t(\\theta) = \\mathbb{E}_{\\psi \\sim \\pi, D_{\\text{obs}} \\cup \\{x\\} \\sim P^{\\psi}_{\\text{obs}}} [ - \\log(q_\\theta(\\mu_t(x; P^\\psi) \\mid x, t, D_{\\text{obs}})) ] $, where $q_\\theta$ is the PFN's output distribution, $\\mu_t(x; P^\\psi)$ is the ground-truth CEPO, and $D_{\\text{obs}}$ is the observational dataset."
+      },
+      {
+        "label": "Synthetic Priors",
+        "value": "CFMs are trained using synthetic data generated from SCM-based priors. This is crucial because ground-truth causal quantities for training (e.g., interventional data, counterfactuals) are not available in real observational datasets."
+      },
+      {
+        "label": "Transformer Architectures",
+        "list": [
+          "CFMs are transformer-based models that take an entire observational dataset as context and produce direct predictions for query points using masked attention.",
+          "Different CFMs employ varied tokenization and embedding strategies for covariates, treatments, and outcomes, recognizing the distinguished role of the treatment variable."
+        ]
+      }
+    ],
+    "pipelineFlow": [
+      "Traditional Workflow: For each new problem, an analyst must analyze the dataset, propose a causal model, choose an estimator, tune hyperparameters on validation data, and then train the estimator. This entire process is repeated for every new task.",
+      "CFM Workflow: A pretrained Causal Foundation Model is provided. For any new problem, the observational dataset is fed to the CFM as context, and queries (e.g., CATE estimation) are processed in a single forward pass using in-context learning, without any training or fine-tuning."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Conditional Expected Potential Outcome (CEPO)",
+        "value": "$ \\mu_t(x) := \\mathbb{E}[Y(t) \\mid X=x] $"
+      },
+      {
+        "label": "Average Treatment Effect (ATE)",
+        "value": "$ \\text{ATE} := \\mathbb{E}[Y(1) - Y(0)] $"
+      },
+      {
+        "label": "Conditional Average Treatment Effect (CATE)",
+        "value": "$ \\text{CATE}(x) := \\mathbb{E}[Y(1) - Y(0) \\mid X=x] $"
+      },
+      {
+        "label": "Individual Treatment-Response Curve (ITRC)",
+        "value": "$ t \\mapsto \\mu_t(x) $"
+      }
+    ],
+    "reproducibility": "The authors provide a full pipeline for loading the RealCause-Lalonde benchmark, aggregating empirical results, and generating comparison tables and figures as an interactive Jupyter notebook. The full codebase is available at github.com/layer6ai-labs/cfms.",
+    "systemModules": [
+      {
+        "details": "Models the Conditional Interventional Distribution (CID-PPD). Utilizes a non-identifiable prior and a TabPFNv1-style transformer with a treatment-column indicator for embedding.",
+        "name": "Do-PFN",
+        "role": "A Causal Foundation Model (CFM) for causal effect estimation."
+      },
+      {
+        "details": "Models the Conditional Expected Potential Outcome (CEPO-PPD). Uses an identifiable prior via strong ignorability (backdoor setting) and concatenates treatment with covariates before embedding.",
+        "name": "CausalPFN",
+        "role": "A Causal Foundation Model (CFM) for causal effect estimation."
+      },
+      {
+        "details": "Models the Conditional Distribution of Treatment Effects (CDTE-PPD). Employs separate priors and models for backdoor, frontdoor, and instrumental variable settings, and uses separate encoders for covariates, treatment, and outcome, passing transformer output through a GMM head.",
+        "name": "CausalFM",
+        "role": "A Causal Foundation Model (CFM) for causal effect estimation."
+      },
+      {
+        "details": "These are the core components that enable CFMs to perform amortized Bayesian inference. They are trained on a prior-data loss using synthetic data generated from various SCMs and leverage transformer architectures for in-context learning.",
+        "name": "Prior-Data Fitted Networks (PFNs)",
+        "role": "The underlying methodology adopted by CFMs."
+      }
+    ]
+  },
+  "thesis": "Causal Foundation Models (CFMs), which are pretrained neural networks leveraging in-context learning, provide a strong and efficient alternative to traditional causal inference methods by estimating causal quantities on new datasets without fine-tuning, demonstrating competitive performance with significantly faster inference.",
+  "title": "Causal Foundation Models",
+  "url": "https://arxiv.org/abs/2609.03003",
+  "venue": "N/A",
+  "year": "2026"
+}

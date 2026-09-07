@@ -1,0 +1,19 @@
+{
+  "paperId": "2609.03003",
+  "title": "Causal Foundation Models",
+  "authors": "Christopher Stith, Hossein Rahmani, Jesse C. Cresswell",
+  "publishedDate": "2026-09-01",
+  "tags": [
+    "Reasoning",
+    "Pretraining",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/2609.03003",
+  "pagePath": "/paper-summaries-site/papers/2609.03003",
+  "summaryPath": "/paper-summaries-site/data/papers/2609.03003/summary.json",
+  "assets": {
+    "figureAssetCount": 2,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}
