@@ -35,6 +35,17 @@
       ]
     },
     {
+      "paperId": "2510.04816",
+      "title": "On Predicting Post-Click Conversion Rate via Counterfactual Inference",
+      "authors": "Junhyung Ahn, Sanghack Lee",
+      "publishedDate": "2025-10-01",
+      "tags": [
+        "RAG",
+        "Reasoning",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2509.23234",
       "title": "p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding",
       "authors": "Runyan Tan, Shuang Wu, Phillip Howard",
@@ -99,17 +110,6 @@
       "tags": [
         "Reasoning",
         "QA",
-        "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2403.00417",
-      "title": "Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models",
-      "authors": "Jinbiao Yang",
-      "publishedDate": "2024-03-01",
-      "tags": [
-        "Pretraining",
-        "Memory",
         "Benchmark"
       ]
     }

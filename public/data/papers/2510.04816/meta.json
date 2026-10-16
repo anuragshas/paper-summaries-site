@@ -1,0 +1,19 @@
+{
+  "paperId": "2510.04816",
+  "title": "On Predicting Post-Click Conversion Rate via Counterfactual Inference",
+  "authors": "Junhyung Ahn, Sanghack Lee",
+  "publishedDate": "2025-10-01",
+  "tags": [
+    "RAG",
+    "Reasoning",
+    "Benchmark"
+  ],
+  "sourceUrl": "https://arxiv.org/abs/arXiv:2510.04816",
+  "pagePath": "/paper-summaries-site/papers/2510.04816",
+  "summaryPath": "/paper-summaries-site/data/papers/2510.04816/summary.json",
+  "assets": {
+    "figureAssetCount": 4,
+    "hasFigureAssets": true,
+    "hasStaticHtmlArtifact": true
+  }
+}

@@ -504,6 +504,15 @@
       ]
     },
     {
+      "paperId": "2510.04816",
+      "title": "On Predicting Post-Click Conversion Rate via Counterfactual Inference",
+      "tags": [
+        "RAG",
+        "Reasoning",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2509.23234",
       "title": "p-LESS SAMPLING: A Robust Hyperparameter-Free Approach for LLM Decoding",
       "tags": [

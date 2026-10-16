@@ -1,0 +1,441 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 283,
+      "xmin": 286,
+      "ymax": 622,
+      "xmax": 765
+    },
+    "caption": "Overall procedure of ESCIM. (a) Z represents the exogenous variable for the conversion event, acting as an underlying factor of user conversion behavior. (b) The hypothetical intervention on C simulates a scenario where the click event is set to 1 to generate a counterfactual conversion outcome. (c) Counterfactual labels for non-clicked samples are generated through counterfactual inference and label transformation (bottom). The generated labels are then utilized to train a CVR prediction model (top).",
+    "figureNumber": 2,
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2510.04816/figures/architecture.webp"
+  },
+  "authors": "Junhyung Ahn, Sanghack Lee",
+  "breakthroughAssessment": {
+    "justification": "This paper presents a novel and well-justified approach for CVR prediction using counterfactual inference. It addresses key challenges like sample selection bias and data sparsity by leveraging causal models to generate conversion labels for non-clicked samples. The extensive offline and online experiments demonstrate consistent improvements over state-of-the-art baselines across various datasets and backbones. The approach shows strong generalization capabilities to latent conversion data and tackles a fundamental problem in recommender systems with a principled causal framework.",
+    "score": 8
+  },
+  "coreProblem": {
+    "concreteExample": "In the Ali-CCP dataset, only about 3.85% of displayed items received clicks, and merely 0.55% of these clicks resulted in conversions, illustrating severe data sparsity.",
+    "statement": "Accurately predicting Conversion Rate (CVR) in recommender systems is challenging due to sample selection bias and data sparsity. Traditional CVR models are trained only on clicked samples, ignoring the vast number of non-clicked samples.",
+    "whyItMatters": [
+      "Suboptimal recommendations due to inaccurate prediction for less active users or niche items.",
+      "Impedes model's generalization ability due to limited data availability.",
+      "Advertisers struggle to effectively target campaigns without accurate CVR prediction, leading to higher Cost-Per-Action (CPA)."
+    ]
+  },
+  "evaluationHighlights": [
+    "ESCIM-max achieved the highest CVR AUC (0.6792) on Ali-CCP using MLP backbone, surpassing the state-of-the-art by +0.0049.",
+    "ESCIM-ratio achieved the highest CTCVR AUC on Ali-CCP across all backbones (except DeepFM), with an average improvement of +1.51%.",
+    "On AliExpress dataset, ESCIM-max achieved the highest CVR AUC across all countries, showing significant improvements of +1.03% (AE-NL) and +1.88% (AE-US) over baselines.",
+    "Online A/B tests showed ESCIM improved CVR by +17.35%, CTCVR by +5.60%, and reduced CPA by -23.36% on average over 5 days.",
+    "ESCIM-max outperformed baselines on latent conversion data, achieving CVR AUC of 0.6905 (+1.80%) and CTCVR AUC of 0.6289 (+3.66%), demonstrating better generalization."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Ali-CCP dataset",
+        "Ali-Express dataset (AE-ES, AE-FR, AE-NL, AE-US)",
+        "Industrial dataset (Online A/B Test)",
+        "Latent Conversion Data (Ali-CCP)"
+      ],
+      "metrics": [
+        "CVR AUC",
+        "CTCVR AUC",
+        "CPA (Cost-Per-Action)"
+      ],
+      "setting": "Offline experiments on public datasets with various backbones (MLP, DeepFM, AutoInt, DCN-V2) and online A/B testing on an industrial demand-side platform. Evaluation metric is Area Under the ROC Curve (AUC) for CVR and CTCVR, and CPA for online tests."
+    },
+    "experimentFigures": [
+      {
+        "boundingBox": {
+          "ymin": 77,
+          "xmin": 70,
+          "ymax": 240,
+          "xmax": 932
+        },
+        "caption": "The CVR and CTCVR AUC for different thresholds on the AE-FR dataset.",
+        "figureNumber": 3,
+        "pageIndex": 4,
+        "assetPath": "/paper-summaries-site/data/papers/2510.04816/figures/experiment-1.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 269,
+          "xmin": 92,
+          "ymax": 490,
+          "xmax": 913
+        },
+        "caption": "Distributions of pCVR and pCTCVR on latent conversion data in the Ali-CCP dataset",
+        "figureNumber": 4,
+        "pageIndex": 5,
+        "assetPath": "/paper-summaries-site/data/papers/2510.04816/figures/experiment-2.webp"
+      },
+      {
+        "boundingBox": {
+          "ymin": 624,
+          "xmin": 396,
+          "ymax": 738,
+          "xmax": 878
+        },
+        "caption": "The CVR and CTCVR AUC for different values of $\\alpha_{\\text{CF}}$ on the Ali-CCP dataset.",
+        "figureNumber": 5,
+        "pageIndex": 6,
+        "assetPath": "/paper-summaries-site/data/papers/2510.04816/figures/experiment-3.webp"
+      }
+    ],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "0.6743 / 0.6451",
+            "benchmark": "Ali-CCP (MLP)",
+            "delta": "+0.0049 / +0.0036",
+            "isPositive": true,
+            "metric": "CVR AUC / CTCVR AUC",
+            "thisPaper": "0.6792 / 0.6487"
+          },
+          {
+            "baseline": "0.6528 / 0.6338",
+            "benchmark": "Ali-CCP (DeepFM)",
+            "delta": "+0.0057 / +0.0063",
+            "isPositive": true,
+            "metric": "CVR AUC / CTCVR AUC",
+            "thisPaper": "0.6585 / 0.6401"
+          },
+          {
+            "baseline": "0.6702 / 0.6389",
+            "benchmark": "Ali-CCP (AutoInt)",
+            "delta": "+0.0035 / +0.0024",
+            "isPositive": true,
+            "metric": "CVR AUC / CTCVR AUC",
+            "thisPaper": "0.6737 / 0.6413"
+          },
+          {
+            "baseline": "0.6609 / 0.6374",
+            "benchmark": "Ali-CCP (DCN-V2)",
+            "delta": "+0.0089 / +0.0160",
+            "isPositive": true,
+            "metric": "CVR AUC / CTCVR AUC",
+            "thisPaper": "0.6698 / 0.6467"
+          },
+          {
+            "baseline": "0.8251 / 0.8838",
+            "benchmark": "Ali-Express (AE-ES)",
+            "delta": "+0.0063 / +0.0097",
+            "isPositive": true,
+            "metric": "CVR AUC / CTCVR AUC",
+            "thisPaper": "0.8314 / 0.8935"
+          },
+          {
+            "baseline": "0.8089 / 0.8628",
+            "benchmark": "Ali-Express (AE-FR)",
+            "delta": "+0.0121 / +0.0148",
+            "isPositive": true,
+            "metric": "CVR AUC / CTCVR AUC",
+            "thisPaper": "0.8210 / 0.8776"
+          },
+          {
+            "baseline": "0.7897 / 0.8525",
+            "benchmark": "Ali-Express (AE-NL)",
+            "delta": "+0.0054 / +0.0088",
+            "isPositive": true,
+            "metric": "CVR AUC / CTCVR AUC",
+            "thisPaper": "0.7951 / 0.8613"
+          },
+          {
+            "baseline": "0.8140 / 0.8620",
+            "benchmark": "Ali-Express (AE-US)",
+            "delta": "+0.0192 / +0.0162",
+            "isPositive": true,
+            "metric": "CVR AUC / CTCVR AUC",
+            "thisPaper": "0.8332 / 0.8782"
+          }
+        ],
+        "title": "Offline Performance Comparisons (Table I)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "N/A",
+            "benchmark": "Day 1",
+            "delta": "+21.55%",
+            "isPositive": true,
+            "metric": "CVR ($\\uparrow$)",
+            "thisPaper": "+21.55%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Day 5",
+            "delta": "+18.24%",
+            "isPositive": true,
+            "metric": "CVR ($\\uparrow$)",
+            "thisPaper": "+18.24%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Day 1",
+            "delta": "+7.41%",
+            "isPositive": true,
+            "metric": "CTCVR ($\\uparrow$)",
+            "thisPaper": "+7.41%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Day 5",
+            "delta": "+6.31%",
+            "isPositive": true,
+            "metric": "CTCVR ($\\uparrow$)",
+            "thisPaper": "+6.31%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Day 1",
+            "delta": "-27.16%",
+            "isPositive": true,
+            "metric": "CPA ($\\downarrow$)",
+            "thisPaper": "-27.16%"
+          },
+          {
+            "baseline": "N/A",
+            "benchmark": "Day 5",
+            "delta": "-24.38%",
+            "isPositive": true,
+            "metric": "CPA ($\\downarrow$)",
+            "thisPaper": "-24.38%"
+          }
+        ],
+        "title": "Online A/B Test (Table III)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.8284",
+            "benchmark": "AE-ES",
+            "delta": "+0.0030",
+            "isPositive": true,
+            "metric": "CVR AUC",
+            "thisPaper": "0.8314"
+          },
+          {
+            "baseline": "0.8150",
+            "benchmark": "AE-FR",
+            "delta": "+0.0060",
+            "isPositive": true,
+            "metric": "CVR AUC",
+            "thisPaper": "0.8210"
+          },
+          {
+            "baseline": "0.7893",
+            "benchmark": "AE-NL",
+            "delta": "+0.0058",
+            "isPositive": true,
+            "metric": "CVR AUC",
+            "thisPaper": "0.7951"
+          },
+          {
+            "baseline": "0.8185",
+            "benchmark": "AE-US",
+            "delta": "+0.0147",
+            "isPositive": true,
+            "metric": "CVR AUC",
+            "thisPaper": "0.8332"
+          }
+        ],
+        "title": "Impact of Z on Ali-Express (Table IV)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.6783",
+            "benchmark": "Latent Conversion Data",
+            "delta": "+0.0122",
+            "isPositive": true,
+            "metric": "CVR AUC",
+            "thisPaper": "0.6905"
+          },
+          {
+            "baseline": "0.5926",
+            "benchmark": "Latent Conversion Data",
+            "delta": "+0.0363",
+            "isPositive": true,
+            "metric": "CTCVR AUC",
+            "thisPaper": "0.6289"
+          }
+        ],
+        "title": "Performance on Latent Conversion Data (Table V)"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "ESCIM consistently outperforms state-of-the-art baselines across various backbones and datasets for both CVR and CTCVR prediction.",
+      "The superior performance is attributed to the more accurate generation of counterfactual conversion labels for non-clicked samples, reflecting true click behavior.",
+      "Online A/B tests validate the real-world effectiveness of ESCIM, showing significant improvements in CVR and CTCVR, and reduction in CPA.",
+      "Accurately estimating the posterior distribution of the exogenous variable Z is crucial for improved model performance.",
+      "ESCIM generalizes better to latent conversion samples, demonstrating robustness to sample selection bias and enabling more accurate predictions for users who didn't click during training but showed click behavior during testing."
+    ]
+  },
+  "institutions": "Naver Corp., Seoul National University",
+  "keyNovelty": {
+    "explanation": [
+      "ESCIM (Entire Space Counterfactual Inference Multi-task Model) proposes a novel framework for CVR prediction that generates conversion labels for non-clicked samples by leveraging counterfactual inference.",
+      "It constructs a Structural Causal Model (SCM) of user sequential behaviors and performs a hypothetical intervention (setting click to 1 for non-clicked items) to infer counterfactual CVRs.",
+      "It transforms the predicted counterfactual CVRs into binary conversion labels using two methods: a 'max approach' (thresholding by maximum pCVR from clicked samples) and a 'ratio approach' (assigning labels to top-k pCVRs to match conversion ratio).",
+      "The generated counterfactual labels for non-clicked samples are then integrated into a multi-task training objective, enhancing CVR prediction across the entire space."
+    ],
+    "main": "A novel framework (ESCIM) for CVR prediction that generates counterfactual conversion labels for non-clicked samples via causal inference, addressing sample selection bias and data sparsity in recommender systems."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "The probability that a user converts after clicking on an item. It is a key metric in recommendation systems, especially for advertising and e-commerce.",
+        "term": "Conversion Rate (CVR)"
+      },
+      {
+        "definition": "A phenomenon where the data used for training a model is not a random sample of the population, leading to biased model performance. In CVR prediction, this occurs because conversions are only observed after clicks.",
+        "term": "Sample Selection Bias"
+      },
+      {
+        "definition": "A problem in causal inference that involves estimating the outcome if a specific intervention had occurred, which did not happen in reality. Here, it is used to infer what would have happened if a non-clicked item had been clicked.",
+        "term": "Counterfactual Inference"
+      },
+      {
+        "definition": "A graphical model that represents causal relationships between variables. It is used in this paper to model user sequential behaviors (exposure, click, conversion).",
+        "term": "Structural Causal Model (SCM)"
+      },
+      {
+        "definition": "The predicted CVR for a non-clicked sample if that sample had been clicked, estimated through counterfactual inference.",
+        "term": "Predicted Counterfactual CVR (pCVR)"
+      }
+    ],
+    "prerequisites": [
+      "Recommender systems concepts (exposure, click, conversion, CTR, CVR)",
+      "Multi-task learning frameworks for recommendation systems (e.g., ESMM)",
+      "Causal inference and do-operator",
+      "Variational Autoencoders (VAEs) and variational inference",
+      "Basic machine learning models (MLP, DeepFM, AutoInt, DCN-V2) and training concepts (loss functions, optimizers, regularization)"
+    ]
+  },
+  "subTopics": [
+    "Conversion Rate Prediction",
+    "Causal Inference",
+    "Recommender Systems"
+  ],
+  "tags": [
+    {
+      "name": "RAG",
+      "type": "primary"
+    },
+    {
+      "name": "Reasoning",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Compared to ESMM, ESCIM addresses the overestimation of CVR and CTCVR by accurately accounting for the causal relationship between click and conversion, whereas ESMM assumes conditional independence.",
+      "Unlike ESCM2-IPS, ESCIM utilizes non-clicked data for CVR loss by generating counterfactual labels, addressing the fundamental differences between clicked and non-clicked items that ESCM2-IPS doesn't fully resolve.",
+      "ESCIM improves upon DCMT by not naively assigning conversion labels of 1 to all non-clicked samples in the counterfactual space. Instead, it generates more accurate conversion label distributions by inferring pCVRs, which better reflects the factual conversion label distribution.",
+      "While prior multi-task learning models use unobserved samples or advanced architectures, they often don't fully resolve sample selection bias in the non-clicked space due to the Missing Not At Random (MNAR) nature, a gap ESCIM aims to fill with its causal inference approach."
+    ],
+    "limitations": [
+      "A more precise generation procedure for counterfactual labels could further enhance CVR prediction accuracy.",
+      "The process for inferring counterfactual CVR can be further refined, and more robust methods for converting counterfactual pCVRs into hard labels can be explored.",
+      "The effectiveness of ESCIM relies heavily on accurate CTR estimation, but achieving this remains a significant challenge, especially concerning the instability of inverse propensity weighting."
+    ],
+    "modeling": [
+      {
+        "label": "CVR Loss for clicked samples",
+        "value": "$L_{\\text{CVR-F}} = E_{(u,i) \\in C} [ \\ell(\\hat{v}_{u,i}, v_{u,i}) / \\hat{c}_{u,i} ]$"
+      },
+      {
+        "label": "Counterfactual CVR Loss for non-clicked samples",
+        "value": "$L_{\\text{CVR-CF}} = E_{(u,i) \\in N^*} [ \\ell(\\hat{v}_{u,i}, v^*_{u,i}) / \\hat{c}_{u,i} ]$"
+      },
+      {
+        "label": "Overall Objective Function",
+        "value": "$L_{\\text{ESCIM}} = L_{\\text{CTR}} + L_{\\text{CTCVR}} + \\alpha_F L_{\\text{CVR-F}} + \\alpha_{\\text{CF}} L_{\\text{CVR-CF}}$"
+      },
+      {
+        "label": "Pre-training Loss for Conversion Model",
+        "value": "$L_{\\text{pre-train}} = E_{(u,i) \\in C} [ \\ell(f_{\\theta}(x_{u,i}, z_{u,i}), v_{u,i}) ]$"
+      },
+      {
+        "label": "ELBO for VAE training",
+        "value": "$E_{(u,i) \\in C} [ E_{q_{\\phi}(z)} [p(z|x_{u,i}, v_{u,i})] - \\beta \\text{KL}(p(z)||q_{\\phi}(z)) ]$"
+      }
+    ],
+    "pipelineFlow": [
+      "Step 1: Pre-training - Construct and train a conversion model $f_{\\theta}(\\cdot)$ using observed clicked data and an exogenous variable $Z$. This involves compiling a dataset of (user-item features, click, exogenous variable, conversion) tuples for clicked samples and training an MLP model.",
+      "Step 2: Abduction - Acquire the posterior distribution $p(Z|X,C,V)$ by training a Variational Autoencoder (VAE) $g_{\\phi}(\\cdot)$ with the clicked data using the ELBO objective. This VAE learns latent representations of $Z$.",
+      "Step 3: Action - Apply a hypothetical intervention on click events for non-clicked samples, setting $C_{u,i}=1$ (do($C_{u,i}=1$)) to generate a counterfactual space $N^*$.",
+      "Step 4: Prediction - Compute the predicted counterfactual CVRs (pCVRs), $\\hat{v}^*_{u,i}$, for samples in $N^*$ by feeding their features $x_{u,i}$ and sampled $Z_{u,i}$ (from the VAE's trained encoder output) into the pre-trained conversion model $f_{\\theta}(\\cdot)$.",
+      "Transform pCVRs into hard binary conversion labels (0, 1) for non-clicked samples using either a 'max approach' (thresholding by maximum factual pCVR) or a 'ratio approach' (assigning '1' to top-k pCVRs to match factual conversion ratio).",
+      "Integrate the generated counterfactual labels into a multi-task learning objective (ESCIM) that combines factual CTR loss, CTCVR loss, factual CVR loss, and counterfactual CVR loss, then train the model using this objective."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Exposure Space",
+        "value": "$D \\subset U \\times I$ (set of exposed user-item pairs)"
+      },
+      {
+        "label": "Click Space",
+        "value": "$C = \\{ (u,i) \\in D : c_{u,i} = 1 \\}$ (set of clicked user-item pairs)"
+      },
+      {
+        "label": "Non-Click Space",
+        "value": "$N = \\{ (u,i) \\in D : c_{u,i} = 0 \\}$ (set of non-clicked user-item pairs)"
+      },
+      {
+        "label": "Conversion Space",
+        "value": "$V = \\{ (u,i) \\in D : v_{u,i} = 1 \\}$ (set of converted user-item pairs)"
+      },
+      {
+        "label": "Ideal Loss Function",
+        "value": "$L_{\\text{ideal}} = E_{(u,i) \\in D} [\\ell(\\hat{v}_{u,i}, v_{u,i})]$"
+      },
+      {
+        "label": "Naive Loss Function (biased)",
+        "value": "$L_{\\text{naive}} = E_{(u,i) \\in C} [\\ell(\\hat{v}_{u,i}, v_{u,i})]$"
+      }
+    ],
+    "reproducibility": "Code for the proposed framework is available at https://github.com/JunhyungAhn/ESCIM. The paper specifies parameter settings (embedding sizes, batch size, alpha weights, MLP layers, VAE layers, optimizer, learning rate, weight decay, L2 regularization, dropout rate). Experiments were run on a server with 4 NVIDIA Tesla T4 GPUs and 256 GB RAM. Dataset statistics are provided, and data downsampling for training sets is mentioned.",
+    "systemModules": [
+      {
+        "details": "A standard multi-layer perceptron (MLP) model with [512, 256, 128] layers for Ali-CCP and [64, 64, 32] layers for Ali-Express, using Leaky ReLU activation. It is trained with observed clicked data and an exogenous variable Z to learn the causal mechanism for conversion.",
+        "name": "Conversion Model ($f_{\\theta}(\\cdot)$)",
+        "role": "Predicts CVR for clicked samples and later for counterfactual non-clicked samples."
+      },
+      {
+        "details": "A Variational Autoencoder (VAE) consisting of an MLP encoder ([512, 256, 128] layers) and decoder ([128, 256, 512] layers), trained with the ELBO objective. It approximates the posterior distribution $p(Z|X,C,V)$.",
+        "name": "VAE ($g_{\\phi}(\\cdot)$)",
+        "role": "Infers the posterior distribution of the exogenous variable Z, crucial for counterfactual inference by learning underlying latent representations."
+      },
+      {
+        "details": "This module applies a hypothetical intervention $do(C_{u,i}=1)$ to non-clicked samples, effectively forcing them to be 'clicked' in an imaginary scenario, thereby generating counterfactual conversion outcomes.",
+        "name": "Intervention Module",
+        "role": "Simulates counterfactual scenarios to infer potential conversion outcomes for non-clicked items."
+      },
+      {
+        "details": "Two methods: 'Max Approach' labels non-clicked samples as 1 if their pCVR exceeds the maximum pCVR observed in clicked samples. 'Ratio Approach' assigns label 1 to top-k pCVRs to match the conversion ratio observed in clicked samples. These transform continuous pCVRs into binary labels.",
+        "name": "Label Transformation Module",
+        "role": "Converts predicted counterfactual CVRs into hard binary conversion labels for non-clicked samples."
+      },
+      {
+        "details": "A multi-task learning framework combining CTR loss, CTCVR loss, factual CVR loss ($L_{\\text{CVR-F}}$), and counterfactual CVR loss ($L_{\\text{CVR-CF}}$) with weighting parameters $\\alpha_F$ and $\\alpha_{\\text{CF}}$.",
+        "name": "ESCIM Objective Function",
+        "role": "Guides the training of the CVR prediction model by leveraging both factual and generated counterfactual conversion labels."
+      }
+    ]
+  },
+  "thesis": "By leveraging counterfactual inference within a structural causal model to generate conversion labels for non-clicked samples, ESCIM can effectively mitigate sample selection bias and data sparsity, leading to more accurate CVR predictions in recommender systems across various real-world scenarios and latent conversion data.",
+  "title": "On Predicting Post-Click Conversion Rate via Counterfactual Inference",
+  "url": "https://arxiv.org/abs/arXiv:2510.04816",
+  "venue": "N/A",
+  "year": "2025"
+}
