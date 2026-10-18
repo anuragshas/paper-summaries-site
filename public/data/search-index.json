@@ -1,6 +1,15 @@
 {
   "papers": [
     {
+      "paperId": "2609.31498",
+      "title": "Retail Product Search: A Practical Approach at Target",
+      "tags": [
+        "Rec",
+        "Pretraining",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2609.03003",
       "title": "Causal Foundation Models",
       "tags": [

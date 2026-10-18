@@ -2,6 +2,17 @@
   "page": 7,
   "papers": [
     {
+      "paperId": "2407.01082",
+      "title": "TURNING UP THE HEAT: MIN-p SAMPLING FOR CREATIVE AND COHERENT LLM OUTPUTS",
+      "authors": "Nguyen Nhat Minh, Andrew Baker, Clement Neo, Allen Roush, Andreas Kirsch, Ravid Shwartz-Ziv",
+      "publishedDate": "2024-07-01",
+      "tags": [
+        "Reasoning",
+        "QA",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2403.00417",
       "title": "Rethinking Tokenization: Crafting Better Tokenizers for Large Language Models",
       "authors": "Jinbiao Yang",

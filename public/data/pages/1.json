@@ -2,6 +2,17 @@
   "page": 1,
   "papers": [
     {
+      "paperId": "2609.31498",
+      "title": "Retail Product Search: A Practical Approach at Target",
+      "authors": "Darshan Sonagara, Qujiaheng Zhang, Ankit Singh, Alex Li",
+      "publishedDate": "2026-09-01",
+      "tags": [
+        "Rec",
+        "Pretraining",
+        "Benchmark"
+      ]
+    },
+    {
       "paperId": "2609.03003",
       "title": "Causal Foundation Models",
       "authors": "Christopher Stith, Hossein Rahmani, Jesse C. Cresswell",
@@ -97,17 +108,6 @@
       "tags": [
         "Agent",
         "Reasoning",
-        "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2604.24594",
-      "title": "Skill Retrieval Augmentation for Agentic AI",
-      "authors": "Weihang Su, Jianming Long, Qingyao Ai, Yichen Tang, Changyue Wang, Yiteng Tu, Yiqun Liu",
-      "publishedDate": "2026-04-01",
-      "tags": [
-        "Agent",
-        "RAG",
         "Benchmark"
       ]
     }

@@ -2,6 +2,17 @@
   "page": 6,
   "papers": [
     {
+      "paperId": "2601.03211",
+      "title": "Fine-Tuning Small Language Models as Efficient Enterprise Search Relevance Labelers",
+      "authors": "Yue Kang, Zhuoyi Huang, Benji Schussheim, Diana Licon, Dina Atia, Shixing Cao, Jacob Danovitch, Kunho Kim, Billy Norcilien, Jonah Karpman, Mahmound Sayed, Mike Taylor, Tao Sun, Pavel Metrikov, Vipul Agarwal, Chris Quirk, Ye-Yi Wang, Nick Craswell, Irene Shaffer, Tianwei Chen, Sulaiman Vesal, Soundar Srinivasan",
+      "publishedDate": "2026-01-01",
+      "tags": [
+        "QA",
+        "RAG",
+        "Pretraining"
+      ]
+    },
+    {
       "paperId": "2511.10643",
       "title": "Black-Box On-Policy Distillation of Large Language Models",
       "authors": "Tianzhu Ye, Li Dong, Zewen Chi, Xun Wu, Shaohan Huang, Furu Wei",
@@ -99,17 +110,6 @@
       "tags": [
         "Rec",
         "Reasoning",
-        "Benchmark"
-      ]
-    },
-    {
-      "paperId": "2407.01082",
-      "title": "TURNING UP THE HEAT: MIN-p SAMPLING FOR CREATIVE AND COHERENT LLM OUTPUTS",
-      "authors": "Nguyen Nhat Minh, Andrew Baker, Clement Neo, Allen Roush, Andreas Kirsch, Ravid Shwartz-Ziv",
-      "publishedDate": "2024-07-01",
-      "tags": [
-        "Reasoning",
-        "QA",
         "Benchmark"
       ]
     }

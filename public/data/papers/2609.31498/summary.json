@@ -1,0 +1,338 @@
+{
+  "architectureFigure": {
+    "boundingBox": {
+      "ymin": 91,
+      "xmin": 88,
+      "ymax": 270,
+      "xmax": 479
+    },
+    "caption": "Hybrid search architecture. The indexing pipeline (left) embeds catalog items and builds the vector index. At query time, lexical and vector retrieval run in parallel, and precision control filters the vector results (center). Both result sets then go to ranking (right).",
+    "figureNumber": 1,
+    "pageIndex": 2,
+    "assetPath": "/paper-summaries-site/data/papers/2609.31498/figures/architecture.webp"
+  },
+  "authors": "Darshan Sonagara, Qujiaheng Zhang, Ankit Singh, Alex Li",
+  "breakthroughAssessment": {
+    "justification": "This paper presents a well-engineered and practically deployed hybrid search system for retail product search that significantly improves key business metrics (CTR, conversion, demand per visitor) and halves zero-result searches in a large-scale e-commerce setting. While the individual components are not entirely novel, the comprehensive integration, meticulous data preparation (engagement-derived labels, hard negatives, dynamic field masking), dedicated precision control, and efficient production deployment (achieving low latency on CPUs) constitute a strong contribution. The work provides valuable insights into the practical challenges and solutions for building a high-performing retail search engine.",
+    "score": 7
+  },
+  "coreProblem": {
+    "concreteExample": "Queries can range from precise (e.g., 'organic milk 1/2 gallon') to open-ended and vague (e.g., 'cocktail party supplies'). Lexical search struggles with the latter due to vocabulary mismatch, while dense retrieval can return loosely related items and miss exact matches.",
+    "statement": "Retail product search systems face challenges in balancing relevance, revenue, and profit, handling diverse user intents (exact matches to open-ended discovery), and maintaining low latency at scale. Traditional keyword-based methods often fail with natural language queries, and pure vector search can yield low-precision results or miss exact matches.",
+    "whyItMatters": [
+      "Search is a critical feature in e-commerce, directly driving customer engagement, sales, and business growth.",
+      "Retrieval quality significantly influences user engagement and purchase completion.",
+      "Even small increases in latency can negatively impact system quality and user outcomes at large scale."
+    ]
+  },
+  "evaluationHighlights": [
+    "Achieved a +0.97% lift in Click-Through Rate (CTR) over the lexical-only baseline in online A/B tests.",
+    "Showed a +0.98% lift in order conversion rate and a +1.10% lift in demand per visitor in online A/B tests.",
+    "Reduced zero-result searches by approximately 50% relative to the lexical-only baseline.",
+    "Demonstrated significant improvements in offline retrieval quality metrics (NDCG, MRR) through domain adaptation, stratified sampling, and hard negative mining.",
+    "Precision control filters significantly improved the precision of vector retrieval by removing off-target items.",
+    "Successfully deployed the system in production, meeting a p99 latency target below 50 ms on CPU-based infrastructure."
+  ],
+  "experiments": {
+    "evaluationSetup": {
+      "benchmarks": [
+        "Human-labeled benchmark (5,000 queries, 200 candidates each)",
+        "Engagement-labeled golden set (offline ablations)",
+        "Live traffic A/B tests (4 weeks duration)"
+      ],
+      "metrics": [
+        "Normalized Discounted Cumulative Gain (NDCG@K for K=1, 5, 8, 24)",
+        "Mean Reciprocal Rank (MRR)",
+        "Precision@K",
+        "Click-Through Rate (CTR)",
+        "Add-to-Cart (ATC) rate",
+        "Order Conversion rate",
+        "Demand per visitor",
+        "Relevancy",
+        "Zero-Result Rate"
+      ],
+      "setting": "Offline evaluation on fixed candidate pools and online A/B tests on live traffic, comparing the hybrid search system (Finetuned v2 with interleaving) against a lexical-only baseline."
+    },
+    "experimentFigures": [],
+    "keyResultGroups": [
+      {
+        "keyResults": [
+          {
+            "baseline": "0.8005",
+            "benchmark": "Engagement-labeled golden set",
+            "delta": "+0.0608",
+            "isPositive": true,
+            "metric": "NDCG @1",
+            "thisPaper": "0.8613"
+          },
+          {
+            "baseline": "0.8200",
+            "benchmark": "Engagement-labeled golden set",
+            "delta": "+0.0594",
+            "isPositive": true,
+            "metric": "NDCG @5",
+            "thisPaper": "0.8794"
+          },
+          {
+            "baseline": "0.9473",
+            "benchmark": "Engagement-labeled golden set",
+            "delta": "+0.0349",
+            "isPositive": true,
+            "metric": "MRR",
+            "thisPaper": "0.9822"
+          }
+        ],
+        "title": "Training Data Ablation (Offline)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.7503",
+            "benchmark": "Engagement-labeled golden set",
+            "delta": "+0.1119",
+            "isPositive": true,
+            "metric": "NDCG @1",
+            "thisPaper": "0.8622"
+          },
+          {
+            "baseline": "0.7621",
+            "benchmark": "Engagement-labeled golden set",
+            "delta": "+0.1182",
+            "isPositive": true,
+            "metric": "NDCG @5",
+            "thisPaper": "0.8803"
+          },
+          {
+            "baseline": "0.9201",
+            "benchmark": "Engagement-labeled golden set",
+            "delta": "+0.0618",
+            "isPositive": true,
+            "metric": "MRR",
+            "thisPaper": "0.9819"
+          }
+        ],
+        "title": "Modeling Ablation (Offline)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.890",
+            "benchmark": "Vector Retrieval",
+            "delta": "+0.039",
+            "isPositive": true,
+            "metric": "P@1",
+            "thisPaper": "0.929"
+          },
+          {
+            "baseline": "0.836",
+            "benchmark": "Vector Retrieval",
+            "delta": "+0.049",
+            "isPositive": true,
+            "metric": "P@10",
+            "thisPaper": "0.885"
+          }
+        ],
+        "title": "Precision Control Filters (Offline)"
+      },
+      {
+        "keyResults": [
+          {
+            "baseline": "0.00%",
+            "benchmark": "Live traffic",
+            "delta": "+0.97%",
+            "isPositive": true,
+            "metric": "CTR Lift",
+            "thisPaper": "+0.97%"
+          },
+          {
+            "baseline": "0.00%",
+            "benchmark": "Live traffic",
+            "delta": "+0.89%",
+            "isPositive": true,
+            "metric": "ATC/Visitor Lift",
+            "thisPaper": "+0.89%"
+          },
+          {
+            "baseline": "0.00%",
+            "benchmark": "Live traffic",
+            "delta": "+0.98%",
+            "isPositive": true,
+            "metric": "Order Conv. Lift",
+            "thisPaper": "+0.98%"
+          },
+          {
+            "baseline": "0.00%",
+            "benchmark": "Live traffic",
+            "delta": "+1.10%",
+            "isPositive": true,
+            "metric": "Demand/Visitor Lift",
+            "thisPaper": "+1.10%"
+          },
+          {
+            "baseline": "0.00% reduction",
+            "benchmark": "Live traffic",
+            "delta": "+50% reduction",
+            "isPositive": true,
+            "metric": "Zero-Result Rate Reduction",
+            "thisPaper": "50% reduction"
+          }
+        ],
+        "title": "Online A/B Test Results (Live Traffic)"
+      }
+    ],
+    "keyResults": [],
+    "mainTakeaways": [
+      "The hybrid lexical and semantic retrieval system significantly outperformed a lexical-only baseline on engagement and conversion metrics in live A/B tests.",
+      "Weighted interleaving proved more effective than Reciprocal Rank Fusion (RRF) for merging results when channels have little overlap, which is common in product search.",
+      "Domain adaptation, achieved through large engagement-derived datasets, stratified sampling, and hard negative mining, was crucial for performance, outweighing gains from larger pretrained models.",
+      "A precision control module is vital to filter potentially irrelevant vector search results based on explicit and implicit query attributes, ensuring high-quality and trusted results.",
+      "The system achieved high scalability and low latency targets (p99 below 50 ms) on CPU-based infrastructure, demonstrating practical deployability for millions of daily queries."
+    ]
+  },
+  "institutions": "Data Sciences, Target Corporation",
+  "keyNovelty": {
+    "explanation": [
+      "The paper introduces a hybrid retrieval architecture that leverages both lexical search (for precision on exact matches) and fine-tuned dense vector retrieval (for semantic similarity), running them in parallel and serving millions of queries daily with strict latency limits. This combination is specifically engineered for diverse retail search intents.",
+      "A novel labeling scheme is developed to create high-quality training data from engagement logs. This includes extracting positive query-product pairs and constructing two types of hard negatives: exposure-based (frequently shown but ignored products) and similarity-based (near misses in embedding space). This targeted negative mining significantly improves model precision.",
+      "A precision control module is integrated into the vector retrieval pipeline. It uses query classifiers and Named Entity Recognition (NER) to apply dynamic thresholds and filters (e.g., category, brand, gender) to remove off-topic vector candidates early, ensuring results align with user intent and business rules.",
+      "The paper provides an empirical comparison of merging strategies, showing that weighted interleaving is more effective than Reciprocal Rank Fusion (RRF) in their setting where lexical and vector results have little overlap. The channel weights are tuned via A/B tests to optimize business metrics."
+    ],
+    "main": "A robust and scalable hybrid lexical-semantic retrieval system for retail product search, featuring novel engagement-derived hard negative mining, precision control, and weighted interleaving for result fusion, demonstrated with significant online business impact."
+  },
+  "prerequisiteKnowledge": {
+    "keyTerms": [
+      {
+        "definition": "A method for merging ranked lists that combines ranks rather than scores, assigning higher scores to items that appear in multiple lists or higher up in individual lists. It uses the formula $ s(d) = \\sum_k \\frac{1}{r_k(d) + C} $ where $ r_k(d) $ is the rank of document $ d $ in list $ k $ and $ C $ is a smoothing constant.",
+        "term": "Reciprocal Rank Fusion (RRF)"
+      },
+      {
+        "definition": "A method for merging two or more ranked lists by drawing items from each channel one position at a time, with the probability of drawing from a specific channel determined by its assigned weight. This preserves the individual channel's ordering and ensures proportional representation.",
+        "term": "Weighted Interleaving"
+      },
+      {
+        "definition": "A neural network architecture where two separate encoders (e.g., for query and product text) independently process their inputs to generate embeddings in a shared vector space, allowing similarity between the inputs to be measured (e.g., via cosine similarity).",
+        "term": "Dual Encoder"
+      },
+      {
+        "definition": "A machine learning paradigm where models learn to embed similar data points close together and dissimilar data points far apart in an embedding space. This is achieved by defining a loss function that maximizes the similarity of positive pairs and minimizes the similarity of negative pairs.",
+        "term": "Contrastive Learning"
+      }
+    ],
+    "prerequisites": [
+      "Information Retrieval (e.g., lexical search, inverted indexes, BM25)",
+      "Neural Information Retrieval (e.g., dense retrieval, transformer encoders)",
+      "Approximate Nearest Neighbor (ANN) search algorithms (e.g., ScaNN)",
+      "A/B Testing methodologies for online experimentation",
+      "Fundamentals of machine learning, including loss functions and training strategies"
+    ]
+  },
+  "subTopics": [
+    "E-commerce Search",
+    "Hybrid Retrieval Systems",
+    "Semantic Search Fine-tuning"
+  ],
+  "tags": [
+    {
+      "name": "Rec",
+      "type": "primary"
+    },
+    {
+      "name": "Pretraining",
+      "type": "topic"
+    },
+    {
+      "name": "Benchmark",
+      "type": "topic"
+    }
+  ],
+  "technicalDetails": {
+    "comparisonToPriorWork": [
+      "Traditional keyword-based methods (e.g., TF-IDF, BM25) suffer from vocabulary mismatch and struggle with natural language queries, whereas this hybrid system effectively handles both precise and semantic queries.",
+      "Pure dense retrieval can return loosely related items or miss exact matches. This paper combines it with lexical search and adds a precision control module to mitigate these issues.",
+      "Unlike many dense retrieval approaches evaluated on general relevance benchmarks, this work focuses on training embeddings using engagement-derived labels for product-specific relationships and purchase intent in a retail context.",
+      "The system differs from other industrial hybrid systems by its specific approach to training label construction (engagement-based positive and hard negatives), dedicated precision control for the vector channel, and careful selection of result merging strategy (weighted interleaving for low-overlap lists).",
+      "The paper empirically compares Reciprocal Rank Fusion (RRF) with weighted interleaving, finding the latter more effective for lists with little overlap, unlike some prior work that found RRF robust.",
+      "It addresses the latency and cost challenges often associated with neural retrieval by deploying an efficient e5-small-v2 dual encoder on CPU-based infrastructure with optimizations like caching and adaptive batching, contrasting with systems requiring transformer passes at query time or specialized GPU-heavy index structures."
+    ],
+    "limitations": [
+      "The current system returns the same candidates to every user, lacking personalization. Future work could integrate user-level signals (browsing, purchase history) to condition query embeddings, balancing personalization with diversity to avoid limiting product discovery.",
+      "The system primarily relies on text. Future work includes incorporating multimodal (image) embeddings and multi-channel retrieval (behavioral co-occurrence, structured attributes) to capture richer product information and broaden recall.",
+      "The precision control module uses a fixed set of NER-based and classifier-based filters with offline-tuned thresholds. A limitation is the lack of adaptability to query at inference time; a learned model could provide soft scores to handle ambiguous or multi-intent queries more effectively."
+    ],
+    "modeling": [
+      {
+        "label": "Model Architecture",
+        "value": "A Siamese dual encoder, initialized from the e5-small-v2 pretrained transformer encoder, mapping queries ($q$) and products ($d$) to fixed-length vectors $E_q$ and $E_d$ in a shared space. Relevance is measured by cosine similarity $ \\cos(E_q, E_d) $."
+      },
+      {
+        "label": "Input Representation",
+        "list": [
+          "Products are represented by concatenating main attributes: title, brand, item_type, category, and an optional highlights field, each preceded by a unique marker token.",
+          "Queries are short, free-form text encoded without field markers.",
+          "Dynamic field masking is applied during training, where one or more product fields are randomly dropped to prevent over-reliance on single attributes and handle incomplete metadata."
+        ]
+      },
+      {
+        "label": "Loss Function",
+        "value": "An Improved Contrastive Loss (ICL) based on InfoNCE, designed to add more negative relationships. For a batch of $n$ query-product pairs $ \\{(q_i, d_i)\\}_{i=1}^n $, the loss is $ L_{\\text{ICL}} = -\\frac{1}{n} \\sum_{i=1}^{n} \\log \\frac{e^{s(q_i,d_i)/\\tau}}{Z_i} $, where $ s(\\cdot, \\cdot) $ is cosine similarity, $ \\tau $ is a temperature, and $ Z_i $ includes all cross-similarities in the batch: $ Z_i = \\sum_{j} e^{s(q_i,d_j)/\\tau} + \\sum_{j \\neq i} e^{s(q_i,q_j)/\\tau} + \\sum_{j} e^{s(q_j,d_i)/\\tau} + \\sum_{j \\neq i} e^{s(d_j,d_i)/\\tau} $."
+      },
+      {
+        "label": "Training Strategy",
+        "list": [
+          "Two-stage fine-tuning: initial stage with random negatives for coarse relevance, followed by training with carefully mined hard negatives (exposure-based and similarity-based) for top-ranking precision.",
+          "Trained on a large dataset (20 million labeled query-product pairs) derived from anonymized user interaction logs, with stratified sampling by category taxonomy and query frequency."
+        ]
+      }
+    ],
+    "pipelineFlow": [
+      "A user submits a query.",
+      "A central search orchestration layer interprets the query and dispatches requests to lexical and vector channels in parallel.",
+      "Lexical retrieval uses a Solr inverted index for token matches and structured attributes, including spell correction and keyword rewriting.",
+      "The embedding service converts the query to a dense vector and retrieves similar items from an Approximate Nearest Neighbor (ANN) index (ScaNN on AlloyDB) of pre-computed product embeddings.",
+      "A precision control module filters off-topic vector matches from the vector results based on query classifiers and NER model outputs.",
+      "The filtered results from both lexical and vector channels are merged using weighted interleaving in the ranking layer for final display to the user."
+    ],
+    "problemDefinition": [
+      {
+        "label": "Engagement Score",
+        "value": "A continuous score $ S $ assigned to each (query, product, week) tuple, combining Click-Through Rate (CTR), Add-to-Cart (ATC) rate, and Conversion with proprietary weights: $ S = \\alpha \\cdot \\text{Conversion} + \\beta \\cdot \\text{ATC} + \\gamma \\cdot \\text{CTR} $, where $ \\alpha + \\beta + \\gamma = 1 $ and $ \\alpha > \\beta > \\gamma > 0 $."
+      },
+      {
+        "label": "Positive Label",
+        "value": "A (query, product) pair is labeled positive if its engagement score $ S $ stays above a threshold $ T_2 $ over a consistent time window."
+      },
+      {
+        "label": "Negative Label",
+        "value": "Constructed using in-batch sampling (positive products of other queries in batch) and hard negative mining (exposure-based: often shown but no engagement; similarity-based: near misses in embedding space but not positives)."
+      }
+    ],
+    "reproducibility": "The paper provides details on the model architecture (e5-small-v2 based dual encoder, 384-dimensional output), training data creation (20M query-product pairs, stratified sampling, hard negatives), and evaluation metrics. It mentions using NVIDIA A100 GPUs for training and CPU instances for serving. However, specific values for proprietary weights, thresholds, and code are withheld due to commercial confidentiality.",
+    "systemModules": [
+      {
+        "details": "Runs on a Solr inverted index. Provides high precision on token matches and structured attributes. Includes spell correction, keyword rewriting, facet filtering, and custom boosts driven by query classifiers and fulfillment filters.",
+        "name": "Lexical Retrieval Channel",
+        "role": "Retrieves candidates based on exact term matching and structured attribute searches."
+      },
+      {
+        "details": "Converts queries to dense vectors and retrieves similar items from an Approximate Nearest Neighbor (ANN) index hosted on AlloyDB, which uses ScaNN. The ANN index contains millions of pre-computed product embeddings from a fine-tuned e5-small-v2 dual encoder.",
+        "name": "Vector Retrieval Channel (Embedding Service)",
+        "role": "Retrieves candidates based on semantic similarity, handling vocabulary mismatch and natural language queries."
+      },
+      {
+        "details": "Combines a query classifier and a Named Entity Recognition (NER) model to extract explicit and implicit intent (item type, category, brand, gender, size group). Applies high-confidence filters and dynamic thresholds to remove off-topic vector matches before ranking.",
+        "name": "Precision Control Module",
+        "role": "Filters irrelevant or inappropriate results from the vector retrieval channel to ensure high precision."
+      },
+      {
+        "details": "Combines ranked lists from lexical and vector channels. Uses weighted interleaving, where each channel contributes to the merged list proportionally to its assigned weight. Weights are tuned via A/B tests. This method is preferred over Reciprocal Rank Fusion (RRF) for lists with little overlap.",
+        "name": "Merging Strategy (Weighted Interleaving)",
+        "role": "Fuses the results from the parallel lexical and vector retrieval channels into a single ranked list."
+      }
+    ]
+  },
+  "thesis": "A hybrid search system combining lexical and semantic retrieval, optimized with engagement-derived labels, precision control, and efficient deployment, can significantly improve user engagement and conversion in retail product search at scale compared to lexical-only approaches.",
+  "title": "Retail Product Search: A Practical Approach at Target",
+  "url": "https://arxiv.org/abs/arXiv:2609.31498",
+  "venue": "N/A",
+  "year": "2026"
+}
